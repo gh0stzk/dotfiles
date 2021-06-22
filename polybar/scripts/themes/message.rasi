@@ -1,0 +1,24 @@
+/* Confirm Dialog */
+
+@import "colors.rasi"
+
+* {
+    background-color:       @backgroundg;
+    text-color:             @foregroundg;
+	font:				 	"scientifica 12";
+}
+
+window {
+    width:      			320px;
+    padding:    			25px;
+    border:					0px 0px 0px 0px;
+    border-radius:          0px;
+    border-color:           @border;
+    location:               center;
+    y-offset:               -2em;
+}
+
+entry {
+    expand: 				true;
+    text-color:				@foreground;
+}
