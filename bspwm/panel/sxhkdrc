@@ -1,2 +1,0 @@
-super + alt + Escape
-	pkill -x panel; bspc quit
