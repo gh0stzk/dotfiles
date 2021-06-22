@@ -1,8 +1,0 @@
-#! /bin/sh
-
-BW=3
-bspc config border_width $BW
-bspc config window_gap -$BW
-for side in top right bottom left ; do
-	bspc config ${side}_padding $BW
-done
