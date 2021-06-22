@@ -1,0 +1,76 @@
+#! /bin/sh
+
+#    ____ ____  ______        ____  __ 
+#   | __ ) ___||  _ \ \      / /  \/  |
+#   |  _ \___ \| |_) \ \ /\ / /| |\/| |
+#   | |_) |__) |  __/ \ V  V / | |  | |
+#   |____/____/|_|     \_/\_/  |_|  |_|
+#                                    gh0stx config..
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+picom &
+nitrogen --restore &
+$HOME/.config/polybar/launch.sh &
+pgrep lxpolkit || lxpolkit &   # Load only lxpolkit not all lxsession 
+xsetroot -cursor_name left_ptr
+
+
+bspc monitor VGA1 -d I II III IV V
+
+#### Windows conf #### 
+bspc config border_width                  0 
+bspc config window_gap                    10 
+bspc config top_padding                   50
+bspc config bottom_padding                5
+bspc config left_padding                  5
+bspc config right_padding                 5
+
+### Layout ###
+bspc config single_monocle                true
+bspc config split_ratio                   0.50
+bspc config borderless_monocle            true
+bspc config gapless_monocle               true
+bspc config focus_follows_pointer         true 
+
+### Mouse pointer actions ###
+bspc config pointer_modifier              mod4 
+bspc config pointer_action1               move 
+bspc config pointer_action2               resize_side 
+bspc config pointer_action3               resize_corner
+
+### Dinamic or manual? ###
+bspc config automatic_scheme              longest_side
+bspc config initial_polarity              second_child
+
+### Monitors ###
+bspc config remove_disabled_monitors      true 
+bspc config merge_overlapping_monitors    true
+
+### This speeds bspwm ###
+bspc config pointer_motion_interval       5
+
+#### BSPWM colors ####
+bspc config normal_border_color		      "#4C3A6D" 
+bspc config active_border_color	          "#4C3A6D"
+bspc config focused_border_color	      "#785DA5"
+bspc config presel_feedback_color	      "#070219" 
+
+
+### Some Rules ###
+
+bspc rule -a Gimp desktop='^3' state=floating follow=on 
+bspc rule -a firefox desktop='^3' state=pseudo_tiled rectangle=1260x760+0+0 center=on follow=on
+bspc rule -a firefox:firefox state=floating rectangle=748x478+0+0 center=on
+bspc rule -a firefox:Firefox state=floating rectangle=499x289+0+0 center=on
+
+bspc rule -a Whatsapp-for-linux desktop='^4' state=pseudo_tiled rectangle=930x617+0+0 follow=on center=on
+bspc rule -a TelegramDesktop desktop='^4' state=pseudo_tiled rectangle=930x617+0+0 follow=on
+bspc rule -a retroarch desktop='^5' state=pseudo_tiled follow=on center=on
+
+bspc rule -a Termite:vifm state=floating rectangle=811x316+0+0 center=on manage=on
+bspc rule -a Pavucontrol state=floating follow=on center=on 
+bspc rule -a Org.gnome.Nautilus desktop='^2' state=floating center=on follow=on
+bspc rule -a Viewnior state=floating center=on
+bspc rule -a mpv state=floating rectangle=925x519+0+0 center=on
+bspc rule -a SimpleScreenRecorder state=floating
+
