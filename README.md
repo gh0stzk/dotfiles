@@ -22,10 +22,10 @@ I will only provide instructions for arch based distributions.
 <b>1. Install Dependencies: </b></summary> 
 
 A one time command to install most of these dependencies with your favorite AUR Helper.
-bash
 
-paru -S packages here.. i need to edit, but is late now i gonna sleep.
-
+```sh
+paru -S bspwm polybar sxhkd dunst rofi lsd mpd ncmpcpp mpc picom-arian8j2-git xtitle termite checkupdates-aur
+```
 
 <b
 >2. Installing Dotfiles:</b></summary>
