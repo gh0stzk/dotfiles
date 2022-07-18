@@ -9,7 +9,7 @@ https://user-images.githubusercontent.com/67278339/179444283-d5a4bc48-a9c7-4a91-
  
 |Distro|WM|Bar|Compositor|Terminal|
 |------|------|------|------|------|
-|[Arch](https://archlinux.org/)|[BSPWM](https://github.com/baskerville/bspwm)|[Polybar](https://github.com/polybar/polybar)|[Picom Arian8j2](https://github.com/Arian8j2/picom)|[Termite](https://aur.archlinux.org/termite.git)|
+|[Arch](https://archlinux.org/)|[BSPWM](https://github.com/baskerville/bspwm)|[Polybar](https://github.com/polybar/polybar)|[Picom](https://github.com/Arian8j2/picom)|[Termite](https://aur.archlinux.org/termite.git)|
 
 ## ⚠️ Attention!!
 The settings are heavily edited to work on my machine in my 1600x900 resolution. You will probably have to change many things like the terminal "termite" in the files and change it to your own.
