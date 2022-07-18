@@ -24,7 +24,7 @@ I will only provide instructions for arch based distributions.
 A one time command to install most of these dependencies with your favorite AUR Helper.
 
 ```sh
-paru -S bspwm polybar sxhkd dunst rofi lsd mpd ncmpcpp mpc picom-arian8j2-git xtitle termite checkupdates-aur
+paru -S bspwm polybar sxhkd dunst rofi lsd mpd ncmpcpp mpc picom-arian8j2-git xtitle termite checkupdates-aur nerd-fonts-jetbrains-mono ttf-inconsolata 
 ```
 
 <b
