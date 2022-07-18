@@ -5,7 +5,7 @@ Hello, I started learning bash and decided to modify and create some scripts to 
 
 https://user-images.githubusercontent.com/67278339/179444283-d5a4bc48-a9c7-4a91-a144-6c34d11347c8.mp4
 
- <img src="18-Jul-2022.png" alt="Rice Showcase" align="right" width="250px">
+ <img src="18-Jul-2022.png" alt="Rice Showcase" align="right" width="350px">
  
 |Distro|WM|Bar|Compositor|Terminal|
 |------|------|------|------|------|
