@@ -14,7 +14,7 @@ https://user-images.githubusercontent.com/67278339/179444283-d5a4bc48-a9c7-4a91-
 ## ⚠️ Attention!!
 The settings are heavily edited to work on my machine in my 1600x900 resolution. You will probably have to change many things like the terminal "termite" in the files and change it to your own.
 
-## ⭐ Emilia, Jan & Aline Rices
+## ⭐ The rices...
 So yes... i called the Rices with the names of some of my ex girlfriends. 
 
 ### Emilia:
