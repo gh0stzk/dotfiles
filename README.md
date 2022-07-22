@@ -28,7 +28,7 @@ Emilia is a dark theme that mostly uses the **TokyoNight color scheme**. The gtk
 Jan is inspired mostly that my favorite color is purple and magenta and I love **Cyber Punk colors schemes**. The gtk theme is the same Dracula that also matches this theme.
 
 <p align="center">
- 
+ <img src="assets/2022-07-18-004447.png" alt="Jan Rice" align="center" width="300px">
 </p>
 
 ### Aline
@@ -41,12 +41,13 @@ Aline's Rice was totally inspired by this [theme by TheMonkeyLlama](https://www.
 ### Andrea
 This is my first eww rice, is work of the great [adi1090x](https://github.com/adi1090x/widgets). This have a lot of modifications tofit my needs.
 <p align="center">
- <img src="assets/2022-07-22-084911.png" alt="Andrea Rice" align="center" width="300px">
+<img src="assets/2022-07-22-084911.png" alt="Andrea Rice" align="center" width="300px">
  </p>
 
 ### Isabel
+I try to make this one to be elegant, simple and relaxing the.
 <p align="center">
-
+<img src="assets/2022-07-22-091552.png" alt="Isabel Rice" align="center" width="300px">
 </p>
 
 ### Cyn
