@@ -1,4 +1,4 @@
-# Triple Rice - Rice selector
+# BSPWM | Polybar themes collection - Rice selector
 
 ## 🌿 Information
 Hello, I started learning bash and decided to modify and create some scripts to practice and as a fan to rice my setup i made these modifications to switch between rices, live at the moment without having to quit the session. It's not perfect and there's certainly room for improvement. To switch between setups right-click on the arch logo in the bar.
