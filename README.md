@@ -19,23 +19,42 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### Emilia:
 Emilia is a dark theme that mostly uses the **TokyoNight color scheme**. The gtk theme is "Dracula" but I modified some things like the background in the applications to be TokyoNight and some images inside assets were modified.
+
+<p align="center">
 <img src="assets/2022-07-04-154325.png" alt="Emilia Rice" align="center" width="300px">
+</p>
 
 ### Jan
 Jan is inspired mostly that my favorite color is purple and magenta and I love **Cyber Punk colors schemes**. The gtk theme is the same Dracula that also matches this theme.
 
+<p align="center">
+ 
+</p>
+
 ### Aline
 Aline's Rice was totally inspired by this [theme by TheMonkeyLlama](https://www.reddit.com/r/unixporn/comments/vkcasz/i3gaps_i_prefer_light_mode/) I saw on UnixPorn. The color palette used is Catppucin. And well I needed a light rice so here it is.
 
-### Pamela
-is cooking
+<p align="center">
+<img src="assets/2022-07-17-202602.png" alt="Aline Rice" align="center" width="300px">
+</p>
+
+### Andrea
+This is my first eww rice, is work of the great [adi1090x](https://github.com/adi1090x/widgets). This have a lot of modifications tofit my needs.
+<p align="center">
+ <img src="assets/2022-07-22-084911.png" alt="Andrea Rice" align="center" width="300px">
+ </p>
+
+### Isabel
+<p align="center">
+
+</p>
 
 ### Cyn
 is cooking
 
-### Isabel
-is cooking
 
+### Pamela
+is cooking
 
 ## 📦 setup
 
