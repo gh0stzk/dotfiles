@@ -40,6 +40,10 @@ ctrl + super + alt + {p,r,q}
 # Menu aplicaciones
 super + @space
 	rofi -no-lazy-grab -show drun -theme $HOME/.config/bspwm/$RICETHEME/polybar/scripts/themes/launcher.rasi
+	
+# Theme Selector
+alt + @space
+	~/.config/bspwm/scripts/thememenu.sh
 
 # Reload sxhkd
 super + Escape
