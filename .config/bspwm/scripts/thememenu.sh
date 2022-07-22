@@ -7,10 +7,12 @@ rofi_command="rofi -theme $dir/thememenu.rasi"
 emilia="󰔿 Emilia"
 jan="󰔿 Jan"
 aline="󰔿 Aline"
+isabel="󰔿 Isabel"
+andrea="󰔿 Andrea"
 
 
 # Variable passed to rofi
-options="$emilia\n$jan\n$aline"
+options="$emilia\n$jan\n$aline\n$isabel\n$andrea"
 
 chosen="$(echo -e "$options" | rofi -theme $dir/thememenu.rasi -dmenu -selected-row 1)"
 	case $chosen in
@@ -27,6 +29,16 @@ chosen="$(echo -e "$options" | rofi -theme $dir/thememenu.rasi -dmenu -selected-
 				;;
 			$aline)
 				RICETHEME='aline';
+				cat <<< "$RICETHEME" > $HOME/.config/bspwm/rice.cfg
+				bspc wm -r
+				;;
+			$isabel)
+				RICETHEME='isabel';
+				cat <<< "$RICETHEME" > $HOME/.config/bspwm/rice.cfg
+				bspc wm -r
+				;;
+			$andrea)
+				RICETHEME='andrea';
 				cat <<< "$RICETHEME" > $HOME/.config/bspwm/rice.cfg
 				bspc wm -r
 				;;
