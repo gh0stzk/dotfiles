@@ -30,7 +30,7 @@ super + u
 		     
 # screenshoots
 super + Print
-        scrot -d 3 -q 90 -z -s '/run/media/z0mbi3/windows/Imagenes/Captura\ de\ pantalla/%Y-%m-%d-%H%M%S.png' -e 'dunstify "Screenshoot" "La captura de pantalla se realizo con exito" -i "$f"'
+        ~/.local/bin/shooter
         
         
 # Apagar, Reiniciar, Cerrar Sesion
