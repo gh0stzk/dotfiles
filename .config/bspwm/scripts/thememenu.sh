@@ -14,7 +14,7 @@ andrea="󰔿 Andrea"
 # Variable passed to rofi
 options="$emilia\n$jan\n$aline\n$isabel\n$andrea"
 
-chosen="$(echo -e "$options" | rofi -theme $dir/thememenu.rasi -dmenu -selected-row 1)"
+chosen="$(echo -e "$options" | $rofi_command -dmenu -selected-row 2)"
 	case $chosen in
 
 			$emilia)
