@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+scrot -d 3 -q 90 -z -s /run/media/$USER/windows/Imagenes/Captura\ de\ pantalla/%d-%b-%Y[%S].png -e 'dunstify "Screenshoot" "La captura de pantalla se realizo con exito" -i "$f"'

@@ -1,0 +1,122 @@
+#!/usr/bin/env bash
+
+#colors
+#bold="(tput bold)"
+magenta="\033[1;35m"
+green="\033[1;32m"
+white="\033[1;37m"
+blue="\033[1;34m"
+red="\033[1;31m"
+black="\033[1;30m"
+yellow="\033[1;33m"
+cyan="\033[1;36m"
+reset="\033[0m"
+bgyellow="\033[1;43;33m"
+bgwhite="\033[1;47;37m"
+zgreen1="\033[0;32m"
+zgray="\033[0;37m"
+zblue="\033[0;34m"
+c0="${reset}"
+c1="${magenta}"
+c2="${green}"
+c3="${white}"
+c4="${blue}"
+c5="${red}"
+c6="${yellow}"
+c7="${cyan}"
+c8="${black}"
+c9="${bgyellow}"
+c10="${bgwhite}"
+c11="${zgreen1}"
+c12="${zgray}"
+c13="${zblue}"
+
+get_pkg_count() {
+	package_managers=('xbps-install' 'apk' 'apt' 'pacman' 'nix' 'dnf' 'rpm' 'emerge')
+	for package_manager in ${package_managers[@]}; do
+		if command -v $package_manager 2>/dev/null>&2; then
+			case "$package_manager" in
+				xbps-install ) xbps-query -l | wc -l ;;
+				apk ) apk search | wc -l ;;
+				apt ) apt list --installed 2>/dev/null | wc -l ;;
+				pacman ) pacman -Q | wc -l ;;
+				nix ) nix-env -qa --installed '*' | wc -l ;;
+				dnf ) dnf list installed | wc -l ;;
+				rpm ) rpm -qa | wc -l ;;
+				emerge ) qlist -I | wc -l ;;
+			esac
+
+			# if a package manager is found return from the function
+			return
+		fi
+	done
+	echo 'Unknown'
+}
+
+distro() {
+    os=$(uname -o)
+	if [ "$os" = "Android" ] ; then
+		echo 'Android'
+	else
+		awk -F '"' '/PRETTY_NAME/ { print $2 }' /etc/os-release
+	fi
+}
+
+storage() {
+    df -h / | awk '/^\//{print $3}'
+}
+
+# Get Memory usage
+get_mem () {
+  free --mega | sed -n -E '2s/^[^0-9]*([0-9]+) *([0-9]+).*/'"${space}"'\2 MB/p'
+}
+
+# Get DE/WM
+# Reference: https://github.com/unixporn/robbb/blob/master/fetcher.sh
+get_de_wm() {
+	wm="${XDG_CURRENT_DESKTOP#*:}"
+	[ "$wm" ] || wm="$DESKTOP_SESSION"
+
+	# for most WMs
+	[ ! "$wm" ] && [ "$DISPLAY" ] && command -v xprop >/dev/null && {
+		id=$(xprop -root -notype _NET_SUPPORTING_WM_CHECK)
+		id=${id##* }
+		wm=$(xprop -id "$id" -notype -len 100 -f _NET_WM_NAME 8t | grep '^_NET_WM_NAME' | cut -d\" -f 2)
+	}
+
+	# for non-EWMH WMs
+	[ ! "$wm" ] || [ "$wm" = "LG3D" ] &&
+		wm=$(ps -e | grep -m 1 -o \
+			-e "sway" \
+			-e "kiwmi" \
+			-e "wayfire" \
+			-e "sowm" \
+			-e "catwm" \
+			-e "fvwm" \
+			-e "dwm" \
+			-e "2bwm" \
+			-e "monsterwm" \
+			-e "tinywm" \
+			-e "xmonad")
+
+	echo ${wm:-unknown}
+}
+
+echo -e "               "
+echo -e "                ${c8}%%%${c0}                "
+echo -e "         ${c8}%%%%%${c0}${c13}//${c8}%%%%%${c0}              "
+echo -e "       ${c8}%%${c0}${c4}************${c8}%%%${c0}           "
+echo -e "    ${c8}(%%${c0}${c13}//${c11}############${c13}*****${c8}%%${c0}       "
+echo -e "  ${c8}%%%%%${c0}${c13}**${c11}###&&&&&&&&&###${c13}**//       ${c1}os${c3}     $(distro)"
+echo -e "  ${c8}%%(${c0}${c13}**${c11}##&&&#########&&&##${c13}**       ${c2}ker${c3}    $(uname -r)"
+echo -e "  ${c8}%%(${c0}${c13}**${c11}##${c2}*****#####${c2}*****##${c13}**${c8}%%%${c0}    ${c7}pkgs${c3}   $(get_pkg_count)"
+echo -e "  ${c8}%%(${c0}${c13}**${c11}##     *****     ##${c4}**       ${c4}sh${c3}     ${SHELL##*/}  ${c6}󰮯 ${c6} ${c2}󰊠 ${c2} ${c4}󰊠 ${c4} ${c5}󰊠 ${c5} ${c7}󰊠 ${c7} ${c1}󰊠 ${c1}"
+echo -e "     ${c8}//${c0}${c11}##   ${c3}@@${c2}**   ${c3}@@   ${c11}##//       ${c6}ram${c3}    $(get_mem)"
+echo -e "       ${c11}##     ${c2}**${c11}###     ##         ${c5}de/wm${c3}  $(get_de_wm)"
+echo -e "       ${c11}#######     #####//         ${c4}disk${c3}   $(storage) Used"
+echo -e "         ${c11}###${c2}**${c11}&&&&&${c2}**${c11}###"
+echo -e "         ${c11}&&&         &&&         "
+echo -e "         ${c11}&&&${c5}////   ${c11}&&            "
+echo -e "            ${c11}&&${c5}//${c3}@@@${c11}**            "
+echo -e "              ..***         "
+echo -e "               \033[0m"

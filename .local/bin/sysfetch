@@ -1,0 +1,164 @@
+#!/usr/bin/env bash
+
+# sysinfo: A sort of custom script
+# Thanks to u/x_ero for his sysinfo script
+# Also thanks to mysterious person for their fetch script; allowing for center padding
+
+# color escapes
+BLK="\e[30m"
+RED="\e[31m"
+GRN="\e[32m"
+YLW="\e[33m"
+BLU="\e[34m"
+PUR="\e[35m"
+CYN="\e[36m"
+WHT="\e[37m"
+GRY="\e[90;1m"
+RST="\e[0m"
+BLD="\033[1m"
+
+PBLK=$(printf "%b" "\x1b[38;2;58;58;58m")
+PRED=$(printf "%b" "\e[31m")
+PGRN=$(printf "%b" "\e[32m")
+PYLW=$(printf "%b" "\e[33m")
+PBLU=$(printf "%b" "\e[34m")
+PPUR=$(printf "%b" "\e[35m")
+PCYN=$(printf "%b" "\e[36m")
+PWHT=$(printf "%b" "\e[37m")
+PGRY=$(printf "%b" "\e[90;1m")
+PRST=$(printf "%b" "\e[0m")
+PBLD=$(printf "%b" "\033[1m")
+
+# vars
+#FULL=▓
+#EMPTY=░
+FULL=━
+EMPTY=━
+#FULL=─
+#FULL=┅
+#EMPTY=┄
+
+name=$USER
+host=$(uname -n)
+distro=$(uname -o | awk -F '"' '/PRETTY_NAME/ { print $2 }' /etc/os-release)
+wm="$(xprop -id $(xprop -root -notype | awk '$1=="_NET_SUPPORTING_WM_CHECK:"{print $5}') -notype -f _NET_WM_NAME 8t | grep "WM_NAME" | cut -f2 -d \")"
+
+get_pkg_count() {
+	package_managers=('xbps-install' 'apk' 'apt' 'pacman' 'nix' 'dnf' 'rpm' 'emerge')
+	for package_manager in ${package_managers[@]}; do
+		if command -v $package_manager 2>/dev/null>&2; then
+			case "$package_manager" in
+				xbps-install ) xbps-query -l | wc -l ;;
+				apk ) apk search | wc -l ;;
+				apt ) apt list --installed 2>/dev/null | wc -l ;;
+				pacman ) pacman -Q | wc -l ;;
+				nix ) nix-env -qa --installed '*' | wc -l ;;
+				dnf ) dnf list installed | wc -l ;;
+				rpm ) rpm -qa | wc -l ;;
+				emerge ) qlist -I | wc -l ;;
+			esac
+
+			# if a package manager is found return from the function
+			return
+		fi
+	done
+	echo 'Unknown'
+}
+
+storage=$(df -h / | awk '/^\//{print $3}')
+term=$(ps -o sid= -p "$$" | xargs ps -o ppid= -p | xargs ps -o comm= -p)
+uptm=$(uptime -p | sed -e 's/hour/hr/' -e 's/hours/hrs/' -e 's/minutes/mins/' -e 's/minute/min/' -e 's/up //')
+#uptm=$(uptime -p)
+
+#Cleanup first
+clear
+
+# find the center of the screen
+COL=$(tput cols)
+ROW=$(tput lines)
+((PADY = ROW / 2 - 10 - 22 / 2))
+((PADX = COL / 2 - 34 / 2))
+
+for ((i = 0; i < PADX; ++i)); do
+	PADC="$PADC "
+done
+
+for ((i = 0; i < PADY; ++i)); do
+	PADR="$PADR\n"
+done
+
+# vertical padding
+printf "%b" "$PADR"
+printf "\n"
+
+PADXX=$((PADX - 3))
+for ((i = 0; i < PADXX; ++i)); do
+	PADCC="$PADCC "
+done
+
+# Ascii art arms
+cat <<EOF
+$PADCC$PBLD                   $PBLU.
+$PADCC                  $PBLU/ $PPUR\\
+$PADCC                 $PBLU/   $PPUR\\
+$PADCC                $PBLU/^.   $PPUR\\
+$PADCC               $PBLU/  .$PWHT-$PPUR.  \\
+$PADCC              $PBLU/  (   $PPUR) _\\
+$PADCC             $PBLU/ _.~   $PPUR~._^\\
+$PADCC            $PBLU/.^         $PPUR^.\\
+
+EOF
+
+BAR=" ▓▒░"
+OUTT="$BLK$BAR$RED$BAR$GRN$BAR$YLW$BAR$BLU$BAR$PUR$BAR$CYN$BAR$WHT$BAR$RST"
+printf "%s%b" "$PADC" "$OUTT"
+printf "\n\n"
+
+
+# greetings
+printf "%s%b" "$PADC" "         hola $RED$BLD$name$RST\n"
+printf "%s%b" "$PADC" "      Bienvenido a $GRN$BLD$host$RST\n"
+printf "%s%b" "$PADC" "           up $CYN$BLD$uptm$RST\n\n"
+
+# environment
+printf "%s%b" "$PADC" "$RED        distro $GRY⏹ $RST$distro\n"
+printf "%s%b" "$PADC" "$BLU        kernel $GRY⏹ $RST$(uname -r)\n"
+printf "%s%b" "$PADC" "$PUR      packages $GRY⏹ $RST$(get_pkg_count)\n"
+printf "%s%b" "$PADC" "$GRN         shell $GRY⏹ $RST${SHELL##*/}\n"
+printf "%s%b" "$PADC" "$YLW          term $GRY⏹ $RST$term\n"
+printf "%s%b" "$PADC" "$CYN            wm $GRY⏹ $RST${wm}\n"
+printf "%s%b" "$PADC" "$BLU          disk $GRY⏹ $RST$storage used\n"
+printf " $RST\n"
+
+# progress bar
+draw() {
+	perc=$1
+	size=$2
+	inc=$((perc * size / 100))
+	out=
+	color="$3"
+	for v in $(seq 0 $((size - 1))); do
+		test "$v" -le "$inc" &&
+			out="${out}\e[1;${color}m${FULL}" ||
+			out="${out}\e[0;37m${GRY}${EMPTY}"
+	done
+	printf $out
+}
+
+# cpu
+cpu=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}')
+c_lvl=$(printf "%.0f" $cpu)
+printf "%b" "$PADC"
+printf "   $PUR%-4s $WHT%-5s %-25s \n" " cpu" "$c_lvl%" $(draw $c_lvl 15 35)
+
+# ram
+ram=$(free | awk '/Mem:/ {print int($3/$2 * 100.0)}')
+printf "%b" "$RST$PADC"
+printf "   $PUR%-4s $WHT%-5s %-25s \n" " ram" "$ram%" $(draw $ram 15 35)
+
+# hide the cursor and wait for user input
+tput civis
+read -n 1
+
+# give the cursor back
+tput cnorm
