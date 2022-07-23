@@ -1,6 +1,6 @@
 
 configuration {
-    font:                           "JetBrainsMono Nerd Font Medium 9";
+    font:                           "Dosis Bold 10";
     show-icons:                     true;
 	icon-theme: 					"Papirus-Dark";
     display-drun: 					"";
