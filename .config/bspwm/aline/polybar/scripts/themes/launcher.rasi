@@ -1,6 +1,6 @@
 
 configuration {
-    font:                           "JetBrainsMono Nerd Font Medium 9";
+    font:                           "JetBrainsMono Nerd Font Bold 9";
     show-icons:                     true;
 	icon-theme: 					"Papirus-Dark";
     display-drun: 					"";
@@ -23,6 +23,8 @@ window {
     background-color:               @bg;
     text-color:                     @fg;
     border-radius:                  12px;
+    border:							0px;
+    border-color:					#000000;
     height:                         32%;
     width:                          37%;
     location:                       center;
