@@ -67,9 +67,9 @@ I will only provide instructions for arch based distributions.
 A one time command to install most of these dependencies with your **favorite AUR Helper.** The other dependencies like the other fonts used in polybar etc, are in the dots in the respective directory.
 
 ```sh
-paru -S bspwm polybar sxhkd dunst rofi lsd \
-playerctl mpd ncmpcpp mpc picom-arian8j2-git xtitle \
-termite checkupdates-aur nerd-fonts-jetbrains-mono ttf-inconsolata feh betterlockscreen
+paru -S bspwm polybar sxhkd dunst rofi lsd checkupdates-aur \
+playerctl mpd ncmpcpp mpc picom-arian8j2-git xtitle termite betterlockscreen \
+nerd-fonts-jetbrains-mono papirus-icon-theme ttf-inconsolata feh
 ```
 
 <b>2. Installing Dotfiles:</b>
