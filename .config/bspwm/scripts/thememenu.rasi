@@ -1,0 +1,53 @@
+
+@theme "/dev/null"
+
+* {
+  bg:			#1A1B26;
+  fg:			#4dd0e1;
+  bgAlt:		#1B1E25;
+  background-color:	@bg;
+  text-color:		@fg; 
+}
+
+window {
+  transparency:	  "real";
+  width:		  195px;
+  height:		  257px;
+  border:         1px;
+  border-color:   #202132;
+  border-radius:  6px;
+  location:       center;
+  x-offset:       0;
+  y-offset:       -230px;
+}
+
+mainbox { 
+	children:	[ listview ];
+ }
+
+listview {
+    cycle:      false;
+    dynamic:    false;
+    layout:     vertical;
+    padding:    8px;
+}
+
+element {
+  padding:		0px 0px 0px 0px;
+  border-radius:	4px;
+  text-color:		#ffffff;
+}
+
+element-text {
+  margin:		8px 8px 5px 12px;
+  padding:		5px 5px 5px 5px;
+  font:			"JetBrainsMono Nerd Font Medium 13";
+  background-color:	inherit;
+  text-color:		inherit; 
+}
+
+element selected {
+  background-color:	@fg;
+  text-color:	@bgAlt;
+}
+
