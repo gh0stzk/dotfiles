@@ -60,7 +60,7 @@ function launch() {
 launch sxhkd -c ~/.config/bspwm/sxhkdrc &
 launch picom --config ~/.config/bspwm/$RICETHEME/picom.conf &	
 launch /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-feh --bg-fill $HOME/.config/bspwm/$RICETHEME/wallpaper.jpg
+feh --no-fehbg --bg-fill $HOME/.config/bspwm/$RICETHEME/wallpaper.jpg
 bspc config external_rules_command ~/.config/bspwm/scripts/external_rules
 #nitrogen --restore &
 xsetroot -cursor_name left_ptr
