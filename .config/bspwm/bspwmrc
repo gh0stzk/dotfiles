@@ -13,7 +13,7 @@ export RICETHEME=$RICETHEME
 
 function launch() {
   local running
-  running="$(pgrep -x "$1")"
+  running="$(pidof "$1")"
   [ "$running" ] && kill -9 "$running"
   eval "$* &"
 }
@@ -31,7 +31,7 @@ function launch() {
 			
 			if [[ `pidof eww` ]]; then 
 				pkill eww
-			fi			
+			fi	
 				launch polybar -q main -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 				
 		elif [ $RICETHEME == aline ]; then
@@ -48,16 +48,19 @@ function launch() {
 			fi
 				launch polybar -q isa-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 				
-		elif [ $RICETHEME == andrea ]; then
+	fi
+				
+	if [ $RICETHEME == andrea ]; then
 		
-				pkill polybar 
-				pkill picom
-				~/.config/bspwm/$RICETHEME/arin/launch_bar 
+			pkill polybar 
+			pkill picom
+			~/.config/bspwm/$RICETHEME/arin/launch_bar 
 	fi
 
 launch sxhkd -c ~/.config/bspwm/sxhkdrc &
 launch picom --config ~/.config/bspwm/$RICETHEME/picom.conf &	
 launch /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+numlockx on
 feh --bg-fill $HOME/.config/bspwm/$RICETHEME/wallpaper.jpg
 bspc config external_rules_command ~/.config/bspwm/scripts/external_rules
 #nitrogen --restore &
