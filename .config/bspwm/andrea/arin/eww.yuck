@@ -6,7 +6,7 @@
 ;; ** Variables ***********************************************************************
 
 ;; Workspace vars
-(defpoll WMS :interval "1s" `bspc query -D -d focused --names`)
+(defpoll WMS :interval "50ms" `bspc query -D -d focused --names`)
 
 ;; Time vars
 (defpoll TIME :interval "5s" `date +\"%I:%M %p\"`)
