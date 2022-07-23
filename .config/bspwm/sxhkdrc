@@ -30,7 +30,7 @@ super + u
 		     
 # screenshoots
 super + Print
-        ~/.local/bin/shooter
+        ~/.local/bin/screenshoter
         
         
 # Apagar, Reiniciar, Cerrar Sesion
