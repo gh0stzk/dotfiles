@@ -2,9 +2,13 @@ PROMPT="%B%F{blue}󰣇%f%b  %F{magenta}%n%f %F{red}%~%f %B%F{green}❯❯%f%b "
 RPROMPT="%(?.%F{blue}√.%F{red}?%?)%f"
 
 export VISUAL=geany;
-export EDITOR=geany;
-export TERM=termite;
-export PATH="${PATH}:/home/$USER/.local/bin"
+export EDITOR=nvim;
+export TERM=xterm-256color;
+export TERMINAL=/usr/bin/termite;
+
+if [ -d "$HOME/.local/bin" ] ;
+  then PATH="$HOME/.local/bin:$PATH"
+fi
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.config/zsh/zhistory
@@ -97,6 +101,8 @@ alias purga="sudo pacman -Rns $(pacman -Qtdq) ; sudo fstrim -av"
 alias update="yay -Syu"
 alias vm-on="sudo systemctl start libvirtd.service"
 alias vm-off="sudo systemctl stop libvirtd.service"
+alias start-cine="sudo systemctl start minidlna.service;sudo minidlnad -R;sudo systemctl restart minidlna.service"
+alias stop-cine="sudo systemctl stop minidlna.service"
 alias musica="ncmpcpp"
 
 # confirm before overwriting something
@@ -107,4 +113,4 @@ alias rm="rm -iv"
 alias ls='lsd -a --group-directories-first'
 alias ll='lsd -la --group-directories-first'
 
-$HOME/.local/bin/colorscript -r
+~/.local/bin/colorscript -r
