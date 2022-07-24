@@ -32,6 +32,10 @@ super + u
 super + Print
         ~/.local/bin/screenshoter
         
+# Change transparency on focused window
+ctrl + alt {plus,minus,t}
+		{picom-trans -c -o +3, picom-trans -c -o -1, picom-trans -c -d}
+        
         
 # Apagar, Reiniciar, Cerrar Sesion
 ctrl + super + alt + {p,r,q}
