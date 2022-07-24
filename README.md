@@ -39,7 +39,7 @@ Aline's Rice was totally inspired by this [theme by TheMonkeyLlama](https://www.
 </p>
 
 ### Andrea
-This is my first eww rice, is work of the great [adi1090x](https://github.com/adi1090x/widgets). This have a lot of modifications tofit my needs.
+This is my first eww rice, the bars and widgets are work of the great [adi1090x](https://github.com/adi1090x/widgets). I added stuff and a lot of modifications to fit my needs.
 <p align="center">
 <img src="assets/2022-07-22-084911.png" alt="Andrea Rice" align="center" width="300px">
  </p>
