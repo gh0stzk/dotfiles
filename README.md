@@ -44,17 +44,22 @@ This is my first eww rice, the bars and widgets are work of the great [adi1090x]
 <img src="assets/2022-07-22-084911.png" alt="Andrea Rice" align="center" width="300px">
  </p>
 
-### Isabel
+### Cynthia
 I try to make this one to be elegant, simple and relaxing the.
 <p align="center">
-<img src="assets/2022-07-22-091552.png" alt="Isabel Rice" align="center" width="300px">
+<img src="assets/2022-07-22-091552.png" alt="Cynthia Rice" align="center" width="300px">
 </p>
 
-### Cyn
+### Isabel
+Totally inspired in onedark colors for terminal, but the colors in bar, borders, icons etc try to be simple and elegant.
+<p align="center">
+<img src="assets/Shot-25-julio-22-100952.webp" alt="Isabel Rice" align="center" width="300px">
+</p>
+
+### Christina
 is cooking
 
-
-### Pamela
+### Silvia
 is cooking
 
 ## 📦 setup
