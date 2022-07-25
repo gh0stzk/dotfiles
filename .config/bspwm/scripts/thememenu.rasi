@@ -12,7 +12,7 @@
 window {
   transparency:	  "real";
   width:		  195px;
-  height:		  257px;
+  height:		  307px;
   border:         1px;
   border-color:   #202132;
   border-radius:  6px;
