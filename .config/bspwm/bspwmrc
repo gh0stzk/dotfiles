@@ -25,43 +25,54 @@ function launch() {
 			if [[ `pidof eww` ]]; then 
 				pkill eww
 			fi
+			
 				launch polybar -q z0mbi3b4r -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
+				launch dunst -config ~/.config/bspwm/dunstrc-dark &
 			
 		elif [ $RICETHEME == jan ]; then
 			
 			if [[ `pidof eww` ]]; then 
 				pkill eww
 			fi	
+			
 				launch polybar -q main -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
+				launch dunst -config ~/.config/bspwm/dunstrc-dark &
 				
 		elif [ $RICETHEME == aline ]; then
 		
 			if [[ `pidof eww` ]]; then 
 				pkill eww
 			fi
+			
 				launch polybar -q aline-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
+				launch dunst -config ~/.config/bspwm/dunstrc-light &
 				
 		elif [ $RICETHEME == isabel ]; then
 		
 			if [[ `pidof eww` ]]; then 
 				pkill eww
 			fi
+			
 				launch polybar -q isa-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
+				launch dunst -config ~/.config/bspwm/dunstrc-dark &
 				
 		elif [ $RICETHEME == cynthia ]; then
 		
 			if [[ `pidof eww` ]]; then 
 				pkill eww
 			fi
+			
 				launch polybar -q cyn-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
+				launch dunst -config ~/.config/bspwm/dunstrc-dark &
 				
 	fi
 				
 	if [ $RICETHEME == andrea ]; then
 		
-			pkill polybar 
-			pkill picom
-			~/.config/bspwm/$RICETHEME/arin/launch_bar 
+		pkill polybar 
+		pkill picom
+		launch dunst -config ~/.config/bspwm/dunstrc-light &
+		~/.config/bspwm/$RICETHEME/arin/launch_bar 
 	fi
 
 workspaces() {
@@ -73,9 +84,10 @@ workspaces() {
 }
 workspaces
 
+			
 bspc wm --adopt-orphans
 launch sxhkd -c ~/.config/bspwm/sxhkdrc &
-launch picom --config ~/.config/bspwm/$RICETHEME/picom.conf &	
+launch picom --config ~/.config/bspwm/$RICETHEME/picom.conf &
 launch /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 feh --no-fehbg --bg-fill $HOME/.config/bspwm/$RICETHEME/wallpaper.jpg
 bspc config external_rules_command ~/.config/bspwm/scripts/external_rules
@@ -175,9 +187,9 @@ bspc config border_width                  2
 bspc config top_padding                   70
 bspc config bottom_padding                10
 
-bspc config normal_border_color		  "#4f4f5b" 
-bspc config active_border_color	      "#4f4f5b"
-bspc config focused_border_color	  "#4f4f5b"
+bspc config normal_border_color		  "#161616" 
+bspc config active_border_color	      "#161616"
+bspc config focused_border_color	  "#161616"
 bspc config presel_feedback_color	  "#4f4f5b"
 
 	elif [ $RICETHEME == cynthia ]; then
