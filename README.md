@@ -18,44 +18,43 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 ### Emilia:
 Emilia is a dark theme that mostly uses the **TokyoNight color scheme**. The gtk theme is "Dracula" but I modified some things like the background in the applications to be TokyoNight and some images inside assets were modified.
 
-<p align="center">
-<img src="assets/2022-07-04-154325.png" alt="Emilia Rice" align="center" width="300px">
-</p>
+|<img src="assets/Shot-27-julio-22-004243.webp" alt="Emilia Rice" align="center" width="400px">|<img src="assets/Shot-27-julio-22-004921.webp" alt="Emilia Rice" align="center" width="400px">|
+|---|---|
 
 ### Jan
 Jan is inspired mostly that my favorite color is purple and magenta and I love **Cyber Punk colors schemes**. The gtk theme is the same Dracula that also matches this theme.
 
-|<img src="assets/Shot-27-julio-22-003447.webp" alt="Jan Rice" align="center" width="350px">|<img src="assets/Shot-27-julio-22-003433.webp" alt="Jan Rice" align="center" width="350px">|
+|<img src="assets/Shot-27-julio-22-003447.webp" alt="Jan Rice" align="center" width="400px">|<img src="assets/Shot-27-julio-22-003433.webp" alt="Jan Rice" align="center" width="400px">|
 |---|---|
 
 ### Aline
 Aline's Rice was totally inspired by this [theme by TheMonkeyLlama](https://www.reddit.com/r/unixporn/comments/vkcasz/i3gaps_i_prefer_light_mode/) I saw on UnixPorn. The color palette used is Catppucin. And well I needed a light rice so here it is.
 
-|<img src="assets/Shot-27-julio-22-002001.webp" alt="Aline Rice" align="center" width="350px">|<img src="assets/Shot-27-julio-22-002636.webp" alt="Aline Rice" align="center" width="350px">|
+|<img src="assets/Shot-27-julio-22-002001.webp" alt="Aline Rice" align="center" width="400px">|<img src="assets/Shot-27-julio-22-002636.webp" alt="Aline Rice" align="center" width="400px">|
 |---|---|
 
 ### Andrea
 This is my first eww rice, the bars and widgets are work of the great [adi1090x](https://github.com/adi1090x/widgets). I added stuff and a lot of modifications to fit my needs.
 
-|<img src="assets/Shot-27-julio-22-001746.webp" alt="Andrea Rice" align="center" width="350px">|<img src="assets/Shot-27-julio-22-001532.webp" alt="Andrea Rice" align="center" width="350px">|
+|<img src="assets/Shot-27-julio-22-001746.webp" alt="Andrea Rice" align="center" width="400px">|<img src="assets/Shot-27-julio-22-001532.webp" alt="Andrea Rice" align="center" width="400px">|
 |---|---|
 
 ### Cynthia
 I try to make this one to be elegant, simple and relaxing the.
 
-|<img src="assets/Shot-26-julio-22-235349.webp" alt="Cynthia Rice" align="center" width="350px">|<img src="assets/Shot-27-julio-22-000301.webp" alt="Cynthia Rice" align="center" width="350px">|
+|<img src="assets/Shot-26-julio-22-235349.webp" alt="Cynthia Rice" align="center" width="400px">|<img src="assets/Shot-27-julio-22-000301.webp" alt="Cynthia Rice" align="center" width="400px">|
 |---|---|
 
 ### Isabel
 Totally inspired in onedark colors for terminal, but the colors in bar, borders, icons etc try to be simple and elegant.
 
-|<img src="assets/Shot-25-julio-22-101308.webp" alt="Isabel Rice" align="center" width="350px">|<img src="assets/Shot-25-julio-22-100952.webp" alt="Isabel Rice" align="center" width="350px">|
+|<img src="assets/Shot-25-julio-22-101308.webp" alt="Isabel Rice" align="center" width="400px">|<img src="assets/Shot-25-julio-22-100952.webp" alt="Isabel Rice" align="center" width="400px">|
 |---|---|
 
 ### Silvia
 This theme is a Gruvbox rice.
 
-|<img src="assets/Shot-26-julio-22-201658.webp" alt="Silvia Rice" align="center" width="350px">|<img src="assets/Shot-26-julio-22-202411.webp" alt="Silvia Rice" align="center" width="350px">|
+|<img src="assets/Shot-26-julio-22-201658.webp" alt="Silvia Rice" align="center" width="400px">|<img src="assets/Shot-26-julio-22-202411.webp" alt="Silvia Rice" align="center" width="400px">|
 |---|---|
 
 ### Christina
