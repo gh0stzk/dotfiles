@@ -4,8 +4,6 @@
 Hello, I started learning bash and decided to modify and create some scripts to practice and as a fan to rice my setup i made these modifications to switch between rices, live at the moment without having to quit the session. It's not perfect and there's certainly room for improvement. To switch between setups right-click on the arch logo in the bar.
 
 https://user-images.githubusercontent.com/67278339/179444283-d5a4bc48-a9c7-4a91-a144-6c34d11347c8.mp4
-
- <img src="18-Jul-2022.png" alt="Rice Showcase" align="right" width="340px">
  
 |Distro|WM|Bar|Compositor|Terminal|
 |------|------|------|------|------|
@@ -46,15 +44,15 @@ This is my first eww rice, the bars and widgets are work of the great [adi1090x]
 
 ### Cynthia
 I try to make this one to be elegant, simple and relaxing the.
-<p align="center">
-<img src="assets/2022-07-22-091552.png" alt="Cynthia Rice" align="center" width="300px">
-</p>
+
+|<img src="assets/Shot-26-julio-22-235349.webp" alt="Cynthia Rice" align="center" width="300px">|<img src="assets/2022-07-22-091552.png" alt="Cynthia Rice" align="center" width="300px">|
+|---|---|
 
 ### Isabel
 Totally inspired in onedark colors for terminal, but the colors in bar, borders, icons etc try to be simple and elegant.
-<p align="center">
-<img src="assets/Shot-25-julio-22-100952.webp" alt="Isabel Rice" align="center" width="300px">
-</p>
+
+|<img src="assets/Shot-25-julio-22-101308.webp" alt="Isabel Rice" align="center" width="300px">|<img src="assets/Shot-25-julio-22-100952.webp" alt="Isabel Rice" align="center" width="300px">|
+|---|---|
 
 ### Silvia
 This theme is a Gruvbox rice.
