@@ -25,16 +25,14 @@ Emilia is a dark theme that mostly uses the **TokyoNight color scheme**. The gtk
 ### Jan
 Jan is inspired mostly that my favorite color is purple and magenta and I love **Cyber Punk colors schemes**. The gtk theme is the same Dracula that also matches this theme.
 
-<p align="center">
- <img src="assets/2022-07-18-004447.png" alt="Jan Rice" align="center" width="300px">
-</p>
+|<img src="assets/Shot-27-julio-22-003447.webp" alt="Jan Rice" align="center" width="350px">|<img src="assets/Shot-27-julio-22-003433.webp" alt="Jan Rice" align="center" width="350px">|
+|---|---|
 
 ### Aline
 Aline's Rice was totally inspired by this [theme by TheMonkeyLlama](https://www.reddit.com/r/unixporn/comments/vkcasz/i3gaps_i_prefer_light_mode/) I saw on UnixPorn. The color palette used is Catppucin. And well I needed a light rice so here it is.
 
-<p align="center">
-<img src="assets/2022-07-17-202602.png" alt="Aline Rice" align="center" width="300px">
-</p>
+|<img src="assets/Shot-27-julio-22-002001.webp" alt="Aline Rice" align="center" width="350px">|<img src="assets/Shot-27-julio-22-002636.webp" alt="Aline Rice" align="center" width="350px">|
+|---|---|
 
 ### Andrea
 This is my first eww rice, the bars and widgets are work of the great [adi1090x](https://github.com/adi1090x/widgets). I added stuff and a lot of modifications to fit my needs.
