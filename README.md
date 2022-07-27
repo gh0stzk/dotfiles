@@ -56,10 +56,13 @@ Totally inspired in onedark colors for terminal, but the colors in bar, borders,
 <img src="assets/Shot-25-julio-22-100952.webp" alt="Isabel Rice" align="center" width="300px">
 </p>
 
-### Christina
-is cooking
-
 ### Silvia
+This theme is a Gruvbox rice.
+
+|<img src="assets/Shot-26-julio-22-201658.webp" alt="Silvia Rice" align="center" width="300px">|<img src="assets/Shot-26-julio-22-202411.webp" alt="Silvia Rice" align="center" width="300px">|
+|---|---|
+
+### Christina
 is cooking
 
 ## 📦 setup
