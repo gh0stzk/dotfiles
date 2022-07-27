@@ -10,10 +10,11 @@ aline="󰔿 Aline"
 isabel="󰔿 Isabel"
 andrea="󰔿 Andrea"
 cynthia="󰔿 Cynthia"
+silvia="󰔿 Silvia"
 
 
 # Variable passed to rofi
-options="$emilia\n$jan\n$aline\n$isabel\n$andrea\n$cynthia"
+options="$emilia\n$jan\n$aline\n$isabel\n$andrea\n$cynthia\n$silvia"
 
 chosen="$(echo -e "$options" | $rofi_command -dmenu -selected-row 2)"
 	case $chosen in
@@ -45,6 +46,11 @@ chosen="$(echo -e "$options" | $rofi_command -dmenu -selected-row 2)"
 				;;
 			$cynthia)
 				RICETHEME='cynthia';
+				cat <<< "$RICETHEME" > $HOME/.config/bspwm/rice.cfg
+				bspc wm -r
+				;;
+			$silvia)
+				RICETHEME='silvia';
 				cat <<< "$RICETHEME" > $HOME/.config/bspwm/rice.cfg
 				bspc wm -r
 				;;
