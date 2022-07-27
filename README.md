@@ -38,26 +38,26 @@ Aline's Rice was totally inspired by this [theme by TheMonkeyLlama](https://www.
 
 ### Andrea
 This is my first eww rice, the bars and widgets are work of the great [adi1090x](https://github.com/adi1090x/widgets). I added stuff and a lot of modifications to fit my needs.
-<p align="center">
-<img src="assets/2022-07-22-084911.png" alt="Andrea Rice" align="center" width="300px">
- </p>
+
+|<img src="assets/Shot-27-julio-22-001746.webp" alt="Andrea Rice" align="center" width="350px">|<img src="assets/Shot-27-julio-22-001532.webp" alt="Andrea Rice" align="center" width="350px">|
+|---|---|
 
 ### Cynthia
 I try to make this one to be elegant, simple and relaxing the.
 
-|<img src="assets/Shot-26-julio-22-235349.webp" alt="Cynthia Rice" align="center" width="300px">|<img src="assets/2022-07-22-091552.png" alt="Cynthia Rice" align="center" width="300px">|
+|<img src="assets/Shot-26-julio-22-235349.webp" alt="Cynthia Rice" align="center" width="350px">|<img src="assets/Shot-27-julio-22-000301.webp" alt="Cynthia Rice" align="center" width="350px">|
 |---|---|
 
 ### Isabel
 Totally inspired in onedark colors for terminal, but the colors in bar, borders, icons etc try to be simple and elegant.
 
-|<img src="assets/Shot-25-julio-22-101308.webp" alt="Isabel Rice" align="center" width="300px">|<img src="assets/Shot-25-julio-22-100952.webp" alt="Isabel Rice" align="center" width="300px">|
+|<img src="assets/Shot-25-julio-22-101308.webp" alt="Isabel Rice" align="center" width="350px">|<img src="assets/Shot-25-julio-22-100952.webp" alt="Isabel Rice" align="center" width="350px">|
 |---|---|
 
 ### Silvia
 This theme is a Gruvbox rice.
 
-|<img src="assets/Shot-26-julio-22-201658.webp" alt="Silvia Rice" align="center" width="300px">|<img src="assets/Shot-26-julio-22-202411.webp" alt="Silvia Rice" align="center" width="300px">|
+|<img src="assets/Shot-26-julio-22-201658.webp" alt="Silvia Rice" align="center" width="350px">|<img src="assets/Shot-26-julio-22-202411.webp" alt="Silvia Rice" align="center" width="350px">|
 |---|---|
 
 ### Christina
