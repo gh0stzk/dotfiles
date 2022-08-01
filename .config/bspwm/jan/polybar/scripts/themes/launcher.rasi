@@ -13,10 +13,10 @@ configuration {
 @theme "/dev/null"
 
 * {
-    bg:    							#1E1F29FF;
-    fg:    							#C4C7C5ff;
+    bg:    							#070219F0;
+    fg:    							#c0caf5;
     border:    						#D6D6D6FF;
-    selected:    					#4DD0E1ff;
+    selected:    					#fb007af0;
 }
 
 
@@ -36,12 +36,12 @@ window {
 prompt {
     enabled: 						true;
 	padding: 						4px 4px 6px 6px;
-	background-color: 				@bg;
+	background-color: 				#07021900;
 }
 
 
 entry {
-    background-color:               @bg;
+    background-color:               #07021900;
     text-color:                     @fg;
     placeholder-color:              @fg;
     expand:                         true;
@@ -53,7 +53,7 @@ entry {
 
 inputbar {
 	children: 						[ prompt, entry ];
-    background-color:               @bg;
+    background-color:               #07021900;
     text-color:                     @fg;
     expand:                         false;
     border:                  		0px 0px 0px 0px;
@@ -64,7 +64,7 @@ inputbar {
 
 
 listview {
-    background-color:               @bg;
+    background-color:               #07021900;
     columns:                        3;
     spacing:                        6px;
     cycle:                          false;
@@ -74,7 +74,7 @@ listview {
 
 
 mainbox {
-    background-color:               @bg;
+    background-color:               #07021900;
     children:                       [ inputbar, listview ];
     spacing:                       	2%;
     padding:                        2% 1% 2% 1%;
@@ -82,7 +82,7 @@ mainbox {
 
 
 element {
-    background-color:               @bg;
+    background-color:               #07021900;
     text-color:                     @fg;
     orientation:                    horizontal;
     padding:                        6px 6px 6px 6px;
@@ -104,7 +104,7 @@ element-text {
 
 
 element-text, element-icon {
-    background-color: 				inherit;
+    background-color: 				#07021900;
     text-color:       				inherit;
 }
 

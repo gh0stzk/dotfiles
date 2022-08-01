@@ -13,10 +13,10 @@ configuration {
 @theme "/dev/null"
 
 * {
-    bg:    							#1f2329;
-    fg:    							#C4C7C5ff;
-    border:    						#D6D6D6FF;
-    selected:    					#4DD0E1ff;
+    bg:    							#282828;
+    fg:    							#fbf1c7;
+    border:    						#fbf1c7;
+    selected:    					#d79921;
 }
 
 

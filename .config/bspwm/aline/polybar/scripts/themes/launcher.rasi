@@ -15,7 +15,7 @@ configuration {
 * {
     bg:    							#f4f5f8;
     fg:    							#49495a;
-    selected:    					#89B4FA;
+    selected:    					#ee6388;
 }
 
 
