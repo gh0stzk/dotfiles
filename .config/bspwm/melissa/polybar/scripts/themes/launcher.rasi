@@ -1,6 +1,6 @@
 
 configuration {
-    font:                           "TerminessTTF Nerd Font MOno Bold 11";
+    font:                           "TerminessTTF Nerd Font Mono Bold 11";
     show-icons:                     true;
 	icon-theme: 					"Papirus-Dark";
     display-drun: 					"";
