@@ -57,8 +57,12 @@ This theme is a Gruvbox rice.
 |<img src="assets/Shot-26-julio-22-201658.webp" alt="Silvia Rice" align="center" width="400px">|<img src="assets/Shot-26-julio-22-202411.webp" alt="Silvia Rice" align="center" width="400px">|
 |---|---|
 
-### Christina
-is cooking
+### Melissa
+This theme is a **Nord** color palette based, with 2 polybars, one on top and one bottom, with a simple weather module.
+
+|<img src="assets/Shot-31-julio-22-191337.webp" alt="Melissa Rice" align="center" width="400px">|<img src="assets/Shot-31-julio-22-191939.webp" alt="Melissa Rice" align="center" width="400px">|
+|---|---|
+
 
 ## 📦 setup
 
