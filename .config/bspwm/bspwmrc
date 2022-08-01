@@ -7,18 +7,31 @@
 #   |____/____/|_|     \_/\_/  |_|  |_|
 #                                    z0mbi3 config..
 
+
 unset RICETHEME
 RICETHEME=$(<$HOME/.config/bspwm/rice.cfg)
 export RICETHEME=$RICETHEME
+unset wallimage
+wallimage=$(shuf -en1 ~/.config/bspwm/$RICETHEME/*.jpg)
+
 
 function launch() {
   local running
   running="$(pidof "$1")"
-  [ "$running" ] && kill -9 "$running"
+  [ "$running" ] && kill -9 $(pidof $1)
   eval "$* &"
 }
 
-# launch some nice apps
+workspaces() {
+	name=1
+	for monitor in `bspc query -M`; do
+		bspc monitor ${monitor} -n "$name" -d 'I' 'II' 'III' 'IV' 'V' 'VI'
+		let name++
+	done
+}
+workspaces
+
+################################ Launch some nice apps
 
 	if [ $RICETHEME == emilia ]; then
 	
@@ -29,7 +42,7 @@ function launch() {
 				launch polybar -q z0mbi3b4r -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 				launch dunst -config ~/.config/bspwm/dunstrc-dark &
 			
-		elif [ $RICETHEME == jan ]; then
+	elif [ $RICETHEME == jan ]; then
 			
 			if [[ `pidof eww` ]]; then 
 				pkill eww
@@ -38,7 +51,7 @@ function launch() {
 				launch polybar -q main -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 				launch dunst -config ~/.config/bspwm/dunstrc-dark &
 				
-		elif [ $RICETHEME == aline ]; then
+	elif [ $RICETHEME == aline ]; then
 		
 			if [[ `pidof eww` ]]; then 
 				pkill eww
@@ -47,7 +60,7 @@ function launch() {
 				launch polybar -q aline-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 				launch dunst -config ~/.config/bspwm/dunstrc-light &
 				
-		elif [ $RICETHEME == isabel ]; then
+	elif [ $RICETHEME == isabel ]; then
 		
 			if [[ `pidof eww` ]]; then 
 				pkill eww
@@ -56,7 +69,7 @@ function launch() {
 				launch polybar -q isa-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 				launch dunst -config ~/.config/bspwm/dunstrc-dark &
 				
-		elif [ $RICETHEME == cynthia ]; then
+	elif [ $RICETHEME == cynthia ]; then
 		
 			if [[ `pidof eww` ]]; then 
 				pkill eww
@@ -65,13 +78,24 @@ function launch() {
 				launch polybar -q cyn-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 				launch dunst -config ~/.config/bspwm/dunstrc-dark &
 				
-		elif [ $RICETHEME == silvia ]; then
+	elif [ $RICETHEME == silvia ]; then
 		
 			if [[ `pidof eww` ]]; then 
 				pkill eww
 			fi
 			
 				launch polybar -q cata-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
+				launch dunst -config ~/.config/bspwm/dunstrc-dark &
+				
+	elif [ $RICETHEME == melissa ]; then
+		
+			if [[ `pidof eww` ]]; then 
+				pkill eww
+			fi
+				
+				killall polybar
+				polybar -q mel-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
+				polybar -q mel2-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 				launch dunst -config ~/.config/bspwm/dunstrc-dark &
 				
 	fi
@@ -83,22 +107,15 @@ function launch() {
 		launch dunst -config ~/.config/bspwm/dunstrc-light &
 		~/.config/bspwm/$RICETHEME/arin/launch_bar 
 	fi
+	
 
-workspaces() {
-	name=1
-	for monitor in `bspc query -M`; do
-		bspc monitor ${monitor} -n "$name" -d 'I' 'II' 'III' 'IV' 'V' 'VI'
-		let name++
-	done
-}
-workspaces
+########### Global conf
 
-			
 bspc wm --adopt-orphans
 launch sxhkd -c ~/.config/bspwm/sxhkdrc &
 launch picom --config ~/.config/bspwm/$RICETHEME/picom.conf &
 launch /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-feh --no-fehbg --bg-fill $HOME/.config/bspwm/$RICETHEME/wallpaper.jpg
+launch feh --no-fehbg --bg-fill $wallimage
 bspc config external_rules_command ~/.config/bspwm/scripts/external_rules
 #nitrogen --restore &
 xsetroot -cursor_name left_ptr
@@ -115,7 +132,6 @@ xsetroot -cursor_name left_ptr
 bspc config window_gap                    10 
 bspc config left_padding                  10
 bspc config right_padding                 10
-#bspc config border_radius				  10
 
 ### Layout ###
 bspc config single_monocle                true
@@ -229,6 +245,19 @@ bspc config bottom_padding                10
 bspc config normal_border_color		  "#bdae93" 
 bspc config active_border_color	      "#bdae93"
 bspc config focused_border_color	  "#bdae93"
+bspc config presel_feedback_color	  "#4f4f5b"
+
+	elif [ $RICETHEME == melissa ]; then
+
+#### Melissa Rice ####
+
+bspc config border_width                  2
+bspc config top_padding                   30
+bspc config bottom_padding                30
+
+bspc config normal_border_color		  "#4c566a" 
+bspc config active_border_color	      "#4c566a"
+bspc config focused_border_color	  "#4c566a"
 bspc config presel_feedback_color	  "#4f4f5b"
 
 	fi

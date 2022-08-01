@@ -12,13 +12,13 @@
 window {
   transparency:	  "real";
   width:		  195px;
-  height:		  352px;
+  height:		  402px;
   border:         1px;
   border-color:   #202132;
   border-radius:  6px;
   location:       center;
   x-offset:       0;
-  y-offset:       -230px;
+  y-offset:       0;
 }
 
 mainbox { 
