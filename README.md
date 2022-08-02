@@ -21,6 +21,11 @@ Emilia is a dark theme that mostly uses the **TokyoNight color scheme**. The gtk
 |<img src="assets/Shot-27-julio-22-004243.webp" alt="Emilia Rice" align="center" width="400px">|<img src="assets/Shot-27-julio-22-004921.webp" alt="Emilia Rice" align="center" width="400px">|
 |---|---|
 
+**Extra wallpapers in Emilia**
+
+|<img src=".config/bspwm/emilia/wall-02.jpg" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-03.jpg" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-04.jpg" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-05.jpg" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-06.jpg" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-07.jpg" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-08.jpg" alt="Emilia Rice" align="center" width="150px">|
+|---|---|---|---|---|---|---|
+
 ### Jan
 Jan is inspired mostly that my favorite color is purple and magenta and I love **Cyber Punk colors schemes**. The gtk theme is the same Dracula that also matches this theme.
 
