@@ -103,6 +103,9 @@ This theme is a **Nord** color palette based, with 2 polybars, one on top and on
 |<img src=".config/bspwm/melissa/wall-02.jpg" alt="Melissa Rice" align="center" width="150px">|<img src=".config/bspwm/melissa/wall-03.jpg" alt="Melissa Rice" align="center" width="150px">|<img src=".config/bspwm/melissa/wall-04.jpg" alt="Melissa Rice" align="center" width="150px">|<img src=".config/bspwm/melissa/wall-05.jpg" alt="Melissa Rice" align="center" width="150px">|<img src=".config/bspwm/melissa/wall-06.jpg" alt="Melissa Rice" align="center" width="150px">|
 |---|---|---|---|---|
 
+### Cristina
+comming soon!
+
 ## 📦 setup
 
 ### Installation:
