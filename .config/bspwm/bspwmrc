@@ -22,6 +22,13 @@ function launch() {
   eval "$* &"
 }
 
+function killeww() {
+	
+	if [[ `pidof eww` ]]; then 
+		pkill eww
+	fi
+}
+
 workspaces() {
 	name=1
 	for monitor in `bspc query -M`; do
@@ -35,70 +42,50 @@ workspaces
 
 	if [ $RICETHEME == emilia ]; then
 	
-			if [[ `pidof eww` ]]; then 
-				pkill eww
-			fi
-			
+				killeww
 				launch polybar -q z0mbi3b4r -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 				launch dunst -config ~/.config/bspwm/dunstrc-dark &
 			
 	elif [ $RICETHEME == jan ]; then
 			
-			if [[ `pidof eww` ]]; then 
-				pkill eww
-			fi	
-			
+				killeww
 				launch polybar -q main -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 				launch dunst -config ~/.config/bspwm/dunstrc-dark &
 				
 	elif [ $RICETHEME == aline ]; then
 		
-			if [[ `pidof eww` ]]; then 
-				pkill eww
-			fi
-			
+				killeww
 				launch polybar -q aline-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 				launch dunst -config ~/.config/bspwm/dunstrc-light &
 				
 	elif [ $RICETHEME == isabel ]; then
 		
-			if [[ `pidof eww` ]]; then 
-				pkill eww
-			fi
-			
+				killeww
 				launch polybar -q isa-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 				launch dunst -config ~/.config/bspwm/dunstrc-dark &
 				
 	elif [ $RICETHEME == cynthia ]; then
 		
-			if [[ `pidof eww` ]]; then 
-				pkill eww
-			fi
-			
+				killeww
 				launch polybar -q cyn-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 				launch dunst -config ~/.config/bspwm/dunstrc-dark &
 				
 	elif [ $RICETHEME == silvia ]; then
 		
-			if [[ `pidof eww` ]]; then 
-				pkill eww
-			fi
-			
+				killeww
 				launch polybar -q cata-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 				launch dunst -config ~/.config/bspwm/dunstrc-dark &
 				
 	elif [ $RICETHEME == melissa ]; then
 		
-			if [[ `pidof eww` ]]; then 
-				pkill eww
-			fi
-				
+				killeww
 				killall polybar
 				polybar -q mel-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 				polybar -q mel2-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 				launch dunst -config ~/.config/bspwm/dunstrc-dark &
 				
 	fi
+
 				
 	if [ $RICETHEME == andrea ]; then
 		
@@ -160,7 +147,7 @@ bspc config pointer_motion_interval       5
 	
 #### Emilia Rice ####
 
-bspc config border_width                  1
+bspc config border_width                  0
 bspc config top_padding                   60
 bspc config bottom_padding                10
 
