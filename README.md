@@ -32,11 +32,21 @@ Jan is inspired mostly that my favorite color is purple and magenta and I love *
 |<img src="assets/Shot-27-julio-22-003447.webp" alt="Jan Rice" align="center" width="400px">|<img src="assets/Shot-27-julio-22-003433.webp" alt="Jan Rice" align="center" width="400px">|
 |---|---|
 
+**Extra wallpapers in Jan**
+
+|<img src=".config/bspwm/jan/wall-01.jpg" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-03.jpg" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-04.jpg" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-05.jpg" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-06.jpg" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-07.jpg" alt="Jan Rice" align="center" width="150px">|
+|---|---|---|---|---|---|
+
 ### Aline
 Aline's Rice was totally inspired by this [theme by TheMonkeyLlama](https://www.reddit.com/r/unixporn/comments/vkcasz/i3gaps_i_prefer_light_mode/) I saw on UnixPorn. The color palette used is Catppucin. And well I needed a light rice so here it is.
 
 |<img src="assets/Shot-27-julio-22-002001.webp" alt="Aline Rice" align="center" width="400px">|<img src="assets/Shot-27-julio-22-002636.webp" alt="Aline Rice" align="center" width="400px">|
 |---|---|
+
+**Extra wallpapers in Aline**
+
+|<img src=".config/bspwm/aline/wall-02.jpg" alt="Aline Rice" align="center" width="150px">|<img src=".config/bspwm/aline/wall-03.jpg" alt="Aline Rice" align="center" width="150px">|<img src=".config/bspwm/aline/wall-04.jpg" alt="Aline Rice" align="center" width="150px">|<img src=".config/bspwm/aline/wall-05.jpg" alt="Aline Rice" align="center" width="150px">|
+|---|---|---|---|
 
 ### Andrea
 This is my first eww rice, the bars and widgets are work of the great [adi1090x](https://github.com/adi1090x/widgets). I added stuff and a lot of modifications to fit my needs.
@@ -44,11 +54,21 @@ This is my first eww rice, the bars and widgets are work of the great [adi1090x]
 |<img src="assets/Shot-27-julio-22-001746.webp" alt="Andrea Rice" align="center" width="400px">|<img src="assets/Shot-27-julio-22-001532.webp" alt="Andrea Rice" align="center" width="400px">|
 |---|---|
 
+**Extra wallpapers in Andrea**
+
+|<img src=".config/bspwm/andrea/wall-02.jpg" alt="Andrea Rice" align="center" width="150px">|<img src=".config/bspwm/andrea/wall-03.jpg" alt="Andrea Rice" align="center" width="150px">|<img src=".config/bspwm/andrea/wall-04.jpg" alt="Andrea Rice" align="center" width="150px">|
+|---|---|---|
+
 ### Cynthia
 I try to make this one to be elegant, simple and relaxing the.
 
 |<img src="assets/Shot-26-julio-22-235349.webp" alt="Cynthia Rice" align="center" width="400px">|<img src="assets/Shot-27-julio-22-000301.webp" alt="Cynthia Rice" align="center" width="400px">|
 |---|---|
+
+**Extra wallpapers in Cynthia**
+
+|<img src=".config/bspwm/cynthia/wall-02.jpg" alt="Cynthia Rice" align="center" width="150px">|<img src=".config/bspwm/cynthia/wall-03.jpg" alt="Cynthia Rice" align="center" width="150px">|<img src=".config/bspwm/cynthia/wall-04.jpg" alt="Cynthia Rice" align="center" width="150px">|<img src=".config/bspwm/cynthia/wall-05.jpg" alt="Cynthia Rice" align="center" width="150px">|
+|---|---|---|---|
 
 ### Isabel
 Totally inspired in onedark colors for terminal, but the colors in bar, borders, icons etc try to be simple and elegant.
