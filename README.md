@@ -76,11 +76,21 @@ Totally inspired in onedark colors for terminal, but the colors in bar, borders,
 |<img src="assets/Shot-25-julio-22-101308.webp" alt="Isabel Rice" align="center" width="400px">|<img src="assets/Shot-25-julio-22-100952.webp" alt="Isabel Rice" align="center" width="400px">|
 |---|---|
 
+**Extra wallpapers in Isabel**
+
+|<img src=".config/bspwm/isabel/wall-02.jpg" alt="Isabel Rice" align="center" width="150px">|<img src=".config/bspwm/isabel/wall-03.jpg" alt="Isabel Rice" align="center" width="150px">|<img src=".config/bspwm/isabel/wall-04.jpg" alt="Isabel Rice" align="center" width="150px">|<img src=".config/bspwm/isabel/wall-05.jpg" alt="Isabel Rice" align="center" width="150px">|
+|---|---|---|---|
+
 ### Silvia
 This theme is a Gruvbox rice.
 
 |<img src="assets/Shot-26-julio-22-201658.webp" alt="Silvia Rice" align="center" width="400px">|<img src="assets/Shot-26-julio-22-202411.webp" alt="Silvia Rice" align="center" width="400px">|
 |---|---|
+
+**Extra wallpapers in Silvia**
+
+|<img src=".config/bspwm/silvia/wall-01.jpg" alt="Silvia Rice" align="center" width="150px">|<img src=".config/bspwm/silvia/wall-03.jpg" alt="Silvia Rice" align="center" width="150px">|<img src=".config/bspwm/silvia/wall-04.jpg" alt="Silvia Rice" align="center" width="150px">|<img src=".config/bspwm/silvia/wall-05.jpg" alt="Silvia Rice" align="center" width="150px">|
+|---|---|---|---|
 
 ### Melissa
 This theme is a **Nord** color palette based, with 2 polybars, one on top and one bottom, with a simple weather module.
@@ -88,6 +98,10 @@ This theme is a **Nord** color palette based, with 2 polybars, one on top and on
 |<img src="assets/Shot-31-julio-22-191337.webp" alt="Melissa Rice" align="center" width="400px">|<img src="assets/Shot-31-julio-22-191939.webp" alt="Melissa Rice" align="center" width="400px">|
 |---|---|
 
+**Extra wallpapers in Melissa**
+
+|<img src=".config/bspwm/melissa/wall-02.jpg" alt="Melissa Rice" align="center" width="150px">|<img src=".config/bspwm/melissa/wall-03.jpg" alt="Melissa Rice" align="center" width="150px">|<img src=".config/bspwm/melissa/wall-04.jpg" alt="Melissa Rice" align="center" width="150px">|<img src=".config/bspwm/melissa/wall-05.jpg" alt="Melissa Rice" align="center" width="150px">|<img src=".config/bspwm/melissa/wall-06.jpg" alt="Melissa Rice" align="center" width="150px">|
+|---|---|---|---|---|
 
 ## 📦 setup
 
