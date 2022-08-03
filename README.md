@@ -165,7 +165,7 @@ nerd-fonts-jetbrains-mono ttf-jetbrains-mono papirus-icon-theme ttf-inconsolata 
 
 <b>2. Cloning Dotfiles:</b>
 ```sh
-git clone https://github.com/gh0stzk/dotfiles.git
+git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
 ```
 ⚠️ Backuupp!! your filess!!!
 
