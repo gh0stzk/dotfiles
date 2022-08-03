@@ -16,7 +16,7 @@ It Changes the polybar theme. Polybar, bspwm and terminal color palette. Borders
 * **Rice Selector:**
 **Alt + Space bar** or **right click** in arch logo, to open Rice Selector menu.
 
-* **Random wallpaper:**  Every time you switch between rices or reload bspwm with +super + alt + r+ a new wallpaper is set depending on the rice you are on. For each rice there are between 5 and 8 wallpapers that go according to the rice.
+* **Random wallpaper:**  Every time you switch between rices or reload bspwm with super + alt + r a new wallpaper is set depending on the rice you are on. For each rice there are between 5 and 8 wallpapers that go according to the rice.
 
 * **Hide / Unhide Bar:**  **Super + h** to hide polybar. **Super + u** to unhide polybar. *(Doesnt work on Andrea Rice, because is eww bar)*
 
