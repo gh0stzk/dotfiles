@@ -122,7 +122,7 @@ bspc config right_padding                 5
 
 ### Layout ###
 bspc config single_monocle                true
-bspc config split_ratio                   0.55
+bspc config split_ratio                   0.51
 bspc config borderless_monocle            false
 bspc config gapless_monocle               false
 bspc config focus_follows_pointer         true 
