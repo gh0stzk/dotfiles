@@ -10,11 +10,21 @@ https://user-images.githubusercontent.com/67278339/179444283-d5a4bc48-a9c7-4a91-
 |[Arch](https://archlinux.org/)|[BSPWM](https://github.com/baskerville/bspwm)|[Polybar](https://github.com/polybar/polybar)|[Picom](https://github.com/Arian8j2/picom)|[Termite](https://aur.archlinux.org/termite.git)|
 
 ## Features
-* The possibility of changing RICE on the fly. It Changes the polybar theme. Polybar, bspwm and terminal color palette. Windows paddings change depending of each rice.
-* **Alt + Space bar** or **right click** in arch logo, to open Theme Selector menu.
-* **Super + h** to hide polybar. **Super + u** to unhide polybar. *(Doesnt work on Andrea Rice, because is eww bar)*
-* **Super + Print** to take screenshoot.
-* **ctrl + alt + plus** to increase transparency in focused or selected window. **ctrl + alt + minus** to decrease transparency. **ctrl + alt + t** to reset defaults.
+* **Change RICE on the fly:**
+It Changes the polybar theme. Polybar, bspwm and terminal color palette. Borders paddings change depending of each rice.
+
+* **Rice Selector:**
+**Alt + Space bar** or **right click** in arch logo, to open Rice Selector menu.
+
+* **Random wallpaper:**  Every time you switch between rices or reload bspwm with +super + alt + r+ a new wallpaper is set depending on the rice you are on. For each rice there are between 5 and 8 wallpapers that go according to the rice.
+
+* **Hide / Unhide Bar:**  **Super + h** to hide polybar. **Super + u** to unhide polybar. *(Doesnt work on Andrea Rice, because is eww bar)*
+
+* **Screenshots:**  **Super + Print** to take screenshot.
+
+* **Change transparency on the fly:** 
+**ctrl + alt + plus** to increase transparency in focused or selected window. **ctrl + alt + minus** to decrease transparency. **ctrl + alt + t** to reset defaults.
+
 * **ctrl + super + alt + {p,r,q}** to poweroff, reboot and quit session, respectively.
 
 ## ⚠️ Attention!!
