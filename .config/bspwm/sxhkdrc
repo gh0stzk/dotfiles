@@ -23,10 +23,10 @@ shift + alt + {b,g,n,p,r,t,q,w,m,v}
         
 #hide
 super + h
-		polybar-msg cmd hide | bspc config top_padding 10
+		~/.config/bspwm/scripts/hu-polybar -h
 #unhide
 super + u 
-		polybar-msg cmd show | bspc config top_padding 45
+		~/.config/bspwm/scripts/hu-polybar -u
 		     
 # screenshoots
 super + Print

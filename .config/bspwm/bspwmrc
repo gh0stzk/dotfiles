@@ -116,13 +116,13 @@ xsetroot -cursor_name left_ptr
 	fi
 
 #### bspwm conf #### 
-bspc config window_gap                    10 
-bspc config left_padding                  10
-bspc config right_padding                 10
+bspc config window_gap                    5 
+bspc config left_padding                  5
+bspc config right_padding                 5
 
 ### Layout ###
 bspc config single_monocle                true
-bspc config split_ratio                   0.50
+bspc config split_ratio                   0.55
 bspc config borderless_monocle            false
 bspc config gapless_monocle               false
 bspc config focus_follows_pointer         true 
@@ -148,8 +148,8 @@ bspc config pointer_motion_interval       5
 #### Emilia Rice ####
 
 bspc config border_width                  0
-bspc config top_padding                   60
-bspc config bottom_padding                10
+bspc config top_padding                   55
+bspc config bottom_padding                5
 
 bspc config normal_border_color		  "#202132" 
 bspc config active_border_color	      "#202132"
@@ -161,8 +161,8 @@ bspc config presel_feedback_color	  "#070219"
 #### Jan Rice ####
 
 bspc config border_width                  1
-bspc config top_padding                   60
-bspc config bottom_padding                10
+bspc config top_padding                   55
+bspc config bottom_padding                5
 
 bspc config normal_border_color		  "#4C3A6D" 
 bspc config active_border_color	      "#4C3A6D"
@@ -174,8 +174,8 @@ bspc config presel_feedback_color	  "#070219"
 #### Aline Rice ####
 
 bspc config border_width                  1
-bspc config top_padding                   50
-bspc config bottom_padding                10
+bspc config top_padding                   45
+bspc config bottom_padding                5
 
 bspc config normal_border_color		  "#000000" 
 bspc config active_border_color	      "#000000"
@@ -187,8 +187,8 @@ bspc config presel_feedback_color	  "#070219"
 #### Isabel Rice ####
 
 bspc config border_width                  1
-bspc config top_padding                   10
-bspc config bottom_padding                50
+bspc config top_padding                   5
+bspc config bottom_padding                45
 
 bspc config normal_border_color		  "#333a48" 
 bspc config active_border_color	      "#333a48"
@@ -200,8 +200,8 @@ bspc config presel_feedback_color	  "#4f4f5b"
 #### Andrea Rice ####
 
 bspc config border_width                  2
-bspc config top_padding                   70
-bspc config bottom_padding                10
+bspc config top_padding                   60
+bspc config bottom_padding                5
 
 bspc config normal_border_color		  "#161616" 
 bspc config active_border_color	      "#161616"
@@ -213,8 +213,8 @@ bspc config presel_feedback_color	  "#4f4f5b"
 #### Cynthia Rice ####
 
 bspc config border_width                  0
-bspc config top_padding                   50
-bspc config bottom_padding                10
+bspc config top_padding                   40
+bspc config bottom_padding                5
 
 bspc config normal_border_color		  "#4C3A6D" 
 bspc config active_border_color	      "#4C3A6D"
@@ -226,8 +226,8 @@ bspc config presel_feedback_color	  "#070219"
 #### Silvia Rice ####
 
 bspc config border_width                  1
-bspc config top_padding                   50
-bspc config bottom_padding                10
+bspc config top_padding                   45
+bspc config bottom_padding                5
 
 bspc config normal_border_color		  "#bdae93" 
 bspc config active_border_color	      "#bdae93"
