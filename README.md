@@ -30,10 +30,10 @@ It Changes the polybar theme. Polybar, bspwm and terminal color palette. Borders
 ## ⚠️ Attention!!
 The settings are heavily edited to work on my machine in my 1600x900 resolution. You will probably have to change many things in the config files and change it to your own.
 
-## ⭐ The rices...
+## 🎨 The rices...
 So yes... i called the Rices with the names of some of my ex girlfriends. 
 
-### Emilia:
+### 🌸Emilia:
 Emilia is a dark theme that mostly uses the **TokyoNight color scheme**. The gtk theme is "Dracula" but I modified some things like the background in the applications to be TokyoNight and some images inside assets were modified.
 
 |<img src="assets/Shot-27-julio-22-004243.webp" alt="Emilia Rice" align="center" width="400px">|<img src="assets/Shot-27-julio-22-004921.webp" alt="Emilia Rice" align="center" width="400px">|
@@ -47,7 +47,7 @@ Emilia is a dark theme that mostly uses the **TokyoNight color scheme**. The gtk
 
 </details>
 
-### Jan
+### 🌸Jan
 Jan is inspired mostly that my favorite color is purple and magenta and I love **Cyber Punk colors schemes**. The gtk theme is the same Dracula that also matches this theme.
 
 |<img src="assets/Shot-27-julio-22-003447.webp" alt="Jan Rice" align="center" width="400px">|<img src="assets/Shot-27-julio-22-003433.webp" alt="Jan Rice" align="center" width="400px">|
@@ -61,7 +61,7 @@ Jan is inspired mostly that my favorite color is purple and magenta and I love *
 
 </details>
 
-### Aline
+### 🌸Aline
 Aline's Rice was totally inspired by this [theme by TheMonkeyLlama](https://www.reddit.com/r/unixporn/comments/vkcasz/i3gaps_i_prefer_light_mode/) I saw on UnixPorn. The color palette used is Catppucin. And well I needed a light rice so here it is.
 
 |<img src="assets/Shot-27-julio-22-002001.webp" alt="Aline Rice" align="center" width="400px">|<img src="assets/Shot-27-julio-22-002636.webp" alt="Aline Rice" align="center" width="400px">|
@@ -75,7 +75,7 @@ Aline's Rice was totally inspired by this [theme by TheMonkeyLlama](https://www.
 
 </details>
 
-### Andrea
+### 🌸Andrea
 This is my first eww rice, the bars and widgets are work of the great [adi1090x](https://github.com/adi1090x/widgets). I added stuff and a lot of modifications to fit my needs.
 
 |<img src="assets/Shot-27-julio-22-001746.webp" alt="Andrea Rice" align="center" width="400px">|<img src="assets/Shot-27-julio-22-001532.webp" alt="Andrea Rice" align="center" width="400px">|
@@ -89,7 +89,7 @@ This is my first eww rice, the bars and widgets are work of the great [adi1090x]
 
 </details>
 
-### Cynthia
+### 🌸Cynthia
 I try to make this one to be elegant, simple and relaxing the.
 
 |<img src="assets/Shot-26-julio-22-235349.webp" alt="Cynthia Rice" align="center" width="400px">|<img src="assets/Shot-27-julio-22-000301.webp" alt="Cynthia Rice" align="center" width="400px">|
@@ -103,7 +103,7 @@ I try to make this one to be elegant, simple and relaxing the.
 
 </details>
 
-### Isabel
+### 🌸Isabel
 Totally inspired in onedark colors for terminal, but the colors in bar, borders, icons etc try to be simple and elegant.
 
 |<img src="assets/Shot-25-julio-22-101308.webp" alt="Isabel Rice" align="center" width="400px">|<img src="assets/Shot-25-julio-22-100952.webp" alt="Isabel Rice" align="center" width="400px">|
@@ -117,7 +117,7 @@ Totally inspired in onedark colors for terminal, but the colors in bar, borders,
 
 </details>
 
-### Silvia
+### 🌸Silvia
 This theme is a Gruvbox rice.
 
 |<img src="assets/Shot-26-julio-22-201658.webp" alt="Silvia Rice" align="center" width="400px">|<img src="assets/Shot-26-julio-22-202411.webp" alt="Silvia Rice" align="center" width="400px">|
@@ -131,7 +131,7 @@ This theme is a Gruvbox rice.
 
 </details>
 
-### Melissa
+### 🌸Melissa
 This theme is a **Nord** color palette based, with 2 polybars, one on top and one bottom, with a simple weather module.
 
 |<img src="assets/Shot-31-julio-22-191337.webp" alt="Melissa Rice" align="center" width="400px">|<img src="assets/Shot-31-julio-22-191939.webp" alt="Melissa Rice" align="center" width="400px">|
@@ -145,12 +145,12 @@ This theme is a **Nord** color palette based, with 2 polybars, one on top and on
 
 </details>
 
-### Cristina
+### 🌸Cristina
 comming soon!
 
 ## 📦 setup
 
-### Installation:
+### 💾 Installation:
 I will only provide instructions for arch based distributions.
 
 <b>1. Install Dependencies: </b></summary> 
@@ -163,7 +163,14 @@ playerctl mpd ncmpcpp mpc picom-arian8j2-git xtitle termite betterlockscreen \
 nerd-fonts-jetbrains-mono ttf-jetbrains-mono papirus-icon-theme ttf-inconsolata feh
 ```
 
-<b>2. Installing Dotfiles:</b>
+<b>2. Cloning Dotfiles:</b>
 ```sh
 git clone https://github.com/gh0stzk/dotfiles.git
+```
+⚠️ Backuupp!! your filess!!!
+
+<b>3. Move dotfiles to respective locations:</b>
+```sh
+cd dotfiles
+
 ```
