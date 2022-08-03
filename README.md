@@ -171,6 +171,9 @@ git clone https://github.com/gh0stzk/dotfiles.git
 
 <b>3. Move dotfiles to respective locations:</b>
 ```sh
-cd dotfiles
+dotfiles/.config/bspwm ==> ~/.config/bspwm
+dotfiles/.config/ncmpcpp ==> ~/.config/ncmpcpp
+
+dotfiles/.local/ ==> ~/.local/
 
 ```
