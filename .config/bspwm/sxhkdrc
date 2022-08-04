@@ -23,14 +23,14 @@ shift + alt + {b,g,n,p,r,t,q,w,m,v}
         
 #hide
 super + h
-		~/.config/bspwm/scripts/hu-polybar -h
+		hu-polybar -h
 #unhide
 super + u 
-		~/.config/bspwm/scripts/hu-polybar -u
+		hu-polybar -u
 		     
 # screenshoots
 super + Print
-        ~/.local/bin/screenshoter
+        screenshoter
         
 # Change transparency on focused window
 ctrl + alt {plus,minus,t}
