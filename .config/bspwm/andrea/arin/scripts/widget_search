@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rofi -no-lazy-grab -show drun -theme $HOME/.config/bspwm/$RICETHEME/polybar/scripts/themes/launcher.rasi
