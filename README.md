@@ -160,7 +160,8 @@ A one time command to install most of these dependencies with your **favorite AU
 ```sh
 paru -S bspwm polybar sxhkd dunst rofi lsd checkupdates-aur \
 playerctl mpd ncmpcpp mpc picom-arian8j2-git xtitle termite betterlockscreen \
-nerd-fonts-jetbrains-mono ttf-jetbrains-mono papirus-icon-theme ttf-inconsolata feh
+nerd-fonts-jetbrains-mono ttf-jetbrains-mono papirus-icon-theme ttf-inconsolata \
+feh alsa-utils libwebp webp-pixbuf-loader
 ```
 
 <b>2. Cloning Dotfiles:</b>
