@@ -12,7 +12,7 @@ unset RICETHEME
 RICETHEME=$(<$HOME/.config/bspwm/rice.cfg)
 export RICETHEME=$RICETHEME
 unset wallimage
-wallimage=$(shuf -en1 ~/.config/bspwm/$RICETHEME/*.jpg)
+wallimage=$(shuf -en1 ~/.config/bspwm/$RICETHEME/*.webp)
 
 
 function launch() {
