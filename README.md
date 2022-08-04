@@ -178,3 +178,8 @@ dotfiles/.config/ncmpcpp ==> ~/.config/ncmpcpp
 dotfiles/.local/ ==> ~/.local/
 
 ```
+<b>4. Add to PATH if you are not added yet:</b>
+Put this in your .zshrc or .bashrc
+```sh
+PATH="$HOME/.local/bin:$PATH"
+```
