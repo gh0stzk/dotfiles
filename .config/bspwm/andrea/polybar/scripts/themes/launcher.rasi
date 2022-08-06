@@ -1,6 +1,6 @@
 
 configuration {
-    font:                           "Dosis Bold 10";
+    font:                           "Dosis 10";
     show-icons:                     true;
 	icon-theme: 					"Papirus-Dark";
     display-drun: 					"";
@@ -23,8 +23,8 @@ configuration {
 window {
     background-color:               @bg;
     text-color:                     @fg;
-    border-radius:                  5px;
-    border:                  		3px;
+    border-radius:                  8px;
+    border:                  		1px;
     border-color:					@border;
     height:                         32%;
     width:                          37%;
