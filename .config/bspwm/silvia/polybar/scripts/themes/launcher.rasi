@@ -15,7 +15,7 @@ configuration {
 * {
     bg:    							#282828;
     fg:    							#fbf1c7;
-    border:    						#fbf1c7;
+    border:    						#bdae93;
     selected:    					#d79921;
 }
 
@@ -23,7 +23,9 @@ configuration {
 window {
     background-color:               @bg;
     text-color:                     @fg;
-    border-radius:                  0px;
+    border-radius:                  8px;
+    border:							0px;
+    border-color:					@border;
     height:                         32%;
     width:                          37%;
     location:                       center;
