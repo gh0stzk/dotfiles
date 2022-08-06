@@ -1,6 +1,6 @@
 
 configuration {
-    font:                           "TerminessTTF Nerd Font Mono Bold 11";
+    font:                           "TerminessTTF Nerd Font Mono Bold 10";
     show-icons:                     true;
 	icon-theme: 					"Papirus-Dark";
     display-drun: 					"";
@@ -23,7 +23,7 @@ configuration {
 window {
     background-color:               @bg;
     text-color:                     @fg;
-    border-radius:                  5px;
+    border-radius:                  8px;
     border:							0px;
     border-color:					@border;
     height:                         32%;
