@@ -42,7 +42,7 @@ Emilia is a dark theme that mostly uses the **TokyoNight color scheme**. The gtk
 <details>
 <summary><b>Extra wallpapers in Emilia</b></summary>
 
-|<img src=".config/bspwm/emilia/wall-02.jpg" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-03.jpg" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-04.jpg" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-05.jpg" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-06.jpg" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-07.jpg" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-08.jpg" alt="Emilia Rice" align="center" width="150px">|
+|<img src=".config/bspwm/emilia/wall-02.webp" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-03.webp" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-04.webp" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-05.webp" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-06.webp" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-07.webp" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-08.webp" alt="Emilia Rice" align="center" width="150px">|
 |---|---|---|---|---|---|---|
 
 </details>
@@ -56,7 +56,7 @@ Jan is inspired mostly that my favorite color is purple and magenta and I love *
 <details>
 <summary><b>Extra wallpapers in Jan</b></summary>
 
-|<img src=".config/bspwm/jan/wall-01.jpg" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-03.jpg" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-04.jpg" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-05.jpg" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-06.jpg" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-07.jpg" alt="Jan Rice" align="center" width="150px">|
+|<img src=".config/bspwm/jan/wall-01.webp" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-03.webp" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-04.webp" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-05.webp" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-06.webp" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-07.webp" alt="Jan Rice" align="center" width="150px">|
 |---|---|---|---|---|---|
 
 </details>
@@ -70,7 +70,7 @@ Aline's Rice was totally inspired by this [theme by TheMonkeyLlama](https://www.
 <details>
 <summary><b>Extra wallpapers in Aline</b></summary>
 
-|<img src=".config/bspwm/aline/wall-02.jpg" alt="Aline Rice" align="center" width="150px">|<img src=".config/bspwm/aline/wall-03.jpg" alt="Aline Rice" align="center" width="150px">|<img src=".config/bspwm/aline/wall-04.jpg" alt="Aline Rice" align="center" width="150px">|<img src=".config/bspwm/aline/wall-05.jpg" alt="Aline Rice" align="center" width="150px">|
+|<img src=".config/bspwm/aline/wall-02.webp" alt="Aline Rice" align="center" width="150px">|<img src=".config/bspwm/aline/wall-03.webp" alt="Aline Rice" align="center" width="150px">|<img src=".config/bspwm/aline/wall-04.webp" alt="Aline Rice" align="center" width="150px">|<img src=".config/bspwm/aline/wall-05.webp" alt="Aline Rice" align="center" width="150px">|
 |---|---|---|---|
 
 </details>
@@ -84,7 +84,7 @@ This is my first eww rice, the bars and widgets are work of the great [adi1090x]
 <details>
 <summary><b>Extra wallpapers in Andrea</b></summary>
 
-|<img src=".config/bspwm/andrea/wall-02.jpg" alt="Andrea Rice" align="center" width="150px">|<img src=".config/bspwm/andrea/wall-03.jpg" alt="Andrea Rice" align="center" width="150px">|<img src=".config/bspwm/andrea/wall-04.jpg" alt="Andrea Rice" align="center" width="150px">|
+|<img src=".config/bspwm/andrea/wall-02.webp" alt="Andrea Rice" align="center" width="150px">|<img src=".config/bspwm/andrea/wall-03.webp" alt="Andrea Rice" align="center" width="150px">|<img src=".config/bspwm/andrea/wall-04.webp" alt="Andrea Rice" align="center" width="150px">|
 |---|---|---|
 
 </details>
@@ -98,7 +98,7 @@ I try to make this one to be elegant, simple and relaxing the.
 <details>
 <summary><b>Extra wallpapers in Cynthia</b></summary>
 
-|<img src=".config/bspwm/cynthia/wall-02.jpg" alt="Cynthia Rice" align="center" width="150px">|<img src=".config/bspwm/cynthia/wall-03.jpg" alt="Cynthia Rice" align="center" width="150px">|<img src=".config/bspwm/cynthia/wall-04.jpg" alt="Cynthia Rice" align="center" width="150px">|<img src=".config/bspwm/cynthia/wall-05.jpg" alt="Cynthia Rice" align="center" width="150px">|
+|<img src=".config/bspwm/cynthia/wall-02.webp" alt="Cynthia Rice" align="center" width="150px">|<img src=".config/bspwm/cynthia/wall-03.webp" alt="Cynthia Rice" align="center" width="150px">|<img src=".config/bspwm/cynthia/wall-04.webp" alt="Cynthia Rice" align="center" width="150px">|<img src=".config/bspwm/cynthia/wall-05.webp" alt="Cynthia Rice" align="center" width="150px">|
 |---|---|---|---|
 
 </details>
@@ -112,7 +112,7 @@ Totally inspired in onedark colors for terminal, but the colors in bar, borders,
 <details>
 <summary><b>Extra wallpapers in Isabel</b></summary>
 
-|<img src=".config/bspwm/isabel/wall-02.jpg" alt="Isabel Rice" align="center" width="150px">|<img src=".config/bspwm/isabel/wall-03.jpg" alt="Isabel Rice" align="center" width="150px">|<img src=".config/bspwm/isabel/wall-04.jpg" alt="Isabel Rice" align="center" width="150px">|<img src=".config/bspwm/isabel/wall-05.jpg" alt="Isabel Rice" align="center" width="150px">|
+|<img src=".config/bspwm/isabel/wall-02.webp" alt="Isabel Rice" align="center" width="150px">|<img src=".config/bspwm/isabel/wall-03.webp" alt="Isabel Rice" align="center" width="150px">|<img src=".config/bspwm/isabel/wall-04.webp" alt="Isabel Rice" align="center" width="150px">|<img src=".config/bspwm/isabel/wall-05.webp" alt="Isabel Rice" align="center" width="150px">|
 |---|---|---|---|
 
 </details>
@@ -126,7 +126,7 @@ This theme is a Gruvbox rice.
 <details>
 <summary><b>Extra wallpapers in Silvia</b></summary>
 
-|<img src=".config/bspwm/silvia/wall-01.jpg" alt="Silvia Rice" align="center" width="150px">|<img src=".config/bspwm/silvia/wall-03.jpg" alt="Silvia Rice" align="center" width="150px">|<img src=".config/bspwm/silvia/wall-04.jpg" alt="Silvia Rice" align="center" width="150px">|<img src=".config/bspwm/silvia/wall-05.jpg" alt="Silvia Rice" align="center" width="150px">|
+|<img src=".config/bspwm/silvia/wall-01.webp" alt="Silvia Rice" align="center" width="150px">|<img src=".config/bspwm/silvia/wall-03.webp" alt="Silvia Rice" align="center" width="150px">|<img src=".config/bspwm/silvia/wall-04.webp" alt="Silvia Rice" align="center" width="150px">|<img src=".config/bspwm/silvia/wall-05.webp" alt="Silvia Rice" align="center" width="150px">|
 |---|---|---|---|
 
 </details>
@@ -140,7 +140,7 @@ This theme is a **Nord** color palette based, with 2 polybars, one on top and on
 <details>
 <summary><b>Extra wallpapers in Melissa</b></summary>
 
-|<img src=".config/bspwm/melissa/wall-02.jpg" alt="Melissa Rice" align="center" width="150px">|<img src=".config/bspwm/melissa/wall-03.jpg" alt="Melissa Rice" align="center" width="150px">|<img src=".config/bspwm/melissa/wall-04.jpg" alt="Melissa Rice" align="center" width="150px">|<img src=".config/bspwm/melissa/wall-05.jpg" alt="Melissa Rice" align="center" width="150px">|<img src=".config/bspwm/melissa/wall-06.jpg" alt="Melissa Rice" align="center" width="150px">|
+|<img src=".config/bspwm/melissa/wall-02.webp" alt="Melissa Rice" align="center" width="150px">|<img src=".config/bspwm/melissa/wall-03.webp" alt="Melissa Rice" align="center" width="150px">|<img src=".config/bspwm/melissa/wall-04.webp" alt="Melissa Rice" align="center" width="150px">|<img src=".config/bspwm/melissa/wall-05.webp" alt="Melissa Rice" align="center" width="150px">|<img src=".config/bspwm/melissa/wall-06.webp" alt="Melissa Rice" align="center" width="150px">|
 |---|---|---|---|---|
 
 </details>
