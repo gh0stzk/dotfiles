@@ -36,7 +36,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 ### 🌸Emilia:
 Emilia is a dark theme that mostly uses the **TokyoNight color scheme**. The gtk theme is "Dracula" but I modified some things like the background in the applications to be TokyoNight and some images inside assets were modified.
 
-|<img src="assets/Shot-27-julio-22-004243.webp" alt="Emilia Rice" align="center" width="500px">|<img src="assets/Shot-27-julio-22-004921.webp" alt="Emilia Rice" align="center" width="500px">|
+|<img src="assets/Shot-27-julio-22-004243.webp" alt="Emilia Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-004921.webp" alt="Emilia Rice" align="center" width="600px">|
 |---|---|
 
 <details>
