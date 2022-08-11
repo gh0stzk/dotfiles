@@ -172,7 +172,7 @@ A one time command to install most of these dependencies with your **favorite AU
 paru -S bspwm polybar sxhkd dunst rofi lsd jq checkupdates-aur \
 playerctl mpd ncmpcpp mpc picom-arian8j2-git xtitle termite betterlockscreen \
 nerd-fonts-jetbrains-mono ttf-jetbrains-mono papirus-icon-theme ttf-inconsolata \
-feh alsa-utils libwebp webp-pixbuf-loader xdo stalonetray nitrogen
+feh alsa-utils libwebp webp-pixbuf-loader nitrogen
 ```
 
 <b>2. Cloning Dotfiles:</b>
