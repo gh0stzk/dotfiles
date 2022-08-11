@@ -38,8 +38,8 @@ ctrl + alt {plus,minus,t}
         
         
 # Apagar, Reiniciar, Cerrar Sesion
-ctrl + super + alt + {p,r,q}
-        {systemctl poweroff, systemctl reboot,bspc quit}
+ctrl + super + alt + {p,r,q,l}
+        {systemctl poweroff, systemctl reboot,bspc quit,betterlockscreen -l}
         
 # Menu aplicaciones
 super + @space

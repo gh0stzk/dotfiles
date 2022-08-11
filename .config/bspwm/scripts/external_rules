@@ -8,7 +8,6 @@ title=$(xtitle "$wid")
 
 
 if [ "$instance" = termite ] ; then
-	title=$(xtitle "$wid")
 	case "$title" in
 		ranger)
 			echo "state=floating rectangle=811x316+0+0 center=on"
@@ -23,6 +22,7 @@ if [ "$instance" = termite ] ; then
 			echo "state=floating rectangle=575x445+940+59"
 	esac
 fi
+
 main () {
 case "$class" in
 	mpv)
@@ -77,11 +77,9 @@ case "$class" in
 		[[ -n "$class" ]] && main
 		;;
 esac
-
 }
 
 main
-
 case "$instance" in
      Toolkit)
         eval "$consequences"
