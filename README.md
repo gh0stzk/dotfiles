@@ -148,6 +148,17 @@ This theme is a **Nord** color palette based, with 2 polybars, one on top and on
 ### 🌸Pamela
 This theme has a beautiful color palette from [elenapan](https://github.com/elenapan/dotfiles). This rice also has eww widgets; **Calendar** and **Music Player** widgets stolen from [rxyhn](https://github.com/rxyhn/bspdots). **Profile card** and **Power Launcher** widgets stolen from [okklol](https://github.com/okklol/eww-bar). With 6 bars (polybar).
 
+|<img src="assets/Shot-11-agosto-22-172328.webp" alt="Pamela Rice" align="center" width="600px">|<img src="assets/Shot-11-agosto-22-172747.webp" alt="Pamela Rice" align="center" width="600px">|
+|---|---|
+
+<details>
+<summary><b>Extra wallpapers in Pamela</b></summary>
+
+|<img src=".config/bspwm/pamela/wall-02.webp" alt="Pamela Rice" align="center" width="150px">|<img src=".config/bspwm/pamela/wall-03.webp" alt="Pamela Rice" align="center" width="150px">|<img src=".config/bspwm/pamela/wall-04.webp" alt="Pamela Rice" align="center" width="150px">|
+|---|---|---|
+
+</details>
+
 ## 📦 setup
 
 ### 💾 Installation:
