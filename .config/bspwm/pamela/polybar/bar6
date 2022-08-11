@@ -1,0 +1,99 @@
+; ____       _       _                
+;|  _ \ ___ | |_   _| |__   __ _ _ __ 
+;| |_) / _ \| | | | | '_ \ / _` | '__|
+;|  __/ (_) | | |_| | |_) | (_| | |   
+;|_|   \___/|_|\__, |_.__/ \__,_|_|   
+;               |___/         by gh0stzk      
+
+[global/wm]
+
+margin-bottom = 0
+margin-top = 0
+
+include-file = ~/.config/bspwm/$RICETHEME/polybar/colors.ini
+include-file = ~/.config/bspwm/$RICETHEME/polybar/modules.ini
+
+;; Bar Settings
+
+[bar/pam6]
+
+monitor = 
+monitor-fallback =
+monitor-strict = false
+
+override-redirect = false
+
+bottom = false
+fixed-center = true
+
+width = 20.5%
+height = 40
+
+offset-x = 22.5%
+offset-y = 10
+
+background = ${color.bg-alt}
+foreground = ${color.fg}
+
+radius = 6
+
+line-size = 2
+line-color = ${color.ac}
+
+border-size = 2
+border-color = ${color.bg}
+
+padding = 2
+
+module-margin-left = 0
+module-margin-right = 0
+
+### Fonts Icons & Glyphs
+
+; Text
+font-0 = "JetBrains Mono:style=Medium;antialilas=true:size=10;4"
+; Icons
+font-1 = "Material Design Icons Desktop:size=16;4"
+font-2 = "Inconsolata Semi Condensed Medium:style=Medium:size=10;3"
+
+;dpi = 96
+; mpd_control mpd punto sep
+modules-left = r00t sep power sep updates
+modules-center = weather-mini
+modules-right = 
+
+spacing = 0
+separator =
+dim-value = 1.0
+
+locale = es_MX.UTF-8
+
+tray-position = right
+tray-detached = true
+tray-maxsize = 16
+tray-background = ${color.bg-alt}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 0
+tray-scale = 1.0
+
+wm-restack = bspwm
+enable-ipc = true
+
+cursor-click = pointer 
+cursor-scroll = ns-resize
+
+[settings]
+
+throttle-output = 5
+throttle-output-for = 10
+
+screenchange-reload = false
+
+compositing-background = source
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+
+pseudo-transparency = false

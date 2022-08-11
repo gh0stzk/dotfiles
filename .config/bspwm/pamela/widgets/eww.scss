@@ -1,0 +1,235 @@
+*
+{
+    all: unset;
+}
+
+/* tooltip */
+tooltip
+{
+    background-color: #161320;
+    font-family: UbuntuMono Nerd Font;
+    font-size: 14px;
+}
+
+/* power */
+
+
+.lock-btn
+{
+    color: #D9E0EE;
+    font-family: Material Design Icons Desktop;
+    font-size: 30px;
+}
+
+.lock-btn:hover
+{
+    color: #F28FAD;
+    font-family: Material Design Icons Desktop;
+    font-size: 35px;
+}
+
+.power-btn
+{
+    color: #D9E0EE;
+    font-family: Material Design Icons Desktop;
+    font-size: 30px;
+}
+
+.power-btn:hover
+{
+    color: #F28FAD;
+    font-family: Material Design Icons Desktop;
+    font-size: 35px;
+}
+
+.restart-btn
+{
+    color: #D9E0EE;
+    font-family: Material Design Icons Desktop;
+    font-size: 30px;
+}
+
+.restart-btn:hover
+{
+    color: #F28FAD;
+    font-family: Material Design Icons Desktop;
+    font-size: 35px;
+}
+
+.logout-btn
+{
+    color: #D9E0EE;
+    font-family: Material Design Icons Desktop;
+    font-size: 30px;
+}
+
+.logout-btn:hover
+{
+    color: #F28FAD;
+    font-family: Material Design Icons Desktop;
+    font-size: 35px;
+}
+
+.powermenu
+{
+    background-color: #1D1F28;
+    border-radius: 8px;
+    //border: 2px solid #2f354b;
+}
+
+/* launcher */
+
+.launchermenu
+{
+    background-color: #1D1F28;
+    border-radius: 8px;
+    //border: 2px solid #2f354b;
+}
+
+.launcher-icon
+{
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-bottom: 10px;
+}
+
+.launcher-pfp-label
+{
+    font-family: Inconsolata Semi Condensed Medium;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.launcher-pfp-label2
+{
+    font-family: Inconsolata Semi Condensed Medium;
+    font-size: 25px;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.launcher-btn
+{
+    color: #D9E0EE;
+    font-family: Material Design Icons Desktop;
+    font-size: 20px;
+    margin-top: 25px;
+}
+
+.launcher-btn:hover
+{
+    color: #F28FAD;
+    font-family: Material Design Icons Desktop;
+    font-size: 20px;
+    margin-top: 25px;
+}
+
+/* Calendar */
+
+.cal-box {
+  background-color: #1D1F28;
+  border-radius: 8px;
+  //border: 2px solid #2f354b;
+  font-family: JetBrainsMonoMedium Nerd Font;
+  font-size: .9em;
+
+  .cal-inner-box {
+      padding: 1rem 1rem .2rem;
+
+      .cal {
+          &.highlight {
+              padding: 10rem;
+          }
+
+          padding: .8rem .25rem 0rem;
+          margin-left: 10px;
+      }
+  }
+}
+
+calendar:selected {
+  color: #C574DD;
+}
+
+calendar.header {
+color: #D9E0EE;
+font-weight: bold;
+}
+
+calendar.button {
+color: #C574DD;
+}
+
+calendar.highlight {
+color: #C574DD;
+font-weight: bold;
+}
+
+calendar:indeterminate {
+color: #8C8C8C;
+}
+
+/* Music player */
+
+.music-player{
+	background-color: #1D1F28;
+	padding: 0 1.5rem 1rem 1.5rem;
+	border-radius: 12px;
+	margin: .5rem;
+}
+.album_art {
+	background-size: cover;
+	background-position: center;
+	border-radius: 12px;
+	margin: 2rem 1rem 1.5rem 1rem;
+	padding: 7rem;
+}
+
+.artist {
+	font-family: Cartograph CF;
+	font-style: italic;
+	font-weight: bold;
+	color: #FDFDFD;
+	font-size : 1.2em;
+}
+.song{
+	font-family: Cartograph CF;
+	font-style: italic;
+	font-size: 1.1em;
+	color: #FDFDFD;
+	margin-top: -5px;
+}
+.btn_prev, .btn_play, .btn_next {
+	font-family: JetBrainsMono Nerd Font;
+}
+.btn_prev {
+	color: #FDFDFD;
+	font-size : 2.8em;
+}
+.btn_play {
+	color: #FDFDFD;
+	font-size : 2.8em;
+	font-weight : bold;
+}
+.btn_next {
+	color: #FDFDFD;
+	font-size : 2.8em;
+}
+.metric-player  scale trough highlight {
+	all: unset;
+	border-radius: 10px;
+	background-color: #C574DD;
+}
+  
+.metric-player scale trough  {
+	all: unset;
+	background-color: #1D1F28;
+	border:2px solid #454545;
+	border-radius: 50px;
+  }
+  
+.metric-player scale trough  {
+	min-width: 200px;
+	min-height: 10px;
+	/* margin: .5rem 1rem 0 1rem; */
+}

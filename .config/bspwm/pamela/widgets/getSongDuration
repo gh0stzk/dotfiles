@@ -1,0 +1,2 @@
+#/usr/bin/env sh
+mpc status | grep "%)" | awk '{ print $4 }' | awk -F% '{ print $1 }' | awk 'sub(/^.{1}/,"")' 
