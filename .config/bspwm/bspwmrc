@@ -22,28 +22,11 @@ function launch() {
   [ "$running" ] && kill -9 $(pidof $1)
   eval "$* &"
 }
-
-function killsystray() {
-	
-	if [[ `pidof stalonetray` ]]; then 
-		pkill stalonetray
-	fi
-}
 	
 function killeww() {
 	
 	if [[ `pidof eww` ]]; then 
 		pkill eww
-	fi
-}
-
-function stray() {
-	
-	if [[ ! $(pidof stalonetray) ]]; then
-		stalonetray
-		xdo hide -n stalonetray
-		polybar-msg action "#systray.hook.1"
-		touch "/tmp/syshide.lock"
 	fi
 }
 
@@ -76,7 +59,6 @@ if pacman -Qi bspwm-rounded-corners-git >/dev/null 2>&1; then
 		  bspc config presel_feedback_color		"#070219"
 		  		  
 		  killeww
-		  killsystray
 		  launch polybar -q z0mbi3b4r -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 		  launch dunst -config ~/.config/bspwm/dunstrc-dark &
 		  
@@ -94,7 +76,6 @@ if pacman -Qi bspwm-rounded-corners-git >/dev/null 2>&1; then
 		  bspc config presel_feedback_color		"#070219"
 		  
 		  killeww
-		  killsystray
 		  launch polybar -q main -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 		  launch dunst -config ~/.config/bspwm/dunstrc-dark &
 		  
@@ -112,7 +93,6 @@ if pacman -Qi bspwm-rounded-corners-git >/dev/null 2>&1; then
 		  bspc config presel_feedback_color		"#070219"
 		  
 		  killeww
-		  killsystray
 		  launch polybar -q aline-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 		  launch dunst -config ~/.config/bspwm/dunstrc-light &
 		  
@@ -130,7 +110,6 @@ if pacman -Qi bspwm-rounded-corners-git >/dev/null 2>&1; then
 		  bspc config presel_feedback_color		"#4f4f5b"
 		  
 		  killeww
-		  killsystray
 		  launch polybar -q isa-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 		  launch dunst -config ~/.config/bspwm/dunstrc-dark &
 		  
@@ -148,7 +127,6 @@ if pacman -Qi bspwm-rounded-corners-git >/dev/null 2>&1; then
 		  bspc config presel_feedback_color		"#070219"
 		  
 		  killeww
-		  killsystray
 		  launch polybar -q cyn-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 		  launch dunst -config ~/.config/bspwm/dunstrc-dark &
 		  
@@ -166,7 +144,6 @@ if pacman -Qi bspwm-rounded-corners-git >/dev/null 2>&1; then
 		  bspc config presel_feedback_color		"#4f4f5b"
 
 		  killeww
-		  killsystray
 		  launch polybar -q cata-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 		  launch dunst -config ~/.config/bspwm/dunstrc-dark &
 		  
@@ -184,7 +161,6 @@ if pacman -Qi bspwm-rounded-corners-git >/dev/null 2>&1; then
 		  bspc config presel_feedback_color		"#4f4f5b"
 
 		  killeww
-		  killsystray
 		  killall polybar
 		  polybar -q mel-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
 		  polybar -q mel2-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
@@ -204,7 +180,7 @@ if pacman -Qi bspwm-rounded-corners-git >/dev/null 2>&1; then
 		  bspc config presel_feedback_color		"#4f4f5b"
 		  
 		  killeww
-		  killall polybar
+		  pkill polybar
 		  polybar -q pam1 -c ~/.config/bspwm/$RICETHEME/polybar/bar1 &
 		  polybar -q pam2 -c ~/.config/bspwm/$RICETHEME/polybar/bar2 &
 		  polybar -q pam3 -c ~/.config/bspwm/$RICETHEME/polybar/bar3 &
@@ -212,7 +188,6 @@ if pacman -Qi bspwm-rounded-corners-git >/dev/null 2>&1; then
 		  polybar -q pam5 -c ~/.config/bspwm/$RICETHEME/polybar/bar5 &
 		  polybar -q pam6 -c ~/.config/bspwm/$RICETHEME/polybar/bar6 &
 		  launch dunst -config ~/.config/bspwm/dunstrc-dark &
-		  stray
 		  
 		  ;;
 		  
