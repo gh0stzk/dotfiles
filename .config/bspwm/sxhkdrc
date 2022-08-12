@@ -38,9 +38,13 @@ ctrl + alt {plus,minus,t}
 		{picom-trans -c -o +3, picom-trans -c -o -1, picom-trans -c -d}
         
         
-# Apagar, Reiniciar, Cerrar Sesion
+# Apagar, Reiniciar, Cerrar Sesion, bloquear
 ctrl + super + alt + {p,r,q,l}
         {systemctl poweroff, systemctl reboot,bspc quit,betterlockscreen -l}
+        
+# Matar Procesos
+ctrl + super + alt + k
+		{xkill}
         
 # Menu aplicaciones
 super + @space
@@ -48,7 +52,7 @@ super + @space
 	
 # Theme Selector
 alt + @space
-	~/.config/bspwm/scripts/thememenu.sh
+	thememenu.sh
 
 # Reload sxhkd
 super + Escape
