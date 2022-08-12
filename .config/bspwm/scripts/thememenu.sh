@@ -22,48 +22,39 @@ chosen="$(echo -e "$options" | $rofi_command -dmenu)"
 	case $chosen in
 
 			$emilia)
-				RICETHEME='emilia'
-				cat <<< "$RICETHEME" > $HOME/.config/bspwm/rice.cfg
+				cat <<< "emilia" > $HOME/.config/bspwm/rice.cfg
 				bspc wm -r
 				;;
 			$jan)
-				RICETHEME='jan'
-				cat <<< "$RICETHEME" > $HOME/.config/bspwm/rice.cfg
+				cat <<< "jan" > $HOME/.config/bspwm/rice.cfg
 				bspc wm -r
 				;;
 			$aline)
-				RICETHEME='aline';
-				cat <<< "$RICETHEME" > $HOME/.config/bspwm/rice.cfg
+				cat <<< "aline" > $HOME/.config/bspwm/rice.cfg
 				bspc wm -r
 				;;
 			$isabel)
-				RICETHEME='isabel';
-				cat <<< "$RICETHEME" > $HOME/.config/bspwm/rice.cfg
+				cat <<< "isabel" > $HOME/.config/bspwm/rice.cfg
 				bspc wm -r
 				;;
 			$andrea)
-				RICETHEME='andrea';
-				cat <<< "$RICETHEME" > $HOME/.config/bspwm/rice.cfg
+				cat <<< "andrea" > $HOME/.config/bspwm/rice.cfg
 				bspc wm -r
 				;;
 			$cynthia)
-				RICETHEME='cynthia';
-				cat <<< "$RICETHEME" > $HOME/.config/bspwm/rice.cfg
+				cat <<< "cynthia" > $HOME/.config/bspwm/rice.cfg
 				bspc wm -r
 				;;
 			$silvia)
-				RICETHEME='silvia';
-				cat <<< "$RICETHEME" > $HOME/.config/bspwm/rice.cfg
+				cat <<< "silvia" > $HOME/.config/bspwm/rice.cfg
 				bspc wm -r
 				;;
 			$melissa)
-				RICETHEME='melissa';
-				cat <<< "$RICETHEME" > $HOME/.config/bspwm/rice.cfg
+				cat <<< "melissa" > $HOME/.config/bspwm/rice.cfg
 				bspc wm -r
 				;;
 			$pamela)
-				RICETHEME='pamela';
-				cat <<< "$RICETHEME" > $HOME/.config/bspwm/rice.cfg
+				cat <<< "pamela" > $HOME/.config/bspwm/rice.cfg
 				bspc wm -r
 				;;
 		esac

@@ -8,27 +8,13 @@
 #                                    z0mbi3 config..
 
 
-unset RICETHEME
-RICETHEME=$(<$HOME/.config/bspwm/rice.cfg)
-export RICETHEME=$RICETHEME
-unset wallimage
+########### Def vars
+
+export RICETHEME=$(<$HOME/.config/bspwm/rice.cfg)
 wallimage=$(shuf -en1 ~/.config/bspwm/$RICETHEME/*.webp)
 PATH="$HOME/.config/bspwm/scripts:$PATH"
 
-
-function launch() {
-  local running
-  running="$(pidof "$1")"
-  [ "$running" ] && kill -9 $(pidof $1)
-  eval "$* &"
-}
-	
-function killeww() {
-	
-	if [[ `pidof eww` ]]; then 
-		pkill eww
-	fi
-}
+########### Workspaces
 
 workspaces() {
 	name=1
@@ -37,196 +23,26 @@ workspaces() {
 		let name++
 	done
 }
+
 workspaces
+	
+########### Launch The Rice!!
+
+	source LaunchWorld
+	SetGirlFriendRice
+	AutoStartApps
+
+########### bspwm conf
 
 if pacman -Qi bspwm-rounded-corners-git >/dev/null 2>&1; then
 		bspc config border_radius                 10
 	fi
-	
-################################ Launch The Rice!!
 
-	case $RICETHEME in
-	
-		emilia)
-		
-		  bspc config border_width                  1
-		  bspc config top_padding                   55
-		  bspc config bottom_padding                5
-
-		  bspc config normal_border_color		"#202132" 
-		  bspc config active_border_color		"#202132"
-		  bspc config focused_border_color		"#202132"
-		  bspc config presel_feedback_color		"#070219"
-		  		  
-		  killeww
-		  launch polybar -q z0mbi3b4r -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
-		  launch dunst -config ~/.config/bspwm/dunstrc-dark &
-		  
-		  ;;
-			
-		jan)
-		
-		  bspc config border_width                  1
-		  bspc config top_padding                   55
-		  bspc config bottom_padding                5
-
-		  bspc config normal_border_color		"#4C3A6D" 
-		  bspc config active_border_color	    "#4C3A6D"
-		  bspc config focused_border_color	  	"#785DA5"
-		  bspc config presel_feedback_color		"#070219"
-		  
-		  killeww
-		  launch polybar -q main -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
-		  launch dunst -config ~/.config/bspwm/dunstrc-dark &
-		  
-		  ;;
-		    
-		aline)
-		
-		  bspc config border_width                  1
-		  bspc config top_padding                   45
-		  bspc config bottom_padding                5
-
-		  bspc config normal_border_color		"#000000" 
-		  bspc config active_border_color	    "#000000"
-		  bspc config focused_border_color		"#000000"
-		  bspc config presel_feedback_color		"#070219"
-		  
-		  killeww
-		  launch polybar -q aline-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
-		  launch dunst -config ~/.config/bspwm/dunstrc-light &
-		  
-		  ;;
-		  
-		isabel)
-		
-		  bspc config border_width                  1
-		  bspc config top_padding                   5
-		  bspc config bottom_padding                45
-
-		  bspc config normal_border_color		"#333a48" 
-		  bspc config active_border_color	    "#333a48"
-		  bspc config focused_border_color		"#333a48"
-		  bspc config presel_feedback_color		"#4f4f5b"
-		  
-		  killeww
-		  launch polybar -q isa-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
-		  launch dunst -config ~/.config/bspwm/dunstrc-dark &
-		  
-		  ;;
-		  
-		cynthia)
-		
-		  bspc config border_width                  0
-		  bspc config top_padding                   40
-		  bspc config bottom_padding                5
-
-		  bspc config normal_border_color		"#4C3A6D" 
-		  bspc config active_border_color	    "#4C3A6D"
-		  bspc config focused_border_color		"#785DA5"
-		  bspc config presel_feedback_color		"#070219"
-		  
-		  killeww
-		  launch polybar -q cyn-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
-		  launch dunst -config ~/.config/bspwm/dunstrc-dark &
-		  
-		  ;;
-		  
-		silvia)
-		
-		  bspc config border_width                  1
-		  bspc config top_padding                   45
-		  bspc config bottom_padding                5
-
-		  bspc config normal_border_color		"#bdae93" 
-		  bspc config active_border_color	    "#bdae93"
-		  bspc config focused_border_color		"#bdae93"
-		  bspc config presel_feedback_color		"#4f4f5b"
-
-		  killeww
-		  launch polybar -q cata-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
-		  launch dunst -config ~/.config/bspwm/dunstrc-dark &
-		  
-		  ;;
-		
-		melissa)
-		
-		  bspc config border_width                  2
-		  bspc config top_padding                   30
-		  bspc config bottom_padding                30
-
-		  bspc config normal_border_color		"#4c566a" 
-		  bspc config active_border_color	    "#4c566a"
-		  bspc config focused_border_color		"#4c566a"
-		  bspc config presel_feedback_color		"#4f4f5b"
-
-		  killeww
-		  killall polybar
-		  polybar -q mel-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
-		  polybar -q mel2-bar -c ~/.config/bspwm/$RICETHEME/polybar/config.ini &
-		  launch dunst -config ~/.config/bspwm/dunstrc-dark &
-		  
-		  ;;
-		  
-		pamela)
-		
-		  bspc config border_width                  0
-		  bspc config top_padding                   60
-		  bspc config bottom_padding                5
-
-		  bspc config normal_border_color		"#bdae93" 
-		  bspc config active_border_color	    "#bdae93"
-		  bspc config focused_border_color		"#bdae93"
-		  bspc config presel_feedback_color		"#4f4f5b"
-		  
-		  killeww
-		  pkill polybar
-		  polybar -q pam1 -c ~/.config/bspwm/$RICETHEME/polybar/bar1 &
-		  polybar -q pam2 -c ~/.config/bspwm/$RICETHEME/polybar/bar2 &
-		  polybar -q pam3 -c ~/.config/bspwm/$RICETHEME/polybar/bar3 &
-		  polybar -q pam4 -c ~/.config/bspwm/$RICETHEME/polybar/bar4 &
-		  polybar -q pam5 -c ~/.config/bspwm/$RICETHEME/polybar/bar5 &
-		  polybar -q pam6 -c ~/.config/bspwm/$RICETHEME/polybar/bar6 &
-		  launch dunst -config ~/.config/bspwm/dunstrc-dark &
-		  
-		  ;;
-		  
-		andrea)
-		
-		  bspc config border_width                  2
-		  bspc config top_padding                   60
-		  bspc config bottom_padding                5
-
-		  bspc config normal_border_color		"#161616" 
-		  bspc config active_border_color	    "#161616"
-		  bspc config focused_border_color		"#161616"
-		  bspc config presel_feedback_color		"#4f4f5b"
-		  
-		  pkill polybar 
-		  pkill picom
-		  launch dunst -config ~/.config/bspwm/dunstrc-light &
-		  ~/.config/bspwm/$RICETHEME/arin/launch_bar
-		  
-		  ;;
-		  
-	esac		
-	
-########### Global launch conf
-
-launch sxhkd -c ~/.config/bspwm/sxhkdrc &
-launch picom --config ~/.config/bspwm/$RICETHEME/picom.conf &
-launch /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-launch feh --no-fehbg --bg-fill $wallimage
 bspc config external_rules_command ~/.config/bspwm/scripts/external_rules
-#nitrogen --restore &
-xsetroot -cursor_name left_ptr
-
-#### bspwm conf #### 
 bspc config window_gap                    8 
 bspc config left_padding                  5
 bspc config right_padding                 5
 
-### Layout ###
 bspc config single_monocle                true
 bspc config split_ratio                   0.5
 bspc config borderless_monocle            false
@@ -234,7 +50,6 @@ bspc config gapless_monocle               false
 bspc config focus_follows_pointer         true
 bspc config center_pseudo_tiled			  true
 
-### Mouse pointer actions ###
 bspc config pointer_modifier              mod4 
 bspc config pointer_action1               move 
 bspc config pointer_action2               resize_side 

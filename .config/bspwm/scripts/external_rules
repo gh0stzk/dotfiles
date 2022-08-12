@@ -15,11 +15,15 @@ if [ "$instance" = termite ] ; then
 		zfetch)
 		    echo "border=off state=floating rectangle=616x354+36+115"
 		    ;;
-		 sysfetch)
+		sysfetch)
 		    echo "border=off state=floating rectangle=352x500+36+115"
 		    ;;
 		updating)
 			echo "state=floating rectangle=575x445+940+59"
+			;;
+		musicplayer)
+			echo "state=floating rectangle=630x215+0+0 center=on"
+			;;
 	esac
 fi
 
@@ -55,7 +59,7 @@ case "$class" in
 	    ;;
 	Thunar)
 	    eval "$consequences"
-	    [ "$state" ] || echo "state=pseudo_tiled desktop=^2 rectangle=1050x680+0+0 follow=on center=on border=off"
+	    [ "$state" ] || echo "state=pseudo_tiled desktop=^2 rectangle=908x505+0+0 follow=on center=on border=off"
 	    ;;
 	firefox|Navigator)
 	    eval "$consequences"
@@ -67,7 +71,7 @@ case "$class" in
 	    ;;
 	  Spotify)
 		eval "$consequences"
-	    [ "$state" ] || echo "state=pseudo_tiled center=on border=off rectangle=1207x800 desktop=^6 follow=on"
+	    [ "$state" ] || echo "state=pseudo_tiled center=on border=off rectangle=1124x600 desktop=^6 follow=on"
 		;;
 		"")
         sleep 0.5
