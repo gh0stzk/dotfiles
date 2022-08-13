@@ -159,6 +159,8 @@ This theme has a beautiful color palette from [elenapan](https://github.com/elen
 
 </details>
 
+#### Very useful keybindigs to know...
+
 |Action|Keybinding|
 |---|---|
 |Rice Selector|<code>alt + @space</code>|
