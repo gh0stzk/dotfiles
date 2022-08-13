@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Author 	 -  z0mbi3
+# Source 	 -  https://github.com/gh0stzk/dotfiles
+# Maintainer -  z0mbi3.zk@protonmail.com
+
 dir="~/.config/bspwm/scripts"
 rofi_command="rofi -theme $dir/thememenu.rasi"
 

@@ -1,11 +1,14 @@
 #! /bin/sh
 
+# Author 	 -  z0mbi3
+# Source 	 -  https://github.com/gh0stzk/dotfiles
+# Maintainer -  z0mbi3.zk@protonmail.com
+
 wid=$1
 class=$2
 instance=$3
 consequences=$4
 title=$(xtitle "$wid")
-
 
 if [ "$instance" = termite ] ; then
 	case "$title" in

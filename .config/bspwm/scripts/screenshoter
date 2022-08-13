@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Author 	 -  z0mbi3
+# Source 	 -  https://github.com/gh0stzk/dotfiles
+# Maintainer -  z0mbi3.zk@protonmail.com
+
 time=$(date '+%d-%B-%y-%H%M%S')
 dir="$(xdg-user-dir PICTURES)/ScreenShots"
 file="Shot-$time.webp"

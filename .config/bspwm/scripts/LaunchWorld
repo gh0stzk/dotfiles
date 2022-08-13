@@ -1,5 +1,9 @@
 #! /bin/sh
 
+# Author 	 -  z0mbi3
+# Source 	 -  https://github.com/gh0stzk/dotfiles
+# Maintainer -  z0mbi3.zk@protonmail.com
+
 function launch() {
   local running
   running="$(pidof "$1")"
