@@ -1,7 +1,7 @@
 # BSPWM | Polybar themes collection - Rice selector
 
 ## 🌿 Information
-Hello, I started learning bash and decided to modify and create some scripts to practice and as a fan to rice my setup i made these modifications to switch between rices, live at the moment without having to quit the session. It's not perfect and there's certainly room for improvement. To switch between setups right-click on the arch logo in the bar.
+Hello, I started learning bash and decided to modify and create some scripts to practice and as a fan to rice my setup i made these modifications to switch between rices, on the fly. It's not perfect and there's certainly room for improvement.
 
 https://user-images.githubusercontent.com/67278339/179444283-d5a4bc48-a9c7-4a91-a144-6c34d11347c8.mp4
  
@@ -18,14 +18,14 @@ It Changes the polybar theme. Polybar, bspwm and terminal color palette. Borders
 
 * **Random wallpaper:**  Every time you switch between rices or reload bspwm with super + alt + r a new wallpaper is set depending on the rice you are on. For each rice there are between 5 and 8 wallpapers that go according to the rice.
 
-* **Hide / Unhide Bar:**  **Super + h** to hide polybar. **Super + u** to unhide polybar. *(Doesnt work on Andrea Rice, because is eww bar)*
+* **Hide / Unhide Bar:** *(Doesnt work on Andrea Rice, because is eww bar)*
 
-* **Screenshots:**  **Super + Print** to take screenshot.
+* **Screenshots:** to take screenshot.
 
 * **Change transparency on the fly:** 
-**ctrl + alt + plus** to increase transparency in focused or selected window. **ctrl + alt + minus** to decrease transparency. **ctrl + alt + t** to reset defaults.
+Increase and decrease transparency in focused or selected window.
 
-* **ctrl + super + alt + {p,r,q}** to poweroff, reboot and quit session, respectively.
+* Keybindings to poweroff, reboot, quit session and lockscreen respectively.
 
 ## ⚠️ Attention!!
 The settings are heavily edited to work on my machine in my 1600x900 resolution. You will probably have to change many things in the config files and change it to your own.
@@ -165,7 +165,7 @@ This theme has a beautiful color palette from [elenapan](https://github.com/elen
 |---|---|
 |Rice Selector|<code>alt + @space</code>|
 |Menu|<code>super + @space</code>|
-|Hide / Unhide|<code>super + h / super + u</code>|
+|Hide / Unhide Bar|<code>super + h / super + u</code>|
 |Screenshot|<code>super + Print</code>|
 |Transparency|<code>ctrl + alt {plus,minus,t}</code>|
 |poweroff / Reboot|<code>ctrl + super + alt + {p,r}</code>|
