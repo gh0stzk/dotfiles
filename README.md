@@ -159,6 +159,20 @@ This theme has a beautiful color palette from [elenapan](https://github.com/elen
 
 </details>
 
+|Action|Keybinding|
+|---|---|
+|Rice Selector|<code>alt + @space</code>|
+|Menu|<code>super + @space</code>|
+|Hide / Unhide|<code>super + h / super + u</code>|
+|Screenshot|<code>super + Print</code>|
+|Transparency|<code>ctrl + alt {plus,minus,t}</code>|
+|poweroff / Reboot|<code>ctrl + super + alt + {p,r}</code>|
+|Terminal|<code>super + Return</code>|
+|Brute Kill|<code>ctrl + super + alt + k</code>|
+|Restart bspwm|<code>super + alt + r</code>|
+
+And more.. U need to look sxhkdrc file for more.
+
 ## 📦 setup
 
 ### 💾 Installation:
