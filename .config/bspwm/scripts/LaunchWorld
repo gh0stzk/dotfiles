@@ -70,7 +70,7 @@ function SetGirlFriendRice() {
 		  bspc config presel_feedback_color		"#070219"
 		  
 		  killeww
-		  launch polybar -q aline-bar ${polydir}/config.ini &
+		  launch polybar -q aline-bar -c ${polydir}/config.ini &
 		  launch dunst -config ${bspdir}/dunstrc-light &
 		  
 		  ;;
@@ -121,7 +121,7 @@ function SetGirlFriendRice() {
 		  bspc config presel_feedback_color		"#4f4f5b"
 
 		  killeww
-		  launch polybar -q cata-bar ${polydir}/config.ini &
+		  launch polybar -q cata-bar -c ${polydir}/config.ini &
 		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
 		  ;;
@@ -138,7 +138,7 @@ function SetGirlFriendRice() {
 		  bspc config presel_feedback_color		"#4f4f5b"
 
 		  killeww
-		  killall polybar
+		  pkill polybar
 		  polybar -q mel-bar -c ${polydir}/config.ini &
 		  polybar -q mel2-bar -c ${polydir}/config.ini &
 		  launch dunst -config ${bspdir}/dunstrc-dark &
