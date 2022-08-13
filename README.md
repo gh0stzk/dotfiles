@@ -210,3 +210,7 @@ Put this in your .zshrc or .bashrc
 ```sh
 PATH="$HOME/.local/bin:$PATH"
 ```
+## Some tips
+
+* Wallpapers are in .webp image format,i added libwebp webp-pixbuf-loader packages for your filemanager (thunar in my case) have the capacity to show webp thumbnails.
+* If u dont wanna use the random wallpapers comment line 194 and uncomment line 195 from /home/YourUser/.config/bspwm/scripts/LaunchWorld file.
