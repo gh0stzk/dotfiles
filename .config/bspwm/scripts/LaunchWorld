@@ -164,7 +164,7 @@ function SetGirlFriendRice() {
 		  polybar -q pam4 -c ${polydir}/config.ini &
 		  polybar -q pam5 -c ${polydir}/config.ini &
 		  polybar -q pam6 -c ${polydir}/config.ini &
-		  launch dunst ${bspdir}/dunstrc-dark &
+		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
 		  ;;
 		  
