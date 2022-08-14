@@ -9,7 +9,7 @@ https://user-images.githubusercontent.com/67278339/179444283-d5a4bc48-a9c7-4a91-
 <img src="assets/rs.webp" alt="Rice Menu" align="right" width="400px">
 
 |DIstro|[Arch](https://archlinux.org/)|
-|---|---|
+|:---:|:---:|
 |WM|[BSPWM](https://github.com/baskerville/bspwm)|
 |Bar|[Polybar](https://github.com/polybar/polybar)|
 |Menu|[Rofi](https://github.com/davatorium/rofi)|
