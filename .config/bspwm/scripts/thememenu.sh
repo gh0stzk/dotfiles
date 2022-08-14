@@ -22,7 +22,7 @@ pamela="󰔿 Pamela"
 # Variable passed to rofi
 options="$emilia\n$jan\n$aline\n$isabel\n$andrea\n$cynthia\n$silvia\n$melissa\n$pamela"
 
-chosen="$(echo -e "$options" | $rofi_command -dmenu)"
+chosen="$(printf "$options" | $rofi_command -dmenu)"
 	case $chosen in
 
 			$emilia)
