@@ -5,17 +5,17 @@
 @theme "/dev/null"
 
 * {
-  bg:			#1A1B26;
-  fg:			#4dd0e1;
-  bgAlt:		#1B1E25;
+  bg:			#14171c;
+  fg:			#b8bfe5;
+  fg-selected:  #564b64;
   background-color:	@bg;
-  text-color:		@fg; 
+  text-color:		@fg;
 }
 
 window {
   transparency:	  "real";
-  width:		  195px;
-  height:		  450px;
+  width:		  480px;
+  height:		  158px;
   border:         1px;
   border-color:   #202132;
   border-radius:  6px;
@@ -26,31 +26,42 @@ window {
 
 mainbox { 
 	children:	[ listview ];
+	margin:		15px 15px 15px 15px;
  }
 
 listview {
-    cycle:      false;
-    dynamic:    false;
-    layout:     vertical;
-    padding:    8px;
-}
+    enabled:                     true;
+    columns:                     3;
+    lines:                       3;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     3px;
+    background-color:            transparent;
+    text-color:                  @fg;
+    cursor:                      "default";
+    }
 
 element {
   padding:		0px 0px 0px 0px;
   border-radius:	4px;
-  text-color:		#ffffff;
+  text-color:		@fg;
 }
 
 element-text {
-  margin:		8px 8px 5px 12px;
-  padding:		5px 5px 5px 5px;
-  font:			"JetBrainsMono Nerd Font Medium 13";
+  margin:		5px 5px 5px 25px;
+  padding:		5px 15px 5px 5px;
+  font:			"JetBrainsMono Nerd Font Bold 12";
   background-color:	inherit;
   text-color:		inherit; 
 }
 
 element selected {
-  background-color:	@fg;
-  text-color:	@bgAlt;
+  background-color:	@fg-selected;
+  text-color:	#e9ecff;
 }
-
