@@ -7,7 +7,7 @@
 * {
   bg:			#14171c;
   fg:			#b8bfe5;
-  fg-selected:  #564b64;
+  fg-selected:  #81ae5f;
   background-color:	@bg;
   text-color:		@fg;
 }
@@ -54,7 +54,7 @@ element {
 }
 
 element-text {
-  margin:		5px 5px 5px 25px;
+  margin:		5px 5px 5px 5px;
   padding:		5px 15px 5px 5px;
   font:			"JetBrainsMono Nerd Font Bold 12";
   background-color:	inherit;
@@ -63,5 +63,5 @@ element-text {
 
 element selected {
   background-color:	@fg-selected;
-  text-color:	#e9ecff;
+  text-color:	#14171c;
 }
