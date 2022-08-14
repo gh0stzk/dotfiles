@@ -1,123 +1,178 @@
-// # Author 	-  z0mbi3
-// # Source 	-  https://github.com/gh0stzk/dotfiles
-// # Maintainer -  z0mbi3.zk@protonmail.com
+// # Modification by 	-  z0mbi3
+// # Source 			-  https://github.com/gh0stzk/dotfiles
+// # Maintainer 		-  z0mbi3.zk@protonmail.com
+
+/** Original Work
+ * Author : Aditya Shakya (adi1090x)
+ * Github : https://github.com/adi1090x/rofi
+ **/
 
 configuration {
-    font:                           "scientifica 12";
-    show-icons:                     true;
-	icon-theme: 					"Papirus-Dark";
-    display-drun: 					"";
-    drun-display-format:            "{name}";
-    disable-history:                true;
-	sidebar-mode: 					false;
+	modi: 						"drun";
+	icon-theme: 				"Papirus-Dark";
+	application-fallback-icon: 	"Adwaita";
+    show-icons:                 true;
+	drun-display-format:        "{name}";
+	disable-history:            true;
+	sidebar-mode: 				false;
 }
 
-
-@theme "/dev/null"
-
+/*****----- Global Properties -----*****/
 * {
-    bg:    							#1f2329;
-    fg:    							#b8bfe5;
-    border:    						#785DA5;
-    selected:    					#3f5273;
+    font:                        "scientifica 12";
+    background:                  #1f2329;
+    background-alt:              #1f2329E0;
+    foreground:                  #b8bfe5;
+    selected:                    #3f5273;
 }
 
-
+/*****----- Main Window -----*****/
 window {
-    background-color:               @bg;
-    text-color:                     @fg;
-    border-radius:                  8px;
-    border:							0px;
-    border-color:					@border;
-    height:                         32%;
-    width:                          37%;
-    location:                       center;
-    anchor:                         center;
-    x-offset:                       0;
-    y-offset:                       0;
+    /* properties for window widget */
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       500px;
+    height:                      39%;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    /* properties for all widgets */
+    enabled:                     true;
+    border-radius:               0px;
+    cursor:                      "default";
+    background-color:            @background;
 }
 
-
-prompt {
-    enabled: 						true;
-	padding: 						4px 4px 6px 6px;
-	background-color: 				@bg;
-}
-
-
-entry {
-    background-color:               @bg;
-    text-color:                     @fg;
-    placeholder-color:              @fg;
-    expand:                         true;
-    placeholder:                    "Buscar :";
-    blink:                          true;
-    padding:                        0px 0px 0px 0px;
-}
-
-
-inputbar {
-	children: 						[ prompt, entry ];
-    background-color:               @bg;
-    text-color:                     @fg;
-    expand:                         false;
-    border:                  		0px 0px 0px 0px;
-    border-radius:                  0px;
-    margin:                         0px 0px 0px 0px;
-    padding:                        0px 0px 0px 0px;
-}
-
-
-listview {
-    background-color:               @bg;
-    columns:                        3;
-    spacing:                        6px;
-    cycle:                          false;
-    dynamic:                        true;
-    layout:                         vertical;
-}
-
-
+/*****----- Main Box -----*****/
 mainbox {
-    background-color:               @bg;
-    children:                       [ inputbar, listview ];
-    spacing:                       	2%;
-    padding:                        2% 1% 2% 1%;
+    enabled:                     true;
+    spacing:                     0px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "inputbar", "listbox" ];
+}
+
+listbox {
+    spacing:                     10px;
+    padding:                     10px 5px 10px 5px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "message", "listview" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     40px 40px 45px;
+    background-color:            transparent;
+    background-image:            url("~/.config/bspwm/assets/cy-rofi.webp", width);
+    text-color:                  @foreground;
+    orientation:                 horizontal;
+    children:                    [ "textbox-prompt-colon", "entry" ];
+}
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "";
+    padding:                     12px 15px;
+    border-radius:               8px;
+    background-color:            @background-alt;
+    text-color:                  inherit;
+}
+entry {
+    enabled:                     true;
+    expand:                      true;
+    padding:                     12px 16px;
+    border-radius:               8px;
+    background-color:            @background-alt;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Search";
+    placeholder-color:           inherit;
+}
+dummy {
+    expand:                      true;
+    background-color:            transparent;
 }
 
 
+
+/*****----- Listview -----*****/
+listview {
+    enabled:                     true;
+    columns:                     3;
+    cycle:                       false;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     0px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      "default";
+}
+
+/*****----- Elements -----*****/
 element {
-    background-color:               @bg;
-    text-color:                     @fg;
-    orientation:                    horizontal;
-    padding:                        6px 6px 6px 6px;
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     8px;
+    border-radius:               4px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      pointer;
 }
-
-
+element normal.normal {
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+element normal.active {
+    background-color:            @active;
+    text-color:                  @foreground;
+}
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @background;
+}
+element selected.active {
+    background-color:            @urgent;
+    text-color:                  @foreground;
+}
 element-icon {
-    size:                           22px;
-    horizontal-align:	 			0.5;
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        24px;
+    cursor:                      inherit;
 }
-
-
 element-text {
-    expand:                         true;
-    horizontal-align:               0;
-    vertical-align:                 0;
-    margin:                         2px 0px 2px 8px;
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
 }
 
-
-element-text, element-icon {
-    background-color: 				inherit;
-    text-color:       				inherit;
+/*****----- Message -----*****/
+message {
+    background-color:            transparent;
 }
-
-
-element selected {
-    background-color:               @selected;
-    text-color:                     @bg;
-    border:                  		0px;
-    border-radius:                  3px;
-    border-color:                  	@border;
+textbox {
+    padding:                     12px;
+    border-radius:               5px;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+error-message {
+    padding:                     12px;
+    border-radius:               5px;
+    background-color:            @background;
+    text-color:                  @foreground;
 }
