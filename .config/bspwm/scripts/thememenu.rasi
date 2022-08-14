@@ -18,11 +18,9 @@ configuration {
 * {
     font:                        "JetBrainsMono Nerd Font Medium 10";
     background:                  #14171c;
-    background-alt:              #14171c;
+    background-alt:              #14171cE0;
     foreground:                  #b8bfe5;
     selected:                    #81ae5f;
-    active:                      #7B6C5B;
-    urgent:                      #934A1C;
 }
 
 /*****----- Main Window -----*****/
