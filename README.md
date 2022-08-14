@@ -9,6 +9,9 @@ https://user-images.githubusercontent.com/67278339/179444283-d5a4bc48-a9c7-4a91-
 |------|------|------|------|------|
 |[Arch](https://archlinux.org/)|[BSPWM](https://github.com/baskerville/bspwm)|[Polybar](https://github.com/polybar/polybar)|[Picom](https://github.com/Arian8j2/picom)|[Termite](https://aur.archlinux.org/termite.git)|
 
+## Rice Menu
+<img src="assets/Shot-14-agosto-22-100909.webp" alt="Rice Menu" align="center" width="300px">
+
 ## 📖 Features
 * **Change RICE on the fly:**
 It Changes the polybar theme. Polybar, bspwm and terminal color palette. Borders paddings change depending of each rice.
