@@ -5,17 +5,18 @@ Hello, I started learning bash and decided to modify and create some scripts to 
 
 https://user-images.githubusercontent.com/67278339/179444283-d5a4bc48-a9c7-4a91-a144-6c34d11347c8.mp4
  
-|Distro|WM|Bar|Compositor|Terminal|
-|------|------|------|------|------|
-|[Arch](https://archlinux.org/)|[BSPWM](https://github.com/baskerville/bspwm)|[Polybar](https://github.com/polybar/polybar)|[Picom](https://github.com/Arian8j2/picom)|[Termite](https://aur.archlinux.org/termite.git)|
-
 ## Rice Menu
+<img src="assets/rs.webp" alt="Rice Menu" align="right" width="400px">
 
-<p align="center">
-
-<img src="assets/Shot-14-agosto-22-100909.webp" alt="Rice Menu" align="center" width="400px">
-
-</p>
+|DIstro|[Arch](https://archlinux.org/)|
+|---|---|
+|WM|[BSPWM](https://github.com/baskerville/bspwm)|
+|Bar|[Polybar](https://github.com/polybar/polybar)|
+|Menu|[Rofi](https://github.com/davatorium/rofi)|
+|Compositor|[Picom Arian8j2](https://github.com/Arian8j2/picom)|
+|Terminal|[Termite](https://aur.archlinux.org/termite.git)|
+|Widgets|[ElKowars wacky widgets ](https://github.com/elkowar/eww)|
+|File Manager|Thunar|
 
 ## 📖 Features
 * **Change RICE on the fly:**
