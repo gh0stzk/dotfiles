@@ -65,8 +65,8 @@ Jan is inspired mostly that my favorite color is purple and magenta and I love *
 <details>
 <summary><b>Extra wallpapers in Jan</b></summary>
 
-|<img src=".config/bspwm/jan/wall-01.webp" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-03.webp" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-04.webp" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-05.webp" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-06.webp" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-07.webp" alt="Jan Rice" align="center" width="150px">|
-|---|---|---|---|---|---|
+|<img src=".config/bspwm/jan/wall-01.webp" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-03.webp" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-04.webp" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-05.webp" alt="Jan Rice" align="center" width="150px">|<img src=".config/bspwm/jan/wall-06.webp" alt="Jan Rice" align="center" width="150px">|
+|---|---|---|---|---|
 
 </details>
 
