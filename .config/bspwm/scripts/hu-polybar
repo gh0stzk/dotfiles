@@ -24,7 +24,7 @@ function hide() {
 function unhide() {
 	
 	if [[ "${RICETHEME}" == @(emilia|jan) ]]; then
-		polybar-msg cmd show | bspc config top_padding 55
+		polybar-msg cmd show | bspc config top_padding 60
 		
 	elif [[ "${RICETHEME}" == @(aline|cynthia|silvia) ]]; then
 		polybar-msg cmd show | bspc config top_padding 45
@@ -36,7 +36,7 @@ function unhide() {
 		polybar-msg cmd show | bspc config bottom_padding 45
 		
 	elif [[ "${RICETHEME}" == melissa ]]; then
-		polybar-msg cmd show | bspc config top_padding 30 | bspc config bottom_padding 30
+		polybar-msg cmd show | bspc config top_padding 42 | bspc config bottom_padding 40
 		
 	else 
 		echo "Error: This is eww not polybar dud..."
