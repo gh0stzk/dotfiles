@@ -121,8 +121,8 @@ Totally inspired in onedark colors for terminal, but the colors in bar, borders,
 <details>
 <summary><b>Extra wallpapers in Isabel</b></summary>
 
-|<img src=".config/bspwm/isabel/wall-02.webp" alt="Isabel Rice" align="center" width="150px">|<img src=".config/bspwm/isabel/wall-03.webp" alt="Isabel Rice" align="center" width="150px">|<img src=".config/bspwm/isabel/wall-04.webp" alt="Isabel Rice" align="center" width="150px">|<img src=".config/bspwm/isabel/wall-05.webp" alt="Isabel Rice" align="center" width="150px">|
-|---|---|---|---|
+|<img src=".config/bspwm/isabel/wall-02.webp" alt="Isabel Rice" align="center" width="150px">|<img src=".config/bspwm/isabel/wall-03.webp" alt="Isabel Rice" align="center" width="150px">|<img src=".config/bspwm/isabel/wall-04.webp" alt="Isabel Rice" align="center" width="150px">|
+|---|---|---|
 
 </details>
 
