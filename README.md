@@ -51,8 +51,8 @@ Emilia is a dark theme that mostly uses the **TokyoNight color scheme**. The gtk
 <details>
 <summary><b>Extra wallpapers in Emilia</b></summary>
 
-|<img src=".config/bspwm/emilia/wall-02.webp" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-03.webp" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-04.webp" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-05.webp" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-06.webp" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-07.webp" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-08.webp" alt="Emilia Rice" align="center" width="150px">|
-|---|---|---|---|---|---|---|
+|<img src=".config/bspwm/emilia/wall-02.webp" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-03.webp" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-04.webp" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-05.webp" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-06.webp" alt="Emilia Rice" align="center" width="150px">|<img src=".config/bspwm/emilia/wall-07.webp" alt="Emilia Rice" align="center" width="150px">|
+|---|---|---|---|---|---|
 
 </details>
 
