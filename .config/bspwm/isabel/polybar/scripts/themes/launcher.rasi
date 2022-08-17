@@ -19,7 +19,7 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "scientifica 12";
+    font:                        "TerminessTTF Nerd Font Mono Bold 10";
     background:                  #14171c;
     background-alt:              #14171cE0;
     foreground:                  #b8bfe5;
@@ -132,17 +132,9 @@ element normal.normal {
     background-color:            inherit;
     text-color:                  inherit;
 }
-element normal.active {
-    background-color:            @active;
-    text-color:                  @foreground;
-}
 element selected.normal {
     background-color:            @selected;
     text-color:                  @background;
-}
-element selected.active {
-    background-color:            @urgent;
-    text-color:                  @foreground;
 }
 element-icon {
     background-color:            transparent;
