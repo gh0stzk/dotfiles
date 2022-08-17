@@ -130,18 +130,12 @@ element normal.normal {
     background-color:            inherit;
     text-color:                  inherit;
 }
-element normal.active {
-    background-color:            @active;
-    text-color:                  @foreground;
-}
+
 element selected.normal {
     background-color:            @selected;
     text-color:                  @background;
 }
-element selected.active {
-    background-color:            @urgent;
-    text-color:                  @foreground;
-}
+
 element-text {
     background-color:            transparent;
     text-color:                  inherit;
