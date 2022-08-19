@@ -57,7 +57,7 @@ Emilia is a dark theme that mostly uses the **TokyoNight color scheme**. The gtk
 </details>
 
 ### 🌸Jan
-Jan is inspired mostly that my favorite color is purple and magenta and I love **Cyber Punk colors schemes**. The gtk theme is the same Dracula that also matches this theme.
+Jan is inspired mostly that my favorite color is purple and magenta and I love **Cyber Punk colors schemes**. The font is a pixel font because i love retro stuff. The gtk theme is the same Dracula that also matches this theme.
 
 |<img src="assets/Shot-27-julio-22-003447.webp" alt="Jan Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-003433.webp" alt="Jan Rice" align="center" width="600px">|
 |---|---|
