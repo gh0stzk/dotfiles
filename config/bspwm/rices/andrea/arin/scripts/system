@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+CFG="$HOME/.config/bspwm/rices/$RICETHEME/arin/sidedar"
+EWW=`which eww`
+
+close_eww() {
+	${EWW} --config "$CFG" close resources logout suspend lock reboot shutdown quotes
+}
+
+## Options #############################################
+if  [[ $1 = "--lock" ]]; then
+	close_eww
+    betterlockscreen --lock
+
+elif  [[ $1 = "--logout" ]]; then
+	close_eww
+    bspc quit
+
+elif  [[ $1 = "--suspend" ]]; then
+	$HOME/.config/bspwm/scripts/RiceSelector &
+
+elif  [[ $1 = "--reboot" ]]; then
+	close_eww
+    systemctl reboot
+
+elif  [[ $1 = "--shutdown" ]]; then
+	close_eww
+    systemctl poweroff
+
+## Help Menu #############################################
+else
+echo "
+Available options:
+--lock	--logout	--suspend	--reboot	--shutdown
+"
+fi
