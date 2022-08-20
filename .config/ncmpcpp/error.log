@@ -1,1 +1,0 @@
-TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
