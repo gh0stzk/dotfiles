@@ -1,0 +1,65 @@
+#! /bin/sh
+
+#    ____ ____  ______        ____  __ 
+#   | __ ) ___||  _ \ \      / /  \/  |  - z0mbi3
+#   |  _ \___ \| |_) \ \ /\ / /| |\/| |  - https://github.com/gh0stzk/dotfiles
+#   | |_) |__) |  __/ \ V  V / | |  | |  - z0mbi3.zk@protonmail.com
+#   |____/____/|_|     \_/\_/  |_|  |_|
+#                                    z0mbi3 config..
+
+
+########### Def vars
+
+export RICETHEME=$(<$HOME/.config/bspwm/rice.cfg)
+wallimage=$(shuf -en1 ~/.config/bspwm/rices/$RICETHEME/*.webp)
+PATH="$HOME/.config/bspwm/scripts:$PATH"
+
+bspc wm --adopt-orphans
+########### Workspaces
+
+workspaces() {
+	name=1
+	for monitor in `bspc query -M`; do
+		bspc monitor ${monitor} -n "$name" -d 'I' 'II' 'III' 'IV' 'V' 'VI'
+		let name++
+	done
+}
+
+workspaces
+	
+########### Launch The Rice!!
+
+source LaunchWorld
+SetGirlFriendRice
+AutoStartApps
+
+########### bspwm conf
+
+if pacman -Qi bspwm-rounded-corners-git >/dev/null 2>&1; then
+		bspc config border_radius                 10
+	fi
+
+bspc config external_rules_command ~/.config/bspwm/scripts/external_rules
+bspc config window_gap                    8 
+bspc config left_padding                  5
+bspc config right_padding                 5
+
+bspc config single_monocle                true
+bspc config split_ratio                   0.5
+bspc config borderless_monocle            false
+bspc config gapless_monocle               false
+bspc config focus_follows_pointer         true
+bspc config center_pseudo_tiled			  true
+
+bspc config pointer_modifier              mod4 
+bspc config pointer_action1               move 
+bspc config pointer_action2               resize_side 
+bspc config pointer_action3               resize_corner
+
+bspc config automatic_scheme              longest_side
+bspc config initial_polarity              second_child
+
+bspc config remove_disabled_monitors      true 
+bspc config merge_overlapping_monitors    true
+
+bspc config pointer_motion_interval       16
