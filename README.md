@@ -206,20 +206,26 @@ nerd-fonts-jetbrains-mono ttf-jetbrains-mono papirus-icon-theme ttf-inconsolata 
 feh alsa-utils libwebp webp-pixbuf-loader nitrogen xorg-xkill
 ```
 
-<b>3. Cloning Dotfiles:</b>
+<b>3. Cloning Dotfiles & Installing:</b>
 ```sh
 git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
-```
-⚠️ Backuupp!! your filess!!!
 
-<b>4. Move dotfiles to respective locations:</b>
-```sh
-dotfiles/.config/bspwm ==> ~/.config/bspwm
-dotfiles/.config/ncmpcpp ==> ~/.config/ncmpcpp
+cd dotfiles
+# ⚠️ Backuupp!! your filess!!!
+[ -e ~/.config/bspwm ] && mv ~/.config/bspwm ~/.config/bspwm-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -e ~/.config/termite ] && mv ~/.config/termite ~/.config/termite-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 
-dotfiles/.local/ ==> ~/.local/
+# Moving new files to .config
+cp -r config/bspwm ~/.config/bspwm
+cp -r config/termite ~/.config/termite
+# Those were the important ones. You still need to move the remaining directories in config to your ~/.config directory.
+
+# Move Fonts
+.......
+
 ```
-<b>5. Enabling Services</b>
+
+<b>4. Enabling Services</b>
 ```sh
 # For automatically launching mpd on login
 systemctl --user enable mpd.service
