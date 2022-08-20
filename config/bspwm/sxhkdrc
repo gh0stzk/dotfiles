@@ -1,0 +1,205 @@
+#     _____  _| |__ | | ____| |_ __ ___ 
+#    / __\ \/ / '_ \| |/ / _` | '__/ __|  - z0mbi3
+#    \__ \>  <| | | |   < (_| | | | (__   - https://github.com/gh0stzk/dotfiles
+#    |___/_/\_\_| |_|_|\_\__,_|_|  \___|  - z0mbi3.zk@protonmail.com
+#                             z0mbi3 config..
+
+# terminal emulator
+super + Return
+	termite
+	
+# Apps
+shift + alt + {b,g,n,p,r,t,q,w,m,v,k}
+       {firefox, \
+        geany, \
+        thunar, \
+        pavucontrol, \
+        termite -e ranger, \
+        telegram-desktop, \
+        qutebrowser --qt-flag disable-gpu, \
+        whatsapp-nativefier --disable-gpu, \
+        env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --disable-gpu --no-zygote %U, \
+        termite -e nvim, \
+        termite -t musicplayer -e "ncmpcpp"}
+        
+#hide
+super + h
+		hu-polybar -h
+#unhide
+super + u 
+		hu-polybar -u
+		     
+# screenshoots
+super + Print
+        screenshoter
+        
+# Change transparency on focused window
+ctrl + alt {plus,minus,t}
+		{picom-trans -c -o +3, picom-trans -c -o -1, picom-trans -c -d}
+        
+        
+# Apagar, Reiniciar, Cerrar Sesion, bloquear
+ctrl + super + alt + {p,r,q,l}
+        {systemctl poweroff, systemctl reboot,bspc quit,betterlockscreen -l}
+        
+# Matar Procesos
+ctrl + super + alt + k
+		{xkill}
+        
+# Menu aplicaciones
+super + @space
+	rofi -no-lazy-grab -show drun -theme $HOME/.config/bspwm/rices/$RICETHEME/launcher.rasi
+	
+# Theme Selector
+alt + @space
+	RiceSelector &
+
+# Reload sxhkd
+super + Escape
+	pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'El archivo de configuracion se ha recargado con exito'
+
+#
+# bspwm hotkeys
+#
+
+# Reiniciar BSPWM
+super + alt + r
+	bspc wm -r
+
+# close and kill
+super + {_,shift + }q
+	bspc node -{c,k}
+
+####
+
+# rotate desktop
+super + {_,shift + }r
+	bspc node @/ --rotate {90,-90}
+
+# Circulate the leaves of the tree
+super + {_,shift + }c
+	bspc node @/ --circulate {backward,forward}
+
+# Make split ratios equal
+super + equal
+	bspc node @/ --equalize
+
+# Make split ratios balanced
+super + minus
+	bspc node @/ --balance
+
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# swap the current node and the biggest node
+super + g
+	bspc node -s biggest
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+ctrl + alt {m,x,s,p,i}
+	bspc node -g {marked,locked,sticky,private,hidden}
+
+
+# Focused desktop window gaps scroll
+super + button{4,5}
+	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 5 ))
+
+# Global window gaps scroll
+super + alt + button{4,5}
+	bspc config window_gap $(( $(bspc config window_gap) {-,+} 5 ))
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous node in the current desktop
+alt + {_,shift + }Tab
+	bspc node -f {next,prev}.local
+
+# focus the next/previous desktop in the current monitor
+super + alt + {Left,Right}
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# preselect
+#
+
+# preselect the direction
+super + ctrl + {Left,Down,Up,Right}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -10 0,bottom 0 10,top 0 -10,right 10 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -10 0,top 0 10,bottom 0 -10,left 10 0}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-10 0,0 10,0 -10,10 0}
+	
+## Media keys
+XF86AudioRaiseVolume
+	pactl set-sink-volume 0 +5%
+
+XF86AudioLowerVolume
+	pactl set-sink-volume 0 -5%
+
+XF86AudioMute
+	pactl set-sink-mute 0 toggle
+
+XF86AudioPlay 
+        playerctl play-pause
+        
+XF86AudioStop
+        playerctl stop
+        
+XF86AudioNext 
+        playerctl next
+        
+XF86AudioPrev 
+        playerctl previous
+        
+        
