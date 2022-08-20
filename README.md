@@ -223,8 +223,8 @@ cp -r config/termite ~/.config/termite
 # Move Fonts and the other stuff
 cp -r misc/fonts/* ~/.local/share/fonts/
 cp -r misc/bin ~/.local/
-cp -r misc/applications ~/.local/share/applications
-cp -r misc/asciiart ~/.local/share/asciiart
+cp -r misc/applications ~/.local/share/
+cp -r misc/asciiart ~/.local/share/
 
 # You probably MUST use your own .zsh config, but if you want to use mine, do;
 cp -r home/.zshrc ~/.zshrc
