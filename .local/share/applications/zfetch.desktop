@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Fetch..
-Icon=~/.local/share/applications/zombie.svg
-Terminal=false
-Exec=sh -c "termite -c .config/bspwm/rices/$RICETHEME/termiterc --hold -t sysfetch -e .local/bin/sysfetch"
-#Exec=termite --hold -e zfetch

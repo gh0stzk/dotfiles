@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Termite
-Comment=Use the command line
-Exec=sh -c "termite -c /home/z0mbi3/.config/bspwm/rices/$RICETHEME/termiterc"
-Icon=utilities-terminal
-Type=Application
-Categories=GTK;System;TerminalEmulator;
-StartupNotify=true
-GenericName=Terminal Emulator
