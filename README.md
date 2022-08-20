@@ -222,7 +222,7 @@ cp -r config/termite ~/.config/termite
 
 # Move Fonts and the other stuff
 cp -r misc/fonts/* ~/.local/share/fonts/
-cp -r misc/bin ~/.local/bin
+cp -r misc/bin ~/.local/
 cp -r misc/applications ~/.local/share/applications
 cp -r misc/asciiart ~/.local/share/asciiart
 
