@@ -220,6 +220,10 @@ cp -r config/bspwm ~/.config/bspwm
 cp -r config/termite ~/.config/termite
 # Those were the important ones. You still need to move the remaining directories in config to your ~/.config directory.
 
+# Some files must have execution permission, so you need to copy this commands.
+chmod +x ~/.config/bspwm/bspwmrc
+chmod +x ~/.config/bspwm/scripts/{calendar,external_rules,hu-polybar,LaunchWorld,RiceSelector,screenshoter,updates.sh,weather-mini.sh}
+
 # Move Fonts and the other stuff
 cp -r misc/fonts/* ~/.local/share/fonts/
 cp -r misc/bin ~/.local/
