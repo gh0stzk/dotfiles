@@ -219,7 +219,12 @@ dotfiles/.config/ncmpcpp ==> ~/.config/ncmpcpp
 
 dotfiles/.local/ ==> ~/.local/
 ```
-
+<b>5. Enabling Services</b>
+```sh
+# For automatically launching mpd on login
+systemctl --user enable mpd.service
+systemctl --user start mpd.service
+```
 ## Some tips
 
 * Wallpapers are in .webp image format, i added libwebp webp-pixbuf-loader packages for your filemanager (thunar in my case) have the capacity to show webp thumbnails.
