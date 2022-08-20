@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Fetch..
+Icon=~/.local/share/applications/zombie.svg
+Terminal=false
+Exec=sh -c "termite --hold -t sysfetch -e .local/bin/sysfetch"
+#Exec=termite --hold -e zfetch
