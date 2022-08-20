@@ -225,6 +225,15 @@ cp -r misc/fonts/* ~/.local/share/fonts/
 cp -r misc/bin ~/.local/bin
 cp -r misc/applications ~/.local/share/applications
 cp -r misc/asciiart ~/.local/share/asciiart
+
+# You probably MUST use your own .zsh config, but if you want to use mine, do;
+cp -r home/.zshrc ~/.zshrc
+cp -r config/zsh ~/.config/zsh
+
+# If you will not use my zsh config, just add to your .zshrc file, this;
+if [ -d "$HOME/.local/bin" ] ;
+  then PATH="$HOME/.local/bin:$PATH"
+fi
 ```
 
 <b>4. Enabling Services</b>
