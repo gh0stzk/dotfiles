@@ -2,7 +2,7 @@
 
 # Simple CLI for shell-color-scripts
 
-DIR_COLORSCRIPTS="$HOME/.local/share/asciiart/scripts"
+DIR_COLORSCRIPTS="$HOME/.local/share/asciiart"
 LS_CMD="$(command -v ls)"
 fmt_help="  %-20s\t%-54s\n"
 list_colorscripts="$($LS_CMD "${DIR_COLORSCRIPTS}" | cut -d ' ' -f 1 | nl)"
