@@ -221,12 +221,10 @@ cp -r config/termite ~/.config/termite
 # Those were the important ones. You still need to move the remaining directories in config to your ~/.config directory.
 
 # Move Fonts and the other stuff
-cp -r misc/fonts ~/.local/share/fonts
+cp -r misc/fonts/* ~/.local/share/fonts/
 cp -r misc/bin ~/.local/bin
 cp -r misc/applications ~/.local/share/applications
 cp -r misc/asciiart ~/.local/share/asciiart
-.......
-
 ```
 
 <b>4. Enabling Services</b>
