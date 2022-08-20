@@ -189,36 +189,37 @@ And more.. U need to look sxhkdrc file for more.
 ### 💾 Installation:
 I will only provide instructions for arch based distributions.
 
-<b>1. Install Dependencies: </b></summary> 
-
-A one time command to install most of these dependencies with your **favorite AUR Helper.** The other dependencies like the other fonts used in polybar etc, are in the dots in the respective directory.
+<b>1. First of all we need yay and git</b>
 
 ```sh
-paru -S bspwm polybar sxhkd dunst rofi lsd jq checkupdates-aur \
+pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+```
+
+<b>2. Install Dependencies: </b>
+
+A one time command to install most of these dependencies with your **favorite AUR Helper** (we just install yay).
+
+```sh
+yay -S bspwm polybar sxhkd dunst rofi lsd jq checkupdates-aur \
 playerctl mpd ncmpcpp mpc picom-arian8j2-git xtitle termite betterlockscreen \
 nerd-fonts-jetbrains-mono ttf-jetbrains-mono papirus-icon-theme ttf-inconsolata \
 feh alsa-utils libwebp webp-pixbuf-loader nitrogen xorg-xkill
 ```
 
-<b>2. Cloning Dotfiles:</b>
+<b>3. Cloning Dotfiles:</b>
 ```sh
 git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
 ```
 ⚠️ Backuupp!! your filess!!!
 
-<b>3. Move dotfiles to respective locations:</b>
+<b>4. Move dotfiles to respective locations:</b>
 ```sh
 dotfiles/.config/bspwm ==> ~/.config/bspwm
 dotfiles/.config/ncmpcpp ==> ~/.config/ncmpcpp
 
 dotfiles/.local/ ==> ~/.local/
+```
 
-```
-<b>4. Add to PATH if you are not added yet:</b>
-Put this in your .zshrc or .bashrc
-```sh
-PATH="$HOME/.local/bin:$PATH"
-```
 ## Some tips
 
 * Wallpapers are in .webp image format, i added libwebp webp-pixbuf-loader packages for your filemanager (thunar in my case) have the capacity to show webp thumbnails.
