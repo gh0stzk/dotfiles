@@ -222,7 +222,12 @@ cp -r config/termite ~/.config/termite
 
 # Some files must have execution permission, so you need to copy this commands.
 chmod +x ~/.config/bspwm/bspwmrc
-chmod +x ~/.config/bspwm/scripts/{calendar,external_rules,hu-polybar,LaunchWorld,RiceSelector,screenshoter,updates.sh,weather-mini.sh}
+chmod +x ~/.config/bspwm/scripts/{external_rules,hu-polybar,LaunchWorld,RiceSelector,screenshoter,updates.sh,weather-mini.sh}
+# In Pamela & Andrea Rices, yo u need to give execution permissions to the shell scripts too.
+chmod +x ~/.config/bspwm/rices/pamela/widgets/{calendar,calendarlauncher,getSongDuration,mplayer-launcher,music,power-launcher,profile-sys-launcher}
+chmod +x ~/.config/bspwm/rices/andrea/arin/launch_bar
+chmod +x ~/.config/bspwm/rices/andrea/arin/sidedar/toggle_sidebar
+chmod +x ~/.config/bspwm/rices/andrea/arin/scripts/{battery,check-network,mails,music_info,quotes,sys_info,system,volume,weather_info,widget_apps,widget_search,workspaces.sh
 
 # Move Fonts and the other stuff
 cp -r misc/fonts/* ~/.local/share/fonts/
