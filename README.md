@@ -79,7 +79,7 @@ Aline's Rice was totally inspired by this [theme by TheMonkeyLlama](https://www.
 <details>
 <summary><b>Extra wallpapers in Aline</b></summary>
 
-|<img src="config/bspwm/aline/wall-02.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/aline/wall-03.webp" alt="Aline Rice" align="center" width="150px">|
+|<img src="config/bspwm/rices/aline/wall-02.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/wall-03.webp" alt="Aline Rice" align="center" width="150px">|
 |---|---|
 
 </details>
