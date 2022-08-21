@@ -34,7 +34,7 @@ It Changes the polybar theme. Polybar, bspwm and terminal color palette. Borders
 * **Change transparency on the fly:** 
 Increase and decrease transparency in focused or selected window.
 
-* Keybindings to poweroff, reboot, quit session and lockscreen respectively.
+* **Keybindings** to poweroff, reboot, quit session and lockscreen respectively.
 
 ## ⚠️ Attention!!
 The settings are heavily edited to work on my machine in my 1600x900 resolution. You will probably have to change many things in the config files and change it to your own.
@@ -249,7 +249,8 @@ systemctl --user start mpd.service
 * Left click in pacman updates module in polybar to update. Right click for show updates available only.
 
 ## Troubleshooting
-. Bspwm Scripts or Launchers not responding.
+* **Bspwm Scripts or Launchers not responding**
+
 The proper execute permissions on some files should be maintained when you download/clone and copy to your directories, but if not just run the following line by line.
 ```sh
 chmod +x ~/.config/bspwm/bspwmrc
@@ -260,4 +261,4 @@ chmod +x ~/.config/bspwm/rices/andrea/arin/launch_bar
 chmod +x ~/.config/bspwm/rices/andrea/arin/sidedar/toggle_sidebar
 chmod +x ~/.config/bspwm/rices/andrea/arin/scripts/{battery,check-network,mails,music_info,quotes,sys_info,system,volume,weather_info,widget_apps,widget_search,workspaces.sh}
 ```
-. Other
+* Other
