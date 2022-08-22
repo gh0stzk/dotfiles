@@ -84,8 +84,8 @@
           :valign "start"
           (image :path "/home/z0mbi3/.config/bspwm/assets/profile.png"
                  :class "launcher-icon"
-                 :image-width 200
-                 :image-height 200)
+                 :image-width 130
+                 :image-height 130)
           (label :text "Firme y Digno!"
                  :class "launcher-pfp-label")
           (label :text "${time0} - ${date}"
@@ -134,7 +134,7 @@
 	(box 	:orientation "h"  
 		 	:space-evenly "false"
 			:halign "center"
-			:spacing 35
+			:spacing 30
 			(button :class "btn_prev" :onclick "~/.config/bspwm/rices/pamela/widgets/music previous" "ﭣ")
 			(button :class "btn_play" :onclick "~/.config/bspwm/rices/pamela/widgets/music toggle" playpause)
 			(button :class "btn_next" :onclick "~/.config/bspwm/rices/pamela/widgets/music next" "ﭡ"))

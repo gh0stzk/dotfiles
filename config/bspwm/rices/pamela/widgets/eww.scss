@@ -97,7 +97,8 @@ tooltip
 {
     font-family: Inconsolata Semi Condensed Medium;
     font-size: 20px;
-    margin-left: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 .launcher-pfp-label2
@@ -105,23 +106,24 @@ tooltip
     font-family: Inconsolata Semi Condensed Medium;
     font-size: 25px;
     margin-left: 10px;
-    margin-top: 20px;
+    margin-right: 10px;
+    margin-top: 10px;
 }
 
 .launcher-btn
 {
     color: #D9E0EE;
     font-family: Material Design Icons Desktop;
-    font-size: 20px;
-    margin-top: 25px;
+    font-size: 18px;
+    margin-top: 20px;
 }
 
 .launcher-btn:hover
 {
     color: #F28FAD;
     font-family: Material Design Icons Desktop;
-    font-size: 20px;
-    margin-top: 25px;
+    font-size: 18px;
+    margin-top: 20px;
 }
 
 /* Calendar */
@@ -190,12 +192,12 @@ color: #8C8C8C;
 	font-style: italic;
 	font-weight: bold;
 	color: #FDFDFD;
-	font-size : 1.2em;
+	font-size : 13px;
 }
 .song{
 	font-family: Cartograph CF;
 	font-style: italic;
-	font-size: 1.1em;
+	font-size: 15px;
 	color: #FDFDFD;
 	margin-top: -5px;
 }
@@ -204,16 +206,16 @@ color: #8C8C8C;
 }
 .btn_prev {
 	color: #FDFDFD;
-	font-size : 2.8em;
+	font-size : 2.6em;
 }
 .btn_play {
 	color: #FDFDFD;
-	font-size : 2.8em;
+	font-size : 2.6em;
 	font-weight : bold;
 }
 .btn_next {
 	color: #FDFDFD;
-	font-size : 2.8em;
+	font-size : 2.6em;
 }
 .metric-player  scale trough highlight {
 	all: unset;
@@ -231,5 +233,5 @@ color: #8C8C8C;
 .metric-player scale trough  {
 	min-width: 200px;
 	min-height: 10px;
-	/* margin: .5rem 1rem 0 1rem; */
+	margin: .5rem 1rem 0 1rem;
 }
