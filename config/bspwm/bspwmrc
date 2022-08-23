@@ -35,10 +35,6 @@ AutoStartApps
 
 ########### bspwm conf
 
-if pacman -Qi bspwm-rounded-corners-git >/dev/null 2>&1; then
-		bspc config border_radius                 10
-	fi
-
 bspc config external_rules_command ~/.config/bspwm/scripts/external_rules
 bspc config window_gap                    8 
 bspc config left_padding                  5

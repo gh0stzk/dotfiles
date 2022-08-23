@@ -46,7 +46,7 @@ function SetGirlFriendRice() {
 	
 		emilia)
 		
-		  bspc config border_width                  1
+		  bspc config border_width                  0
 		  bspc config top_padding                   60
 		  bspc config bottom_padding                5
 
@@ -63,7 +63,7 @@ function SetGirlFriendRice() {
 			
 		jan)
 		
-		  bspc config border_width                  1
+		  bspc config border_width                  0
 		  bspc config top_padding                   60
 		  bspc config bottom_padding                5
 
@@ -80,7 +80,7 @@ function SetGirlFriendRice() {
 		    
 		aline)
 		
-		  bspc config border_width                  1
+		  bspc config border_width                  0
 		  bspc config top_padding                   50
 		  bspc config bottom_padding                5
 
@@ -97,7 +97,7 @@ function SetGirlFriendRice() {
 		  
 		isabel)
 		
-		  bspc config border_width                  1
+		  bspc config border_width                  0
 		  bspc config top_padding                   5
 		  bspc config bottom_padding                45
 
@@ -131,7 +131,7 @@ function SetGirlFriendRice() {
 		  
 		silvia)
 		
-		  bspc config border_width                  1
+		  bspc config border_width                  0
 		  bspc config top_padding                   45
 		  bspc config bottom_padding                5
 
@@ -148,7 +148,7 @@ function SetGirlFriendRice() {
 		
 		melissa)
 		
-		  bspc config border_width                  2
+		  bspc config border_width                  0
 		  bspc config top_padding                   42
 		  bspc config bottom_padding                40
 
@@ -188,7 +188,7 @@ function SetGirlFriendRice() {
 		  
 		andrea)
 		
-		  bspc config border_width                  2
+		  bspc config border_width                  0
 		  bspc config top_padding                   60
 		  bspc config bottom_padding                5
 
