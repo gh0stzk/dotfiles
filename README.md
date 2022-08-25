@@ -205,12 +205,12 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 </details>
 
 ### 🌸Cristina
-<small>
+
 - Fonts: <code>JetBrains Mono Nerd Font</code> <code>TerminessTTF Nerd Font</code> <code>Inconsolata Condensed</code> <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code> <code>MesLo LGS NF</code>
 - Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
 * Color palette - <code>[Rose Pine](https://github.com/rose-pine)</code>
 * Widgets - <code>Music Player</code> stolen from [rxyhn](https://github.com/rxyhn/bspdots).
-* Main Wall - <code>[ElRastaOk](https://www.reddit.com/r/unixporn/comments/w5p7s0/hyprland_my_cute_desktop/)</code></small>
+* Main Wall - <code>[ElRastaOk](https://www.reddit.com/r/unixporn/comments/w5p7s0/hyprland_my_cute_desktop/)</code>
 
 |<img src="assets/Shot-24-agosto-22-140529.webp" alt="Cristina Rice" align="center" width="600px">|<img src="assets/Shot-24-agosto-22-141805.webp" alt="Cristina Rice" align="center" width="600px">|
 |---|---|
