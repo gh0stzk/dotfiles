@@ -44,10 +44,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Emilia:
 
-- Term font: <code>JetBrains Mono Nerd Font</code>
-- Rofi font: <code>Scientifica</code>
-- Polybar font: <code>[Banana](https://github.com/turquoise-hexagon/fonts)</code>
-	- Glyphs & Icons: <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code> <code>MesLo LGS NF</code>
+- Fonts: <code>JetBrains Mono Nerd Font</code> <code>Scientifica</code> <code>[Banana](https://github.com/turquoise-hexagon/fonts)</code> <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code> <code>MesLo LGS NF</code>
 - Polybar Modules: <code>Launcher</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
 - Color Palette: <code>Tokyo Night</code>
 - Widgets: <code>N/A</code>
@@ -65,10 +62,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Jan
 
-- Term font: <code>CozetteVector</code>
-- Rofi font: <code>Lilian</code>
-- Polybar font: <code>Lilian</code>
-	- Glyphs & Icons: <code>CozetteVector</code>
+- Fonts: <code>CozetteVector</code> <code>Lilian</code> 
 - Polybar Modules: <code>Launcher</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>Title</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
 - Color Palette: <code>Cyber Punk</code>
 - Widgets: <code>N/A</code>
@@ -86,14 +80,11 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Aline
 
-- Term font: <code>JetBrains Mono Nerd Font</code>
-- Rofi font: <code>JetBrains Mono Nerd Font</code>
-- Polybar font: <code>Inconsolata Semi Condensed</code>
-	- Glyphs & Icons: <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code> <code>MesLo LGS NF</code>
+- Fonts: <code>JetBrains Mono Nerd Font</code> <code>Inconsolata Semi Condensed</code> <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code> <code>MesLo LGS NF</code>
 - Polybar Modules: <code>Launcher</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>Apps</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
 - Color Palette: <code>Catppuccin Frappe</code>
 - Widgets: <code>N/A</code>
-- Inspiration: [this post by TheMonkeyLlama](https://www.reddit.com/r/unixporn/comments/vkcasz/i3gaps_i_prefer_light_mode/) saw in UnixPorn.
+- Inspiration: <code>[this post](https://www.reddit.com/r/unixporn/comments/vkcasz/i3gaps_i_prefer_light_mode/)</code> by TheMonkeyLlama i saw it in UnixPorn.
 
 |<img src="assets/Shot-27-julio-22-002001.webp" alt="Aline Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-002636.webp" alt="Aline Rice" align="center" width="600px">|
 |---|---|
@@ -108,8 +99,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Andrea
 
-- Term font: <code>JetBrains Mono Nerd Font</code>
-- Rofi font: <code>Dosis</code>
+- Fonts: <code>JetBrains Mono Nerd Font</code> <code>Dosis</code> 
 - Color Palette: <code>Holly molly i dont know..</code>
 - Widgets: <code>Bar</code> <code>Music player</code> <code>Apps</code> <code>System info</code> <code>Power buttons</code> Credits [adi1090x](https://github.com/adi1090x/widgets)
 
@@ -126,10 +116,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Cynthia
 
-- Term font: <code>JetBrains Mono Nerd Font</code>
-- Rofi font: <code>TerminessTTF Nerd Font</code>
-- Polybar font: <code>Rissole</code>
-	- Glyphs & Icons: <code>Material Design Icons Desktop</code> <code>MesLo LGS NF</code>
+- Fonts: <code>JetBrains Mono Nerd Font</code> <code>TerminessTTF Nerd Font</code> <code>Rissole</code> <code>Material Design Icons Desktop</code> <code>MesLo LGS NF</code>
 - Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Bspwm Modes</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
 - Color Palette: <code>I'm pretty sure it's [u/DominiCzech](https://www.reddit.com/user/DominiCzech/)</code> work. I dont wanna be disrespectful but i loose link where i stole it.
 - Widgets: <code>N/A</code>
@@ -147,10 +134,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Isabel
 
-- Term font: <code>JetBrains Mono Nerd Font</code>
-- Rofi font: <code>TerminessTTF Nerd Font</code>
-- Polybar font: <code>Inconsolata Semi Condensed</code>
-	- Glyphs & Icons: <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code>
+- Fonts: <code>JetBrains Mono Nerd Font</code> <code>TerminessTTF Nerd Font</code> <code>Inconsolata Semi Condensed</code> <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code>
 - Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
 - Color Palette: <code>One Dark</code>
 - Widgets: <code>N/A</code>
@@ -167,10 +151,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Silvia
 
-- Term font: <code>JetBrains Mono Nerd Font</code>
-- Rofi font: <code>Scientifica</code>
-- Polybar font: <code>Rissole</code>
-	- Glyphs & Icons: <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code>
+- Fonts: <code>JetBrains Mono Nerd Font</code> <code>Scientifica</code> <code>Rissole</code> <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code>
 - Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
 - Color Palette: <code>GruvBox</code>
 - Widgets: <code>N/A</code>
@@ -188,10 +169,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Melissa
 
-- Term font: <code>JetBrains Mono Nerd Font</code>
-- Rofi font: <code>TerminessTTF Nerd Font</code>
-- Polybar font: <code>JetBrains Mono</code>
-	- Glyphs & Icons: <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code> <code>MesLo LGS NF</code>
+- Fonts: <code>JetBrains Mono Nerd Font</code> <code>TerminessTTF Nerd Font</code> <code>JetBrains Mono</code> <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code> <code>MesLo LGS NF</code>
 - Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Bspwm Modes</code> <code>Weather info</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
 - Color Palette: <code>Nord</code>
 - Widgets: <code>N/A</code>
@@ -209,10 +187,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Pamela
 
-- Term font: <code>JetBrains Mono Nerd Font</code>
-- Rofi font: <code>TerminessTTF Nerd Font</code>
-- Polybar font: <code>[Banana](https://github.com/turquoise-hexagon/fonts)</code>
-	- Glyphs & Icons: <code>Material Design Icons Desktop</code>
+- Fonts: <code>JetBrains Mono Nerd Font</code> <code>TerminessTTF Nerd Font</code> <code>[Banana](https://github.com/turquoise-hexagon/fonts)</code> <code>Material Design Icons Desktop</code>
 - Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>Weather info</code> <code>MPD</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
 - Color Palette: <code>a beautiful color palette from [elenapan](https://github.com/elenapan/dotfiles)</code>
 - Widgets: <code>Calendar & Music Player</code> stolen from [rxyhn](https://github.com/rxyhn/bspdots). Profile card & Power Launcher stolen from [okklol](https://github.com/okklol/eww-bar).
@@ -230,15 +205,12 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 </details>
 
 ### 🌸Cristina
-
-- Term font: <code>JetBrains Mono Nerd Font</code>
-- Rofi font: <code>TerminessTTF Nerd Font</code>
-- Polybar font: <code>Inconsolata Condensed</code>
-	- Glyphs & Icons: <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code> <code>MesLo LGS NF</code>
+<small>
+- Fonts: <code>JetBrains Mono Nerd Font</code> <code>TerminessTTF Nerd Font</code> <code>Inconsolata Condensed</code> <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code> <code>MesLo LGS NF</code>
 - Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
-* Color palette - [Rose Pine](https://github.com/rose-pine).
-* Widgets - Music Player stolen from [rxyhn](https://github.com/rxyhn/bspdots).
-* Main Wall - [ElRastaOk](https://www.reddit.com/r/unixporn/comments/w5p7s0/hyprland_my_cute_desktop/).
+* Color palette - <code>[Rose Pine](https://github.com/rose-pine)</code>
+* Widgets - <code>Music Player</code> stolen from [rxyhn](https://github.com/rxyhn/bspdots).
+* Main Wall - <code>[ElRastaOk](https://www.reddit.com/r/unixporn/comments/w5p7s0/hyprland_my_cute_desktop/)</code></small>
 
 |<img src="assets/Shot-24-agosto-22-140529.webp" alt="Cristina Rice" align="center" width="600px">|<img src="assets/Shot-24-agosto-22-141805.webp" alt="Cristina Rice" align="center" width="600px">|
 |---|---|
