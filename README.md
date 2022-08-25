@@ -167,6 +167,22 @@ This theme has a beautiful color palette from [elenapan](https://github.com/elen
 
 </details>
 
+### 🌸Cristina
+* Color palette - [Rose Pine](https://github.com/rose-pine).
+* Widgets - Music Player stolen from [rxyhn](https://github.com/rxyhn/bspdots).
+* Main Wall - [ElRastaOk](https://www.reddit.com/r/unixporn/comments/w5p7s0/hyprland_my_cute_desktop/).
+
+|<img src="assets/Shot-24-agosto-22-140529.webp" alt="Cristina Rice" align="center" width="600px">|<img src="assets/Shot-24-agosto-22-141805.webp" alt="Cristina Rice" align="center" width="600px">|
+|---|---|
+
+<details>
+<summary><b>Extra wallpapers in Cristina</b></summary>
+
+|<img src="config/bspwm/rices/cristina/wall-02.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/wall-03.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/wall-04.webp" alt="Cristina Rice" align="center" width="150px">|
+|---|---|---|
+
+</details>
+
 #### Very useful keybindigs to know...
 
 |Action|Keybinding|

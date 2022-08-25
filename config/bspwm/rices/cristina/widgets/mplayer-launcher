@@ -1,0 +1,21 @@
+#!/bin/bash
+
+mplayer() {
+    LOCK_FILE_POWER="$HOME/.cache/eww-mplayer.lock"
+
+run() {
+    eww open music -c ~/.config/bspwm/rices/cristina/widgets/
+}
+
+# Open widgets
+if [[ ! -f "$LOCK_FILE_POWER" ]]; then
+    eww close music -c ~/.config/bspwm/rices/cristina/widgets/
+    touch "$LOCK_FILE_POWER"
+    run && echo "ok good!"
+elif [[ -f "$LOCK_FILE_POWER" ]]; then
+    eww close music -c ~/.config/bspwm/rices/cristina/widgets/
+    rm "$LOCK_FILE_POWER" && echo "closed"
+fi
+}
+
+mplayer

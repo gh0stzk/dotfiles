@@ -8,19 +8,22 @@
  **/
 
 configuration {
-    show-icons:                 false;
+	modi: 						"drun";
+	icon-theme: 				"Papirus-Dark";
+	application-fallback-icon: 	"Adwaita";
+    show-icons:                 true;
 	drun-display-format:        "{name}";
-	disable-history:                true;
-	sidebar-mode: 					false;
+	disable-history:            true;
+	sidebar-mode: 				false;
 }
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "JetBrainsMono Nerd Font Medium 10";
-    background:                  #14171c;
-    background-alt:              #14171cE0;
-    foreground:                  #b8bfe5;
-    selected:                    #81ae5f;
+    font:                        "TerminessTTF Nerd Font Mono Bold 10";
+    background:                  #1f1d29;
+    background-alt:              #1f1d29E0;
+    foreground:                  #eaeaea;
+    selected:                    #c3a5e6;
 }
 
 /*****----- Main Window -----*****/
@@ -31,7 +34,7 @@ window {
     anchor:                      center;
     fullscreen:                  false;
     width:                       500px;
-    height:                      42%;
+    height:                      39%;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -52,8 +55,8 @@ mainbox {
 }
 
 listbox {
-    spacing:                     7px;
-    padding:                     35px;
+    spacing:                     10px;
+    padding:                     10px 5px 10px 5px;
     background-color:            transparent;
     orientation:                 vertical;
     children:                    [ "message", "listview" ];
@@ -65,7 +68,7 @@ inputbar {
     spacing:                     10px;
     padding:                     40px 40px 45px;
     background-color:            transparent;
-    background-image:            url("~/.config/bspwm/assets/rs.webp", width);
+    background-image:            url("~/.config/bspwm/assets/cr-rofi.webp", width);
     text-color:                  @foreground;
     orientation:                 horizontal;
     children:                    [ "textbox-prompt-colon", "entry" ];
@@ -87,7 +90,7 @@ entry {
     background-color:            @background-alt;
     text-color:                  inherit;
     cursor:                      text;
-    placeholder:                 "Search Rice!";
+    placeholder:                 "Search";
     placeholder-color:           inherit;
 }
 dummy {
@@ -101,7 +104,6 @@ dummy {
 listview {
     enabled:                     true;
     columns:                     3;
-    lines:                       4;
     cycle:                       false;
     dynamic:                     true;
     scrollbar:                   false;
@@ -110,7 +112,7 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     
-    spacing:                     15px;
+    spacing:                     0px;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      "default";
@@ -133,6 +135,12 @@ element normal.normal {
 element selected.normal {
     background-color:            @selected;
     text-color:                  @background;
+}
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        24px;
+    cursor:                      inherit;
 }
 element-text {
     background-color:            transparent;

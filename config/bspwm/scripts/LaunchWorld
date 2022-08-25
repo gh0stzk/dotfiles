@@ -186,6 +186,23 @@ function SetGirlFriendRice() {
 		  
 		  ;;
 		  
+		cristina)
+		
+		  bspc config border_width                  0
+		  bspc config top_padding                   10
+		  bspc config bottom_padding                60
+
+		  bspc config normal_border_color		"#bdae93" 
+		  bspc config active_border_color	    "#bdae93"
+		  bspc config focused_border_color		"#bdae93"
+		  bspc config presel_feedback_color		"#4f4f5b"
+		  
+		  killeww
+		  LaunchBar polybar -q cristina-bar -c ${polydir}/config.ini
+		  launch dunst -config ${bspdir}/dunstrc-dark &
+		  
+		  ;;
+		  
 		andrea)
 		
 		  bspc config border_width                  0

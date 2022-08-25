@@ -1,0 +1,46 @@
+; widgets
+
+;; Music Variables
+(defpoll art		:interval "5s"  "~/.config/bspwm/rices/cristina/widgets/music coverloc")
+(defpoll title		:interval "5s"  "~/.config/bspwm/rices/cristina/widgets/music title")
+(defpoll artist		:interval "5s"  "~/.config/bspwm/rices/cristina/widgets/music artist")
+(defpoll playpause	:interval "5s"  "~/.config/bspwm/rices/cristina/widgets/music statusicon")
+(defpoll songtime 	:interval "1s"  "~/.config/bspwm/rices/cristina/widgets/getSongDuration")
+
+;;  Music Widgets
+(defwidget music [] 
+	(box 	:class "music-player"
+			:orientation "v" 
+		 	:space-evenly "false"  
+		 	:halign "center"
+	(box 	:class "album_art" 
+		 	:style "background-image: url('${art}');")
+	(box 	:orientation "v" 
+		 	:space-evenly "false"
+		 	:halign "center"
+		 	:spacing 10 
+	(label  :class "artist"
+		 	:limit-width 15
+		 	:text artist)
+ 	(label  :class "song"
+		 	:limit-width 20
+		 	:text title) 
+	(box 	:orientation "h"  
+		 	:space-evenly "false"
+			:halign "center"
+			:spacing 30
+			(button :class "btn_prev" :onclick "~/.config/bspwm/rices/cristina/widgets/music previous" "ﭣ")
+			(button :class "btn_play" :onclick "~/.config/bspwm/rices/cristina/widgets/music toggle" playpause)
+			(button :class "btn_next" :onclick "~/.config/bspwm/rices/cristina/widgets/music next" "ﭡ"))
+	(box    :orientation "h"
+			:class "metric-player"
+			:space-evenly "false"
+			(scale  :min 0
+					:max 101
+					:active "false"
+					:value {songtime != "" ? "${songtime}" : "0"}
+				)       
+			)	
+		)
+	)
+)

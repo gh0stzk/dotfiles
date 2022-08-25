@@ -1,50 +1,37 @@
 [options]
+font = JetBrainsMonoMedium Nerd Font Mono Bold 10
 allow_bold = true
-#audible_bell = false
 bold_is_bright = true
+
 cell_height_scale = 1.0
 cell_width_scale = 1.0
-clickable_url = true
-dynamic_title = true
-font = JetBrainsMonoMedium Nerd Font Mono Bold 10
-fullscreen = true
-icon_name = terminal
-mouse_autohide = true
-#scroll_on_output = false
-#scroll_on_keystroke = true
-word_char_exceptions = -=&#:/.?@+~_%;
-# Length of the scrollback buffer, 0 disabled the scrollback buffer
-# and setting it to a negative value means "infinite scrollback"
-scrollback_lines = 10000
-#search_wrap = true
-#urgent_on_bell = true
-hyperlinks = false
 
-# $BROWSER is used by default if set, with xdg-open as a fallback
+dynamic_title = true
+fullscreen = true
+
+word_char_exceptions = -=&#:/.?@+~_%;
+scrollback_lines = 10000
+
+clickable_url = true
+hyperlinks = true
 browser = xdg-open
 
-# "system", "on" or "off"
+mouse_autohide = true
 cursor_blink = system
-
-# "block", "underline" or "ibeam"
 cursor_shape = underline
 
-# Whether to prefer using the GTK dark theme variant.
-gtk_dark_theme = true
+# "off", "left" or "right"
+#scrollbar = off
 
-# Enable smart copy. ^C will copy if text has been selected. ^V will paste. It
-# is no longer possible to send a ^V to the running program when this option is
-# enabled.
+gtk_dark_theme = true
 smart_copy = true
 
+# Isabel based on Onedark color palette
 [colors]
-# Isabel color palette based on onedark color palette
-
 foreground          = #b8bfe5
 foreground_bold     = #c0caf5
 cursor              = #D20075
 cursor_foreground   = #282936
-
 background          = #14171c
 
 # Black, Gray
@@ -78,16 +65,3 @@ color14 = #56b6c2
 # White
 color7 = #c5cddb
 color15 = #abb2bf
-
-
-[hints]
-#font = Monospace 12
-#foreground = #dcdccc
-background = rgba(7, 2, 25, 0.9)
-#active_foreground = #e68080
-active_background = rgba(7, 2, 25, 0.9)
-#padding = 2
-#border = #3f3f3f
-#border_width = 0.5
-#roundness = 2.0
-

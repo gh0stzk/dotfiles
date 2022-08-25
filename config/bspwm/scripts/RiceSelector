@@ -17,11 +17,9 @@ cynthia="󰔿 Cynthia"
 silvia="󰔿 Silvia"
 melissa="󰔿 Melissa"
 pamela="󰔿 Pamela"
+cristina="󰔿 Cristina"
 
-
-# Variable passed to rofi
-options="$emilia\n$jan\n$aline\n$isabel\n$andrea\n$cynthia\n$silvia\n$melissa\n$pamela"
-
+options="$emilia\n$jan\n$aline\n$isabel\n$andrea\n$cynthia\n$silvia\n$melissa\n$pamela\n$cristina"
 chosen="$(printf "$options" | $rofi_command -dmenu)"
 	case $chosen in
 
@@ -59,6 +57,10 @@ chosen="$(printf "$options" | $rofi_command -dmenu)"
 				;;
 			$pamela)
 				cat <<< "pamela" > $dir/rice.cfg
+				bspc wm -r
+				;;
+			$cristina)
+				cat <<< "cristina" > $dir/rice.cfg
 				bspc wm -r
 				;;
 		esac

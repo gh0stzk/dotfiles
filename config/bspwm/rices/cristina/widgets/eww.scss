@@ -1,0 +1,69 @@
+*
+{
+    all: unset;
+}
+
+/* Music player */
+
+.music-player{
+	background-color: #1f1d29;
+	padding: 0 1rem 1rem 1rem;
+	border-radius: 12px;
+	margin: .5rem;
+}
+.album_art {
+	background-size: cover;
+	background-position: center;
+	border-radius: 12px;
+	margin: 2rem 1rem 1.5rem 1rem;
+	padding: 7rem;
+}
+
+.artist {
+	font-family: Cartograph CF;
+	font-style: italic;
+	font-weight: bold;
+	color: #FDFDFD;
+	font-size : 13px;
+}
+.song{
+	font-family: Cartograph CF;
+	font-style: italic;
+	font-size: 15px;
+	color: #FDFDFD;
+	margin-top: -5px;
+}
+.btn_prev, .btn_play, .btn_next {
+	font-family: JetBrainsMono Nerd Font;
+}
+.btn_prev {
+	color: #FDFDFD;
+	font-size : 2.6em;
+}
+.btn_play {
+	color: #FDFDFD;
+	font-size : 2.6em;
+	font-weight : bold;
+}
+.btn_next {
+	color: #FDFDFD;
+	font-size : 2.6em;
+}
+.metric-player  scale trough highlight {
+	all: unset;
+	border-radius: 10px;
+	background-color: #c3a5e6;
+}
+  
+.metric-player scale trough  {
+	all: unset;
+	background-color: #1D1F28;
+	border:2px solid #454545;
+	border-radius: 50px;
+  }
+  
+.metric-player scale trough  {
+	min-width: 200px;
+	min-height: 10px;
+	margin: .5rem 1rem 0 1rem;
+}

@@ -14,7 +14,6 @@ export RICETHEME=$(<$HOME/.config/bspwm/rice.cfg)
 wallimage=$(shuf -en1 ~/.config/bspwm/rices/$RICETHEME/*.webp)
 PATH="$HOME/.config/bspwm/scripts:$PATH"
 
-bspc wm --adopt-orphans
 ########### Workspaces
 
 workspaces() {
@@ -26,7 +25,9 @@ workspaces() {
 }
 
 workspaces
-	
+
+bspc wm --adopt-orphans	
+
 ########### Launch The Rice!!
 
 source LaunchWorld
