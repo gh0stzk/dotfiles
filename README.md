@@ -43,7 +43,14 @@ The settings are heavily edited to work on my machine in my 1600x900 resolution.
 So yes... i called the Rices with the names of some of my ex girlfriends. 
 
 ### 🌸Emilia:
-Emilia is a dark theme that mostly uses the **TokyoNight color scheme**. The gtk theme is "Dracula" but I modified some things like the background in the applications to be TokyoNight and some images inside assets were modified.
+
+- Term font: <code>JetBrains Mono Nerd Font</code>
+- Rofi font: <code>Scientifica</code>
+- Polybar font: <code>[Banana](https://github.com/turquoise-hexagon/fonts)</code>
+	- Glyphs & Icons: <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code> <code>MesLo LGS NF</code>
+- Polybar Modules: <code>Launcher</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
+- Color Palette: <code>Tokyo Night</code>
+- Widgets: <code>N/A</code>
 
 |<img src="assets/Shot-27-julio-22-004243.webp" alt="Emilia Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-004921.webp" alt="Emilia Rice" align="center" width="600px">|
 |---|---|
@@ -57,7 +64,14 @@ Emilia is a dark theme that mostly uses the **TokyoNight color scheme**. The gtk
 </details>
 
 ### 🌸Jan
-Jan is inspired mostly that my favorite color is purple and magenta and I love **Cyber Punk colors schemes**. The font is a pixel font because i love retro stuff. The gtk theme is the same Dracula that also matches this theme.
+
+- Term font: <code>CozetteVector</code>
+- Rofi font: <code>Lilian</code>
+- Polybar font: <code>Lilian</code>
+	- Glyphs & Icons: <code>CozetteVector</code>
+- Polybar Modules: <code>Launcher</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>Title</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
+- Color Palette: <code>Cyber Punk</code>
+- Widgets: <code>N/A</code>
 
 |<img src="assets/Shot-27-julio-22-003447.webp" alt="Jan Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-003433.webp" alt="Jan Rice" align="center" width="600px">|
 |---|---|
@@ -71,7 +85,15 @@ Jan is inspired mostly that my favorite color is purple and magenta and I love *
 </details>
 
 ### 🌸Aline
-Aline's Rice was totally inspired by this [theme by TheMonkeyLlama](https://www.reddit.com/r/unixporn/comments/vkcasz/i3gaps_i_prefer_light_mode/) I saw on UnixPorn. The color palette used is Catppucin. And well I needed a light rice so here it is.
+
+- Term font: <code>JetBrains Mono Nerd Font</code>
+- Rofi font: <code>JetBrains Mono Nerd Font</code>
+- Polybar font: <code>Inconsolata Semi Condensed</code>
+	- Glyphs & Icons: <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code> <code>MesLo LGS NF</code>
+- Polybar Modules: <code>Launcher</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>Apps</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
+- Color Palette: <code>Catppuccin Frappe</code>
+- Widgets: <code>N/A</code>
+- Inspiration: [this post by TheMonkeyLlama](https://www.reddit.com/r/unixporn/comments/vkcasz/i3gaps_i_prefer_light_mode/) saw in UnixPorn.
 
 |<img src="assets/Shot-27-julio-22-002001.webp" alt="Aline Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-002636.webp" alt="Aline Rice" align="center" width="600px">|
 |---|---|
@@ -85,7 +107,11 @@ Aline's Rice was totally inspired by this [theme by TheMonkeyLlama](https://www.
 </details>
 
 ### 🌸Andrea
-This is my first eww rice, the bars and widgets are work of the great [adi1090x](https://github.com/adi1090x/widgets). I added stuff and a lot of modifications to fit my needs.
+
+- Term font: <code>JetBrains Mono Nerd Font</code>
+- Rofi font: <code>Dosis</code>
+- Color Palette: <code>Holly molly i dont know..</code>
+- Widgets: <code>Bar</code> <code>Music player</code> <code>Apps</code> <code>System info</code> <code>Power buttons</code> Credits [adi1090x](https://github.com/adi1090x/widgets)
 
 |<img src="assets/Shot-27-julio-22-001746.webp" alt="Andrea Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-001532.webp" alt="Andrea Rice" align="center" width="600px">|
 |---|---|
@@ -99,7 +125,14 @@ This is my first eww rice, the bars and widgets are work of the great [adi1090x]
 </details>
 
 ### 🌸Cynthia
-I try to make this one to be elegant, simple and relaxing the.
+
+- Term font: <code>JetBrains Mono Nerd Font</code>
+- Rofi font: <code>TerminessTTF Nerd Font</code>
+- Polybar font: <code>Rissole</code>
+	- Glyphs & Icons: <code>Material Design Icons Desktop</code> <code>MesLo LGS NF</code>
+- Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Bspwm Modes</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
+- Color Palette: <code>I'm pretty sure it's [u/DominiCzech](https://www.reddit.com/user/DominiCzech/)</code> work. I dont wanna be disrespectful but i loose link where i stole it.
+- Widgets: <code>N/A</code>
 
 |<img src="assets/Shot-26-julio-22-235349.webp" alt="Cynthia Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-000301.webp" alt="Cynthia Rice" align="center" width="600px">|
 |---|---|
@@ -113,7 +146,14 @@ I try to make this one to be elegant, simple and relaxing the.
 </details>
 
 ### 🌸Isabel
-Totally inspired in onedark colors for terminal, but the colors in bar, borders, icons etc try to be simple and elegant.
+
+- Term font: <code>JetBrains Mono Nerd Font</code>
+- Rofi font: <code>TerminessTTF Nerd Font</code>
+- Polybar font: <code>Inconsolata Semi Condensed</code>
+	- Glyphs & Icons: <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code>
+- Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
+- Color Palette: <code>One Dark</code>
+- Widgets: <code>N/A</code>
 
 |<img src="assets/Shot-25-julio-22-101308.webp" alt="Isabel Rice" align="center" width="600px">|<img src="assets/Shot-25-julio-22-100952.webp" alt="Isabel Rice" align="center" width="600px">|
 |---|---|
@@ -126,7 +166,14 @@ Totally inspired in onedark colors for terminal, but the colors in bar, borders,
 </details>
 
 ### 🌸Silvia
-This theme is a Gruvbox rice.
+
+- Term font: <code>JetBrains Mono Nerd Font</code>
+- Rofi font: <code>Scientifica</code>
+- Polybar font: <code>Rissole</code>
+	- Glyphs & Icons: <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code>
+- Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
+- Color Palette: <code>GruvBox</code>
+- Widgets: <code>N/A</code>
 
 |<img src="assets/Shot-26-julio-22-201658.webp" alt="Silvia Rice" align="center" width="600px">|<img src="assets/Shot-26-julio-22-202411.webp" alt="Silvia Rice" align="center" width="600px">|
 |---|---|
@@ -140,7 +187,14 @@ This theme is a Gruvbox rice.
 </details>
 
 ### 🌸Melissa
-This theme is a **Nord** color palette based, with 2 polybars, one on top and one bottom, with a simple weather module.
+
+- Term font: <code>JetBrains Mono Nerd Font</code>
+- Rofi font: <code>TerminessTTF Nerd Font</code>
+- Polybar font: <code>JetBrains Mono</code>
+	- Glyphs & Icons: <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code> <code>MesLo LGS NF</code>
+- Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Bspwm Modes</code> <code>Weather info</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
+- Color Palette: <code>Nord</code>
+- Widgets: <code>N/A</code>
 
 |<img src="assets/Shot-31-julio-22-191337.webp" alt="Melissa Rice" align="center" width="600px">|<img src="assets/Shot-31-julio-22-191939.webp" alt="Melissa Rice" align="center" width="600px">|
 |---|---|
@@ -154,7 +208,15 @@ This theme is a **Nord** color palette based, with 2 polybars, one on top and on
 </details>
 
 ### 🌸Pamela
-This theme has a beautiful color palette from [elenapan](https://github.com/elenapan/dotfiles). This rice also has eww widgets; **Calendar** and **Music Player** widgets stolen from [rxyhn](https://github.com/rxyhn/bspdots). **Profile card** and **Power Launcher** widgets stolen from [okklol](https://github.com/okklol/eww-bar). With 6 bars (polybar).
+
+- Term font: <code>JetBrains Mono Nerd Font</code>
+- Rofi font: <code>TerminessTTF Nerd Font</code>
+- Polybar font: <code>[Banana](https://github.com/turquoise-hexagon/fonts)</code>
+	- Glyphs & Icons: <code>Material Design Icons Desktop</code>
+- Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>Weather info</code> <code>MPD</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
+- Color Palette: <code>a beautiful color palette from [elenapan](https://github.com/elenapan/dotfiles)</code>
+- Widgets: <code>Calendar & Music Player</code> stolen from [rxyhn](https://github.com/rxyhn/bspdots). Profile card & Power Launcher stolen from [okklol](https://github.com/okklol/eww-bar).
+- With 6 bars (polybar).
 
 |<img src="assets/Shot-11-agosto-22-172328.webp" alt="Pamela Rice" align="center" width="600px">|<img src="assets/Shot-11-agosto-22-172747.webp" alt="Pamela Rice" align="center" width="600px">|
 |---|---|
@@ -168,6 +230,12 @@ This theme has a beautiful color palette from [elenapan](https://github.com/elen
 </details>
 
 ### 🌸Cristina
+
+- Term font: <code>JetBrains Mono Nerd Font</code>
+- Rofi font: <code>TerminessTTF Nerd Font</code>
+- Polybar font: <code>Inconsolata Condensed</code>
+	- Glyphs & Icons: <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code> <code>MesLo LGS NF</code>
+- Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
 * Color palette - [Rose Pine](https://github.com/rose-pine).
 * Widgets - Music Player stolen from [rxyhn](https://github.com/rxyhn/bspdots).
 * Main Wall - [ElRastaOk](https://www.reddit.com/r/unixporn/comments/w5p7s0/hyprland_my_cute_desktop/).
