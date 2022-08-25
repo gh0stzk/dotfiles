@@ -178,8 +178,8 @@ This theme has a beautiful color palette from [elenapan](https://github.com/elen
 <details>
 <summary><b>Extra wallpapers in Cristina</b></summary>
 
-|<img src="config/bspwm/rices/cristina/wall-02.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/wall-03.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/wall-04.webp" alt="Cristina Rice" align="center" width="150px">|
-|---|---|---|
+|<img src="config/bspwm/rices/cristina/wall-02.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/wall-03.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/wall-04.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/wall-05.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/wall-06.webp" alt="Cristina Rice" align="center" width="150px">|
+|---|---|---|---|---|
 
 </details>
 
