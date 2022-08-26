@@ -1,7 +1,7 @@
 # BSPWM | Polybar themes collection - Rice selector
 
 ## 🌿 Information
-Hello, I started learning bash and decided to modify and create some scripts to practice and as a fan to rice my setup i made these modifications to switch between rices, on the fly. It's not perfect and there's certainly room for improvement.
+My dotfiles, 9 different rices for BSPWM and Polybar. With a Rice selector to change on the fly. 
 
 https://user-images.githubusercontent.com/67278339/179444283-d5a4bc48-a9c7-4a91-a144-6c34d11347c8.mp4
  
@@ -16,28 +16,21 @@ https://user-images.githubusercontent.com/67278339/179444283-d5a4bc48-a9c7-4a91-
 |Compositor|[Picom Arian8j2](https://github.com/Arian8j2/picom)|
 |Terminal|[Termite](https://aur.archlinux.org/termite.git)|
 |Widgets|[ElKowars wacky widgets ](https://github.com/elkowar/eww)|
-|File Manager|Thunar|
 
 ## 📖 Features
-* **Change RICE on the fly:**
-It Changes the polybar theme. Polybar, bspwm and terminal color palette. Borders paddings change depending of each rice.
+* **Change RICE on the fly:** 10 different Rices now!.
 
-* **Rice Selector:**
-<code>Alt + Space bar</code> or **right click** in arch logo, to open Rice Selector menu.
+* **Rice Selector:** <code>Alt + Space bar</code> to launch it.
 
-* **Random wallpaper:**  Every time you switch between rices or reload bspwm with super + alt + r a new wallpaper is set depending on the rice you are on. For each rice there are between 5 and 8 wallpapers that go according to the rice.
+* **Random wallpaper:**  Every time you switch between rices or reload bspwm with <code>super + alt + r</code> a new wallpaper is set depending on the rice you are on.
 
-* **Hide / Unhide Bar:** *(Doesnt work on Andrea Rice, because is eww bar)*
-
-* **Screenshots:** to take screenshot.
+* **Hide / Unhide Bar:** (Polybar)
 
 * **Change transparency on the fly:** 
 Increase and decrease transparency in focused or selected window.
 
-* **Keybindings** to poweroff, reboot, quit session and lockscreen respectively.
-
 ## ⚠️ Attention!!
-The settings are heavily edited to work on my machine in my 1600x900 resolution. You will probably have to change many things in the config files and change it to your own.
+The settings are heavily edited to work on my machine in my 1600x900 resolution. You will probably need to do changes.
 
 ## 🎨 The rices...
 So yes... i called the Rices with the names of some of my ex girlfriends. 
@@ -218,7 +211,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 |Brute Kill|<code>ctrl + super + alt + k</code>|
 |Restart bspwm|<code>super + alt + r</code>|
 
-And more.. U need to look sxhkdrc file for more.
+And more.. You need to look sxhkdrc file for more.
 
 ## 📦 setup
 
@@ -246,12 +239,12 @@ feh alsa-utils libwebp webp-pixbuf-loader nitrogen xorg-xkill
 ```sh
 git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
 
-cd dotfiles
 # ⚠️ Backuupp!! your filess!!!
 [ -e ~/.config/bspwm ] && mv ~/.config/bspwm ~/.config/bspwm-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/termite ] && mv ~/.config/termite ~/.config/termite-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 
 # Moving new files to .config
+cd dotfiles
 cp -r config/bspwm ~/.config/bspwm
 cp -r config/termite ~/.config/termite
 # Those were the important ones. You still need to move the remaining directories in config to your ~/.config directory.
