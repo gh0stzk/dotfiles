@@ -44,8 +44,6 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Emilia:
 
-- Fonts: <code>JetBrains Mono Nerd Font</code> <code>Scientifica</code> <code>[Banana](https://github.com/turquoise-hexagon/fonts)</code> <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code> <code>MesLo LGS NF</code>
-- Polybar Modules: <code>Launcher</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
 - Color Palette: <code>Tokyo Night</code>
 - Widgets: <code>N/A</code>
 
@@ -62,8 +60,6 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Jan
 
-- Fonts: <code>CozetteVector</code> <code>Lilian</code> 
-- Polybar Modules: <code>Launcher</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>Title</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
 - Color Palette: <code>Cyber Punk</code>
 - Widgets: <code>N/A</code>
 
@@ -80,11 +76,9 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Aline
 
-- Fonts: <code>JetBrains Mono Nerd Font</code> <code>Inconsolata Semi Condensed</code> <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code> <code>MesLo LGS NF</code>
-- Polybar Modules: <code>Launcher</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>Apps</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
+
 - Color Palette: <code>Catppuccin Frappe</code>
 - Widgets: <code>N/A</code>
-- Inspiration: <code>[this post](https://www.reddit.com/r/unixporn/comments/vkcasz/i3gaps_i_prefer_light_mode/)</code> by TheMonkeyLlama i saw it in UnixPorn.
 
 |<img src="assets/Shot-27-julio-22-002001.webp" alt="Aline Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-002636.webp" alt="Aline Rice" align="center" width="600px">|
 |---|---|
@@ -99,9 +93,8 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Andrea
 
-- Fonts: <code>JetBrains Mono Nerd Font</code> <code>Dosis</code> 
 - Color Palette: <code>Holly molly i dont know..</code>
-- Widgets: <code>Bar</code> <code>Music player</code> <code>Apps</code> <code>System info</code> <code>Power buttons</code> Credits [adi1090x](https://github.com/adi1090x/widgets)
+- Widgets: <code>Bar</code> <code>Music player</code> <code>Apps</code> <code>System info</code> <code>Power buttons</code>
 
 |<img src="assets/Shot-27-julio-22-001746.webp" alt="Andrea Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-001532.webp" alt="Andrea Rice" align="center" width="600px">|
 |---|---|
@@ -116,8 +109,6 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Cynthia
 
-- Fonts: <code>JetBrains Mono Nerd Font</code> <code>TerminessTTF Nerd Font</code> <code>Rissole</code> <code>Material Design Icons Desktop</code> <code>MesLo LGS NF</code>
-- Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Bspwm Modes</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
 - Color Palette: <code>I'm pretty sure it's [u/DominiCzech](https://www.reddit.com/user/DominiCzech/)</code> work. I dont wanna be disrespectful but i loose link where i stole it.
 - Widgets: <code>N/A</code>
 
@@ -134,8 +125,6 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Isabel
 
-- Fonts: <code>JetBrains Mono Nerd Font</code> <code>TerminessTTF Nerd Font</code> <code>Inconsolata Semi Condensed</code> <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code>
-- Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
 - Color Palette: <code>One Dark</code>
 - Widgets: <code>N/A</code>
 
@@ -151,8 +140,6 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Silvia
 
-- Fonts: <code>JetBrains Mono Nerd Font</code> <code>Scientifica</code> <code>Rissole</code> <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code>
-- Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
 - Color Palette: <code>GruvBox</code>
 - Widgets: <code>N/A</code>
 
@@ -169,8 +156,6 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Melissa
 
-- Fonts: <code>JetBrains Mono Nerd Font</code> <code>TerminessTTF Nerd Font</code> <code>JetBrains Mono</code> <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code> <code>MesLo LGS NF</code>
-- Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Bspwm Modes</code> <code>Weather info</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
 - Color Palette: <code>Nord</code>
 - Widgets: <code>N/A</code>
 
@@ -187,8 +172,6 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Pamela
 
-- Fonts: <code>JetBrains Mono Nerd Font</code> <code>TerminessTTF Nerd Font</code> <code>[Banana](https://github.com/turquoise-hexagon/fonts)</code> <code>Material Design Icons Desktop</code>
-- Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>Weather info</code> <code>MPD</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
 - Color Palette: <code>a beautiful color palette from [elenapan](https://github.com/elenapan/dotfiles)</code>
 - Widgets: <code>Calendar & Music Player</code> stolen from [rxyhn](https://github.com/rxyhn/bspdots). Profile card & Power Launcher stolen from [okklol](https://github.com/okklol/eww-bar).
 - With 6 bars (polybar).
@@ -206,8 +189,6 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Cristina
 
-- Fonts: <code>JetBrains Mono Nerd Font</code> <code>TerminessTTF Nerd Font</code> <code>Inconsolata Condensed</code> <code>Material Design Icons Desktop</code> <code>Font Awesome 6 Free</code> <code>MesLo LGS NF</code>
-- Polybar Modules: <code>Launcher</code> <code>Title</code> <code>CPU</code> <code>RAM</code> <code>PulseAudio</code> <code>FileSystem</code> <code>MPD</code> <code>Bspwm</code> <code>Network</code> <code>Pacman Updates</code> <code>date</code>
 * Color palette - <code>[Rose Pine](https://github.com/rose-pine)</code>
 * Widgets - <code>Music Player</code> stolen from [rxyhn](https://github.com/rxyhn/bspdots).
 * Main Wall - <code>[ElRastaOk](https://www.reddit.com/r/unixporn/comments/w5p7s0/hyprland_my_cute_desktop/)</code>
@@ -317,3 +298,12 @@ chmod +x ~/.config/bspwm/rices/andrea/arin/sidedar/toggle_sidebar
 chmod +x ~/.config/bspwm/rices/andrea/arin/scripts/{battery,check-network,mails,music_info,quotes,sys_info,system,volume,weather_info,widget_apps,widget_search,workspaces.sh}
 ```
 * Other
+
+## Credits
+
+All workflows where i stole things to inspire me or for editing, its impossile to remember all but here someones:
+* [turquoise-hexagon](https://github.com/turquoise-hexagon/fonts) for his beautiful Banana font.
+* [This post](https://www.reddit.com/r/unixporn/comments/vkcasz/i3gaps_i_prefer_light_mode/) by TheMonkeyLlama i saw it in UnixPorn. Who inspired Aline's Rice.
+* [adi1090x](https://github.com/adi1090x/widgets) The master, for his setup in Andrea's Rice and for his beautiful Rofi menus.
+* [u/DominiCzech](https://www.reddit.com/user/DominiCzech/) For the amazing color palette in Cynthia's Rice. I loose link but im pretty sure he is the owner.
+* In Pamela's rice to [elenapan](https://github.com/elenapan/dotfiles) For his beautiful color palette. For the eww widgets to the master [rxyhn](https://github.com/rxyhn/bspdots) and [okklol](https://github.com/okklol/eww-bar).

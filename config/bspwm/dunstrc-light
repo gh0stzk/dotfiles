@@ -52,12 +52,6 @@ mouse_left_click = close_current
 mouse_middle_click = do_action
 mouse_right_click = close_all
 
-[shortcuts]
-close = ctrl+space
-close_all = ctrl+shift+space
-history = ctrl+Escape
-context = ctrl+shift+period
-
 [urgency_low]
 timeout = 3
 background = "#f9f9f9"
