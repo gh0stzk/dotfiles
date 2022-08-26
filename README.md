@@ -109,7 +109,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Cynthia
 
-- Color Palette: <code>I'm pretty sure it's [u/DominiCzech](https://www.reddit.com/user/DominiCzech/)</code> work. I dont wanna be disrespectful but i loose link where i stole it.
+- Color Palette: <code>[u/DominiCzech](https://www.reddit.com/user/DominiCzech/)</code>
 - Widgets: <code>N/A</code>
 
 |<img src="assets/Shot-26-julio-22-235349.webp" alt="Cynthia Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-000301.webp" alt="Cynthia Rice" align="center" width="600px">|
@@ -172,8 +172,8 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Pamela
 
-- Color Palette: <code>a beautiful color palette from [elenapan](https://github.com/elenapan/dotfiles)</code>
-- Widgets: <code>Calendar & Music Player</code> stolen from [rxyhn](https://github.com/rxyhn/bspdots). Profile card & Power Launcher stolen from [okklol](https://github.com/okklol/eww-bar).
+- Color Palette: <code>[elenapan](https://github.com/elenapan/dotfiles)</code>
+- Widgets: <code>Calendar, Music Player, Profile card & Power Launcher</code>
 - With 6 bars (polybar).
 
 |<img src="assets/Shot-11-agosto-22-172328.webp" alt="Pamela Rice" align="center" width="600px">|<img src="assets/Shot-11-agosto-22-172747.webp" alt="Pamela Rice" align="center" width="600px">|
@@ -189,9 +189,9 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Cristina
 
-* Color palette - <code>[Rose Pine](https://github.com/rose-pine)</code>
-* Widgets - <code>Music Player</code> stolen from [rxyhn](https://github.com/rxyhn/bspdots).
-* Main Wall - <code>[ElRastaOk](https://www.reddit.com/r/unixporn/comments/w5p7s0/hyprland_my_cute_desktop/)</code>
+- Color palette - <code>[Rose Pine](https://github.com/rose-pine)</code>
+- Widgets - <code>Music Player</code>
+- Main Wall - <code>[ElRastaOk](https://www.reddit.com/r/unixporn/comments/w5p7s0/hyprland_my_cute_desktop/)</code>
 
 |<img src="assets/Shot-24-agosto-22-140529.webp" alt="Cristina Rice" align="center" width="600px">|<img src="assets/Shot-24-agosto-22-141805.webp" alt="Cristina Rice" align="center" width="600px">|
 |---|---|
@@ -302,8 +302,8 @@ chmod +x ~/.config/bspwm/rices/andrea/arin/scripts/{battery,check-network,mails,
 ## Credits
 
 All workflows where i stole things to inspire me or for editing, its impossile to remember all but here someones:
-* [turquoise-hexagon](https://github.com/turquoise-hexagon/fonts) for his beautiful Banana font.
-* [This post](https://www.reddit.com/r/unixporn/comments/vkcasz/i3gaps_i_prefer_light_mode/) by TheMonkeyLlama i saw it in UnixPorn. Who inspired Aline's Rice.
-* [adi1090x](https://github.com/adi1090x/widgets) The master, for his setup in Andrea's Rice and for his beautiful Rofi menus.
-* [u/DominiCzech](https://www.reddit.com/user/DominiCzech/) For the amazing color palette in Cynthia's Rice. I loose link but im pretty sure he is the owner.
-* In Pamela's rice to [elenapan](https://github.com/elenapan/dotfiles) For his beautiful color palette. For the eww widgets to the master [rxyhn](https://github.com/rxyhn/bspdots) and [okklol](https://github.com/okklol/eww-bar).
+- [turquoise-hexagon](https://github.com/turquoise-hexagon/fonts) for his beautiful Banana font.
+- [This post](https://www.reddit.com/r/unixporn/comments/vkcasz/i3gaps_i_prefer_light_mode/) by TheMonkeyLlama i saw it in UnixPorn. Who inspired Aline's Rice.
+- [adi1090x](https://github.com/adi1090x/widgets) The master, for his setup in Andrea's Rice and for his beautiful Rofi menus.
+- [u/DominiCzech](https://www.reddit.com/user/DominiCzech/) For the amazing color palette in Cynthia's Rice. I loose link but im pretty sure he is the owner.
+- In Pamela's rice to [elenapan](https://github.com/elenapan/dotfiles) For his beautiful color palette. For the eww widgets to the master [rxyhn](https://github.com/rxyhn/bspdots) and [okklol](https://github.com/okklol/eww-bar).
