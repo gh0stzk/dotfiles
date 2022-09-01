@@ -254,6 +254,7 @@ cp -r misc/fonts/* ~/.local/share/fonts/
 cp -r misc/bin ~/.local/
 cp -r misc/applications ~/.local/share/
 cp -r misc/asciiart ~/.local/share/
+fc-cache -rv
 
 # You probably MUST use your own .zsh config, but if you want to use mine, do;
 cp -r home/.zshrc ~/.zshrc
@@ -283,6 +284,7 @@ systemctl --user start mpd.service
 The proper execute permissions on some files should be maintained when you download/clone and copy to your directories, but if not just run the following line by line.
 ```sh
 chmod +x ~/.config/bspwm/bspwmrc
+chown $USER ~/.config/bspwm/rice.cfg
 chmod +x ~/.config/bspwm/scripts/{external_rules,hu-polybar,LaunchWorld,RiceSelector,screenshoter,updates.sh,weather-mini.sh}
 # In Pamela & Andrea Rices, yo u need to give execution permissions to the shell scripts too.
 chmod +x ~/.config/bspwm/rices/pamela/widgets/{calendar,calendarlauncher,getSongDuration,mplayer-launcher,music,power-launcher,profile-sys-launcher}
