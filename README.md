@@ -1,7 +1,7 @@
 # BSPWM | Polybar themes collection - Rice selector
 
 ## 🌿 Information
-My dotfiles, 9 different rices for BSPWM and Polybar. With a Rice selector to change on the fly. 
+My dotfiles, 10 different rices for BSPWM and Polybar. With a Rice selector to change on the fly. 
 
 https://user-images.githubusercontent.com/67278339/179444283-d5a4bc48-a9c7-4a91-a144-6c34d11347c8.mp4
  
