@@ -10,6 +10,9 @@
 (defpoll VOLUME :interval "1s" `scripts/volume --get`)
 (defpoll VOLICON :interval "1s" `scripts/volume --icon`)
 
+;; Workspaces
+(deflisten workspace "./scripts/workspace")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;							Widget Section's							 ;;	
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -24,7 +27,6 @@
 ;; Workspaces Widgets ;;
 (defwidget workspaces []
 	(literal :content workspace))
-(deflisten workspace "scripts/workspace")
 
 
 ;; Wifi Widgets ;;
