@@ -34,7 +34,7 @@ print_workspaces() {
     echo "(box :orientation \"v\" :class \"works\" :halign \"center\" :valign \"center\" :vexpand true :hexpand true $buf)"
 }
 
- Listen to bspwm changes
+# Listen to bspwm changes
     print_workspaces
 bspc subscribe desktop node_transfer | while read -r _ ; do
     print_workspaces
