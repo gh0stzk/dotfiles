@@ -13,22 +13,25 @@ function launch() {
   [ "$running" ] && kill -9 $(pidof $1)
   eval "$* &"
 }
-function LaunchBar() {
-	local launchpoly
-	launchpoly="$(pidof "polybar")"
-	[ "$launchpoly" ] && polybar-msg cmd quit
-	eval "$* & disown"
+
+function WallChanger() {
+	local wallimage
+	wallimage="$(shuf -en1 ~/.config/bspwm/rices/$RICETHEME/*.webp)"
+	feh --no-fehbg --bg-fill $wallimage
 }
+
 function killeww() {
   if [[ `pidof eww` ]]; then 
 		pkill eww
   fi
 }
+
 function ResetTermite() {
   if [[ `pidof termite` ]]; then 
 		killall -USR1 termite
   fi
 }
+
 function ReloadTermite() {
   if [ -f "$HOME/.config/termite/config" ]; then
 		cat $HOME/.config/bspwm/rices/$RICETHEME/termiterc > $HOME/.config/termite/config
@@ -48,6 +51,8 @@ function SetBspwmConf() {
 	bspc config active_border_color "$5"
 	bspc config focused_border_color "$6"
 	bspc config presel_feedback_color "$7"
+	bspc config left_padding "$8"
+	bspc config right_padding "$9"
 }
 
 function SetGirlFriendRice() {
@@ -56,70 +61,70 @@ function SetGirlFriendRice() {
 	
 		emilia)
 		
-		  SetBspwmConf 0 60 5 "#202132" "#202132" "#202132" "#070219"	
+		  SetBspwmConf 0 60 5 "#202132" "#202132" "#202132" "#070219" 5 5
 		  		  
 		  killeww
-		  LaunchBar polybar -q emi-bar -c ${polydir}/config.ini
+		  launch polybar -q emi-bar -c ${polydir}/config.ini
 		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
 		  ;;
 			
 		jan)
 		
-		  SetBspwmConf 0 60 5 "#4C3A6D" "#4C3A6D" "#785DA5" "#070219"	
+		  SetBspwmConf 0 60 5 "#4C3A6D" "#4C3A6D" "#785DA5" "#070219" 5 5
 		  
 		  killeww
-		  LaunchBar polybar -q main -c ${polydir}/config.ini
+		  launch polybar -q main -c ${polydir}/config.ini
 		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
 		  ;;
 		    
 		aline)
 		
-		  SetBspwmConf 0 50 5 "#000000" "#000000" "#000000" "#070219"	
+		  SetBspwmConf 0 50 5 "#000000" "#000000" "#000000" "#070219" 5 5
 		  
 		  killeww
-		  LaunchBar polybar -q aline-bar -c ${polydir}/config.ini
+		  launch polybar -q aline-bar -c ${polydir}/config.ini
 		  launch dunst -config ${bspdir}/dunstrc-light &
 		  
 		  ;;
 		  
 		isabel)
 		
-		  SetBspwmConf 0 5 45 "#333a48" "#333a48" "#333a48" "#4f4f5b"	
+		  SetBspwmConf 0 5 45 "#333a48" "#333a48" "#333a48" "#4f4f5b" 5 5
 		  
 		  killeww
-		  LaunchBar polybar -q isa-bar -c ${polydir}/config.ini
+		  launch polybar -q isa-bar -c ${polydir}/config.ini
 		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
 		  ;;
 		  
 		cynthia)
 		
-		  SetBspwmConf 0 45 5 "#4C3A6D" "#4C3A6D" "#785DA5" "#070219"	
+		  SetBspwmConf 0 45 5 "#4C3A6D" "#4C3A6D" "#785DA5" "#070219" 5 5
 		  
 		  killeww
-		  LaunchBar polybar -q cyn-bar -c ${polydir}/config.ini
+		  launch polybar -q cyn-bar -c ${polydir}/config.ini
 		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
 		  ;;
 		  
 		silvia)
 		
-		  SetBspwmConf 0 45 5 "#bdae93" "#bdae93" "#bdae93" "#4f4f5b"	
+		  SetBspwmConf 0 45 5 "#bdae93" "#bdae93" "#bdae93" "#4f4f5b" 5 5
 
 		  killeww
-		  LaunchBar polybar -q cata-bar -c ${polydir}/config.ini
+		  launch polybar -q cata-bar -c ${polydir}/config.ini
 		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
 		  ;;
 		
 		melissa)
 		
-		  SetBspwmConf 0 42 40 "#4c566a" "#4c566a" "#4c566a" "#4f4f5b"		
+		  SetBspwmConf 0 42 40 "#4c566a" "#4c566a" "#4c566a" "#4f4f5b" 5 5	
 
 		  killeww
-		  LaunchBar polybar -q mel-bar -c ${polydir}/config.ini
+		  launch polybar -q mel-bar -c ${polydir}/config.ini
 		  polybar -q mel2-bar -c ${polydir}/config.ini & disown
 		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
@@ -127,10 +132,10 @@ function SetGirlFriendRice() {
 		  
 		pamela)
 		
-		  SetBspwmConf 0 60 5 "#bdae93" "#bdae93" "#bdae93" "#4f4f5b"	
+		  SetBspwmConf 0 60 5 "#bdae93" "#bdae93" "#bdae93" "#4f4f5b" 5 5
 		  
 		  killeww
-		  LaunchBar polybar -q pam1 -c ${polydir}/config.ini
+		  launch polybar -q pam1 -c ${polydir}/config.ini
 		  polybar -q pam2 -c ${polydir}/config.ini & disown
 		  polybar -q pam3 -c ${polydir}/config.ini & disown
 		  polybar -q pam4 -c ${polydir}/config.ini & disown
@@ -142,22 +147,39 @@ function SetGirlFriendRice() {
 		  
 		cristina)
 		
-		  SetBspwmConf 0 10 60 "#bdae93" "#bdae93" "#bdae93" "#4f4f5b"
+		  SetBspwmConf 0 10 60 "#bdae93" "#bdae93" "#bdae93" "#4f4f5b" 5 5
 		  
 		  killeww
-		  LaunchBar polybar -q cristina-bar -c ${polydir}/config.ini
+		  launch polybar -q cristina-bar -c ${polydir}/config.ini
 		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
 		  ;;
 		  
-		andrea)
+		z0mbi3)
 		
-		  SetBspwmConf 0 60 5 "#161616" "#161616" "#161616" "#4f4f5b"
+		  SetBspwmConf 0 5 5 "#161616" "#161616" "#161616" "#4f4f5b" 95 5
 		  
 		  pkill picom
-		  polybar-msg cmd quit 
+		  launch eww -c $HOME/.config/bspwm/rices/$RICETHEME/bar --restart open bar &
+		  launch polybar -q tray -c ~/.config/bspwm/rices/z0mbi3/bar/polybar_tray.ini
+		  launch dunst -config ${bspdir}/dunstrc-dark &
+		  
+		  ;;
+		  
+		  
+		andrea)
+		
+		  SetBspwmConf 0 60 5 "#161616" "#161616" "#161616" "#4f4f5b" 5 5
+		  
+		  pkill picom
+		  pkill polybar 
 		  launch dunst -config ${bspdir}/dunstrc-light &
-		  ~/.config/bspwm/rices/$RICETHEME/arin/launch_bar
+		  launch eww -c $HOME/.config/bspwm/rices/$RICETHEME/arin --restart open-many \
+		   search \
+		   apps \
+		   weather \
+		   music \
+		   system
 		  
 		  ;;
 		  
@@ -167,11 +189,14 @@ function SetGirlFriendRice() {
 ReloadTermite
 
 function AutoStartApps() {
+	# Kill any running instances of bspc to prevent multiple
+	# instances of "workspaces" script in eww rices to run at once
+	killall bspc
 	
 	launch sxhkd -c ${bspdir}/sxhkdrc &
 	launch picom --config ${bspdir}/rices/$RICETHEME/picom.conf &
 	launch /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-	launch feh --no-fehbg --bg-fill $wallimage
+	WallChanger
 	#nitrogen --restore &
 	xsetroot -cursor_name left_ptr
 	

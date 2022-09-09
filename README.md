@@ -1,7 +1,7 @@
 # BSPWM | Polybar themes collection - Rice selector
 
 ## 🌿 Information
-My dotfiles, 10 different rices for BSPWM and Polybar. With a Rice selector to change on the fly. 
+My dotfiles, 11 different rices for BSPWM and Polybar. With a Rice selector to change on the fly. 
 
 https://user-images.githubusercontent.com/67278339/179444283-d5a4bc48-a9c7-4a91-a144-6c34d11347c8.mp4
  
@@ -24,13 +24,16 @@ https://user-images.githubusercontent.com/67278339/179444283-d5a4bc48-a9c7-4a91-
 
 * **Random wallpaper:**  Every time you switch between rices or reload bspwm with <code>super + alt + r</code> a new wallpaper is set depending on the rice you are on.
 
+* **Super + Alt + w** changes bethween different wallpapers in the actual rice.
+
 * **Hide / Unhide Bar:** (Polybar)
 
 * **Change transparency on the fly:** 
 Increase and decrease transparency in focused or selected window.
 
 ## ⚠️ Attention!!
-The settings are heavily edited to work on my machine in my 1600x900 resolution. You will probably need to do changes.
+The rices work on my computer because they were made on my machine with my resolution (1600x900). They should also work on your computer, but you'll have to modify a lot of things to make them work for you.
+Please read the troubleshooting section at the end of this document before insulting me :P
 
 ## 🎨 The rices...
 So yes... i called the Rices with the names of some of my ex girlfriends. 
@@ -95,8 +98,8 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Andrea</b></summary>
 
-|<img src="config/bspwm/rices/andrea/wall-02.webp" alt="Andrea Rice" align="center" width="150px">|<img src="config/bspwm/rices/andrea/wall-03.webp" alt="Andrea Rice" align="center" width="150px">|
-|---|---|
+|<img src="config/bspwm/rices/andrea/wall-02.webp" alt="Andrea Rice" align="center" width="150px">|<img src="config/bspwm/rices/andrea/wall-03.webp" alt="Andrea Rice" align="center" width="150px">|<img src="config/bspwm/rices/andrea/wall-04.webp" alt="Andrea Rice" align="center" width="150px">|
+|---|---|---|
 
 </details>
 
@@ -175,8 +178,8 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Pamela</b></summary>
 
-|<img src="config/bspwm/rices/pamela/wall-02.webp" alt="Pamela Rice" align="center" width="150px">|<img src="config/bspwm/rices/pamela/wall-03.webp" alt="Pamela Rice" align="center" width="150px">|<img src="config/bspwm/rices/pamela/wall-04.webp" alt="Pamela Rice" align="center" width="150px">|
-|---|---|---|
+|<img src="config/bspwm/rices/pamela/wall-02.webp" alt="Pamela Rice" align="center" width="150px">|<img src="config/bspwm/rices/pamela/wall-03.webp" alt="Pamela Rice" align="center" width="150px">|<img src="config/bspwm/rices/pamela/wall-04.webp" alt="Pamela Rice" align="center" width="150px">|<img src="config/bspwm/rices/pamela/wall-05.webp" alt="Pamela Rice" align="center" width="150px">
+|---|---|---|---|
 
 </details>
 
@@ -192,7 +195,23 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Cristina</b></summary>
 
-|<img src="config/bspwm/rices/cristina/wall-02.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/wall-03.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/wall-04.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/wall-05.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/wall-06.webp" alt="Cristina Rice" align="center" width="150px">|
+|<img src="config/bspwm/rices/cristina/wall-02.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/wall-03.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/wall-04.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/wall-05.webp" alt="Cristina Rice" align="center" width="150px">|
+|---|---|---|---|
+
+</details>
+
+### 🌸z0mbi3:
+
+- Color Palette: <code>Decay</code>
+- Widgets: <code>Bar & Information Center</code>
+
+|<img src="assets/Shot-08-septiembre-22-212947.webp" alt="z0mbi3 Rice" align="center" width="600px">|<img src="assets/Shot-08-septiembre-22-213339.webp" alt="z0mbi3 Rice" align="center" width="600px">|
+|---|---|
+
+<details>
+<summary><b>Extra wallpapers in z0mbi3</b></summary>
+
+|<img src="config/bspwm/rices/z0mbi3/wall-01.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-02.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-03.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-04.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-05.webp" alt="z0mbi3 Rice" align="center" width="150px">|
 |---|---|---|---|---|
 
 </details>
@@ -209,6 +228,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 |poweroff / Reboot|<code>ctrl + super + alt + {p,r}</code>|
 |Terminal|<code>super + Return</code>|
 |Brute Kill|<code>ctrl + super + alt + k</code>|
+|Wallpaper Changer|<code>super + alt + w</code>|
 |Restart bspwm|<code>super + alt + r</code>|
 
 And more.. You need to look sxhkdrc file for more.
@@ -231,8 +251,8 @@ A one time command to install most of these dependencies with your **favorite AU
 ```sh
 yay -S bspwm polybar sxhkd dunst rofi lsd jq checkupdates-aur \
 playerctl mpd ncmpcpp mpc picom-arian8j2-git xtitle termite betterlockscreen \
-nerd-fonts-jetbrains-mono ttf-jetbrains-mono papirus-icon-theme ttf-inconsolata \
-feh alsa-utils libwebp webp-pixbuf-loader nitrogen xorg-xkill
+ttf-jetbrains-mono papirus-icon-theme ttf-inconsolata \
+feh alsa-utils libwebp webp-pixbuf-loader xorg-xkill
 ```
 
 <b>3. Cloning Dotfiles & Installing:</b>

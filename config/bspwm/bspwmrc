@@ -11,7 +11,6 @@
 ########### Def vars
 
 export RICETHEME=$(<$HOME/.config/bspwm/rice.cfg)
-wallimage=$(shuf -en1 ~/.config/bspwm/rices/$RICETHEME/*.webp)
 PATH="$HOME/.config/bspwm/scripts:$PATH"
 
 ########### Workspaces
@@ -19,7 +18,7 @@ PATH="$HOME/.config/bspwm/scripts:$PATH"
 workspaces() {
 	name=1
 	for monitor in `bspc query -M`; do
-		bspc monitor ${monitor} -n "$name" -d 'I' 'II' 'III' 'IV' 'V' 'VI'
+		bspc monitor ${monitor} -n "$name" -d '1' '2' '3' '4' '5' '6'
 		let name++
 	done
 }
@@ -38,8 +37,6 @@ AutoStartApps
 
 bspc config external_rules_command ~/.config/bspwm/scripts/external_rules
 bspc config window_gap                    8 
-bspc config left_padding                  5
-bspc config right_padding                 5
 
 bspc config single_monocle                true
 bspc config split_ratio                   0.5

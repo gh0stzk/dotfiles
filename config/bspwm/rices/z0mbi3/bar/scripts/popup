@@ -1,0 +1,39 @@
+#!/bin/sh
+
+calendar(){
+LOCK_FILE="$HOME/.cache/eww-calendar.lock"
+EWW_BIN="eww"
+
+run() {
+    ${EWW_BIN} -c $HOME/.config/bspwm/rices/$RICETHEME/bar open calendar
+}
+
+# Run eww daemon if not running
+if [[ ! `pidof eww` ]]; then
+    ${EWW_BIN} daemon
+    sleep 1
+fi
+
+# Open widgets
+if [[ ! -f "$LOCK_FILE" ]]; then
+    touch "$LOCK_FILE"
+    run
+else
+    ${EWW_BIN} -c $HOME/.config/bspwm/rices/$RICETHEME/bar close calendar
+    rm "$LOCK_FILE"
+fi
+}
+
+if [ "$1" = "launcher" ]; then
+rofi -no-lazy-grab -show drun -theme $HOME/.config/bspwm/rices/$RICETHEME/launcher.rasi &
+elif [ "$1" = "infocenter" ]; then
+~/.config/bspwm/rices/$RICETHEME/dashboard/LaunchInfoCenter.sh
+elif [ "$1" = "pacupdates" ]; then
+termite --hold -t updating -e "yay -Syyuu --devel" &
+elif [ "$1" = "chkupdates" ]; then
+termite --hold -t updating -e "checkupdates" & disown
+elif [ "$1" = "audio" ]; then
+pavucontrol & disown
+elif [ "$1" = "calendar" ]; then
+calendar
+fi

@@ -57,11 +57,15 @@ alt + @space
 # Reload sxhkd
 super + Escape
 	pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'El archivo de configuracion se ha recargado con exito'
+	
+# Random wallpaper
+super + alt + w
+	RandomWall
 
 #
 # bspwm hotkeys
 #
-
+	
 # Reiniciar BSPWM
 super + alt + r
 	bspc wm -r

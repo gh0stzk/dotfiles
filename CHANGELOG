@@ -1,0 +1,9 @@
+
+(08/Sep/2022)
+- If u clone and test, use or whatever this repo before 08/sept/2022 probably u need to clone again because a lot of changes, fixed, code fix, code optimization has been made it.
+- Optimized functions to load faster the rices.
+- Droped rounded corners with picom in rofi menus, now use native rofi rounded corners.
+- Maintenance "visual" fixes in several rices.
+- Hide - Unhide bar now works with eww rices ( Andrea & z0mbi3 )
+- Now you can change bethween wallpapers by pressing "Super + Alt + w"
+- Girlfriends list finish, im only finishing "Karla" rice and that will be the last rice.

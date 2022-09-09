@@ -9,13 +9,14 @@ cache_weather_hex=${cache_dir}/weather-hex
 cache_weather_icon=${cache_dir}/weather-icon
 
 ## Weather data
-KEY="1f6e449790b8cf73a3cab8d5715483f8"
-ID="3532624"
-UNIT="metric"	# Available options : 'metric' or 'imperial'
+KEY=1f6e449790b8cf73a3cab8d5715483f8
+ID=3523272
+UNIT=metric	# Available options : 'metric' or 'imperial'
 
 ## Make cache dir
 if [[ ! -d "$cache_dir" ]]; then
 	mkdir -p ${cache_dir}
+
 fi
 
 ## Get data
@@ -144,4 +145,3 @@ elif [[ "$1" == "--quote" ]]; then
 elif [[ "$1" == "--quote2" ]]; then
 	cat ${cache_weather_quote} | tail -n1
 fi
-

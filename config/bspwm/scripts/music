@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # ╔╦╗ ╦ ╦ ╔═╗ ╦ ╔═╗
 # ║║║ ║ ║ ╚═╗ ║ ║  
@@ -16,6 +16,7 @@
 
 Control="MPD"
 [ -n "$(pgrep spotify)" ] && Control="spotify"
+# [ -n "$(pgrep brave-bin)" ] && Control="brave-bin"
 # [ -n "$(pgrep rhythmbox)" ] && Control="rhythmbox"
 # [ -n "$(pgrep audacious)" ] && Control="audacious"
 # [ -n "$(pgrep clementine)" ] && Control="clementine"
@@ -37,14 +38,14 @@ mpddir=/run/media/z0mbi3/windows/Musica
 ########################## Title ##########################
 title() {
 title=$(playerctl --player=$Control metadata --format {{title}})
-[ -z "$title" ] && title="Nothing Playing"
+[ -z "$title" ] && title="Play Something"
 echo "$title"
 }
 
 ########################## Artist ##########################
 artist() {
 artist=$(playerctl --player=$Control metadata --format {{artist}})
-[ -z "$artist" ] && artist="Offline"
+[ -z "$artist" ] && artist="Artist"
 echo "$artist"
 }
 
@@ -92,9 +93,9 @@ echo "$Cover"
 
 ########################## Statusicon ##########################
 statusicon() {
-icon=""
-[ $(playerctl --player=$Control status) = "Playing" ] && icon=""
-[ $(playerctl --player=$Control status) = "Paused" ] && icon=""
+icon=""
+[ $(playerctl --player=$Control status) = "Playing" ] && icon=""
+[ $(playerctl --player=$Control status) = "Paused" ] && icon=""
 echo "$icon"
 }
 
@@ -115,14 +116,14 @@ printf "$lyrics" | less
 ########################## Title ##########################
 mpctitle() {
 title=$(mpc -f %title% current)
-[ -z "$title" ] && title="Nothing Playing"
+[ -z "$title" ] && title="Play Something"
 echo "$title"
 }
 
 ########################## Artist ##########################
 mpcartist() {
 artist=$(mpc -f %artist% current)
-[ -z "$artist" ] && artist="Offline"
+[ -z "$artist" ] && artist="Artist"
 echo "$artist"
 }
 
@@ -156,9 +157,9 @@ echo "$length"
 ########################## Icon ##########################
 mpcicon() {
 status=$(mpc status | head -2 | tail -1 | cut -c2-7 )
-icon=""
-[ "$status" = "playin" ] && icon=""
-[ "$status" = "paused" ] && icon=""
+icon=""
+[ "$status" = "playin" ] && icon=""
+[ "$status" = "paused" ] && icon=""
 echo "$icon"
 }
 
@@ -180,8 +181,10 @@ echo "$perc"
 
 ########################## Playlist ##########################
 mpcsongpos() {
-playlist=$(mpc status %songpos%/%length%)
-[ -z "$playlist" ] && playlist="0/0"
+pos=$(mpc status %songpos%)
+allsongs=$(mpc status %length%)
+playlist="$pos/$allsongs"
+[ -z "$pos" ] && playlist="0/0"
 echo "$playlist"
 }
 
