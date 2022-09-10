@@ -323,4 +323,4 @@ All workflows where i stole things to inspire me or for editing, its impossile t
 - [adi1090x](https://github.com/adi1090x/widgets) The master, for his setup in Andrea's Rice and for his beautiful Rofi menus.
 - [u/DominiCzech](https://www.reddit.com/user/DominiCzech/) For the amazing color palette in Cynthia's Rice. I loose link but im pretty sure he is the owner.
 - In Pamela's rice to [elenapan](https://github.com/elenapan/dotfiles) For his beautiful color palette. For the eww widgets to the master [rxyhn](https://github.com/rxyhn/bspdots) and [okklol](https://github.com/okklol/eww-bar).
-- In z0mbi3 rice, eww doesn't have a way of using a system tray but this little polybar hack make the trick. Thanks to [ikz87](https://github.com/ikz87).
+- In z0mbi3 rice, to [Anchovyyy](https://github.com/anchovyyy/bspdots) for the mazing panel bar. Eww doesn't have a way of using a system tray but this little polybar hack make the trick. Thanks to [ikz87](https://github.com/ikz87).
