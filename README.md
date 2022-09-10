@@ -212,8 +212,8 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in z0mbi3</b></summary>
 
-|<img src="config/bspwm/rices/z0mbi3/wall-01.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-02.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-03.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-04.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-05.webp" alt="z0mbi3 Rice" align="center" width="150px">|
-|---|---|---|---|---|
+|<img src="config/bspwm/rices/z0mbi3/wall-01.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-02.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-04.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-05.webp" alt="z0mbi3 Rice" align="center" width="150px">|
+|---|---|---|---|
 
 </details>
 
