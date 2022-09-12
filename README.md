@@ -250,7 +250,7 @@ pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git
 A one time command to install most of these dependencies with your **favorite AUR Helper** (we just install yay).
 
 ```sh
-yay -S bspwm polybar sxhkd eww-git dunst rofi lsd jq checkupdates-aur \
+yay -S bspwm polybar sxhkd eww dunst rofi lsd jq checkupdates-aur \
 playerctl mpd ncmpcpp mpc picom-arian8j2-git xtitle termite betterlockscreen \
 ttf-jetbrains-mono papirus-icon-theme ttf-inconsolata \
 feh alsa-utils libwebp webp-pixbuf-loader xorg-xkill
