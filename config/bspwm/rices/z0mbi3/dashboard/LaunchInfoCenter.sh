@@ -4,17 +4,25 @@
 # Source 	 -  https://github.com/gh0stzk/dotfiles
 # Maintainer -  z0mbi3.zk@protonmail.com
 
-ewwconf="eww -c $HOME/.config/bspwm/rices/z0mbi3/dashboard"
+FILE="$HOME/.cache/eww_z0mbi3.dashboard"
+ewwcfg="$HOME/.config/bspwm/rices/z0mbi3/dashboard"
+EWW=`which eww`
 
-weather() {
-	$HOME/.config/bspwm/rices/z0mbi3/dashboard/scripts/weather --getdata
+if [[ ! `pidof eww` ]]; then
+	${EWW} daemon
+	sleep 1
+fi
+
+launch_eww() {
+	${EWW} --config "$ewwcfg" open-many sidebar pfp date music weather system
 }
 
-function toggle() {
-    $ewwconf $1 sidebar pfp date music weather system
-}
 
-WINDOWS=`$ewwconf windows | grep system | grep "*"`
-[ "$WINDOWS" = "" ] && toggle "open-many" || toggle "close"
-
-weather
+## Launch or close widgets accordingly
+if [[ ! -f "$FILE" ]]; then
+	touch "$FILE"
+	launch_eww
+else
+	${EWW} --config "$ewwcfg" close sidebar pfp date music weather system
+	rm "$FILE"
+fi
