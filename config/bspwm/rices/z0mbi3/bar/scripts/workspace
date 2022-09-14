@@ -13,6 +13,8 @@ print_workspaces() {
     desktops=$(bspc query -D --names)
     focused_desktop=$(bspc query -D -d focused --names)
     occupied_desktops=$(bspc query -D -d .occupied --names)
+    
+    
     for d in $desktops; do
         if [ "$(contains "$focused_desktop" "$d")" -eq 1 ]; then
             ws=$d
@@ -28,7 +30,7 @@ print_workspaces() {
             class="workspace-empty"
         fi  
 
-        buf="$buf (eventbox :cursor \"hand\" (button :class \"$class\" :onclick \"bspc desktop -f $ws\" \"$icon\"))"
+        buf="$buf (eventbox :cursor \"pointer\" (button :class \"$class\" :onclick \"bspc desktop -f $ws\" \"$icon\"))"
     done
 
     echo "(box :orientation \"v\" :class \"works\" :halign \"center\" :valign \"center\" :vexpand true :hexpand true $buf)"

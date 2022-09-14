@@ -1,9 +1,4 @@
-/* Created   by https://github.com/rxyhn 
-   Designed  by https://github.com/rxyhn
-   Maintaned by https://github.com/rxyhn
-*/
 
-// Global
 *{
   all: unset;
 }
@@ -23,72 +18,55 @@ $cyan: #93cee9;
 $white: $foreground;
 $archlogo: #0f94d2;
 
-// EWW BAR
+// The bar
 .eww_bar{
-  background-color: $background;
-  padding: .3rem;
-  border-radius: 9px;
+	background-color: $background;
+	padding: .3rem;
+	border-radius: 9px;
 }
 
 // Launcher
 .launcher_icon{
-    color: $archlogo;
-    font-family: "Material Design Icons Desktop";
-    font-size: 1.7em;
-    padding: 1rem 0 1rem 0;
+	color: $archlogo;
+	font-family: "Material Design Icons Desktop";
+	font-size: 1.7em;
+	padding: 1rem 0 1rem 0;
 }
+
 
 // Workspaces
 .works {
-font-family: "Material Design Icons Desktop";
-padding: .5rem .7rem .5rem .7rem;
-background-color: $black;
-border-radius: 5px;
+	font-family: "Material Design Icons Desktop";
+	padding: .5rem .7rem .5rem .7rem;
+	background-color: $black;
+	border-radius: 5px;
 }
-
-/*.workspace-active {
-  font-size: 45px;
-  color: #6E8DB4;
-  margin: .55rem 0 .55rem 0;
-}*/
 
 .workspace-focused {
-  font-size: 18px;
-  color: #8ea6c4;
-  margin: .35rem 0 .35rem 0;
+	font-size: 18px;
+	color: #8ea6c4;
+	margin: .35rem 0 .35rem 0;
 }
-
-/*.workspace-focused:hover {
-  font-size: 21px;
-  margin: .35rem 0 .35rem 0;
-}*/
 
 .workspace-occupied {
-  font-size: 18px;
-  color: #6e8db4;
-  transition: .2s;
-  margin: .35rem 0 .35rem 0;
+	font-size: 18px;
+	color: #6e8db4;
+	margin: .35rem 0 .35rem 0;
 }
-
-/*.workspace-occupied:hover {
-  font-size: 21px;
-  margin: .35rem 0 .35rem 0;
-}*/
 
 .workspace-empty {
-  font-size: 18px;
-  color: #434C5E;
-  transition: .2s;
-  margin: .35rem 0 .35rem 0;
+	font-size: 18px;
+	color: #434C5E;
+	margin: .35rem 0 .35rem 0;
 }
 
-// Control Panel
+
+
+// icons info
 .control {
-padding: .5rem;
-font-family: Material Icons;
-font-size: 1.6em;
-background-color: $black;
-border-radius: 5px;
+	padding: .5rem;
+	background-color: $black;
+	border-radius: 5px;
 }
 
 .trayicon {
@@ -100,46 +78,47 @@ border-radius: 5px;
 }
 
 .bar-updates-text {
-  font-family: "JetBrainsMono Nerd Font";
-  font-size: 14px;
-  font-weight: Bold;
-  color: #8ea6c4;
-  padding: .2rem 0 .2rem .3rem;
+	font-family: "JetBrainsMono Nerd Font";
+	font-size: 14px;
+	font-weight: Bold;
+	color: #8ea6c4;
+	padding: .2rem 0 .2rem .3rem;
 }
 
 scale trough {
-  all: unset;
-  background-color: $background;
-  border-radius: 5px;
-  min-height: 80px;
-  min-width: 10px;
-  margin: .3rem 0 .3rem .1rem;
+	all: unset;
+	background-color: $background;
+	border-radius: 5px;
+	min-height: 80px;
+	min-width: 10px;
+	margin: .3rem 0 .3rem .1rem;
 }
 
 .volbar trough highlight {
-  background: linear-gradient($red, $magenta, $blue, $cyan);
-  border-radius: 5px;
+	background: linear-gradient($red, $magenta, $blue, $cyan);
+	border-radius: 5px;
 }
+
 
 // Clock
 .time {
-  font-family: Comic Mono;
-  font-weight: bold;
-  font-size: 1.2em;
-  background-color: $black;
-  color: $white;
-  border-radius: 5px;
-  padding: .7rem 0 .5rem 0;
-  margin: .5rem 0 .5rem 0;
+	font-family: JetBrainsMono Nerd Font;
+	font-weight: bold;
+	font-size: 1.2em;
+	background-color: $black;
+	color: $white;
+	border-radius: 5px;
+	padding: .7rem 0 .5rem 0;
+	margin: .5rem 0 .5rem 0;
 }
 
 // Calendar
 .cal-box {
-  background-color: $black;
-  border-radius: 5px;
-  font-family: Comic Mono;
-  font-size: 1em;
-  font-weight: bold;
+	background-color: $black;
+	border-radius: 5px;
+	font-family: Comic Mono;
+	font-size: 1em;
+	font-weight: bold;
 
   .cal-inner-box {
       padding: 1rem 1rem .2rem;
@@ -156,51 +135,57 @@ scale trough {
 }
 
 calendar:selected {
-  color: $blue;
+	color: $blue;
 }
 
 calendar.header {
-color: $blue;
-font-weight: bold;
+	color: $blue;
+	font-weight: bold;
 }
 
 calendar.button {
-color: $magenta;
+	color: $magenta;
 }
 
 calendar.highlight {
-color: $magenta;
-font-weight: bold;
+	color: $magenta;
+	font-weight: bold;
 }
 
 calendar:indeterminate {
-color: $background;
+	color: $background;
 }
+
 
 // Powermenu
 .powermenu {
-  font-family: Material Design Icons Desktop;
-  font-size: 1.4em;
-  font-weight: bold;
+	font-family: Material Design Icons Desktop;
+	font-size: 1.4em;
+	font-weight: bold;
 }
 
 .button-bspres, .button-reb, .button-lock,
-.button-quit, .button-off{
-  padding: .5rem .2rem .3rem .2rem;
+.button-quit, .button-off {
+	padding: .5rem .2rem .3rem .2rem;
 }
+
 .button-off{
-  margin-bottom: .5rem;
-  color: $red;
+	margin-bottom: .5rem;
+	color: $red;
 }
+
 .button-bspres{
-  color: $green;
+	color: $green;
 }
+
 .button-reb{
-  color: $yellow
+	color: $yellow
 }
+
 .button-quit{
-  color: $magenta;
+	color: $magenta;
 }
+
 .button-lock{
-  color: $blue;
+	color: $blue;
 }
