@@ -1,6 +1,6 @@
 (14/Sept/2022)
-- [Fix] Sometimes the workspaces section get freezed. Not very often but more than expected.
-- Clean code in bar css.
+- [Fix][z0mbi3 rice] Sometimes the workspaces section get freezed. Not very often but more than expected.
+- [z0mbi3 rice] Clean code in bar css.
 
 (08/Sep/2022)
 - If u clone and test, use or whatever this repo before 08/sept/2022 probably u need to clone again because a lot of changes, fixed, code fix, code optimization has been made it.
