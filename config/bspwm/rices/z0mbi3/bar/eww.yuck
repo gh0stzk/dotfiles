@@ -1,10 +1,8 @@
-;; Created   by https://github.com/rxyhn
-;; Designed  by https://github.com/rxyhn
-;; Maintaned by https://github.com/rxyhn
+;; Modified   by https://github.com/gh0stzk/dotfiles
 
 ;; put path to aesthetic bar config files here ;;
 (defvar eww "eww -c $HOME/.config/bspwm/rices/$RICETHEME/bar")
-(defpoll current-volume :interval "1s" "amixer sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'")
+(defpoll current-volume :interval "1s" "amixer sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%' | head -1")
 
 ;; Volume vars
 (defpoll VOLUME :interval "1s" `scripts/volume --get`)
@@ -106,12 +104,12 @@
 			  :duration "550ms"
 	(scale    :class "volbar" 	  
 			  :value current-volume
+			  :onchange "amixer sset Master {}%"
 			  :orientation "v"      
 			  :flipped true 
 			  :tooltip "Volume: ${current-volume}%" 
 			  :max 101 
-			  :min 0 
-			  :onchange "amixer sset Master {}%" ))
+			  :min 0))
 	(button   :style "background-image: url('${VOLICON}');"
 			  :class "trayicon"
 			  :onclick "scripts/volume --toggle"))))			  
@@ -133,12 +131,15 @@
 	(box	:orientation "v" 
 			:class "time" 
 			:valign "end"
-	(button	:onclick "scripts/popup calendar"	
+	(button	:onclick "scripts/popup calendar"
+			:tooltip "${time}"
 			:class "time-hour" hour)
-	(button	:onclick "scripts/popup calendar"	
+	(button	:onclick "scripts/popup calendar"
+			:tooltip "${time}"
 			:class "time-min"  min)))
 (defpoll hour	:interval "1s"	"date '+%H'")
 (defpoll min	:interval "1s"	"date '+%M'")
+(defpoll time :interval "10s" "date '+%H:%M %b %d, %Y'")
 
 ;; Calendar Widgets ;;
 (defwidget cal []
