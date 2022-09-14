@@ -41,7 +41,6 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 ### 🌸Emilia:
 
 - Color Palette: <code>Tokyo Night</code>
-- Widgets: <code>N/A</code>
 
 |<img src="assets/Shot-27-julio-22-004243.webp" alt="Emilia Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-004921.webp" alt="Emilia Rice" align="center" width="600px">|
 |---|---|
@@ -57,7 +56,6 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 ### 🌸Jan
 
 - Color Palette: <code>Cyber Punk</code>
-- Widgets: <code>N/A</code>
 
 |<img src="assets/Shot-27-julio-22-003447.webp" alt="Jan Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-003433.webp" alt="Jan Rice" align="center" width="600px">|
 |---|---|
@@ -72,9 +70,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Aline
 
-
 - Color Palette: <code>Catppuccin Frappe</code>
-- Widgets: <code>N/A</code>
 
 |<img src="assets/Shot-27-julio-22-002001.webp" alt="Aline Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-002636.webp" alt="Aline Rice" align="center" width="600px">|
 |---|---|
@@ -90,7 +86,6 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 ### 🌸Andrea
 
 - Color Palette: <code>Holly molly i dont know..</code>
-- Widgets: <code>Bar</code> <code>Music player</code> <code>Apps</code> <code>System info</code> <code>Power buttons</code>
 
 |<img src="assets/Shot-27-julio-22-001746.webp" alt="Andrea Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-001532.webp" alt="Andrea Rice" align="center" width="600px">|
 |---|---|
@@ -106,7 +101,6 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 ### 🌸Cynthia
 
 - Color Palette: <code>[u/DominiCzech](https://www.reddit.com/user/DominiCzech/)</code>
-- Widgets: <code>N/A</code>
 
 |<img src="assets/Shot-26-julio-22-235349.webp" alt="Cynthia Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-000301.webp" alt="Cynthia Rice" align="center" width="600px">|
 |---|---|
@@ -122,7 +116,6 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 ### 🌸Isabel
 
 - Color Palette: <code>One Dark</code>
-- Widgets: <code>N/A</code>
 
 |<img src="assets/Shot-25-julio-22-101308.webp" alt="Isabel Rice" align="center" width="600px">|<img src="assets/Shot-25-julio-22-100952.webp" alt="Isabel Rice" align="center" width="600px">|
 |---|---|
@@ -137,7 +130,6 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 ### 🌸Silvia
 
 - Color Palette: <code>GruvBox</code>
-- Widgets: <code>N/A</code>
 
 |<img src="assets/Shot-26-julio-22-201658.webp" alt="Silvia Rice" align="center" width="600px">|<img src="assets/Shot-26-julio-22-202411.webp" alt="Silvia Rice" align="center" width="600px">|
 |---|---|
@@ -153,7 +145,6 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 ### 🌸Melissa
 
 - Color Palette: <code>Nord</code>
-- Widgets: <code>N/A</code>
 
 |<img src="assets/Shot-31-julio-22-191337.webp" alt="Melissa Rice" align="center" width="600px">|<img src="assets/Shot-31-julio-22-191939.webp" alt="Melissa Rice" align="center" width="600px">|
 |---|---|
@@ -169,8 +160,6 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 ### 🌸Pamela
 
 - Color Palette: <code>[elenapan](https://github.com/elenapan/dotfiles)</code>
-- Widgets: <code>Calendar, Music Player, Profile card & Power Launcher</code>
-- With 6 bars (polybar).
 
 |<img src="assets/Shot-11-agosto-22-172328.webp" alt="Pamela Rice" align="center" width="600px">|<img src="assets/Shot-11-agosto-22-172747.webp" alt="Pamela Rice" align="center" width="600px">|
 |---|---|
@@ -186,7 +175,6 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 ### 🌸Cristina
 
 - Color palette - <code>[Rose Pine](https://github.com/rose-pine)</code>
-- Widgets - <code>Music Player</code>
 - Main Wall - <code>[ElRastaOk](https://www.reddit.com/r/unixporn/comments/w5p7s0/hyprland_my_cute_desktop/)</code>
 
 |<img src="assets/Shot-24-agosto-22-140529.webp" alt="Cristina Rice" align="center" width="600px">|<img src="assets/Shot-24-agosto-22-141805.webp" alt="Cristina Rice" align="center" width="600px">|
@@ -203,7 +191,6 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 ### 🌸z0mbi3:
 
 - Color Palette: <code>Decay</code>
-- Widgets: <code>Bar & Information Center</code>
 - With Tray icon!!
 
 |<img src="assets/Shot-08-septiembre-22-212947.webp" alt="z0mbi3 Rice" align="center" width="600px">|<img src="assets/Shot-08-septiembre-22-213339.webp" alt="z0mbi3 Rice" align="center" width="600px">|
