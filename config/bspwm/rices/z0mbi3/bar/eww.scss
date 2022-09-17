@@ -1,5 +1,4 @@
-
-*{
+* {
   all: unset;
 }
 
@@ -19,173 +18,171 @@ $white: $foreground;
 $archlogo: #0f94d2;
 
 // The bar
-.eww_bar{
-	background-color: $background;
-	padding: .3rem;
-	border-radius: 9px;
+.eww_bar {
+  background-color: $background;
+  padding: 0.3rem;
+  border-radius: 9px;
 }
 
 // Launcher
-.launcher_icon{
-	color: $archlogo;
-	font-family: "Material Design Icons Desktop";
-	font-size: 1.7em;
-	padding: 1rem 0 1rem 0;
+.launcher_icon {
+  color: $archlogo;
+  font-family: "Material Design Icons Desktop";
+  font-size: 1.7em;
+  padding: 1rem 0 1rem 0;
 }
-
 
 // Workspaces
 .works {
-	font-family: "Material Design Icons Desktop";
-	padding: .5rem .7rem .5rem .7rem;
-	background-color: $black;
-	border-radius: 5px;
+  font-family: "Material Design Icons Desktop";
+  padding: 0.5rem 0.7rem 0.5rem 0.7rem;
+  background-color: $black;
+  border-radius: 5px;
 }
 
 .workspace-focused {
-	font-size: 18px;
-	color: #8ea6c4;
-	margin: .35rem 0 .35rem 0;
+  font-size: 18px;
+  color: #8ea6c4;
+  margin: 0.35rem 0 0.35rem 0;
 }
 
 .workspace-occupied {
-	font-size: 18px;
-	color: #6e8db4;
-	margin: .35rem 0 .35rem 0;
+  font-size: 18px;
+  color: #6e8db4;
+  margin: 0.35rem 0 0.35rem 0;
 }
 
 .workspace-empty {
-	font-size: 18px;
-	color: #434C5E;
-	margin: .35rem 0 .35rem 0;
+  font-size: 18px;
+  color: #434c5e;
+  margin: 0.35rem 0 0.35rem 0;
 }
-
-
 
 // icons info
 .control {
-	padding: .5rem;
-	background-color: $black;
-	border-radius: 5px;
+  padding: 0.5rem;
+  background-color: $black;
+  border-radius: 5px;
 }
 
 .trayicon {
-    background-repeat: no-repeat;
-	background-size: 25px;
-	min-height: 25px;
-	min-width: 7px;
-	margin: .2rem 0 .2rem 0;
+  background-repeat: no-repeat;
+  background-size: 25px;
+  min-height: 25px;
+  min-width: 7px;
+  margin: 0.2rem 0 0.2rem 0;
 }
 
 .bar-updates-text {
-	font-family: "JetBrainsMono Nerd Font";
-	font-size: 14px;
-	font-weight: Bold;
-	color: #8ea6c4;
-	padding: .2rem 0 .2rem .3rem;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 14px;
+  font-weight: Bold;
+  color: #8ea6c4;
+  padding: 0.2rem 0 0.2rem 0.3rem;
 }
 
 scale trough {
-	all: unset;
-	background-color: $background;
-	border-radius: 5px;
-	min-height: 80px;
-	min-width: 10px;
-	margin: .3rem 0 .3rem .1rem;
+  all: unset;
+  background-color: $background;
+  border-radius: 5px;
+  min-height: 80px;
+  min-width: 10px;
+  margin: 0.3rem 0 0.3rem 0.1rem;
 }
 
 .volbar trough highlight {
-	background: linear-gradient($red, $magenta, $blue, $cyan);
-	border-radius: 5px;
+  background: linear-gradient($red, $magenta, $blue, $cyan);
+  border-radius: 5px;
 }
-
 
 // Clock
 .time {
-	font-family: JetBrainsMono Nerd Font;
-	font-weight: bold;
-	font-size: 1.2em;
-	background-color: $black;
-	color: $white;
-	border-radius: 5px;
-	padding: .7rem 0 .5rem 0;
-	margin: .5rem 0 .5rem 0;
+  font-family: JetBrainsMono Nerd Font;
+  font-weight: bold;
+  font-size: 1.2em;
+  background-color: $black;
+  color: $white;
+  border-radius: 5px;
+  padding: 0.7rem 0 0.5rem 0;
+  margin: 0.5rem 0 0.5rem 0;
 }
 
 // Calendar
 .cal-box {
-	background-color: $black;
-	border-radius: 5px;
-	font-family: Comic Mono;
-	font-size: 1em;
-	font-weight: bold;
+  background-color: $black;
+  border-radius: 5px;
+  font-family: Comic Mono;
+  font-size: 1em;
+  font-weight: bold;
 
   .cal-inner-box {
-      padding: 1rem 1rem .2rem;
+    padding: 1rem 1rem 0.2rem;
 
-      .cal {
-          &.highlight {
-              padding: 10rem;
-          }
-
-          padding: .8rem .25rem 0rem;
-          margin-left: 10px;
+    .cal {
+      &.highlight {
+        padding: 10rem;
       }
+
+      padding: 0.8rem 0.25rem 0rem;
+      margin-left: 10px;
+    }
   }
 }
 
 calendar:selected {
-	color: $blue;
+  color: $blue;
 }
 
 calendar.header {
-	color: $blue;
-	font-weight: bold;
+  color: $blue;
+  font-weight: bold;
 }
 
 calendar.button {
-	color: $magenta;
+  color: $magenta;
 }
 
 calendar.highlight {
-	color: $magenta;
-	font-weight: bold;
+  color: $magenta;
+  font-weight: bold;
 }
 
 calendar:indeterminate {
-	color: $background;
+  color: $background;
 }
-
 
 // Powermenu
 .powermenu {
-	font-family: Material Design Icons Desktop;
-	font-size: 1.4em;
-	font-weight: bold;
+  font-family: Material Design Icons Desktop;
+  font-size: 1.4em;
+  font-weight: bold;
 }
 
-.button-bspres, .button-reb, .button-lock,
-.button-quit, .button-off {
-	padding: .5rem .2rem .3rem .2rem;
+.button-bspres,
+.button-reb,
+.button-lock,
+.button-quit,
+.button-off {
+  padding: 0.5rem 0.2rem 0.3rem 0.2rem;
 }
 
-.button-off{
-	margin-bottom: .5rem;
-	color: $red;
+.button-off {
+  margin-bottom: 0.5rem;
+  color: $red;
 }
 
-.button-bspres{
-	color: $green;
+.button-bspres {
+  color: $green;
 }
 
-.button-reb{
-	color: $yellow
+.button-reb {
+  color: $yellow;
 }
 
-.button-quit{
-	color: $magenta;
+.button-quit {
+  color: $magenta;
 }
 
-.button-lock{
-	color: $blue;
+.button-lock {
+  color: $blue;
 }

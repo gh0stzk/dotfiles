@@ -1,6 +1,11 @@
+(17/Sept/2022)
+- [z0mbi3 Rice] Replaced ALSA utilities with Pulseaudio, because everyone uses pulseaudio, there is no need to use alsa to set volume values.
+- Removed alsa-utilities in dependencies section, added pamixer to dependencies.
+
+
 (14/Sept/2022)
 - [z0mbi3 rice][Fix] Sometimes the workspaces section get freezed. Not very often but more than expected.
-- [z0mbi3 rice] Clean code in bar css.
+- [z0mbi3 Rice] Clean code in bar css.
 - [Z0mbi3 Rice] Added tooltip to clock section.
 - Hide & Un-hide bars in Z0mbi3 and Andrea Rices now works as expected.
 -

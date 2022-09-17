@@ -1,6 +1,5 @@
-
-*{
-	all: unset;
+* {
+  all: unset;
 }
 
 // Variable Color's
@@ -18,7 +17,6 @@ $cyan: #93cee9;
 $white: $foreground;
 $archlogo: #0f94d2;
 
-
 //Global Styles
 .sidebar {
   background-color: $background;
@@ -33,95 +31,93 @@ $archlogo: #0f94d2;
 }*/
 
 tooltip label {
-    margin: 1px;
-    color: #c0caf5;
-    font-weight: bold;
-    font-size: 14px;
-    font-family: JetBrainsMono Nerd Font;
+  margin: 1px;
+  color: #c0caf5;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: JetBrainsMono Nerd Font;
 }
 
 /* launcher */
 
-.launchermenu
-{
-    background-color: $black;
-    border-radius: 8px;
-    //border: 2px solid #2f354b;
+.launchermenu {
+  background-color: $black;
+  border-radius: 8px;
+  //border: 2px solid #2f354b;
 }
 
 .face {
-	background-size: 95px;
-	min-height: 95px;
-	min-width: 95px;
-	margin: 10px 180px 10px 0px;
-	border-radius: 100%;
+  background-size: 95px;
+  min-height: 95px;
+  min-width: 95px;
+  margin: 10px 180px 10px 0px;
+  border-radius: 100%;
 }
 
-.launcher-pfp-label
-{
-    font-size: 15px;
-    font-style: italic;
-    font-family: Cartograph CF;
-    color: #c0caf5;
-    margin: -160px 47px 0px 120px;
+.launcher-pfp-label {
+  font-size: 15px;
+  font-style: italic;
+  font-family: Cartograph CF;
+  color: #c0caf5;
+  margin: -160px 47px 0px 120px;
 }
 
 .launcher-apps {
-	margin-left: 105px;
-	margin-right: 20px;
-	margin-top: -85px;
+  margin-left: 105px;
+  margin-right: 20px;
+  margin-top: -85px;
 }
 
-.launcher-btn
-{
-    color: #c0caf5;
-    font-family: Material Design Icons Desktop;
-    font-size: 18px;
-    margin-top: 10px;
+.launcher-btn {
+  color: #c0caf5;
+  font-family: Material Design Icons Desktop;
+  font-size: 18px;
+  margin-top: 10px;
 }
 
-.launcher-btn:hover
-{
-    color: $magenta;
-    font-family: Material Design Icons Desktop;
-    font-size: 18px;
-    margin-top: -10px;
+.launcher-btn:hover {
+  color: $magenta;
+  font-family: Material Design Icons Desktop;
+  font-size: 18px;
+  margin-top: -10px;
 }
 
 // Music
 .music-player {
-	background-color: $black;
-	padding: 0px 25px 0px 10px;
-	border-radius: 12px;
+  background-color: $black;
+  padding: 0px 25px 0px 10px;
+  border-radius: 12px;
 }
 .album_art {
-	background-repeat: no-repeat;
-	background-size: 100px 100px;
-	background-position: center;
-	border-radius: 12px;
-	margin: 2rem .1rem 2rem .8rem;
-	padding: 3rem;
+  background-repeat: no-repeat;
+  background-size: 100px 100px;
+  background-position: center;
+  border-radius: 12px;
+  margin: 2rem 0.1rem 2rem 0.8rem;
+  padding: 3rem;
 }
 
 .artist {
-	font-family: JetBrainsMono Nerd Font;
-	font-weight: bold;
-	color: #c0caf5;
-	font-size : 1em;
-	padding-left: 16px;
-	padding-right: 9px;
+  font-family: JetBrainsMono Nerd Font;
+  font-weight: bold;
+  color: #c0caf5;
+  font-size: 1em;
+  padding-left: 16px;
+  padding-right: 9px;
 }
-.song{
-	font-family: JetBrainsMono Nerd Font;
-	font-style: italic;
-	font-size: 1.1em;
-	color: #c0caf5;
-	padding-left: 16px;
-	padding-right: 9px;
-	margin-top: -5px;
+.song {
+  font-family: JetBrainsMono Nerd Font;
+  font-style: italic;
+  font-size: 1.1em;
+  color: #c0caf5;
+  padding-left: 16px;
+  padding-right: 9px;
+  margin-top: -5px;
 }
-.btn_prev, .btn_play, .btn_next {
-	font-family: JetBrainsMono Nerd Font;
+.btn_prev,
+.btn_play,
+.btn_next {
+  font-family: JetBrainsMono Nerd Font;
   color: #c0caf5;
   font-size: 20px;
 }
@@ -134,16 +130,16 @@ tooltip label {
 }
 
 .iconweather {
-	font-family: Iosevka Nerd Font;
-	font-size: 34px;
-	font-weight: normal;
+  font-family: Iosevka Nerd Font;
+  font-size: 34px;
+  font-weight: normal;
 }
 
 .label_temp {
-	color: #c0caf5;
-	font-size: 25px;
-	font-weight: bold;
-    font-family: JetBrainsMono Nerd Font;
+  color: #c0caf5;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: JetBrainsMono Nerd Font;
 }
 
 .date {
@@ -164,7 +160,9 @@ tooltip label {
   border-radius: 12px;
 }
 
-.stats-icon-cpu, .stats-icon-ram, .stats-icon-fs {
+.stats-icon-cpu,
+.stats-icon-ram,
+.stats-icon-fs {
   font-size: 20px;
 }
 
@@ -180,7 +178,10 @@ tooltip label {
   color: $yellow;
 }
 
-.scale-cpu, .scale-ram, .scale-fs, scale trough {
+.scale-cpu,
+.scale-ram,
+.scale-fs,
+scale trough {
   all: unset;
   background-color: $gray;
   min-height: 10px;
@@ -188,14 +189,16 @@ tooltip label {
   margin-left: 20px;
 }
 
-.scale-cpu, .scale-ram, .scale-fs, scale trough highlight {
+.scale-cpu,
+.scale-ram,
+.scale-fs,
+scale trough highlight {
   all: unset;
   border-radius: 15px;
 }
 
 .scale-cpu trough highlight {
   background: linear-gradient(to right, $magenta, $red);
-  
 }
 
 .scale-ram trough highlight {

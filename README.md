@@ -240,7 +240,7 @@ A one time command to install most of these dependencies with your **favorite AU
 yay -S bspwm polybar sxhkd eww dunst rofi lsd jq checkupdates-aur \
 playerctl mpd ncmpcpp mpc picom-arian8j2-git xtitle termite betterlockscreen \
 ttf-jetbrains-mono papirus-icon-theme ttf-inconsolata \
-feh alsa-utils libwebp webp-pixbuf-loader xorg-xkill
+feh pamixer libwebp webp-pixbuf-loader xorg-xkill
 ```
 
 <b>3. Cloning Dotfiles & Installing:</b>

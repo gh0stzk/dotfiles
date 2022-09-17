@@ -1,12 +1,12 @@
 ;; Modified   by https://github.com/gh0stzk/dotfiles
 
 ;; put path to aesthetic bar config files here ;;
-(defvar eww "eww -c $HOME/.config/bspwm/rices/$RICETHEME/bar")
-(defpoll current-volume :interval "1s" "amixer sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%' | head -1")
+(defvar eww "/usr/bin/eww -c $HOME/.config/bspwm/rices/z0mbi3/bar")
 
 ;; Volume vars
-(defpoll VOLUME :interval "1s" `scripts/volume --get`)
-(defpoll VOLICON :interval "1s" `scripts/volume --icon`)
+(defpoll volume_icon :interval "1s" "scripts/volume.sh --icon")
+(defpoll volumen :interval "1s" "scripts/volume.sh --percentage")
+(defpoll volume_value :interval "1s" "scripts/volume.sh --vol")
 
 ;; Workspaces
 (deflisten workspace "./scripts/workspace")
@@ -103,16 +103,16 @@
 			  :reveal volum         
 			  :duration "550ms"
 	(scale    :class "volbar" 	  
-			  :value current-volume
-			  :onchange "amixer sset Master {}%"
+			  :value volume_value
+			  :onchange "scripts/volume.sh set {}"
 			  :orientation "v"      
 			  :flipped true 
-			  :tooltip "Volume: ${current-volume}%" 
+			  :tooltip "Volume: ${volumen}" 
 			  :max 101 
 			  :min 0))
-	(button   :style "background-image: url('${VOLICON}');"
+	(button   :style "background-image: url('${volume_icon}');"
 			  :class "trayicon"
-			  :onclick "scripts/volume --toggle"))))			  
+			  :onclick "scripts/volume.sh --toggle-muted"))))			  
 (defvar volum false)
 
 
