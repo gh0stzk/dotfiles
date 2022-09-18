@@ -12,9 +12,6 @@ elif [[ "$1" == "--fm" ]]; then
 elif [[ "$1" == "--ge" ]]; then
 	geany & disown
 
-elif [[ "$1" == "--dc" ]]; then
-	discord &
-
 elif [[ "$1" == "--tg" ]]; then
 	telegram-desktop &
 
@@ -23,9 +20,6 @@ elif [[ "$1" == "--rd" ]]; then
 
 elif [[ "$1" == "--ml" ]]; then
 	firefox --new-tab "https://mail.google.com"
-
-elif [[ "$1" == "--pow" ]]; then
-	xfce4-power-manager-settings &
 
 elif [[ "$1" == "--nm" ]]; then
 	networkmanager_dmenu

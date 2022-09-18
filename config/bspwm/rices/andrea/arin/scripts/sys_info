@@ -44,28 +44,6 @@ get_mem() {
 	printf "%.0f\n" $(free -m | grep Mem | awk '{print ($3/$2)*100}')
 }
 
-## Get Brightness
-get_blight() {
-	CARD=`ls /sys/class/backlight | head -n 1`
-
-	if [[ "$CARD" == *"intel_"* ]]; then
-		BNESS=`xbacklight -get`
-		LIGHT=${BNESS%.*}
-	else
-		BNESS=`blight -d $CARD get brightness`
-		PERC="$(($BNESS*100/255))"
-		LIGHT=${PERC%.*}
-	fi
-
-	echo "$LIGHT"
-}
-
-## Get Battery 
-get_battery() {
-	BAT=`ls /sys/class/power_supply | grep BAT | head -n 1`
-	cat /sys/class/power_supply/${BAT}/capacity
-}
-
 ## Get Disk Usage
 get_disk() {
 	df -h / | awk '{print $5}' | tail -n1 | sed 's/%//g'
@@ -76,10 +54,6 @@ if [[ "$1" == "--cpu" ]]; then
 	get_cpu
 elif [[ "$1" == "--mem" ]]; then
 	get_mem
-elif [[ "$1" == "--blight" ]]; then
-	get_blight
-elif [[ "$1" == "--bat" ]]; then
-	get_battery
 elif [[ "$1" == "--disk" ]]; then
 	get_disk
 fi

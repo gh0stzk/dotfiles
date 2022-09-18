@@ -24,8 +24,9 @@
 (defpoll UPDATES :interval "15m" `~/.config/bspwm/scripts/updates.sh`)
 
 ;; Volume vars
-(defpoll VOLICON :interval "1s" `scripts/volume --icon`)
-(defpoll VOLUME :interval "1s" `scripts/volume --get`)
+(defpoll volume_icon :interval "1s" "scripts/volume.sh --icon")
+(defpoll volumen :interval "1s" "scripts/volume.sh --percentage")
+(defpoll volume_value :interval "1s" "scripts/volume.sh --vol")
 
 ;; Network
 (defpoll WIFIICON :interval "10s" `scripts/check-network --icon`)
@@ -88,10 +89,10 @@
 						(box :style "background-image: url('images/icons/system/pac_man.png');" :class "trayicon")
 							(label :class "mails" :halign "start" :text UPDATES)))
 							
-					(button :onclick "scripts/volume --toggle"
+					(button :onclick "scripts/volume.sh --toggle-muted"
 					    (box :orientation "h" :spacing 8 :valign "center" :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
-						    (box :style "background-image: url('${VOLICON}');" :class "trayicon")
-							    (label :class "infotext" :halign "start" :text VOLUME)))
+						    (box :style "background-image: url('${volume_icon}');" :class "trayicon")
+							    (label :class "infotext" :halign "start" :text volumen)))
 				
 					(box :orientation "h" :spacing 8 :valign "center" :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
 						(box :style "background-image: url('${WIFIICON}');" :class "trayicon")
