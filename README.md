@@ -239,8 +239,8 @@ A one time command to install most of these dependencies with your **favorite AU
 ```sh
 yay -S bspwm polybar sxhkd eww dunst rofi lsd jq checkupdates-aur \
 playerctl mpd ncmpcpp mpc picom-arian8j2-git xtitle termite betterlockscreen \
-ttf-jetbrains-mono nerd-fonts-jetbrains-mono nerd-fonts-terminus papirus-icon-theme ttf-inconsolata ttf-joypixels \
-feh pamixer libwebp webp-pixbuf-loader xorg-xkill
+ttf-jetbrains-mono nerd-fonts-jetbrains-mono nerd-fonts-terminus ttf-inconsolata ttf-joypixels nerd-fonts-cozette-ttf \
+feh pamixer libwebp webp-pixbuf-loader xorg-xkill papirus-icon-theme
 ```
 
 <b>3. Cloning Dotfiles & Installing:</b>
