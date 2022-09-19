@@ -1,3 +1,18 @@
+(19/Sept/2022)
+- Updated Weather Module for polybar rices. 
+- WeatherMini script for polybar now show error message.
+- ttf-joypixels added to dependencies.
+- Removed JetBrainsMono Nerd Font from fonts dir, now is installed with dependencies.
+- Removed some fonts in fonts dir that are not used anymore.
+- Added Terminess & CozzeteVector Nerd Fonts to dependencies.
+
+- [Andrea Rice] Cganged rofi font. Dosis is not used anymore.
+- Rofi menu font changed in all rices
+- [Aline Rice] Changed transpareny in terminal
+- [Andrea Rice] Changed transpareny in terminal
+- Changed Fade exclude values in picom in all rices
+- Change font in rofi rice selector
+
 (17/Sept/2022)
 - [z0mbi3 Rice] [Andrea Rice ]Replaced ALSA utilities with Pulseaudio, because everyone uses pulseaudio, there is no need to use alsa to set volume values.
 - Removed alsa-utilities in dependencies section, added pamixer to dependencies.

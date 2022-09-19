@@ -19,7 +19,7 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "Dosis 10";
+    font:                        "JetBrainsMono Nerd Font Bold 9";
     background:                  #f5eee6;
     background-alt:              #f5eee6E0;
     foreground:                  #151515;

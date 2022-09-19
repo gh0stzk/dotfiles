@@ -16,7 +16,7 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "JetBrainsMono Nerd Font Medium 10";
+    font:                        "JetBrainsMono Nerd Font Bold 10";
     background:                  #14171c;
     background-alt:              #14171cE0;
     foreground:                  #b8bfe5;
