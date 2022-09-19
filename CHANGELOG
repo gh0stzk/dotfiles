@@ -5,7 +5,6 @@
 - Removed JetBrainsMono Nerd Font from fonts dir, now is installed with dependencies.
 - Removed some fonts in fonts dir that are not used anymore.
 - Added Terminess & CozzeteVector Nerd Fonts to dependencies.
-
 - [Andrea Rice] Cganged rofi font. Dosis is not used anymore.
 - Rofi menu font changed in all rices
 - [Aline Rice] Changed transpareny in terminal
