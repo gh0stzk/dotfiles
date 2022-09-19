@@ -6,7 +6,7 @@
 - Removed some fonts in fonts dir that are not used anymore.
 - Added Terminess & CozzeteVector Nerd Fonts to dependencies.
 - [Andrea Rice] Cganged rofi font. Dosis is not used anymore.
-- Rofi menu font changed in all rices
+- Termite font changed in all rices
 - [Aline Rice] Changed transpareny in terminal
 - [Andrea Rice] Changed transpareny in terminal
 - Changed Fade exclude values in picom in all rices
