@@ -294,14 +294,24 @@ The proper execute permissions on some files should be maintained when you downl
 ```sh
 chmod +x ~/.config/bspwm/bspwmrc
 chown $USER ~/.config/bspwm/rice.cfg
-chmod +x ~/.config/bspwm/scripts/{external_rules,hu-polybar,LaunchWorld,RiceSelector,screenshoter,updates.sh,weather-mini.sh}
-# In Pamela & Andrea Rices, yo u need to give execution permissions to the shell scripts too.
-chmod +x ~/.config/bspwm/rices/pamela/widgets/{calendar,calendarlauncher,getSongDuration,mplayer-launcher,music,power-launcher,profile-sys-launcher}
-chmod +x ~/.config/bspwm/rices/andrea/arin/launch_bar
+chmod +x ~/.config/bspwm/scripts/{external_rules,getSongDuration,music,RandomWall,hu-polybar,LaunchWorld,RiceSelector,screenshoter,updates.sh,WeatherMini}
+
+# In Cristina, Pamela, Andrea & z0mbi3 Rices, you need to give execution permissions to the shell scripts too.
+
+chmod +x ~/.config/bspwm/rices/pamela/widgets/{calendar,calendarlauncher,mplayer-launcher,power-launcher,profile-sys-launcher}
 chmod +x ~/.config/bspwm/rices/andrea/arin/sidedar/toggle_sidebar
-chmod +x ~/.config/bspwm/rices/andrea/arin/scripts/{battery,check-network,mails,music_info,quotes,sys_info,system,volume,weather_info,widget_apps,widget_search,workspaces.sh}
+chmod +x ~/.config/bspwm/rices/andrea/arin/scripts/{battery,check-network,music_info,quotes,sys_info,system,volume.sh,widget_apps,widget_search}
+chmod +x ~/.config/bspwm/rices/cristina/widgets/mplayer-launcher
+chmod +x ~/.config/bspwm/rices/z0mbi3/bar/scripts/{battery,calendar,popup,volume.sh,wifi,workspace}
+chmod +x ~/.config/bspwm/rices/z0mbi3/dashboard/LaunchInfoCenter.sh
+chmod +x ~/.config/bspwm/rices/z0mbi3/dashboard/scripts/weather
 ```
-* Other
+* **Weather module is showing wrong values**
+Yes the values are in my city "Mexico City" you need to edit ~/.config/bspwm/scripts/WeatherMini to set your city
+In line 3 you will find this line weather=$(curl -s wttr.in/**Mexico**?format=3) You need to write your city, or postal code, please refer to the [wttr.in Help](https://wttr.in/:help)
+
+For the eww widget in z0mbi3 rice you need to edit ~/.config/bspwm/rices/z0mbi3/dashboard/scripts/weather
+
 
 ## Credits
 
