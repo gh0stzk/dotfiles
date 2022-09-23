@@ -307,6 +307,7 @@ chmod +x ~/.config/bspwm/rices/z0mbi3/dashboard/LaunchInfoCenter.sh
 chmod +x ~/.config/bspwm/rices/z0mbi3/dashboard/scripts/weather
 ```
 * **Weather module is showing wrong values**
+
 Yes the values are in my city "Mexico City" you need to edit ~/.config/bspwm/scripts/WeatherMini to set your city
 In line 3 you will find this line weather=$(curl -s wttr.in/**Mexico**?format=3) You need to write your city, or postal code, please refer to the [wttr.in Help](https://wttr.in/:help)
 
