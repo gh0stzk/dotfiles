@@ -18,7 +18,7 @@ https://user-images.githubusercontent.com/67278339/179444283-d5a4bc48-a9c7-4a91-
 |Widgets|[ElKowars wacky widgets ](https://github.com/elkowar/eww)|
 
 ## 📖 Features
-* **Change RICE on the fly:** 10 different Rices now!.
+* **Change RICE on the fly:** 11 different Rices now!.
 
 * **Rice Selector:** <code>Alt + Space bar</code> to launch it.
 
