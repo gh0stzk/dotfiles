@@ -14,13 +14,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;							Widget Section's							 ;;	
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; Launcher Widgets ;;
 (defwidget launcher []
 	(box :orientation "v" 
 		 :space-evenly "false" 
 		 :spacing -15
   	(button :class "launcher_icon" 
-		   	:onclick "scripts/popup launcher"  "󰣇")))
+		   	:onclick "scripts/popup launcher"
+		   	:onrightclick "RiceSelector & disown" "󰣇")))
 
 ;; Workspaces Widgets ;;
 (defwidget workspaces []
@@ -228,7 +230,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Bar Windows ;;
 (defwindow bar
-	:geometry (geometry :x "35px" 
+	:geometry (geometry :x "25px" 
 						:y "7%" 
 						:height "86%" 
 						:width "47px")

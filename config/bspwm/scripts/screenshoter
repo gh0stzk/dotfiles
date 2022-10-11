@@ -6,7 +6,7 @@
 
 time=$(date '+%d-%B-%y-%H%M%S')
 dir="$(xdg-user-dir PICTURES)/ScreenShots"
-file="Shot-$time.webp"
+file="$time.png"
 
 	if ! [ -d "$dir" ]; then
 		mkdir -p $dir
@@ -26,9 +26,9 @@ function pumpumshot() {
 	cd "$dir" || return
 	local bytes
     if [ "$(pgrep -x picom)" ]; then
-      bytes="$(maim -u -o -m 10 -d 5 -f webp -s -b 2 -c 0.35,0.55,0.85,0.25 -l | base64)"
+      bytes="$(maim -u -o -m 4 -d 3 -f png -s -b 2 -c 0.35,0.55,0.85,0.25 -l | base64)"
     else
-      bytes="$(maim -u -o -m 10 -d 5 -f webp -s -b 2 | base64)" 
+      bytes="$(maim -u -o -m 4 -d 3 -f png -s -b 2 | base64)" 
     fi
 	if [ "$bytes" ]; then
 		echo "$bytes" | base64 --decode | tee "$file"

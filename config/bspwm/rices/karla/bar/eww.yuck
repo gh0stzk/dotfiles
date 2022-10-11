@@ -1,0 +1,178 @@
+
+(defvar eww "eww -c $HOME/.config/bspwm/rices/karla/bar")
+(defvar disk_reveal false)
+
+(defpoll disk_all :interval "1s" "scripts/disk_info --all")
+(defpoll disk_used :interval "1s" "scripts/disk_info --used")
+(defpoll disk_free :interval "1s" "scripts/disk_info --free")
+
+(defpoll ram_used :interval "1s" "scripts/ram_info --used")
+(defpoll ram_all :interval "1s" "scripts/ram_info --all")
+(defpoll ram_parsed :interval "1s" "scripts/ram_info --parsed")
+
+;; ** Widgets *************************************************************************
+    
+;; apps
+(defwidget apps [] 
+			(box :orientation "h" :spacing 7 :valign "center" :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
+				(button :style "background-image: url('images/icons/terminal.png');" :class "appicon" :onclick "scripts/apps --tr")
+				(button :style "background-image: url('images/icons/firefox.png');" :class "appicon" :onclick "scripts/apps --ff")
+				(button :style "background-image: url('images/icons/files.png');" :class "appicon" :onclick "scripts/apps --fm")
+				(button :style "background-image: url('images/icons/notes.png');" :class "appicon" :onclick "scripts/apps --ge")
+				(button :style "background-image: url('images/icons/whatsapp.png');" :class "appicon" :onclick "scripts/apps --wa")
+				(button :style "background-image: url('images/icons/telegram.png');" :class "appicon" :onclick "scripts/apps --tg")))
+				
+				
+(defwidget sep []
+  (box :orientation "h" :valign "center"
+       (label :class "sep" :text "|")))
+       
+       
+(defwidget disk_st []
+  (eventbox
+    :onhover "${eww} update disk_reveal=\"true\""
+    :onhoverlost "${eww} update disk_reveal=\"false\""
+    (box :orientation "h" :space-evenly "false" :class "disk_box" :vexpand "false" :hexpand "false"
+        (image :class "center_icons" :path "images/disk.png" :image-width 24 :image-height 24)
+        (box 
+          :orientation "v"
+          :space-evenly "false"
+          :vexpand "false"
+          :hexpand "false"
+          :valign "center"
+          :class "center_boxes"
+          (revealer
+            :reveal "${!disk_reveal}"
+            :transition "slidedown"
+            :duration "350ms"
+            (box
+              :orientation "v"
+              :class "center_info"
+              :valign "start"
+              (label
+                :class "center_labels"
+                :text "${disk_used}G"
+                :halign "center")
+              (scale
+                :min 0
+                :max disk_all
+                :value disk_used
+                :orientation "h")))
+          (revealer
+            :reveal disk_reveal
+            :transition "slideup"
+            :duration "350ms"
+            :valign "center"
+            (box
+              :valign "center"
+              :halign "fill"
+              :class "center_revealers"
+              (label
+                :halign "center"
+                :text "${disk_free}G free")) 
+            )))))
+            
+            
+(defwidget ram_st []
+    (box 
+      :orientation "h"
+      :space-evenly "false"
+      :class "ram_box"
+      :vexpand "false"
+      :hexpand "false"
+        (image
+          :class "center_icons"
+          :path "images/ram.png"
+          :image-width 24
+          :image-height 24)
+        (box 
+          :orientation "v"
+          :space-evenly "false"
+          :vexpand "false"
+          :hexpand "false"
+          :valign "center"
+          :class "center_boxes"
+            (box
+              :orientation "v"
+              :class "center_info"
+              :valign "start"
+              (label
+                :class "center_labels"
+                :text "${ram_parsed}"
+                :halign "center")
+              (scale
+                :min 0
+                :max ram_all
+                :value ram_used
+                :orientation "h"))
+          )))
+          
+          
+(defwidget cpu_st []
+    (box 
+      :orientation "h"
+      :space-evenly "false"
+      :class "cpu_box"
+      :vexpand "false"
+      :hexpand "false"
+        (image
+          :class "center_icons"
+          :path "images/procesador.png"
+          :image-width 20
+          :image-height 20)
+        (box 
+          :orientation "v"
+          :space-evenly "false"
+          :vexpand "false"
+          :hexpand "false"
+          :valign "center"
+          :class "center_boxes"
+          
+            (box
+              :orientation "v"
+              :class "center_info"
+              :valign "start"
+              (label
+                :class "center_labels"
+                :text "${round(EWW_CPU.avg, 0)}%"
+                :halign "center")
+              (scale
+                :min 0
+                :max 100
+                :value "${EWW_CPU.avg}"
+                :orientation "h"))
+          )))
+       
+       
+(defwidget left []
+	(box :orientation "h" 
+		 :space-evenly false
+(apps)
+(sep)
+(disk_st)
+(ram_st)
+(cpu_st)))
+
+;; Bar Widgets ;;
+(defwidget bar []
+	(box :class "dockbox" 
+		 :orientation "h" 
+		 :vexpand "false" 
+		 :hexpand "false"
+(left)))
+
+;; ** Windows *************************************************************************
+
+;; apps
+(defwindow bar
+           :monitor 0
+           :geometry (geometry :x "34%"
+                               :y "10px"
+                               :width "32%"
+                               :height "47px"
+                               :anchor "top left")
+           :stacking "fg"
+           :reserve (struts :distance "0px" :side "top")                                                                 
+           :windowtype "dock"
+           :wm-ignore false
+(bar))

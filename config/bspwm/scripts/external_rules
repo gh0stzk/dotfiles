@@ -62,7 +62,7 @@ case "$class" in
 	    ;;
 	Thunar)
 	    eval "$consequences"
-	    [ "$state" ] || echo "state=pseudo_tiled desktop=^2 rectangle=908x505+0+0 follow=on center=on border=off"
+	    [ "$state" ] || echo "state=pseudo_tiled desktop=^2 rectangle=966x576+0+0 follow=on center=on border=off"
 	    ;;
 	firefox|Navigator)
 	    eval "$consequences"

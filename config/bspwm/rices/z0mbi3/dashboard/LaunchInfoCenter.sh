@@ -9,7 +9,7 @@ ewwcfg="$HOME/.config/bspwm/rices/z0mbi3/dashboard"
 EWW=`which eww`
 
 if [[ ! `pidof eww` ]]; then
-	${EWW} daemon
+	${EWW} -c $HOME/.config/bspwm/rices/z0mbi3/dashboard daemon &
 	sleep 1
 fi
 

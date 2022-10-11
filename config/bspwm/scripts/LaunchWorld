@@ -157,15 +157,30 @@ function SetGirlFriendRice() {
 		  
 		z0mbi3)
 		
-		  SetBspwmConf 0 5 5 "#161616" "#161616" "#161616" "#4f4f5b" 95 5
+		  SetBspwmConf 0 5 5 "#161616" "#161616" "#161616" "#4f4f5b" 85 5
 		  
+		  # Kill any running instances of bspc to prevent multiple
+		  # instances of "workspaces" script in eww rices to run at once
+		  killall -9 bspc
 		  pkill picom
-		  launch eww -c $HOME/.config/bspwm/rices/$RICETHEME/bar --restart open bar &
+		  
+		  launch eww -c $HOME/.config/bspwm/rices/z0mbi3/bar open bar
 		  launch polybar -q tray -c ~/.config/bspwm/rices/z0mbi3/bar/polybar_tray.ini
 		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
 		  ;;
 		  
+		  karla)
+		
+		  SetBspwmConf 0 65 5 "#202132" "#202132" "#202132" "#070219" 5 5
+		 
+		  pkill picom
+		  launch eww -c $HOME/.config/bspwm/rices/karla/bar open bar
+		  launch polybar -q karla-bar -c ${polydir}/config.ini
+		  polybar -q karla-bar2 -c ${polydir}/config.ini & disown
+		  launch dunst -config ${bspdir}/dunstrc-light &
+		  
+		  ;;
 		  
 		andrea)
 		
@@ -189,9 +204,6 @@ function SetGirlFriendRice() {
 ReloadTermite
 
 function AutoStartApps() {
-	# Kill any running instances of bspc to prevent multiple
-	# instances of "workspaces" script in eww rices to run at once
-	killall bspc
 	
 	launch sxhkd -c ${bspdir}/sxhkdrc &
 	launch picom --config ${bspdir}/rices/$RICETHEME/picom.conf &

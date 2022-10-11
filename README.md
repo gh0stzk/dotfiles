@@ -188,6 +188,21 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 </details>
 
+### 🌸Karla
+
+- Color palette - <code>No author</code>
+
+|<img src="assets/Shot-11-octubre-22-150149.webp" alt="Karla Rice" align="center" width="600px">|<img src="assets/Shot-11-octubre-22-150408.webp" alt="Karla Rice" align="center" width="600px">|
+|---|---|
+
+<details>
+<summary><b>Extra wallpapers in Karla</b></summary>
+
+|<img src="config/bspwm/rices/karla/wall-02.webp" alt="Karla Rice" align="center" width="150px">|<img src="config/bspwm/rices/karla/wall-03.webp" alt="Karla Rice" align="center" width="150px">|<img src="config/bspwm/rices/karla/wall-04.webp" alt="Karla Rice" align="center" width="150px">|<img src="config/bspwm/rices/karla/wall-05.webp" alt="Karla Rice" align="center" width="150px">|
+|---|---|---|---|
+
+</details>
+
 ### 🌸z0mbi3:
 
 - Color Palette: <code>Decay</code>
@@ -199,8 +214,8 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in z0mbi3</b></summary>
 
-|<img src="config/bspwm/rices/z0mbi3/wall-01.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-02.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-04.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-05.webp" alt="z0mbi3 Rice" align="center" width="150px">|
-|---|---|---|---|
+|<img src="config/bspwm/rices/z0mbi3/wall-01.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-02.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-04.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-05.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-06.webp" alt="z0mbi3 Rice" align="center" width="150px">|
+|---|---|---|---|---|
 
 </details>
 
