@@ -32,18 +32,6 @@ SetGirlFriendRice
 AutoStartApps
 
 
-########### hide eww bars (z0mbi3 & Karla) when window state is fullscreen
-bspc subscribe node_state | while read -r _ _ _ _ state flag; do
-    if [ "$state" != "fullscreen" ]; then
-        continue
-    fi
-    if [ "$flag" == on ]; then
-        eww -c $HOME/.config/bspwm/rices/$RICETHEME/bar close-all
-  else
-        eww -c $HOME/.config/bspwm/rices/$RICETHEME/bar open bar
-    fi
-done &
-
 ########### bspwm conf
 
 bspc config external_rules_command ~/.config/bspwm/scripts/external_rules
