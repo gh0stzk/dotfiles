@@ -133,7 +133,7 @@ element normal.normal {
     text-color:                  inherit;
 }
 element selected.normal {
-    background-color:            @selected;
+    background-image: linear-gradient(#1c9ee0, #f05393, #afa4ec);
     text-color:                  @background;
 }
 element-icon {
