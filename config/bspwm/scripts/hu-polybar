@@ -23,7 +23,7 @@ function hide() {
 		eww -c $HOME/.config/bspwm/rices/andrea/arin close-all | bspc config top_padding 5
 		
 	elif [[ "${RICETHEME}" == karla ]]; then
-		eww -c $HOME/.config/bspwm/rices/karla/bar close bar | bspc config top_padding 5	
+		eww -c $HOME/.config/bspwm/rices/karla/bar close bar & polybar-msg cmd hide | bspc config top_padding 5	
 		
 	else 
 		echo "Error: Something fails dud.."
@@ -57,7 +57,7 @@ function unhide() {
 		eww -c $HOME/.config/bspwm/rices/$RICETHEME/bar open bar | bspc config left_padding 85
 		
 	elif [[ "${RICETHEME}" == karla ]]; then
-		eww -c $HOME/.config/bspwm/rices/$RICETHEME/bar open bar | bspc config top_padding 65
+		eww -c $HOME/.config/bspwm/rices/$RICETHEME/bar open bar & polybar-msg cmd show | bspc config top_padding 65
 		
 	elif [[ "${RICETHEME}" == andrea ]]; then
 		eww -c $HOME/.config/bspwm/rices/$RICETHEME/arin open-many \
