@@ -1,3 +1,10 @@
+(26/Oct/2022)
+- Massive update to z0mbi3 Rice. The Dashboard now is better coded, optimized and faster.
+  - It has been redesigned, looks better and now will properly adapt to your resolution and adapt to widget sizes.
+  - Changed profile.svg to png and redesigned default profile pic. The same changes with this image has been added to Pamela, Andrea & z0mbi3 rices.
+  - Weather script now works faster and better. Moved from z0mbi3 scripts dir to main bspwm scripts dir.
+  - Pamela & Andrea rices has been polished. "Only to adapt with the new png profile pic"
+
 (13/Oct/2022)
 - Hide, Unhide bars in Karla Rice now works as spected.
 
