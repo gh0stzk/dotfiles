@@ -3,7 +3,7 @@
 (defpoll date :interval "10s"  "date '+%b %d'")
 
 ;; Profile vars
-(defvar IMAGEP "../../../assets/profile.svg")
+(defvar IMAGEP "../../../assets/profile.png")
 
 ;; Music Variables
 (defpoll art		:interval "5s"  "../../../scripts/music coverloc")

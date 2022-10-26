@@ -25,7 +25,7 @@ fi
 }
 
 if [ "$1" = "launcher" ]; then
-rofi -no-lazy-grab -show drun -theme $HOME/.config/bspwm/rices/$RICETHEME/launcher.rasi &
+rofi -no-lazy-grab -show drun -theme $HOME/.config/bspwm/rices/$RICETHEME/launcher.rasi & disown
 elif [ "$1" = "infocenter" ]; then
 ~/.config/bspwm/rices/$RICETHEME/dashboard/LaunchInfoCenter.sh
 elif [ "$1" = "pacupdates" ]; then

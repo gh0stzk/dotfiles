@@ -13,7 +13,7 @@ title=$(xtitle "$wid")
 if [ "$instance" = termite ] ; then
 	case "$title" in
 		ranger)
-			echo "state=floating rectangle=811x316+0+0 center=on"
+			echo "state=floating rectangle=811x286+0+0 center=on"
 			;;
 		zfetch)
 		    echo "border=off state=floating rectangle=616x354+36+115"
@@ -22,7 +22,7 @@ if [ "$instance" = termite ] ; then
 		    echo "border=off state=floating rectangle=352x500+36+115"
 		    ;;
 		updating)
-			echo "state=floating rectangle=575x445+940+59"
+			echo "state=floating rectangle=483x190+1090+72"
 			;;
 		musicplayer)
 			echo "state=floating rectangle=630x215+0+0 center=on"
@@ -66,7 +66,7 @@ case "$class" in
 	    ;;
 	firefox|Navigator)
 	    eval "$consequences"
-	    [ "$state" ] || echo "state=pseudo_tiled desktop=^3 border=off rectangle=1250x820+0+0 center=on follow=on"
+	    [ "$state" ] || echo "state=pseudo_tiled desktop=^3 border=off rectangle=1450x820+0+0 center=on follow=on"
 	    ;;
 	 Transmission-gtk)
 	    eval "$consequences"

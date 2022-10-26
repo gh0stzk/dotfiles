@@ -14,7 +14,7 @@ if [[ ! `pidof eww` ]]; then
 fi
 
 launch_eww() {
-	${EWW} --config "$ewwcfg" open-many sidebar pfp date music weather system
+	${EWW} --config "$ewwcfg" open dashboard
 }
 
 
@@ -23,6 +23,6 @@ if [[ ! -f "$FILE" ]]; then
 	touch "$FILE"
 	launch_eww
 else
-	${EWW} --config "$ewwcfg" close sidebar pfp date music weather system
+	${EWW} --config "$ewwcfg" close dashboard
 	rm "$FILE"
 fi

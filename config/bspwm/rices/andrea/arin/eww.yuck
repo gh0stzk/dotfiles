@@ -33,7 +33,7 @@
 (defpoll NETSTAT :interval "10s" `scripts/check-network --stat`)
 
 ;; User
-(defvar IMAGE "../../../assets/profile.svg")
+(defvar IMAGE "../../../assets/profile.png")
 (defpoll USER :interval "10m" `whoami`)
 
 ;; ** Widgets *************************************************************************

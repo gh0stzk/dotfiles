@@ -100,7 +100,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Cynthia
 
-- Color Palette: <code>[u/DominiCzech](https://www.reddit.com/user/DominiCzech/)</code>
+- Color Palette: <code>[u/gabrielzschmitz](https://www.reddit.com/user/gabrielzschmitz/)</code>
 
 |<img src="assets/Shot-26-julio-22-235349.webp" alt="Cynthia Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-000301.webp" alt="Cynthia Rice" align="center" width="600px">|
 |---|---|
@@ -335,6 +335,6 @@ All workflows where i stole things to inspire me or for editing, its impossile t
 - [turquoise-hexagon](https://github.com/turquoise-hexagon/fonts) for his beautiful Banana font.
 - [This post](https://www.reddit.com/r/unixporn/comments/vkcasz/i3gaps_i_prefer_light_mode/) by TheMonkeyLlama i saw it in UnixPorn. Who inspired Aline's Rice.
 - [adi1090x](https://github.com/adi1090x/widgets) The master, for his setup in Andrea's Rice and for his beautiful Rofi menus.
-- [u/DominiCzech](https://www.reddit.com/user/DominiCzech/) For the amazing color palette in Cynthia's Rice. I loose link but im pretty sure he is the owner.
+- [gabrielzschmitz](https://github.com/gabrielzschmitz) For the amazing color palette in Cynthia's Rice. I loose link but im pretty sure he is the owner.
 - In Pamela's rice to [elenapan](https://github.com/elenapan/dotfiles) For his beautiful color palette. For the eww widgets to the master [rxyhn](https://github.com/rxyhn/bspdots) and [okklol](https://github.com/okklol/eww-bar).
 - In z0mbi3 rice, to [Anchovyyy](https://github.com/anchovyyy/bspdots) for the mazing panel bar. Eww doesn't have a way of using a system tray but this little polybar hack make the trick. Thanks to [ikz87](https://github.com/ikz87).

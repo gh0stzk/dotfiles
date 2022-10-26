@@ -2,10 +2,9 @@
   all: unset;
 }
 
-// Variable Color's
-$background: #0d0f18;
-$foreground: #a5b6cf;
-
+$bg: #0d0f18;
+$bg-alt: #151720;
+$fg: #c0caf5;
 $black: #151720;
 $gray: #1c1e27;
 $red: #dd6777;
@@ -14,156 +13,186 @@ $yellow: #ecd3a0;
 $blue: #86aaec;
 $magenta: #c296eb;
 $cyan: #93cee9;
-$white: $foreground;
+$white: $fg;
 $archlogo: #0f94d2;
 
-//Global Styles
-.sidebar {
-  background-color: $background;
-  color: #c0caf5;
+.profilebox {
+  background-color: $bg-alt;
   border-radius: 12px;
+  margin-top: .7rem;
 }
 
-/** tooltip!! **/
-/*tooltip.background {
-  font-size: 18px;
-  color: #c0caf5;
-}*/
-
-tooltip label {
-  margin: 1px;
-  color: #c0caf5;
-  font-weight: bold;
-  font-size: 14px;
-  font-family: JetBrainsMono Nerd Font;
+.pfpface {
+  margin: 1rem 0rem 1rem 1rem;
 }
 
-/* launcher */
-
-.launchermenu {
-  background-color: $black;
-  border-radius: 8px;
-  //border: 2px solid #2f354b;
-}
-
-.face {
-  background-size: 95px;
-  min-height: 95px;
-  min-width: 95px;
-  margin: 10px 180px 10px 0px;
-  border-radius: 100%;
-}
-
-.launcher-pfp-label {
-  font-size: 15px;
+.welcometxt {
+  font-size: 1.3rem;
   font-style: italic;
   font-family: Cartograph CF;
-  color: #c0caf5;
-  margin: -160px 47px 0px 120px;
+  color: $fg;
+  margin: 1.3rem 0rem 0rem 1.3rem;
 }
 
-.launcher-apps {
-  margin-left: 105px;
-  margin-right: 20px;
-  margin-top: -85px;
+.pfpapps {
+  margin: 1.3rem 0rem 0rem 1.3rem;
 }
 
 .launcher-btn {
-  color: #c0caf5;
+  color: $fg;
   font-family: Material Design Icons Desktop;
-  font-size: 18px;
-  margin-top: 10px;
+  font-size: 1.3rem; 
 }
 
 .launcher-btn:hover {
-  color: $magenta;
+  color: $blue;
   font-family: Material Design Icons Desktop;
-  font-size: 18px;
-  margin-top: -10px;
+  font-size: 1.3rem;
+  
 }
 
-// Music
-.music-player {
-  background-color: $black;
-  padding: 0px 25px 0px 10px;
+.weatherbox {
+  background-color: $bg-alt;
   border-radius: 12px;
+  padding: .9rem;
+  margin-top: .7rem;
 }
+
+.weathericon {
+  padding: 2rem 1rem;
+  margin-top: .7rem;
+  border-radius: 12px;
+  margin-left: .7rem;
+  background-color: $bg-alt;
+  font-size: 2rem;
+  font-family: "Material Design Icon Desktop";
+}
+
+.weatherdesc {
+  font-size: 1.75rem;
+  font-family: "Iosevka Nerd Font";
+}
+
+.weathertemp {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $fg;
+  font-family: "Iosevka Nerd Font";
+}
+
+.weathercity {
+  font-size: .9rem;
+  margin-top: 1rem;
+  color: $fg;
+  font-family: "Iosevka Nerd Font";
+}
+
+.playerbox {
+  background-color: $bg-alt;
+  border-radius: 12px;
+  padding: .9rem;
+  margin-top: .7rem;
+}
+
 .album_art {
   background-repeat: no-repeat;
-  background-size: 100px 100px;
+  background-size: cover;
   background-position: center;
-  border-radius: 12px;
-  margin: 2rem 0.1rem 2rem 0.8rem;
+  border-radius: 7px;
   padding: 3rem;
+}
+
+.song {
+  font-family: JetBrainsMono Nerd Font;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1rem;
+  color: $fg;
 }
 
 .artist {
   font-family: JetBrainsMono Nerd Font;
   font-weight: bold;
-  color: #c0caf5;
-  font-size: 1em;
-  padding-left: 16px;
-  padding-right: 9px;
+  color: $fg;
+  font-size: .8rem;
 }
-.song {
-  font-family: JetBrainsMono Nerd Font;
-  font-style: italic;
-  font-size: 1.1em;
-  color: #c0caf5;
-  padding-left: 16px;
-  padding-right: 9px;
-  margin-top: -5px;
-}
+
 .btn_prev,
 .btn_play,
 .btn_next {
   font-family: JetBrainsMono Nerd Font;
-  color: #c0caf5;
+  color: $fg;
   font-size: 20px;
 }
 
-// weather
-.weather {
-  background-color: $black;
+.sysbox {
+  background-color: $bg-alt;
   border-radius: 12px;
-  padding: 23px 37px 20px 37px;
+  padding: .9rem;
+  margin-top: .7rem;
 }
 
-.iconweather {
-  font-family: Iosevka Nerd Font;
-  font-size: 34px;
-  font-weight: normal;
+.calouterbox {
+  padding: 1.75rem 1.35rem;
+  background-color: $bg;
+  border-radius: 12px;
 }
 
-.label_temp {
-  color: #c0caf5;
-  font-size: 25px;
+.caltime {
+  font-family: "Iosevka Nerd Font";
+  margin-bottom: 1rem;
+  margin-top: .5rem;
+}
+
+.caltext {
   font-weight: bold;
-  font-family: JetBrainsMono Nerd Font;
+  font-size: 3rem;
+  color: $fg;
 }
 
-.date {
-  background-color: $black;
-  padding: 33px 15px 27px 15px;
-  border-radius: 12px;
-  color: #c0caf5;
-  font-size: 19px;
-  font-style: italic;
-  font-family: Cartograph CF;
+.infodate {
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-family: "Iosevka Nerd Font";
+  margin-bottom: 1rem;
+  color: $fg;
 }
 
-/** System ********************************************/
+.caltimeboxes {
+  margin: 0 2rem;
+  font-family: "Material Design Icon Desktop";
+  font-size: .6rem;
+}
 
-.stats-box {
-  background-color: $black;
-  padding: 20px 25px 20px 25px;
-  border-radius: 12px;
+.red {
+  color: $red;
+}
+.yellow {
+  color: $yellow;
+}
+
+.green {
+  color: $green;
+}
+.magenta {
+  color: $magenta;
+}
+
+.blue {
+  color: $blue;
+}
+.cyan {
+  color: $cyan;
+}
+
+.white {
+  color: $red;
 }
 
 .stats-icon-cpu,
 .stats-icon-ram,
 .stats-icon-fs {
-  font-size: 20px;
+  font-size: 1.5rem;
 }
 
 .stats-icon-cpu {
@@ -186,7 +215,7 @@ scale trough {
   background-color: $gray;
   min-height: 10px;
   border-radius: 15px;
-  margin-left: 20px;
+  margin-left: 25px;
 }
 
 .scale-cpu,
@@ -206,5 +235,5 @@ scale trough highlight {
 }
 
 .scale-fs trough highlight {
-  background: linear-gradient(to right, $yellow, #c0caf5);
+  background: linear-gradient(to right, $yellow, $fg);
 }
