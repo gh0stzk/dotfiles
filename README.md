@@ -31,9 +31,23 @@ https://user-images.githubusercontent.com/67278339/179444283-d5a4bc48-a9c7-4a91-
 * **Change transparency on the fly:** 
 Increase and decrease transparency in focused or selected window.
 
-## ⚠️ Attention!!
-The rices work on my computer because they were made on my machine with my resolution (1600x900). They should also work on your computer, but you'll have to modify a lot of things to make them work for you.
-Please read the troubleshooting section at the end of this document.
+<table align="center">
+   <tr>
+      <th align="center">
+         <sup><sub>:warning: WARNING :warning:</sub></sup>
+      </th>
+   </tr>
+   <tr>
+      <td align="center">
+      
+      
+      
+     THIS DOTFILES IS CONFIGURED AT 1600x900 WITH 96 DPI!
+     SOME STUFF MIGHT BREAK ON LOWER OR HIGHER
+     RESOLUTIONS BUT WILL STILL WORK!
+     
+   </tr>
+   </table>
 
 ## 🎨 The rices...
 So yes... i called the Rices with the names of some of my ex girlfriends. 
@@ -337,4 +351,4 @@ All workflows where i stole things to inspire me or for editing, its impossile t
 - [adi1090x](https://github.com/adi1090x/widgets) The master, for his setup in Andrea's Rice and for his beautiful Rofi menus.
 - [gabrielzschmitz](https://github.com/gabrielzschmitz) For the amazing color palette in Cynthia's Rice. I loose link but im pretty sure he is the owner.
 - In Pamela's rice to [elenapan](https://github.com/elenapan/dotfiles) For his beautiful color palette. For the eww widgets to the master [rxyhn](https://github.com/rxyhn/bspdots) and [okklol](https://github.com/okklol/eww-bar).
-- In z0mbi3 rice, to [Anchovyyy](https://github.com/anchovyyy/bspdots) for the mazing panel bar. Eww doesn't have a way of using a system tray but this little polybar hack make the trick. Thanks to [ikz87](https://github.com/ikz87).
+- Eww doesn't have a way of using a system tray but this little polybar hack make the trick. Thanks to [ikz87](https://github.com/ikz87).
