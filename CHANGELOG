@@ -1,3 +1,6 @@
+(31/Oct/2022)
+- Fixes in dunst config, font and icons source.
+
 (26/Oct/2022)
 - Massive update to z0mbi3 Rice. The Dashboard now is better coded, optimized and faster.
   - It has been redesigned, looks better and now will properly adapt to your resolution and adapt to widget sizes.
