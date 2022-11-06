@@ -270,7 +270,7 @@ yay -S bspwm polybar sxhkd eww dunst rofi lsd jq checkupdates-aur \
 playerctl mpd ncmpcpp mpc picom-arian8j2-git xtitle termite betterlockscreen \
 ttf-jetbrains-mono nerd-fonts-jetbrains-mono ttf-terminus-nerd ttf-inconsolata \
 ttf-joypixels nerd-fonts-cozette-ttf scientifica-font \
-feh pamixer libwebp webp-pixbuf-loader xorg-xkill papirus-icon-theme
+feh maim pamixer libwebp webp-pixbuf-loader xorg-xkill papirus-icon-theme
 ```
 
 <b>3. Cloning Dotfiles & Installing:</b>
