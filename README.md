@@ -42,7 +42,7 @@ Increase and decrease transparency in focused or selected window.
       
       
       
-     THIS DOTFILES ARE CONFIGURED AT 1600x900 WITH 96 DPI! **1** MONITOR
+     THIS DOTFILES ARE CONFIGURED AT 1600x900 WITH 96 DPI! <b>1</b> MONITOR
      SOME STUFF MIGHT BREAK ON LOWER OR HIGHER
      RESOLUTIONS BUT WILL STILL WORK!
      
