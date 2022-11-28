@@ -6,6 +6,7 @@
 
 bspdir="$HOME/.config/bspwm"
 polydir="$HOME/.config/bspwm/rices/$RICETHEME/polybar"
+export defnetif=$(ip route | grep '^default' | awk '{print $5}' | head -n1)
 
 function launch() {
   local running
