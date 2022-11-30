@@ -1,3 +1,11 @@
+(30/Nov/2022)
+- Dropped Arian8j2's picom fork. Now "official" picom from Arch repos is used. Because has a lot of fixes and stability.
+- Massive update to Jan Rice, now suck less...
+  - Added 2 new wallpapers to Jan Rice.
+  - Polybar redesigned, new color scheme in polybar.
+  - Dropped lilian font in terminal, now uses monocraft font
+- Network module on all rices with polybar now get default interface (wifi or ethernet) with internet access and use it on the network module. Thanks to mariod8 (https://github.com/mariod8)
+
 (31/Oct/2022)
 - Fixes in dunst config, font and icons source.
 
