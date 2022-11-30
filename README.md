@@ -13,7 +13,7 @@ https://user-images.githubusercontent.com/67278339/179444283-d5a4bc48-a9c7-4a91-
 |WM|[BSPWM](https://github.com/baskerville/bspwm)|
 |Bar|[Polybar](https://github.com/polybar/polybar)|
 |Menu|[Rofi](https://github.com/davatorium/rofi)|
-|Compositor|[Picom Arian8j2](https://github.com/Arian8j2/picom)|
+|Compositor|[Picom](https://archlinux.org/packages/community/x86_64/picom/)|
 |Terminal|[Termite](https://aur.archlinux.org/termite.git)|
 |Widgets|[ElKowars wacky widgets ](https://github.com/elkowar/eww)|
 
