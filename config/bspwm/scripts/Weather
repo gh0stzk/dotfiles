@@ -9,7 +9,7 @@ check_if_empty() {
 }
 
 KEY="1f6e449790b8cf73a3cab8d5715483f8"
-CITY="México"
+CITY="Mexico City"
 CITYN=$(encode_to_url_format "$CITY")
 WEATHER=$(curl -sf "api.openweathermap.org/data/2.5/weather?q=$CITYN&appid=$KEY&units=metric")
 

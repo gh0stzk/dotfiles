@@ -267,7 +267,7 @@ A one time command to install most of these dependencies with your **favorite AU
 
 ```sh
 yay -S bspwm polybar sxhkd eww dunst rofi lsd jq checkupdates-aur \
-playerctl mpd ncmpcpp mpc picom-arian8j2-git xtitle termite betterlockscreen \
+playerctl mpd ncmpcpp mpc picom xtitle termite betterlockscreen \
 ttf-jetbrains-mono nerd-fonts-jetbrains-mono ttf-terminus-nerd ttf-inconsolata \
 ttf-joypixels nerd-fonts-cozette-ttf scientifica-font \
 feh maim pamixer libwebp webp-pixbuf-loader xorg-xkill papirus-icon-theme

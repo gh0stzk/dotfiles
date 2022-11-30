@@ -235,7 +235,7 @@
 						:height "86%" 
 						:width "47px")
 	:monitor 0
-	:reserve (struts :distance "35px" 
+	:reserve (struts :distance "25px" 
 					 :side "left")
 	:wm-ignore false
 	:hexpand "false"
