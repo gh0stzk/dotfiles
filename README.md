@@ -213,7 +213,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <summary><b>Extra wallpapers in Karla</b></summary>
 
 |<img src="config/bspwm/rices/karla/wall-02.webp" alt="Karla Rice" align="center" width="150px">|<img src="config/bspwm/rices/karla/wall-03.webp" alt="Karla Rice" align="center" width="150px">|<img src="config/bspwm/rices/karla/wall-04.webp" alt="Karla Rice" align="center" width="150px">|<img src="config/bspwm/rices/karla/wall-05.webp" alt="Karla Rice" align="center" width="150px">|<img src="config/bspwm/rices/karla/wall-06.webp" alt="Karla Rice" align="center" width="150px">|
-|---|---|---|---|
+|---|---|---|---|---|
 
 </details>
 
