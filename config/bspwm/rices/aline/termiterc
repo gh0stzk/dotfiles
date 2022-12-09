@@ -30,14 +30,14 @@ smart_copy = true
 [colors]
 
 background          = #e5eafe
-foreground          = #4c4f69
-foreground_bold     = #4c4f69
+foreground          = #51576d
+foreground_bold     = #414559
 cursor              = #ee6388
 cursor_foreground   = #282936
 
 # Black, Gray
-color0  = #e5eafe
-color8  = #626880
+color0  = #292c3c
+color8  = #949cbb
 
 # Red
 color1 = #E78284
@@ -56,8 +56,8 @@ color4  = #8CAAEE
 color12 = #8CAAEE
 
 # Magenta
-color5  = #F4B8E4
-color13 = #F4B8E4
+color5  = #ca9ee6
+color13 = #ca9ee6
 
 # Cyan
 color6  = #81C8BE

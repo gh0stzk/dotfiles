@@ -82,7 +82,7 @@ function SetGirlFriendRice() {
 		    
 		aline)
 		
-		  SetBspwmConf 0 50 5 "#000000" "#000000" "#000000" "#070219" 5 5
+		  SetBspwmConf 0 55 5 "#000000" "#000000" "#000000" "#070219" 5 5
 		  
 		  killeww
 		  launch polybar -q aline-bar -c ${polydir}/config.ini
@@ -208,6 +208,7 @@ function AutoStartApps() {
 	
 	launch sxhkd -c ${bspdir}/sxhkdrc &
 	launch picom --config ${bspdir}/rices/$RICETHEME/picom.conf &
+	#launch picom --legacy-backends --config ${bspdir}/rices/$RICETHEME/picom.conf &
 	launch /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 	WallChanger
 	#nitrogen --restore &

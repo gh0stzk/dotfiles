@@ -1,3 +1,9 @@
+(09/Dec/2022)
+- Get a better looking polybar in Aline rice.
+- Fixed and improved colorscheme in terminal and polybar for Aline Rice.
+- Added new wallpaper to Karla rice.
+- Modified Hide unhide bar values for aline rice.
+
 (30/Nov/2022)
 - Dropped Arian8j2's picom fork. Now "official" picom from Arch repos is used. Because has a lot of fixes and stability.
 - Massive update to Jan Rice, now suck less...
