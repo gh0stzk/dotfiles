@@ -65,7 +65,7 @@ function SetGirlFriendRice() {
 		  SetBspwmConf 0 60 5 "#202132" "#202132" "#202132" "#070219" 5 5
 		  		  
 		  killeww
-		  launch polybar -q emi-bar -c ${polydir}/config.ini
+		  launch polybar -q emi-bar -c ${polydir}/config.ini &
 		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
 		  ;;
@@ -75,7 +75,7 @@ function SetGirlFriendRice() {
 		  SetBspwmConf 0 60 5 "#4C3A6D" "#4C3A6D" "#785DA5" "#070219" 5 5
 		  
 		  killeww
-		  launch polybar -q main -c ${polydir}/config.ini
+		  launch polybar -q main -c ${polydir}/config.ini &
 		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
 		  ;;
@@ -85,7 +85,7 @@ function SetGirlFriendRice() {
 		  SetBspwmConf 0 55 5 "#000000" "#000000" "#000000" "#070219" 5 5
 		  
 		  killeww
-		  launch polybar -q aline-bar -c ${polydir}/config.ini
+		  launch polybar -q aline-bar -c ${polydir}/config.ini &
 		  launch dunst -config ${bspdir}/dunstrc-light &
 		  
 		  ;;
@@ -95,7 +95,7 @@ function SetGirlFriendRice() {
 		  SetBspwmConf 0 5 45 "#333a48" "#333a48" "#333a48" "#4f4f5b" 5 5
 		  
 		  killeww
-		  launch polybar -q isa-bar -c ${polydir}/config.ini
+		  launch polybar -q isa-bar -c ${polydir}/config.ini &
 		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
 		  ;;
@@ -105,7 +105,7 @@ function SetGirlFriendRice() {
 		  SetBspwmConf 0 45 5 "#4C3A6D" "#4C3A6D" "#785DA5" "#070219" 5 5
 		  
 		  killeww
-		  launch polybar -q cyn-bar -c ${polydir}/config.ini
+		  launch polybar -q cyn-bar -c ${polydir}/config.ini &
 		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
 		  ;;
@@ -115,7 +115,7 @@ function SetGirlFriendRice() {
 		  SetBspwmConf 0 45 5 "#bdae93" "#bdae93" "#bdae93" "#4f4f5b" 5 5
 
 		  killeww
-		  launch polybar -q cata-bar -c ${polydir}/config.ini
+		  launch polybar -q cata-bar -c ${polydir}/config.ini &
 		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
 		  ;;
@@ -126,7 +126,7 @@ function SetGirlFriendRice() {
 
 		  killeww
 		  launch polybar -q mel-bar -c ${polydir}/config.ini
-		  polybar -q mel2-bar -c ${polydir}/config.ini & disown
+		  polybar -q mel2-bar -c ${polydir}/config.ini &
 		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
 		  ;;
@@ -137,11 +137,11 @@ function SetGirlFriendRice() {
 		  
 		  killeww
 		  launch polybar -q pam1 -c ${polydir}/config.ini
-		  polybar -q pam2 -c ${polydir}/config.ini & disown
-		  polybar -q pam3 -c ${polydir}/config.ini & disown
-		  polybar -q pam4 -c ${polydir}/config.ini & disown
-		  polybar -q pam5 -c ${polydir}/config.ini & disown
-		  polybar -q pam6 -c ${polydir}/config.ini & disown
+		  polybar -q pam2 -c ${polydir}/config.ini &
+		  polybar -q pam3 -c ${polydir}/config.ini &
+		  polybar -q pam4 -c ${polydir}/config.ini &
+		  polybar -q pam5 -c ${polydir}/config.ini &
+		  polybar -q pam6 -c ${polydir}/config.ini &
 		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
 		  ;;
@@ -151,7 +151,7 @@ function SetGirlFriendRice() {
 		  SetBspwmConf 0 10 60 "#bdae93" "#bdae93" "#bdae93" "#4f4f5b" 5 5
 		  
 		  killeww
-		  launch polybar -q cristina-bar -c ${polydir}/config.ini
+		  launch polybar -q cristina-bar -c ${polydir}/config.ini &
 		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
 		  ;;
@@ -166,7 +166,7 @@ function SetGirlFriendRice() {
 		  pkill picom
 		  
 		  launch eww -c $HOME/.config/bspwm/rices/z0mbi3/bar open bar
-		  launch polybar -q tray -c ~/.config/bspwm/rices/z0mbi3/bar/polybar_tray.ini
+		  launch polybar -q tray -c ~/.config/bspwm/rices/z0mbi3/bar/polybar_tray.ini &
 		  launch dunst -config ${bspdir}/dunstrc-dark &
 		  
 		  ;;
@@ -177,8 +177,8 @@ function SetGirlFriendRice() {
 		 
 		  pkill picom
 		  launch eww -c $HOME/.config/bspwm/rices/karla/bar open bar
-		  launch polybar -q karla-bar -c ${polydir}/config.ini
-		  polybar -q karla-bar2 -c ${polydir}/config.ini & disown
+		  launch polybar -q karla-bar -c ${polydir}/config.ini &
+		  polybar -q karla-bar2 -c ${polydir}/config.ini &
 		  launch dunst -config ${bspdir}/dunstrc-light &
 		  
 		  ;;

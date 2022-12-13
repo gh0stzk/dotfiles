@@ -1,3 +1,8 @@
+(13/Dec/2022)
+- New firefox 108 breaks tab height size, now its fixed the firefox theme.
+- Some code clean on LaunchWorld script
+- "official" picom in Arch Repos, recently enables experimental backends per default, so if you have or find problems in your windows, with that change, i added a line to uncomment to test if legacy backends fixes problem for you. This could happend in old machines.
+
 (09/Dec/2022)
 - Get a better looking polybar in Aline rice.
 - Fixed and improved colorscheme in terminal and polybar for Aline Rice.
