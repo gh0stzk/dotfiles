@@ -234,7 +234,13 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 </details>
 
 ## Neovim themes
-Actually the neovim theme is OneDark, but the background will adapt to the colorscheme in the rice you are.
+Actually the neovim theme is OneDark, but the background will adapt to the colorscheme in the rice you are. Now is configured in "lua". i wanna keepit simple so there are a few plugins.
+- Lualine
+- Nvim-Tree
+- Colorizer
+- Devicons
+
+The plugin manager is Packer.
 
 <img src="assets/nvim.gif" alt="Neovim Themes" align="center" width="400px">
 
