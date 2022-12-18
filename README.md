@@ -233,6 +233,11 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 </details>
 
+## Neovim themes
+Actually the neovim theme is OneDark, but the background will adapt to the colorscheme in the rice you are.
+
+<img src="assets/nvim.gif" alt="Neovim Themes" align="center" width="600px">
+
 ## Very useful keybindigs to know...
 
 |Action|Keybinding|
