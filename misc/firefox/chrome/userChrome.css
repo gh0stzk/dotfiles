@@ -86,19 +86,19 @@
   font-weight: var(--z0mbi3-tab-font-weight);
   font-size: var(--z0mbi3-tab-font-size) !important;
   color: var(--z0mbi3-tab-color);
-  padding: 14px !important;
+  padding: 7px !important;
 }
 
 /* Make all tabs small except selected one */
 .tabbrowser-tab[fadein]:not([selected]):not([pinned]) {
-    max-width: 130px !important;
-    min-width: 130px !important;
+    max-width: 150px !important;
+    min-width: 150px !important;
 }
 
 /* Make selected tabs to bigger */
 .tabbrowser-tab[selected][fadein]:not([pinned]) {
-    max-width: 180px !important;
-    min-width: 180px !important;
+    max-width: 200px !important;
+    min-width: 200px !important;
 
 }
 
@@ -142,6 +142,8 @@ hbox.tab-content[pinned=true] .tab-text {
 
 } */
 
+
+
 .tab-line {
   display: none !important;
 }
@@ -153,8 +155,8 @@ hbox.tab-content[pinned=true] .tab-text {
   margin-bottom: 6px !important;
   margin-inline-end: 1px !important;
   margin-top: 4px !important;
-  max-height: 83% !important;
-  min-height: 83% !important;
+  max-height: 80% !important;
+  min-height: 80% !important;
 }
 
 .tabbrowser-tab[soundplaying="false"] {
