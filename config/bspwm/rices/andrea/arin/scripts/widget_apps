@@ -5,6 +5,9 @@ if [[ "$1" == "--tr" ]]; then
 
 elif [[ "$1" == "--ff" ]]; then
 	firefox & disown
+	
+elif [[ "$1" == "--menu" ]]; then
+	rofi -no-lazy-grab -show drun -theme $HOME/.config/bspwm/rices/$RICETHEME/launcher.rasi & disown
 
 elif [[ "$1" == "--fm" ]]; then
 	thunar ~ & disown

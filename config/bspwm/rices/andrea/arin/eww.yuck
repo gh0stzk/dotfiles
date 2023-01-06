@@ -42,7 +42,7 @@
 (defwidget search [] 
 		(box :class "dockbox"
 			(box :orientation "h" :spacing 15 :valign "center" :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
-				(button :style "background-image: url('images/icons/dashboard.png');" :class "genicon" :onclick "scripts/widget_search --menu")
+				(button :style "background-image: url('images/icons/dashboard.png');" :class "genicon" :onclick "scripts/widget_apps --menu")
 				(label :class "workspace" :halign "start" :text WMS))))
 
 ;; apps
