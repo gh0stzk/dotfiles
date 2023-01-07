@@ -1,0 +1,128 @@
+#!/bin/env bash
+
+CRE=$(tput setaf 1)
+CYE=$(tput setaf 3)
+CGR=$(tput setaf 2)
+CBL=$(tput setaf 4)
+BLD=$(tput bold)
+CNC=$(tput sgr0)
+OK='\n\033[0;32m OK...\033[0m'
+
+logo () {
+	
+	local text="${1:?}"
+	echo -en "                                  
+	               %%%                
+	        %%%%%//%%%%%              
+	      %%************%%%           
+	  (%%//############*****%%
+	%%%%%**###&&&&&&&&&###**//
+	%%(**##&&&#########&&&##**
+	%%(**##*****#####*****##**%%%
+	%%(**##     *****     ##**
+	   //##   @@**   @@   ##//
+	     ##     **###     ##
+	     #######     #####//
+	       ###**&&&&&**###
+	       &&&         &&&
+	       &&&////   &&
+	          &&//@@@**
+	            ..***                
+			  z0mbi3 Script\n\n"
+    printf ' %s [%s%s %s%s %s]%s\n\n' "${CRE}" "${CNC}" "${CYE}" "${text}" "${CNC}" "${CRE}" "${CNC}"
+    sleep 2
+}
+
+	
+logo "Welcome!"
+printf '%sThis script will copy my dotfiles to your bspwm setup.%s\n\n' "${CRE}" "${CNC}"
+sleep 3
+
+while true; do
+	read -rp " Do you wish to continue? [y/N]: " yn
+		case $yn in
+			[Yy]* ) break;;
+			[Nn]* ) exit;;
+			* ) printf " Error: just write 'y' or 'n'\n\n";;
+		esac
+    done
+			clear
+
+logo "Checking if yay is installed"
+
+	if pacman -Qi yay >/dev/null 2>&1; then
+		printf "Yay is installed\n\n"
+	else
+		printf "installing yay..\n\n"
+		sudo pacman -Syu git && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd
+	fi
+sleep 2
+clear
+		
+logo "Installing needed packages.."
+	yay -Syu bspwm polybar sxhkd eww dunst rofi lsd jq checkupdates-aur \
+			 playerctl mpd ncmpcpp mpc picom xtitle termite betterlockscreen \
+			 ttf-jetbrains-mono nerd-fonts-jetbrains-mono ttf-terminus-nerd ttf-inconsolata \
+			 ttf-joypixels nerd-fonts-cozette-ttf scientifica-font \
+			 feh maim pamixer libwebp webp-pixbuf-loader xorg-xkill papirus-icon-theme
+clear
+			 
+logo "Cloning Rice!"
+printf "Cloning rice from https://github.com/gh0stzk/dotfiles\n\n"
+git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
+sleep 2
+clear
+
+logo "Backup your files"
+printf "Backup files will be stored in %s%s/.RiceBackup%s \n\n" "${CRE}" "$HOME" "${CNC}"
+sleep 5
+
+if [ -d "$HOME/.RiceBackup" ]; then 
+		break
+	else
+		mkdir "${HOME}"/.RiceBackup
+fi
+
+[ -e ~/.config/bspwm ] && mv ~/.config/bspwm ~/.RiceBackup/bspwm-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -e ~/.config/termite ] && mv ~/.config/termite ~/.RiceBackup/termite-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -e ~/.config/gtk-3.0 ] && mv ~/.config/gtk-3.0 ~/.RiceBackup/gtk-3.0-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -e ~/.config/mpd ] && mv ~/.config/mpd ~/.RiceBackup/mpd-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -e ~/.config/ncmpcpp ] && mv ~/.config/ncmpcpp ~/.RiceBackup/ncmpcpp-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -e ~/.config/nvim ] && mv ~/.config/nvim ~/.RiceBackup/nvim-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -e ~/.config/zsh ] && mv ~/.config/zsh ~/.RiceBackup/zsh-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+
+[ -f ~/.zshrc ] && mv ~/.zshrc ~/.RiceBackup/.zshrc-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+
+printf "\n\nDone\n\n"
+sleep 2
+clear
+
+logo "Copying Rice.."
+printf "Copying files to respective directories..\n\n"
+
+cp -rv dotfiles/config/* ~/.config
+cp -rv dotfiles/misc/bin ~/.local/
+cp -rv dotfiles/misc/{applications,asciiart,fonts} ~/.local/share/
+
+cp -rv dotfiles/misc/firefox/chrome ~/.mozilla/firefox/*.default-release/
+cp -rv dotfiles/misc/firefox/user.js ~/.mozilla/firefox/*.default-release/
+
+cp -rv dotfiles/home/.zshrc ~
+
+printf "\n\nFiles copied succesfully\n\n"
+sleep 2
+clear
+
+logo "Enabling MPD service"
+# For automatically launching mpd on login
+systemctl --user enable mpd.service
+systemctl --user start mpd.service
+
+printf "\n\nDone\n\n"
+sleep 2
+clear
+
+logo "Installation finished"
+printf "%sNow logout your session, select bspwm and log in.%s \n\n" "${CRE}" "${CNC}"
+
+
