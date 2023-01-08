@@ -265,88 +265,29 @@ Y mas... Necesitaras mirar el archivo sxhkdrc file para ver todos los atajos.
 ## 📦 El Setup
 
 ### 💾 Instalacion:
-Solo habra instrucciones para ARCH y distribuciones basadas en ARCH.
+El instalador solo funciona con **ARCH** Linux, y derivadas.
 
-<b>1. Necesitamos yay y git</b>
-
-```sh
-pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
-```
-
-<b>2. Instalar las dependencias. </b>
-
-Un solo comando para instalar todas las dependencias con tu **AUR Helper favorito** (acabamos de instalar yay).
+<b>1. Abre una terminal y pega el siguiente comando</b>
 
 ```sh
-yay -S bspwm polybar sxhkd eww dunst rofi lsd jq checkupdates-aur \
-playerctl mpd ncmpcpp mpc picom xtitle termite betterlockscreen \
-ttf-jetbrains-mono nerd-fonts-jetbrains-mono ttf-terminus-nerd ttf-inconsolata \
-ttf-joypixels nerd-fonts-cozette-ttf scientifica-font \
-feh maim pamixer libwebp webp-pixbuf-loader xorg-xkill papirus-icon-theme
+curl -LO https://tinyurl.com/RiceInstaller ; sh RiceInstaller
 ```
-
-<b>3. Clonando los archivos e instalando:</b>
+Si la url falla o algo usa esta alternativa
 ```sh
-git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
-
-# ⚠️ Haz copias de seguridad!! 
-[ -e ~/.config/bspwm ] && mv ~/.config/bspwm ~/.config/bspwm-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -e ~/.config/termite ] && mv ~/.config/termite ~/.config/termite-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-
-# Moviendo los nuevos archivos a .config
-cd dotfiles
-cp -r config/bspwm ~/.config/bspwm
-cp -r config/termite ~/.config/termite
-# Esos fueron los importantes. Pero aun necesitas mover los demas archivos en config a el directorio ~/.config
-
-# Copiando las fuentes y otros archivos
-cp -r misc/fonts/* ~/.local/share/fonts/
-cp -r misc/bin ~/.local/
-cp -r misc/applications ~/.local/share/
-cp -r misc/asciiart ~/.local/share/
-fc-cache -rv
-
-# Probablemente quieras usar tu propia configuracion de zsh pero si quieres usar la mia;
-cp -r home/.zshrc ~/.zshrc
-cp -r config/zsh ~/.config/zsh
-
-# Si no usaras mi configuracion zsh, necesitaras agregar al archivo .zshrc, esto;
-if [ -d "$HOME/.local/bin" ] ;
-  then PATH="$HOME/.local/bin:$PATH"
-fi
+curl -LO https://is.gd/RiceInstaller ; sh RiceInstaller
 ```
-
-<b>4. Activando servicios</b>
+O directamente
 ```sh
-# Para activar mpd automaticamente cada que inicies sesion
-systemctl --user enable mpd.service
-systemctl --user start mpd.service
+curl -LO https://raw.githubusercontent.com/gh0stzk/dotfiles/master/RiceInstaller ; sh RiceInstaller
 ```
+
 ## Algunos tips
 
-* Los wallpapers estan en formato .webp por eso agregue los paquetes libwebp y webp-pixbuf-loader a las dependencias para que tu expñorador de archivos (thunar en mi caso) los puedan mostrar.
-* Si no quieres usar la caracteristica de wallpapers al azar, comenta la linea 194 y descomenta la 195 del archivo /home/YourUser/.config/bspwm/scripts/LaunchWorld
+* Los wallpapers estan en formato .webp por eso agregue los paquetes libwebp y webp-pixbuf-loader a las dependencias para que tu explorador de archivos (thunar en mi caso) los puedan mostrar.
+* Si no quieres usar la caracteristica de wallpapers al azar, comenta la linea 194 y descomenta la 195 del archivo ~/.config/bspwm/scripts/LaunchWorld
 * Clic izquierdo en el modulo de actualizaciones, actualizara. Clic derecho solo mostrara las actualizaciones disponibles.
 
 ## Problemas
-* **Bspwm Scripts or Launchers not responding**
-
-Los permisos correctos deberian mantenerse cuando hayas clonado mi repositorio pero si por alguna razon no fue asi;
-```sh
-chmod +x ~/.config/bspwm/bspwmrc
-chown $USER ~/.config/bspwm/rice.cfg
-chmod +x ~/.config/bspwm/scripts/{external_rules,getSongDuration,music,RandomWall,hu-polybar,LaunchWorld,RiceSelector,screenshoter,updates.sh,WeatherMini}
-
-# En Cristina, Pamela, Andrea y z0mbi3, algunos scripts necesitan permisos de ejecusion.
-
-chmod +x ~/.config/bspwm/rices/pamela/widgets/{calendar,calendarlauncher,mplayer-launcher,power-launcher,profile-sys-launcher}
-chmod +x ~/.config/bspwm/rices/andrea/arin/sidedar/toggle_sidebar
-chmod +x ~/.config/bspwm/rices/andrea/arin/scripts/{battery,check-network,music_info,quotes,sys_info,system,volume.sh,widget_apps,widget_search}
-chmod +x ~/.config/bspwm/rices/cristina/widgets/mplayer-launcher
-chmod +x ~/.config/bspwm/rices/z0mbi3/bar/scripts/{battery,calendar,popup,volume.sh,wifi,workspace}
-chmod +x ~/.config/bspwm/rices/z0mbi3/dashboard/LaunchInfoCenter.sh
-chmod +x ~/.config/bspwm/rices/z0mbi3/dashboard/scripts/weather
-```
 * **El modulo del tiempo**
 
 La configuracion esta en mi ciudad "Mexico City" necesitas editar el archivo ~/.config/bspwm/scripts/WeatherMini y poner tu ciudad, en la linea 3 modifica weather=$(curl -s wttr.in/**Mexico**?format=3) ecribe tu ciudad o codigo postal, te dejo link [wttr.in Help](https://wttr.in/:help)
@@ -356,10 +297,4 @@ Para el tema z0mbi3 edita ~/.config/bspwm/scripts/weather linea 12 cambia al nom
 
 ## Creditos
 
-All workflows where i stole things to inspire me or for editing, its impossile to remember all but here someones:
-- [turquoise-hexagon](https://github.com/turquoise-hexagon/fonts) for his beautiful Banana font.
-- [This post](https://www.reddit.com/r/unixporn/comments/vkcasz/i3gaps_i_prefer_light_mode/) by TheMonkeyLlama i saw it in UnixPorn. Who inspired Aline's Rice.
-- [adi1090x](https://github.com/adi1090x/widgets) The master, for his setup in Andrea's Rice and for his beautiful Rofi menus.
-- [gabrielzschmitz](https://github.com/gabrielzschmitz) For the amazing color palette in Cynthia's Rice. I loose link but im pretty sure he is the owner.
-- In Pamela's rice to [elenapan](https://github.com/elenapan/dotfiles) For his beautiful color palette. For the eww widgets to the master [rxyhn](https://github.com/rxyhn/bspdots) and [okklol](https://github.com/okklol/eww-bar).
-- Eww doesn't have a way of using a system tray but this little polybar hack make the trick. Thanks to [ikz87](https://github.com/ikz87).
+- [turquoise-hexagon](https://github.com/turquoise-hexagon/fonts), [adi1090x](https://github.com/adi1090x/widgets), [gabrielzschmitz](https://github.com/gabrielzschmitz), [elenapan](https://github.com/elenapan/dotfiles), [rxyhn](https://github.com/rxyhn/bspdots), [okklol](https://github.com/okklol/eww-bar), [ikz87](https://github.com/ikz87).
