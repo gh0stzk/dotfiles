@@ -1,3 +1,16 @@
+(08/Jan/2023)
+- New Automatic Installer
+- Added home page in SPANISH
+- Fixed and updated home page with info for installer
+- Picom config file updated according the PICOM version in official ARCH repositories.
+- Possible fix in eww bar in z0mbi3 rice when u click on power menu, bar goes crazy.
+- Code optimized in LaunchWorld file.
+- Fix sysfetch .desktop, when rofi launched in eww widgets.
+- In all rices with polybar, pulseaudio module updated, for better and generic compatibility for all.
+- Some code optimization in Andrea Rice
+- Added Neovim config, configured in Lua
+- Reverted some changes in firefox theme.
+
 (13/Dec/2022)
 - New firefox 108 breaks tab height size, now its fixed the firefox theme.
 - Some code clean on LaunchWorld script
