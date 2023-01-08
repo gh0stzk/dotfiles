@@ -271,14 +271,6 @@ The installer only works for **ARCH** Linux, and based distros.
 <b>1. Open a terminal and paste;</b>
 
 ```sh
-curl -LO https://tinyurl.com/RiceInstaller ; sh RiceInstaller
-```
-If that url fails or something try this one
-```sh
-curl -LO https://is.gd/RiceInstaller ; sh RiceInstaller
-```
-Or directly
-```sh
 curl -LO https://raw.githubusercontent.com/gh0stzk/dotfiles/master/RiceInstaller ; sh RiceInstaller
 ```
 
