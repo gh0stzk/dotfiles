@@ -158,7 +158,7 @@ function SetGirlFriendRice() {
 		  
 		z0mbi3)
 		
-		  SetBspwmConf 0 5 5 "#161616" "#161616" "#161616" "#4f4f5b" 85 5
+		  SetBspwmConf 0 5 5 "#161616" "#161616" "#161616" "#4f4f5b" 70 5
 		  
 		  # Kill any running instances of bspc to prevent multiple
 		  # instances of "workspaces" script in eww rices to run at once

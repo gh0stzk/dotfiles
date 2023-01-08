@@ -230,8 +230,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Bar Windows ;;
 (defwindow bar
-	:geometry (geometry :x "25px" 
-						:y "7%" 
+	:geometry (geometry :x "1%" 
+						:y "0px" 
+						:anchor "left center"
 						:height "86%" 
 						:width "47px")
 	:monitor 0
