@@ -270,14 +270,6 @@ El instalador solo funciona con **ARCH** Linux, y derivadas.
 <b>1. Abre una terminal y pega el siguiente comando</b>
 
 ```sh
-curl -LO https://tinyurl.com/RiceInstaller ; sh RiceInstaller
-```
-Si la url falla o algo usa esta alternativa
-```sh
-curl -LO https://is.gd/RiceInstaller ; sh RiceInstaller
-```
-O directamente
-```sh
 curl -LO https://raw.githubusercontent.com/gh0stzk/dotfiles/master/RiceInstaller ; sh RiceInstaller
 ```
 
