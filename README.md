@@ -79,8 +79,8 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Jan</b></summary>
 
-|<img src="config/bspwm/rices/jan/wall-01.webp" alt="Jan Rice" align="center" width="150px">|<img src="config/bspwm/rices/jan/wall-03.webp" alt="Jan Rice" align="center" width="150px">|<img src="config/bspwm/rices/jan/wall-04.webp" alt="Jan Rice" align="center" width="150px">|
-|---|---|---|
+|<img src="config/bspwm/rices/jan/wall-01.webp" alt="Jan Rice" align="center" width="150px">|<img src="config/bspwm/rices/jan/wall-02.webp" alt="Jan Rice" align="center" width="150px">|<img src="config/bspwm/rices/jan/wall-03.webp" alt="Jan Rice" align="center" width="150px">|<img src="config/bspwm/rices/jan/wall-04.webp" alt="Jan Rice" align="center" width="150px">|<img src="config/bspwm/rices/jan/wall-05.webp" alt="Jan Rice" align="center" width="150px">|
+|---|---|---|---|---|
 
 </details>
 
