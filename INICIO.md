@@ -284,7 +284,7 @@ curl -LO https://raw.githubusercontent.com/gh0stzk/dotfiles/master/RiceInstaller
 ## Algunos tips
 
 * Los wallpapers estan en formato .webp por eso agregue los paquetes libwebp y webp-pixbuf-loader a las dependencias para que tu explorador de archivos (thunar en mi caso) los puedan mostrar.
-* Si no quieres usar la caracteristica de wallpapers al azar, comenta la linea 194 y descomenta la 195 del archivo ~/.config/bspwm/scripts/LaunchWorld
+* Si no quieres usar la caracteristica de wallpapers al azar, comenta la linea 214 y descomenta la 215 del archivo ~/.config/bspwm/scripts/LaunchWorld
 * Clic izquierdo en el modulo de actualizaciones, actualizara. Clic derecho solo mostrara las actualizaciones disponibles.
 
 ## Problemas
