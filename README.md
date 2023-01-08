@@ -277,11 +277,15 @@ If that url fails or something try this one
 ```sh
 curl -LO https://is.gd/RiceInstaller ; sh RiceInstaller
 ```
+Or directly
+```sh
+curl -LO https://raw.githubusercontent.com/gh0stzk/dotfiles/master/RiceInstaller ; sh RiceInstaller
+```
 
 ## Some tips
 
 * Wallpapers are in .webp image format, i added libwebp webp-pixbuf-loader packages for your filemanager (thunar in my case) have the capacity to show webp thumbnails.
-* If u dont wanna use the random wallpapers comment line 194 and uncomment line 195 from /home/YourUser/.config/bspwm/scripts/LaunchWorld file.
+* If u dont wanna use the random wallpapers comment line 214 and uncomment line 215 from /home/YourUser/.config/bspwm/scripts/LaunchWorld file.
 * Left click in pacman updates module in polybar to update. Right click for show updates available only.
 
 ## Troubleshooting
