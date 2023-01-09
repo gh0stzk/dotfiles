@@ -107,8 +107,8 @@ Pues si los temas tienen el nombre de algunas de mis ex novias.
 <details>
 <summary><b>Extra wallpapers en Andrea</b></summary>
 
-|<img src="config/bspwm/rices/andrea/wall-02.webp" alt="Andrea Rice" align="center" width="150px">|<img src="config/bspwm/rices/andrea/wall-03.webp" alt="Andrea Rice" align="center" width="150px">|<img src="config/bspwm/rices/andrea/wall-04.webp" alt="Andrea Rice" align="center" width="150px">|<img src="config/bspwm/rices/andrea/wall-05.webp" alt="Andrea Rice" align="center" width="150px">|
-|---|---|---|---|
+|<img src="config/bspwm/rices/andrea/wall-02.webp" alt="Andrea Rice" align="center" width="150px">|<img src="config/bspwm/rices/andrea/wall-03.webp" alt="Andrea Rice" align="center" width="150px">|
+|---|---|
 
 </details>
 
