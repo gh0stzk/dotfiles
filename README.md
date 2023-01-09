@@ -20,9 +20,9 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 |Widgets|[ElKowars wacky widgets ](https://github.com/elkowar/eww)|
 
 ## 📖 Features
-* **Change RICE on the fly:** 12 different Rices now!.
+* **Change themes on the fly:** 12 different Rices now!.
 
-* **Rice Selector:** <code>Alt + Space bar</code> to launch it.
+* **Theme Selector:** <code>Alt + Space bar</code> to launch it.
 
 * **Random wallpaper:**  Every time you switch between rices or reload bspwm with <code>super + alt + r</code> a new wallpaper is set depending on the rice you are on.
 
