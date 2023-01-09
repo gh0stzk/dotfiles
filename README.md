@@ -183,8 +183,8 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Pamela</b></summary>
 
-|<img src="config/bspwm/rices/pamela/wall-02.webp" alt="Pamela Rice" align="center" width="150px">|<img src="config/bspwm/rices/pamela/wall-03.webp" alt="Pamela Rice" align="center" width="150px">|<img src="config/bspwm/rices/pamela/wall-04.webp" alt="Pamela Rice" align="center" width="150px">|<img src="config/bspwm/rices/pamela/wall-05.webp" alt="Pamela Rice" align="center" width="150px">
-|---|---|---|---|
+|<img src="config/bspwm/rices/pamela/wall-02.webp" alt="Pamela Rice" align="center" width="150px">|<img src="config/bspwm/rices/pamela/wall-03.webp" alt="Pamela Rice" align="center" width="150px">|<img src="config/bspwm/rices/pamela/wall-04.webp" alt="Pamela Rice" align="center" width="150px">|
+|---|---|---|
 
 </details>
 
