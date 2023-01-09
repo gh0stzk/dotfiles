@@ -1,9 +1,9 @@
-# BSPWM | Polybar themes collection - Rice selector
+# BSPWM | Polybar themes collection with Theme Selector
 
 ## Puedes leer esta pagina en español [AQUI](INICIO.md)
 
 ## 🌿 Information
-My dotfiles, 12 different rices for BSPWM and Polybar. With a Rice selector to change on the fly. 
+12 different themes for BSPWM and Polybar. With a theme selector to change on the fly. 
 
 https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-afed-f352c5d2979e.mp4
 
@@ -51,7 +51,7 @@ Increase and decrease transparency in focused or selected window.
    </tr>
    </table>
 
-## 🎨 The rices...
+## 🎨 The themes...
 So yes... i called the Rices with the names of some of my ex girlfriends. 
 
 ### 🌸Emilia:
@@ -290,6 +290,4 @@ For the eww widget in z0mbi3 rice you need to edit ~/.config/bspwm/scripts/weath
 
 
 ## Credits
-
-All workflows where i stole things to inspire me or for editing, its impossile to remember all but here someones:
 - [turquoise-hexagon](https://github.com/turquoise-hexagon/fonts), [adi1090x](https://github.com/adi1090x/widgets), [gabrielzschmitz](https://github.com/gabrielzschmitz), [elenapan](https://github.com/elenapan/dotfiles), [rxyhn](https://github.com/rxyhn/bspdots), [okklol](https://github.com/okklol/eww-bar), [ikz87](https://github.com/ikz87).
