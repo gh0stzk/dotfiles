@@ -2,8 +2,8 @@
 
 ## 🌿 Informacion
 Mi coleccion de 12 temas para BSPWM y Polybar. Con menu para seleccionar los temas.
- 
-https://user-images.githubusercontent.com/67278339/211226873-c897ad18-b623-4600-a7cd-3fc594ff72b2.mp4
+
+https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-afed-f352c5d2979e.mp4
  
 ## Menu de Temas
 <img src="assets/rs.webp" alt="Rice Menu" align="right" width="400px">
