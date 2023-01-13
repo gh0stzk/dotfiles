@@ -1,3 +1,8 @@
+(13/Jan/2023)
+- Some optimizations in config files, mostly polybar ones in almost all rices
+- In all themes with eww widgets, the size in pixels was changed by percentage, trying to make them more generic for all resolutions. The same for the configurations in polybar.
+- Some people asked me if I could add a keybinding to open a floating terminal. And here you have "Super + Alt + Enter" it will open the terminal.
+
 (08/Jan/2023)
 - New Automatic Installer
 - Added home page in SPANISH
