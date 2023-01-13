@@ -8,6 +8,10 @@
 super + Return
 	termite
 	
+# Floating Terminal
+super + alt + Return
+	termite -t floaterm
+	
 # Apps
 shift + alt + {b,g,n,p,r,t,q,w,m,v,k}
        {firefox, \
@@ -19,7 +23,7 @@ shift + alt + {b,g,n,p,r,t,q,w,m,v,k}
         qutebrowser --qt-flag disable-gpu, \
         whatsapp-nativefier --disable-gpu, \
         env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --disable-gpu --no-zygote %U, \
-        termite -e nvim, \
+        termite -e "nvim", \
         termite -t musicplayer -e "ncmpcpp"}
         
 #hide

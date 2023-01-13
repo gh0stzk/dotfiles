@@ -152,38 +152,38 @@
 	)
 )
 
-;windows
-
+;; Power Menu ;;
 (defwindow powermenu
-    :geometry (geometry :x "0px"
-                        :y "35px"
+    :geometry (geometry :x "0%"
+                        :y "0%"
                         :width "4%"
                         :height "28%"
                         :anchor "center right")
     (powermenu))
     
+    
 ;; Calendar Windows ;;
-
 (defwindow calendar
-	:geometry (geometry :x "-14px" 
+	:geometry (geometry :x "78%" 
 						:y "7%" 
-						:width "270px" 
-						:height "60px"
-						:anchor "top right")
+						:width "19%" 
+						:height "25%")
 (cal))
 
+
+;; Profile Card Menu ;;
 (defwindow launchermenu
-    :geometry (geometry :x "430px"
+    :geometry (geometry :x "26%"
                         :y "7%"
-                        :width "12%"
-                        :height "29%"
-                        :anchor "top left")
+                        :width "13%"
+                        :height "31%")
     (launchermenu))
-    
+
+
+;; Music Player ;;
 (defwindow music
-    :geometry (geometry :x "65px"
-                        :y "6%"
+    :geometry (geometry :x "45%"
+                        :y "7%"
                         :width "18%"
-                        :height "47%"
-                        :anchor "top center")
+                        :height "47%")
     (music))

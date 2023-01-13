@@ -27,6 +27,8 @@ if [ "$instance" = termite ] ; then
 		musicplayer)
 			echo "state=floating rectangle=630x215+0+0 center=on"
 			;;
+		floaterm)
+			echo "state=floating center=on rectangle=781x451+0+0"
 	esac
 fi
 

@@ -47,9 +47,9 @@
 ;windows
     
 (defwindow music
-    :geometry (geometry :x "-20%"
-                        :y "-6%"
+    :geometry (geometry :x "10%"
+                        :y "-7%"
                         :width "18%"
                         :height "47%"
-                        :anchor "bottom right")
+                        :anchor "bottom center")
     (music))
