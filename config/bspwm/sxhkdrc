@@ -56,7 +56,7 @@ super + @space
 	
 # Theme Selector
 alt + @space
-	RiceSelector &
+	RiceSelector
 
 # Reload sxhkd
 super + Escape
