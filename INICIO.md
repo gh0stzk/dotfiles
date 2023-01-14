@@ -246,17 +246,17 @@ El manejador de plugins es Packer.
 
 ## Atajos de teclado utiles que deberias saber...
 
-<code>alt + @space</code> Display menu to select theme selector.
-<code>super + @space</code> Apps Menu.
-<code>super + h </code> Hides bar/s <code>super + u</code> unhide bar/s
-<code>super + Print</code> Takes screenshot.
-<code>ctrl + alt {plus,minus,t}</code> Changes transparency os focused window.
-<code>ctrl + super + alt + p</code> Power off computer. <code>ctrl + super + alt + r</code> Restart computer.
-<code>super + Return</code> Open a terminal.
-<code>super + Alt + Return</code> Open a floating terminal.
-<code>ctrl + super + alt + k</code> Brute Kill a window/process.
-<code>super + alt + w</code> Changes randomly wallpaper.
-<code>super + alt + r</code> Restart bspwm.
+- <code>alt + @space</code> Display menu to select theme selector.
+- <code>super + @space</code> Apps Menu.
+- <code>super + h </code> Hides bar/s <code>super + u</code> unhide bar/s
+- <code>super + Print</code> Takes screenshot.
+- <code>ctrl + alt {plus,minus,t}</code> Changes transparency os focused window.
+- <code>ctrl + super + alt + p</code> Power off computer. <code>ctrl + super + alt + r</code> Restart computer.
+- <code>super + Return</code> Open a terminal.
+- <code>super + Alt + Return</code> Open a floating terminal.
+- <code>ctrl + super + alt + k</code> Brute Kill a window/process.
+- <code>super + alt + w</code> Changes randomly wallpaper.
+- <code>super + alt + r</code> Restart bspwm.
 
 Y mas... Necesitaras mirar el archivo sxhkdrc file para ver todos los atajos.
 
