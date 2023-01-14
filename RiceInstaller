@@ -93,6 +93,11 @@ fi
 
 [ -e ~/.config/bspwm ] && mv ~/.config/bspwm ~/.RiceBackup/bspwm-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/termite ] && mv ~/.config/termite ~/.RiceBackup/termite-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -e ~/.config/picom ] && mv ~/.config/picom ~/.RiceBackup/picom-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -e ~/.config/rofi ] && mv ~/.config/rofi ~/.RiceBackup/rofi-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -e ~/.config/eww ] && mv ~/.config/eww ~/.RiceBackup/eww-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -e ~/.config/sxhkd ] && mv ~/.config/sxhkd ~/.RiceBackup/sxhkd-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -e ~/.config/dunst ] && mv ~/.config/dunst ~/.RiceBackup/dunst-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/gtk-3.0 ] && mv ~/.config/gtk-3.0 ~/.RiceBackup/gtk-3.0-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/mpd ] && mv ~/.config/mpd ~/.RiceBackup/mpd-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/ncmpcpp ] && mv ~/.config/ncmpcpp ~/.RiceBackup/ncmpcpp-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
