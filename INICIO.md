@@ -246,17 +246,17 @@ El manejador de plugins es Packer.
 
 ## Atajos de teclado utiles que deberias saber...
 
-- <code>alt + @space</code> Display menu to select theme selector.
-- <code>super + @space</code> Apps Menu.
-- <code>super + h </code> Hides bar/s <code>super + u</code> unhide bar/s
-- <code>super + Print</code> Takes screenshot.
-- <code>ctrl + alt {plus,minus,t}</code> Changes transparency os focused window.
-- <code>ctrl + super + alt + p</code> Power off computer. <code>ctrl + super + alt + r</code> Restart computer.
-- <code>super + Return</code> Open a terminal.
-- <code>super + Alt + Return</code> Open a floating terminal.
-- <code>ctrl + super + alt + k</code> Brute Kill a window/process.
-- <code>super + alt + w</code> Changes randomly wallpaper.
-- <code>super + alt + r</code> Restart bspwm.
+- <code>alt + @space</code> Abre el menu para seleccionar un nuevo tema.
+- <code>super + @space</code> Menu de apps.
+- <code>super + h </code> Esconde la barra <code>super + u</code> Muestra nuevamente la barra.
+- <code>super + Print</code> Toma captura de pantalla.
+- <code>ctrl + alt + plus</code> Incrementa la transparencia de la ventana. <code>ctrl + alt + minus</code> Decrementa la transparencia. <code>ctrl + alt + t</code> Reestablece la transparencia por default.
+- <code>ctrl + super + alt + p</code> Apaga la computadora. <code>ctrl + super + alt + r</code> Reinicia la computadora.
+- <code>super + Return</code> Abre una terminal.
+- <code>super + Alt + Return</code> Abre una terminal flotante.
+- <code>ctrl + super + alt + k</code> Mata un proceso o ventana.
+- <code>super + alt + w</code> Cambia al azar el wallpaper.
+- <code>super + alt + r</code> Reinicia bspwm.
 
 Y mas... Necesitaras mirar el archivo sxhkdrc file para ver todos los atajos.
 
