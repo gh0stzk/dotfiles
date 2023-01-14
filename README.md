@@ -64,7 +64,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Emilia</b></summary>
 
-|<img src="config/bspwm/rices/emilia/wall-02.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/wall-03.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/wall-04.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/wall-05.webp" alt="Emilia Rice" align="center" width="150px">|
+|<img src="config/bspwm/rices/emilia/walls/wall-02.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-03.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-04.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-05.webp" alt="Emilia Rice" align="center" width="150px">|
 |---|---|---|---|
 
 </details>
@@ -79,7 +79,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Jan</b></summary>
 
-|<img src="config/bspwm/rices/jan/wall-01.webp" alt="Jan Rice" align="center" width="150px">|<img src="config/bspwm/rices/jan/wall-02.webp" alt="Jan Rice" align="center" width="150px">|<img src="config/bspwm/rices/jan/wall-03.webp" alt="Jan Rice" align="center" width="150px">|<img src="config/bspwm/rices/jan/wall-04.webp" alt="Jan Rice" align="center" width="150px">|<img src="config/bspwm/rices/jan/wall-05.webp" alt="Jan Rice" align="center" width="150px">|
+|<img src="config/bspwm/rices/jan/walls/wall-01.webp" alt="Jan Rice" align="center" width="150px">|<img src="config/bspwm/rices/jan/walls/wall-02.webp" alt="Jan Rice" align="center" width="150px">|<img src="config/bspwm/rices/jan/walls/wall-03.webp" alt="Jan Rice" align="center" width="150px">|<img src="config/bspwm/rices/jan/walls/wall-04.webp" alt="Jan Rice" align="center" width="150px">|<img src="config/bspwm/rices/jan/walls/wall-05.webp" alt="Jan Rice" align="center" width="150px">|
 |---|---|---|---|---|
 
 </details>
@@ -94,7 +94,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Aline</b></summary>
 
-|<img src="config/bspwm/rices/aline/wall-02.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/wall-03.webp" alt="Aline Rice" align="center" width="150px">|
+|<img src="config/bspwm/rices/aline/walls/wall-02.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-03.webp" alt="Aline Rice" align="center" width="150px">|
 |---|---|
 
 </details>
@@ -109,7 +109,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Andrea</b></summary>
 
-|<img src="config/bspwm/rices/andrea/wall-02.webp" alt="Andrea Rice" align="center" width="150px">|<img src="config/bspwm/rices/andrea/wall-03.webp" alt="Andrea Rice" align="center" width="150px">|
+|<img src="config/bspwm/rices/andrea/walls/wall-02.webp" alt="Andrea Rice" align="center" width="150px">|<img src="config/bspwm/rices/andrea/walls/wall-03.webp" alt="Andrea Rice" align="center" width="150px">|
 |---|---|
 
 </details>
@@ -124,7 +124,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Cynthia</b></summary>
 
-|<img src="config/bspwm/rices/cynthia/wall-02.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/wall-03.webp" alt="Cynthia Rice" align="center" width="150px">|
+|<img src="config/bspwm/rices/cynthia/walls/wall-02.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/walls/wall-03.webp" alt="Cynthia Rice" align="center" width="150px">|
 |---|---|
 
 </details>
@@ -139,7 +139,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Isabel</b></summary>
 
-|<img src="config/bspwm/rices/isabel/wall-02.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/wall-03.webp" alt="Isabel Rice" align="center" width="150px">|
+|<img src="config/bspwm/rices/isabel/walls/wall-02.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/walls/wall-03.webp" alt="Isabel Rice" align="center" width="150px">|
 |---|---|
 </details>
 
@@ -153,7 +153,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Silvia</b></summary>
 
-|<img src="config/bspwm/rices/silvia/wall-01.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/wall-03.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/wall-04.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/wall-05.webp" alt="Silvia Rice" align="center" width="150px">|
+|<img src="config/bspwm/rices/silvia/walls/wall-01.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/walls/wall-03.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/walls/wall-04.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/walls/wall-05.webp" alt="Silvia Rice" align="center" width="150px">|
 |---|---|---|---|
 
 </details>
@@ -168,7 +168,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Melissa</b></summary>
 
-|<img src="config/bspwm/rices/melissa/wall-02.webp" alt="Melissa Rice" align="center" width="150px">|<img src="config/bspwm/rices/melissa/wall-03.webp" alt="Melissa Rice" align="center" width="150px">|<img src="config/bspwm/rices/melissa/wall-04.webp" alt="Melissa Rice" align="center" width="150px">|
+|<img src="config/bspwm/rices/melissa/walls/wall-02.webp" alt="Melissa Rice" align="center" width="150px">|<img src="config/bspwm/rices/melissa/walls/wall-03.webp" alt="Melissa Rice" align="center" width="150px">|<img src="config/bspwm/rices/melissa/walls/wall-04.webp" alt="Melissa Rice" align="center" width="150px">|
 |---|---|---|
 
 </details>
@@ -183,7 +183,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Pamela</b></summary>
 
-|<img src="config/bspwm/rices/pamela/wall-02.webp" alt="Pamela Rice" align="center" width="150px">|<img src="config/bspwm/rices/pamela/wall-03.webp" alt="Pamela Rice" align="center" width="150px">|<img src="config/bspwm/rices/pamela/wall-04.webp" alt="Pamela Rice" align="center" width="150px">|
+|<img src="config/bspwm/rices/pamela/walls/wall-02.webp" alt="Pamela Rice" align="center" width="150px">|<img src="config/bspwm/rices/pamela/walls/wall-03.webp" alt="Pamela Rice" align="center" width="150px">|<img src="config/bspwm/rices/pamela/walls/wall-04.webp" alt="Pamela Rice" align="center" width="150px">|
 |---|---|---|
 
 </details>
@@ -199,7 +199,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Cristina</b></summary>
 
-|<img src="config/bspwm/rices/cristina/wall-02.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/wall-03.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/wall-04.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/wall-05.webp" alt="Cristina Rice" align="center" width="150px">|
+|<img src="config/bspwm/rices/cristina/walls/wall-02.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/walls/wall-03.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/walls/wall-04.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/walls/wall-05.webp" alt="Cristina Rice" align="center" width="150px">|
 |---|---|---|---|
 
 </details>
@@ -214,8 +214,8 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Karla</b></summary>
 
-|<img src="config/bspwm/rices/karla/wall-02.webp" alt="Karla Rice" align="center" width="150px">|<img src="config/bspwm/rices/karla/wall-03.webp" alt="Karla Rice" align="center" width="150px">|<img src="config/bspwm/rices/karla/wall-04.webp" alt="Karla Rice" align="center" width="150px">|<img src="config/bspwm/rices/karla/wall-05.webp" alt="Karla Rice" align="center" width="150px">|<img src="config/bspwm/rices/karla/wall-06.webp" alt="Karla Rice" align="center" width="150px">|
-|---|---|---|---|---|
+|<img src="config/bspwm/rices/karla/walls/wall-02.webp" alt="Karla Rice" align="center" width="150px">|<img src="config/bspwm/rices/karla/walls/wall-03.webp" alt="Karla Rice" align="center" width="150px">|<img src="config/bspwm/rices/karla/walls/wall-04.webp" alt="Karla Rice" align="center" width="150px">|<img src="config/bspwm/rices/karla/walls/wall-05.webp" alt="Karla Rice" align="center" width="150px">|
+|---|---|---|---|
 
 </details>
 
@@ -230,7 +230,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in z0mbi3</b></summary>
 
-|<img src="config/bspwm/rices/z0mbi3/wall-01.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-02.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-04.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-05.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/wall-06.webp" alt="z0mbi3 Rice" align="center" width="150px">|
+|<img src="config/bspwm/rices/z0mbi3/walls/wall-01.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/walls/wall-02.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/walls/wall-04.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/walls/wall-05.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/walls/wall-06.webp" alt="z0mbi3 Rice" align="center" width="150px">|
 |---|---|---|---|---|
 
 </details>
@@ -248,18 +248,17 @@ The plugin manager is Packer.
 
 ## Very useful keybindigs to know...
 
-|Action|Keybinding|
-|---|---|
-|Rice Selector|<code>alt + @space</code>|
-|Menu|<code>super + @space</code>|
-|Hide / Unhide Bar|<code>super + h / super + u</code>|
-|Screenshot|<code>super + Print</code>|
-|Transparency|<code>ctrl + alt {plus,minus,t}</code>|
-|poweroff / Reboot|<code>ctrl + super + alt + {p,r}</code>|
-|Terminal|<code>super + Return</code>|
-|Brute Kill|<code>ctrl + super + alt + k</code>|
-|Wallpaper Changer|<code>super + alt + w</code>|
-|Restart bspwm|<code>super + alt + r</code>|
+<code>alt + @space</code> Display menu to select theme selector.
+<code>super + @space</code> Apps Menu.
+<code>super + h </code> Hides bar/s <code>super + u</code> unhide bar/s
+<code>super + Print</code> Takes screenshot.
+<code>ctrl + alt {plus,minus,t}</code> Changes transparency os focused window.
+<code>ctrl + super + alt + p</code> Power off computer. <code>ctrl + super + alt + r</code> Restart computer.
+<code>super + Return</code> Open a terminal.
+<code>super + Alt + Return</code> Open a floating terminal.
+<code>ctrl + super + alt + k</code> Brute Kill a window/process.
+<code>super + alt + w</code> Changes randomly wallpaper.
+<code>super + alt + r</code> Restart bspwm.
 
 And more.. You need to look sxhkdrc file for more.
 
