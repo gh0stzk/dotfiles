@@ -1,4 +1,7 @@
-#! /bin/sh
+#!/usr/bin/env bash
 
-wallimage=$(shuf -en1 ~/.config/bspwm/rices/$RICETHEME/*.webp)
-feh --no-fehbg --bg-fill $wallimage
+#	Simple script to set random wallpaper using FEH
+#   Author: z0mbi3
+#	url: https://github.com/gh0stzk
+
+feh --randomize --no-fehbg --bg-fill ~/.config/bspwm/rices/$RICETHEME/walls/
