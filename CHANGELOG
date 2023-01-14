@@ -1,3 +1,10 @@
+(14/Jan/2023)
+- Optimized RandomWall function
+- If u set bspwm borders, now colors are properly set for colorscheme of the rice you are.
+- Updated colorscript from distrowatch. With some new ascii art.
+- Updated zfetch, now will randomly spawm inside colorscript.
+
+
 (13/Jan/2023)
 - Some optimizations in config files, mostly polybar ones in almost all rices
 - In all themes with eww widgets, the size in pixels was changed by percentage, trying to make them more generic for all resolutions. The same for the configurations in polybar.
