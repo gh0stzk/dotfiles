@@ -1,3 +1,9 @@
+(15/Jan/2023)
+- Updated sysfetch script
+- Modified sxhkdrc "Move between nodes (windows)"
+- Move wallpapers to a dir, and changed the way wallpapers are set
+- Added Ranger config 
+
 (14/Jan/2023)
 - Optimized RandomWall function
 - If u set bspwm borders, now colors are properly set for colorscheme of the rice you are.

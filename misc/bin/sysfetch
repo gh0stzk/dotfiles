@@ -1,22 +1,10 @@
 #!/usr/bin/env bash
 
-# sysinfo: A sort of custom script
+# sysfetch
 # Thanks to u/x_ero for his sysinfo script
-# Also thanks to mysterious person for their fetch script; allowing for center padding
+# Modified by gh0stzk https://github.com/gh0stzk/dotfiles
 
 # color escapes
-BLK="\e[30m"
-RED="\e[31m"
-GRN="\e[32m"
-YLW="\e[33m"
-BLU="\e[34m"
-PUR="\e[35m"
-CYN="\e[36m"
-WHT="\e[37m"
-GRY="\e[90;1m"
-RST="\e[0m"
-BLD="\033[1m"
-
 PBLK=$(printf "%b" "\x1b[38;2;58;58;58m")
 PRED=$(printf "%b" "\e[31m")
 PGRN=$(printf "%b" "\e[32m")
@@ -30,18 +18,14 @@ PRST=$(printf "%b" "\e[0m")
 PBLD=$(printf "%b" "\033[1m")
 
 # vars
-#FULL=▓
-#EMPTY=░
 FULL=━
 EMPTY=━
-#FULL=─
-#FULL=┅
-#EMPTY=┄
+
 
 name=$USER
 host=$(uname -n)
 distro=$(uname -o | awk -F '"' '/PRETTY_NAME/ { print $2 }' /etc/os-release)
-wm="$(xprop -id $(xprop -root -notype | awk '$1=="_NET_SUPPORTING_WM_CHECK:"{print $5}') -notype -f _NET_WM_NAME 8t | grep "WM_NAME" | cut -f2 -d \")"
+wm=$(xprop -id $(xprop -root -notype | awk '$1=="_NET_SUPPORTING_WM_CHECK:"{print $5}') -notype -f _NET_WM_NAME 8t | grep "WM_NAME" | cut -f2 -d \")
 
 get_pkg_count() {
 	package_managers=('xbps-install' 'apk' 'apt' 'pacman' 'nix' 'dnf' 'rpm' 'emerge')
@@ -68,7 +52,6 @@ get_pkg_count() {
 storage=$(df -h / | awk '/^\//{print $3}')
 term=$(ps -o sid= -p "$$" | xargs ps -o ppid= -p | xargs ps -o comm= -p)
 uptm=$(uptime -p | sed -e 's/hour/hr/' -e 's/hours/hrs/' -e 's/minutes/mins/' -e 's/minute/min/' -e 's/up //')
-#uptm=$(uptime -p)
 
 #Cleanup first
 clear
@@ -110,24 +93,24 @@ $PADCC            $PBLU/.^         $PPUR^.\\
 EOF
 
 BAR=" ▓▒░"
-OUTT="$BLK$BAR$RED$BAR$GRN$BAR$YLW$BAR$BLU$BAR$PUR$BAR$CYN$BAR$WHT$BAR$RST"
+OUTT="$PBLK$BAR$PRED$BAR$PGRN$BAR$PYLW$BAR$PBLU$BAR$PPUR$BAR$PCYN$BAR$PWHT$BAR$PRST"
 printf "%s%b" "$PADC" "$OUTT"
 printf "\n\n"
 
 
 # greetings
-printf "%s%b" "$PADC" "         hola $RED$BLD$name$RST\n"
-printf "%s%b" "$PADC" "      Bienvenido a $GRN$BLD$host$RST\n"
-printf "%s%b" "$PADC" "           up $CYN$BLD$uptm$RST\n\n"
+printf "%s%b" "$PADC" "            hola $PRED$PBLD$name$PRST\n"
+printf "%s%b" "$PADC" "      Bienvenido a $PGRN$BLD$host$PRST\n"
+printf "%s%b" "$PADC" "          up $PCYN$BLD$uptm$PRST\n\n"
 
 # environment
-printf "%s%b" "$PADC" "$RED        distro $GRY⏹ $RST$distro\n"
-printf "%s%b" "$PADC" "$BLU        kernel $GRY⏹ $RST$(uname -r)\n"
-printf "%s%b" "$PADC" "$PUR      packages $GRY⏹ $RST$(get_pkg_count)\n"
-printf "%s%b" "$PADC" "$GRN         shell $GRY⏹ $RST${SHELL##*/}\n"
-printf "%s%b" "$PADC" "$YLW          term $GRY⏹ $RST$term\n"
-printf "%s%b" "$PADC" "$CYN            wm $GRY⏹ $RST${wm}\n"
-printf "%s%b" "$PADC" "$BLU          disk $GRY⏹ $RST$storage used\n"
+printf "%s%b" "$PADC" "$PRED        distro $PGRY⏹ $PRST$distro\n"
+printf "%s%b" "$PADC" "$PBLU        kernel $PGRY⏹ $PRST$(uname -r)\n"
+printf "%s%b" "$PADC" "$PPUR      packages $PGRY⏹ $PRST$(get_pkg_count)\n"
+printf "%s%b" "$PADC" "$PGRN         shell $PGRY⏹ $PRST${SHELL##*/}\n"
+printf "%s%b" "$PADC" "$PYLW          term $PGRY⏹ $PRST$term\n"
+printf "%s%b" "$PADC" "$PCYN            wm $PGRY⏹ $PRST${wm}\n"
+printf "%s%b" "$PADC" "$PBLU          disk $PGRY⏹ $PRST$storage used\n"
 printf " $RST\n"
 
 # progress bar
@@ -140,7 +123,7 @@ draw() {
 	for v in $(seq 0 $((size - 1))); do
 		test "$v" -le "$inc" &&
 			out="${out}\e[1;${color}m${FULL}" ||
-			out="${out}\e[0;37m${GRY}${EMPTY}"
+			out="${out}\e[0;37m${PGRY}${EMPTY}"
 	done
 	printf $out
 }
@@ -149,13 +132,14 @@ draw() {
 cpu=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}')
 c_lvl=$(printf "%.0f" $cpu)
 printf "%b" "$PADC"
-printf "   $PUR%-4s $WHT%-5s %-25s \n" " cpu" "$c_lvl%" $(draw $c_lvl 15 35)
+printf "  $PPUR%-4s $PWHT%-5s%-25s\n" "cpu" "$c_lvl%" $(draw $c_lvl 13 35)
 
 # ram
 ram=$(free | awk '/Mem:/ {print int($3/$2 * 100.0)}')
-printf "%b" "$RST$PADC"
-printf "   $PUR%-4s $WHT%-5s %-25s \n" " ram" "$ram%" $(draw $ram 15 35)
-
+ram2=$(free --mega | sed -n -E '2s/^[^0-9]*([0-9]+) *([0-9]+).*/'"${space}"'\2 MB/p')
+printf "%b" "$PRST$PADC"
+printf "  $PPUR%-4s $PWHT%-5s%-25s $PWHT%-5s\n" "ram" "$ram%" $(draw $ram 13 35) "$ram2"
+    
 # hide the cursor and wait for user input
 tput civis
 read -n 1

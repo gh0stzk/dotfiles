@@ -66,7 +66,7 @@ clear
 logo "Installing needed packages.."
 
 	sudo pacman -Syu polybar sxhkd dunst rofi lsd jq \
-					 playerctl mpd ncmpcpp mpc picom feh \
+					 playerctl mpd ncmpcpp mpc picom feh ueberzug \
 					 maim pamixer libwebp webp-pixbuf-loader xorg-xkill papirus-icon-theme \
 					 ttf-jetbrains-mono ttf-terminus-nerd ttf-inconsolata ttf-joypixels
 					 
@@ -102,6 +102,7 @@ fi
 [ -e ~/.config/mpd ] && mv ~/.config/mpd ~/.RiceBackup/mpd-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/ncmpcpp ] && mv ~/.config/ncmpcpp ~/.RiceBackup/ncmpcpp-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/nvim ] && mv ~/.config/nvim ~/.RiceBackup/nvim-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -e ~/.config/ranger ] && mv ~/.config/ranger ~/.RiceBackup/ranger-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/zsh ] && mv ~/.config/zsh ~/.RiceBackup/zsh-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/.RiceBackup/.zshrc-backup-"$(date +%Y.%m.%d-%H.%M.%S)"

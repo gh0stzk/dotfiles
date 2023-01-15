@@ -123,7 +123,7 @@ super + alt + button{4,5}
 	bspc config window_gap $(( $(bspc config window_gap) {-,+} 5 ))
 
 # focus the node in the given direction
-super + {_,shift + }{h,j,k,l}
+super + {_,shift + }{Left,Down,Up,Right}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
