@@ -1,9 +1,10 @@
-PROMPT="%B%F{blue}󰣇%f%b  %F{magenta}%n%f %F{red}%~%f %B%F{green}❯❯%f%b "
-RPROMPT="%(?.%F{blue}√.%F{red}?%?)%f"
+
+PROMPT='%B%F{blue}󰣇%f%b  %F{magenta}%n%f %F{red}%~%f %B%F{green}%f%b '
 
 export VISUAL=geany;
 export EDITOR=nvim;
 export TERMINAL=termite;
+export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 
 if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.local/bin:$PATH"
@@ -105,7 +106,7 @@ alias stop-cine="sudo systemctl stop minidlna.service"
 alias musica="ncmpcpp"
 
 # confirm before overwriting something
-alias cp="cp -iv"
+#alias cp="cp -iv"
 alias mv="mv -iv"
 alias rm="rm -iv"
 

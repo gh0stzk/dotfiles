@@ -28,10 +28,10 @@ shift + alt + {b,g,n,p,r,t,q,w,m,v,k}
         
 #hide
 super + h
-		hu-polybar -h
+		HideBar -h
 #unhide
 super + u 
-		hu-polybar -u
+		HideBar -u
 		     
 # screenshoots
 super + Print

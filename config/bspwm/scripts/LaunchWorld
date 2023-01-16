@@ -10,8 +10,8 @@ export defnetif=$(ip route | grep '^default' | awk '{print $5}' | head -n1)
 
 function launch() {
   local running
-  running="$(pidof "$1")"
-  [ "$running" ] && kill -9 $(pidof $1)
+  running="$(pgrep -x "$1")"
+  [ "$running" ] && kill -9 $(pgrep -x $1) 2> /dev/null
   eval "$* &"
 }
 
@@ -66,7 +66,7 @@ function SetGirlFriendRice() {
 			
 		jan)
 		
-		  SetBspwmConf 2 60 5 "#4C3A6D" "#4C3A6D" "#785DA5" "#070219" 5 5
+		  SetBspwmConf 1 60 5 "#4C3A6D" "#4C3A6D" "#785DA5" "#070219" 5 5
 		  
 		  killeww
 		  launch polybar -q main -c ${polydir}/config.ini
@@ -96,7 +96,7 @@ function SetGirlFriendRice() {
 		  
 		cynthia)
 		
-		  SetBspwmConf 0 45 5 "#543f66" "#543f66" "#465b80" "#3f5273" 5 5
+		  SetBspwmConf 0 50 5 "#543f66" "#543f66" "#465b80" "#3f5273" 5 5
 		  
 		  killeww
 		  launch polybar -q cyn-bar -c ${polydir}/config.ini
@@ -106,7 +106,7 @@ function SetGirlFriendRice() {
 		  
 		silvia)
 		
-		  SetBspwmConf 0 45 5 "#d3869b" "#d3869b" "#fbf1c7" "#b8bb26" 5 5
+		  SetBspwmConf 0 50 5 "#d3869b" "#d3869b" "#fbf1c7" "#b8bb26" 5 5
 
 		  killeww
 		  launch polybar -q cata-bar -c ${polydir}/config.ini
@@ -179,7 +179,7 @@ function SetGirlFriendRice() {
 		  
 		andrea)
 		
-		  SetBspwmConf 2 60 5 "#161616" "#161616" "#605692" "#67d4f1" 5 5
+		  SetBspwmConf 0 60 5 "#161616" "#161616" "#605692" "#67d4f1" 5 5
 		  
 		  pkill picom
 		  pkill polybar 
@@ -202,7 +202,6 @@ function AutoStartApps() {
 	
 	launch sxhkd -c ${bspdir}/sxhkdrc
 	launch picom --config ${bspdir}/rices/$RICETHEME/picom.conf
-	#If you have issues with picom, maybe you need to comment the line above "210" and uncomment line "212" below this line
 	#launch picom --legacy-backends --config ${bspdir}/rices/$RICETHEME/picom.conf
 	launch /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 	RandomWall
