@@ -1,3 +1,9 @@
+(16/Jan/2023)
+- Minor changes to bspwm polybar module in Karla rice
+- Minor changes to bspwm polybar module in Silvia rice
+- Changed script name to hide bar/s (hu-polybar --> HideBar)
+- In LaunchWorld pidof command replaced by pgrep -x
+
 (15/Jan/2023)
 - Updated sysfetch script
 - Modified sxhkdrc "Move between nodes (windows)"
