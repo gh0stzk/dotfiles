@@ -156,8 +156,7 @@ function SetGirlFriendRice() {
 		  
 		  # Kill any running instances of bspc to prevent multiple
 		  # instances of "workspaces" script in eww rices to run at once
-		  killall -9 bspc
-		  pkill picom
+		  killall -9 picom bspc
 		  
 		  launch eww -c $HOME/.config/bspwm/rices/z0mbi3/bar open bar
 		  launch polybar -q tray -c ~/.config/bspwm/rices/z0mbi3/bar/polybar_tray.ini
@@ -169,7 +168,7 @@ function SetGirlFriendRice() {
 		
 		  SetBspwmConf 0 65 5 "#ff004a" "#ff004a" "#0864f1" "#b93fe0" 5 5
 		 
-		  pkill picom
+		  kill -9 picom
 		  launch eww -c $HOME/.config/bspwm/rices/karla/bar open bar
 		  launch polybar -q karla-bar -c ${polydir}/config.ini
 		  polybar -q karla-bar2 -c ${polydir}/config.ini &
@@ -181,8 +180,7 @@ function SetGirlFriendRice() {
 		
 		  SetBspwmConf 0 60 5 "#161616" "#161616" "#605692" "#67d4f1" 5 5
 		  
-		  pkill picom
-		  pkill polybar 
+		  killall -9 picom polybar
 		  launch dunst -config ${bspdir}/dunstrc-light
 		  launch eww -c $HOME/.config/bspwm/rices/$RICETHEME/arin --restart open-many \
 		   search \
@@ -201,8 +199,8 @@ ReloadTermite
 function AutoStartApps() {
 	
 	launch sxhkd -c ${bspdir}/sxhkdrc
-	launch picom --config ${bspdir}/rices/$RICETHEME/picom.conf
-	#launch picom --legacy-backends --config ${bspdir}/rices/$RICETHEME/picom.conf
+	#launch picom --config ${bspdir}/rices/$RICETHEME/picom.conf
+	launch picom --legacy-backends --config ${bspdir}/rices/$RICETHEME/picom.conf
 	launch /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 	RandomWall
 	#nitrogen --restore &
