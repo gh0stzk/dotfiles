@@ -8,6 +8,10 @@ bspdir="$HOME/.config/bspwm"
 polydir="$HOME/.config/bspwm/rices/$RICETHEME/polybar"
 export defnetif=$(ip route | grep '^default' | awk '{print $5}' | head -n1)
 
+## You can edit this.
+BSPWM_BORDER='0'
+BSPWM_GAP='10'
+
 function launch() {
   local running
   running="$(pgrep -x "$1")"
@@ -39,7 +43,7 @@ function ReloadTermite() {
 }
 
 function SetBspwmConf() {
-	bspc config border_width "$1"
+	bspc config border_width "$BSPWM_BORDER"
 	bspc config top_padding "$2"
 	bspc config bottom_padding "$3"
 	bspc config normal_border_color "$4" 
@@ -48,6 +52,7 @@ function SetBspwmConf() {
 	bspc config presel_feedback_color "$7"
 	bspc config left_padding "$8"
 	bspc config right_padding "$9"
+	bspc config window_gap "$BSPWM_GAP"
 }
 
 function SetGirlFriendRice() {
@@ -56,7 +61,7 @@ function SetGirlFriendRice() {
 	
 		emilia)
 		
-		  SetBspwmConf 0 60 5 "#414868" "#c0caf5" "#bb9af7" "#7aa2f7" 5 5
+		  SetBspwmConf "$BSPWM_BORDER" 60 5 "#414868" "#c0caf5" "#bb9af7" "#7aa2f7" 5 5 "$BSPWM_GAP"
 		  		  
 		  killeww
 		  launch polybar -q emi-bar -c ${polydir}/config.ini
@@ -66,7 +71,7 @@ function SetGirlFriendRice() {
 			
 		jan)
 		
-		  SetBspwmConf 1 60 5 "#4C3A6D" "#4C3A6D" "#785DA5" "#070219" 5 5
+		  SetBspwmConf "$BSPWM_BORDER" 60 5 "#4C3A6D" "#4C3A6D" "#785DA5" "#070219" 5 5 "$BSPWM_GAP"
 		  
 		  killeww
 		  launch polybar -q main -c ${polydir}/config.ini
@@ -76,7 +81,7 @@ function SetGirlFriendRice() {
 		    
 		aline)
 		
-		  SetBspwmConf 0 55 5 "#ca9ee6" "#ca9ee6" "#8CAAEE" "#E78284" 5 5
+		  SetBspwmConf "$BSPWM_BORDER" 55 5 "#ca9ee6" "#ca9ee6" "#8CAAEE" "#E78284" 5 5 "$BSPWM_GAP"
 		  
 		  killeww
 		  launch polybar -q aline-bar -c ${polydir}/config.ini
@@ -86,7 +91,7 @@ function SetGirlFriendRice() {
 		  
 		isabel)
 		
-		  SetBspwmConf 0 5 45 "#b8bfe5" "#b8bfe5" "#7560d3" "#81ae5f" 5 5
+		  SetBspwmConf "$BSPWM_BORDER" 5 45 "#b8bfe5" "#b8bfe5" "#7560d3" "#81ae5f" 5 5 "$BSPWM_GAP" 
 		  
 		  killeww
 		  launch polybar -q isa-bar -c ${polydir}/config.ini
@@ -96,7 +101,7 @@ function SetGirlFriendRice() {
 		  
 		cynthia)
 		
-		  SetBspwmConf 0 50 5 "#543f66" "#543f66" "#465b80" "#3f5273" 5 5
+		  SetBspwmConf "$BSPWM_BORDER" 50 5 "#543f66" "#543f66" "#465b80" "#3f5273" 5 5 "$BSPWM_GAP"
 		  
 		  killeww
 		  launch polybar -q cyn-bar -c ${polydir}/config.ini
@@ -106,7 +111,7 @@ function SetGirlFriendRice() {
 		  
 		silvia)
 		
-		  SetBspwmConf 0 50 5 "#d3869b" "#d3869b" "#fbf1c7" "#b8bb26" 5 5
+		  SetBspwmConf "$BSPWM_BORDER" 50 5 "#d3869b" "#d3869b" "#fbf1c7" "#b8bb26" 5 5 "$BSPWM_GAP"
 
 		  killeww
 		  launch polybar -q cata-bar -c ${polydir}/config.ini
@@ -116,7 +121,7 @@ function SetGirlFriendRice() {
 		
 		melissa)
 		
-		  SetBspwmConf 0 42 40 "#e5e9f0" "#e5e9f0" "#4c566a" "#bf616a" 5 5	
+		  SetBspwmConf "$BSPWM_BORDER" 42 40 "#e5e9f0" "#e5e9f0" "#4c566a" "#bf616a" 5 5 "$BSPWM_GAP"
 
 		  killeww
 		  launch polybar -q mel-bar -c ${polydir}/config.ini
@@ -127,7 +132,7 @@ function SetGirlFriendRice() {
 		  
 		pamela)
 		
-		  SetBspwmConf 0 60 5 "#C574DD" "#C574DD" "#8897F4" "#FF4971" 5 5
+		  SetBspwmConf "$BSPWM_BORDER" 60 5 "#C574DD" "#C574DD" "#8897F4" "#FF4971" 5 5 "$BSPWM_GAP"
 		  
 		  killeww
 		  launch polybar -q pam1 -c ${polydir}/config.ini
@@ -142,7 +147,7 @@ function SetGirlFriendRice() {
 		  
 		cristina)
 		
-		  SetBspwmConf 0 10 60 "#9bced7" "#9bced7" "#c3a5e6" "#c3a5e6" 5 5
+		  SetBspwmConf "$BSPWM_BORDER" 10 60 "#9bced7" "#9bced7" "#c3a5e6" "#c3a5e6" 5 5 "$BSPWM_GAP"
 		  
 		  killeww
 		  launch polybar -q cristina-bar -c ${polydir}/config.ini
@@ -152,7 +157,7 @@ function SetGirlFriendRice() {
 		  
 		z0mbi3)
 		
-		  SetBspwmConf 0 5 5 "#3d414f" "#3d414f" "#3d414f" "#90ceaa" 80 5
+		  SetBspwmConf "$BSPWM_BORDER" 5 5 "#3d414f" "#3d414f" "#3d414f" "#90ceaa" 80 5 "$BSPWM_GAP"
 		  
 		  # Kill any running instances of bspc to prevent multiple
 		  # instances of "workspaces" script in eww rices to run at once
@@ -166,7 +171,7 @@ function SetGirlFriendRice() {
 		  
 		  karla)
 		
-		  SetBspwmConf 0 65 5 "#ff004a" "#ff004a" "#0864f1" "#b93fe0" 5 5
+		  SetBspwmConf "$BSPWM_BORDER" 65 5 "#ff004a" "#ff004a" "#0864f1" "#b93fe0" 5 5 "$BSPWM_GAP"
 		 
 		  kill -9 picom
 		  launch eww -c $HOME/.config/bspwm/rices/karla/bar open bar
@@ -178,7 +183,7 @@ function SetGirlFriendRice() {
 		  
 		andrea)
 		
-		  SetBspwmConf 0 60 5 "#161616" "#161616" "#605692" "#67d4f1" 5 5
+		  SetBspwmConf "$BSPWM_BORDER" 60 5 "#161616" "#161616" "#605692" "#67d4f1" 5 5 "$BSPWM_GAP"
 		  
 		  killall -9 picom polybar
 		  launch dunst -config ${bspdir}/dunstrc-light

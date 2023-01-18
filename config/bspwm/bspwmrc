@@ -35,8 +35,7 @@ AutoStartApps
 
 ########### bspwm conf
 
-bspc config external_rules_command ~/.config/bspwm/scripts/external_rules
-bspc config window_gap                    8 
+bspc config external_rules_command ~/.config/bspwm/scripts/ExternalRules
 
 bspc config single_monocle                true
 bspc config split_ratio                   0.5
