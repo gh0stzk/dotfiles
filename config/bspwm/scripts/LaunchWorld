@@ -199,8 +199,8 @@ ReloadTermite
 function AutoStartApps() {
 	
 	launch sxhkd -c ${bspdir}/sxhkdrc
-	#launch picom --config ${bspdir}/rices/$RICETHEME/picom.conf
-	launch picom --legacy-backends --config ${bspdir}/rices/$RICETHEME/picom.conf
+	launch picom --config ${bspdir}/rices/$RICETHEME/picom.conf
+	#launch picom --legacy-backends --config ${bspdir}/rices/$RICETHEME/picom.conf
 	launch /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 	RandomWall
 	#nitrogen --restore &
