@@ -65,12 +65,12 @@ clear
 		
 logo "Installing needed packages.."
 
-	sudo pacman -Syu polybar sxhkd dunst rofi lsd jq \
+	sudo pacman -Syu bspwm polybar sxhkd dunst rofi lsd jq polkit-gnome \
 					 playerctl mpd ncmpcpp mpc picom feh ueberzug \
 					 maim pamixer libwebp webp-pixbuf-loader xorg-xkill papirus-icon-theme \
 					 ttf-jetbrains-mono ttf-terminus-nerd ttf-inconsolata ttf-joypixels
 					 
-	yay -S bspwm-git eww termite xtitle checkupdates-aur betterlockscreen \
+	yay -S eww termite xtitle checkupdates-aur betterlockscreen \
 		   nerd-fonts-jetbrains-mono nerd-fonts-cozette-ttf scientifica-font
 			  
 clear
