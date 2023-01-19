@@ -207,7 +207,7 @@ function AutoStartApps() {
 	launch picom --config ${bspdir}/rices/$RICETHEME/picom.conf
 	#launch picom --legacy-backends --config ${bspdir}/rices/$RICETHEME/picom.conf
 	
-	if [[ ! `pidof xfce-polkit` ]]; then
+	if [[ ! `pidof polkit-gnome-authentication-agent-1` ]]; then
 		/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 	fi
 
