@@ -206,7 +206,11 @@ function AutoStartApps() {
 	launch sxhkd -c ${bspdir}/sxhkdrc
 	launch picom --config ${bspdir}/rices/$RICETHEME/picom.conf
 	#launch picom --legacy-backends --config ${bspdir}/rices/$RICETHEME/picom.conf
-	launch /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+	
+	if [[ ! `pidof xfce-polkit` ]]; then
+		/usr/lib/xfce-polkit/xfce-polkit &
+	fi
+
 	RandomWall
 	#nitrogen --restore &
 	xsetroot -cursor_name left_ptr
