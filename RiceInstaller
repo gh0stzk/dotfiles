@@ -68,10 +68,10 @@ logo "Installing needed packages.."
 	sudo pacman -Syu bspwm polybar sxhkd dunst rofi lsd jq polkit-gnome \
 					 playerctl mpd ncmpcpp mpc picom feh ueberzug \
 					 maim pamixer libwebp webp-pixbuf-loader xorg-xkill papirus-icon-theme \
-					 ttf-jetbrains-mono ttf-terminus-nerd ttf-inconsolata ttf-joypixels
+					 ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels
 					 
 	yay -S eww termite xtitle checkupdates-aur betterlockscreen \
-		   nerd-fonts-jetbrains-mono nerd-fonts-cozette-ttf scientifica-font
+		   nerd-fonts-cozette-ttf scientifica-font --removemake --cleanafter
 			  
 clear
 			 
