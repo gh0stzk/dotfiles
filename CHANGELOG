@@ -1,3 +1,13 @@
+(19/Jan/2023)
+- Minor fixes in installer
+- One of the most used font on my setup is JetBrains Nerd font, and now is in official repos, so i modified the installer.
+- Added gnome-polkit to dependencies, is the one i use is the one configured, but you always use the one of your election, you must edit LaunchWorld Script
+- Optimize LaunchWorld init apps
+- Changed bspwm polybar module on silvia rice
+- **Option to easily set border and gaps in bspwm ** See LaunchWorld script, line 11.
+- Changed external_rules name to ExternalRules
+
+
 (16/Jan/2023)
 - Minor changes to bspwm polybar module in Karla rice
 - Minor changes to bspwm polybar module in Silvia rice
