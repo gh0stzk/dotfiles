@@ -115,7 +115,9 @@ logo "Copying Rice.."
 printf "Copying files to respective directories..\n\n"
 
 cp -rv dotfiles/config/* ~/.config
+mkdir -p ~/.local/bin
 cp -rv dotfiles/misc/bin ~/.local/
+mkdir -p ~/.local/share
 cp -rv dotfiles/misc/{applications,asciiart,fonts} ~/.local/share/
 
 cp -rv dotfiles/misc/firefox/chrome ~/.mozilla/firefox/*.default-release/
