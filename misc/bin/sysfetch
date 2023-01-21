@@ -1,21 +1,21 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # sysfetch
 # Thanks to u/x_ero for his sysinfo script
 # Modified by gh0stzk https://github.com/gh0stzk/dotfiles
 
 # color escapes
-PBLK=$(printf "%b" "\x1b[38;2;58;58;58m")
-PRED=$(printf "%b" "\e[31m")
-PGRN=$(printf "%b" "\e[32m")
-PYLW=$(printf "%b" "\e[33m")
-PBLU=$(printf "%b" "\e[34m")
-PPUR=$(printf "%b" "\e[35m")
-PCYN=$(printf "%b" "\e[36m")
-PWHT=$(printf "%b" "\e[37m")
-PGRY=$(printf "%b" "\e[90;1m")
-PRST=$(printf "%b" "\e[0m")
-PBLD=$(printf "%b" "\033[1m")
+CBK=$(tput setaf 0)
+CRE=$(tput setaf 1)
+CGR=$(tput setaf 2)
+CYE=$(tput setaf 3)
+CBL=$(tput setaf 4)
+
+CMA=$(tput setaf 5)
+CCY=$(tput setaf 6)
+CWH=$(tput setaf 7)
+CBD=$(tput bold)
+CNC=$(tput sgr0)
 
 # vars
 FULL=━
@@ -81,37 +81,36 @@ done
 
 # Ascii art arms
 cat <<EOF
-$PADCC$PBLD                   $PBLU.
-$PADCC                  $PBLU/ $PPUR\\
-$PADCC                 $PBLU/   $PPUR\\
-$PADCC                $PBLU/^.   $PPUR\\
-$PADCC               $PBLU/  .$PWHT-$PPUR.  \\
-$PADCC              $PBLU/  (   $PPUR) _\\
-$PADCC             $PBLU/ _.~   $PPUR~._^\\
-$PADCC            $PBLU/.^         $PPUR^.\\
+$PADCC$CBD                   $CBL.
+$PADCC                  $CBL/ $CMA\\
+$PADCC                 $CBL/   $CMA\\
+$PADCC                $CBL/^.   $CMA\\
+$PADCC               $CBL/  .$CWH-$CMA.  \\
+$PADCC              $CBL/  (   $CMA) _\\
+$PADCC             $CBL/ _.~   $CMA~._^\\
+$PADCC            $CBL/.^         $CMA^.\\
 
 EOF
 
 BAR=" ▓▒░"
-OUTT="$PBLK$BAR$PRED$BAR$PGRN$BAR$PYLW$BAR$PBLU$BAR$PPUR$BAR$PCYN$BAR$PWHT$BAR$PRST"
-printf "%s%b" "$PADC" "$OUTT"
-printf "\n\n"
+OUTT="$CBK$BAR$CRE$BAR$CGR$BAR$CYE$BAR$CBL$BAR$CMA$BAR$CCY$BAR$CWH$BAR$CNC"
+printf "%s%b\n\n" "$PADC" "$OUTT"
 
 
 # greetings
-printf "%s%b" "$PADC" "            hola $PRED$PBLD$name$PRST\n"
-printf "%s%b" "$PADC" "      Bienvenido a $PGRN$BLD$host$PRST\n"
-printf "%s%b" "$PADC" "          up $PCYN$BLD$uptm$PRST\n\n"
+printf "%s%b\n" "$PADC" "            hola $CRE$CBD$name$CNC"
+printf "%s%b\n" "$PADC" "      Bienvenido a $CGR$CBD$host$CNC"
+printf "%s%b\n\n" "$PADC" "          up $CCY$CBD$uptm$CNC"
 
 # environment
-printf "%s%b" "$PADC" "$PRED        distro $PGRY⏹ $PRST$distro\n"
-printf "%s%b" "$PADC" "$PBLU        kernel $PGRY⏹ $PRST$(uname -r)\n"
-printf "%s%b" "$PADC" "$PPUR      packages $PGRY⏹ $PRST$(get_pkg_count)\n"
-printf "%s%b" "$PADC" "$PGRN         shell $PGRY⏹ $PRST${SHELL##*/}\n"
-printf "%s%b" "$PADC" "$PYLW          term $PGRY⏹ $PRST$term\n"
-printf "%s%b" "$PADC" "$PCYN            wm $PGRY⏹ $PRST${wm}\n"
-printf "%s%b" "$PADC" "$PBLU          disk $PGRY⏹ $PRST$storage used\n"
-printf " $PRST\n"
+printf "%s%b" "$PADC" "$CRE        distro $CWH⏹ $CNC$distro\n"
+printf "%s%b" "$PADC" "$CBL        kernel $CWH⏹ $CNC$(uname -r)\n"
+printf "%s%b" "$PADC" "$CMA      packages $CWH⏹ $CNC$(get_pkg_count)\n"
+printf "%s%b" "$PADC" "$CGR         shell $CWH⏹ $CNC${SHELL##*/}\n"
+printf "%s%b" "$PADC" "$CYE          term $CWH⏹ $CNC$term\n"
+printf "%s%b" "$PADC" "$CCY            wm $CWH⏹ $CNC${wm}\n"
+printf "%s%b" "$PADC" "$CBL          disk $CWH⏹ $CNC$storage used\n"
+printf " $CNC\n"
 
 # progress bar
 draw() {
@@ -123,7 +122,7 @@ draw() {
 	for v in $(seq 0 $((size - 1))); do
 		test "$v" -le "$inc" &&
 			out="${out}\e[1;${color}m${FULL}" ||
-			out="${out}\e[0;37m${PGRY}${EMPTY}"
+			out="${out}\e[0;37m${CWH}${EMPTY}"
 	done
 	printf $out
 }
@@ -132,12 +131,12 @@ draw() {
 cpu=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}')
 c_lvl=`printf "%.0f" $cpu`
 printf "%b" "$PADC"
-printf "   $PPUR%-4s $PWHT%-5s %-25s \n" " cpu" "$c_lvl%" $(draw $c_lvl 15 35)
+printf "   $CMA%-4s $CWH%-5s %-25s \n" " cpu" "$c_lvl%" $(draw $c_lvl 15 35)
 
 # ram
 ram=$(free | awk '/Mem:/ {print int($3/$2 * 100.0)}')
-printf "%b" "$PRST" "$PADC"
-printf "   $PPUR%-4s $PWHT%-5s %-25s \n" " ram" "$ram%" $(draw $ram 15 35)
+printf "%b" "$CNC" "$PADC"
+printf "   $CMA%-4s $CWH%-5s %-25s \n" " ram" "$ram%" $(draw $ram 15 35)
     
 # hide the cursor and wait for user input
 tput civis

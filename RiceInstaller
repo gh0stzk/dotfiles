@@ -39,7 +39,7 @@ logo () {
 
 	
 logo "Welcome!"
-printf '%sThis script will copy my dotfiles to your bspwm setup.%s\n\n' "${CRE}" "${CNC}"
+printf '%sThis script will install needed dependencies and copy my dotfiles to your bspwm setup.%s\n\n' "${CRE}" "${CNC}"
 sleep 3
 
 while true; do
@@ -65,7 +65,7 @@ clear
 		
 logo "Installing needed packages.."
 
-	sudo pacman -Syu bspwm polybar sxhkd dunst rofi lsd jq polkit-gnome \
+	sudo pacman -Syu bspwm polybar sxhkd dunst rofi lsd jq polkit-gnome git \
 					 playerctl mpd ncmpcpp mpc picom feh ueberzug \
 					 maim pamixer libwebp webp-pixbuf-loader xorg-xkill papirus-icon-theme \
 					 ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels
@@ -114,18 +114,48 @@ clear
 logo "Copying Rice.."
 printf "Copying files to respective directories..\n\n"
 
-cp -rv dotfiles/config/* ~/.config
-mkdir -p ~/.local/bin
-cp -rv dotfiles/misc/bin ~/.local/
-mkdir -p ~/.local/share
-cp -rv dotfiles/misc/{applications,asciiart,fonts} ~/.local/share/
+cp -r ~/dotfiles/config/* ~/.config
 
-cp -rv dotfiles/misc/firefox/chrome ~/.mozilla/firefox/*.default-release/
-cp -rv dotfiles/misc/firefox/user.js ~/.mozilla/firefox/*.default-release/
+if [ -d "$HOME/.local/bin" ]; then
+	cp -r ~/dotfiles/misc/bin/* ~/.local/bin
+else
+	mkdir -p ~/.local/bin && cp -r ~/dotfiles/misc/bin/* ~/.local/bin
+fi
 
-cp -rv dotfiles/home/.zshrc ~
+if [ -d "$HOME/.local/share/applications" ]; then
+	cp -r ~/dotfiles/misc/applications/* ~/.local/share/applications
+else
+	mkdir -p ~/.local/share/applications && cp -r ~/dotfiles/misc/applications/* ~/.local/share/applications
+fi
+
+if [ -d "$HOME/.local/share/asciiart" ]; then
+	cp -r ~/dotfiles/misc/asciiart/* ~/.local/share/asciiart
+else
+	mkdir -p ~/.local/share/asciiart && cp -r ~/dotfiles/misc/asciiart/* ~/.local/share/asciiart
+fi
+
+if [ -d "$HOME/.local/share/fonts" ]; then
+	cp -r ~/dotfiles/misc/fonts/* ~/.local/share/fonts
+else
+	mkdir -p ~/.local/share/fonts && cp -r ~/dotfiles/misc/fonts/* ~/.local/share/fonts
+fi
+
+cp -r ~/dotfiles/misc/firefox/chrome ~/.mozilla/firefox/*.default-release/
+cp -r ~/dotfiles/misc/firefox/user.js ~/.mozilla/firefox/*.default-release/
+
+cp -r ~/dotfiles/home/.zshrc ~
 
 printf "\n\nFiles copied succesfully\n\n"
+sleep 2
+clear
+
+logo "Reloading fonts.."
+printf "Reloading fonts to make it usable \n\n"
+
+## Reloading fonts
+fc-cache -rv
+
+printf "\n\nFonts reloaded succesfully!\n\n"
 sleep 2
 clear
 

@@ -28,6 +28,8 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 
 * **Mostrar / Ocultar barra:** Podras ocultar y volver a mostrar la barra ( Polybar y EWW )
 
+**Y mas..**
+
 * **Cambia la transparencia:** 
 Aumenta o disminuye la transparencia de la ventana de trabajo en la que estes.
 

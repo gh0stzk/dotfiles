@@ -26,12 +26,14 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 
 * **Random wallpaper:**  Every time you switch between rices or reload bspwm with <code>super + alt + r</code> a new wallpaper is set depending on the rice you are on.
 
-* **Super + Alt + w** changes bethween different wallpapers in the actual rice.
+* **Wallpaper Changer** <code>Super + Alt + w</code> changes bethween different wallpapers in the actual rice.
 
-* **Hide / Unhide Bar:** (Polybar)
+* **Hide / Unhide Bar:** If you needit you can hide bars
 
 * **Change transparency on the fly:** 
 Increase and decrease transparency in focused or selected window.
+
+**And more..**
 
 <table align="center">
    <tr>
@@ -252,7 +254,7 @@ The plugin manager is Packer.
 - <code>super + @space</code> Apps Menu.
 - <code>super + h </code> Hides bar/s <code>super + u</code> unhide bar/s
 - <code>super + Print</code> Takes screenshot.
-- <code>ctrl + alt {plus,minus,t}</code> Changes transparency os focused window.
+- <code>ctrl + alt {plus,minus,t}</code> Changes transparency on focused window.
 - <code>ctrl + super + alt + p</code> Power off computer. <code>ctrl + super + alt + r</code> Restart computer.
 - <code>super + Return</code> Open a terminal.
 - <code>super + Alt + Return</code> Open a floating terminal.
