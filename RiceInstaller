@@ -114,7 +114,11 @@ clear
 logo "Copying Rice.."
 printf "Copying files to respective directories..\n\n"
 
+if [ -d "$HOME/.config" ]; then
 cp -r ~/dotfiles/config/* ~/.config
+else
+	mkdir -p ~/.config && cp -r ~/dotfiles/config/* ~/.config
+fi
 
 if [ -d "$HOME/.local/bin" ]; then
 	cp -r ~/dotfiles/misc/bin/* ~/.local/bin
