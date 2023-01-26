@@ -128,8 +128,8 @@ draw() {
 }
 
 # cpu
-cpu=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}')
-c_lvl=`printf "%.0f" $cpu`
+cpu=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d'.' -f1)
+c_lvl=`printf $cpu`
 printf "%b" "$PADC"
 printf "   $CMA%-4s $CWH%-5s %-25s \n" " cpu" "$c_lvl%" $(draw $c_lvl 15 35)
 
