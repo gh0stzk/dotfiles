@@ -4,7 +4,7 @@
 # Source 	 -  https://github.com/gh0stzk/dotfiles
 # Maintainer -  z0mbi3.zk@protonmail.com
 
-dir="$HOME/.config/bspwm"
+cfg_file="$HOME/.config/bspwm/rice.cfg"
 rofi_command="rofi -theme $HOME/.config/bspwm/scripts/RiceSelector.rasi"
 
 # Options
@@ -26,51 +26,51 @@ chosen="$(printf "$options" | $rofi_command -dmenu)"
 	case $chosen in
 
 			$emilia)
-				cat <<< "emilia" > $dir/rice.cfg
+				cat <<< "emilia" > ${cfg_file}
 				bspc wm -r
 				;;
 			$jan)
-				cat <<< "jan" > $dir/rice.cfg
+				cat <<< "jan" > ${cfg_file}
 				bspc wm -r
 				;;
 			$aline)
-				cat <<< "aline" > $dir/rice.cfg
+				cat <<< "aline" > ${cfg_file}
 				bspc wm -r
 				;;
 			$isabel)
-				cat <<< "isabel" > $dir/rice.cfg
+				cat <<< "isabel" > ${cfg_file}
 				bspc wm -r
 				;;
 			$andrea)
-				cat <<< "andrea" > $dir/rice.cfg
+				cat <<< "andrea" > ${cfg_file}
 				bspc wm -r
 				;;
 			$cynthia)
-				cat <<< "cynthia" > $dir/rice.cfg
+				cat <<< "cynthia" > ${cfg_file}
 				bspc wm -r
 				;;
 			$silvia)
-				cat <<< "silvia" > $dir/rice.cfg
+				cat <<< "silvia" > ${cfg_file}
 				bspc wm -r
 				;;
 			$melissa)
-				cat <<< "melissa" > $dir/rice.cfg
+				cat <<< "melissa" > ${cfg_file}
 				bspc wm -r
 				;;
 			$pamela)
-				cat <<< "pamela" > $dir/rice.cfg
+				cat <<< "pamela" > ${cfg_file}
 				bspc wm -r
 				;;
 			$cristina)
-				cat <<< "cristina" > $dir/rice.cfg
+				cat <<< "cristina" > ${cfg_file}
 				bspc wm -r
 				;;
 			$karla)
-				cat <<< "karla" > $dir/rice.cfg
+				cat <<< "karla" > ${cfg_file}
 				bspc wm -r
 				;;
 			$z0mbi3)
-				cat <<< "z0mbi3" > $dir/rice.cfg
+				cat <<< "z0mbi3" > ${cfg_file}
 				bspc wm -r
 				;;				
 		esac

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 weather=$(curl -s wttr.in/Mexico?format=3)
 
