@@ -277,7 +277,7 @@ curl -LO https://raw.githubusercontent.com/gh0stzk/dotfiles/master/RiceInstaller
 
 ## Some tips
 
-* Wallpapers are in .webp image format, i added libwebp webp-pixbuf-loader packages for your filemanager (thunar in my case) have the capacity to show webp thumbnails.
+* The wallpapers are in webp format because I don't want the repository to be too heavy. I Added the packages libwebp and webp-pixbuf-loader to the dependencies in order for your file browser (in my case thunar) to be able to display the thumbnails. However, you can add more wallpapers in the format you want "jpg, png etc..."
 * If u dont wanna use the random wallpapers comment line 214 and uncomment line 215 from /home/YourUser/.config/bspwm/scripts/LaunchWorld file.
 * Left click in pacman updates module in polybar to update. Right click for show updates available only.
 
