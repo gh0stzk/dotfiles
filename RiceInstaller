@@ -66,7 +66,7 @@ clear
 logo "Installing needed packages.."
 
 	sudo pacman -Syu bspwm polybar sxhkd dunst rofi lsd jq polkit-gnome git \
-					 playerctl mpd ncmpcpp mpc picom feh ueberzug \
+					 playerctl mpd ncmpcpp ranger mpc picom feh ueberzug \
 					 maim pamixer libwebp webp-pixbuf-loader xorg-xkill papirus-icon-theme \
 					 ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels
 					 
