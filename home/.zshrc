@@ -104,6 +104,10 @@ alias vm-off="sudo systemctl stop libvirtd.service"
 alias start-cine="sudo systemctl start minidlna.service;sudo minidlnad -R;sudo systemctl restart minidlna.service"
 alias stop-cine="sudo systemctl stop minidlna.service"
 alias musica="ncmpcpp"
+alias ani="ani-cli"
+alias lg="lazygit"
+alias dev="~/.config/bspwm/scripts/tmux-dev.sh"
+alias vimcfg="nvim ~/.config/nvim"
 
 # confirm before overwriting something
 #alias cp="cp -iv"
@@ -113,4 +117,4 @@ alias rm="rm -iv"
 alias ls='lsd -a --group-directories-first'
 alias ll='lsd -la --group-directories-first'
 
-~/.local/bin/colorscript -r
+# ~/.local/bin/colorscript -r

@@ -13,14 +13,12 @@ super + alt + Return
 	termite -t floaterm
 	
 # Apps
-shift + alt + {b,g,n,p,r,t,q,w,m,v,k}
+shift + alt + {w,g,e,p,r,t,w,m,v}
        {firefox, \
         geany, \
         thunar, \
         pavucontrol, \
         termite -e ranger, \
-        telegram-desktop, \
-        qutebrowser --qt-flag disable-gpu, \
         whatsapp-nativefier --disable-gpu, \
         env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --disable-gpu --no-zygote %U, \
         termite -e "nvim", \
@@ -60,7 +58,7 @@ alt + @space
 
 # Reload sxhkd
 super + Escape
-	pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'El archivo de configuracion se ha recargado con exito'
+	pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'O arquivo de keybindings foi reiniciado'
 	
 # Random wallpaper
 super + alt + w

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-weather=$(curl -s wttr.in/Mexico?format=3)
+weather=$(curl -s wttr.in/Curitiba?format=3)
 
 if [ $(echo "$weather" | grep -E "(Unknown|curl|HTML)" | wc -l) -gt 0 ]; then
     echo "WEATHER UNAVAILABLE"
