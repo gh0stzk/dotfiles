@@ -16,22 +16,16 @@ logo () {
 	
 	local text="${1:?}"
 	echo -en "                                  
-	               %%%                
-	        %%%%%//%%%%%              
-	      %%************%%%           
-	  (%%//############*****%%
-	%%%%%**###&&&&&&&&&###**//
-	%%(**##&&&#########&&&##**
-	%%(**##*****#####*****##**%%%
-	%%(**##     *****     ##**
-	   //##   @@**   @@   ##//
-	     ##     **###     ##
-	     #######     #####//
-	       ###**&&&&&**###
-	       &&&         &&&
-	       &&&////   &&
-	          &&//@@@**
-	            ..***                
+	⣱⣿⣿⡟⡐⣰⣧⡷⣿⣴⣧⣤⣼⣯⢸⡿⠁⣰⠟⢀⣼⠏⣲⠏⢸⣿⡟⣿⣿⣿⣿⣿⣿
+	⣿⣿⡟⠁⠄⠟⣁⠄⢡⣿⣿⣿⣿⣿⣿⣦⣼⢟⢀⡼⠃⡹⠃⡀⢸⡿⢸⣿⣿⣿⣿⣿⡟
+	⣿⣿⠃⠄⢀⣾⠋⠓⢰⣿⣿⣿⣿⣿⣿⠿⣿⣿⣾⣅⢔⣕⡇⡇⡼⢁⣿⣿⣿⣿⣿⣿⢣
+	⣿⡟⠄⠄⣾⣇⠷⣢⣿⣿⣿⣿⣿⣿⣿⣭⣀⡈⠙⢿⣿⣿⡇⡧⢁⣾⣿⣿⣿⣿⣿⢏⣾
+	⣿⡇⠄⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⢻⠇⠄⠄⢿⣿⡇⢡⣾⣿⣿⣿⣿⣿⣏⣼⣿
+	⣿⣷⢰⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⢰⣧⣀⡄⢀⠘⡿⣰⣿⣿⣿⣿⣿⣿⠟⣼⣿⣿
+	⢹⣿⢸⣿⣿⠟⠻⢿⣿⣿⣿⣿⣿⣿⣿⣶⣭⣉⣤⣿⢈⣼⣿⣿⣿⣿⣿⣿⠏⣾⣹⣿⣿
+	⢸⠇⡜⣿⡟⠄⠄⠄⠈⠙⣿⣿⣿⣿⣿⣿⣿⣿⠟⣱⣻⣿⣿⣿⣿⣿⠟⠁⢳⠃⣿⣿⣿
+	⠄⣰⡗⠹⣿⣄⠄⠄⠄⢀⣿⣿⣿⣿⣿⣿⠟⣅⣥⣿⣿⣿⣿⠿⠋⠄⠄⣾⡌⢠⣿⡿⠃
+	⠜⠋⢠⣷⢻⣿⣿⣶⣾⣿⣿⣿⣿⠿⣛⣥⣾⣿⠿⠟⠛⠉⠄⠄
 			  z0mbi3 Script\n\n"
     printf ' %s [%s%s %s%s %s]%s\n\n' "${CRE}" "${CNC}" "${CYE}" "${text}" "${CNC}" "${CRE}" "${CNC}"
     sleep 2
@@ -71,13 +65,13 @@ logo "Installing needed packages.."
 					 ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels
 					 
 	yay -S eww termite xtitle checkupdates-aur betterlockscreen \
-		   nerd-fonts-cozette-ttf scientifica-font --removemake --cleanafter
+		   lazygit ani-cli nerd-fonts-cozette-ttf scientifica-font --removemake --cleanafter
 			  
 clear
 			 
 logo "Cloning Rice!"
-printf "Cloning rice from https://github.com/gh0stzk/dotfiles\n\n"
-git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
+printf "Cloning rice from https://github.com/bashjayy/dotfiles\n\n"
+git clone --depth=1 https://github.com/bashjayy/dotfiles.git
 sleep 2
 clear
 
@@ -92,6 +86,7 @@ if [ -d "$HOME/.RiceBackup" ]; then
 fi
 
 [ -e ~/.config/bspwm ] && mv ~/.config/bspwm ~/.RiceBackup/bspwm-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -e ~/.config/tmux ] && mv ~/.config/tmux ~/.RiceBackup/tmux-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/termite ] && mv ~/.config/termite ~/.RiceBackup/termite-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/picom ] && mv ~/.config/picom ~/.RiceBackup/picom-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/rofi ] && mv ~/.config/rofi ~/.RiceBackup/rofi-backup-"$(date +%Y.%m.%d-%H.%M.%S)"

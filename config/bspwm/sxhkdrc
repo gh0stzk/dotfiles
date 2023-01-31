@@ -13,7 +13,7 @@ super + alt + Return
 	termite -t floaterm
 	
 # Apps
-shift + alt + {w,g,e,p,r,t,w,m,v}
+super + shift + {w,g,e,p,r,t,w,m,v}
        {firefox, \
         geany, \
         thunar, \
@@ -58,7 +58,7 @@ alt + @space
 
 # Reload sxhkd
 super + Escape
-	pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'O arquivo de keybindings foi reiniciado'
+	pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'O arquivo de keybindings foi recarregado'
 	
 # Random wallpaper
 super + alt + w
