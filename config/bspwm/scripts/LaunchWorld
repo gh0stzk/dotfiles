@@ -101,10 +101,11 @@ function SetGirlFriendRice() {
 		  
 		cynthia)
 		
-		  SetBspwmConf "$BSPWM_BORDER" 50 5 "#543f66" "#543f66" "#465b80" "#3f5273" 5 5 "$BSPWM_GAP"
+		  SetBspwmConf "$BSPWM_BORDER" 50 50 "#543f66" "#543f66" "#465b80" "#3f5273" 5 5 "$BSPWM_GAP"
 		  
 		  killeww
 		  launch polybar -q cyn-bar -c ${polydir}/config.ini
+		  polybar -q cyn-bar2 -c ${polydir}/config.ini &
 		  launch dunst -config ${bspdir}/dunstrc-dark
 		  
 		  ;;

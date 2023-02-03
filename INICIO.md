@@ -124,8 +124,8 @@ Pues si los temas tienen el nombre de algunas de mis ex novias.
 <details>
 <summary><b>Extra wallpapers en Cynthia</b></summary>
 
-|<img src="config/bspwm/rices/cynthia/walls/wall-02.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/walls/wall-03.webp" alt="Cynthia Rice" align="center" width="150px">|
-|---|---|
+|<img src="config/bspwm/rices/cynthia/walls/wall-01.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/walls/wall-02.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/walls/wall-04.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/walls/wall-05.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/walls/wall-06.webp" alt="Cynthia Rice" align="center" width="150px">|
+|---|---|---|---|---|
 
 </details>
 
