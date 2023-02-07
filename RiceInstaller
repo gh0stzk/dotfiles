@@ -168,7 +168,7 @@ logo "Enabling MPD service"
 # For automatically launching mpd on login
 systemctl --user enable mpd.service
 systemctl --user start mpd.service
-source .zshrc
+zsh
 
 printf "\n\nDone\n\n"
 sleep 2
