@@ -85,10 +85,8 @@ logo "Backup your files"
 printf "Backup files will be stored in %s%s/.RiceBackup%s \n\n" "${CRE}" "$HOME" "${CNC}"
 sleep 5
 
-if [ -d "$HOME/.RiceBackup" ]; then 
-		break
-	else
-		mkdir "${HOME}"/.RiceBackup
+if [ ! -d "$HOME/.RiceBackup" ]; then 
+	mkdir "${HOME}"/.RiceBackup	
 fi
 
 [ -e ~/.config/bspwm ] && mv ~/.config/bspwm ~/.RiceBackup/bspwm-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
@@ -168,7 +166,6 @@ logo "Enabling MPD service"
 # For automatically launching mpd on login
 systemctl --user enable mpd.service
 systemctl --user start mpd.service
-zsh
 
 printf "\n\nDone\n\n"
 sleep 2
@@ -176,5 +173,4 @@ clear
 
 logo "Installation finished"
 printf "%sNow logout your session, select bspwm and log in.%s \n\n" "${CRE}" "${CNC}"
-
-
+zsh
