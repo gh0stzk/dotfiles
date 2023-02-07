@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 launcher() {
     LOCK_FILE_LAUNCHER="$HOME/.cache/eww-launcher.lock"

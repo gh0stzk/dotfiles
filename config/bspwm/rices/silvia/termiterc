@@ -1,5 +1,5 @@
 [options]
-font = JetBrainsMono Nerd Font Bold 10
+font = JetBrainsMono Nerd Font 10
 allow_bold = true
 bold_is_bright = true
 
@@ -29,7 +29,7 @@ smart_copy = true
 # Silvia Gruvbox color palette
 [colors]
 foreground          = #fbf1c7
-foreground_bold     = #fbf1c7
+foreground_bold     = #fcf8e4
 cursor              = #928374
 cursor_foreground   = #282936
 background          = #282828

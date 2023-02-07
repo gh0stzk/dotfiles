@@ -1,5 +1,5 @@
 [options]
-font = JetBrainsMono Nerd Font Bold 10
+font = JetBrainsMono Nerd Font 10
 allow_bold = true
 bold_is_bright = true
 
@@ -28,11 +28,11 @@ smart_copy = true
 
 # Nord color palette
 [colors]
-foreground = #d8dee9
-foreground_bold = #d8dee9
-cursor = #d8dee9
-cursor_foreground = #2e3440
-background = #2e3440
+foreground 			= #d8dee9
+foreground_bold 	= #dfe5f0
+cursor 				= #d8dee9
+cursor_foreground 	= #2e3440
+background 			= #2e3440
 
 # Black, Gray
 color0  = #2e3440

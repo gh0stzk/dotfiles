@@ -1,5 +1,5 @@
 [options]
-font = JetBrainsMono Nerd Font Medium 10
+font = JetBrainsMono Nerd Font 10
 allow_bold = true
 bold_is_bright = true
 

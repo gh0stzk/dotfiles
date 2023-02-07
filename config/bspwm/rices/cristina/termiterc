@@ -1,5 +1,5 @@
 [options]
-font = JetBrainsMono Nerd Font Bold 10
+font = JetBrainsMono Nerd Font 10
 allow_bold = true
 bold_is_bright = true
 
@@ -30,7 +30,7 @@ smart_copy = true
 [colors]
 
 foreground          = #eaeaea
-foreground_bold     = #eaeaea
+foreground_bold     = #f1f0f0
 cursor              = #c3a5e6
 cursor_foreground   = #22262e
 background          = #1f1d29

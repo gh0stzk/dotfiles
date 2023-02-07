@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 mplayer() {
     LOCK_FILE_POWER="$HOME/.cache/eww-mplayer.lock"

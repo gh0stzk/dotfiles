@@ -203,7 +203,7 @@
 ;; Bottom Widgets ;;
 (defwidget bottom []
 	(box	:orientation "v" 
-			:space-evenly false 
+			:space-evenly "false"
 (time)
 (power)))
 

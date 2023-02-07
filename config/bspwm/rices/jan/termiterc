@@ -1,5 +1,5 @@
 [options]
-font = Monocraft Medium 10
+font = Monocraft 10
 allow_bold = true
 bold_is_bright = true
 

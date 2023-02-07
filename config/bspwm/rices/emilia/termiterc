@@ -1,5 +1,5 @@
 [options]
-font = JetBrainsMono Nerd Font Bold 10
+font = JetBrainsMono Nerd Font 10
 allow_bold = true
 bold_is_bright = true
 
@@ -29,7 +29,7 @@ smart_copy = true
 #Tokyo Night color palette
 [colors] 
 foreground          = #c0caf5
-foreground_bold     = #a9b1d6
+foreground_bold     = #d6dcf4
 cursor              = #c0caf5
 cursor_foreground   = #282936
 background          = #1a1b26

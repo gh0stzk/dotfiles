@@ -1,5 +1,5 @@
 [options]
-font = JetBrainsMono Nerd Font Bold 10
+font = JetBrainsMono Nerd Font 10
 allow_bold = true
 bold_is_bright = true
 
@@ -29,7 +29,7 @@ smart_copy = true
 # Isabel based on Onedark color palette
 [colors]
 foreground          = #b8bfe5
-foreground_bold     = #c0caf5
+foreground_bold     = #d1d6ef
 cursor              = #D20075
 cursor_foreground   = #282936
 background          = #14171c

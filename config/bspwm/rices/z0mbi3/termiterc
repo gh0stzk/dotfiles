@@ -1,5 +1,5 @@
 [options]
-font = JetBrainsMono Nerd Font Bold 10
+font = JetBrainsMono Nerd Font 10
 allow_bold = true
 bold_is_bright = true
 
@@ -29,8 +29,8 @@ smart_copy = true
 # Decay color palette, decayce variant
 [colors]
 foreground          = #a5b6cf
-foreground_bold     = #a5b6cf
-cursor              = #a5b6cf
+foreground_bold     = #b8c7dd
+cursor              = #c296eb
 cursor_foreground   = #282936
 background          = #0d0f18
 

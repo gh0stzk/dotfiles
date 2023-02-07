@@ -12,7 +12,7 @@ git_prompt() {
 }
 
 setopt PROMPT_SUBST
-PROMPT='%B%F{blue}󰣇  %f%b%F{magenta}%n%f %F{red}%~%f%B%F{yellow}$(git_prompt)%f%b %(?.%B%F{green}✓.%F{red}✕)%f%b %B%F{green}%f%b '
+PROMPT='%B%F{blue}󰣇%f%b  %B%F{magenta}%n%f%b %B%F{red}%~%f%b%B%F{yellow}$(git_prompt)%f%b %(?.%B%F{green}✓.%F{red}✕)%f%b %B%F{green}%f%b '
 
 export VISUAL=geany;
 export EDITOR=nvim;
