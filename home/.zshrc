@@ -1,9 +1,23 @@
 
-PROMPT='%B%F{blue}󰣇%f%b  %F{magenta}%n%f %F{red}%~%f %B%F{green}%f%b '
+########## Prompt ##########
+
+git_prompt() {
+    local branch="$(git symbolic-ref HEAD 2> /dev/null | cut -d'/' -f3-)"
+    local branch_truncated="${branch:0:30}"
+    if (( ${#branch} > ${#branch_truncated} )); then
+        branch="${branch_truncated}..."
+    fi
+
+    [ -n "${branch}" ] && echo "  ${branch}"
+}
+
+setopt PROMPT_SUBST
+PROMPT='%B%F{blue}󰣇  %f%b%F{magenta}%n%f %F{red}%~%f%B%F{yellow}$(git_prompt)%f%b %(?.%B%F{green}✓.%F{red}✕)%f%b %B%F{green}%f%b '
 
 export VISUAL=geany;
 export EDITOR=nvim;
 export TERMINAL=termite;
+export TERM=termite;
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 
 if [ -d "$HOME/.local/bin" ] ;
@@ -45,6 +59,7 @@ bindkey "^I" expand-or-complete-with-dots
 
 # Plugins
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 bindkey '^[[A' history-substring-search-up
@@ -95,20 +110,14 @@ extract () {
 ######## Alias ########
 
 alias mirrors="sudo reflector --verbose --latest 5 --country 'United States' --age 6 --sort rate --save /etc/pacman.d/mirrorlist"
+
 alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias mantenimiento="yay -Sc && sudo pacman -Scc"
 alias purga="sudo pacman -Rns $(pacman -Qtdq) ; sudo fstrim -av"
 alias update="yay -Syu"
+
 alias vm-on="sudo systemctl start libvirtd.service"
 alias vm-off="sudo systemctl stop libvirtd.service"
-alias start-cine="sudo systemctl start minidlna.service;sudo minidlnad -R;sudo systemctl restart minidlna.service"
-alias stop-cine="sudo systemctl stop minidlna.service"
-alias musica="ncmpcpp"
-
-# confirm before overwriting something
-#alias cp="cp -iv"
-alias mv="mv -iv"
-alias rm="rm -iv"
 
 alias ls='lsd -a --group-directories-first'
 alias ll='lsd -la --group-directories-first'

@@ -1,3 +1,9 @@
+(6/Feb/2023)
+- Updated zsh prompt, now shows git branch, and error code.
+- Added zsh syntax highlighting plugin
+- updated riceinstaller to load zsh automatically and other messages.
+
+
 (03/Feb/2023)
 - Updated Cynthia Rice
 - Add new wallpaper to Cynthia Rice

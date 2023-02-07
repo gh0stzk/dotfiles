@@ -39,7 +39,7 @@ logo () {
 
 	
 logo "Welcome!"
-printf '%sThis script will install needed dependencies and copy my dotfiles to your bspwm setup.%s\n\n' "${CRE}" "${CNC}"
+printf '%sThis script will install needed dependencies and copy my dotfiles to your bspwm setup.%s\n\nThis installer script does NOT change any configuration of your system.\nIts just a script that copies and moves my dotfiles to your ~/.config directory\n\n' "${CRE}" "${CNC}"
 sleep 3
 
 while true; do
@@ -149,6 +149,7 @@ cp -r ~/dotfiles/misc/firefox/user.js ~/.mozilla/firefox/*.default-release/
 
 cp -r ~/dotfiles/home/.zshrc ~
 
+
 printf "\n\nFiles copied succesfully\n\n"
 sleep 2
 clear
@@ -167,6 +168,7 @@ logo "Enabling MPD service"
 # For automatically launching mpd on login
 systemctl --user enable mpd.service
 systemctl --user start mpd.service
+source .zshrc
 
 printf "\n\nDone\n\n"
 sleep 2
