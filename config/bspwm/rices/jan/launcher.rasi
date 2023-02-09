@@ -19,7 +19,7 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "Monocraft 8";
+    font:                        "TerminessTTF Nerd Font Mono Bold 10";
     font-weight:				 bold;
     background:                  #070219F0;
     background-alt:              #070219E0;
