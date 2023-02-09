@@ -42,7 +42,7 @@
                        :tooltip "firefox"
                        "󰇧")
                (button :class "launcher-btn"
-                       :onclick "termite --hold -t sysfetch -e $HOME/.local/bin/sysfetch & disown"
+                       :onclick "Term --of"
                        :tooltip "System Fetch"
                        "󰚌")
                (button :class "launcher-btn"
@@ -50,7 +50,7 @@
                        :tooltip "Thunar"
                        "")
                (button :class "launcher-btn"
-                       :onclick "termite & disown"
+                       :onclick "Term --ot"
                        :tooltip "Terminal"
                        "")
                (button :class "launcher-btn"

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ "$1" == "--tr" ]]; then
-	termite -d ~ & disown
+	Term --ot
 
 elif [[ "$1" == "--ff" ]]; then
 	firefox & disown
@@ -19,6 +19,6 @@ elif [[ "$1" == "--wa" ]]; then
 	whatsapp-nativefier --disable-gpu
 	
 elif [[ "$1" == "--up" ]]; then
-	termite --hold -t updating -e "yay -Syyuu --devel"
+	Term --ou
 
 fi

@@ -10,14 +10,11 @@ instance=$3
 consequences=$4
 title=$(xtitle "$wid")
 
-if [ "$instance" = termite ] ; then
+if [[ "$instance" == @(termite|Alacritty) ]]; then
 	case "$title" in
 		ranger)
 			echo "state=floating rectangle=811x286+0+0 center=on"
 			;;
-		zfetch)
-		    echo "border=off state=floating rectangle=616x354+36+115"
-		    ;;
 		sysfetch)
 		    echo "border=off state=floating rectangle=352x500+36+115"
 		    ;;

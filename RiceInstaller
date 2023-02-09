@@ -65,8 +65,8 @@ clear
 		
 logo "Installing needed packages.."
 
-	sudo pacman -Syu bspwm polybar sxhkd dunst rofi lsd jq polkit-gnome git \
-					 playerctl mpd ncmpcpp ranger mpc picom feh ueberzug \
+	sudo pacman -Syu bspwm polybar sxhkd alacritty dunst rofi lsd jq polkit-gnome git \
+					 playerctl mpd ncmpcpp geany ranger mpc picom feh ueberzug \
 					 maim pamixer libwebp webp-pixbuf-loader xorg-xkill papirus-icon-theme \
 					 ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels
 					 
@@ -91,6 +91,7 @@ fi
 
 [ -e ~/.config/bspwm ] && mv ~/.config/bspwm ~/.RiceBackup/bspwm-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/termite ] && mv ~/.config/termite ~/.RiceBackup/termite-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -e ~/.config/alacritty ] && mv ~/.config/alacritty ~/.RiceBackup/alacritty-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/picom ] && mv ~/.config/picom ~/.RiceBackup/picom-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/rofi ] && mv ~/.config/rofi ~/.RiceBackup/rofi-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/eww ] && mv ~/.config/eww ~/.RiceBackup/eww-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
@@ -156,7 +157,7 @@ logo "Reloading fonts.."
 printf "Reloading fonts to make it usable \n\n"
 
 ## Reloading fonts
-fc-cache -rv
+fc-cache -rv >/dev/null 2>&1
 
 printf "\n\nFonts reloaded succesfully!\n\n"
 sleep 2

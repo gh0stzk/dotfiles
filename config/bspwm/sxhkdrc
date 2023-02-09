@@ -6,11 +6,15 @@
 
 # terminal emulator
 super + Return
-	termite
+	Term --ot
 	
 # Floating Terminal
 super + alt + Return
-	termite -t floaterm
+	Term --oft
+	
+# Select Terminal
+super + alt + t
+	Term --st
 	
 # Apps
 shift + alt + {b,g,n,p,r,t,q,w,m,v,k}
@@ -18,13 +22,13 @@ shift + alt + {b,g,n,p,r,t,q,w,m,v,k}
         geany, \
         thunar, \
         pavucontrol, \
-        termite -e ranger, \
+        Term --or, \
         telegram-desktop, \
         qutebrowser --qt-flag disable-gpu, \
         whatsapp-nativefier --disable-gpu, \
         env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --disable-gpu --no-zygote %U, \
-        termite -e "nvim", \
-        termite -t musicplayer -e "ncmpcpp"}
+        Term --ov, \
+        Term --om}
         
 #hide
 super + h
@@ -35,7 +39,7 @@ super + u
 		     
 # screenshoots
 super + Print
-        screenshoter
+        ScreenShoTer
         
 # Change transparency on focused window
 ctrl + alt {plus,minus,t}

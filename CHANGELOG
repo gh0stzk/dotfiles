@@ -1,3 +1,12 @@
+(09/Feb/2023)
+- Updated RiceInstaller. Alacritty and geany added to dependencies.
+- I added to environment the possibilite to select your prefered terminal. (Alacritty and Termite)
+- Updated all the rices to support the new select terminal functionallity.
+- Updated zfetch script 
+- Edited zfetch.desktop
+- Deleted Monocraft font
+
+
 (6/Feb/2023)
 - Updated zsh prompt, now shows git branch, and error code.
 - Added zsh syntax highlighting plugin

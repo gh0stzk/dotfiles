@@ -1,0 +1,72 @@
+
+window:
+  padding:
+    x: 10
+    y: 5
+
+  decorations: full
+
+  opacity: 1.0
+  dynamic_title: true
+
+  history: 10000
+  multiplier: 3
+
+font:
+  normal:
+    family: JetBrainsMono Nerd Font
+    #style: Regular
+
+  bold:
+    family: JetBrainsMono Nerd Font
+    #style: Bold
+
+  
+  italic:
+    family: JetBrainsMono Nerd Font
+    #style: Italic
+
+  bold_italic:
+    family: JetBrainsMono Nerd Font
+    #style: Bold Italic
+
+  size: 10
+
+# Colors (Elenapan) Pamela Rice
+colors:
+  primary:
+    background: '#1D1F28'
+    foreground: '#FDFDFD'
+
+  normal:
+    black:   '#3D4C5F'
+    red:     '#F37F97'
+    green:   '#5ADECD'
+    yellow:  '#F2A272'
+    blue:    '#8897F4'
+    magenta: '#C574DD'
+    cyan:    '#79E6F3'
+    white:   '#FDFDFD'
+
+  bright:
+    black:   '#56687E'
+    red:     '#FF4971'
+    green:   '#18E3C8'
+    yellow:  '#FF8037'
+    blue:    '#556FFF'
+    magenta: '#B043D1'
+    cyan:    '#3FDCEE'
+    white:   '#BEBEC1'
+
+selection:
+  save_to_clipboard: false
+
+cursor:
+  style:
+    shape: Block
+    blinking: On
+    
+  unfocused_hollow: false 
+  blink_interval: 550
+
+live_config_reload: true

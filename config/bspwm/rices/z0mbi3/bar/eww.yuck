@@ -90,7 +90,7 @@
 				:onrightclick "scripts/popup chkupdates"		 
 				:onclick "scripts/popup pacupdates"))))
 ;; Updates vars
-(defpoll UPDATES :interval "15m" `~/.config/bspwm/scripts/updates.sh`)
+(defpoll UPDATES :interval "15m" `~/.config/bspwm/scripts/Updates`)
 (defvar pac false)
 
 
@@ -114,6 +114,7 @@
 			  :min 0))
 	(button   :style "background-image: url('${volume_icon}');"
 			  :class "trayicon"
+			  :onrightclick "scripts/popup audio"
 			  :onclick "scripts/volume.sh --toggle-muted"))))			  
 (defvar volum false)
 

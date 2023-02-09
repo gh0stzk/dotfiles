@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ "$1" == "--tr" ]]; then
-	termite & disown
+	Term --ot
 
 elif [[ "$1" == "--ff" ]]; then
 	firefox & disown
@@ -28,9 +28,9 @@ elif [[ "$1" == "--nm" ]]; then
 	networkmanager_dmenu
 	
 elif [[ "$1" == "--zo" ]]; then
-	termite --hold -t sysfetch -e $HOME/.local/bin/sysfetch
+	Term --of
 	
 elif [[ "$1" == "--up" ]]; then
-	termite --hold -t updating -e "yay -Syyuu --devel"
+	Term --ou
 
 fi

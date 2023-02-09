@@ -29,9 +29,9 @@ rofi -no-lazy-grab -show drun -theme $HOME/.config/bspwm/rices/$RICETHEME/launch
 elif [ "$1" = "infocenter" ]; then
 ~/.config/bspwm/rices/$RICETHEME/dashboard/LaunchInfoCenter.sh
 elif [ "$1" = "pacupdates" ]; then
-termite --hold -t updating -e "yay -Syyuu --devel" &
+Term --ou
 elif [ "$1" = "chkupdates" ]; then
-termite --hold -t updating -e "checkupdates" & disown
+Term --ocu
 elif [ "$1" = "audio" ]; then
 pavucontrol & disown
 elif [ "$1" = "calendar" ]; then

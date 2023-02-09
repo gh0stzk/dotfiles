@@ -6,35 +6,17 @@
 #   This script is a modified version of https://github.com/Mangeshrex/rxfetch
 
 #colors
-#bold="(tput bold)"
-magenta="\033[1;35m"
-green="\033[1;32m"
-white="\033[1;37m"
-blue="\033[1;34m"
-red="\033[1;31m"
-black="\033[1;30m"
-yellow="\033[1;33m"
-cyan="\033[1;36m"
-reset="\033[0m"
-bgyellow="\033[1;43;33m"
-bgwhite="\033[1;47;37m"
-zgreen1="\033[0;32m"
-zgray="\033[0;37m"
-zblue="\033[0;34m"
-c0="${reset}"
-c1="${magenta}"
-c2="${green}"
-c3="${white}"
-c4="${blue}"
-c5="${red}"
-c6="${yellow}"
-c7="${cyan}"
-c8="${black}"
-c9="${bgyellow}"
-c10="${bgwhite}"
-c11="${zgreen1}"
-c12="${zgray}"
-c13="${zblue}"
+CBK=$(tput setaf 0)
+CRE=$(tput setaf 1)
+CGR=$(tput setaf 2)
+CYE=$(tput setaf 3)
+CBL=$(tput setaf 4)
+
+CMA=$(tput setaf 5)
+CCY=$(tput setaf 6)
+CWH=$(tput setaf 7)
+CBD=$(tput bold)
+CNC=$(tput sgr0)
 
 get_init() {
 	if pidof -q systemd; then
@@ -200,22 +182,22 @@ get_de_wm() {
 }
 
 echo -e "               "
-echo -e "                ${c8}%%%${c0}                "
-echo -e "         ${c8}%%%%%${c0}${c13}//${c8}%%%%%${c0}              "
-echo -e "       ${c8}%%${c0}${c4}************${c8}%%%${c0}           "
-echo -e "    ${c8}(%%${c0}${c13}//${c11}############${c13}*****${c8}%%${c0}       "
-echo -e "  ${c8}%%%%%${c0}${c13}**${c11}###&&&&&&&&&###${c13}**//       ${c1}os${c3}     $(distro)"
-echo -e "  ${c8}%%(${c0}${c13}**${c11}##&&&#########&&&##${c13}**       ${c2}ker${c3}    $(uname -r)"
-echo -e "  ${c8}%%(${c0}${c13}**${c11}##${c2}*****#####${c2}*****##${c13}**${c8}%%%${c0}    ${c7}pkgs${c3}   $(get_package_info)"
-echo -e "  ${c8}%%(${c0}${c13}**${c11}##     *****     ##${c4}**       ${c4}sh${c3}     ${SHELL##*/}  ${c6}󰮯 ${c6} ${c2}󰊠 ${c2} ${c4}󰊠 ${c4} ${c5}󰊠 ${c5} ${c7}󰊠 ${c7} ${c1}󰊠 ${c1}"
-echo -e "     ${c8}//${c0}${c11}##   ${c3}@@${c2}**   ${c3}@@   ${c11}##//       ${c6}ram${c3}    $(get_mem)"
+echo -e "                ${CBD}${CBK}%%%                "
+echo -e "         %%%%%${CBL}//${CBK}%%%%%              "
+echo -e "       %%${CBL}************${CBK}%%%           "
+echo -e "    (%%${CBL}//${CGR}############${CBL}*****${CBK}%%       "
+echo -e "  %%%%%${CBL}**${CGR}###&&&&&&&&&###${CBL}**//       ${CMA}os${CWH}     $(distro)"
+echo -e "  ${CBK}%%(${CBL}**${CGR}##&&&#########&&&##${CBL}**       ${CGR}ker${CWH}    $(uname -r)"
+echo -e "  ${CBK}%%(${CBL}**${CGR}##${CGR}*****#####${CGR}*****##${CBL}**${CBK}%%%    ${CCY}pkgs${CWH}   $(get_package_info)"
+echo -e "  ${CBK}%%(${CBL}**${CGR}##     *****     ##${CBL}**       ${CBL}sh${CWH}     ${SHELL##*/}  ${CYE}󰮯 ${CYE} ${CGR}󰊠 ${CGR} ${CBL}󰊠 ${CBL} ${CRE}󰊠 ${CRE} ${CCY}󰊠 ${CCY} ${CMA}󰊠 ${CMA}"
+echo -e "     ${CBK}//${CGR}##   ${CWH}@@${CGR}**   ${CWH}@@   ${CGR}##//       ${CYE}ram${CWH}    $(get_mem)"
 if [ -n "$DISPLAY" ]; then
-	echo -e "       ${c11}##     ${c2}**${c11}###     ##         ${c5}de/wm${c3}  $(get_de_wm)"
+	echo -e "       ${CGR}##     ${CGR}**${CGR}###     ##         ${CRE}de/wm${CWH}  $(get_de_wm)"
 fi
-echo -e "       ${c11}#######     #####//         ${c1}init${c3}   $(get_init)"
-echo -e "         ${c11}###${c2}**${c11}&&&&&${c2}**${c11}###           ${c4}disk${c3}   $(storage) Used"
-echo -e "         ${c11}&&&         &&&           ${c6}up${c3}    $(get_uptime)"
-echo -e "         ${c11}&&&${c5}////   ${c11}&&            "
-echo -e "            ${c11}&&${c5}//${c3}@@@${c11}**            "
+echo -e "       ${CGR}#######     #####//         ${CMA}init${CWH}   $(get_init)"
+echo -e "         ${CGR}###${CGR}**${CGR}&&&&&${CGR}**${CGR}###           ${CBL}disk${CWH}   $(storage) Used"
+echo -e "         ${CGR}&&&         &&&           ${CYE}up${CWH}    $(get_uptime)"
+echo -e "         ${CGR}&&&${CRE}////   ${CGR}&&            "
+echo -e "            ${CGR}&&${CRE}//${CWH}@@@${CGR}**            "
 echo -e "              ..***         "
 echo -e "               \033[0m"

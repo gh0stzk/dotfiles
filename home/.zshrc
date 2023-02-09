@@ -16,8 +16,6 @@ PROMPT='%B%F{blue}󰣇%f%b  %B%F{magenta}%n%f%b %B%F{red}%~%f%b%B%F{yellow}$(git
 
 export VISUAL=geany;
 export EDITOR=nvim;
-export TERMINAL=termite;
-export TERM=termite;
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 
 if [ -d "$HOME/.local/bin" ] ;

@@ -26,7 +26,7 @@ cursor_shape = underline
 gtk_dark_theme = true
 smart_copy = true
 
-# Rese-Pine Moon color palette
+# Rose-Pine Moon color palette
 [colors]
 
 foreground          = #eaeaea

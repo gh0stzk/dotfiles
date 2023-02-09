@@ -35,6 +35,18 @@ Increase and decrease transparency in focused or selected window.
 
 **And more..**
 
+# 🚀 New Features
+### 09 February 2023
+I added to the environment the possibility to choose between 2 terminals **Alacritty** and **termite**.
+
+Termite has always been the one used in my dotfiles. It works fast and without problems. But it has to be compiled and it's a bit old.
+
+Alacritty is modern, fast and the best, should work on your machine.
+
+To open the terminal menu press `Super + Alt + t`
+
+<img src="https://user-images.githubusercontent.com/67278339/217935433-0be23116-4f15-4fc0-936b-6bdb4e3ef3b1.png" alt="Terminal Selector" align="center">
+
 <table align="center">
    <tr>
       <th align="center">

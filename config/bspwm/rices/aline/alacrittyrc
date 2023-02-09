@@ -1,0 +1,72 @@
+
+window:
+  padding:
+    x: 10
+    y: 5
+
+  decorations: full
+
+  opacity: 1.0
+  dynamic_title: true
+
+  history: 10000
+  multiplier: 3
+
+font:
+  normal:
+    family: JetBrainsMono Nerd Font
+    #style: Regular
+
+  bold:
+    family: JetBrainsMono Nerd Font
+    #style: Bold
+
+  
+  italic:
+    family: JetBrainsMono Nerd Font
+    #style: Italic
+
+  bold_italic:
+    family: JetBrainsMono Nerd Font
+    #style: Bold Italic
+
+  size: 10
+
+# Colors (Catppucin with modifications) Aline Rice
+colors:
+  primary:
+    background: '#e5eafe'
+    foreground: '#51576d'
+
+  normal:
+    black:   '#292c3c'
+    red:     '#E78284'
+    green:   '#A6D189'
+    yellow:  '#E5C890'
+    blue:    '#8CAAEE'
+    magenta: '#ca9ee6'
+    cyan:    '#81C8BE'
+    white:   '#B5BFE2'
+
+  bright:
+    black:   '#949cbb'
+    red:     '#E78284'
+    green:   '#A6D189'
+    yellow:  '#E5C890'
+    blue:    '#8CAAEE'
+    magenta: '#ca9ee6'
+    cyan:    '#81C8BE'
+    white:   '#A5ADCE'
+
+selection:
+  save_to_clipboard: false
+
+cursor:
+  style:
+    shape: Block
+    blinking: On
+    
+  unfocused_hollow: false 
+  blink_interval: 550
+
+live_config_reload: true

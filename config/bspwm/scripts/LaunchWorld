@@ -25,21 +25,14 @@ function killeww() {
   fi
 }
 
-function ResetTermite() {
-  if [[ `pidof termite` ]]; then 
-		killall -USR1 termite
-  fi
-}
-
-function ReloadTermite() {
-  if [ -f "$HOME/.config/termite/config" ]; then
-		cat $HOME/.config/bspwm/rices/$RICETHEME/termiterc > $HOME/.config/termite/config
-		ResetTermite
-  else
-		mkdir -p $HOME/.config/termite/ && touch $HOME/.config/termite/config
-		cat $HOME/.config/bspwm/rices/$RICETHEME/termiterc > $HOME/.config/termite/config
-		ResetTermite
-  fi
+function ReloadTerms() {
+	
+	cat $HOME/.config/bspwm/rices/$RICETHEME/alacrittyrc > $HOME/.config/alacritty/alacritty.yml
+	
+	cat $HOME/.config/bspwm/rices/$RICETHEME/termiterc > $HOME/.config/termite/config
+		if [[ `pidof termite` ]]; then 
+			killall -USR1 termite
+		fi
 }
 
 function SetBspwmConf() {
@@ -200,7 +193,7 @@ function SetGirlFriendRice() {
 	esac		
 }
 
-ReloadTermite
+ReloadTerms
 
 function AutoStartApps() {
 	
