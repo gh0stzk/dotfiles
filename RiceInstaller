@@ -40,7 +40,7 @@ logo () {
 	
 logo "Welcome!"
 printf '%sThis script will install needed dependencies and copy my dotfiles to your bspwm setup.%s\n\nThis installer script does NOT change any configuration of your system.\nIts just a script that copies and moves my dotfiles to your ~/.config directory\n\n' "${CRE}" "${CNC}"
-sleep 3
+sleep 5
 
 while true; do
 	read -rp " Do you wish to continue? [y/N]: " yn
@@ -51,30 +51,50 @@ while true; do
 		esac
     done
 			clear
+			
+logo "Installing needed packages.."
+
+dependencias=(base-devel bspwm polybar sxhkd alacritty dunst rofi lsd jq polkit-gnome git playerctl mpd ncmpcpp geany ranger mpc picom feh ueberzug maim pamixer libwebp webp-pixbuf-loader xorg-xkill papirus-icon-theme ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels)
+
+is_installed() {
+  pacman -Qi $1 &> /dev/null
+  return $?
+}
+
+printf "%s%sChecking for required packages...%s\n" "${BLD}" "${CBL}" "${CNC}"
+for paquete in "${dependencias[@]}"
+do
+  if ! is_installed $paquete; then
+    sudo pacman -S $paquete --noconfirm
+    printf "\n"
+  else
+    printf '%s%s is already installed on your system!%s\n' "${CGR}" "$paquete" "${CNC}"
+    sleep 1
+  fi
+done
+sleep 2
+clear
 
 logo "Checking if yay is installed"
 
-	if pacman -Qi yay >/dev/null 2>&1; then
-		printf "Yay is installed\n\n"
+	if ! command -v yay &>/dev/null; then
+		printf "%s%sError YAY is not installed%s\n" "${BLD}" "${CRE}" "${CNC}"
+		sleep 1
+		printf "%s%sInstalling YAY..%s\n\n" "${BLD}" "${CYE}" "${CNC}"
+		sleep 1
+		git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd && rm -rf yay
 	else
-		printf "installing yay..\n\n"
-		sudo pacman -Syu git && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd
+		printf "%s%sYAY is already installed on your system%s\n" "${BLD}" "${CGR}" "${CNC}"
 	fi
 sleep 2
 clear
-		
-logo "Installing needed packages.."
 
-	sudo pacman -Syu bspwm polybar sxhkd alacritty dunst rofi lsd jq polkit-gnome git \
-					 playerctl mpd ncmpcpp geany ranger mpc picom feh ueberzug \
-					 maim pamixer libwebp webp-pixbuf-loader xorg-xkill papirus-icon-theme \
-					 ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels
-					 
+logo "Installing needed packages from AUR"				 
 	yay -S eww termite xtitle checkupdates-aur betterlockscreen \
-		   nerd-fonts-cozette-ttf scientifica-font --removemake --cleanafter
-			  
+		   nerd-fonts-cozette-ttf scientifica-font --noconfirm --removemake --cleanafter
+sleep 2	  
 clear
-			 
+
 logo "Cloning Rice!"
 printf "Cloning rice from https://github.com/gh0stzk/dotfiles\n\n"
 git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
@@ -82,7 +102,7 @@ sleep 2
 clear
 
 logo "Backup your files"
-printf "Backup files will be stored in %s%s/.RiceBackup%s \n\n" "${CRE}" "$HOME" "${CNC}"
+printf "Backup files will be stored in %s%s%s/.RiceBackup%s \n\n" "${BLD}" "${CRE}" "$HOME" "${CNC}"
 sleep 5
 
 if [ ! -d "$HOME/.RiceBackup" ]; then 
@@ -106,12 +126,12 @@ fi
 
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/.RiceBackup/.zshrc-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 
-printf "\n\nDone\n\n"
+printf "%s%sDone!!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 2
 clear
 
 logo "Copying Rice.."
-printf "Copying files to respective directories..\n\n"
+printf "Copying files to respective directories..\n"
 
 if [ -d "$HOME/.config" ]; then
 	cp -r ~/dotfiles/config/* ~/.config
@@ -148,30 +168,23 @@ cp -r ~/dotfiles/misc/firefox/user.js ~/.mozilla/firefox/*.default-release/
 
 cp -r ~/dotfiles/home/.zshrc ~
 
-
-printf "\n\nFiles copied succesfully\n\n"
+printf "%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 2
 clear
 
 logo "Reloading fonts.."
-printf "Reloading fonts to make it usable \n\n"
-
-## Reloading fonts
 fc-cache -rv >/dev/null 2>&1
-
-printf "\n\nFonts reloaded succesfully!\n\n"
+printf "%s%sFonts reloaded succesfully!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 2
 clear
 
 logo "Enabling MPD service"
-# For automatically launching mpd on login
 systemctl --user enable mpd.service
 systemctl --user start mpd.service
-
-printf "\n\nDone\n\n"
+printf "%s%sDone!!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 2
 clear
 
 logo "Installation finished"
-printf "%sNow logout your session, select bspwm and log in.%s \n\n" "${CRE}" "${CNC}"
+printf "%s%sNow logout your session, select bspwm and log in.%s\n\n" "${BLD}" "${CRE}" "${CNC}"
 zsh
