@@ -54,7 +54,7 @@ while true; do
 			
 logo "Installing needed packages.."
 
-dependencias=(base-devel bspwm polybar sxhkd alacritty dunst rofi lsd jq polkit-gnome git playerctl mpd ncmpcpp geany ranger mpc picom feh ueberzug maim pamixer libwebp webp-pixbuf-loader xorg-xkill papirus-icon-theme ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels)
+dependencias=(base-devel bspwm polybar sxhkd alacritty dunst rofi lsd jq polkit-gnome git playerctl mpd ncmpcpp geany ranger mpc picom feh ueberzug maim pamixer libwebp webp-pixbuf-loader xorg-xprop xorg-xkill papirus-icon-theme ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels zsh)
 
 is_installed() {
   pacman -Qi $1 &> /dev/null
@@ -133,40 +133,45 @@ clear
 logo "Copying Rice.."
 printf "Copying files to respective directories..\n"
 
-if [ -d "$HOME/.config" ]; then
-	cp -r ~/dotfiles/config/* ~/.config
+if [ ! -d $HOME/.config ]; then
+	mkdir -p $HOME/.config
+	cp -r $HOME/dotfiles/config/* $HOME/.config
 else
-	mkdir -p ~/.config && cp -r ~/dotfiles/config/* ~/.config
+	cp -r $HOME/dotfiles/config/* $HOME/.config
 fi
 
-if [ -d "$HOME/.local/bin" ]; then
-	cp -r ~/dotfiles/misc/bin/* ~/.local/bin
+if [ ! -d $HOME/.local/bin ]; then
+	mkdir -p $HOME/.local/bin
+	cp -r $HOME/dotfiles/misc/bin/* $HOME/.local/bin
 else
-	mkdir -p ~/.local/bin && cp -r ~/dotfiles/misc/bin/* ~/.local/bin
+	cp -r $HOME/dotfiles/misc/bin/* $HOME/.local/bin
 fi
 
-if [ -d "$HOME/.local/share/applications" ]; then
-	cp -r ~/dotfiles/misc/applications/* ~/.local/share/applications
+if [ ! -d $HOME/.local/share/applications ]; then
+	mkdir -p $HOME/.local/share/applications
+	cp -r $HOME/dotfiles/misc/applications/* $HOME/.local/share/applications
 else
-	mkdir -p ~/.local/share/applications && cp -r ~/dotfiles/misc/applications/* ~/.local/share/applications
+	cp -r $HOME/dotfiles/misc/applications/* $HOME/.local/share/applications
 fi
 
-if [ -d "$HOME/.local/share/asciiart" ]; then
-	cp -r ~/dotfiles/misc/asciiart/* ~/.local/share/asciiart
+if [ ! -d $HOME/.local/share/asciiart ]; then
+	mkdir -p $HOME/.local/share/asciiart
+	cp -r $HOME/dotfiles/misc/asciiart/* $HOME/.local/share/asciiart
 else
-	mkdir -p ~/.local/share/asciiart && cp -r ~/dotfiles/misc/asciiart/* ~/.local/share/asciiart
+	cp -r $HOME/dotfiles/misc/asciiart/* $HOME/.local/share/asciiart
 fi
 
-if [ -d "$HOME/.local/share/fonts" ]; then
-	cp -r ~/dotfiles/misc/fonts/* ~/.local/share/fonts
+if [ ! -d $HOME/.local/share/fonts ]; then
+	mkdir -p $HOME/.local/share/fonts
+	cp -r $HOME/dotfiles/misc/fonts/* $HOME/.local/share/fonts
 else
-	mkdir -p ~/.local/share/fonts && cp -r ~/dotfiles/misc/fonts/* ~/.local/share/fonts
+	cp -r $HOME/dotfiles/misc/fonts/* $HOME/.local/share/fonts
 fi
 
-cp -r ~/dotfiles/misc/firefox/chrome ~/.mozilla/firefox/*.default-release/
-cp -r ~/dotfiles/misc/firefox/user.js ~/.mozilla/firefox/*.default-release/
+cp -r $HOME/dotfiles/misc/firefox/chrome $HOME/.mozilla/firefox/*.default-release/
+cp -r $HOME/dotfiles/misc/firefox/user.js $HOME/.mozilla/firefox/*.default-release/
 
-cp -r ~/dotfiles/home/.zshrc ~
+cp -r $HOME/dotfiles/home/.zshrc $HOME
 
 printf "%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 2
@@ -187,4 +192,5 @@ clear
 
 logo "Installation finished"
 printf "%s%sNow logout your session, select bspwm and log in.%s\n\n" "${BLD}" "${CRE}" "${CNC}"
+chsh -s /usr/bin/zsh
 zsh
