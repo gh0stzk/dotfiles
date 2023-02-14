@@ -1,3 +1,14 @@
+(14/Feb/2023)
+- Deprecated LaunchWorld script, now all conf in bspwmrc.
+- Edited color scheme in aline rice. Now sucks less
+- Added right click in Andrea Rice menu to launch Theme selector.
+- Changed Polybar text font in 'Cristina, cynthia, Emilia, Isabel'
+- Edited a little polybars in Cynthia, pamela and melissa rices.
+- Changed font in Emilia rofi menu
+- Deleted rissole and fruit fonts.
+
+
+
 (09/Feb/2023)
 - Updated RiceInstaller. Alacritty and geany added to dependencies.
 - I added to environment the possibilite to select your prefered terminal. (Alacritty and Termite)

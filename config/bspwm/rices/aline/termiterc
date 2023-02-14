@@ -26,7 +26,7 @@ cursor_shape = underline
 gtk_dark_theme = true
 smart_copy = true
 
-# Catppucin based color palette with some modifications.
+# Pencil light based color palette with some modifications.
 [colors]
 
 background          = #e5eafe
@@ -36,32 +36,32 @@ cursor              = #ee6388
 cursor_foreground   = #282936
 
 # Black, Gray
-color0  = #292c3c
-color8  = #949cbb
+color0  = #212121
+color8  = #212121
 
 # Red
-color1 = #E78284
-color9 = #E78284
+color1 = #c30771
+color9 = #fb007a
 
 # Green
-color2  = #A6D189
-color10 = #A6D189
+color2  = #10a778
+color10 = #5fd7af
 
 # Yellow
-color3 =  #E5C890
-color11 = #E5C890
+color3 =  #a89c14
+color11 = #f3e430
 
 # Blue
-color4  = #8CAAEE
-color12 = #8CAAEE
+color4  = #008ec4
+color12 = #20bbfc
 
 # Magenta
-color5  = #ca9ee6
-color13 = #ca9ee6
+color5  = #523c79
+color13 = #6855de
 
 # Cyan
-color6  = #81C8BE
-color14 = #81C8BE
+color6  = #20a5ba
+color14 = #4fb8cc
 
 # White
 color7 =  #B5BFE2
