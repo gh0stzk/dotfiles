@@ -54,7 +54,7 @@ while true; do
 			
 logo "Installing needed packages.."
 
-dependencias=(base-devel bspwm polybar sxhkd alacritty dunst rofi lsd jq polkit-gnome git playerctl mpd ncmpcpp geany ranger mpc picom feh ueberzug maim pamixer libwebp webp-pixbuf-loader xorg-xprop xorg-xkill papirus-icon-theme ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels zsh)
+dependencias=(base-devel pacman-contrib bspwm polybar sxhkd alacritty dunst rofi lsd jq polkit-gnome git playerctl mpd ncmpcpp geany ranger mpc picom feh ueberzug maim pamixer libwebp webp-pixbuf-loader xorg-xprop xorg-xkill papirus-icon-theme ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels zsh)
 
 is_installed() {
   pacman -Qi $1 &> /dev/null
@@ -90,7 +90,7 @@ sleep 2
 clear
 
 logo "Installing needed packages from AUR"				 
-	yay -S eww termite xtitle checkupdates-aur betterlockscreen \
+	yay -S eww termite xtitle betterlockscreen \
 		   nerd-fonts-cozette-ttf scientifica-font --noconfirm --removemake --cleanafter
 sleep 2	  
 clear
