@@ -265,6 +265,7 @@ The plugin manager is Packer.
 - <code>alt + @space</code> Display menu to select theme selector.
 - <code>super + @space</code> Apps Menu.
 - <code>super + h </code> Hides bar/s <code>super + u</code> unhide bar/s
+- <code>super + alt + t</code> Open terminal selection menu (Alacritty, Termite)
 - <code>super + Print</code> Takes screenshot.
 - <code>ctrl + alt {plus,minus,t}</code> Changes transparency on focused window.
 - <code>ctrl + super + alt + p</code> Power off computer. <code>ctrl + super + alt + r</code> Restart computer.
