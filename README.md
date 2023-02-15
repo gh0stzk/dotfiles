@@ -281,13 +281,20 @@ And more.. You need to look sxhkdrc file for more.
 ### 💾 Installation:
 The installer only works for **ARCH** Linux, and based distros.
 
-<b>1. Open a terminal and paste this 3 commands (One by one!)</b>
-
+<b>Open a terminal</b>
+- **First download the installer**
 ```sh
-curl -LO https://raw.githubusercontent.com/gh0stzk/dotfiles/master/RiceInstaller
-chmod +x RiceInstaller
-bash RiceInstaller
+curl -O https://raw.githubusercontent.com/gh0stzk/dotfiles/master/RiceInstaller
 ```
+- **Now give it execute permissions**
+```sh
+chmod +x RiceInstaller
+```
+- **Finally run the installer**
+```sh
+./RiceInstaller
+```
+
 
 ## Some tips
 
