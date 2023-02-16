@@ -89,13 +89,10 @@ logo "Checking if yay is installed"
 sleep 2
 clear
 
-logo "Installing needed packages from AUR"				 
-	yay -S eww termite xtitle betterlockscreen \
-		   nerd-fonts-cozette-ttf scientifica-font --noconfirm --removemake --cleanafter
-sleep 2	  
-clear
+
 
 logo "Cloning Rice!"
+[ -e ~/dotfiles ] && rm -rf ~/dotfiles
 printf "Cloning rice from https://github.com/gh0stzk/dotfiles\n\n"
 git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
 sleep 2
@@ -118,6 +115,7 @@ fi
 [ -e ~/.config/sxhkd ] && mv ~/.config/sxhkd ~/.RiceBackup/sxhkd-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/dunst ] && mv ~/.config/dunst ~/.RiceBackup/dunst-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/gtk-3.0 ] && mv ~/.config/gtk-3.0 ~/.RiceBackup/gtk-3.0-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -e ~/.config/polybar ] && mv ~/.config/polybar ~/.RiceBackup/polybar-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/mpd ] && mv ~/.config/mpd ~/.RiceBackup/mpd-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/ncmpcpp ] && mv ~/.config/ncmpcpp ~/.RiceBackup/ncmpcpp-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 [ -e ~/.config/nvim ] && mv ~/.config/nvim ~/.RiceBackup/nvim-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
@@ -175,6 +173,11 @@ cp -r $HOME/dotfiles/home/.zshrc $HOME
 
 printf "%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 2
+clear
+
+logo "Installing needed packages from AUR"				 
+yay -S eww termite xtitle betterlockscreen nerd-fonts-cozette-ttf scientifica-font --noconfirm --removemake --cleanafter
+sleep 2	  
 clear
 
 logo "Reloading fonts.."
