@@ -10,7 +10,7 @@ close_eww() {
 ## Options #############################################
 if  [[ $1 = "--lock" ]]; then
 	close_eww
-    betterlockscreen --lock
+    physlock -d
 
 elif  [[ $1 = "--logout" ]]; then
 	close_eww

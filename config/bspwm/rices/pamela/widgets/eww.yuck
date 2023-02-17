@@ -52,7 +52,7 @@
                :halign "center"
                :valign "center"
                :space-evenly "false"
-               (button :onclick "betterlockscreen -l"
+               (button :onclick "physlock -d"
                     :class "lock-btn"
                     :tooltip "lock"
                     ""))

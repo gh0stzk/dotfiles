@@ -57,6 +57,10 @@ colors:
     magenta: '#533969'
     cyan:    '#385a73'
     white:   '#e5e5e5'
+    
+  cursor:
+    cursor: '#465b80'
+    text:	'#e5e5e5'
 
 selection:
   save_to_clipboard: false

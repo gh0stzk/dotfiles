@@ -186,7 +186,7 @@
 
 	(button		:class "button-lock" 				
 				:tooltip "Lock Screen"	 
-				:onclick "betterlockscreen -l"	"󰌾")))
+				:onclick "physlock -d"	"󰌾")))
 
 	(button		:class "button-off"					
 				:tooltip "Shutdown"		 

@@ -48,7 +48,7 @@ ctrl + alt {plus,minus,t}
         
 # Apagar, Reiniciar, Cerrar Sesion, bloquear
 ctrl + super + alt + {p,r,q,l}
-        {systemctl poweroff, systemctl reboot,bspc quit,betterlockscreen -l}
+        {systemctl poweroff, systemctl reboot,bspc quit,physlock -d}
         
 # Matar Procesos
 ctrl + super + alt + k

@@ -54,7 +54,7 @@ while true; do
 			
 logo "Installing needed packages.."
 
-dependencias=(base-devel pacman-contrib bspwm polybar sxhkd alacritty dunst rofi lsd jq polkit-gnome git playerctl mpd ncmpcpp geany ranger mpc picom feh ueberzug maim pamixer libwebp webp-pixbuf-loader xorg-xprop xorg-xkill papirus-icon-theme ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels zsh)
+dependencias=(base-devel pacman-contrib bspwm polybar sxhkd alacritty dunst rofi lsd jq polkit-gnome git playerctl mpd ncmpcpp geany ranger mpc picom feh ueberzug maim pamixer libwebp webp-pixbuf-loader xorg-xprop xorg-xkill physlock papirus-icon-theme ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels zsh)
 
 is_installed() {
   pacman -Qi $1 &> /dev/null
@@ -82,7 +82,11 @@ logo "Checking if yay is installed"
 		sleep 1
 		printf "%s%sInstalling YAY..%s\n\n" "${BLD}" "${CYE}" "${CNC}"
 		sleep 1
-		git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd && rm -rf yay
+		git clone https://aur.archlinux.org/yay.git
+		cd yay
+		makepkg -si
+		cd $HOME
+		rm -rf yay
 	else
 		printf "%s%sYAY is already installed on your system%s\n" "${BLD}" "${CGR}" "${CNC}"
 	fi
@@ -176,7 +180,7 @@ sleep 2
 clear
 
 logo "Installing needed packages from AUR"				 
-yay -S eww termite xtitle betterlockscreen nerd-fonts-cozette-ttf scientifica-font --removemake --cleanafter
+yay -S eww termite xtitle nerd-fonts-cozette-ttf scientifica-font --removemake --cleanafter
 sleep 2	  
 clear
 
