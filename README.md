@@ -282,7 +282,7 @@ And more.. You need to look sxhkdrc file for more.
 ### 💾 Installation:
 The installer only works for **ARCH** Linux, and based distros.
 
-<b>Open a terminal</b>
+<b>Open a terminal in HOME</b>
 - **First download the installer**
 ```sh
 curl https://raw.githubusercontent.com/gh0stzk/dotfiles/master/RiceInstaller -o $HOME/RiceInstaller
