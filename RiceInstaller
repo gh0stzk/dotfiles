@@ -37,13 +37,17 @@ logo () {
     sleep 2
 }
 
-	
+if [ "$(id -u)" = 0 ]; then
+    echo "This script MUST NOT be run as root user."
+    exit 1
+fi
+
 logo "Welcome!"
 printf '%sThis script will install needed dependencies and copy my dotfiles to your bspwm setup.%s\n\nThis installer script does NOT change any configuration of your system.\nIts just a script that copies and moves my dotfiles to your ~/.config directory\n\n' "${CRE}" "${CNC}"
 sleep 5
 
 while true; do
-	read -rp " Do you wish to continue? [y/N]: " yn
+	read -rp " Do you wish to continue? [Yy/Nn]: " yn
 		case $yn in
 			[Yy]* ) break;;
 			[Nn]* ) exit;;
@@ -96,8 +100,9 @@ clear
 
 
 logo "Cloning Rice!"
-[ -e ~/dotfiles ] && rm -rf ~/dotfiles
+[ -d ~/dotfiles ] && rm -rf ~/dotfiles
 printf "Cloning rice from https://github.com/gh0stzk/dotfiles\n\n"
+cd $HOME
 git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
 sleep 2
 clear
@@ -107,24 +112,24 @@ printf "Backup files will be stored in %s%s%s/.RiceBackup%s \n\n" "${BLD}" "${CR
 sleep 5
 
 if [ ! -d "$HOME/.RiceBackup" ]; then 
-	mkdir "${HOME}"/.RiceBackup	
+	mkdir -p "${HOME}"/.RiceBackup
 fi
 
-[ -e ~/.config/bspwm ] && mv ~/.config/bspwm ~/.RiceBackup/bspwm-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -e ~/.config/termite ] && mv ~/.config/termite ~/.RiceBackup/termite-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -e ~/.config/alacritty ] && mv ~/.config/alacritty ~/.RiceBackup/alacritty-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -e ~/.config/picom ] && mv ~/.config/picom ~/.RiceBackup/picom-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -e ~/.config/rofi ] && mv ~/.config/rofi ~/.RiceBackup/rofi-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -e ~/.config/eww ] && mv ~/.config/eww ~/.RiceBackup/eww-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -e ~/.config/sxhkd ] && mv ~/.config/sxhkd ~/.RiceBackup/sxhkd-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -e ~/.config/dunst ] && mv ~/.config/dunst ~/.RiceBackup/dunst-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -e ~/.config/gtk-3.0 ] && mv ~/.config/gtk-3.0 ~/.RiceBackup/gtk-3.0-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -e ~/.config/polybar ] && mv ~/.config/polybar ~/.RiceBackup/polybar-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -e ~/.config/mpd ] && mv ~/.config/mpd ~/.RiceBackup/mpd-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -e ~/.config/ncmpcpp ] && mv ~/.config/ncmpcpp ~/.RiceBackup/ncmpcpp-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -e ~/.config/nvim ] && mv ~/.config/nvim ~/.RiceBackup/nvim-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -e ~/.config/ranger ] && mv ~/.config/ranger ~/.RiceBackup/ranger-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -e ~/.config/zsh ] && mv ~/.config/zsh ~/.RiceBackup/zsh-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -d ~/.config/bspwm ] && mv ~/.config/bspwm ~/.RiceBackup/bspwm-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -d ~/.config/termite ] && mv ~/.config/termite ~/.RiceBackup/termite-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -d ~/.config/alacritty ] && mv ~/.config/alacritty ~/.RiceBackup/alacritty-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -d ~/.config/picom ] && mv ~/.config/picom ~/.RiceBackup/picom-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -d ~/.config/rofi ] && mv ~/.config/rofi ~/.RiceBackup/rofi-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -d ~/.config/eww ] && mv ~/.config/eww ~/.RiceBackup/eww-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -d ~/.config/sxhkd ] && mv ~/.config/sxhkd ~/.RiceBackup/sxhkd-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -d ~/.config/dunst ] && mv ~/.config/dunst ~/.RiceBackup/dunst-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -d ~/.config/gtk-3.0 ] && mv ~/.config/gtk-3.0 ~/.RiceBackup/gtk-3.0-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -d ~/.config/polybar ] && mv ~/.config/polybar ~/.RiceBackup/polybar-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -d ~/.config/mpd ] && mv ~/.config/mpd ~/.RiceBackup/mpd-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -d ~/.config/ncmpcpp ] && mv ~/.config/ncmpcpp ~/.RiceBackup/ncmpcpp-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -d ~/.config/nvim ] && mv ~/.config/nvim ~/.RiceBackup/nvim-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -d ~/.config/ranger ] && mv ~/.config/ranger ~/.RiceBackup/ranger-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+[ -d ~/.config/zsh ] && mv ~/.config/zsh ~/.RiceBackup/zsh-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/.RiceBackup/.zshrc-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 
@@ -137,43 +142,43 @@ printf "Copying files to respective directories..\n"
 
 if [ ! -d $HOME/.config ]; then
 	mkdir -p $HOME/.config
-	cp -r $HOME/dotfiles/config/* $HOME/.config
+	cp -Rf $HOME/dotfiles/config/* $HOME/.config/
 else
-	cp -r $HOME/dotfiles/config/* $HOME/.config
+	cp -Rf $HOME/dotfiles/config/* $HOME/.config/
 fi
 
 if [ ! -d $HOME/.local/bin ]; then
 	mkdir -p $HOME/.local/bin
-	cp -r $HOME/dotfiles/misc/bin/* $HOME/.local/bin
+	cp -Rf $HOME/dotfiles/misc/bin/* $HOME/.local/bin/
 else
-	cp -r $HOME/dotfiles/misc/bin/* $HOME/.local/bin
+	cp -Rf $HOME/dotfiles/misc/bin/* $HOME/.local/bin/
 fi
 
 if [ ! -d $HOME/.local/share/applications ]; then
 	mkdir -p $HOME/.local/share/applications
-	cp -r $HOME/dotfiles/misc/applications/* $HOME/.local/share/applications
+	cp -Rf $HOME/dotfiles/misc/applications/* $HOME/.local/share/applications/
 else
-	cp -r $HOME/dotfiles/misc/applications/* $HOME/.local/share/applications
+	cp -Rf $HOME/dotfiles/misc/applications/* $HOME/.local/share/applications/
 fi
 
 if [ ! -d $HOME/.local/share/asciiart ]; then
 	mkdir -p $HOME/.local/share/asciiart
-	cp -r $HOME/dotfiles/misc/asciiart/* $HOME/.local/share/asciiart
+	cp -Rf $HOME/dotfiles/misc/asciiart/* $HOME/.local/share/asciiart/
 else
-	cp -r $HOME/dotfiles/misc/asciiart/* $HOME/.local/share/asciiart
+	cp -Rf $HOME/dotfiles/misc/asciiart/* $HOME/.local/share/asciiart/
 fi
 
 if [ ! -d $HOME/.local/share/fonts ]; then
 	mkdir -p $HOME/.local/share/fonts
-	cp -r $HOME/dotfiles/misc/fonts/* $HOME/.local/share/fonts
+	cp -Rf $HOME/dotfiles/misc/fonts/* $HOME/.local/share/fonts/
 else
-	cp -r $HOME/dotfiles/misc/fonts/* $HOME/.local/share/fonts
+	cp -Rf $HOME/dotfiles/misc/fonts/* $HOME/.local/share/fonts/
 fi
+
+cp -f $HOME/dotfiles/home/.zshrc $HOME
 
 cp -r $HOME/dotfiles/misc/firefox/chrome $HOME/.mozilla/firefox/*.default-release/
 cp -r $HOME/dotfiles/misc/firefox/user.js $HOME/.mozilla/firefox/*.default-release/
-
-cp -r $HOME/dotfiles/home/.zshrc $HOME
 
 printf "%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 2
@@ -198,6 +203,6 @@ sleep 2
 clear
 
 logo "Installation finished"
-printf "%s%sNow logout your session, select bspwm and log in.%s\n\n" "${BLD}" "${CRE}" "${CNC}"
+printf "%s%sPlease reboot, then select bspwm in your login manager and log in.%s\n\n" "${BLD}" "${CRE}" "${CNC}"
 chsh -s /usr/bin/zsh
 zsh
