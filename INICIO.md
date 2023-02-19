@@ -280,10 +280,10 @@ Y mas... Necesitaras mirar el archivo sxhkdrc file para ver todos los atajos.
 ### 💾 Instalacion:
 El instalador solo funciona con **ARCH** Linux, y derivadas.
 
-<b>Abre una terminal</b>
+<b>Abre una terminal en tu HOME</b>
 - **Primero descarga el instalador**
 ```sh
-curl -O https://raw.githubusercontent.com/gh0stzk/dotfiles/master/RiceInstaller
+curl https://raw.githubusercontent.com/gh0stzk/dotfiles/master/RiceInstaller -o $HOME/RiceInstaller
 ```
 - **Ahora dale permisos de ejecucion**
 ```sh
