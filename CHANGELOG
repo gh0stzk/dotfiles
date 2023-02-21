@@ -1,3 +1,10 @@
+(21/Feb/2023)
+- Removed Terminal selector, now rices only use alacritty
+- Removed innecessary dependencies in RiceInstaller
+- ExternalRules changed due alacritty
+- Picom config changed due alacritty
+- Removed betterlockscreen config file due Physlock is the new locker.
+
 (14/Feb/2023)
 - Deprecated LaunchWorld script, now all conf in bspwmrc.
 - Edited color scheme in aline rice. Now sucks less

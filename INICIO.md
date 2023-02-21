@@ -14,7 +14,7 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 |Bar|[Polybar](https://github.com/polybar/polybar)|
 |Menu|[Rofi](https://github.com/davatorium/rofi)|
 |Compositor|[Picom](https://archlinux.org/packages/community/x86_64/picom/)|
-|Terminal|[Termite](https://aur.archlinux.org/termite.git)|
+|Terminal|[Alacritty](https://github.com/alacritty/alacritty)|
 |Widgets|[ElKowars wacky widgets ](https://github.com/elkowar/eww)|
 
 ## 🚀 Caracteristicas
