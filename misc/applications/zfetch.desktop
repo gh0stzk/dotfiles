@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Fetch..
-Icon=~/.local/share/applications/zombie.svg
+Icon=~/.local/share/applications/linux.svg
 Terminal=false
 Exec=Term --of
 #Exec=termite --hold -e zfetch
