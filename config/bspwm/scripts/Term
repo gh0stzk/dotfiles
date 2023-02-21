@@ -4,64 +4,26 @@
 #   Author: z0mbi3
 #	url: https://github.com/gh0stzk
 
-cfg_term="$HOME/.config/bspwm/scripts/term.cfg"
-export MY_TERM=$(<$HOME/.config/bspwm/scripts/term.cfg)
-
-if [[ "$1" == "--st" ]]; then
-ALACRITTY="Alacritty"
-TERMITE="Termite"
-
-options="$ALACRITTY\n$TERMITE"
-chosen="$(printf "$options" | rofi -theme $HOME/.config/bspwm/scripts/TermSelector.rasi -dmenu)"
-	case $chosen in
-
-			$ALACRITTY)
-				cat <<< "alacritty" > ${cfg_term}
-				;;
-			$TERMITE)
-				cat <<< "termite" > ${cfg_term}
-				;;
-	esac
-fi
+MY_TERM="alacritty"
 
 if [[ "$MY_TERM" == "alacritty" ]]; then
 
 	if [[ "$1" == "--ot" ]]; then
 		alacritty
 	elif [[ "$1" == "--oft" ]]; then
-		alacritty -t floaterm
+		alacritty --class FloaTerm,Alacritty
 	elif [[ "$1" == "--ou" ]]; then
-		alacritty --hold -t updating -e yay -Syyuu --devel
+		alacritty --hold --class Updating,Alacritty -e yay -Syyuu --devel
 	elif [[ "$1" == "--ocu" ]]; then
-		alacritty --hold -t updating -e checkupdates
+		alacritty --hold --class Updating,Alacritty -e checkupdates
 	elif [[ "$1" == "--or" ]]; then
-		alacritty -t ranger -e ranger
+		alacritty --class Ranger,Alacritty -e ranger
 	elif [[ "$1" == "--ov" ]]; then
 		alacritty -e nvim
 	elif [[ "$1" == "--om" ]]; then
-		alacritty -t musicplayer -e ncmpcpp
+		alacritty --class MusicPlayer,Alacritty -e ncmpcpp
 	elif [[ "$1" == "--of" ]]; then
-		alacritty --hold -t sysfetch -e ~/.local/bin/sysfetch
-	fi
-	
-elif [[ "$MY_TERM" == "termite" ]]; then
-
-	if [[ "$1" == "--ot" ]]; then
-		termite
-	elif [[ "$1" == "--oft" ]]; then
-		termite -t floaterm	
-	elif [[ "$1" == "--ou" ]]; then
-		termite --hold -t updating -e "yay -Syyuu --devel"
-	elif [[ "$1" == "--ocu" ]]; then
-		termite --hold -t updating -e "checkupdates"
-	elif [[ "$1" == "--or" ]]; then
-		termite -e ranger
-	elif [[ "$1" == "--ov" ]]; then
-		termite -e nvim
-	elif [[ "$1" == "--om" ]]; then
-		termite -t musicplayer -e "ncmpcpp"
-	elif [[ "$1" == "--of" ]]; then
-		termite --hold -t sysfetch -e ~/.local/bin/sysfetch
+		alacritty --hold --class Sysfetch,Alacritty -e ~/.local/bin/sysfetch
 	fi
 	
 fi

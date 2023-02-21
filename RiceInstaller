@@ -185,7 +185,7 @@ sleep 2
 clear
 
 logo "Installing needed packages from AUR"				 
-yay -S eww termite xtitle nerd-fonts-cozette-ttf scientifica-font --removemake --cleanafter
+yay -S eww nerd-fonts-cozette-ttf scientifica-font --removemake --cleanafter
 sleep 2	  
 clear
 

@@ -8,29 +8,29 @@ wid=$1
 class=$2
 instance=$3
 consequences=$4
-title=$(xtitle "$wid")
-
-if [[ "$instance" == @(termite|Alacritty) ]]; then
-	case "$title" in
-		ranger)
-			echo "state=floating rectangle=811x286+0+0 center=on"
-			;;
-		sysfetch)
-		    echo "border=off state=floating rectangle=352x500+36+115"
-		    ;;
-		updating)
-			echo "state=floating rectangle=483x190+1090+72"
-			;;
-		musicplayer)
-			echo "state=floating rectangle=630x215+0+0 center=on"
-			;;
-		floaterm)
-			echo "state=floating center=on rectangle=781x451+0+0"
-	esac
-fi
 
 main () {
 case "$class" in
+	FloaTerm)
+		eval "$consequences"
+		[ "$state" ] || echo "state=floating center=on rectangle=781x451+0+0"
+		;;
+	Updating)
+		eval "$consequences"
+		[ "$state" ] || echo "state=floating rectangle=483x190+1090+72"
+		;;
+	Ranger)
+		eval "$consequences"
+		[ "$state" ] || echo "state=floating rectangle=811x286+0+0 center=on"
+		;;
+	MusicPlayer)
+		eval "$consequences"
+		[ "$state" ] || echo "state=floating rectangle=630x215+0+0 center=on"
+		;;
+	Sysfetch)
+		eval "$consequences"
+		[ "$state" ] || echo "border=off state=floating rectangle=352x500+36+115"
+		;;
 	mpv)
 	    eval "$consequences"
 		[ "$state" ] || echo "state=floating focus=on center=on rectangle=925x519+0+0 border=off"

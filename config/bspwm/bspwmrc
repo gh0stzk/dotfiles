@@ -36,13 +36,7 @@ function killeww() {
 }
 
 function ReloadTerms() {
-	
-	cat $HOME/.config/bspwm/rices/$RICETHEME/alacrittyrc > $HOME/.config/alacritty/alacritty.yml
-	
-	cat $HOME/.config/bspwm/rices/$RICETHEME/termiterc > $HOME/.config/termite/config
-		if [[ `pidof termite` ]]; then 
-			killall -USR1 termite
-		fi
+  cat $HOME/.config/bspwm/rices/$RICETHEME/alacrittyrc > $HOME/.config/alacritty/alacritty.yml
 }
 
 function SetBspwmConf() {

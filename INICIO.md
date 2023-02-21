@@ -17,7 +17,7 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 |Terminal|[Termite](https://aur.archlinux.org/termite.git)|
 |Widgets|[ElKowars wacky widgets ](https://github.com/elkowar/eww)|
 
-## 📖 Caracteristicas
+## 🚀 Caracteristicas
 * **Cambia el tema al momento:** 12 diferentes temas!.
 
 * **Menu de temas:** <code>Alt + Space bar</code> para abrir menu.
@@ -32,18 +32,6 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 Aumenta o disminuye la transparencia de la ventana de trabajo en la que estes.
 
 **Y mas..**
-
-# 🚀 Nueva funcionalidad
-### 09 Febrero 2023
-Agregué al entorno la posibilidad de escoger entre 2 terminales **Alacritty** and **termite**.
-
-Termite ha sido siempre la que usó en mis dotfiles. Funciona rapida y sin problemas. Pero hay que compilarla y es un poco vieja.
-
-Alacritty es moderna, rapida y la mejor es la mejor, deberia funcionar en tu maquina.
-
-Para abrir el menu de terminales presiona `Super + Alt + t`
-
-<img src="https://user-images.githubusercontent.com/67278339/217935433-0be23116-4f15-4fc0-936b-6bdb4e3ef3b1.png" alt="Terminal Selector" align="center">
 
 <table align="center">
    <tr>

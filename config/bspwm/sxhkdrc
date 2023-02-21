@@ -12,10 +12,6 @@ super + Return
 super + alt + Return
 	Term --oft
 	
-# Select Terminal
-super + alt + t
-	Term --st
-	
 # Apps
 shift + alt + {b,g,n,p,r,t,q,w,m,v,k}
        {firefox, \
