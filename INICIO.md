@@ -64,8 +64,8 @@ Pues si los temas tienen el nombre de algunas de mis ex novias.
 <details>
 <summary><b>Extra wallpapers en Emilia</b></summary>
 
-|<img src="config/bspwm/rices/emilia/walls/wall-02.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-03.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-04.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-05.webp" alt="Emilia Rice" align="center" width="150px">|
-|---|---|---|---|
+|<img src="config/bspwm/rices/emilia/walls/wall-02.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-03.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-04.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-05.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-06.webp" alt="Emilia Rice" align="center" width="150px">|
+|---|---|---|---|---|
 
 </details>
 
@@ -230,8 +230,8 @@ Pues si los temas tienen el nombre de algunas de mis ex novias.
 <details>
 <summary><b>Extra wallpapers en z0mbi3</b></summary>
 
-|<img src="config/bspwm/rices/z0mbi3/walls/wall-01.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/walls/wall-02.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/walls/wall-04.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/walls/wall-05.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/walls/wall-06.webp" alt="z0mbi3 Rice" align="center" width="150px">|
-|---|---|---|---|---|
+|<img src="config/bspwm/rices/z0mbi3/walls/wall-01.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/walls/wall-02.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/walls/wall-03.webp" alt="z0mbi3 Rice" align="center" width="150px">|<img src="config/bspwm/rices/z0mbi3/walls/wall-04.webp" alt="z0mbi3 Rice" align="center" width="150px">|
+|---|---|---|---|
 
 </details>
 
