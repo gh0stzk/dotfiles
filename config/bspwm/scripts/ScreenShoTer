@@ -1,41 +1,72 @@
 #!/usr/bin/env bash
+## Script to take screenshots with maim
 
-# Author 	 -  z0mbi3
-# Source 	 -  https://github.com/gh0stzk/dotfiles
-# Maintainer -  z0mbi3.zk@protonmail.com
+time=`date +%Y-%m-%d-%I-%M-%S`
+geometry=`xrandr | head -n1 | cut -d',' -f2 | tr -d '[:blank:],current'`
+dir="`xdg-user-dir PICTURES`/Screenshots"
+file="Screenshot_${time}_${geometry}.png"
 
-time=$(date '+%d-%B-%y-%H%M%S')
-dir="$(xdg-user-dir PICTURES)/ScreenShots"
-file="$time.png"
-
-	if ! [ -d "$dir" ]; then
-		mkdir -p $dir
-	fi
-
-function notify_view() {
-	
+# notify
+notify_user () {
 	if [[ -e "$dir/$file" ]]; then
-		notify-send -i "$dir/$file" -a shot -u low Screenshot "Screenshot Guardado!"
+		dunstify -u low --replace=699 -i $dir/$file "Screenshot Saved"
 	else
-		notify-send -i custom-trash-bin -a shot_icon -u low Screenshot "Screenshot Eliminado"
+		dunstify -u low --replace=699 -i $dir/$file "Screenshot Deleted."
 	fi
 }
 
-function pumpumshot() {
-	
-	cd "$dir" || return
-	local bytes
-    if [ "$(pgrep -x picom)" ]; then
-      bytes="$(maim -u -o -m 4 -d 3 -f png -s -b 2 -c 0.35,0.55,0.85,0.25 -l | base64)"
-    else
-      bytes="$(maim -u -o -m 4 -d 3 -f png -s -b 2 | base64)" 
-    fi
-	if [ "$bytes" ]; then
-		echo "$bytes" | base64 --decode | tee "$file"
-		notify_view
-	else
-		notify-send -i custom-cancel -a shot_icon -u low Screenshot "Operacion Cancelada."
-	fi
+# countdown
+countdown () {
+	for sec in `seq $1 -1 1`; do
+		dunstify -t 1000 --replace=699 -i $dir/$file "Taking shot in : $sec"
+		sleep 1
+	done
 }
 
-pumpumshot
+# take shots
+shotnow () {
+	cd ${dir} && maim -u -f png "$file"
+	notify_user
+}
+
+shot5 () {
+	countdown '5'
+	sleep 1 && cd ${dir} && maim -u -f png "$file"
+	notify_user
+}
+
+shot10 () {
+	countdown '10'
+	sleep 1 && cd ${dir} && maim -u -f png "$file"
+	notify_user
+}
+
+shotwin () {
+	cd ${dir} && maim -u -f png -i `xdotool getactivewindow` "$file"
+	notify_user
+}
+
+shotarea () {
+	cd ${dir} && maim -u -f png -s -b 2 -c 0.35,0.55,0.85,0.25 -l "$file"
+	notify_user
+}
+
+if [[ ! -d "$dir" ]]; then
+	mkdir -p "$dir"
+fi
+
+if [[ "$1" == "--now" ]]; then
+	shotnow
+elif [[ "$1" == "--in5" ]]; then
+	shot5
+elif [[ "$1" == "--in10" ]]; then
+	shot10
+elif [[ "$1" == "--win" ]]; then
+	shotwin
+elif [[ "$1" == "--area" ]]; then
+	shotarea
+else
+	echo -e "Available Options : --now --in5 --in10 --win --area"
+fi
+
+exit 0
