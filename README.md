@@ -7,10 +7,10 @@
 
 https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-afed-f352c5d2979e.mp4
 
-## Rice Menu
-<img src="assets/rs.webp" alt="Rice Menu" align="right" width="400px">
+## Info
+<img src="https://user-images.githubusercontent.com/67278339/221429205-64f82940-f641-425a-be76-7d49c4596847.png" alt="Linux Fetch" align="right" width="600">
 
-|DIstro|[Arch](https://archlinux.org/)|
+|Distro|[Arch](https://archlinux.org/)|
 |:---:|:---:|
 |WM|[BSPWM](https://github.com/baskerville/bspwm)|
 |Bar|[Polybar](https://github.com/polybar/polybar)|
@@ -18,8 +18,14 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 |Compositor|[Picom](https://archlinux.org/packages/community/x86_64/picom/)|
 |Terminal|[Alacritty](https://github.com/alacritty/alacritty)|
 |Widgets|[ElKowars wacky widgets ](https://github.com/elkowar/eww)|
+|Music/Player|[mpd](https://archlinux.org/packages/extra/x86_64/mpd/)-[ncmpcpp](https://archlinux.org/packages/community/x86_64/ncmpcpp/)|
+|File Manager|[Thunar](https://archlinux.org/packages/extra/x86_64/thunar/)|
+
+<br>
 
 ## 🚀 Features
+<img src="https://user-images.githubusercontent.com/67278339/221426400-6029bdd7-f183-4860-9ade-a5fe35d2251a.png" alt="Rice Menu" align="right" width="400px">
+
 * **Change themes on the fly:** 12 different Rices now!.
 
 * **Theme Selector:** <code>Alt + Space bar</code> to launch it.
@@ -58,9 +64,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Emilia:
 
-- Color Palette: <code>Tokyo Night</code>
-
-|<img src="assets/Shot-27-julio-22-004243.webp" alt="Emilia Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-004921.webp" alt="Emilia Rice" align="center" width="600px">|
+|<img src="https://user-images.githubusercontent.com/67278339/221425369-13143094-17a5-4413-8111-f39e0e6d8d21.png" alt="Emilia Rice" align="center" width="600px">|<img src="https://user-images.githubusercontent.com/67278339/221425420-4198afbb-fd7a-41a1-96f2-42c2c715f076.png" alt="Emilia Rice" align="center" width="600px">|
 |---|---|
 
 <details>
@@ -73,9 +77,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Jan
 
-- Color Palette: <code>Cyber Punk</code>
-
-|<img src="assets/Shot-27-julio-22-003447.webp" alt="Jan Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-003433.webp" alt="Jan Rice" align="center" width="600px">|
+|<img src="https://user-images.githubusercontent.com/67278339/221425541-54cdbc53-c3b3-46a6-ad3f-ede996eabc6a.png" alt="Jan Rice" align="center" width="600px">|<img src="https://user-images.githubusercontent.com/67278339/221425550-05f6362b-0a4a-48c0-a87d-044cc38af8e6.png" alt="Jan Rice" align="center" width="600px">|
 |---|---|
 
 <details>
@@ -88,9 +90,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Aline
 
-- Color Palette: <code>Catppuccin Frappe</code>
-
-|<img src="assets/Shot-27-julio-22-002001.webp" alt="Aline Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-002636.webp" alt="Aline Rice" align="center" width="600px">|
+|<img src="https://user-images.githubusercontent.com/67278339/221425672-0da23a62-bb1a-4409-b18d-756cf479f517.png" alt="Aline Rice" align="center" width="600px">|<img src="https://user-images.githubusercontent.com/67278339/221425682-e5676155-1bbc-47a5-ba15-307513c44d06.png" alt="Aline Rice" align="center" width="600px">|
 |---|---|
 
 <details>
@@ -103,9 +103,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Andrea
 
-- Color Palette: <code>Holly molly i dont know..</code>
-
-|<img src="assets/Shot-27-julio-22-001746.webp" alt="Andrea Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-001532.webp" alt="Andrea Rice" align="center" width="600px">|
+|<img src="https://user-images.githubusercontent.com/67278339/221425744-9144328f-3993-4ed8-91b9-a8522ae8460a.png" alt="Andrea Rice" align="center" width="600px">|<img src="https://user-images.githubusercontent.com/67278339/221425748-4a6ab441-886a-4400-b9df-5fef2a6cfb23.png" alt="Andrea Rice" align="center" width="600px">|
 |---|---|
 
 <details>
@@ -118,9 +116,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Cynthia
 
-- Color Palette: <code>[u/gabrielzschmitz](https://www.reddit.com/user/gabrielzschmitz/)</code>
-
-|<img src="assets/Shot-26-julio-22-235349.webp" alt="Cynthia Rice" align="center" width="600px">|<img src="assets/Shot-27-julio-22-000301.webp" alt="Cynthia Rice" align="center" width="600px">|
+|<img src="https://user-images.githubusercontent.com/67278339/221425848-a28fda79-9b3f-4cba-9e56-ea4759cd56e2.png" alt="Cynthia Rice" align="center" width="600px">|<img src="https://user-images.githubusercontent.com/67278339/221425853-ce5af1fe-f03d-48cc-a4d3-445adbe3e566.png" alt="Cynthia Rice" align="center" width="600px">|
 |---|---|
 
 <details>
@@ -133,23 +129,19 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Isabel
 
-- Color Palette: <code>One Dark</code>
-
-|<img src="assets/Shot-25-julio-22-101308.webp" alt="Isabel Rice" align="center" width="600px">|<img src="assets/Shot-25-julio-22-100952.webp" alt="Isabel Rice" align="center" width="600px">|
+|<img src="https://user-images.githubusercontent.com/67278339/221425911-51a5f5af-ef6d-421a-83f8-ad10ad73903e.png" alt="Isabel Rice" align="center" width="600px">|<img src="https://user-images.githubusercontent.com/67278339/221425915-55c6b711-9456-4b60-a1a2-8a986e45e2c4.png" alt="Isabel Rice" align="center" width="600px">|
 |---|---|
 
 <details>
 <summary><b>Extra wallpapers in Isabel</b></summary>
 
-|<img src="config/bspwm/rices/isabel/walls/wall-02.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/walls/wall-03.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/walls/wall-04.webp" alt="Isabel Rice" align="center" width="150px">|
-|---|---|---|
+|<img src="config/bspwm/rices/isabel/walls/wall-02.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/walls/wall-03.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/walls/wall-04.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/walls/wall-05.webp" alt="Isabel Rice" align="center" width="150px">|
+|---|---|---|---|
 </details>
 
 ### 🌸Silvia
 
-- Color Palette: <code>GruvBox</code>
-
-|<img src="assets/Shot-26-julio-22-201658.webp" alt="Silvia Rice" align="center" width="600px">|<img src="assets/Shot-26-julio-22-202411.webp" alt="Silvia Rice" align="center" width="600px">|
+|<img src="https://user-images.githubusercontent.com/67278339/221425959-3ce172d2-6046-482d-a0d0-fbed7b6c6528.png" alt="Silvia Rice" align="center" width="600px">|<img src="https://user-images.githubusercontent.com/67278339/221425966-3e5e9db1-4e60-4b21-8c00-8235e7dde733.png" alt="Silvia Rice" align="center" width="600px">|
 |---|---|
 
 <details>
@@ -162,9 +154,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Melissa
 
-- Color Palette: <code>Nord</code>
-
-|<img src="assets/Shot-31-julio-22-191337.webp" alt="Melissa Rice" align="center" width="600px">|<img src="assets/Shot-31-julio-22-191939.webp" alt="Melissa Rice" align="center" width="600px">|
+|<img src="https://user-images.githubusercontent.com/67278339/221426005-b23e3f99-9d1c-469f-9e5d-741f9839b77a.png" alt="Melissa Rice" align="center" width="600px">|<img src="https://user-images.githubusercontent.com/67278339/221426007-81869495-d20f-4c55-b036-42ced5b4b5a1.png" alt="Melissa Rice" align="center" width="600px">|
 |---|---|
 
 <details>
@@ -177,9 +167,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Pamela
 
-- Color Palette: <code>[elenapan](https://github.com/elenapan/dotfiles)</code>
-
-|<img src="assets/Shot-11-agosto-22-172328.webp" alt="Pamela Rice" align="center" width="600px">|<img src="assets/Shot-11-agosto-22-172747.webp" alt="Pamela Rice" align="center" width="600px">|
+|<img src="https://user-images.githubusercontent.com/67278339/221426074-0871239b-1e21-4a12-837d-2320b785bda9.png" alt="Pamela Rice" align="center" width="600px">|<img src="https://user-images.githubusercontent.com/67278339/221426076-9aae13b0-0f1e-430a-b53a-80d0d9cfa2a4.png" alt="Pamela Rice" align="center" width="600px">|
 |---|---|
 
 <details>
@@ -192,10 +180,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Cristina
 
-- Color palette - <code>[Rose Pine](https://github.com/rose-pine)</code>
-- Main Wall - <code>[ElRastaOk](https://www.reddit.com/r/unixporn/comments/w5p7s0/hyprland_my_cute_desktop/)</code>
-
-|<img src="assets/Shot-24-agosto-22-140529.webp" alt="Cristina Rice" align="center" width="600px">|<img src="assets/Shot-24-agosto-22-141805.webp" alt="Cristina Rice" align="center" width="600px">|
+|<img src="https://user-images.githubusercontent.com/67278339/221426114-5f088fd6-1b45-4ea2-a08c-3a55ab04deb5.png" alt="Cristina Rice" align="center" width="600px">|<img src="https://user-images.githubusercontent.com/67278339/221426116-0c247a00-c870-4120-9b46-fbd4a1913af2.png" alt="Cristina Rice" align="center" width="600px">|
 |---|---|
 
 <details>
@@ -208,9 +193,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸Karla
 
-- Color palette - <code>No author</code>
-
-|<img src="assets/Shot-11-octubre-22-150149.webp" alt="Karla Rice" align="center" width="600px">|<img src="assets/Shot-11-octubre-22-150408.webp" alt="Karla Rice" align="center" width="600px">|
+|<img src="https://user-images.githubusercontent.com/67278339/221426157-64268f2e-1946-455c-9245-61d0fcfe1cc9.png" alt="Karla Rice" align="center" width="600px">|<img src="https://user-images.githubusercontent.com/67278339/221426162-8477edff-82ec-47e3-9c9f-de98842f581f.png" alt="Karla Rice" align="center" width="600px">|
 |---|---|
 
 <details>
@@ -223,10 +206,7 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 
 ### 🌸z0mbi3:
 
-- Color Palette: <code>Decay</code>
-- With Tray icon!!
-
-|<img src="assets/Shot-08-septiembre-22-212947.webp" alt="z0mbi3 Rice" align="center" width="600px">|<img src="assets/Shot-08-septiembre-22-213339.webp" alt="z0mbi3 Rice" align="center" width="600px">|
+|<img src="https://user-images.githubusercontent.com/67278339/221426212-d019956b-08c5-4c09-8375-bb7a377f5024.png" alt="z0mbi3 Rice" align="center" width="600px">|<img src="https://user-images.githubusercontent.com/67278339/221426218-49131fb7-e750-4bee-94a3-f26397760ec8.png" alt="z0mbi3 Rice" align="center" width="600px">|
 |---|---|
 
 <details>
@@ -246,7 +226,7 @@ Actually the neovim theme is OneDark, but the background will adapt to the color
 
 The plugin manager is Packer.
 
-<img src="assets/nvim.gif" alt="Neovim Themes" align="center" width="400px">
+<img src="https://user-images.githubusercontent.com/67278339/221430203-23308e84-c974-4481-8c17-9aab53b37766.gif" alt="Neovim Themes" align="center" width="400px">
 
 ## Very useful keybindigs to know...
 
