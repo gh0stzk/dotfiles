@@ -6,7 +6,7 @@ Mi coleccion de 12 temas para BSPWM y Polybar. Con menu para seleccionar los tem
 https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-afed-f352c5d2979e.mp4
  
 ## Información
-<img src="https://user-images.githubusercontent.com/67278339/221429205-64f82940-f641-425a-be76-7d49c4596847.png" alt="Linux Fetch" align="right" width="600">
+<img src="https://user-images.githubusercontent.com/67278339/221605474-21d65156-0cf7-485c-bd1a-40792c37817e.png" alt="Linux Fetch" align="right" width="600">
 
 |Distro|[Arch](https://archlinux.org/)|
 |:---:|:---:|
