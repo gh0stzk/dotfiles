@@ -208,7 +208,7 @@ for archivos in ~/dotfiles/misc/asciiart/*; do
   fi
 done
 
-cp -f $HOME/dotfiles/home/.zshrc $HOME/cop/
+cp -f $HOME/dotfiles/home/.zshrc $HOME/
 fc-cache -rv >/dev/null 2>&1
 printf "%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 2
@@ -230,24 +230,10 @@ printf "%s%sDone!!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 2
 clear
 
-########## ---------- ZSH ---------- ##########
-
-logo "Changing to zsh"
-printf "%s%sChanging bash to zsh your root password is required to make the change.%s\n" "${BLD}" "${CBL}" "${CNC}"
-chsh -s /usr/bin/zsh
-zsh
-sleep 3
-
 ########## ---------- Finish ---------- ##########
 
 logo "Installation Finished!"
 printf "%sReboot is necessary, then choose bspwm in your login manager and login.%s\n" "${BLD}" "${CNC}"
-
-while true; do
-			read -rp "Do you want to reboot now? [y/N]: " sn
-		case $sn in
-			[Yy]* ) reboot;;
-			[Nn]* ) exit 0;;
-			* ) echo "Error: just type 'y' or 'n'\n\n";;
-		esac
-	done
+sleep 5
+chsh -s /usr/bin/zsh
+zsh
