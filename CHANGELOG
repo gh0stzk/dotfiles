@@ -1,3 +1,19 @@
+(08/Mach/2023)
+- Added new wallpaper to Aline.
+- Updated RiceInstaller
+- Now you can control the brightness with its respective key. (You need to install brightnessctl) New installations no need to install manually, Installer is already updated.
+- Improve notifications for certain actions such as control volume, brightness, screenshot, reload sxhkdrc file, listen to music via mpd.
+- Finally added the battery and brightness modules for polybar. In some themes they are already active. Weather module improved too.
+- Improved screenshot script.
+- Some changes to Andrea eww music player.
+- Optimized alot of code.
+- Deleted unnused scripts.
+- The first time you run my dotfiles, the setup script will try to correctly set your battery, adapter, network interface, and graphics card to control
+brightness. If they are not correct, edit the ~/.config/bspwm/scripts/system.ini file with the correct values.
+-Updated sxhkdr with new and modified hotkeys. to control volume, brightness, take screenshots etc..
+- And possible more but im tired and i dont remember all the stuff.
+
+
 (21/Feb/2023)
 - Removed Terminal selector, now rices only use alacritty
 - Removed innecessary dependencies in RiceInstaller
