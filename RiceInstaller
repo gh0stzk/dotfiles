@@ -66,7 +66,7 @@ clear
 
 logo "Installing needed packages.."
 
-dependencias=(base-devel pacman-contrib bspwm polybar sxhkd alacritty brightnessctl dunst rofi lsd jq polkit-gnome git playerctl mpd ncmpcpp geany ranger mpc picom feh ueberzug maim pamixer libwebp webp-pixbuf-loader xorg-xprop xorg-xkill physlock papirus-icon-theme ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata zsh)
+dependencias=(base-devel pacman-contrib bspwm polybar sxhkd alacritty brightnessctl dunst rofi lsd jq polkit-gnome git playerctl mpd ncmpcpp geany ranger mpc picom feh ueberzug maim pamixer libwebp webp-pixbuf-loader xorg-xprop xorg-xkill physlock papirus-icon-theme ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels zsh)
 
 is_installed() {
   pacman -Qi $1 &> /dev/null

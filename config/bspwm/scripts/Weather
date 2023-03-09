@@ -11,7 +11,8 @@ check_if_empty() {
 KEY="1f6e449790b8cf73a3cab8d5715483f8"
 CITY="Mexico City"
 CITYN=$(encode_to_url_format "$CITY")
-WEATHER=$(curl -sf "api.openweathermap.org/data/2.5/weather?q=$CITYN&appid=$KEY&units=metric")
+UNITS="metric" # Available "metric" "imperial"
+WEATHER=$(curl -sf "api.openweathermap.org/data/2.5/weather?q=$CITYN&appid=$KEY&units=$UNITS")
 
 WEATHER_DESC=$(echo $WEATHER | jq -r ".weather[0].main")
 WEATHER_TEMP=$(echo $WEATHER | jq ".main.temp" | cut -d "." -f 1)
@@ -23,79 +24,79 @@ WEATHER_HEX=""
 
 case $WEATHER_ICON_CODE in
 	"01d")
-		WEATHER_ICON="󰖙"
+		WEATHER_ICON=""
 		WEATHER_HEX="#ffd86b"
 		;;
 	"01n")
-		WEATHER_ICON="󰖔"
+		WEATHER_ICON=""
 		WEATHER_HEX="#fcdcf6"
 		;;
 	"02d")
-		WEATHER_ICON="󰖕"
+		WEATHER_ICON=""
 		WEATHER_HEX="#adadff"
 		;;
 	"02n")
-		WEATHER_ICON="󰼱"
+		WEATHER_ICON=""
 		WEATHER_HEX="#adadff"
 		;;
 	"03d")
-		WEATHER_ICON="󰖐"
+		WEATHER_ICON=""
 		WEATHER_HEX="#adadff"
 		;;
 	"03n")
-		WEATHER_ICON="󰖐"
+		WEATHER_ICON=""
 		WEATHER_HEX="#adadff"
 		;;
 	"04d")
-		WEATHER_ICON="󰖐"
+		WEATHER_ICON=""
 		WEATHER_HEX="#adadff"
 		;;
 	"04n")
-		WEATHER_ICON="󰖐"
+		WEATHER_ICON=""
 		WEATHER_HEX="#acb0d0"
 		;;
 	"09d")
-		WEATHER_ICON="󱐋"
+		WEATHER_ICON=""
 		WEATHER_HEX="#6b95ff"
 		;;
 	"09n")
-		WEATHER_ICON="󱐋"
+		WEATHER_ICON=""
 		WEATHER_HEX="#6b95ff"
 		;;
 	"10d")
-		WEATHER_ICON="󱐋"
+		WEATHER_ICON=""
 		WEATHER_HEX="#6b95ff"
 		;;
 	"10n")
-		WEATHER_ICON="󱐋"
+		WEATHER_ICON=""
 		WEATHER_HEX="#6b95ff"
 		;;
 	"11d")
-		WEATHER_ICON="󱐋"
+		WEATHER_ICON=""
 		WEATHER_HEX="#ffeb57"
 		;;
 	"11n")
-		WEATHER_ICON="󱐋"
+		WEATHER_ICON=""
 		WEATHER_HEX="#ffeb57"
 		;;
 	"13d")
-		WEATHER_ICON="󰜗"
+		WEATHER_ICON=""
 		WEATHER_HEX="#e3e6fc"
 		;;
 	"13n")
-		WEATHER_ICON="󰜗"
+		WEATHER_ICON=""
 		WEATHER_HEX="#e3e6fc"
 		;;
 	"40d")
-		WEATHER_ICON="󰖝"
+		WEATHER_ICON=""
 		WEATHER_HEX="#84afdb"
 		;;
 	"40n")
-		WEATHER_ICON="󰖝"
+		WEATHER_ICON=""
 		WEATHER_HEX="#84afdb"
 		;;
 	*)
-		WEATHER_ICON="󰖐"
+		WEATHER_ICON=""
 		WEATHER_HEX="#adadff"
 		;;
 esac
