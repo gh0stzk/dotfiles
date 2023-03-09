@@ -8,35 +8,75 @@
 #                                    z0mbi3 config..
 
 
-########### Def vars
+###########---------- Some important variables ----------##########
 
 export RICETHEME=$(<$HOME/.config/bspwm/rice.cfg)
-PATH="$HOME/.config/bspwm/scripts:$PATH"
-bspdir="$HOME/.config/bspwm"
-polydir="$HOME/.config/bspwm/rices/$RICETHEME/polybar"
-export defnetif=$(ip route | grep '^default' | awk '{print $5}' | head -n1)
+PATH="${HOME}/.config/bspwm/scripts:$PATH"
+BSPDIR="${HOME}/.config/bspwm"
+PDIR="${HOME}/.config/bspwm/rices/${RICETHEME}"
+SFILE="${BSPDIR}/scripts/.sys"
 
 ## You can edit this.
 BSPWM_BORDER='0'
 BSPWM_GAP='10'
 
-########### Functions
+###########---------- Functions ----------##########
+
+function get_values() {
+DEFNETWORK=$(ip route | grep '^default' | awk '{print $5}' | head -n1)
+CARD=$(ls -1 /sys/class/backlight/)
+power_supply_files=$(ls /sys/class/power_supply/)
+
+for file in $power_supply_files
+do
+	if [ -e "/sys/class/power_supply/$file/capacity" ]; then
+		battery_file=$file
+    fi
+
+    if [ -e "/sys/class/power_supply/$file/online" ]; then
+        adapter_file=$file
+    fi
+done
+
+BATTERY="$battery_file"
+ADAPTER="$adapter_file"
+}
+
+set_values() {
+	if [[ "$DEFNETWORK" ]]; then
+		sed -i -e "s/sys_network_interface = .*/sys_network_interface = $DEFNETWORK/g" ${BSPDIR}/scripts/system.ini
+	fi
+	if [[ "$ADAPTER" ]]; then
+		sed -i -e "s/sys_adapter = .*/sys_adapter = $ADAPTER/g" ${BSPDIR}/scripts/system.ini
+	fi
+	if [[ "$BATTERY" ]]; then
+		sed -i -e "s/sys_battery = .*/sys_battery = $BATTERY/g" ${BSPDIR}/scripts/system.ini
+	fi
+	if [[ "$CARD" ]]; then
+		sed -i -e "s/sys_graphics_card = .*/sys_graphics_card = $CARD/g" ${BSPDIR}/scripts/system.ini
+	fi
+}
+
+if [[ ! -f "$SFILE" ]]; then
+	get_values
+	set_values
+	touch ${SFILE}
+fi
 
 function launch() {
-  local running
-  running="$(pgrep -x "$1")"
-  [ "$running" ] && kill -9 $(pgrep -x $1) 2> /dev/null
-  eval "$* &"
+  local running="$(pgrep -x "$1")"
+  [ "$running" ] && killall -9 -q "$1"
+  "$@" &
 }
 
 function killeww() {
-  if [[ `pidof eww` ]]; then 
-		pkill eww
+  if pidof eww >/dev/null 2>&1; then
+	pkill -f eww
   fi
 }
 
 function ReloadTerms() {
-  cat $HOME/.config/bspwm/rices/$RICETHEME/alacrittyrc > $HOME/.config/alacritty/alacritty.yml
+  cat ${PDIR}/alacrittyrc > $HOME/.config/alacritty/alacritty.yml
 }
 
 function SetBspwmConf() {
@@ -52,7 +92,7 @@ function SetBspwmConf() {
 	bspc config window_gap "$BSPWM_GAP"
 }
 
-########### Workspaces
+###########---------- Workspaces ----------##########
 
 workspaces() {
 	name=1
@@ -65,153 +105,143 @@ workspaces() {
 
 workspaces
 
-########### Launch The Rice!!
+###########---------- Launch The Rice!! ----------##########
 
-case $RICETHEME in
-	
-		emilia)
-		
-		  SetBspwmConf "$BSPWM_BORDER" 60 5 "#414868" "#c0caf5" "#bb9af7" "#7aa2f7" 5 5 "$BSPWM_GAP"
-		  		  
-		  killeww
-		  launch polybar -q emi-bar -c ${polydir}/config.ini
-		  launch dunst -config ${bspdir}/dunstrc-dark 
-		  
-		  ;;
-			
-		jan)
-		
-		  SetBspwmConf "$BSPWM_BORDER" 60 5 "#4C3A6D" "#4C3A6D" "#785DA5" "#070219" 5 5 "$BSPWM_GAP"
-		  
-		  killeww
-		  launch polybar -q main -c ${polydir}/config.ini
-		  launch dunst -config ${bspdir}/dunstrc-dark
-		  
-		  ;;
-		    
-		aline)
-		
-		  SetBspwmConf "$BSPWM_BORDER" 55 5 "#ca9ee6" "#ca9ee6" "#8CAAEE" "#E78284" 5 5 "$BSPWM_GAP"
-		  
-		  killeww
-		  launch polybar -q aline-bar -c ${polydir}/config.ini
-		  launch dunst -config ${bspdir}/dunstrc-light
-		  
-		  ;;
-		  
-		isabel)
-		
-		  SetBspwmConf "$BSPWM_BORDER" 5 45 "#b8bfe5" "#b8bfe5" "#7560d3" "#81ae5f" 5 5 "$BSPWM_GAP" 
-		  
-		  killeww
-		  launch polybar -q isa-bar -c ${polydir}/config.ini
-		  launch dunst -config ${bspdir}/dunstrc-dark
-		  
-		  ;;
-		  
-		cynthia)
-		
-		  SetBspwmConf "$BSPWM_BORDER" 50 50 "#543f66" "#543f66" "#465b80" "#3f5273" 5 5 "$BSPWM_GAP"
-		  
-		  killeww
-		  launch polybar -q cyn-bar -c ${polydir}/config.ini
-		  polybar -q cyn-bar2 -c ${polydir}/config.ini &
-		  launch dunst -config ${bspdir}/dunstrc-dark
-		  
-		  ;;
-		  
-		silvia)
-		
-		  SetBspwmConf "$BSPWM_BORDER" 50 5 "#d3869b" "#d3869b" "#fbf1c7" "#b8bb26" 5 5 "$BSPWM_GAP"
+ReloadTerms
+RandomWall
 
-		  killeww
-		  launch polybar -q cata-bar -c ${polydir}/config.ini
-		  launch dunst -config ${bspdir}/dunstrc-dark
-		  
-		  ;;
-		
-		melissa)
-		
-		  SetBspwmConf "$BSPWM_BORDER" 42 40 "#e5e9f0" "#e5e9f0" "#4c566a" "#bf616a" 5 5 "$BSPWM_GAP"
+case "${RICETHEME}" in
 
-		  killeww
-		  launch polybar -q mel-bar -c ${polydir}/config.ini
-		  polybar -q mel2-bar -c ${polydir}/config.ini &
-		  launch dunst -config ${bspdir}/dunstrc-dark 
-		  
-		  ;;
-		  
-		pamela)
-		
-		  SetBspwmConf "$BSPWM_BORDER" 60 5 "#C574DD" "#C574DD" "#8897F4" "#FF4971" 5 5 "$BSPWM_GAP"
-		  
-		  killeww
-		  launch polybar -q pam1 -c ${polydir}/config.ini
-		  polybar -q pam2 -c ${polydir}/config.ini &
-		  polybar -q pam3 -c ${polydir}/config.ini &
-		  polybar -q pam4 -c ${polydir}/config.ini &
-		  polybar -q pam5 -c ${polydir}/config.ini &
-		  polybar -q pam6 -c ${polydir}/config.ini &
-		  launch dunst -config ${bspdir}/dunstrc-dark
-		  
-		  ;;
-		  
-		cristina)
-		
-		  SetBspwmConf "$BSPWM_BORDER" 10 60 "#9bced7" "#9bced7" "#c3a5e6" "#c3a5e6" 5 5 "$BSPWM_GAP"
-		  
-		  killeww
-		  launch polybar -q cristina-bar -c ${polydir}/config.ini
-		  launch dunst -config ${bspdir}/dunstrc-dark
-		  
-		  ;;
-		  
-		z0mbi3)
-		
-		  SetBspwmConf "$BSPWM_BORDER" 5 5 "#3d414f" "#3d414f" "#3d414f" "#90ceaa" 80 5 "$BSPWM_GAP"
-		  
-		  # Kill any running instances of bspc to prevent multiple
-		  # instances of "workspaces" script in eww rices to run at once
-		  killall -9 picom bspc
-		  
-		  launch eww -c $HOME/.config/bspwm/rices/z0mbi3/bar open bar
-		  launch polybar -q tray -c ~/.config/bspwm/rices/z0mbi3/bar/polybar_tray.ini
-		  launch dunst -config ${bspdir}/dunstrc-dark
-		  
-		  ;;
-		  
-		  karla)
-		
-		  SetBspwmConf "$BSPWM_BORDER" 65 5 "#ff004a" "#ff004a" "#0864f1" "#b93fe0" 5 5 "$BSPWM_GAP"
-		 
-		  kill -9 picom
-		  launch eww -c $HOME/.config/bspwm/rices/karla/bar open bar
-		  launch polybar -q karla-bar -c ${polydir}/config.ini
-		  polybar -q karla-bar2 -c ${polydir}/config.ini &
-		  launch dunst -config ${bspdir}/dunstrc-light
-		  
-		  ;;
-		  
-		andrea)
-		
-		  SetBspwmConf "$BSPWM_BORDER" 60 5 "#161616" "#161616" "#605692" "#67d4f1" 5 5 "$BSPWM_GAP"
-		  
-		  killall -9 picom polybar
-		  launch dunst -config ${bspdir}/dunstrc-light
-		  launch eww -c $HOME/.config/bspwm/rices/$RICETHEME/arin --restart open-many \
-		   search \
-		   apps \
-		   weather \
-		   music \
-		   system
-		  
-		  ;;
-		  
-	esac
+	emilia)
 
-########### bspwm conf
+		SetBspwmConf "${BSPWM_BORDER}" 60 5 "#414868" "#c0caf5" "#bb9af7" "#7aa2f7" 5 5 "${BSPWM_GAP}"
 
-bspc config external_rules_command ~/.config/bspwm/scripts/ExternalRules
+		killeww
+		launch polybar -q emi-bar -c ${PDIR}/config.ini
+		launch dunst -config ${BSPDIR}/dunstrc-dark 
+		;;
+
+	jan)
+
+		SetBspwmConf "${BSPWM_BORDER}" 60 5 "#4C3A6D" "#4C3A6D" "#785DA5" "#070219" 5 5 "${BSPWM_GAP}"
+
+		killeww
+		launch polybar -q main -c ${PDIR}/config.ini
+		launch dunst -config ${BSPDIR}/dunstrc-dark
+		;;
+
+	aline)
+
+		SetBspwmConf "${BSPWM_BORDER}" 55 5 "#ca9ee6" "#ca9ee6" "#8CAAEE" "#E78284" 5 5 "${BSPWM_GAP}"
+
+		killeww
+		launch polybar -q aline-bar -c ${PDIR}/config.ini
+		launch dunst -config ${BSPDIR}/dunstrc-light
+		;;
+
+	isabel)
+
+		SetBspwmConf "${BSPWM_BORDER}" 5 45 "#b8bfe5" "#b8bfe5" "#7560d3" "#81ae5f" 5 5 "${BSPWM_GAP}" 
+
+		killeww
+		launch polybar -q isa-bar -c ${PDIR}/config.ini
+		launch dunst -config ${BSPDIR}/dunstrc-dark
+		;;
+
+	cynthia)
+
+		SetBspwmConf "${BSPWM_BORDER}" 50 50 "#543f66" "#543f66" "#465b80" "#3f5273" 5 5 "${BSPWM_GAP}"
+
+		killeww
+		launch polybar -q cyn-bar -c ${PDIR}/config.ini
+		polybar -q cyn-bar2 -c ${PDIR}/config.ini &
+		launch dunst -config ${BSPDIR}/dunstrc-dark
+		;;
+
+	silvia)
+
+		SetBspwmConf "${BSPWM_BORDER}" 50 5 "#d3869b" "#d3869b" "#fbf1c7" "#b8bb26" 5 5 "${BSPWM_GAP}"
+
+		killeww
+		launch polybar -q cata-bar -c ${PDIR}/config.ini
+		launch dunst -config ${BSPDIR}/dunstrc-dark
+		;;
+
+	melissa)
+
+		SetBspwmConf "${BSPWM_BORDER}" 42 40 "#e5e9f0" "#e5e9f0" "#4c566a" "#bf616a" 5 5 "${BSPWM_GAP}"
+
+		killeww
+		launch polybar -q mel-bar -c ${PDIR}/config.ini
+		polybar -q mel2-bar -c ${PDIR}/config.ini &
+		launch dunst -config ${BSPDIR}/dunstrc-dark 
+		;;
+
+	pamela)
+
+		SetBspwmConf "${BSPWM_BORDER}" 60 5 "#C574DD" "#C574DD" "#8897F4" "#FF4971" 5 5 "${BSPWM_GAP}"
+
+		killeww
+		launch polybar -q pam1 -c ${PDIR}/config.ini
+		polybar -q pam2 -c ${PDIR}/config.ini &
+		polybar -q pam3 -c ${PDIR}/config.ini &
+		polybar -q pam4 -c ${PDIR}/config.ini &
+		polybar -q pam5 -c ${PDIR}/config.ini &
+		polybar -q pam6 -c ${PDIR}/config.ini &
+		launch dunst -config ${BSPDIR}/dunstrc-dark
+		;;
+
+	cristina)
+
+		SetBspwmConf "${BSPWM_BORDER}" 10 60 "#9bced7" "#9bced7" "#c3a5e6" "#c3a5e6" 5 5 "${BSPWM_GAP}"
+
+		killeww
+		launch polybar -q cristina-bar -c ${PDIR}/config.ini
+		launch dunst -config ${BSPDIR}/dunstrc-dark
+		;;
+
+	z0mbi3)
+
+		SetBspwmConf "${BSPWM_BORDER}" 5 5 "#3d414f" "#3d414f" "#3d414f" "#90ceaa" 80 5 "${BSPWM_GAP}"
+
+		# Kill any running instances of bspc to prevent multiple
+		# instances of "workspaces" script in eww rices to run at once
+		killall -9 picom bspc
+
+		launch eww -c ${BSPDIR}/rices/z0mbi3/bar open bar
+		launch polybar -q tray -c ${BSPDIR}/rices/z0mbi3/bar/polybar_tray.ini
+		launch dunst -config ${BSPDIR}/dunstrc-dark
+		;;
+
+	karla)
+
+		SetBspwmConf "${BSPWM_BORDER}" 65 5 "#ff004a" "#ff004a" "#0864f1" "#b93fe0" 5 5 "${BSPWM_GAP}"
+
+		launch eww -c ${BSPDIR}/rices/karla/bar open bar
+		launch polybar -q karla-bar -c ${PDIR}/config.ini
+		polybar -q karla-bar2 -c ${PDIR}/config.ini &
+		launch dunst -config ${BSPDIR}/dunstrc-light
+		;;
+
+	andrea)
+
+		SetBspwmConf "${BSPWM_BORDER}" 60 5 "#161616" "#161616" "#605692" "#67d4f1" 5 5 "${BSPWM_GAP}"
+
+		killall -9 picom polybar
+		launch dunst -config ${BSPDIR}/dunstrc-light
+		launch eww -c ${BSPDIR}/rices/andrea/arin --restart open-many \
+			search \
+			apps \
+			weather \
+			music \
+			system
+		;;
+
+esac
+
+###########---------- BSPWM Config ----------##########
+
+bspc config external_rules_command ${BSPDIR}/scripts/ExternalRules
 
 bspc config single_monocle                true
 bspc config split_ratio                   0.5
@@ -233,17 +263,14 @@ bspc config merge_overlapping_monitors    true
 
 bspc config pointer_motion_interval       16
 
-########## AutoStart Apps
+###########---------- AutoStart Apps ----------##########
 
-ReloadTerms
-launch sxhkd -c ${bspdir}/sxhkdrc
-launch picom --config ${bspdir}/rices/$RICETHEME/picom.conf
-#launch picom --legacy-backends --config ${bspdir}/rices/$RICETHEME/picom.conf
+launch sxhkd -c ${BSPDIR}/sxhkdrc
+launch picom --config ${BSPDIR}/rices/"${RICETHEME}"/picom.conf
+#launch picom --legacy-backends --config ${BSPDIR}/rices/"${RICETHEME}"/picom.conf
+#nitrogen --restore &
+xsetroot -cursor_name left_ptr
 	
 if [[ ! `pidof polkit-gnome-authentication-agent-1` ]]; then
 	/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 fi
-
-RandomWall
-#nitrogen --restore &
-xsetroot -cursor_name left_ptr

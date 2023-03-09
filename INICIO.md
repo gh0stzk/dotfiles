@@ -94,8 +94,8 @@ Pues si los temas tienen el nombre de algunas de mis ex novias.
 <details>
 <summary><b>Extra wallpapers en Aline</b></summary>
 
-|<img src="config/bspwm/rices/aline/walls/wall-02.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-03.webp" alt="Aline Rice" align="center" width="150px">|
-|---|---|
+|<img src="config/bspwm/rices/aline/walls/wall-02.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-03.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-04.webp" alt="Aline Rice" align="center" width="150px">|
+|---|---|---|
 
 </details>
 
@@ -265,15 +265,13 @@ chmod +x RiceInstaller
 ## Algunos tips
 
 * Los wallpapers estan en formato .webp por eso agregue los paquetes libwebp y webp-pixbuf-loader a las dependencias para que tu explorador de archivos (thunar en mi caso) los puedan mostrar.
-* Si no quieres usar la caracteristica de wallpapers al azar, comenta la linea 214 y descomenta la 215 del archivo ~/.config/bspwm/scripts/LaunchWorld
+* Si no quieres usar la caracteristica de wallpapers al azar, comenta la linea 111 del archivo ~/.config/bspwm/bspwmrc
 * Clic izquierdo en el modulo de actualizaciones, actualizara. Clic derecho solo mostrara las actualizaciones disponibles.
 
 ## Problemas
 * **El modulo del tiempo**
 
-La configuracion esta en mi ciudad "Mexico City" necesitas editar el archivo ~/.config/bspwm/scripts/WeatherMini y poner tu ciudad, en la linea 3 modifica weather=$(curl -s wttr.in/**Mexico**?format=3) ecribe tu ciudad o codigo postal, te dejo link [wttr.in Help](https://wttr.in/:help)
-
-Para el tema z0mbi3 edita ~/.config/bspwm/scripts/weather linea 12 cambia al nombre de tu ciudad, la puedes obtener de [openweathermap](https://openweathermap.org/)
+Para el tema z0mbi3 edita ~/.config/bspwm/scripts/Weather linea 12 cambia al nombre de tu ciudad, la puedes obtener de [openweathermap](https://openweathermap.org/)
 
 
 ## Creditos

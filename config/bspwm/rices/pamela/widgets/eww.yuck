@@ -6,11 +6,11 @@
 (defvar IMAGEP "../../../assets/profile.png")
 
 ;; Music Variables
-(defpoll art		:interval "5s"  "../../../scripts/music coverloc")
-(defpoll title		:interval "5s"  "../../../scripts/music title")
-(defpoll artist		:interval "5s"  "../../../scripts/music artist")
-(defpoll playpause	:interval "5s"  "../../../scripts/music statusicon")
-(defpoll songtime 	:interval "1s"  "../../../scripts/getSongDuration")
+(defpoll art		:interval "5s"  "../../../scripts/MediaControl coverloc")
+(defpoll title		:interval "5s"  "../../../scripts/MediaControl title")
+(defpoll artist		:interval "5s"  "../../../scripts/MediaControl artist")
+(defpoll playpause	:interval "5s"  "../../../scripts/MediaControl statusicon")
+(defpoll songtime 	:interval "1s"  "../../../scripts/MediaControl percent")
 
 ;; Calendar Widgets ;;
 (defwidget cal []
@@ -98,7 +98,7 @@
                        :tooltip "firefox"
                        "󰇧")
                (button :class "launcher-btn"
-                       :onclick "termite --hold -t sysfetch -e $HOME/.local/bin/sysfetch & disown"
+                       :onclick "Term --of"
                        :tooltip "System Fetch"
                        "󰚌")
                (button :class "launcher-btn"
@@ -106,7 +106,7 @@
                        :tooltip "Thunar"
                        "")
                (button :class "launcher-btn"
-                       :onclick "termite & disown"
+                       :onclick "Term --ot"
                        :tooltip "Terminal"
                        "")
                (button :class "launcher-btn"
@@ -136,9 +136,9 @@
 		 	:space-evenly "false"
 			:halign "center"
 			:spacing 30
-			(button :class "btn_prev" :onclick "../../../scripts/music previous" "ﭣ")
-			(button :class "btn_play" :onclick "../../../scripts/music toggle" playpause)
-			(button :class "btn_next" :onclick "../../../scripts/music next" "ﭡ"))
+			(button :class "btn_prev" :onclick "../../../scripts/MediaControl --previous" "ﭣ")
+			(button :class "btn_play" :onclick "../../../scripts/MediaControl --toggle" playpause)
+			(button :class "btn_next" :onclick "../../../scripts/MediaControl --next" "ﭡ"))
 	(box    :orientation "h"
 			:class "metric-player"
 			:space-evenly "false"

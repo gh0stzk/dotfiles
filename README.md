@@ -96,8 +96,8 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Aline</b></summary>
 
-|<img src="config/bspwm/rices/aline/walls/wall-02.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-03.webp" alt="Aline Rice" align="center" width="150px">|
-|---|---|
+|<img src="config/bspwm/rices/aline/walls/wall-02.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-03.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-04.webp" alt="Aline Rice" align="center" width="150px">|
+|---|---|---|
 
 </details>
 
@@ -268,16 +268,13 @@ chmod +x RiceInstaller
 ## Some tips
 
 * The wallpapers are in webp format because I don't want the repository to be too heavy. I Added the packages libwebp and webp-pixbuf-loader to the dependencies in order for your file browser (in my case thunar) to be able to display the thumbnails. However, you can add more wallpapers in the format you want "jpg, png etc..."
-* If u dont wanna use the random wallpapers comment line 214 and uncomment line 215 from /home/YourUser/.config/bspwm/scripts/LaunchWorld file.
+* If u dont wanna use the random wallpapers comment line 111 from /home/YourUser/.config/bspwm/bspwmrc file.
 * Left click in pacman updates module in polybar to update. Right click for show updates available only.
 
 ## Troubleshooting
 * **Weather module is showing wrong values**
 
-Yes the values are in my city "Mexico City" you need to edit ~/.config/bspwm/scripts/WeatherMini to set your city
-In line 3 you will find this line weather=$(curl -s wttr.in/**Mexico**?format=3) You need to write your city, or postal code, please refer to the [wttr.in Help](https://wttr.in/:help)
-
-For the eww widget in z0mbi3 rice you need to edit ~/.config/bspwm/scripts/weather in line 12 you need to change the name of your city, you can get it from [openweathermap](https://openweathermap.org/)
+You need to edit ~/.config/bspwm/scripts/Weather in line 12 you need to change the name of your city, you can get it from [openweathermap](https://openweathermap.org/)
 
 
 ## Credits

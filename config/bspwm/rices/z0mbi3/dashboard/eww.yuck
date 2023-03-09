@@ -19,10 +19,10 @@
 (defpoll weatherdesc :interval "2h" "Weather weather_desc")
 (defpoll weatherhex :interval "2h" "Weather hex")
 
-(defpoll art		:interval "1s"  "music coverloc")
-(defpoll title		:interval "1s"  "music title")
-(defpoll artist		:interval "1s"  "music artist")
-(defpoll playpause	:interval "1s"  "music statusicon")
+(defpoll art		:interval "1s"  "MediaControl coverloc")
+(defpoll title		:interval "1s"  "MediaControl title")
+(defpoll artist		:interval "1s"  "MediaControl artist")
+(defpoll playpause	:interval "1s"  "MediaControl statusicon")
 
 ;; ** Widgets ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -90,9 +90,9 @@
 		(label :class "song" :limit-width 18 :text title)
 		(label :class "artist" :limit-width 18 :text artist)
 	  (box :orientation "h" :class "playerbot" :space-evenly false :valign "center" :halign "center" :spacing 30
-        (button :class "btn_prev" :onclick "music previous" "玲")
-		(button :class "btn_play" :onclick "music toggle" playpause)
-		(button :class "btn_next" :onclick "music next" "怜")
+        (button :class "btn_prev" :onclick "MediaControl --previous" "玲")
+		(button :class "btn_play" :onclick "MediaControl --toggle" playpause)
+		(button :class "btn_next" :onclick "MediaControl --next" "怜")
 	  )
 	  )
       )

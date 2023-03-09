@@ -4,26 +4,20 @@
 #   Author: z0mbi3
 #	url: https://github.com/gh0stzk
 
-MY_TERM="alacritty"
-
-if [[ "$MY_TERM" == "alacritty" ]]; then
-
-	if [[ "$1" == "--ot" ]]; then
-		alacritty
-	elif [[ "$1" == "--oft" ]]; then
-		alacritty --class FloaTerm,Alacritty
-	elif [[ "$1" == "--ou" ]]; then
-		alacritty --hold --class Updating,Alacritty -e yay -Syyuu --devel
-	elif [[ "$1" == "--ocu" ]]; then
-		alacritty --hold --class Updating,Alacritty -e checkupdates
-	elif [[ "$1" == "--or" ]]; then
-		alacritty --class Ranger,Alacritty -e ranger
-	elif [[ "$1" == "--ov" ]]; then
-		alacritty -e nvim
-	elif [[ "$1" == "--om" ]]; then
-		alacritty --class MusicPlayer,Alacritty -e ncmpcpp
-	elif [[ "$1" == "--of" ]]; then
-		alacritty --hold --class Sysfetch,Alacritty -e ~/.local/bin/sysfetch
-	fi
-	
+if [[ "$1" == "--ot" ]]; then
+	alacritty
+elif [[ "$1" == "--oft" ]]; then
+	alacritty --class FloaTerm,Alacritty
+elif [[ "$1" == "--ou" ]]; then
+	alacritty --hold --class Updating,Alacritty -e yay -Syyuu --devel
+elif [[ "$1" == "--ocu" ]]; then
+	alacritty --hold --class Updating,Alacritty -e checkupdates
+elif [[ "$1" == "--or" ]]; then
+	alacritty --class Ranger,Alacritty -e ranger
+elif [[ "$1" == "--ov" ]]; then
+	alacritty -e nvim
+elif [[ "$1" == "--om" ]]; then
+	alacritty --class MusicPlayer,Alacritty -e ncmpcpp
+elif [[ "$1" == "--of" ]]; then
+	alacritty --hold --class Sysfetch,Alacritty -e ~/.local/bin/sysfetch
 fi

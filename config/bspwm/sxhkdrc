@@ -14,54 +14,62 @@ super + alt + Return
 	
 # Apps
 shift + alt + {b,g,n,p,r,t,q,w,m,v,k}
-       {firefox, \
-        geany, \
-        thunar, \
-        pavucontrol, \
-        Term --or, \
-        telegram-desktop, \
-        qutebrowser --qt-flag disable-gpu, \
-        whatsapp-nativefier --disable-gpu, \
-        env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --disable-gpu --no-zygote %U, \
-        Term --ov, \
-        Term --om}
-        
-#hide
+	{firefox, \
+	geany, \
+	thunar, \
+	pavucontrol, \
+	Term --or, \
+	telegram-desktop, \
+	qutebrowser --qt-flag disable-gpu, \
+	whatsapp-nativefier --disable-gpu, \
+	env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --disable-gpu --no-zygote %U, \
+	Term --ov, \
+	Term --om}
+
+# Hide Bar (Polybar and/or eww)
 super + h
-		HideBar -h
-#unhide
+	HideBar -h
+
+# Unhide Bar (Polybar and/or eww)
 super + u 
-		HideBar -u
-		     
-# screenshoots
+	HideBar -u
+
+# Screenshot Now
+Print
+	ScreenShoTer --now
+
+# Screenshot Select
 super + Print
-        ScreenShoTer
-        
+	ScreenShoTer --sel
+
+# Screenshot in 10s
+alt + Print
+	ScreenShoTer --in10
+
 # Change transparency on focused window
 ctrl + alt {plus,minus,t}
-		{picom-trans -c -o +3, picom-trans -c -o -1, picom-trans -c -d}
-        
-        
+	{picom-trans -c -o +3, picom-trans -c -o -1, picom-trans -c -d}
+
 # Apagar, Reiniciar, Cerrar Sesion, bloquear
 ctrl + super + alt + {p,r,q,l}
-        {systemctl poweroff, systemctl reboot,bspc quit,physlock -d}
-        
+	{systemctl poweroff, systemctl reboot,bspc quit,physlock -d}
+
 # Matar Procesos
 ctrl + super + alt + k
-		{xkill}
-        
+	xkill
+
 # Menu aplicaciones
 super + @space
 	rofi -no-lazy-grab -show drun -theme $HOME/.config/bspwm/rices/$RICETHEME/launcher.rasi
-	
+
 # Theme Selector
 alt + @space
 	RiceSelector
 
 # Reload sxhkd
 super + Escape
-	pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'El archivo de configuracion se ha recargado con exito'
-	
+	pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
+
 # Random wallpaper
 super + alt + w
 	RandomWall
@@ -69,7 +77,7 @@ super + alt + w
 #
 # bspwm hotkeys
 #
-	
+
 # Reiniciar BSPWM
 super + alt + r
 	bspc wm -r
@@ -96,7 +104,6 @@ super + equal
 super + minus
 	bspc node @/ --balance
 
-
 # alternate between the tiled and monocle layout
 super + m
 	bspc desktop -l next
@@ -112,7 +119,6 @@ super + {t,shift + t,s,f}
 # set the node flags
 ctrl + alt {m,x,s,p,i}
 	bspc node -g {marked,locked,sticky,private,hidden}
-
 
 # Focused desktop window gaps scroll
 super + button{4,5}
@@ -187,27 +193,15 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 alt + shift {Left,Down,Up,Right}
 	bspc node -v {-10 0,0 10,0 -10,10 0}
-	
-## Media keys
-XF86AudioRaiseVolume
-	pactl set-sink-volume 0 +5%
 
-XF86AudioLowerVolume
-	pactl set-sink-volume 0 -5%
+# Manage brightness
+XF86MonBrightness{Up,Down}
+    sh Brightness {up,down}
 
-XF86AudioMute
-	pactl set-sink-mute 0 toggle
+# Volume control
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+	Volume{ --inc, --dec, --toggle}
 
-XF86AudioPlay 
-        playerctl play-pause
-        
-XF86AudioStop
-        playerctl stop
-        
-XF86AudioNext 
-        playerctl next
-        
-XF86AudioPrev 
-        playerctl previous
-        
-        
+# Music Control
+XF86Audio{Next,Prev,Play,Stop}
+	MediaControl {--next,--previous,--toggle,--stop}

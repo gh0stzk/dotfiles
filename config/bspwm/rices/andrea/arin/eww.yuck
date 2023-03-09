@@ -13,12 +13,12 @@
 (defpoll DATE :interval "5s" `date +\"%A, %B %d\"`)
 
 ;; Music vars
-(defpoll SONG :interval "1s" `scripts/music_info --song`)
-(defpoll ARTIST :interval "1s" `scripts/music_info --artist`)
-(defpoll COVER :interval "1s" `scripts/music_info --cover`)
+(defpoll SONG :interval "1s" `MediaControl title`)
+(defpoll ARTIST :interval "1s" `MediaControl artist`)
+(defpoll COVER :interval "1s" `MediaControl coverloc`)
 (defpoll STATUS :interval "1s" `scripts/music_info --status`)
-(defpoll CTIME :interval "1s" `scripts/music_info --ctime`)
-(defpoll TTIME :interval "1s" `scripts/music_info --ttime`)
+(defpoll CTIME :interval "1s" `MediaControl time`)
+(defpoll TTIME :interval "1s" `MediaControl length`)
 
 ;; Updates vars
 (defpoll UPDATES :interval "15m" `~/.config/bspwm/scripts/Updates`)
@@ -76,9 +76,9 @@
 					(label :class "ctime" :halign "start" :wrap "false" :limit-width 5 :text CTIME)
 					(label :class "ttime" :halign "start" :wrap "false" :limit-width 5 :text TTIME)))
 			(box :class "musicbuttons" :orientation "h" :spacing 10 :valign "center" :halign "start" :space-evenly "false" :vexpand "false" :hexpand "false"
-				(button :style "background-image: url('images/icons/music/previous-button.png');" :class "trackbutton" :onclick "scripts/music_info --prev")
-				(button :style "background-image: url('${STATUS}');" :class "playbutton" :onclick "scripts/music_info --toggle")
-				(button :style "background-image: url('images/icons/music/next-button.png');" :class "trackbutton" :onclick "scripts/music_info --next"))))
+				(button :style "background-image: url('images/icons/music/previous-button.png');" :class "trackbutton" :onclick "MediaControl --previous")
+				(button :style "background-image: url('${STATUS}');" :class "playbutton" :onclick "MediaControl --toggle")
+				(button :style "background-image: url('images/icons/music/next-button.png');" :class "trackbutton" :onclick "MediaControl --next"))))
 
 ;; system
 (defwidget system [] 

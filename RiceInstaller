@@ -11,6 +11,8 @@ CBL=$(tput setaf 4)
 BLD=$(tput bold)
 CNC=$(tput sgr0)
 OK='\n\033[0;32m OK...\033[0m'
+backup_folder=~/.RiceBackup
+date=$(date +%Y%m%d-%H%M%S)
 
 logo () {
 	
@@ -37,10 +39,14 @@ logo () {
     sleep 2
 }
 
+########## ---------- You must not run this as root ---------- ##########
+
 if [ "$(id -u)" = 0 ]; then
     echo "This script MUST NOT be run as root user."
     exit 1
 fi
+
+########## ---------- Welcome ---------- ##########
 
 logo "Welcome!"
 printf '%sThis script will install needed dependencies and copy my dotfiles to your bspwm setup.%s\n\nThis installer script does NOT change any configuration of your system.\nIts just a script that copies and moves my dotfiles to your ~/.config directory\n\n' "${CRE}" "${CNC}"
@@ -54,11 +60,13 @@ while true; do
 			* ) printf " Error: just write 'y' or 'n'\n\n";;
 		esac
     done
-			clear
-			
+clear
+
+########## ---------- Install packages ---------- ##########
+
 logo "Installing needed packages.."
 
-dependencias=(base-devel pacman-contrib bspwm polybar sxhkd alacritty dunst rofi lsd jq polkit-gnome git playerctl mpd ncmpcpp geany ranger mpc picom feh ueberzug maim pamixer libwebp webp-pixbuf-loader xorg-xprop xorg-xkill physlock papirus-icon-theme ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels zsh)
+dependencias=(base-devel pacman-contrib bspwm polybar sxhkd alacritty brightnessctl dunst rofi lsd jq polkit-gnome git playerctl mpd ncmpcpp geany ranger mpc picom feh ueberzug maim pamixer libwebp webp-pixbuf-loader xorg-xprop xorg-xkill physlock papirus-icon-theme ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata zsh)
 
 is_installed() {
   pacman -Qi $1 &> /dev/null
@@ -79,6 +87,8 @@ done
 sleep 2
 clear
 
+########## ---------- Install yay ---------- ##########
+
 logo "Checking if yay is installed"
 
 	if ! command -v yay &>/dev/null; then
@@ -97,7 +107,7 @@ logo "Checking if yay is installed"
 sleep 2
 clear
 
-
+########## ---------- Cloning the Rice! ---------- ##########
 
 logo "Cloning Rice!"
 [ -d ~/dotfiles ] && rm -rf ~/dotfiles
@@ -107,93 +117,111 @@ git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
 sleep 2
 clear
 
+########## ---------- Backup files ---------- ##########
+
 logo "Backup your files"
 printf "Backup files will be stored in %s%s%s/.RiceBackup%s \n\n" "${BLD}" "${CRE}" "$HOME" "${CNC}"
 sleep 5
 
-if [ ! -d "$HOME/.RiceBackup" ]; then 
-	mkdir -p "${HOME}"/.RiceBackup
+if [ ! -d "$backup_folder" ]; then
+  mkdir -p "$backup_folder"
 fi
 
-[ -d ~/.config/bspwm ] && mv ~/.config/bspwm ~/.RiceBackup/bspwm-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -d ~/.config/termite ] && mv ~/.config/termite ~/.RiceBackup/termite-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -d ~/.config/alacritty ] && mv ~/.config/alacritty ~/.RiceBackup/alacritty-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -d ~/.config/picom ] && mv ~/.config/picom ~/.RiceBackup/picom-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -d ~/.config/rofi ] && mv ~/.config/rofi ~/.RiceBackup/rofi-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -d ~/.config/eww ] && mv ~/.config/eww ~/.RiceBackup/eww-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -d ~/.config/sxhkd ] && mv ~/.config/sxhkd ~/.RiceBackup/sxhkd-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -d ~/.config/dunst ] && mv ~/.config/dunst ~/.RiceBackup/dunst-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -d ~/.config/gtk-3.0 ] && mv ~/.config/gtk-3.0 ~/.RiceBackup/gtk-3.0-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -d ~/.config/polybar ] && mv ~/.config/polybar ~/.RiceBackup/polybar-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -d ~/.config/mpd ] && mv ~/.config/mpd ~/.RiceBackup/mpd-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -d ~/.config/ncmpcpp ] && mv ~/.config/ncmpcpp ~/.RiceBackup/ncmpcpp-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -d ~/.config/nvim ] && mv ~/.config/nvim ~/.RiceBackup/nvim-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -d ~/.config/ranger ] && mv ~/.config/ranger ~/.RiceBackup/ranger-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
-[ -d ~/.config/zsh ] && mv ~/.config/zsh ~/.RiceBackup/zsh-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+for folder in bspwm alacritty picom rofi eww sxhkd dunst polybar ncmpcpp nvim ranger zsh mpd; do
+  if [ -d "$HOME/.config/$folder" ]; then
+    mv "$HOME/.config/$folder" "$backup_folder/${folder}_$date"
+    echo "$folder folder backed up successfully at $backup_folder/${folder}_$date"
+  else
+    echo "The folder $folder does not exist in $HOME/.config/"
+  fi
+done
 
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/.RiceBackup/.zshrc-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 
 printf "%s%sDone!!%s\n" "${BLD}" "${CGR}" "${CNC}"
-sleep 2
+sleep 4
 clear
+
+########## ---------- Copy the Rice! ---------- ##########
 
 logo "Copying Rice.."
 printf "Copying files to respective directories..\n"
 
-if [ ! -d $HOME/.config ]; then
-	mkdir -p $HOME/.config
-	cp -Rf $HOME/dotfiles/config/* $HOME/.config/
-else
-	cp -Rf $HOME/dotfiles/config/* $HOME/.config/
-fi
+[ ! -d ~/.config ] && mkdir -p ~/.config
+[ ! -d ~/.local/bin ] && mkdir -p ~/.local/bin
+[ ! -d ~/.local/share/applications ] && mkdir -p ~/.local/share/applications
+[ ! -d ~/.local/share/fonts ] && mkdir -p ~/.local/share/fonts
+[ ! -d ~/.local/share/asciiart ] && mkdir -p ~/.local/share/asciiart
 
-if [ ! -d $HOME/.local/bin ]; then
-	mkdir -p $HOME/.local/bin
-	cp -Rf $HOME/dotfiles/misc/bin/* $HOME/.local/bin/
-else
-	cp -Rf $HOME/dotfiles/misc/bin/* $HOME/.local/bin/
-fi
+for archivos in ~/dotfiles/config/*; do
+  cp -R ${archivos} ~/.config/
+  if [ $? -eq 0 ]; then
+	printf "%s%s%s folder copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
+	sleep 1
+  else
+	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
+	sleep 1
+  fi
+done
 
-if [ ! -d $HOME/.local/share/applications ]; then
-	mkdir -p $HOME/.local/share/applications
-	cp -Rf $HOME/dotfiles/misc/applications/* $HOME/.local/share/applications/
-else
-	cp -Rf $HOME/dotfiles/misc/applications/* $HOME/.local/share/applications/
-fi
+for archivos in ~/dotfiles/misc/bin/*; do
+  cp -R ${archivos} ~/.local/bin/
+  if [ $? -eq 0 ]; then
+	printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
+	sleep 1
+  else
+	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
+	sleep 1
+  fi
+done
 
-if [ ! -d $HOME/.local/share/asciiart ]; then
-	mkdir -p $HOME/.local/share/asciiart
-	cp -Rf $HOME/dotfiles/misc/asciiart/* $HOME/.local/share/asciiart/
-else
-	cp -Rf $HOME/dotfiles/misc/asciiart/* $HOME/.local/share/asciiart/
-fi
+for archivos in ~/dotfiles/misc/applications/*; do
+  cp -R ${archivos} ~/.local/share/applications/
+  if [ $? -eq 0 ]; then
+	printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
+	sleep 1
+  else
+	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
+	sleep 1
+  fi
+done
 
-if [ ! -d $HOME/.local/share/fonts ]; then
-	mkdir -p $HOME/.local/share/fonts
-	cp -Rf $HOME/dotfiles/misc/fonts/* $HOME/.local/share/fonts/
-else
-	cp -Rf $HOME/dotfiles/misc/fonts/* $HOME/.local/share/fonts/
-fi
+for archivos in ~/dotfiles/misc/fonts/*; do
+  cp -R ${archivos} ~/.local/share/fonts/
+  if [ $? -eq 0 ]; then
+	printf "%s%s%s copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
+	sleep 1
+  else
+	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
+	sleep 1
+  fi
+done
 
-cp -f $HOME/dotfiles/home/.zshrc $HOME
+for archivos in ~/dotfiles/misc/asciiart/*; do
+  cp -R ${archivos} ~/.local/share/asciiart/
+  if [ $? -eq 0 ]; then
+	printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
+	sleep 1
+  else
+	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
+	sleep 1
+  fi
+done
 
-cp -r $HOME/dotfiles/misc/firefox/chrome $HOME/.mozilla/firefox/*.default-release/
-cp -r $HOME/dotfiles/misc/firefox/user.js $HOME/.mozilla/firefox/*.default-release/
-
+cp -f $HOME/dotfiles/home/.zshrc $HOME/cop/
+fc-cache -rv >/dev/null 2>&1
 printf "%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 2
 clear
 
+########## ---------- Installing Eww from AUR ---------- ##########
+
 logo "Installing needed packages from AUR"				 
-yay -S eww nerd-fonts-cozette-ttf scientifica-font --removemake --cleanafter
+yay -S eww --noconfirm --removemake --cleanafter
 sleep 2	  
 clear
 
-logo "Reloading fonts.."
-fc-cache -rv >/dev/null 2>&1
-printf "%s%sFonts reloaded succesfully!%s\n" "${BLD}" "${CGR}" "${CNC}"
-sleep 2
-clear
+########## ---------- Enabling MPD service ---------- ##########
 
 logo "Enabling MPD service"
 systemctl --user enable mpd.service
@@ -202,7 +230,24 @@ printf "%s%sDone!!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 2
 clear
 
-logo "Installation finished"
-printf "%s%sPlease reboot, then select bspwm in your login manager and log in.%s\n\n" "${BLD}" "${CRE}" "${CNC}"
+########## ---------- ZSH ---------- ##########
+
+logo "Changing to zsh"
+printf "%s%sChanging bash to zsh your root password is required to make the change.%s\n" "${BLD}" "${CBL}" "${CNC}"
 chsh -s /usr/bin/zsh
 zsh
+sleep 3
+
+########## ---------- Finish ---------- ##########
+
+logo "Installation Finished!"
+printf "%sReboot is necessary, then choose bspwm in your login manager and login.%s\n" "${BLD}" "${CNC}"
+
+while true; do
+			read -rp "Do you want to reboot now? [y/N]: " sn
+		case $sn in
+			[Yy]* ) reboot;;
+			[Nn]* ) exit 0;;
+			* ) echo "Error: just type 'y' or 'n'\n\n";;
+		esac
+	done

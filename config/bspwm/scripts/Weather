@@ -129,5 +129,7 @@ case $1 in
 	"city")
 		echo $CITY
 		;;
+	"wmodule")
+		echo $WEATHER_ICON $WEATHER_TEMP°
 esac
 

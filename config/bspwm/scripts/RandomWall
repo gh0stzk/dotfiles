@@ -5,3 +5,4 @@
 #	url: https://github.com/gh0stzk
 
 feh --randomize --no-fehbg --bg-fill ~/.config/bspwm/rices/$RICETHEME/walls/
+exit 0
