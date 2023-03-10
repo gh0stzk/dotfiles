@@ -274,8 +274,8 @@ bspc config pointer_motion_interval       16
 #  ┴ ┴└─┘ ┴ └─┘└─┘ ┴ ┴ ┴┴└─ ┴   ┴ ┴┴  ┴  └─┘
 
 launch sxhkd -c ${BSPDIR}/sxhkdrc
-#launch picom --config ${BSPDIR}/rices/$RICETHEME/picom.conf
-launch picom --legacy-backends --config ${BSPDIR}/rices/"${RICETHEME}"/picom.conf
+launch picom --config ${BSPDIR}/rices/$RICETHEME/picom.conf
+#launch picom --legacy-backends --config ${BSPDIR}/rices/"${RICETHEME}"/picom.conf
 xsetroot -cursor_name left_ptr
 	
 if ! pidof polkit-gnome-authentication-agent-1 > /dev/null; then
