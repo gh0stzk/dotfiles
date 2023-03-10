@@ -6,70 +6,75 @@
 
 function hide() {
 	
-	if [[ "${RICETHEME}" == @(emilia|jan|aline|silvia|pamela) ]]; then
-		polybar-msg cmd hide | bspc config top_padding 5
-		
-	elif [[ "${RICETHEME}" == @(isabel|cristina) ]]; then
-		polybar-msg cmd hide | bspc config bottom_padding 5
-		
-	elif [[ "${RICETHEME}" == melissa ]]; then
-		polybar-msg cmd hide | bspc config top_padding 5 | bspc config bottom_padding 5
-		
-	elif [[ "${RICETHEME}" == cynthia ]]; then
-		polybar-msg cmd hide | bspc config top_padding 5 | bspc config bottom_padding 5
-		
-	elif [[ "${RICETHEME}" == z0mbi3 ]]; then
-		eww -c $HOME/.config/bspwm/rices/z0mbi3/bar close bar | bspc config left_padding 5
-		
-	elif [[ "${RICETHEME}" == andrea ]]; then
-		eww -c $HOME/.config/bspwm/rices/andrea/arin close-all | bspc config top_padding 5
-		
-	elif [[ "${RICETHEME}" == karla ]]; then
-		eww -c $HOME/.config/bspwm/rices/karla/bar close bar & polybar-msg cmd hide | bspc config top_padding 5	
-	else 
-		echo "Error: Something fails dud.."
-	fi
+case "${RICETHEME}" in
+    emilia|jan|aline|silvia|pamela)
+        polybar-msg cmd hide | bspc config top_padding 5
+        ;;
+    isabel|cristina)
+        polybar-msg cmd hide | bspc config bottom_padding 5
+        ;;
+    melissa|cynthia)
+        polybar-msg cmd hide | bspc config top_padding 5 | bspc config bottom_padding 5
+        ;;
+    z0mbi3)
+        eww -c $HOME/.config/bspwm/rices/z0mbi3/bar close bar | bspc config left_padding 5
+        ;;
+    andrea)
+        eww -c $HOME/.config/bspwm/rices/andrea/arin close-all | bspc config top_padding 5
+        ;;
+    karla)
+        eww -c $HOME/.config/bspwm/rices/karla/bar close bar & polybar-msg cmd hide | bspc config top_padding 5
+        ;;
+    *)
+        echo "Error: Something fails dud.."
+        ;;
+esac
+	
 }
 
 function unhide() {
 	
-	if [[ "${RICETHEME}" == @(emilia|jan|pamela) ]]; then
+case "${RICETHEME}" in
+	emilia|jan|pamela)
 		polybar-msg cmd show | bspc config top_padding 60
-		
-	elif [[ "${RICETHEME}" == aline ]]; then
+		;;
+	aline)
 		polybar-msg cmd show | bspc config top_padding 55
-		
-	elif [[ "${RICETHEME}" == silvia ]]; then
+		;;
+	silvia)
 		polybar-msg cmd show | bspc config top_padding 50
-		
-	elif [[ "${RICETHEME}" == isabel ]]; then
+		;;
+	isabel)
 		polybar-msg cmd show | bspc config bottom_padding 45
-		
-	elif [[ "${RICETHEME}" == melissa ]]; then
+		;;
+	melissa)
 		polybar-msg cmd show | bspc config top_padding 42 | bspc config bottom_padding 40
-		
-	elif [[ "${RICETHEME}" == cynthia ]]; then
+		;;
+	cynthia)
 		polybar-msg cmd show | bspc config top_padding 50 | bspc config bottom_padding 50
-		
-	elif [[ "${RICETHEME}" == cristina ]]; then
+		;;
+	cristina)
 		polybar-msg cmd show | bspc config bottom_padding 60
-		
-	elif [[ "${RICETHEME}" == z0mbi3 ]]; then
-		eww -c $HOME/.config/bspwm/rices/$RICETHEME/bar open bar | bspc config left_padding 80
-		
-	elif [[ "${RICETHEME}" == karla ]]; then
-		eww -c $HOME/.config/bspwm/rices/$RICETHEME/bar open bar & polybar-msg cmd show | bspc config top_padding 65
-		
-	elif [[ "${RICETHEME}" == andrea ]]; then
-		eww -c $HOME/.config/bspwm/rices/$RICETHEME/arin open-many \
+		;;
+	z0mbi3)
+		eww -c $HOME/.config/bspwm/rices/z0mbi3/bar open bar | bspc config left_padding 80
+		;;
+	karla)
+		eww -c $HOME/.config/bspwm/rices/karla/bar open bar & polybar-msg cmd show | bspc config top_padding 65
+		;;
+	andrea)
+		eww -c $HOME/.config/bspwm/rices/andrea/arin open-many \
 		   search \
 		   apps \
 		   weather \
 		   music \
 		   system | bspc config top_padding 60
-	else 
+		;;
+	*)
 		echo "Error: Something fails dud.."
-	fi
+		;;
+esac
+
 }
 
 case $1 in
