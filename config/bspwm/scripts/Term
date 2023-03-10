@@ -1,23 +1,29 @@
 #!/usr/bin/env bash
-
+#  ╔╦╗╔═╗╦═╗╔╦╗
+#   ║ ║╣ ╠╦╝║║║
+#   ╩ ╚═╝╩╚═╩ ╩
 #	Script to open with selected terminal
 #   Author: z0mbi3
 #	url: https://github.com/gh0stzk
 
-if [[ "$1" == "--ot" ]]; then
-	alacritty
-elif [[ "$1" == "--oft" ]]; then
-	alacritty --class FloaTerm,Alacritty
-elif [[ "$1" == "--ou" ]]; then
-	alacritty --hold --class Updating,Alacritty -e yay -Syyuu --devel
-elif [[ "$1" == "--ocu" ]]; then
-	alacritty --hold --class Updating,Alacritty -e checkupdates
-elif [[ "$1" == "--or" ]]; then
-	alacritty --class Ranger,Alacritty -e ranger
-elif [[ "$1" == "--ov" ]]; then
-	alacritty -e nvim
-elif [[ "$1" == "--om" ]]; then
-	alacritty --class MusicPlayer,Alacritty -e ncmpcpp
-elif [[ "$1" == "--of" ]]; then
-	alacritty --hold --class Sysfetch,Alacritty -e ~/.local/bin/sysfetch
-fi
+case "$1" in
+  --ot)
+    alacritty;;
+  --oft)
+    alacritty --class FloaTerm,Alacritty;;
+  --ou)
+    alacritty --hold --class Updating,Alacritty -e yay -Syyu --devel;;
+  --ocu)
+	alacritty --hold --class Updating,Alacritty -e pacman -Qu;;
+  --or)
+    alacritty --class Ranger,Alacritty -e ranger;;
+  --ov)
+    alacritty -e nvim;;
+  --om)
+    alacritty --class MusicPlayer,Alacritty -e ncmpcpp;;
+  --of)
+    alacritty --hold --class Sysfetch,Alacritty -e ~/.local/bin/sysfetch    ;;
+  *)
+    echo "Opción no válida";;
+esac
+

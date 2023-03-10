@@ -1,38 +1,48 @@
-#     _____  _| |__ | | ____| |_ __ ___ 
-#    / __\ \/ / '_ \| |/ / _` | '__/ __|  - z0mbi3
-#    \__ \>  <| | | |   < (_| | | | (__   - https://github.com/gh0stzk/dotfiles
-#    |___/_/\_\_| |_|_|\_\__,_|_|  \___|  - z0mbi3.zk@protonmail.com
-#                             z0mbi3 config..
+#  ╔═╗═╗ ╦╦ ╦╦╔═╔╦╗╦═╗╔═╗  - z0mbi3
+#  ╚═╗╔╩╦╝╠═╣╠╩╗ ║║╠╦╝║    - https://github.com/gh0stzk/dotfiles
+#  ╚═╝╩ ╚═╩ ╩╩ ╩═╩╝╩╚═╚═╝  - z0mbi3.zk@protonmail.com
+#			z0mbi3 config..
 
-# terminal emulator
+# Open Terminal (alacritty)
 super + Return
 	Term --ot
 	
-# Floating Terminal
+# Open floating Terminal
 super + alt + Return
 	Term --oft
-	
+
+# Menu aplicaciones
+super + @space
+	rofi -no-lazy-grab -show drun -theme $HOME/.config/bspwm/rices/$RICETHEME/launcher.rasi
+
+# Theme Selector
+alt + @space
+	RiceSelector
+
+# Power off, Reboot, Log out, Lockscreen, kill an app
+ctrl + super + alt + {p,r,q,l,k}
+	{systemctl poweroff, systemctl reboot,bspc quit,physlock -d,xkill}
+
 # Apps
-shift + alt + {b,g,n,p,r,t,q,w,m,v,k}
+shift + alt + {b,g,n,p,r,t,w,m,v,k}
 	{firefox, \
-	geany, \
-	thunar, \
-	pavucontrol, \
-	Term --or, \
-	telegram-desktop, \
-	qutebrowser --qt-flag disable-gpu, \
-	whatsapp-nativefier --disable-gpu, \
-	env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --disable-gpu --no-zygote %U, \
-	Term --ov, \
-	Term --om}
+	 geany, \
+	 thunar, \
+	 pavucontrol, \
+	 Term --or, \
+	 telegram-desktop, \
+	 whatsapp-nativefier --disable-gpu, \
+	 env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --disable-gpu --no-zygote %U, \
+	 Term --ov, \
+	 Term --om}
 
-# Hide Bar (Polybar and/or eww)
-super + h
-	HideBar -h
+# Hide/Show Bar (Polybar and/or eww)
+super + {h,u}
+	HideBar {-h,-u}
 
-# Unhide Bar (Polybar and/or eww)
-super + u 
-	HideBar -u
+# Change transparency on focused window
+ctrl + alt {plus,minus,t}
+	{picom-trans -c -o +3, picom-trans -c -o -1, picom-trans -c -d}
 
 # Screenshot Now
 Print
@@ -46,26 +56,6 @@ super + Print
 alt + Print
 	ScreenShoTer --in10
 
-# Change transparency on focused window
-ctrl + alt {plus,minus,t}
-	{picom-trans -c -o +3, picom-trans -c -o -1, picom-trans -c -d}
-
-# Apagar, Reiniciar, Cerrar Sesion, bloquear
-ctrl + super + alt + {p,r,q,l}
-	{systemctl poweroff, systemctl reboot,bspc quit,physlock -d}
-
-# Matar Procesos
-ctrl + super + alt + k
-	xkill
-
-# Menu aplicaciones
-super + @space
-	rofi -no-lazy-grab -show drun -theme $HOME/.config/bspwm/rices/$RICETHEME/launcher.rasi
-
-# Theme Selector
-alt + @space
-	RiceSelector
-
 # Reload sxhkd
 super + Escape
 	pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
@@ -78,7 +68,7 @@ super + alt + w
 # bspwm hotkeys
 #
 
-# Reiniciar BSPWM
+# Reload BSPWM
 super + alt + r
 	bspc wm -r
 
@@ -89,11 +79,11 @@ super + {_,shift + }q
 ####
 
 # rotate desktop
-super + {_,shift + }r
+super + r
 	bspc node @/ --rotate {90,-90}
 
 # Circulate the leaves of the tree
-super + {_,shift + }c
+super + c
 	bspc node @/ --circulate {backward,forward}
 
 # Make split ratios equal

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-
-#	Simple script to hide/unhide polybar
+#  ╦ ╦╦╔╦╗╔═╗  ╔╗ ╔═╗╦═╗
+#  ╠═╣║ ║║║╣   ╠╩╗╠═╣╠╦╝
+#  ╩ ╩╩═╩╝╚═╝  ╚═╝╩ ╩╩╚═
+#	Simple script to hide/show polybar
 #   Author: z0mbi3
 #	url: https://github.com/gh0stzk
 

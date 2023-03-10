@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
-
-#    ____ ____  ______        ____  __ 
-#   | __ ) ___||  _ \ \      / /  \/  |  - z0mbi3
-#   |  _ \___ \| |_) \ \ /\ / /| |\/| |  - https://github.com/gh0stzk/dotfiles
-#   | |_) |__) |  __/ \ V  V / | |  | |  - z0mbi3.zk@protonmail.com
-#   |____/____/|_|     \_/\_/  |_|  |_|
-#                                    z0mbi3 config..
+#  ╔╗ ╔═╗╔═╗╦ ╦╔╦╗  - z0mbi3
+#  ╠╩╗╚═╗╠═╝║║║║║║  - https://github.com/gh0stzk/dotfiles
+#  ╚═╝╚═╝╩  ╚╩╝╩ ╩  - z0mbi3.zk@protonmail.com
 
 
-###########---------- Some important variables ----------##########
+#  ┬┌┬┐┌─┐┌─┐┬─┐┌┬┐┌─┐┌┐┌┌┬┐  ┬  ┬┌─┐┬─┐┬┌─┐┌┐ ┬  ┌─┐┌─┐
+#  ││││├─┘│ │├┬┘ │ ├─┤│││ │   └┐┌┘├─┤├┬┘│├─┤├┴┐│  ├┤ └─┐
+#  ┴┴ ┴┴  └─┘┴└─ ┴ ┴ ┴┘└┘ ┴    └┘ ┴ ┴┴└─┴┴ ┴└─┘┴─┘└─┘└─┘
 
 export RICETHEME=$(<$HOME/.config/bspwm/rice.cfg)
 PATH="${HOME}/.config/bspwm/scripts:$PATH"
@@ -20,7 +18,9 @@ SFILE="${BSPDIR}/scripts/.sys"
 BSPWM_BORDER='0'
 BSPWM_GAP='10'
 
-###########---------- Functions ----------##########
+#  ┌─┐┬ ┬┌┐┌┌─┐┌┬┐┬┌─┐┌┐┌┌─┐
+#  ├┤ │ │││││   │ ││ ││││└─┐
+#  └  └─┘┘└┘└─┘ ┴ ┴└─┘┘└┘└─┘
 
 function get_values() {
 DEFNETWORK=$(ip route | grep '^default' | awk '{print $5}' | head -n1)
@@ -65,7 +65,7 @@ fi
 
 function launch() {
   local running="$(pgrep -x "$1")"
-  [ "$running" ] && killall -9 -q "$1"
+  [ "$running" ] && pkill -x "$1" 2> /dev/null
   "$@" &
 }
 
@@ -92,7 +92,9 @@ function SetBspwmConf() {
 	bspc config window_gap "$BSPWM_GAP"
 }
 
-###########---------- Workspaces ----------##########
+#  ┬ ┬┌─┐┬─┐┬┌─┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐
+#  ││││ │├┬┘├┴┐└─┐├─┘├─┤│  ├┤ └─┐
+#  └┴┘└─┘┴└─┴ ┴└─┘┴  ┴ ┴└─┘└─┘└─┘
 
 workspaces() {
 	name=1
@@ -105,7 +107,9 @@ workspaces() {
 
 workspaces
 
-###########---------- Launch The Rice!! ----------##########
+#  ┬  ┌─┐┬ ┬┌┐┌┌─┐┬ ┬  ┌┬┐┬ ┬┌─┐  ┬─┐┬┌─┐┌─┐
+#  │  ├─┤│ │││││  ├─┤   │ ├─┤├┤   ├┬┘││  ├┤ 
+#  ┴─┘┴ ┴└─┘┘└┘└─┘┴ ┴   ┴ ┴ ┴└─┘  ┴└─┴└─┘└─┘
 
 ReloadTerms
 RandomWall
@@ -239,7 +243,9 @@ case "${RICETHEME}" in
 
 esac
 
-###########---------- BSPWM Config ----------##########
+#  ┌┐ ┌─┐┌─┐┬ ┬┌┬┐  ┌─┐┌─┐┌┐┌┌─┐┬┌─┐
+#  ├┴┐└─┐├─┘││││││  │  │ ││││├┤ ││ ┬
+#  └─┘└─┘┴  └┴┘┴ ┴  └─┘└─┘┘└┘└  ┴└─┘
 
 bspc config external_rules_command ${BSPDIR}/scripts/ExternalRules
 
@@ -263,14 +269,15 @@ bspc config merge_overlapping_monitors    true
 
 bspc config pointer_motion_interval       16
 
-###########---------- AutoStart Apps ----------##########
+#  ┌─┐┬ ┬┌┬┐┌─┐┌─┐┌┬┐┌─┐┬─┐┌┬┐  ┌─┐┌─┐┌─┐┌─┐
+#  ├─┤│ │ │ │ │└─┐ │ ├─┤├┬┘ │   ├─┤├─┘├─┘└─┐
+#  ┴ ┴└─┘ ┴ └─┘└─┘ ┴ ┴ ┴┴└─ ┴   ┴ ┴┴  ┴  └─┘
 
 launch sxhkd -c ${BSPDIR}/sxhkdrc
-launch picom --config ${BSPDIR}/rices/"${RICETHEME}"/picom.conf
-#launch picom --legacy-backends --config ${BSPDIR}/rices/"${RICETHEME}"/picom.conf
-#nitrogen --restore &
+#launch picom --config ${BSPDIR}/rices/$RICETHEME/picom.conf
+launch picom --legacy-backends --config ${BSPDIR}/rices/"${RICETHEME}"/picom.conf
 xsetroot -cursor_name left_ptr
 	
-if [[ ! `pidof polkit-gnome-authentication-agent-1` ]]; then
+if ! pidof polkit-gnome-authentication-agent-1 > /dev/null; then
 	/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 fi

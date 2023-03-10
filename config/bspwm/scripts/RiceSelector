@@ -1,22 +1,21 @@
 #!/usr/bin/env bash
-
-# Author 	 -  z0mbi3
-# Source 	 -  https://github.com/gh0stzk/dotfiles
-# Maintainer -  z0mbi3.zk@protonmail.com
+#  ╦═╗╦╔═╗╔═╗  ╔═╗╔═╗╦  ╔═╗╔═╗╔╦╗╔═╗╦═╗  - z0mbi3
+#  ╠╦╝║║  ║╣   ╚═╗║╣ ║  ║╣ ║   ║ ║ ║╠╦╝  - https://github.com/gh0stzk/dotfiles
+#  ╩╚═╩╚═╝╚═╝  ╚═╝╚═╝╩═╝╚═╝╚═╝ ╩ ╚═╝╩╚═  - z0mbi3.zk@protonmail.com
 
 cfg_file="$HOME/.config/bspwm/rice.cfg"
 rofi_command="rofi -theme $HOME/.config/bspwm/scripts/RiceSelector.rasi"
 
-# Array de opciones
+# Array Options
 options=("emilia" "jan" "aline" "isabel" "andrea" "cynthia" "silvia" "melissa" "pamela" "cristina" "karla" "z0mbi3")
 
-# Generar lista de opciones para rofi
+# Generate a list of options for rofi.
 options_text=$(printf "%s\n" "${options[@]}")
 
-# Mostrar el menú de selección de rofi y almacenar el resultado en una variable
+# Display the rofi selection menu and store the result in a variable.
 selected=$(echo -e "${options_text}" | $rofi_command -dmenu)
 
-# Si se seleccionó una opción válida, escribir el valor en el archivo de configuración y reiniciar el gestor de ventanas
+# If a valid option was selected, write the value to the configuration file and restart the window manager.
 if [[ " ${options[@]} " =~ " ${selected} " ]]; then
     echo "$selected" > "${cfg_file}"
     bspc wm -r
