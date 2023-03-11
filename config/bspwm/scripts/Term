@@ -14,7 +14,7 @@ case "$1" in
   --ou)
     alacritty --hold --class Updating,Alacritty -e yay -Syyu --devel;;
   --ocu)
-	alacritty --hold --class Updating,Alacritty -e pacman -Qu;;
+	alacritty --hold --class Updating,Alacritty -e checkupdates;;
   --or)
     alacritty --class Ranger,Alacritty -e ranger;;
   --ov)
