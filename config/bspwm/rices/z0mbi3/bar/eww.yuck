@@ -90,7 +90,7 @@
 				:onrightclick "scripts/popup chkupdates"		 
 				:onclick "scripts/popup pacupdates"))))
 ;; Updates vars
-(defpoll UPDATES :interval "15m" `~/.config/bspwm/scripts/Updates`)
+(defpoll UPDATES :interval "2m" `~/.config/bspwm/scripts/Updates`)
 (defvar pac false)
 
 

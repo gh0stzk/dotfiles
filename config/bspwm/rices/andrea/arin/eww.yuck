@@ -21,7 +21,7 @@
 (defpoll TTIME :interval "1s" `MediaControl length`)
 
 ;; Updates vars
-(defpoll UPDATES :interval "15m" `~/.config/bspwm/scripts/Updates`)
+(defpoll UPDATES :interval "2m" `~/.config/bspwm/scripts/Updates`)
 
 ;; Volume vars
 (defpoll volume_icon :interval "1s" "scripts/volume.sh --icon")
