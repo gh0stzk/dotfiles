@@ -10,46 +10,70 @@ mpd_connection_timeout = "5"
 mpd_crossfade_time = "5"
 mpd_music_dir = ~/Music
 lyrics_directory  = ~/.config/ncmpcpp/lyrics
+execute_on_song_change  = "MediaControl nccover ; dunstify --replace=27072 -i /tmp/cover.png "Playing.." "$(mpc --format '%title% \n%artist%' current)""
 
 visualizer_data_source = /tmp/mpd.fifo
 visualizer_output_name = my_fifo
 
-# General
-colors_enabled          = "yes"
-enable_window_title     = "yes"
-main_window_color       = "default"
-execute_on_song_change  = dunstify -i ~/.config/bspwm/assets/song.png "Playing.." "$(mpc --format '%title% \n%artist%' current)"
-autocenter_mode         = "yes"
-centered_cursor         = "yes"
-user_interface          = "classic"
-
-# Progess Bar
-progressbar_look = "━━╸"
-progressbar_color = "white"
-progressbar_elapsed_color="green"
-
-# UI Visibility
-header_visibility = "no"
-statusbar_visibility = "no"
-titles_visibility = "no"
-startup_screen = "playlist"
-#startup_slave_screen = "visualizer"
-locked_screen_width_part = 50
-ask_for_locked_screen_width_part = no
-
-# UI Appearance
-now_playing_prefix = "$b$3"
-now_playing_suffix = "$/b$9"
-song_status_format= "$7%t"
-song_list_format = "$8%a - %t$R  $5%l"
-song_columns_list_format= "(3f)[green]{} (60)[magenta]{t|f:Title} (1)[]{}"
-song_library_format = {{%a - %t} (%b)}|{%f}
-song_window_title_format = "Music"
-
-# Visualizer
 visualizer_in_stereo = "no"
-visualizer_type = "ellipse"
 visualizer_fps = "60"
-visualizer_look = ●●
-visualizer_color = "33,39,63,75,81,99,117,153,189"
+visualizer_type = "wave"
+visualizer_look = "∗▐"
+visualizer_color = "199,200,201,202,166,130,94,58,22"
+visualizer_spectrum_smooth_look = "yes"
 
+# GENERAL
+# ---
+connected_message_on_startup = "yes"
+cyclic_scrolling = "yes"
+mouse_support = "no"
+mouse_list_scroll_whole_page = "yes"
+lines_scrolled = "1"
+message_delay_time = "1"
+playlist_shorten_total_times = "yes"
+playlist_display_mode = "columns"
+browser_display_mode = "columns"
+search_engine_display_mode = "columns"
+playlist_editor_display_mode = "columns"
+autocenter_mode = "yes"
+centered_cursor = "yes"
+user_interface = "classic"
+follow_now_playing_lyrics = "yes"
+locked_screen_width_part = "50"
+ask_for_locked_screen_width_part = "yes"
+display_bitrate = "no"
+external_editor = "nano"
+main_window_color = "default"
+startup_screen = "playlist"
+
+# PROGRESS BAR
+# ---
+progressbar_look = "━━━"
+#progressbar_look = "▃▃▃"
+progressbar_elapsed_color = "magenta"
+progressbar_color = "black"
+
+# UI VISIBILITY
+# ---
+header_visibility = "no"
+statusbar_visibility = "yes"
+titles_visibility = "yes"
+enable_window_title = "yes"
+
+# COLORS
+# ---
+statusbar_color = "white"
+color1 = "white"
+color2 = "blue"
+
+# UI APPEARANCE
+# ---
+now_playing_prefix = "$b$2$7 "
+now_playing_suffix = "  $/b$8"
+current_item_prefix = "$b$7$/b$3 "
+current_item_suffix = "  $8"
+
+song_columns_list_format = "(50)[]{t|fr:Title} (0)[magenta]{a}"
+song_list_format = " {%t $R   $8%a$8}|{%f $R   $8%l$8} $8"
+song_status_format = "$b$2 $7 {$b$6$8 %t $6} $7 $8"
+song_window_title_format = "Now Playing .."

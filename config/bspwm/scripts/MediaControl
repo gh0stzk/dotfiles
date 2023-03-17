@@ -136,8 +136,14 @@ echo "$album"
 
 ########################## Cover ##########################
 mpccover() {
-ffmpeg -i "$mpddir"/"$(mpc current -f %file%)" "${Cover}" -y || cp $bkpCover $Cover
+ffmpeg -i "$mpddir"/"$(mpc current -f %file%)" -vf scale=500:500 "${Cover}" -y || cp $bkpCover $Cover
 echo "$Cover" && exit
+}
+
+## Cover for ncmpcpp ##
+ncmpcppcover() {
+ffmpeg -i "$mpddir"/"$(mpc current -f %file%)" -vf scale=500:500 "${Cover}" -y || cp $bkpCover $Cover
+exit
 }
 
 ########################## Time ##########################
@@ -181,10 +187,8 @@ echo "$perc"
 
 ########################## Playlist ##########################
 mpcsongpos() {
-pos=$(mpc status %songpos%)
-allsongs=$(mpc status %length%)
-playlist="$pos/$allsongs"
-[ -z "$pos" ] && playlist="0/0"
+playlist=$(mpc status %songpos%/%length%)
+[ -z "$playlist" ] && playlist="0/0"
 echo "$playlist"
 }
 
@@ -204,12 +208,13 @@ printf "$lyrics" | less
 
 doc() {
 echo "Usage:
-  music [Options]
+  MediaControl [Options]
 
 Options:
-  previous	previous song
-  next		next song
-  toggle	toggle between play-pause song
+  --previous	previous song
+  --next	next song
+  --toggle	toggle between play-pause song
+  --stop	stop song
   title		shows title of current song
   album		shows album of current song
   artist	shows artist of current song
@@ -240,8 +245,9 @@ case $Control in
 		album)		mpcalbum		;;
 		status)		mpcstatus		;;
 		statusicon)	mpcicon			;;
-		player)		echo "$Control"		;;
+		player)		echo "$Control"	;;
 		coverloc)	mpccover		;;
+		nccover)	ncmpcppcover	;;
 		showcover)	mpccover | xargs feh	;;
 		time)		mpctime			;;
 		length)		mpclength		;;
@@ -270,6 +276,6 @@ case $Control in
 		percent)	echo "0"				;;
 		playlist)	playlist				;;
 		lyrics)		lyrics					;;
-		*)		doc					;;
+		*)			doc						;;
 	esac
 esac 2>/dev/null
