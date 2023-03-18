@@ -8,7 +8,7 @@ notify_cmd='dunstify -u low -h string:x-dunst-stack-tag:obvolume'
 
 # Get Volume
 get_volume() {
-	echo "`pamixer --get-volume-human | sed 's/%//'`"
+	pamixer --get-volume-human | sed 's/%//'
 }
 
 # Get icons
@@ -30,19 +30,19 @@ notify_user() {
 
 # Increase Volume
 inc_volume() {
-	[[ `pamixer --get-mute` == true ]] && pamixer -u
+	[[ $(pamixer --get-mute) == true ]] && pamixer -u
 	pamixer --allow-boost --set-limit 150 -i 5 && get_icon && notify_user
 }
 
 # Decrease Volume
 dec_volume() {
-	[[ `pamixer --get-mute` == true ]] && pamixer -u
+	[[ $(pamixer --get-mute) == true ]] && pamixer -u
 	pamixer --allow-boost --set-limit 150 -d 5 && get_icon && notify_user
 }
 
 # Toggle Mute
 toggle_mute() {
-	if [[ `pamixer --get-mute` == false ]]; then
+	if [[ $(pamixer --get-mute) == false ]]; then
 		pamixer --toggle-mute && ${notify_cmd} -i "$iDIR/mute.png" "Mute"
 	else
 		pamixer --toggle-mute && get_icon && ${notify_cmd} -i "$icon" "Unmute"
@@ -50,7 +50,7 @@ toggle_mute() {
 }
 
 # Execute accordingly
-if [[ -x `which pamixer` ]]; then
+if [[ -x $(which pamixer) ]]; then
 	if [[ "$1" == "--get" ]]; then
 		get_volume
 	elif [[ "$1" == "--inc" ]]; then
@@ -60,7 +60,7 @@ if [[ -x `which pamixer` ]]; then
 	elif [[ "$1" == "--toggle" ]]; then
 		toggle_mute
 	else
-		echo $(get_volume)%
+		echo "$(get_volume)%"
 	fi
 else
 	${notify_cmd} "'pamixer' is not installed."

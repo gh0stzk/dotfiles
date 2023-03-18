@@ -14,11 +14,11 @@ CITYN=$(encode_to_url_format "$CITY")
 UNITS="metric" # Available "metric" "imperial"
 WEATHER=$(curl -sf "api.openweathermap.org/data/2.5/weather?q=$CITYN&appid=$KEY&units=$UNITS")
 
-WEATHER_DESC=$(echo $WEATHER | jq -r ".weather[0].main")
-WEATHER_TEMP=$(echo $WEATHER | jq ".main.temp" | cut -d "." -f 1)
+WEATHER_DESC=$(echo "$WEATHER" | jq -r ".weather[0].main")
+WEATHER_TEMP=$(echo "$WEATHER" | jq ".main.temp" | cut -d "." -f 1)
 WEATHER_ICON_CODE=$(echo "$WEATHER" | jq -r ".weather[].icon" | head -1)
-WEATHER_FEELS_LIKE=$(echo $WEATHER | jq ".main.feels_like" | cut -d "." -f 1)
-WEATHER_HUMIDITY=$(echo $WEATHER | jq ".main.humidity" | cut -d "." -f 1)
+WEATHER_FEELS_LIKE=$(echo "$WEATHER" | jq ".main.feels_like" | cut -d "." -f 1)
+WEATHER_HUMIDITY=$(echo "$WEATHER" | jq ".main.humidity" | cut -d "." -f 1)
 WEATHER_ICON=""
 WEATHER_HEX=""
 
@@ -103,17 +103,17 @@ esac
 
 case $1 in
 	"current_temp")
-		check_if_empty $WEATHER_TEMP
+		check_if_empty "$WEATHER_TEMP"
 		;;
 	"current_temp_fahrenheit")
-		WEATHER_TEMP=$((($WEATHER_TEMP * 9 / 5) + 32))
-		check_if_empty $WEATHER_TEMP
+		WEATHER_TEMP=$("$WEATHER_TEMP" 9 / 5 + 32)
+		check_if_empty "$WEATHER_TEMP"
 		;;
 	"feels_like")
-		check_if_empty $WEATHER_FEELS_LIKE
+		check_if_empty "$WEATHER_FEELS_LIKE"
 		;;
 	"humidity")
-		check_if_empty $WEATHER_HUMIDITY
+		check_if_empty "$WEATHER_HUMIDITY"
 		;;
 	"weather_desc")
 		[[ -z $WEATHER_DESC ]] && echo "Not Available." || echo "$WEATHER_DESC"
@@ -125,12 +125,11 @@ case $1 in
 		echo $WEATHER_HEX
 		;;
 	"full")
-		echo $WEATHER
+		echo "$WEATHER"
 		;;
 	"city")
-		echo $CITY
+		echo "$CITY"
 		;;
 	"wmodule")
-		echo $WEATHER_ICON $WEATHER_TEMP°
+		echo $WEATHER_ICON "$WEATHER_TEMP"°
 esac
-
