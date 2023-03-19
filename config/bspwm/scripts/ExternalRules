@@ -13,11 +13,11 @@ main () {
 case "$class" in
 	FloaTerm)
 		eval "$consequences"
-		[ "$state" ] || echo "state=floating center=on rectangle=781x451+0+0"
+		[ "$state" ] || echo "state=floating center=on rectangle=780x450+0+0"
 		;;
 	Updating)
 		eval "$consequences"
-		[ "$state" ] || echo "state=floating rectangle=483x190+1090+72"
+		[ "$state" ] || echo "state=floating rectangle=480x190+1090+72"
 		;;
 	Ranger)
 		eval "$consequences"
@@ -25,19 +25,19 @@ case "$class" in
 		;;
 	MusicPlayer)
 		eval "$consequences"
-		[ "$state" ] || echo "state=floating rectangle=630x215+0+0 center=on"
+		[ "$state" ] || echo "state=floating rectangle=525x370+0+0 center=on"
 		;;
 	Sysfetch)
 		eval "$consequences"
-		[ "$state" ] || echo "border=off state=floating rectangle=352x500+36+115"
+		[ "$state" ] || echo "state=floating rectangle=352x500+0+0 center=on"
 		;;
 	mpv)
 	    eval "$consequences"
-		[ "$state" ] || echo "state=floating focus=on center=on rectangle=925x519+0+0 border=off"
+		[ "$state" ] || echo "state=floating focus=on center=on rectangle=849x477+0+0"
 		;;
 	Viewnior)
 	    eval "$consequences"
-	    [ "$state" ] || echo "state=floating focus=on center=on border=off"
+	    [ "$state" ] || echo "state=floating focus=on center=on"
 		;;
 	whatsapp-nativefier-d40211|TelegramDesktop)
 	    eval "$consequences"
@@ -45,7 +45,7 @@ case "$class" in
 		;;
 	retroarch)
 	    eval "$consequences"
-	    [ "$state" ] || echo "state=pseudo_tiled desktop=^6 center=on follow=on border=off"
+	    [ "$state" ] || echo "state=pseudo_tiled desktop=^6 center=on follow=on"
 	    ;;
 	ranger)
 	    eval "$consequences"
@@ -53,7 +53,7 @@ case "$class" in
 	    ;;
 	Pavucontrol)
 	    eval "$consequences"
-	    [ "$state" ] || echo "state=floating follow=on center=on"
+	    [ "$state" ] || echo "state=floating center=on"
 	    ;;
 	Virt-manager)
 	    eval "$consequences"
@@ -61,11 +61,11 @@ case "$class" in
 	    ;;
 	Thunar)
 	    eval "$consequences"
-	    [ "$state" ] || echo "state=pseudo_tiled desktop=^2 rectangle=966x576+0+0 follow=on center=on border=off"
+	    [ "$state" ] || echo "state=pseudo_tiled desktop=^2 rectangle=966x576+0+0 follow=on center=on"
 	    ;;
 	firefox|Navigator)
 	    eval "$consequences"
-	    [ "$state" ] || echo "state=pseudo_tiled desktop=^3 border=off rectangle=1480x820+0+0 center=on follow=on"
+	    [ "$state" ] || echo "state=pseudo_tiled desktop=^3 rectangle=1480x820+0+0 center=on follow=on"
 	    ;;
 	 Transmission-gtk)
 	    eval "$consequences"
@@ -73,9 +73,9 @@ case "$class" in
 	    ;;
 	  Spotify)
 		eval "$consequences"
-	    [ "$state" ] || echo "state=pseudo_tiled center=on border=off rectangle=1124x600 desktop=^6 follow=on"
+	    [ "$state" ] || echo "state=pseudo_tiled center=on rectangle=1125x600 desktop=^6 follow=on"
 		;;
-		"")
+		"") ## spotify hack
         sleep 0.5
 		wm_class=($(xprop -id $wid | grep "WM_CLASS" | grep -Po '"\K[^,"]+'))
 		class=${wm_class[-1]}
