@@ -1,3 +1,7 @@
+(20/March/2023)
+- IMPORTANT FIX. You need to update .config/bspwm/scripts/RiceSelector If you installed my dotfiles from March 8 to today March 20.
+Just go to https://raw.githubusercontent.com/gh0stzk/dotfiles/master/config/bspwm/scripts/RiceSelector and copy, open your local one and select everything delete, and paste new code. Save it. 
+
 (08/Mach/2023)
 - Added new wallpaper to Aline.
 - Updated RiceInstaller
