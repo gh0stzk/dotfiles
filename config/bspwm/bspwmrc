@@ -11,7 +11,7 @@
 export RICETHEME=$(<$HOME/.config/bspwm/rice.cfg)
 PATH="$HOME/.config/bspwm/scripts:$PATH"
 BSPDIR="$HOME/.config/bspwm"
-PDIR="$HOME/.config/bspwm/rices/${RICETHEME}"
+PDIR="$HOME/.config/bspwm/rices/$RICETHEME"
 SFILE="${BSPDIR}/scripts/.sys"
 
 ## You can edit this.
