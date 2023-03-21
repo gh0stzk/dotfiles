@@ -4,7 +4,7 @@
 #  ╩╚═╩╚═╝╚═╝  ╚═╝╚═╝╩═╝╚═╝╚═╝ ╩ ╚═╝╩╚═  - z0mbi3.zk@protonmail.com
 
 cfg_file="$HOME/.config/bspwm/rice.cfg"
-rofi_command="rofi -theme $HOME/.config/bspwm/scripts/RiceSelector.rasi"
+rofi_command="rofi -no-lazy-grab -dmenu -theme $HOME/.config/bspwm/scripts/RiceSelector.rasi"
 
 # Options
 emilia="󰔿 Emilia"
@@ -21,7 +21,7 @@ karla="󰔿 Karla"
 z0mbi3="󰔿 z0mbi3"
 
 options="$emilia\n$jan\n$aline\n$isabel\n$andrea\n$cynthia\n$silvia\n$melissa\n$pamela\n$cristina\n$karla\n$z0mbi3"
-chosen="$(printf "$options" | $rofi_command -dmenu)"
+chosen="$(printf "$options" | $rofi_command)"
 case $chosen in
 
 	$emilia)
