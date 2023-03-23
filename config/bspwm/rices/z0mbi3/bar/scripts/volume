@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+# @requires: pactl
+
+SINK=$(pactl list short sinks | sed -e 's,^\([0-9][0-9]*\)[^0-9].*,\1,' | head -n 1)
+
+get_percentage () {
+  local muted=$(pamixer --get-volume-human)
+  if [[ $muted == 'muted' ]]; then
+    echo "0"
+  else
+    per=$(pamixer --get-volume)
+    echo "${per}"
+  fi
+}
+
+get_icon () {
+  local vol=$(get_percentage)
+  if [[ $vol == "0" ]]; then
+    echo "images/icons/volume/mute.png"
+  else
+    echo "images/icons/volume/volume.png"
+  fi
+}
+
+get_vol () {
+  local percent=$(get_percentage)
+  echo "$percent" | tr -d '%'
+}
+
+
+case "$1" in
+  --icon)
+	get_icon
+	;;
+  --percentage)
+	get_percentage
+	;;
+  --vol)
+	get_vol
+	;;
+  --toggle-muted)
+	pamixer -t
+	;;
+  --set)
+	val=$(echo $2 | tr '.' ' ' | awk '{print $1}')
+		if test $val -gt 100; then
+			val=100
+		fi
+	pactl set-sink-volume $SINK $val%
+	;;
+esac

@@ -6,11 +6,11 @@
 (defvar IMAGEP "../../../assets/profile.png")
 
 ;; Music Variables
-(defpoll art		:interval "5s"  "../../../scripts/MediaControl coverloc")
-(defpoll title		:interval "5s"  "../../../scripts/MediaControl title")
-(defpoll artist		:interval "5s"  "../../../scripts/MediaControl artist")
-(defpoll playpause	:interval "5s"  "../../../scripts/MediaControl statusicon")
-(defpoll songtime 	:interval "1s"  "../../../scripts/MediaControl percent")
+(defpoll art		:interval "2s"  "MediaControl coverloc")
+(defpoll title		:interval "2s"  "MediaControl title")
+(defpoll artist		:interval "2s"  "MediaControl artist")
+(defpoll playpause	:interval "2s"  "MediaControl statusicon")
+(defpoll songtime 	:interval "1s"  "MediaControl percent")
 
 ;; Calendar Widgets ;;
 (defwidget cal []
@@ -21,11 +21,11 @@
 			  :day calendar_day 
 			  :month calendar_month 
 			  :year calendar_year))))
-(defpoll calendar_day :interval "10h"
+(defpoll calendar_day :interval "20h"
     "date '+%d'")
-(defpoll calendar_month :interval "10h"
-    "calendar")
-(defpoll calendar_year :interval "10h"
+(defpoll calendar_month :interval "20h"
+    "date '+%m'")
+(defpoll calendar_year :interval "20h"
     "date '+%Y'")
 
 (defwidget powermenu []
@@ -94,23 +94,23 @@
           (box :orientation "h"
                :space-evenly true
                (button :class "launcher-btn"
-                       :onclick "firefox & disown"
-                       :tooltip "firefox"
+                       :onclick "OpenApps --browser"
+                       :tooltip "Browser"
                        "󰇧")
                (button :class "launcher-btn"
-                       :onclick "Term --of"
+                       :onclick "OpenApps --fetch"
                        :tooltip "System Fetch"
                        "󰚌")
                (button :class "launcher-btn"
-                       :onclick "thunar ~ & disown"
-                       :tooltip "Thunar"
+                       :onclick "OpenApps --filemanager"
+                       :tooltip "File Manager"
                        "")
                (button :class "launcher-btn"
-                       :onclick "Term --ot"
+                       :onclick "OpenApps --terminal"
                        :tooltip "Terminal"
                        "")
                (button :class "launcher-btn"
-                       :onclick "geany & disown"
+                       :onclick "OpenApps --editor"
                        :tooltip "Editor"
                        ""))))
 
@@ -136,9 +136,9 @@
 		 	:space-evenly "false"
 			:halign "center"
 			:spacing 30
-			(button :class "btn_prev" :onclick "../../../scripts/MediaControl --previous" "ﭣ")
-			(button :class "btn_play" :onclick "../../../scripts/MediaControl --toggle" playpause)
-			(button :class "btn_next" :onclick "../../../scripts/MediaControl --next" "ﭡ"))
+			(button :class "btn_prev" :onclick "MediaControl --previous" "ﭣ")
+			(button :class "btn_play" :onclick "MediaControl --toggle" playpause)
+			(button :class "btn_next" :onclick "MediaControl --next" "ﭡ"))
 	(box    :orientation "h"
 			:class "metric-player"
 			:space-evenly "false"

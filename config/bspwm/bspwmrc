@@ -234,7 +234,7 @@ case "${RICETHEME}" in
 
 		killall -9 picom polybar
 		launch dunst -config ${BSPDIR}/dunstrc-light
-		launch eww -c ${BSPDIR}/rices/andrea/arin --restart open-many \
+		launch eww -c ${BSPDIR}/rices/andrea/arin open-many \
 			search \
 			apps \
 			weather \

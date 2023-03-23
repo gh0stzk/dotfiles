@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+power() {
+    LOCKFILE_POWER="$HOME/.cache/eww-pam-power.lock"
+
+if [[ ! -f "$LOCKFILE_POWER" ]]; then
+    touch "$LOCKFILE_POWER"
+    eww open powermenu -c ~/.config/bspwm/rices/pamela/widgets/
+elif [[ -f "$LOCKFILE_POWER" ]]; then
+    eww close powermenu -c ~/.config/bspwm/rices/pamela/widgets/
+    rm "$LOCKFILE_POWER"
+fi
+}
+
+profile() {
+    LOCKFILE_PROFILE="$HOME/.cache/eww-pam-profile.lock"
+
+if [[ ! -f "$LOCKFILE_PROFILE" ]]; then
+    touch "$LOCKFILE_PROFILE"
+    eww open launchermenu -c ~/.config/bspwm/rices/pamela/widgets/
+elif [[ -f "$LOCKFILE_PROFILE" ]]; then
+    eww close launchermenu -c ~/.config/bspwm/rices/pamela/widgets/
+    rm "$LOCKFILE_PROFILE"
+fi
+}
+
+mplayer() {
+LOCKFILE_MPLAYER="$HOME/.cache/eww-pam-mplayer.lock"
+
+if [[ ! -f "$LOCKFILE_MPLAYER" ]]; then
+    touch "$LOCKFILE_MPLAYER"
+    eww open music -c ~/.config/bspwm/rices/pamela/widgets/
+elif [[ -f "$LOCKFILE_MPLAYER" ]]; then
+    eww close music -c ~/.config/bspwm/rices/pamela/widgets/
+    rm "$LOCKFILE_MPLAYER"
+fi
+}
+
+calendar() {
+    LOCKFILE_CALENDAR="$HOME/.cache/eww-pam-calendar.lock"
+
+if [[ ! -f "$LOCKFILE_CALENDAR" ]]; then
+    touch "$LOCKFILE_CALENDAR"
+    eww open calendar -c ~/.config/bspwm/rices/pamela/widgets/
+elif [[ -f "$LOCKFILE_CALENDAR" ]]; then
+    eww close calendar -c ~/.config/bspwm/rices/pamela/widgets/
+    rm "$LOCKFILE_CALENDAR"
+fi
+}
+
+case "$1" in
+	--powermenu)
+		power;;
+	--cardprofile)
+		profile;;
+	--musicplayer)
+		mplayer;;
+	--calendar)
+		calendar;;
+	*)
+		echo "Error..";;
+esac

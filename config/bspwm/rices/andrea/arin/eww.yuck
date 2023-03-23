@@ -42,7 +42,7 @@
 (defwidget search [] 
 		(box :class "dockbox"
 			(box :orientation "h" :spacing 15 :valign "center" :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
-				(button :style "background-image: url('images/icons/dashboard.png');" :class "genicon" :onclick "scripts/widget_apps --menu"
+				(button :style "background-image: url('images/icons/dashboard.png');" :class "genicon" :onclick "OpenApps --menu"
 				:onrightclick "RiceSelector & disown")
 				(label :class "workspace" :halign "start" :text WMS))))
 
@@ -50,12 +50,12 @@
 (defwidget apps [] 
 		(box :class "dockbox"
 			(box :orientation "h" :spacing 15 :valign "center" :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
-				(button :style "background-image: url('images/icons/apps/zombie.png');" :class "appicon" :onclick "scripts/widget_apps --zo")
-				(button :style "background-image: url('images/icons/apps/terminal.png');" :class "appicon" :onclick "scripts/widget_apps --tr")
-				(button :style "background-image: url('images/icons/apps/firefox.png');" :class "appicon" :onclick "scripts/widget_apps --ff")
-				(button :style "background-image: url('images/icons/apps/files.png');" :class "appicon" :onclick "scripts/widget_apps --fm")
-				(button :style "background-image: url('images/icons/apps/notes.png');" :class "appicon" :onclick "scripts/widget_apps --ge")
-				(button :style "background-image: url('images/icons/apps/telegram.png');" :class "appicon" :onclick "scripts/widget_apps --tg"))))
+				(button :style "background-image: url('images/icons/apps/zombie.png');" :class "appicon" :onclick "OpenApps --fetch")
+				(button :style "background-image: url('images/icons/apps/terminal.png');" :class "appicon" :onclick "OpenApps --terminal")
+				(button :style "background-image: url('images/icons/apps/firefox.png');" :class "appicon" :onclick "OpenApps --browser")
+				(button :style "background-image: url('images/icons/apps/files.png');" :class "appicon" :onclick "OpenApps --filemanager")
+				(button :style "background-image: url('images/icons/apps/notes.png');" :class "appicon" :onclick "OpenApps --editor")
+				(button :style "background-image: url('images/icons/apps/telegram.png');" :class "appicon" :onclick "OpenApps --telegram"))))
 
 ;; weather
 (defwidget weather [] 
@@ -85,7 +85,7 @@
 		(box :class "dockbox"
 			 (box :orientation "h" :spacing 16 :valign "center" :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
 			 
-				 (button :onclick "scripts/widget_apps --up"
+				 (button :onclick "OpenApps --update" :onrightclick "OpenApps --checkupdates"
 					(box :orientation "h" :spacing 8 :valign "center" :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
 						(box :style "background-image: url('images/icons/system/pac_man.png');" :class "trayicon")
 							(label :class "mails" :halign "start" :text UPDATES)))

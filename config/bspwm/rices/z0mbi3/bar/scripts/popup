@@ -1,39 +1,32 @@
 #!/usr/bin/env bash
 
-calendar(){
-LOCK_FILE="$HOME/.cache/eww-calendar.lock"
-EWW_BIN="eww"
+infocenter(){
+FILE="$HOME/.cache/eww_z0mbi3.dashboard"
 
-run() {
-    ${EWW_BIN} -c $HOME/.config/bspwm/rices/$RICETHEME/bar open calendar
+if [[ ! -f "$FILE" ]]; then
+	touch "$FILE"
+	eww --config $HOME/.config/bspwm/rices/z0mbi3/dashboard open dashboard
+else
+	eww --config $HOME/.config/bspwm/rices/z0mbi3/dashboard close dashboard
+	rm "$FILE"
+fi
 }
 
-# Run eww daemon if not running
-if [[ ! `pidof eww` ]]; then
-    ${EWW_BIN} daemon
-    sleep 1
-fi
+calendar(){
+LOCK_FILE="$HOME/.cache/eww-z0mbi3-calendar.lock"
 
-# Open widgets
 if [[ ! -f "$LOCK_FILE" ]]; then
     touch "$LOCK_FILE"
-    run
+    eww -c $HOME/.config/bspwm/rices/z0mbi3/bar open calendar
 else
-    ${EWW_BIN} -c $HOME/.config/bspwm/rices/$RICETHEME/bar close calendar
+    eww -c $HOME/.config/bspwm/rices/z0mbi3/bar close calendar
     rm "$LOCK_FILE"
 fi
 }
 
-if [ "$1" = "launcher" ]; then
-rofi -no-lazy-grab -show drun -theme $HOME/.config/bspwm/rices/$RICETHEME/launcher.rasi & disown
-elif [ "$1" = "infocenter" ]; then
-~/.config/bspwm/rices/$RICETHEME/dashboard/LaunchInfoCenter.sh
-elif [ "$1" = "pacupdates" ]; then
-Term --ou
-elif [ "$1" = "chkupdates" ]; then
-Term --ocu
-elif [ "$1" = "audio" ]; then
-pavucontrol & disown
-elif [ "$1" = "calendar" ]; then
-calendar
-fi
+case "$1" in
+  --infocenter)
+	infocenter;;
+  --calendar)
+	calendar;;
+esac

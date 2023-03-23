@@ -1,19 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-## Files and CMD
-FILE="$HOME/.cache/eww_launch.sidebar.lock"
-CFG="$HOME/.config/bspwm/rices/$RICETHEME/arin/sidedar"
-EWW=`which eww`
-
-## Run eww daemon if not running already
-if [[ ! `pidof eww` ]]; then
-	${EWW} daemon
-	sleep 1
-fi
-
-## Open widgets 
+FILE="$HOME/.cache/eww_andrea-sidebar.lock"
+CFG="$HOME/.config/bspwm/rices/andrea/arin/sidedar"
+ 
 run_eww() {
-	${EWW} --config "$CFG" --restart open-many \
+	eww --config "$CFG" open-many \
 			resources \
 			logout \
 			suspend \
@@ -23,11 +14,10 @@ run_eww() {
 			quotes
 }
 
-## Launch or close widgets accordingly
 if [[ ! -f "$FILE" ]]; then
 	touch "$FILE"
 	run_eww
 else
-	${EWW} --config "$CFG" close resources logout suspend lock reboot shutdown quotes
+	eww --config "$CFG" close resources logout suspend lock reboot shutdown quotes
 	rm "$FILE"
 fi

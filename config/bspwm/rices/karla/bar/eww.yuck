@@ -15,12 +15,12 @@
 ;; apps
 (defwidget apps [] 
 			(box :orientation "h" :spacing 7 :valign "center" :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
-				(button :style "background-image: url('images/icons/terminal.png');" :class "appicon" :onclick "scripts/apps --tr")
-				(button :style "background-image: url('images/icons/firefox.png');" :class "appicon" :onclick "scripts/apps --ff")
-				(button :style "background-image: url('images/icons/files.png');" :class "appicon" :onclick "scripts/apps --fm")
-				(button :style "background-image: url('images/icons/notes.png');" :class "appicon" :onclick "scripts/apps --ge")
-				(button :style "background-image: url('images/icons/whatsapp.png');" :class "appicon" :onclick "scripts/apps --wa")
-				(button :style "background-image: url('images/icons/telegram.png');" :class "appicon" :onclick "scripts/apps --tg")))
+				(button :style "background-image: url('images/icons/terminal.png');" :class "appicon" :onclick "OpenApps --terminal")
+				(button :style "background-image: url('images/icons/firefox.png');" :class "appicon" :onclick "OpenApps --browser")
+				(button :style "background-image: url('images/icons/files.png');" :class "appicon" :onclick "OpenApps --filemanager")
+				(button :style "background-image: url('images/icons/notes.png');" :class "appicon" :onclick "OpenApps --editor")
+				(button :style "background-image: url('images/icons/whatsapp.png');" :class "appicon" :onclick "OpenApps --whats")
+				(button :style "background-image: url('images/icons/telegram.png');" :class "appicon" :onclick "OpenApps --telegram")))
 				
 				
 (defwidget sep []

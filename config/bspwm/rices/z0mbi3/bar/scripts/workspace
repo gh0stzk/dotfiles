@@ -3,42 +3,40 @@
 # Checks if a list ($1) contains an element ($2)
 contains() {
     for e in $1; do
-        [ "$e" -eq "$2" ] && echo 1 && return 
+        [[ "$e" -eq "$2" ]] && echo 1 && return
     done
     echo 0
 }
 
 print_workspaces() {
-    buf=""
-    desktops=$(bspc query -D --names)
-    focused_desktop=$(bspc query -D -d focused --names)
-    occupied_desktops=$(bspc query -D -d .occupied --names)
-    
-    
-    for d in $desktops; do
-        if [ "$(contains "$focused_desktop" "$d")" -eq 1 ]; then
-            ws=$d
-            icon="󰮯"
-            class="workspace-focused"
-        elif [ "$(contains "$occupied_desktops" "$d")" -eq 1 ]; then
-            ws=$d
-            icon="󰊠"
-            class="workspace-occupied"
-        else 
-            ws="$d"
-            icon="󰑊"
-            class="workspace-empty"
-        fi  
+    local buf=""
+    local desktops=$(bspc query -D --names)
+    local focused_desktop=$(bspc query -D -d focused --names)
+    local occupied_desktops=$(bspc query -D -d .occupied --names)
 
-        buf="$buf (eventbox :cursor \"pointer\" (button :class \"$class\" :onclick \"bspc desktop -f $ws\" \"$icon\"))"
-    done
+for d in $desktops; do
+    if [[ "$(contains "$focused_desktop" "$d")" -eq 1 ]]; then
+        local ws=$d
+        local icon="󰮯"
+        local class="workspace-focused"
+    elif [[ "$(contains "$occupied_desktops" "$d")" -eq 1 ]]; then
+        local ws=$d
+        local icon="󰊠"
+        local class="workspace-occupied"
+    else 
+        local ws="$d"
+        local icon="󰑊"
+        local class="workspace-empty"
+     fi  
+
+    local buf+="(eventbox :cursor \"pointer\" (button :class \"$class\" :onclick \"bspc desktop -f $ws\" \"$icon\"))"
+done
 
     echo "(box :orientation \"v\" :class \"works\" :halign \"center\" :valign \"center\" :vexpand true :hexpand true $buf)"
 }
 
 # Listen to bspwm changes
-    print_workspaces
+print_workspaces
 bspc subscribe desktop node_transfer | while read -r _ ; do
-    print_workspaces
-done 
-	
+	print_workspaces
+done

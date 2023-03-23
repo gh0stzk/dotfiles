@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+#  ╔═╗╔═╗╔═╗╔═╗  ╦  ╔═╗╦ ╦╔╗╔╔═╗╦ ╦╔═╗╦═╗
+#  ╠═╣╠═╝╠═╝╚═╗  ║  ╠═╣║ ║║║║║  ╠═╣║╣ ╠╦╝
+#  ╩ ╩╩  ╩  ╚═╝  ╩═╝╩ ╩╚═╝╝╚╝╚═╝╩ ╩╚═╝╩╚═
+#	Script to control apps launcher
+#   Author: z0mbi3
+#	url: https://github.com/gh0stzk
+
+# From here you can control your favorite applications for all themes.
+
+case "$1" in
+  --menu)
+    rofi -no-lazy-grab -show drun \
+    -theme $HOME/.config/bspwm/rices/$RICETHEME/launcher.rasi;;
+  --terminal)
+    alacritty;;
+  --floating)
+    alacritty --class FloaTerm,Alacritty;;
+  --update)
+    alacritty --hold --class Updating,Alacritty -e yay -Syyu --devel;;
+  --checkupdates)
+	alacritty --hold --class Updating,Alacritty -e checkupdates;;
+  --ranger)
+    alacritty --class Ranger,Alacritty -e ranger;;
+  --nvim)
+    alacritty -e nvim;;
+  --music)
+    alacritty --class MusicPlayer,Alacritty -e ncmpcpp;;
+  --fetch)
+    alacritty --hold --class Sysfetch,Alacritty -e ~/.local/bin/sysfetch;;
+  #Apps
+  --filemanager)
+	thunar;;
+  --browser)
+	firefox;;
+  --editor)
+	geany;;
+  --telegram)
+	telegram;;
+  --whats)
+	whatsapp-nativefier --disable-gpu;;
+  --soundcontrol)
+    pavucontrol;;
+  *)
+    echo "Opción no válida";;
+esac
+

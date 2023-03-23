@@ -1,9 +1,9 @@
 ;; Music Variables
-(defpoll art		:interval "5s"  "../../../scripts/MediaControl coverloc")
-(defpoll title		:interval "5s"  "../../../scripts/MediaControl title")
-(defpoll artist		:interval "5s"  "../../../scripts/MediaControl artist")
-(defpoll playpause	:interval "5s"  "../../../scripts/MediaControl statusicon")
-(defpoll songtime 	:interval "1s"  "../../../scripts/MediaControl percent")
+(defpoll art		:interval "5s"  "MediaControl coverloc")
+(defpoll title		:interval "5s"  "MediaControl title")
+(defpoll artist		:interval "5s"  "MediaControl artist")
+(defpoll playpause	:interval "5s"  "MediaControl statusicon")
+(defpoll songtime 	:interval "1s"  "MediaControl percent")
 
 ;;  Music Widgets
 (defwidget music [] 
@@ -27,9 +27,9 @@
 		 	:space-evenly "false"
 			:halign "center"
 			:spacing 30
-			(button :class "btn_prev" :onclick "../../../scripts/MediaControl --previous" "ﭣ")
-			(button :class "btn_play" :onclick "../../../scripts/MediaControl --toggle" playpause)
-			(button :class "btn_next" :onclick "../../../scripts/MediaControl --next" "ﭡ"))
+			(button :class "btn_prev" :onclick "MediaControl --previous" "ﭣ")
+			(button :class "btn_play" :onclick "MediaControl --toggle" playpause)
+			(button :class "btn_next" :onclick "MediaControl --next" "ﭡ"))
 	(box    :orientation "h"
 			:class "metric-player"
 			:space-evenly "false"

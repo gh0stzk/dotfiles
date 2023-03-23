@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-count=0
-
 ID="$(ip link | awk '/state UP/ {print $2}')"
 SSID="$(iwgetid -r)"
 
@@ -20,8 +18,9 @@ net_stat () {
 	fi
 }
 
-if [[ $1 == '--stat' ]]; then
-	net_stat | head -n1
-elif [[ $1 == '--icon' ]]; then
-	net_stat | tail -n1
-fi
+case "$1" in
+	--stat)
+		net_stat | head -n1;;
+	--icon)
+		net_stat | tail -n1;;
+esac

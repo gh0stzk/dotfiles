@@ -1,6 +1,6 @@
 ;; **
-;; **       z0mbi3
-;; ** z0mbi3.zk@protonmail.com
+;; **         z0mbi3
+;; ** https://github.com/gh0stzk
 ;; **
 
 ;; ** Variables ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -38,23 +38,23 @@
           (box :class "welcometxt" :halign "start" :valign "center" "Welcome ${iam}")
           (box :class "pfpapps" :halign "center" :valign "center" :hexpand true :spacing 20
 			   (button :class "launcher-btn"
-                       :onclick "firefox & disown"
-                       :tooltip "firefox"
+                       :onclick "OpenApps --browser"
+                       :tooltip "Browser"
                        "󰇧")
                (button :class "launcher-btn"
-                       :onclick "Term --of"
+                       :onclick "OpenApps --fetch"
                        :tooltip "System Fetch"
                        "󰚌")
                (button :class "launcher-btn"
-                       :onclick "thunar ~ & disown"
-                       :tooltip "Thunar"
+                       :onclick "OpenApps --filemanager"
+                       :tooltip "File Manager"
                        "")
                (button :class "launcher-btn"
-                       :onclick "Term --ot"
+                       :onclick "OpenApps --terminal"
                        :tooltip "Terminal"
                        "")
                (button :class "launcher-btn"
-                       :onclick "geany & disown"
+                       :onclick "OpenApps --editor"
                        :tooltip "Editor"
                        ""))
         ))

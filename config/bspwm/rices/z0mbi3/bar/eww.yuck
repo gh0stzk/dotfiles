@@ -3,13 +3,32 @@
 ;; put path to aesthetic bar config files here ;;
 (defvar eww "/usr/bin/eww -c $HOME/.config/bspwm/rices/z0mbi3/bar")
 
-;; Volume vars
-(defpoll volume_icon :interval "1s" "scripts/volume.sh --icon")
-(defpoll volumen :interval "1s" "scripts/volume.sh --percentage")
-(defpoll volume_value :interval "1s" "scripts/volume.sh --vol")
-
 ;; Workspaces
 (deflisten workspace "./scripts/workspace")
+
+;; Volume vars
+(defvar volum false)
+(defpoll volume_icon :interval "1s" "scripts/volume --icon")
+(defpoll volumen :interval "1s" "scripts/volume --percentage")
+(defpoll volume_value :interval "1s" "scripts/volume --vol")
+
+;; Network
+(defpoll WIFIICON :interval "10s" `scripts/wifi --icon`)
+(defpoll NETSTAT :interval "10s" `scripts/wifi --stat`)
+
+;; calendar
+(defpoll calendar_day :interval "10h" "date '+%d'")
+(defpoll calendar_month :interval "10h" "date '+%m'")
+(defpoll calendar_year :interval "10h" "date '+%Y'")
+
+;; Updates vars
+(defpoll UPDATES :interval "2m" `Updates`)
+(defvar pac false)
+
+;; Time
+(defpoll hour	:interval "1s"	"date '+%H'")
+(defpoll min	:interval "1s"	"date '+%M'")
+(defpoll time :interval "10s" "date '+%H:%M %b %d, %Y'")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;							Widget Section's							 ;;	
@@ -21,7 +40,7 @@
 		 :space-evenly "false" 
 		 :spacing -15
   	(button :class "launcher_icon" 
-		   	:onclick "scripts/popup launcher"
+		   	:onclick "OpenApps --menu"
 		   	:onrightclick "RiceSelector & disown" "󰣇")))
 
 ;; Workspaces Widgets ;;
@@ -35,9 +54,6 @@
 	(button		:style "background-image: url('${WIFIICON}');"
 				:class "trayicon"
 				:tooltip "${NETSTAT}")))
-;; Network
-(defpoll WIFIICON :interval "10s" `scripts/wifi --icon`)
-(defpoll NETSTAT :interval "10s" `scripts/wifi --stat`)
 
 
 ;; control center ;;
@@ -62,7 +78,7 @@
 	(button		:style "background-image: url('images/icons/system/infowidgets.png');"
 				:class "trayicon" 									
 				:tooltip "Info Center"		 
-				:onclick "scripts/popup infocenter"))))
+				:onclick "scripts/popup --infocenter"))))
 
 (defvar notify false)
 
@@ -87,11 +103,8 @@
 	(button		:style "background-image: url('images/icons/system/pac_man.png');"
 				:class "trayicon" 									
 				:tooltip "Updates ${UPDATES}"
-				:onrightclick "scripts/popup chkupdates"		 
-				:onclick "scripts/popup pacupdates"))))
-;; Updates vars
-(defpoll UPDATES :interval "2m" `~/.config/bspwm/scripts/Updates`)
-(defvar pac false)
+				:onrightclick "OpenApps --checkupdates"		 
+				:onclick "OpenApps --update"))))
 
 
 ;; Volume Widgets ;;
@@ -106,17 +119,16 @@
 			  :duration "550ms"
 	(scale    :class "volbar" 	  
 			  :value volume_value
-			  :onchange "scripts/volume.sh set {}"
+			  :onchange "scripts/volume --set {}"
 			  :orientation "v"      
 			  :flipped true 
-			  :tooltip "Volume: ${volumen}" 
+			  :tooltip "Volume: ${volumen}%" 
 			  :max 101 
 			  :min 0))
 	(button   :style "background-image: url('${volume_icon}');"
 			  :class "trayicon"
-			  :onrightclick "scripts/popup audio"
-			  :onclick "scripts/volume.sh --toggle-muted"))))			  
-(defvar volum false)
+			  :onrightclick "OpenApps --soundcontrol"
+			  :onclick "scripts/volume --toggle-muted"))))
 
 
 ;; Control Panel Widgets ;;	
@@ -134,15 +146,13 @@
 	(box	:orientation "v" 
 			:class "time" 
 			:valign "end"
-	(button	:onclick "scripts/popup calendar"
+	(button	:onclick "scripts/popup --calendar"
 			:tooltip "${time}"
 			:class "time-hour" hour)
-	(button	:onclick "scripts/popup calendar"
+	(button	:onclick "scripts/popup --calendar"
 			:tooltip "${time}"
 			:class "time-min"  min)))
-(defpoll hour	:interval "1s"	"date '+%H'")
-(defpoll min	:interval "1s"	"date '+%M'")
-(defpoll time :interval "10s" "date '+%H:%M %b %d, %Y'")
+
 
 ;; Calendar Widgets ;;
 (defwidget cal []
@@ -153,10 +163,7 @@
 			  :day calendar_day 
 			  :month calendar_month 
 			  :year calendar_year))))
-(defpoll calendar_day :interval "10h"
-    "date '+%d'")
-(defpoll calendar_month :interval "10h" "scripts/calendar")
-(defpoll calendar_year :interval "10h" "date '+%Y'")
+
 
 ;; Powermenu Widgets ;;
 (defwidget power []
@@ -192,6 +199,7 @@
 				:tooltip "Shutdown"		 
 				:onclick "shutdown now"	"󰐥"))))
 (defvar power false)
+
 
 ;; Top Widgets ;;
 (defwidget top []
@@ -229,7 +237,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;							Window Section's							 ;;	
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Bar Windows ;;
+
 (defwindow bar
 	:geometry (geometry :x "1%" 
 						:y "0%" 

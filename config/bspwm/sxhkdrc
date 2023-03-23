@@ -5,15 +5,15 @@
 
 # Open Terminal (alacritty)
 super + Return
-	Term --ot
+	OpenApps --terminal
 	
 # Open floating Terminal
 super + alt + Return
-	Term --oft
+	OpenApps --floating
 
 # Menu aplicaciones
 super + @space
-	rofi -no-lazy-grab -show drun -theme $HOME/.config/bspwm/rices/$RICETHEME/launcher.rasi
+	OpenApps --menu
 
 # Theme Selector
 alt + @space
@@ -29,12 +29,12 @@ shift + alt + {b,g,n,p,r,t,w,m,v,k}
 	 geany, \
 	 thunar, \
 	 pavucontrol, \
-	 Term --or, \
+	 OpenApps --ranger, \
 	 telegram-desktop, \
 	 whatsapp-nativefier --disable-gpu, \
 	 env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --disable-gpu --no-zygote %U, \
-	 Term --ov, \
-	 Term --om}
+	 OpenApps --nvim, \
+	 OpenApps --music}
 
 # Hide/Show Bar (Polybar and/or eww)
 super + {h,u}
