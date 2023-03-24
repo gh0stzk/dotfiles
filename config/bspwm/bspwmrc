@@ -65,8 +65,8 @@ fi
 
 function launch() {
   local running
-  running="$(pgrep -x "$1")"
-  [ "$running" ] && pkill -x "$1" 2> /dev/null
+  running="$(pgrep "$1")"
+  [ "$running" ] && pkill -9 "$1" 2> /dev/null
   "$@" &
 }
 

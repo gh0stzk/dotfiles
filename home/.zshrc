@@ -19,7 +19,12 @@ fi
 #  │  │ │├─┤ ││  ├┤ ││││ ┬││││├┤ 
 #  ┴─┘└─┘┴ ┴─┴┘  └─┘┘└┘└─┘┴┘└┘└─┘
 autoload -Uz compinit
-compinit -d ~/.config/zsh/zcompdump
+
+for dump in ~/.config/zsh/zcompdump(N.mh+24); do
+  compinit ~/.config/zsh/zcompdump
+done
+
+compinit -C -d ~/.config/zsh/zcompdump
 
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
