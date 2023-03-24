@@ -29,7 +29,7 @@ Cover=/tmp/cover.png
 # if cover not found in metadata use this instead
 bkpCover=~/.config/bspwm/assets/fallback.webp
 # mpd music directory
-mpddir=/run/media/z0mbi3/windows/Musica
+mpddir=~/Music
 
 # ┌─┐┬  ┌─┐┬ ┬┌─┐┬─┐┌─┐┌┬┐┬    ┌─┐┌─┐┬─┐┬┌─┐┌┬┐┌─┐
 # ├─┘│  ├─┤└┬┘├┤ ├┬┘│   │ │    └─┐│  ├┬┘│├─┘ │ └─┐
