@@ -4,72 +4,20 @@
 #  ╩╚═╩╚═╝╚═╝  ╚═╝╚═╝╩═╝╚═╝╚═╝ ╩ ╚═╝╩╚═  - z0mbi3.zk@protonmail.com
 
 cfg_file="$HOME/.config/bspwm/rice.cfg"
-rofi_command="rofi -no-lazy-grab -dmenu -theme $HOME/.config/bspwm/scripts/RiceSelector.rasi"
+rofi_command="rofi -no-lazy-grab -dmenu -theme $HOME/.config/bspwm/scripts/RiceSelector.rasi & disown"
 
-# Options
-emilia="󰔿 Emilia"
-jan="󰔿 Jan"
-aline="󰔿 Aline"
-isabel="󰔿 Isabel"
-andrea="󰔿 Andrea"
-cynthia="󰔿 Cynthia"
-silvia="󰔿 Silvia"
-melissa="󰔿 Melissa"
-pamela="󰔿 Pamela"
-cristina="󰔿 Cristina"
-karla="󰔿 Karla"
-z0mbi3="󰔿 z0mbi3"
+# Array de opciones
+options=("emilia" "jan" "aline" "isabel" "andrea" "cynthia" "silvia" "melissa" "pamela" "cristina" "karla" "z0mbi3")
 
-options="$emilia\n$jan\n$aline\n$isabel\n$andrea\n$cynthia\n$silvia\n$melissa\n$pamela\n$cristina\n$karla\n$z0mbi3"
-chosen="$(printf "$options" | $rofi_command)"
-case $chosen in
+# Mostrar el menú de selección de rofi y almacenar el resultado en una variable
+selected=$(printf "%s\n" "${options[@]}" | $rofi_command)
 
-	$emilia)
-		cat <<< "emilia" > ${cfg_file}
+# Si se seleccionó una opción válida, escribir el valor en el archivo de configuración y reiniciar el gestor de ventanas
+for rice in ${selected}
+do
+	if [ -n "$selected" ]; then
+		echo "$rice" > "${cfg_file}"
+		sleep 0.25
 		bspc wm -r
-		;;
-	$jan)
-		cat <<< "jan" > ${cfg_file}
-		bspc wm -r
-		;;
-	$aline)
-		cat <<< "aline" > ${cfg_file}
-		bspc wm -r
-		;;
-	$isabel)
-		cat <<< "isabel" > ${cfg_file}
-		bspc wm -r
-		;;
-	$andrea)
-		cat <<< "andrea" > ${cfg_file}
-		bspc wm -r
-		;;
-	$cynthia)
-		cat <<< "cynthia" > ${cfg_file}
-		bspc wm -r
-		;;
-	$silvia)
-		cat <<< "silvia" > ${cfg_file}
-		bspc wm -r
-		;;
-	$melissa)
-		cat <<< "melissa" > ${cfg_file}
-		bspc wm -r
-		;;
-	$pamela)
-		cat <<< "pamela" > ${cfg_file}
-		bspc wm -r
-		;;
-	$cristina)
-		cat <<< "cristina" > ${cfg_file}
-		bspc wm -r
-		;;
-	$karla)
-		cat <<< "karla" > ${cfg_file}
-		bspc wm -r
-		;;
-	$z0mbi3)
-		cat <<< "z0mbi3" > ${cfg_file}
-		bspc wm -r
-		;;
-esac
+	fi
+done
