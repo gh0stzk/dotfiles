@@ -4,7 +4,7 @@
 #  ╩╚═╩╚═╝╚═╝  ╚═╝╚═╝╩═╝╚═╝╚═╝ ╩ ╚═╝╩╚═  - z0mbi3.zk@protonmail.com
 
 cfg_file="$HOME/.config/bspwm/rice.cfg"
-rofi_command="rofi -no-lazy-grab -dmenu -theme $HOME/.config/bspwm/scripts/RiceSelector.rasi & disown"
+rofi_command="rofi -no-lazy-grab -dmenu -theme $HOME/.config/bspwm/scripts/RiceSelector.rasi"
 
 # Array de opciones
 options=("emilia" "jan" "aline" "isabel" "andrea" "cynthia" "silvia" "melissa" "pamela" "cristina" "karla" "z0mbi3")
@@ -17,7 +17,7 @@ for rice in ${selected}
 do
 	if [ -n "$selected" ]; then
 		echo "$rice" > "${cfg_file}"
-		sleep 0.25
+		sleep 0.50
 		bspc wm -r
 	fi
 done

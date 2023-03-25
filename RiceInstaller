@@ -93,44 +93,20 @@ do
     sleep 1
   fi
 done
-sleep 2
-clear
-
-########## ---------- Install yay ---------- ##########
-
-logo "Checking if yay is installed"
-
-	if ! command -v yay &>/dev/null; then
-		printf "%s%sError YAY is not installed%s\n" "${BLD}" "${CRE}" "${CNC}"
-		sleep 1
-		printf "%s%sInstalling YAY..%s\n\n" "${BLD}" "${CYE}" "${CNC}"
-		sleep 1
-		git clone https://aur.archlinux.org/yay.git
-		cd yay
-		makepkg -si
-		cd $HOME
-		rm -rf yay
-	else
-		printf "%s%sYAY is already installed on your system%s\n" "${BLD}" "${CGR}" "${CNC}"
-	fi
-sleep 2
-clear
+sleep 3
 
 ########## ---------- Cloning the Rice! ---------- ##########
 
-logo "Cloning Rice!"
 [ -d ~/dotfiles ] && rm -rf ~/dotfiles
 printf "Cloning rice from https://github.com/gh0stzk/dotfiles\n\n"
 cd $HOME
 git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
 sleep 2
-clear
 
 ########## ---------- Backup files ---------- ##########
 
-logo "Backup your files"
 printf "Backup files will be stored in %s%s%s/.RiceBackup%s \n\n" "${BLD}" "${CRE}" "$HOME" "${CNC}"
-sleep 5
+sleep 10
 
 if [ ! -d "$backup_folder" ]; then
   mkdir -p "$backup_folder"
@@ -148,12 +124,10 @@ done
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/.RiceBackup/.zshrc-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 
 printf "%s%sDone!!%s\n" "${BLD}" "${CGR}" "${CNC}"
-sleep 4
-clear
+sleep 5
 
 ########## ---------- Copy the Rice! ---------- ##########
 
-logo "Copying Rice.."
 printf "Copying files to respective directories..\n"
 
 [ ! -d ~/.config ] && mkdir -p ~/.config
@@ -220,29 +194,35 @@ done
 cp -f $HOME/dotfiles/home/.zshrc $HOME/
 fc-cache -rv >/dev/null 2>&1
 printf "%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"
-sleep 2
-clear
+sleep 3
 
 ########## ---------- Installing Eww from AUR ---------- ##########
 
-logo "Installing needed packages from AUR"				 
-yay -S eww --noconfirm --removemake --cleanafter
-sleep 2	  
-clear
+printf "%s%sNow eww will be downloaded, compiled and installed.. this could take 10 mins or more.%s\n" "${BLD}" "${CBL}" "${CNC}"
+cd $HOME
+sudo pacman -S rustup gtk3
+git clone https://github.com/elkowar/eww
+cd eww
+rustup toolchain install nightly
+cargo +nightly build --release
+install -Dm755 target/release/eww /usr/bin/
+
+cd $HOME
+rm -rf {eww,.cargo,.rustup}
+printf "%s%sDone%s\n" "${BLD}" "${CGR}" "${CNC}"
+sleep 5
 
 ########## ---------- Enabling MPD service ---------- ##########
 
-logo "Enabling MPD service"
+printf "%sEnabling mpd service%s\n" "${BLD}" "${CNC}"
 systemctl --user enable mpd.service
 systemctl --user start mpd.service
 printf "%s%sDone!!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 2
-clear
 
 ########## ---------- Finish ---------- ##########
 
-logo "Installation Finished!"
-printf "%sReboot is necessary, then choose bspwm in your login manager and login.%s\n" "${BLD}" "${CNC}"
+printf "%sInstallation finished\nReboot is necessary, then choose bspwm in your login manager and login.%s\n" "${BLD}" "${CNC}"
 sleep 5
 chsh -s /usr/bin/zsh
 zsh

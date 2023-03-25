@@ -65,13 +65,13 @@ fi
 
 function launch() {
   local running
-  running="$(pgrep "$1")"
+  running="$(pidof "$1")"
   [ "$running" ] && pkill -9 "$1" 2> /dev/null
   "$@" &
 }
 
 function killeww() {
-  if pidof eww >/dev/null 2>&1; then
+  if pidof eww > /dev/null; then
 	pkill eww
   fi
 }
@@ -263,8 +263,7 @@ bspc config pointer_action1               move
 bspc config pointer_action2               resize_side 
 bspc config pointer_action3               resize_corner
 
-bspc config remove_disabled_monitors      true 
-bspc config merge_overlapping_monitors    true
+bspc wm --adopt-orphans
 
 #  ┌─┐┬ ┬┌┬┐┌─┐┌─┐┌┬┐┌─┐┬─┐┌┬┐  ┌─┐┌─┐┌─┐┌─┐
 #  ├─┤│ │ │ │ │└─┐ │ ├─┤├┬┘ │   ├─┤├─┘├─┘└─┐

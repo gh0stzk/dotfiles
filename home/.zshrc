@@ -21,7 +21,7 @@ fi
 autoload -Uz compinit
 
 for dump in ~/.config/zsh/zcompdump(N.mh+24); do
-  compinit ~/.config/zsh/zcompdump
+  compinit -d ~/.config/zsh/zcompdump
 done
 
 compinit -C -d ~/.config/zsh/zcompdump
