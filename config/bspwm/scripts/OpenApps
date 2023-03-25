@@ -11,37 +11,38 @@
 case "$1" in
   --menu)
     rofi -no-lazy-grab -show drun \
-    -theme $HOME/.config/bspwm/rices/$RICETHEME/launcher.rasi;;
+    -theme $HOME/.config/bspwm/rices/$RICETHEME/launcher.rasi & disown;;
+  --rice)
+	RiceSelector & disown;;
   --terminal)
-    alacritty;;
+    alacritty & disown;;
   --floating)
-    alacritty --class FloaTerm,Alacritty;;
+    alacritty --class FloaTerm,Alacritty & disown;;
   --update)
-    alacritty --hold --class Updating,Alacritty -e yay -Syyu --devel;;
+    alacritty --hold --class Updating,Alacritty -e yay -Syyu --devel & disown;;
   --checkupdates)
-	alacritty --hold --class Updating,Alacritty -e checkupdates;;
+	alacritty --hold --class Updating,Alacritty -e checkupdates & disown;;
   --ranger)
-    alacritty --class Ranger,Alacritty -e ranger;;
+    alacritty --class Ranger,Alacritty -e ranger & disown;;
   --nvim)
-    alacritty -e nvim;;
+    alacritty -e nvim & disown;;
   --music)
-    alacritty --class MusicPlayer,Alacritty -e ncmpcpp;;
+    alacritty --class MusicPlayer,Alacritty -e ncmpcpp & disown;;
   --fetch)
-    alacritty --hold --class Sysfetch,Alacritty -e ~/.local/bin/sysfetch;;
+    alacritty --hold --class Sysfetch,Alacritty -e ~/.local/bin/sysfetch & disown;;
   #Apps
   --filemanager)
-	thunar;;
+	thunar & disown;;
   --browser)
-	firefox;;
+	firefox & disown;;
   --editor)
-	geany;;
+	geany & disown;;
   --telegram)
-	telegram;;
+	telegram & disown;;
   --whats)
-	whatsapp-nativefier --disable-gpu;;
+	whatsapp-nativefier --disable-gpu & disown;;
   --soundcontrol)
-    pavucontrol;;
+    pavucontrol & disown;;
   *)
     echo "Opción no válida";;
 esac
-

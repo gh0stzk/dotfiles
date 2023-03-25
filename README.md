@@ -20,6 +20,7 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 |Widgets|[ElKowars wacky widgets ](https://github.com/elkowar/eww)|
 |Music/Player|[mpd](https://archlinux.org/packages/extra/x86_64/mpd/)-[ncmpcpp](https://archlinux.org/packages/community/x86_64/ncmpcpp/)|
 |File Manager|[Thunar](https://archlinux.org/packages/extra/x86_64/thunar/)|
+|Shell|[Zsh](https://archlinux.org/packages/extra/x86_64/zsh/)|
 
 <br>
 

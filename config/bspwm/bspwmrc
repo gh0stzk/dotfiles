@@ -72,7 +72,7 @@ function launch() {
 
 function killeww() {
   if pidof eww >/dev/null 2>&1; then
-	pkill -f eww
+	pkill eww
   fi
 }
 
@@ -254,7 +254,6 @@ bspc config split_ratio                   0.52
 bspc config single_monocle                true
 bspc config borderless_monocle            false
 bspc config gapless_monocle               false
-bspc config center_pseudo_tiled           true
 
 bspc config focus_follows_pointer         true
 bspc config pointer_follows_focus         false
