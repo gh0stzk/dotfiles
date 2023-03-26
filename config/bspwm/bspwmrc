@@ -185,7 +185,7 @@ case "${RICETHEME}" in
 
 		SetBspwmConf "$BSPWM_BORDER" 60 5 "#C574DD" "#C574DD" "#8897F4" "#FF4971" 5 5 "$BSPWM_GAP"
 
-		killeww
+		launch eww -c ${BSPDIR}/rices/pamela/widgets daemon
 		launch polybar -q pam1 -c ${PDIR}/config.ini
 		polybar -q pam2 -c ${PDIR}/config.ini &
 		polybar -q pam3 -c ${PDIR}/config.ini &
@@ -199,7 +199,7 @@ case "${RICETHEME}" in
 
 		SetBspwmConf "$BSPWM_BORDER" 10 60 "#9bced7" "#9bced7" "#c3a5e6" "#c3a5e6" 5 5 "$BSPWM_GAP"
 
-		killeww
+		launch eww -c ${BSPDIR}/rices/cristina/widgets daemon
 		launch polybar -q cristina-bar -c ${PDIR}/config.ini
 		launch dunst -config ${BSPDIR}/dunstrc-dark
 		;;

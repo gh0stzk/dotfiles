@@ -82,7 +82,7 @@
 (defwidget pfp []
      (box :orientation "v"
           :space-evenly "false"
-          :halign "middle"
+          :halign "center"
           :valign "start"
           (box :style "background-image: url('${IMAGEP}');" 
 		  :class "face" 

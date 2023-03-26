@@ -19,5 +19,7 @@ do
 		echo "$rice" > "${cfg_file}"
 		sleep 0.50
 		bspc wm -r
+	else
+		exit
 	fi
 done
