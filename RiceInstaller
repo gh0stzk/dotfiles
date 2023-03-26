@@ -205,7 +205,7 @@ git clone https://github.com/elkowar/eww
 cd eww
 rustup toolchain install nightly
 cargo +nightly build --release
-install -Dm755 target/release/eww /usr/bin/
+sudo install -Dm755 target/release/eww /usr/bin/
 
 cd $HOME
 rm -rf {eww,.cargo,.rustup}
