@@ -1,11 +1,10 @@
  :root {
- 
-   --arrowpanel-menuitem-padding: 0 4px !important;
-   --tab-curve-width: 0px;
-   --tabs-border: transparent !important;
-   --tab-border-radius: 0 !important;
    
-   /* Minimal Functional Fox variables*/
+ /***
+ *    ╔═╗╔═╗╔╦╗╔╗ ╦╔═╗  ╔╦╗╦ ╦╔═╗╔╦╗╔═╗	author: z0mbi3
+ *    ╔═╝║ ║║║║╠╩╗║║╣    ║ ╠═╣║╣ ║║║║╣ 	url: https://github.com/gh0stzk/dotfiles
+ *    ╚═╝╚═╝╩ ╩╚═╝╩╚═╝   ╩ ╩ ╩╚═╝╩ ╩╚═╝	z0mbi3 Fox Firefox Theme
+ */
    
   --z0mbi3-bg: #1a1b26;
   --z0mbi3-icon-color: #e0fbfc;
@@ -14,9 +13,9 @@
   --z0mbi3-sidebar-color: #e0fbfc;
   --z0mbi3-tab-border-radius: 0px;
   --z0mbi3-tab-color: #fefefa;
-  --z0mbi3-tab-font-family: "Cantarell", sans;
-  --z0mbi3-tab-font-size: 10pt;
-  --z0mbi3-tab-font-weight: 600;
+  --z0mbi3-tab-font-family: "JetBrainsMono Nerd Font", serif;
+  --z0mbi3-tab-font-size: 9pt;
+  --z0mbi3-tab-font-weight: 700;
   --z0mbi3-tab-height: 42px;
   --z0mbi3-tab-pinned-bg: #70c1b3;
   --z0mbi3-tab-selected-bg: #4d4168;
@@ -25,32 +24,18 @@
   --z0mbi3-urlbar-focused-color: #e0fbfc;
   --z0mbi3-urlbar-font-family: "JetBrainsMono Nerd Font", serif;
   --z0mbi3-urlbar-font-size: 10pt;
-  --z0mbi3-urlbar-font-weight: 500;
+  --z0mbi3-urlbar-font-weight: 800;
   --z0mbi3-urlbar-results-color: #e0fbfc;
   --z0mbi3-urlbar-results-font-family: "JetBrainsMono Nerd Font", serif;
-  --z0mbi3-urlbar-results-font-size: 10pt;
+  --z0mbi3-urlbar-results-font-size: 9pt;
   --z0mbi3-urlbar-results-font-weight: 700;
   --z0mbi3-urlbar-results-url-color: #98c1d9;
-  /*   --z0mbi3-tab-selected-bg: linear-gradient(90deg, rgba(232,74,95,1) 0%, rgba(255,132,124,1) 50%, rgba(254,206,168,1) 100%); */
-  /*   --z0mbi3-urlbar-font-weight: 600; */
 
   /* Overriden Firefox variables*/
-  --autocomplete-popup-background: var(--z0mbi3-bg) !important;
-  --default-arrowpanel-background: var(--z0mbi3-bg) !important;
-  --default-arrowpanel-color: #fefefa !important;
-  --lwt-toolbarbutton-icon-fill: var(--z0mbi3-icon-color) !important;
-  --panel-disabled-color: #f9f9fa80;
   --toolbar-bgcolor: var(--z0mbi3-bg) !important;
-  --urlbar-separator-color: transparent !important;
+  /*--tabs-border: transparent !important;
+  --tab-border-radius: 0 !important;*/
 }
-
-/*
-  _____ _   ___ ___
- |_   _/_\ | _ ) __|
-   | |/ _ \| _ \__ \
-   |_/_/ \_\___/___/
-
-*/
 
 .tab-background[selected="true"] {
   background: var(--z0mbi3-tab-selected-bg) !important;
@@ -61,32 +46,16 @@
   opacity: 0.5 !important;
 }
 
-/* This positions the tabs under the navaigator container */
 #titlebar {
   -moz-box-ordinal-group: 3 !important;
 }
-
-.tabbrowser-tab::after,
-.tabbrowser-tab::before {
-  border-left: none !important;
-}
-
-.tab-background {
-  border: none !important;
-}
-
-.tabbrowser-arrowscrollbox {
-  margin-inline-start: 4px !important;
-  margin-inline-end: 0px !important;
-}
-
 
 .tab-text {
   font-family: var(--z0mbi3-tab-font-family);
   font-weight: var(--z0mbi3-tab-font-weight);
   font-size: var(--z0mbi3-tab-font-size) !important;
   color: var(--z0mbi3-tab-color);
-  padding: 7px !important;
+  padding: 10px !important;
 }
 
 /* Make all tabs small except selected one */
@@ -99,52 +68,9 @@
 .tabbrowser-tab[selected][fadein]:not([pinned]) {
     max-width: 200px !important;
     min-width: 200px !important;
-
 }
 
-
-
-/* Reduce spacing between pinned and regular tabs */
-#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])>#tabbrowser-arrowscrollbox>.tabbrowser-tab[first-visible-unpinned-tab] {
-    margin-inline-start: initial !important;
-}
-
-/* Hide the favicon for tabs */
 hbox.tab-content .tab-icon-image {
-  display: none !important;
-}
-
-/* Show the favicon for tabs that are pinned */
-hbox.tab-content[pinned=true] .tab-icon-image {
-  display: initial !important;
-} 
-
-hbox.tab-content[pinned=true] .tab-text {
-  display: none !important;
-}
-
-#tabbrowser-tabs {
-  --tab-loading-fill: #033433 !important;
-
-}
-
-.tab-label-container:not([textoverflow]) {
-  display: flex;
-  overflow: hidden;
-  justify-content: center;
-  width: 50% !important;
-  max-width: 50% !important;
-  min-width: 50% !important;
-}
-
-/* .tab-label-container::after {
-  content: "?" !important;
-
-} */
-
-
-
-.tab-line {
   display: none !important;
 }
 
@@ -163,8 +89,6 @@ hbox.tab-content[pinned=true] .tab-text {
   background-color: var(--z0mbi3-tab-soundplaying-bg) !important;
 }
 
-
-
 .tab-icon-sound {
   display: none !important;
 }
@@ -172,31 +96,15 @@ hbox.tab-content[pinned=true] .tab-text {
 .tab-secondary-label[soundplaying="true"]:not([pictureinpicture]){ display: none }
 
 #tabs-newtab-button > .toolbarbutton-icon {
-  --toolbarbutton-inner-padding: 2px !important;
+  --toolbarbutton-inner-padding: 3px !important;
 }
 
-/*
-  _____ ___   ___  _    ___   _   ___
-|_   _/ _ \ / _ \| |  | _ ) /_\ | _ \
-  | || (_) | (_) | |__| _ \/ _ \|   /
-  |_| \___/ \___/|____|___/_/  \_\_|_\
-*/
+/**************************************************/
 
-.urlbar-icon > image {
-  fill: var(--z0mbi3-icon-color) !important;
-  color: var(--z0mbi3-icon-color) !important;
-}
-
-.toolbarbutton-text {
-  color: var(--z0mbi3-icon-color)  !important;
-}
-.urlbar-icon {
-  color: var(--z0mbi3-icon-color)  !important;
-
-}
-
-.toolbarbutton-icon {
-/* filter: drop-shadow(0 0 0.75rem crimson); */
+#urlbar {
+  max-width: 70% !important;
+  margin: 0 15% !important;
+  /* 	position: unset!important; */;
 }
 
 #urlbar-results {
@@ -210,14 +118,6 @@ hbox.tab-content[pinned=true] .tab-text {
     border: none !important;
     box-shadow: none !important;
     outline: none !important;
-}
-
-.urlbarView-row[type="bookmark"] > span{
-  color: green !important;
-}
-
-.urlbarView-row[type="switchtab"] > span{
-  color: orange !important;
 }
 
 .urlbarView-url, .search-panel-one-offs-container {
@@ -239,14 +139,34 @@ hbox.tab-content[pinned=true] .tab-text {
   text-align: center !important;
 }
 
+#urlbar-input:focus {
+  color: var(--z0mbi3-urlbar-focused-color) !important;
+}
+
+/* Hide tracking protection button */
 tracking-protection-icon-container, #identity-box {
   display: none;
 }
 
-#back-button > .toolbarbutton-icon{
-  --backbutton-background: transparent !important;
-  border: none !important;
+#tracking-protection-icon-box {
+    display: none;
 }
+
+#unified-extensions-button {
+	display: none;
+}
+
+/* Hide star button (bookmark) */
+#star-button{
+	display:none;
+}
+
+@-moz-document url("about:home"),
+url("about:newtab"),url("about:blank") {
+
+.personalize-button {
+
+display: none !important;}}
 
 /* Hide reading View */
 #reader-mode-button,#readinglist-addremove-button {
@@ -254,17 +174,16 @@ tracking-protection-icon-container, #identity-box {
 }
 
 /* Remove Back button when there's nothing to go Back to */
-
 #nav-bar:not([customizing="true"])>#nav-bar-customization-target>#back-button[disabled="true"] {
     opacity: 0 !important;
 }
 
 /* Remove Forward button when there's nothing to go Forward to */
-
 #nav-bar:not([customizing="true"])>#nav-bar-customization-target>#forward-button[disabled="true"] {
     opacity: 0 !important;
 }
 
+/* Remove reload button when there's nothing to reload */
 #nav-bar:not([customizing="true"])>#nav-bar-customization-target>#reload-button[disabled="true"] {
     opacity: 0 !important;
 }
@@ -277,79 +196,19 @@ tracking-protection-icon-container, #identity-box {
   list-style-image: url("right-arrow.svg") !important;
 }
 
-toolbar {
-  background-image: none !important;
-}
-
 #urlbar-background {
-  outline: none !important;
-  opacity: .95 !important;
-}
-
-#navigator-toolbox, toolbaritem {
-  border: none !important;
-}
-
-#urlbar-background {
-  background-color: var(--z0mbi3-bg) !important;
-  border: none !important;
+	background-color: var(--z0mbi3-bg) !important;
+	border: none !important;
+	outline: none !important;
+	opacity: .95 !important;
 }
 
 .toolbar-items {
   background-color: var(--z0mbi3-bg) !important;
 }
 
-#sidebar-search-container {
-  background-color: var(--z0mbi3-sidebar-bg) !important;
-}
-
-box.panel-arrowbox {
-  display: none;
-}
-
-box.panel-arrowcontent {
-  border-radius: 8px !important;
-  border: none !important;
-}
-
-tab.tabbrowser-tab {
-  overflow: hidden;
-}
-
-tab.tabbrowser-tab:hover {
-  box-shadow: 0 1px 4px rgba(0,0,0,.05);
-}
-
-image#star-button {
-  display: none;
-}
-
 toolbar#nav-bar {
   padding: var(--z0mbi3-nav-toolbar-padding) !important;
-}
-
-toolbar#nav-bar {
-  padding: 4px !important;
-}
-
-#urlbar {
-  max-width: 70% !important;
-  margin: 0 15% !important;
-  /* 	position: unset!important; */;
-}
-
-#urlbar-input:focus {
-  color: var(--z0mbi3-urlbar-focused-color) !important;
-}
-
-
-.megabar[breakout-extend="true"]:not([open="true"]) > #urlbar-background {
-  box-shadow: none !important;
-  background-color: transparent !important;
-}
-
-toolbarbutton {
-  box-shadow: none !important;
 }
 
 toolbarbutton.bookmark-item:hover,
@@ -358,56 +217,19 @@ toolbarbutton.bookmark-item:hover,
     background-color: var(--z0mbi3-tab-selected-bg) !important;
 }
 
-
-/*
-  ___ ___ ___  ___ ___   _   ___
- / __|_ _|   \| __| _ ) /_\ | _ \
- \__ \| || |) | _|| _ \/ _ \|   /
- |___/___|___/|___|___/_/ \_\_|_\
-*/
-
-.close-icon, .urlbar-icon {
-  fill: var(--z0mbi3-icon-color) !important;
-}
-
-.sidebar-placesTree {
-  color: var(--z0mbi3-sidebar-color) !important;
-}
-
-#sidebar-switcher-target {
-/*   color: white !important; */
-}
-
-#sidebar-box {
-  --sidebar-background-color: var(--z0mbi3-sidebar-bg) !important;
-}
-
-splitter#sidebar-splitter {
-  opacity: 0 !important;
-}
-
-splitter#sidebar-splitter {
-  border: none !important;
-  background-color: transparent !important;
-}
-
-image#sidebar-icon {
-  display: none;
-}
-
-
-/*
-    _   ___ ___  _____      _____  _   _  _ ___ _
-   /_\ | _ \ _ \/ _ \ \    / / _ \/_\ | \| | __| |
-  / _ \|   /   / (_) \ \/\/ /|  _/ _ \| .` | _|| |__
- /_/ \_\_|_\_|_\\___/ \_/\_/ |_|/_/ \_\_|\_|___|____|
- */
-
-.panel-arrowcontent {
-  padding: 0px !important;
-  margin: 0px !important;
-}
-
-toolbarseparator {
+/************************************/
+.tab-close-button[pinned],
+#tabbrowser-tabs[closebuttons="activetab"] > #tabbrowser-arrowscrollbox > .tabbrowser-tab > .tab-stack > .tab-content > .tab-close-button:not([selected="true"]),
+.tab-icon-pending:not([pendingicon]),
+.tab-icon-pending[busy],
+.tab-icon-pending[pinned],
+.tab-icon-image:not([src]):not([pinned]):not([crashed])[selected],
+.tab-icon-image:not([src]):not([pinned]):not([crashed]):not([sharing]),
+.tab-icon-image[busy],
+.tab-throbber:not([busy]),
+.tab-icon-sound:not([soundplaying]):not([muted]):not([activemedia-blocked]):not([pictureinpicture]),
+.tab-icon-sound[pinned],
+.tab-sharing-icon-overlay,
+.tab-icon-overlay {
   display: none;
 }

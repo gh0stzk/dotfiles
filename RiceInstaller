@@ -222,6 +222,12 @@ sleep 2
 
 ########## ---------- Finish ---------- ##########
 
+if [ -d $HOME/.mozilla/firefox/*.default-release/ ]; then
+mv $HOME/.mozilla/firefox/*.default-release/chrome $backup_folder/firefox_$date/
+cp -R $HOME/dotfiles/misc/firefox/chrome $HOME/.mozilla/firefox/*.default-release/
+cp -R $HOME/dotfiles/misc/firefox/user.js $HOME/.mozilla/firefox/*.default-release/
+fi
+
 printf "%sInstallation finished\nReboot is necessary, then choose bspwm in your login manager and login.%s\n" "${BLD}" "${CNC}"
 sleep 5
 chsh -s /usr/bin/zsh

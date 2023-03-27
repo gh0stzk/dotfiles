@@ -229,7 +229,10 @@ The plugin manager is Packer.
 
 <img src="https://user-images.githubusercontent.com/67278339/221430203-23308e84-c974-4481-8c17-9aab53b37766.gif" alt="Neovim Themes" align="center" width="400px">
 
-## Very useful keybindigs to know...
+## Firefox Theme (z0mbi3 Fox)
+<img src="https://user-images.githubusercontent.com/67278339/228022928-5184eae8-648b-473b-a7c2-6c9ce38c1bfe.png" alt="Firefox theme - z0mbi3-Fox" width="700">
+
+### Very useful keybindigs to know...
 
 - <code>alt + @space</code> Display menu to select theme selector.
 - <code>super + @space</code> Apps Menu.
