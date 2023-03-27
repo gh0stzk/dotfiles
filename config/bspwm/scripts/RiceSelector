@@ -13,13 +13,10 @@ options=("emilia" "jan" "aline" "isabel" "andrea" "cynthia" "silvia" "melissa" "
 selected=$(printf "%s\n" "${options[@]}" | $rofi_command)
 
 # Si se seleccionó una opción válida, escribir el valor en el archivo de configuración y reiniciar el gestor de ventanas
-for rice in ${selected}
-do
-	if [ -n "$selected" ]; then
-		echo "$rice" > "${cfg_file}"
-		sleep 0.50
-		bspc wm -r
-	else
-		exit
-	fi
-done
+if [[ -n "$selected" ]]; then
+	echo "$selected" > "$HOME"/.config/bspwm/rice.cfg
+	sleep 0.5
+	bspc wm -r
+else
+	exit 1
+fi

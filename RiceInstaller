@@ -204,7 +204,7 @@ sudo pacman -S rustup gtk3
 git clone https://github.com/elkowar/eww
 cd eww
 rustup toolchain install nightly
-cargo +nightly build --release
+cargo +nightly build --no-default-features --features x11 --release
 sudo install -Dm755 target/release/eww /usr/bin/
 
 cd $HOME
