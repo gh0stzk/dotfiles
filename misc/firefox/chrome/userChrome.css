@@ -6,16 +6,16 @@
  *    ╚═╝╚═╝╩ ╩╚═╝╩╚═╝   ╩ ╩ ╩╚═╝╩ ╩╚═╝	z0mbi3 Fox Firefox Theme
  */
    
-  --z0mbi3-bg: #1a1b26;
-  --z0mbi3-icon-color: #e0fbfc;
+  --z0mbi3-bg: #14171c;
+  --z0mbi3-icon-color: #b8bfe5;
   --z0mbi3-nav-toolbar-padding: 8px;
   --z0mbi3-sidebar-bg: var(--z0mbi3-bg);
-  --z0mbi3-sidebar-color: #e0fbfc;
+  --z0mbi3-sidebar-color: #b8bfe5;
   --z0mbi3-tab-border-radius: 0px;
-  --z0mbi3-tab-color: #fefefa;
+  --z0mbi3-tab-color: #c5cddb;
   --z0mbi3-tab-font-family: "JetBrainsMono Nerd Font", serif;
-  --z0mbi3-tab-font-size: 9pt;
-  --z0mbi3-tab-font-weight: 700;
+  --z0mbi3-tab-font-size: 9.5pt;
+  --z0mbi3-tab-font-weight: 500;
   --z0mbi3-tab-height: 42px;
   --z0mbi3-tab-pinned-bg: #70c1b3;
   --z0mbi3-tab-selected-bg: #4d4168;
@@ -33,23 +33,35 @@
 
   /* Overriden Firefox variables*/
   --toolbar-bgcolor: var(--z0mbi3-bg) !important;
-  /*--tabs-border: transparent !important;
-  --tab-border-radius: 0 !important;*/
+  --lwt-sidebar-background-color: var(--z0mbi3-bg) !important;
+  --tab-border-radius: 0 !important;
+}
+
+.toolbarbutton-icon {
+    fill: var(--z0mbi3-icon-color) !important;
+    fill-opacity: 100% !important;
+}
+
+#PlacesToolbar menupopup[placespopup="true"] {
+  --arrowpanel-background: var(--z0mbi3-bg) !important;
+  --arrowpanel-color: #b8bfe5 !important;
 }
 
 .tab-background[selected="true"] {
   background: var(--z0mbi3-tab-selected-bg) !important;
 }
 
-.tab-background:not[visuallyselected] {
+/*.tab-background[selected"false"] {
   background: var(--z0mbi3-tab-selected-bg) !important;
-  opacity: 0.5 !important;
-}
+  opacity: 50% !important;
+}*/
 
+/* Move tabs down */
 #titlebar {
   -moz-box-ordinal-group: 3 !important;
 }
 
+/* tabs */
 .tab-text {
   font-family: var(--z0mbi3-tab-font-family);
   font-weight: var(--z0mbi3-tab-font-weight);
@@ -76,28 +88,34 @@ hbox.tab-content .tab-icon-image {
 
 .tabbrowser-tab {
   border-radius: var(--z0mbi3-tab-border-radius) !important;
-  border-width: 0;
   height: var(--z0mbi3-tab-height) !important;
   margin-bottom: 6px !important;
-  margin-inline-end: 1px !important;
   margin-top: 4px !important;
   max-height: 80% !important;
   min-height: 80% !important;
 }
 
-.tabbrowser-tab[soundplaying="false"] {
-  background-color: var(--z0mbi3-tab-soundplaying-bg) !important;
-}
-
-.tab-icon-sound {
-  display: none !important;
-}
-
-.tab-secondary-label[soundplaying="true"]:not([pictureinpicture]){ display: none }
-
 #tabs-newtab-button > .toolbarbutton-icon {
-  --toolbarbutton-inner-padding: 3px !important;
+  --toolbarbutton-inner-padding: 4px !important;
 }
+
+/* No sound icon and text in tabs */
+.tab-close-button[pinned],
+#tabbrowser-tabs[closebuttons="activetab"] > #tabbrowser-arrowscrollbox > .tabbrowser-tab > .tab-stack > .tab-content > .tab-close-button:not([selected="true"]),
+.tab-icon-pending:not([pendingicon]),
+.tab-icon-pending[busy],
+.tab-icon-pending[pinned],
+.tab-icon-image:not([src]):not([pinned]):not([crashed])[selected],
+.tab-icon-image:not([src]):not([pinned]):not([crashed]):not([sharing]),
+.tab-icon-image[busy],
+.tab-throbber:not([busy]),
+.tab-icon-sound:not([soundplaying]):not([muted]):not([activemedia-blocked]):not([pictureinpicture]),
+.tab-icon-sound[pinned],
+.tab-sharing-icon-overlay,
+.tab-icon-overlay {
+  display: none;
+}
+.tab-secondary-label[soundplaying="true"]:not([pictureinpicture]){ display: none }
 
 /**************************************************/
 
@@ -156,6 +174,11 @@ tracking-protection-icon-container, #identity-box {
 	display: none;
 }
 
+/* Hide show all tabs button */
+#alltabs-button { 
+	display: none !important;
+}
+
 /* Hide star button (bookmark) */
 #star-button{
 	display:none;
@@ -188,8 +211,20 @@ display: none !important;}}
     opacity: 0 !important;
 }
 
+#navigator-toolbox {
+border-bottom: unset !important;
+}
+
 #back-button {
   list-style-image: url("left-arrow.svg") !important;
+}
+
+#tabs-newtab-button {
+  list-style-image: url("add.svg") !important;
+}
+
+.close-icon, .urlbar-icon {
+  fill: var(--z0mbi3-icon-color) !important;
 }
 
 #forward-button {
@@ -207,6 +242,15 @@ display: none !important;}}
   background-color: var(--z0mbi3-bg) !important;
 }
 
+#reload-button:not([disabled="true"]),
+#home-button:not([disabled="true"]) {
+  color: var(--z0mbi3-icon-color)  !important;
+}
+
+.toolbarbutton-text {
+  color: var(--z0mbi3-icon-color)  !important;
+}
+
 toolbar#nav-bar {
   padding: var(--z0mbi3-nav-toolbar-padding) !important;
 }
@@ -218,18 +262,14 @@ toolbarbutton.bookmark-item:hover,
 }
 
 /************************************/
-.tab-close-button[pinned],
-#tabbrowser-tabs[closebuttons="activetab"] > #tabbrowser-arrowscrollbox > .tabbrowser-tab > .tab-stack > .tab-content > .tab-close-button:not([selected="true"]),
-.tab-icon-pending:not([pendingicon]),
-.tab-icon-pending[busy],
-.tab-icon-pending[pinned],
-.tab-icon-image:not([src]):not([pinned]):not([crashed])[selected],
-.tab-icon-image:not([src]):not([pinned]):not([crashed]):not([sharing]),
-.tab-icon-image[busy],
-.tab-throbber:not([busy]),
-.tab-icon-sound:not([soundplaying]):not([muted]):not([activemedia-blocked]):not([pictureinpicture]),
-.tab-icon-sound[pinned],
-.tab-sharing-icon-overlay,
-.tab-icon-overlay {
-  display: none;
-}
+
+/*Darken panels to match theme*/
+.panel-subview-body,#appMenu-zoomReset-button,.panel-mainview,.panel-subviews {
+  color: #c5cddb !important;
+  background: var(--url-and-searchbar-background-color) !important;}
+.panel-subview-footer,[class^="PanelUI-"] {
+  color: #c5cddb !important;
+  background: var(--toolbar-bgcolor) !important;}
+/*stops possible clashes with extension popups*/
+.webextension-popup-browser {
+  background: #fff;}

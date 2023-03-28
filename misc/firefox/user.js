@@ -20,10 +20,10 @@ user_pref("browser.uitour.enabled", false);
 
 /* set startup page
  * 0=blank, 1=home, 2=last visited page, 3=resume previous session*/
-user_pref("browser.startup.page", 1);
+user_pref("browser.startup.page", 0);
 /* set HOME+NEWWINDOW page
  * about:home=Firefox Home, custom URL, about:blank*/
-user_pref("browser.startup.homepage", "about:home");
+user_pref("browser.startup.homepage", "about:blank");
 /* disable sponsored content on Firefox Home (Activity Stream)
  * [SETTING] Home>Firefox Home Content ***/
 user_pref("browser.newtabpage.activity-stream.showSponsored", false); // [FF58+] Pocket > Sponsored Stories
