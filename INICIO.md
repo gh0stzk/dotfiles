@@ -3,6 +3,9 @@
 ## 🌿 Informacion
 Mi coleccion de 12 temas para BSPWM y Polybar. Con menu para seleccionar los temas.
 
+## Wiki
+Ya comencé a escribir la wiki, deberías darle una lectura. [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki) Y puedes sugerir temas para que puedas editar los rices y dejarlos como tus gustos y corazn te dicten.
+
 https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-afed-f352c5d2979e.mp4
  
 ## Información
@@ -235,7 +238,6 @@ El manejador de plugins es Packer.
 - <code>alt + @space</code> Abre el menu para seleccionar un nuevo tema.
 - <code>super + @space</code> Menu de apps.
 - <code>super + h </code> Esconde la barra <code>super + u</code> Muestra nuevamente la barra.
-- <code>super + alt + t</code> Abre el menu de seleccion de terminal. (Alacritty, Termite)
 - <code>super + Print</code> Toma captura de pantalla.
 - <code>ctrl + alt + plus</code> Incrementa la transparencia de la ventana. <code>ctrl + alt + minus</code> Decrementa la transparencia. <code>ctrl + alt + t</code> Reestablece la transparencia por default.
 - <code>ctrl + super + alt + p</code> Apaga la computadora. <code>ctrl + super + alt + r</code> Reinicia la computadora.
