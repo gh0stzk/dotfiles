@@ -3,7 +3,7 @@
 ## 🌿 Informacion
 Mi coleccion de 12 temas para BSPWM y Polybar. Con menu para seleccionar los temas.
 
-## Wiki
+## :book: Wiki
 Ya comencé a escribir la wiki, deberías darle una lectura. [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki) Y puedes sugerir temas para que puedas editar los rices y dejarlos como tus gustos y corazon te dicten.
 
 https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-afed-f352c5d2979e.mp4
