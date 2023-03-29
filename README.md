@@ -6,7 +6,7 @@
 12 different themes for BSPWM and Polybar. With a theme selector to change on the fly.
 
 ## Wiki
-I already started writing the wiki, you should give it a read. [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki) And you can suggest topic so that you can edit the themes and leave them as you want.
+I already started writing the wiki, you should give it a read. [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki) And you can suggest topics so that you can edit the themes and leave them as you want.
 
 https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-afed-f352c5d2979e.mp4
 
@@ -240,7 +240,6 @@ The plugin manager is Packer.
 - <code>alt + @space</code> Display menu to select theme selector.
 - <code>super + @space</code> Apps Menu.
 - <code>super + h </code> Hides bar/s <code>super + u</code> unhide bar/s
-- <code>super + alt + t</code> Open terminal selection menu (Alacritty, Termite)
 - <code>super + Print</code> Takes screenshot.
 - <code>ctrl + alt {plus,minus,t}</code> Changes transparency on focused window.
 - <code>ctrl + super + alt + p</code> Power off computer. <code>ctrl + super + alt + r</code> Restart computer.
