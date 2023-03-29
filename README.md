@@ -6,7 +6,7 @@
 12 different themes for BSPWM and Polybar. With a theme selector to change on the fly.
 
 ## Wiki
-I already started writing the wiki, you should give it a read. [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki) And you can suggest themes so that you can edit the themes and leave them as you want them.
+I already started writing the wiki, you should give it a read. [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki) And you can suggest topic so that you can edit the themes and leave them as you want.
 
 https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-afed-f352c5d2979e.mp4
 
