@@ -1,6 +1,7 @@
-# - z0mbi3
-# - https://github.com/gh0stzk/dotfiles
-# - z0mbi3.zk@protonmail.com
+#  ╔╦╗╦ ╦╔╗╔╔═╗╔╦╗  ╔═╗╔═╗╔╗╔╔═╗╦╔═╗
+#   ║║║ ║║║║╚═╗ ║   ║  ║ ║║║║╠╣ ║║ ╦	https://github.com/gh0stzk/dotfiles
+#  ═╩╝╚═╝╝╚╝╚═╝ ╩   ╚═╝╚═╝╝╚╝╚  ╩╚═╝	
+# For Cristina rice
 
 [global]
 title = Dunst
@@ -14,19 +15,19 @@ offset = 10x92
 indicate_hidden = yes
 shrink = yes
 
-transparency = 3
+transparency = 4
 separator_height = 2
 padding = 8
 horizontal_padding = 11
 frame_width = 6
-frame_color = "#14171c"
-separator_color = "#404859"
+frame_color = "#1f1d29"
+separator_color = "#ea6f91"
 
-font = JetBrainsMono Nerd Font Mono Medium 9
+font = JetBrainsMono Nerd Font Medium 9
 
 line_height = 0
 markup = full
-format = "<span size='x-large' font_desc='Cantarell 9' weight='bold' foreground='#f9f9f9'>%s</span>\n%b"
+format = "<span size='x-large' font_desc='Cantarell 9' weight='bold' foreground='#9bced7'>%s</span>\n%b"
 alignment = center
 
 idle_threshold = 120
@@ -54,15 +55,15 @@ mouse_right_click = close_all
 
 [urgency_low]
 timeout = 3
-background = "#14171c"
-foreground = "#f9f9f9"
+background = "#1f1d29"
+foreground = "#eaeaea"
 
 [urgency_normal]
 timeout = 6
-background = "#14171c"
-foreground = "#f9f9f9"
+background = "#1f1d29"
+foreground = "#eaeaea"
 
 [urgency_critical]
 timeout = 0
-background = "#14171c"
-foreground = "#f9f9f9"
+background = "#1f1d29"
+foreground = "#eaeaea"

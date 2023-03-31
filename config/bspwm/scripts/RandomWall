@@ -6,4 +6,4 @@
 #   Author: z0mbi3
 #	url: https://github.com/gh0stzk
 
-feh --randomize --no-fehbg --bg-fill $HOME/.config/bspwm/rices/$RICETHEME/walls
+feh -z --no-fehbg --bg-fill ~/.config/bspwm/rices/$RICETHEME/walls/

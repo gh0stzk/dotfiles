@@ -100,8 +100,8 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Aline</b></summary>
 
-|<img src="config/bspwm/rices/aline/walls/wall-02.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-03.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-04.webp" alt="Aline Rice" align="center" width="150px">|
-|---|---|---|
+|<img src="config/bspwm/rices/aline/walls/wall-02.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-03.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-04.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-05.webp" alt="Aline Rice" align="center" width="150px">|
+|---|---|---|---|
 
 </details>
 
@@ -139,8 +139,8 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Isabel</b></summary>
 
-|<img src="config/bspwm/rices/isabel/walls/wall-02.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/walls/wall-03.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/walls/wall-04.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/walls/wall-05.webp" alt="Isabel Rice" align="center" width="150px">|
-|---|---|---|---|
+|<img src="config/bspwm/rices/isabel/walls/wall-02.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/walls/wall-03.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/walls/wall-04.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/walls/wall-05.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/walls/wall-06.webp" alt="Isabel Rice" align="center" width="150px">|
+|---|---|---|---|---|
 </details>
 
 ### 🌸Silvia
@@ -151,8 +151,8 @@ So yes... i called the Rices with the names of some of my ex girlfriends.
 <details>
 <summary><b>Extra wallpapers in Silvia</b></summary>
 
-|<img src="config/bspwm/rices/silvia/walls/wall-01.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/walls/wall-03.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/walls/wall-04.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/walls/wall-05.webp" alt="Silvia Rice" align="center" width="150px">|
-|---|---|---|---|
+|<img src="config/bspwm/rices/silvia/walls/wall-01.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/walls/wall-03.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/walls/wall-04.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/walls/wall-05.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/walls/wall-06.webp" alt="Silvia Rice" align="center" width="150px">|
+|---|---|---|---|---|
 
 </details>
 

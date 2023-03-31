@@ -10,7 +10,7 @@
 
 case "$1" in
   --menu)
-    rofi -no-lazy-grab -show drun \
+    rofi -show drun \
     -theme $HOME/.config/bspwm/rices/$RICETHEME/launcher.rasi & disown;;
   --rice)
 	RiceSelector & disown;;

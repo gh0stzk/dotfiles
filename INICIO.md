@@ -98,8 +98,8 @@ Pues si los temas tienen el nombre de algunas de mis ex novias.
 <details>
 <summary><b>Extra wallpapers en Aline</b></summary>
 
-|<img src="config/bspwm/rices/aline/walls/wall-02.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-03.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-04.webp" alt="Aline Rice" align="center" width="150px">|
-|---|---|---|
+|<img src="config/bspwm/rices/aline/walls/wall-02.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-03.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-04.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-05.webp" alt="Aline Rice" align="center" width="150px">|
+|---|---|---|---|
 
 </details>
 
@@ -137,8 +137,8 @@ Pues si los temas tienen el nombre de algunas de mis ex novias.
 <details>
 <summary><b>Extra wallpapers en Isabel</b></summary>
 
-|<img src="config/bspwm/rices/isabel/walls/wall-02.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/walls/wall-03.webp" alt="Isabel Rice" align="center" width="150px">|
-|---|---|
+|<img src="config/bspwm/rices/isabel/walls/wall-02.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/walls/wall-03.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/walls/wall-04.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/walls/wall-05.webp" alt="Isabel Rice" align="center" width="150px">|<img src="config/bspwm/rices/isabel/walls/wall-06.webp" alt="Isabel Rice" align="center" width="150px">|
+|---|---|---|---|---|
 </details>
 
 ### 🌸Silvia
@@ -149,8 +149,8 @@ Pues si los temas tienen el nombre de algunas de mis ex novias.
 <details>
 <summary><b>Extra wallpapers en Silvia</b></summary>
 
-|<img src="config/bspwm/rices/silvia/walls/wall-01.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/walls/wall-03.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/walls/wall-04.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/walls/wall-05.webp" alt="Silvia Rice" align="center" width="150px">|
-|---|---|---|---|
+|<img src="config/bspwm/rices/silvia/walls/wall-01.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/walls/wall-03.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/walls/wall-04.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/walls/wall-05.webp" alt="Silvia Rice" align="center" width="150px">|<img src="config/bspwm/rices/silvia/walls/wall-06.webp" alt="Silvia Rice" align="center" width="150px">|
+|---|---|---|---|---|
 
 </details>
 
