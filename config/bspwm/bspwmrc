@@ -100,7 +100,7 @@ bspc wm --adopt-orphans
 #  ┴─┘┴ ┴└─┘┘└┘└─┘┴ ┴   ┴ ┴ ┴└─┘  ┴└─┴└─┘└─┘
 
 # Terminate already running polybar, eww, picom and dunst instances
-processes=("polybar" "picom" "dunst" "eww")
+processes=("polybar" "picom" "dunst" "eww" "sxhkd")
 
 for process in "${processes[@]}"; do
   if pidof -q "$process"; then
@@ -112,6 +112,6 @@ sleep 0.15
 
 # Launch apps
 $HOME/.config/bspwm/rices/$RICETHEME/Theme.sh
-pgrep -x sxhkd > /dev/null || sxhkd -c $HOME/.config/bspwm/sxhkdrc &
+sxhkd -c $HOME/.config/bspwm/sxhkdrc &
 pgrep -x polkit-gnome-au > /dev/null || /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 xsetroot -cursor_name left_ptr
