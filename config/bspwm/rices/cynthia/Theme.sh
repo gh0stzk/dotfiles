@@ -17,24 +17,6 @@ bspc config left_padding 5
 bspc config right_padding 5
 bspc config window_gap 10
 
-
-# Reload terminal colors
-cat $HOME/.config/bspwm/rices/cynthia/alacrittyrc > $HOME/.config/alacritty/alacritty.yml
-
-# Launch picom // If you have old hardware or encounter problems 
-# uncomment the picom "--legacy-backends" line and comment the current one.
-picom --config $HOME/.config/bspwm/rices/cynthia/picom.conf &
-#picom --legacy-backends --config $HOME/.config/bspwm/rices/cynthia/picom.conf &
-
 # Launch the bar
 polybar -q cyn-bar -c $HOME/.config/bspwm/rices/cynthia/config.ini &
 polybar -q cyn-bar2 -c $HOME/.config/bspwm/rices/cynthia/config.ini &
-
-# Launch Dunst
-dunst -config $HOME/.config/bspwm/rices/cynthia/dunstrc &
-
-# Set random wallpaper for this rice
-feh -z --no-fehbg --bg-fill $HOME/.config/bspwm/rices/cynthia/walls/
-
-# If you don't want the random wallpaper feature, comment the line above "feh -z..." 
-# and add the one you use.

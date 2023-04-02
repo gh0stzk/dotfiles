@@ -17,29 +17,11 @@ bspc config left_padding 80
 bspc config right_padding 5
 bspc config window_gap 10
 
-
 if pidof -q bspc; then
 	pkill -9 bspc > /dev/null
 fi
 
-# Reload terminal colors
-cat $HOME/.config/bspwm/rices/z0mbi3/alacrittyrc > $HOME/.config/alacritty/alacritty.yml
-
-# Launch picom // If you have old hardware or encounter problems 
-# uncomment the picom "--legacy-backends" line and comment the current one.
-picom --config $HOME/.config/bspwm/rices/z0mbi3/picom.conf &
-#picom --legacy-backends --config $HOME/.config/bspwm/rices/z0mbi3/picom.conf &
-
-# Launch the bar
+# Launch the bar and or eww widgets
 eww -c $HOME/.config/bspwm/rices/z0mbi3/bar open bar &
 eww -c $HOME/.config/bspwm/rices/z0mbi3/dashboard daemon &
 polybar -q tray -c $HOME/.config/bspwm/rices/z0mbi3/bar/polybar_tray.ini &
-
-# Launch Dunst
-dunst -config $HOME/.config/bspwm/rices/z0mbi3/dunstrc &
-
-# Set random wallpaper for this rice
-feh -z --no-fehbg --bg-fill $HOME/.config/bspwm/rices/z0mbi3/walls/
-
-# If you don't want the random wallpaper feature, comment the line above "feh -z..." 
-# and add the one you use.

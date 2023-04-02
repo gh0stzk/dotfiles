@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-#  ╦═╗╔═╗╔╗╔╔╦╗╔═╗╔╦╗  ╦ ╦╔═╗╦  ╦  
-#  ╠╦╝╠═╣║║║ ║║║ ║║║║  ║║║╠═╣║  ║  
-#  ╩╚═╩ ╩╝╚╝═╩╝╚═╝╩ ╩  ╚╩╝╩ ╩╩═╝╩═╝
-#	Simple script to set random wallpaper using FEH
-#   Author: z0mbi3
-#	url: https://github.com/gh0stzk
-
-feh -z --no-fehbg --bg-fill ~/.config/bspwm/rices/$RICETHEME/walls/

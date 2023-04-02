@@ -17,24 +17,6 @@ bspc config left_padding 5
 bspc config right_padding 5
 bspc config window_gap 10
 
-
-# Reload terminal colors
-cat $HOME/.config/bspwm/rices/melissa/alacrittyrc > $HOME/.config/alacritty/alacritty.yml
-
-# Launch picom // If you have old hardware or encounter problems 
-# uncomment the picom "--legacy-backends" line and comment the current one.
-picom --config $HOME/.config/bspwm/rices/melissa/picom.conf &
-#picom --legacy-backends --config $HOME/.config/bspwm/rices/melissa/picom.conf &
-
 # Launch the bar
 polybar -q mel-bar -c $HOME/.config/bspwm/rices/melissa/config.ini &
 polybar -q mel2-bar -c $HOME/.config/bspwm/rices/melissa/config.ini &
-
-# Launch Dunst
-dunst -config $HOME/.config/bspwm/rices/melissa/dunstrc &
-
-# Set random wallpaper for this rice
-feh -z --no-fehbg --bg-fill $HOME/.config/bspwm/rices/melissa/walls/
-
-# If you don't want the random wallpaper feature, comment the line above "feh -z..." 
-# and add the one you use.

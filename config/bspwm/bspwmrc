@@ -99,8 +99,8 @@ bspc wm --adopt-orphans
 #  │  ├─┤│ │││││  ├─┤   │ ├─┤├┤   ├┬┘││  ├┤ 
 #  ┴─┘┴ ┴└─┘┘└┘└─┘┴ ┴   ┴ ┴ ┴└─┘  ┴└─┴└─┘└─┘
 
-# Terminate already running polybar, eww, picom and dunst instances
-processes=("polybar" "picom" "dunst" "eww" "sxhkd")
+# Terminate already running polybar, eww, picom, sxhkd and dunst instances
+processes=("polybar" "picom" "sxhkd" "dunst" "eww")
 
 for process in "${processes[@]}"; do
   if pidof -q "$process"; then
@@ -110,8 +110,32 @@ done
 
 sleep 0.15
 
-# Launch apps
+## Reloading sexy rices ##
+
+# Reload terminal colors
+cat $HOME/.config/bspwm/rices/$RICETHEME/alacrittyrc > $HOME/.config/alacritty/alacritty.yml
+
+# Launch picom // If you have old hardware or encounter problems 
+# uncomment the picom "--legacy-backends" line and comment the current one.
+picom --config $HOME/.config/bspwm/rices/$RICETHEME/picom.conf &
+#picom --legacy-backends --config $HOME/.config/bspwm/rices/$RICETHEME/picom.conf &
+
+# Launch bars and/or eww widgets
 $HOME/.config/bspwm/rices/$RICETHEME/Theme.sh
+
+# Set random wallpaper for this rice
+feh -z --no-fehbg --bg-fill $HOME/.config/bspwm/rices/$RICETHEME/walls/
+# If you don't want the random wallpaper feature, comment the line above "feh -z..." 
+# and add the one you use.
+
+# Launch dunst notification daemon
+dunst -config $HOME/.config/bspwm/rices/$RICETHEME/dunstrc &
+
+# Reload sxhkd daemon
 sxhkd -c $HOME/.config/bspwm/sxhkdrc &
+
+# Launch polkit
 pgrep -x polkit-gnome-au > /dev/null || /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# Fix cursor
 xsetroot -cursor_name left_ptr

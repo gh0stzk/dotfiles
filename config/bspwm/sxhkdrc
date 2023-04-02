@@ -62,7 +62,7 @@ super + Escape
 
 # Random wallpaper
 super + alt + w
-	RandomWall
+	feh -z --no-fehbg --bg-fill ~/.config/bspwm/rices/$RICETHEME/walls/
 
 #
 # bspwm hotkeys

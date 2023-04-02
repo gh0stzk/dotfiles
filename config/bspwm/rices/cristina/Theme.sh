@@ -17,24 +17,6 @@ bspc config left_padding 5
 bspc config right_padding 5
 bspc config window_gap 10
 
-
-# Reload terminal colors
-cat $HOME/.config/bspwm/rices/cristina/alacrittyrc > $HOME/.config/alacritty/alacritty.yml
-
-# Launch picom // If you have old hardware or encounter problems 
-# uncomment the picom "--legacy-backends" line and comment the current one.
-picom --config $HOME/.config/bspwm/rices/cristina/picom.conf &
-#picom --legacy-backends --config $HOME/.config/bspwm/rices/cristina/picom.conf &
-
-# Launch the bar
+# Launch the bar and or eww widgets
 eww -c $HOME/.config/bspwm/rices/cristina/widgets daemon &
 polybar -q cristina-bar -c $HOME/.config/bspwm/rices/cristina/config.ini &
-
-# Launch Dunst
-dunst -config $HOME/.config/bspwm/rices/cristina/dunstrc &
-
-# Set random wallpaper for this rice
-feh -z --no-fehbg --bg-fill $HOME/.config/bspwm/rices/cristina/walls/
-
-# If you don't want the random wallpaper feature, comment the line above "feh -z..." 
-# and add the one you use.
