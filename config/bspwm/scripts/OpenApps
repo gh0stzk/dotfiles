@@ -19,9 +19,9 @@ case "$1" in
   --floating)
     alacritty --class FloaTerm,Alacritty & disown;;
   --update)
-    alacritty --hold --class Updating,Alacritty -e yay -Syyu --devel & disown;;
+    alacritty --hold --class FloaTerm,Alacritty -e Updates --update-system & disown;;
   --checkupdates)
-	alacritty --hold --class Updating,Alacritty -e checkupdates & disown;;
+	alacritty --hold --class Updating,Alacritty -e Updates --print-updates & disown;;
   --ranger)
     alacritty --class Ranger,Alacritty -e ranger & disown;;
   --nvim)

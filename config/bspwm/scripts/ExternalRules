@@ -17,7 +17,7 @@ case "$class" in
 		;;
 	Updating)
 		eval "$consequences"
-		[ "$state" ] || echo "state=floating rectangle=480x190+1090+72"
+		[ "$state" ] || echo "state=floating center=on rectangle=419x268+0+0 sticky=on"
 		;;
 	Ranger)
 		eval "$consequences"

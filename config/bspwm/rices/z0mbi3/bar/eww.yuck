@@ -22,7 +22,7 @@
 (defpoll calendar_year :interval "10h" "date '+%Y'")
 
 ;; Updates vars
-(defpoll UPDATES :interval "2m" `Updates`)
+(defpoll UPDATES :interval "2m" `Updates --get-updates`)
 (defvar pac false)
 
 ;; Time
