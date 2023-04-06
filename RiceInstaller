@@ -50,8 +50,7 @@ fi
 ########## ---------- Welcome ---------- ##########
 
 logo "Welcome!"
-printf '%s%sThis script will check if you have the necessary dependencies, and if not, it will install them. Then, it will clone the RICE in your HOME directory.\n After that, it will create a secure backup of your files, and then copy the new files to your computer.\n\nMy dotfiles DO NOT modify any of your system configurations.\nYou will be prompted for your root password to install missing dependencies and/or to switch to zsh shell if its not your default.\n\nThis script doesnt have the potential power to break your system, it only copies files from my repository to your HOME directory.%s\n' "${BLD}" "${CRE}" "${CNC}"
-sleep 5
+printf '%s%sThis script will check if you have the necessary dependencies, and if not, it will install them. Then, it will clone the RICE in your HOME directory.\nAfter that, it will create a secure backup of your files, and then copy the new files to your computer.\n\nMy dotfiles DO NOT modify any of your system configurations.\nYou will be prompted for your root password to install missing dependencies and/or to switch to zsh shell if its not your default.\n\nThis script doesnt have the potential power to break your system, it only copies files from my repository to your HOME directory.%s\n\n' "${BLD}" "${CRE}" "${CNC}"
 
 while true; do
 	read -rp " Do you wish to continue? [y/N]: " yn
@@ -96,6 +95,7 @@ sleep 3
 
 ########## ---------- Cloning the Rice! ---------- ##########
 
+logo "Downloading dotfiles"
 [ -d ~/dotfiles ] && rm -rf ~/dotfiles
 printf "\n\nCloning rice from https://github.com/gh0stzk/dotfiles\n"
 cd
@@ -104,6 +104,7 @@ sleep 2
 
 ########## ---------- Backup files ---------- ##########
 
+logo "Backup files"
 printf "\n\nBackup files will be stored in %s%s%s/.RiceBackup%s \n\n" "${BLD}" "${CRE}" "$HOME" "${CNC}"
 sleep 10
 
@@ -145,6 +146,7 @@ sleep 5
 
 ########## ---------- Copy the Rice! ---------- ##########
 
+logo "Installing dotfiles.."
 printf "Copying files to respective directories..\n"
 
 [ ! -d ~/.config ] && mkdir -p ~/.config
@@ -226,6 +228,8 @@ sleep 3
 
 ########## ---------- Installing Yay & Eww from source ---------- ##########
 
+logo "installing Yay & Eww"
+
 if ! command -v yay >/dev/null 2>&1; then
 	printf "\n%s%sInstalling yay%s\n" "${BLD}" "${CBL}" "${CNC}"
 	cd
@@ -250,19 +254,21 @@ if ! command -v eww >/dev/null 2>&1; then
 	cd
 	rm -rf {eww,.cargo,.rustup}
 else
-	printf "\n\n%s%sEww is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+	printf "\n%s%sEww is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 fi
 
 ########## ---------- Enabling MPD service ---------- ##########
 
-printf "\n%sEnabling mpd service%s\n" "${BLD}" "${CNC}"
+logo "Enabling mpd service"
+
 systemctl --user enable mpd.service
 systemctl --user start mpd.service
-printf "%s%sDone!!%s\n" "${BLD}" "${CGR}" "${CNC}"
+printf "%s%sDone!!%s\n\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 2
 
 ########## --------- Changing shell to zsh ---------- ##########
 
+logo "Changing default shell to zsh"
 printf "%s%sIf your shell is not zsh will be changed now.\nYour root password is needed to make the change.\n\nAfter that is important for you to reboot.\n %s\n" "${BLD}" "${CYE}" "${CNC}"
 if [[ $SHELL != "/usr/bin/zsh" ]]; then
   echo "Changing shell to zsh, your root pass is needed."
