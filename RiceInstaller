@@ -36,7 +36,7 @@ logo () {
 	       &&&////   &&
 	          &&//@@@**
 	            ..***                
-			  z0mbi3 Script\n\n"
+			  z0mbi3 Dotfiles\n\n"
     printf ' %s [%s%s %s%s %s]%s\n\n' "${CRE}" "${CNC}" "${CYE}" "${text}" "${CNC}" "${CRE}" "${CNC}"
 }
 
@@ -92,20 +92,22 @@ do
   fi
 done
 sleep 3
+clear
 
 ########## ---------- Cloning the Rice! ---------- ##########
 
 logo "Downloading dotfiles"
 [ -d ~/dotfiles ] && rm -rf ~/dotfiles
-printf "\n\nCloning rice from https://github.com/gh0stzk/dotfiles\n"
+printf "Cloning rice from https://github.com/gh0stzk/dotfiles\n"
 cd
 git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
 sleep 2
+clear
 
 ########## ---------- Backup files ---------- ##########
 
 logo "Backup files"
-printf "\n\nBackup files will be stored in %s%s%s/.RiceBackup%s \n\n" "${BLD}" "${CRE}" "$HOME" "${CNC}"
+printf "Backup files will be stored in %s%s%s/.RiceBackup%s \n\n" "${BLD}" "${CRE}" "$HOME" "${CNC}"
 sleep 10
 
 if [ ! -d "$backup_folder" ]; then
@@ -231,7 +233,7 @@ sleep 3
 logo "installing Yay & Eww"
 
 if ! command -v yay >/dev/null 2>&1; then
-	printf "\n%s%sInstalling yay%s\n" "${BLD}" "${CBL}" "${CNC}"
+	printf "%s%sInstalling yay%s\n" "${BLD}" "${CBL}" "${CNC}"
 	cd
 	git clone https://aur.archlinux.org/yay.git
 	cd yay
@@ -239,7 +241,7 @@ if ! command -v yay >/dev/null 2>&1; then
 	cd
 	rm -rf yay
 else
-	printf "\n\n%s%sYay is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+	printf "%s%sYay is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 fi
 
 if ! command -v eww >/dev/null 2>&1; then 
