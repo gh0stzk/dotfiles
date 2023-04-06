@@ -12,7 +12,7 @@ CGR=$(tput setaf 2)
 CBL=$(tput setaf 4)
 BLD=$(tput bold)
 CNC=$(tput sgr0)
-OK='\n\033[0;32m OK...\033[0m'
+
 backup_folder=~/.RiceBackup
 date=$(date +%Y%m%d-%H%M%S)
 
@@ -38,7 +38,6 @@ logo () {
 	            ..***                
 			  z0mbi3 Script\n\n"
     printf ' %s [%s%s %s%s %s]%s\n\n' "${CRE}" "${CNC}" "${CYE}" "${text}" "${CNC}" "${CRE}" "${CNC}"
-    sleep 2
 }
 
 ########## ---------- You must not run this as root ---------- ##########
@@ -51,7 +50,7 @@ fi
 ########## ---------- Welcome ---------- ##########
 
 logo "Welcome!"
-printf '%sThis script will install needed dependencies and copy my dotfiles to your bspwm setup.%s\n\nThis installer script does NOT change any configuration of your system.\nIts just a script that copies and moves my dotfiles to your ~/.config directory\n\n' "${CRE}" "${CNC}"
+printf '%s%sThis script will check if you have the necessary dependencies, and if not, it will install them. Then, it will clone the RICE in your HOME directory.\n After that, it will create a secure backup of your files, and then copy the new files to your computer.\n\nMy dotfiles DO NOT modify any of your system configurations.\nYou will be prompted for your root password to install missing dependencies and/or to switch to zsh shell if its not your default.\n\nThis script doesnt have the potential power to break your system, it only copies files from my repository to your HOME directory.%s\n' "${BLD}" "${CRE}" "${CNC}"
 sleep 5
 
 while true; do
@@ -78,15 +77,15 @@ dependencias=(base-devel pacman-contrib bspwm polybar sxhkd \
 			  zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting)
 
 is_installed() {
-  pacman -Qi $1 &> /dev/null
+  pacman -Qi "$1" &> /dev/null
   return $?
 }
 
 printf "%s%sChecking for required packages...%s\n" "${BLD}" "${CBL}" "${CNC}"
 for paquete in "${dependencias[@]}"
 do
-  if ! is_installed $paquete; then
-    sudo pacman -S $paquete --noconfirm
+  if ! is_installed "$paquete"; then
+    sudo pacman -S "$paquete" --noconfirm
     printf "\n"
   else
     printf '%s%s is already installed on your system!%s\n' "${CGR}" "$paquete" "${CNC}"
@@ -98,14 +97,14 @@ sleep 3
 ########## ---------- Cloning the Rice! ---------- ##########
 
 [ -d ~/dotfiles ] && rm -rf ~/dotfiles
-printf "Cloning rice from https://github.com/gh0stzk/dotfiles\n\n"
-cd $HOME
+printf "\n\nCloning rice from https://github.com/gh0stzk/dotfiles\n"
+cd
 git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
 sleep 2
 
 ########## ---------- Backup files ---------- ##########
 
-printf "Backup files will be stored in %s%s%s/.RiceBackup%s \n\n" "${BLD}" "${CRE}" "$HOME" "${CNC}"
+printf "\n\nBackup files will be stored in %s%s%s/.RiceBackup%s \n\n" "${BLD}" "${CRE}" "$HOME" "${CNC}"
 sleep 10
 
 if [ ! -d "$backup_folder" ]; then
@@ -121,9 +120,27 @@ for folder in bspwm alacritty picom rofi eww sxhkd dunst polybar ncmpcpp nvim ra
   fi
 done
 
+for folder in chrome; do
+  if [ -d "$HOME"/.mozilla/firefox/*.default-release/$folder ]; then
+    mv "$HOME"/.mozilla/firefox/*.default-release/$folder "$HOME"/${folder}_$date
+    echo "$folder folder backed up successfully at $backup_folder/${folder}_$date"
+  else
+    echo "The folder $folder does not exist in $HOME/.mozilla/firefox/"
+  fi
+done
+
+for file in user.js; do
+  if [ -e "$HOME"/.mozilla/firefox/*.default-release/$file ]; then
+    mv "$HOME"/.mozilla/firefox/*.default-release/$file "$HOME"/${file}_$date
+    echo "$file file backed up successfully at $backup_folder/${file}_$date"
+  else
+    echo "The file $file does not exist in $HOME/.mozilla/firefox/"
+  fi
+done
+
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/.RiceBackup/.zshrc-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 
-printf "%s%sDone!!%s\n" "${BLD}" "${CGR}" "${CNC}"
+printf "%s%sDone!!%s\n\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 5
 
 ########## ---------- Copy the Rice! ---------- ##########
@@ -136,19 +153,8 @@ printf "Copying files to respective directories..\n"
 [ ! -d ~/.local/share/fonts ] && mkdir -p ~/.local/share/fonts
 [ ! -d ~/.local/share/asciiart ] && mkdir -p ~/.local/share/asciiart
 
-for archivos in ~/dotfiles/config/*; do
-  cp -R ${archivos} ~/.config/
-  if [ $? -eq 0 ]; then
-	printf "%s%s%s folder copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
-	sleep 1
-  else
-	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
-	sleep 1
-  fi
-done
-
 for archivos in ~/dotfiles/misc/bin/*; do
-  cp -R ${archivos} ~/.local/bin/
+  cp -R "${archivos}" ~/.local/bin/
   if [ $? -eq 0 ]; then
 	printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
 	sleep 1
@@ -159,7 +165,7 @@ for archivos in ~/dotfiles/misc/bin/*; do
 done
 
 for archivos in ~/dotfiles/misc/applications/*; do
-  cp -R ${archivos} ~/.local/share/applications/
+  cp -R "${archivos}" ~/.local/share/applications/
   if [ $? -eq 0 ]; then
 	printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
 	sleep 1
@@ -170,7 +176,7 @@ for archivos in ~/dotfiles/misc/applications/*; do
 done
 
 for archivos in ~/dotfiles/misc/fonts/*; do
-  cp -R ${archivos} ~/.local/share/fonts/
+  cp -R "${archivos}" ~/.local/share/fonts/
   if [ $? -eq 0 ]; then
 	printf "%s%s%s copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
 	sleep 1
@@ -181,7 +187,7 @@ for archivos in ~/dotfiles/misc/fonts/*; do
 done
 
 for archivos in ~/dotfiles/misc/asciiart/*; do
-  cp -R ${archivos} ~/.local/share/asciiart/
+  cp -R "${archivos}" ~/.local/share/asciiart/
   if [ $? -eq 0 ]; then
 	printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
 	sleep 1
@@ -191,44 +197,66 @@ for archivos in ~/dotfiles/misc/asciiart/*; do
   fi
 done
 
-cp -f $HOME/dotfiles/home/.zshrc $HOME/
+for archivos in ~/dotfiles/misc/firefox/*; do
+  cp -R "${archivos}" ~/.mozilla/firefox/*.default-release/
+  if [ $? -eq 0 ]; then
+	printf "%s%s%s folder copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
+	sleep 1
+  else
+	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
+	sleep 1
+  fi
+done
+
+cp -f "$HOME"/dotfiles/home/.zshrc "$HOME"
 fc-cache -rv >/dev/null 2>&1
 printf "%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 3
 
-########## ---------- Installing Eww from AUR ---------- ##########
+########## ---------- Installing Yay & Eww from source ---------- ##########
 
-printf "%s%sNow eww will be downloaded, compiled and installed.. this could take 10 mins or more.%s\n" "${BLD}" "${CBL}" "${CNC}"
-cd $HOME
-sudo pacman -S rustup gtk3
-git clone https://github.com/elkowar/eww
-cd eww
-rustup toolchain install nightly
-cargo +nightly build --no-default-features --features x11 --release
-sudo install -Dm755 target/release/eww /usr/bin/
+if ! command -v yay >/dev/null 2>&1; then
+	printf "\n%s%sInstalling yay%s\n" "${BLD}" "${CBL}" "${CNC}"
+	cd
+	git clone https://aur.archlinux.org/yay.git
+	cd yay
+	makepkg -si --noconfirm
+	cd
+	rm -rf yay
+else
+	printf "\n\n%s%sYay is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+fi
 
-cd $HOME
-rm -rf {eww,.cargo,.rustup}
-printf "%s%sDone%s\n" "${BLD}" "${CGR}" "${CNC}"
-sleep 5
+if ! command -v eww >/dev/null 2>&1; then 
+	printf "\n%s%sInstalling Eww, this could take 10 mins or more.%s\n" "${BLD}" "${CBL}" "${CNC}"
+	cd
+	sudo pacman -S rustup gtk3
+	git clone https://github.com/elkowar/eww
+	cd eww
+	rustup toolchain install nightly
+	cargo +nightly build --no-default-features --features x11 --release
+	sudo install -Dm755 target/release/eww /usr/bin/
+	cd
+	rm -rf {eww,.cargo,.rustup}
+else
+	printf "\n\n%s%sEww is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+fi
 
 ########## ---------- Enabling MPD service ---------- ##########
 
-printf "%sEnabling mpd service%s\n" "${BLD}" "${CNC}"
+printf "\n%sEnabling mpd service%s\n" "${BLD}" "${CNC}"
 systemctl --user enable mpd.service
 systemctl --user start mpd.service
 printf "%s%sDone!!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 2
 
-########## ---------- Finish ---------- ##########
+########## --------- Changing shell to zsh ---------- ##########
 
-if [ -d $HOME/.mozilla/firefox/*.default-release/ ]; then
-mv $HOME/.mozilla/firefox/*.default-release/chrome $backup_folder/firefox_$date/
-cp -R $HOME/dotfiles/misc/firefox/chrome $HOME/.mozilla/firefox/*.default-release/
-cp -R $HOME/dotfiles/misc/firefox/user.js $HOME/.mozilla/firefox/*.default-release/
+printf "%s%sIf your shell is not zsh will be changed now.\nYour root password is needed to make the change.\n\nAfter that is important for you to reboot.\n %s\n" "${BLD}" "${CYE}" "${CNC}"
+if [[ $SHELL != "/usr/bin/zsh" ]]; then
+  echo "Changing shell to zsh, your root pass is needed."
+  chsh -s /usr/bin/zsh
+else
+  printf "%s%sYour shell is already zsh\nGood bye! installation finished, now reboot%s\n" "${BLD}" "${CGR}" "${CNC}"
+  zsh
 fi
-
-printf "%sInstallation finished\nReboot is necessary, then choose bspwm in your login manager and login.%s\n" "${BLD}" "${CNC}"
-sleep 5
-chsh -s /usr/bin/zsh
-zsh
