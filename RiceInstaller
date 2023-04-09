@@ -114,7 +114,7 @@ if [ ! -d "$backup_folder" ]; then
   mkdir -p "$backup_folder"
 fi
 
-for folder in bspwm alacritty picom rofi eww sxhkd dunst polybar ncmpcpp nvim ranger zsh mpd; do
+for folder in bspwm alacritty picom rofi eww sxhkd dunst polybar ncmpcpp nvim ranger zsh mpd paru; do
   if [ -d "$HOME/.config/$folder" ]; then
     mv "$HOME/.config/$folder" "$backup_folder/${folder}_$date"
     echo "$folder folder backed up successfully at $backup_folder/${folder}_$date"
@@ -228,33 +228,28 @@ fc-cache -rv >/dev/null 2>&1
 printf "%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 3
 
-########## ---------- Installing Yay & Eww from source ---------- ##########
+########## ---------- Installing Paru & Eww from source ---------- ##########
 
-logo "installing Yay & Eww"
+logo "installing Paru & Eww"
 
-if ! command -v yay >/dev/null 2>&1; then
-	printf "%s%sInstalling yay%s\n" "${BLD}" "${CBL}" "${CNC}"
+if ! command -v paru >/dev/null 2>&1; then
+	printf "%s%sInstalling paru%s\n" "${BLD}" "${CBL}" "${CNC}"
 	cd
-	git clone https://aur.archlinux.org/yay.git
-	cd yay
+	sudo pacman -S rustup --noconfirm
+	rustup default stable
+	git clone https://aur.archlinux.org/paru.git
+	cd paru
 	makepkg -si --noconfirm
 	cd
-	rm -rf yay
 else
-	printf "%s%sYay is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+	printf "%s%sParu is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 fi
 
 if ! command -v eww >/dev/null 2>&1; then 
 	printf "\n%s%sInstalling Eww, this could take 10 mins or more.%s\n" "${BLD}" "${CBL}" "${CNC}"
-	cd
-	sudo pacman -S rustup gtk3
-	git clone https://github.com/elkowar/eww
-	cd eww
-	rustup toolchain install nightly
-	cargo +nightly build --no-default-features --features x11 --release
-	sudo install -Dm755 target/release/eww /usr/bin/
-	cd
-	rm -rf {eww,.cargo,.rustup}
+	paru -S eww --skipreview --noconfirm
+	rm -rf {paru,.cargo,.rustup}
+	rm -rf $HOME/.cache/paru/clone/eww
 else
 	printf "\n%s%sEww is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 fi

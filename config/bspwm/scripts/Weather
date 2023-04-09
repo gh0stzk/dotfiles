@@ -8,7 +8,7 @@ check_if_empty() {
 	[[ -z "$1" ]] && echo "0" || echo "$1"
 }
 
-KEY="1f6e449790b8cf73a3cab8d5715483f8"
+KEY="8b05d62206f459e1d298cbe5844d7d87"
 CITY="Mexico City"
 CITYN=$(encode_to_url_format "$CITY")
 UNITS="metric" # Available "metric" "imperial"

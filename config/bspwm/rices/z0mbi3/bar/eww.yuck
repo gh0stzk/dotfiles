@@ -4,7 +4,7 @@
 (defvar eww "/usr/bin/eww -c $HOME/.config/bspwm/rices/z0mbi3/bar")
 
 ;; Workspaces
-(deflisten workspace "./scripts/workspace")
+(deflisten workspace "./scripts/WorkSpaces")
 
 ;; Volume vars
 (defvar volum false)
