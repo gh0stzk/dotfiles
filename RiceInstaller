@@ -66,7 +66,7 @@ clear
 
 logo "Installing needed packages.."
 
-dependencias=(base-devel pacman-contrib bspwm polybar sxhkd \
+dependencias=(base-devel rustup pacman-contrib bspwm polybar sxhkd \
 			  alacritty brightnessctl dunst rofi lsd \
 			  jq polkit-gnome git playerctl mpd \
 			  ncmpcpp geany ranger mpc picom \
@@ -125,7 +125,7 @@ done
 
 for folder in chrome; do
   if [ -d "$HOME"/.mozilla/firefox/*.default-release/$folder ]; then
-    mv "$HOME"/.mozilla/firefox/*.default-release/$folder "$HOME"/${folder}_$date
+    mv "$HOME"/.mozilla/firefox/*.default-release/$folder "$backup_folder"/${folder}_$date
     echo "$folder folder backed up successfully at $backup_folder/${folder}_$date"
   else
     echo "The folder $folder does not exist in $HOME/.mozilla/firefox/"
@@ -134,7 +134,7 @@ done
 
 for file in user.js; do
   if [ -e "$HOME"/.mozilla/firefox/*.default-release/$file ]; then
-    mv "$HOME"/.mozilla/firefox/*.default-release/$file "$HOME"/${file}_$date
+    mv "$HOME"/.mozilla/firefox/*.default-release/$file "$backup_folder"/${file}_$date
     echo "$file file backed up successfully at $backup_folder/${file}_$date"
   else
     echo "The file $file does not exist in $HOME/.mozilla/firefox/"
@@ -235,7 +235,6 @@ logo "installing Paru & Eww"
 if ! command -v paru >/dev/null 2>&1; then
 	printf "%s%sInstalling paru%s\n" "${BLD}" "${CBL}" "${CNC}"
 	cd
-	sudo pacman -S rustup --noconfirm
 	rustup default stable
 	git clone https://aur.archlinux.org/paru.git
 	cd paru
