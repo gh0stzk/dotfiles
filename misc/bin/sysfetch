@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # sysfetch
 # Thanks to u/x_ero for his sysinfo script
@@ -25,31 +25,9 @@ EMPTY=━
 name=$USER
 host=$(uname -n)
 distro=$(uname -o | awk -F '"' '/PRETTY_NAME/ { print $2 }' /etc/os-release)
+packages=$(pacman -Q | wc -l)
 wm=$(xprop -id $(xprop -root -notype | awk '$1=="_NET_SUPPORTING_WM_CHECK:"{print $5}') -notype -f _NET_WM_NAME 8t | grep "WM_NAME" | cut -f2 -d \")
-
-get_pkg_count() {
-	package_managers=('xbps-install' 'apk' 'apt' 'pacman' 'nix' 'dnf' 'rpm' 'emerge')
-	for package_manager in ${package_managers[@]}; do
-		if command -v $package_manager 2>/dev/null>&2; then
-			case "$package_manager" in
-				xbps-install ) xbps-query -l | wc -l ;;
-				apk ) apk search | wc -l ;;
-				apt ) apt list --installed 2>/dev/null | wc -l ;;
-				pacman ) pacman -Q | wc -l ;;
-				nix ) nix-env -qa --installed '*' | wc -l ;;
-				dnf ) dnf list installed | wc -l ;;
-				rpm ) rpm -qa | wc -l ;;
-				emerge ) qlist -I | wc -l ;;
-			esac
-
-			# if a package manager is found return from the function
-			return
-		fi
-	done
-	echo 'Unknown'
-}
-
-storage=$(df -h / | awk '/^\//{print $3}')
+storage=$(df -h --output=used / | awk 'NR == 2 { print $1 }')
 term=$(ps -o sid= -p "$$" | xargs ps -o ppid= -p | xargs ps -o comm= -p)
 uptm=$(uptime -p | sed -e 's/hour/hr/' -e 's/hours/hrs/' -e 's/minutes/mins/' -e 's/minute/min/' -e 's/up //')
 
@@ -98,19 +76,19 @@ printf "%s%b\n\n" "$PADC" "$OUTT"
 
 
 # greetings
-printf "%s%b\n" "$PADC" "            hola $CRE$CBD$name$CNC"
-printf "%s%b\n" "$PADC" "      Bienvenido a $CGR$CBD$host$CNC"
+printf "%s%b\n" "$PADC" "            Hi $CRE$CBD$name$CNC"
+printf "%s%b\n" "$PADC" "      Welcome to $CGR$CBD$host$CNC"
 printf "%s%b\n\n" "$PADC" "          up $CCY$CBD$uptm$CNC"
 
 # environment
 printf "%s%b" "$PADC" "$CRE        distro $CWH⏹ $CNC$distro\n"
 printf "%s%b" "$PADC" "$CBL        kernel $CWH⏹ $CNC$(uname -r)\n"
-printf "%s%b" "$PADC" "$CMA      packages $CWH⏹ $CNC$(get_pkg_count)\n"
+printf "%s%b" "$PADC" "$CMA      packages $CWH⏹ $CNC${packages}\n"
 printf "%s%b" "$PADC" "$CGR         shell $CWH⏹ $CNC${SHELL##*/}\n"
-printf "%s%b" "$PADC" "$CYE          term $CWH⏹ $CNC$term\n"
+printf "%s%b" "$PADC" "$CYE          term $CWH⏹ $CNC${term}\n"
 printf "%s%b" "$PADC" "$CCY            wm $CWH⏹ $CNC${wm}\n"
-printf "%s%b" "$PADC" "$CBL          disk $CWH⏹ $CNC$storage used\n"
-printf " $CNC\n"
+printf "%s%b" "$PADC" "$CBL          disk $CWH⏹ $CNC${storage} used\n"
+printf " %s\n" "$CNC"
 
 # progress bar
 draw() {
@@ -124,19 +102,19 @@ draw() {
 			out="${out}\e[1;${color}m${FULL}" ||
 			out="${out}\e[0;37m${CWH}${EMPTY}"
 	done
-	printf $out
+	printf "$out"
 }
 
 # cpu
 cpu=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d'.' -f1)
-c_lvl=`printf $cpu`
+c_lvl=$(printf '%s' "$cpu")
 printf "%b" "$PADC"
-printf "   $CMA%-4s $CWH%-5s %-25s \n" " cpu" "$c_lvl%" $(draw $c_lvl 15 35)
+printf "   $CMA%-4s $CWH%-5s %-25s \n" " cpu" "$c_lvl%" "$(draw "$c_lvl" 15 35)"
 
 # ram
 ram=$(free | awk '/Mem:/ {print int($3/$2 * 100.0)}')
 printf "%b" "$CNC" "$PADC"
-printf "   $CMA%-4s $CWH%-5s %-25s \n" " ram" "$ram%" $(draw $ram 15 35)
+printf "   $CMA%-4s $CWH%-5s %-25s \n" " ram" "$ram%" "$(draw "$ram" 15 35)"
     
 # hide the cursor and wait for user input
 tput civis

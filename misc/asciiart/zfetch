@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 #   z0mbi3
 #   https://github.com/gh0stzk/dotfiles
@@ -124,79 +124,12 @@ get_pkg_count() {
 	echo 0
 }
 
-# Get count of snaps installed
-get_snap_count() {
-	if command -v snap 2>/dev/null >&2; then
-		count=$(snap list | wc -l)
-
-		# snap list shows a header line
-		echo $((count - 1))
-
-		return
-	fi
-
-	echo 0
-}
-
-# Get count of flatpaks installed
-get_flatpak_count() {
-	if command -v flatpak 2>/dev/null >&2; then
-		flatpak list | wc -l
-		return
-	fi
-
-	echo 0
-}
-
-#Get count of brews(formulas + casks) installed
-get_brew_count() {
-	if command -v brew 2>/dev/null >&2; then
-		brew list | wc -l | awk 'NR==1{print $1}'
-		return
-	fi
-
-	echo 0
-}
-
 # Get package information formatted
 get_package_info() {
 	pkg_count=$(get_pkg_count)
-	snap_count=$(get_snap_count)
-	flatpak_count=$(get_flatpak_count)
-	brew_count=$(get_brew_count)
 
 	if [ "$pkg_count" -ne 0 ]; then
 		echo -n "$pkg_count"
-		if [ "$snap_count" -ne 0 ]; then
-			echo -n " ($snap_count snaps"
-			if [ "$flatpak_count" -ne 0 ]; then
-				echo ", $flatpak_count flatpaks)"
-			else
-				echo ")"
-			fi
-		elif [ "$flatpak_count" -ne 0 ]; then
-			echo " ($flatpak_count flatpaks)"
-		elif [ "$brew_count" -ne 0 ]; then
-			cask_count=$(brew list --casks | wc -l | awk 'NR==1{print $1}')
-			formula_count=$(brew list --formula | wc -l | awk 'NR==1{print $1}')
-			echo ", $brew_count brews ($formula_count formulas & $cask_count casks)"
-		else
-			echo ""
-		fi
-	elif [ "$snap_count" -ne 0 ]; then
-		echo -n "$snap_count snaps"
-
-		if [ "$flatpak_count" -ne 0 ]; then
-			echo ", $flatpak_count flatpaks"
-		else
-			echo ""
-		fi
-	elif [ "$flatpak_count" -ne 0 ]; then
-		echo "$flatpak_count flatpaks"
-	elif [ "$brew_count" -ne 0 ]; then
-		cask_count=$(brew list --casks | wc -l | awk 'NR==1{print $1}')
-		formula_count=$(brew list --formula | wc -l | awk 'NR==1{print $1}')
-		echo "$brew_count brews ($formula_count formulas & $cask_count casks)"
 	else
 		echo "Unknown"
 	fi
@@ -207,12 +140,12 @@ distro() {
 }
 
 storage() {
-    df -h / | awk '/^\//{print $3}'
+    df -h --output=used / | awk 'NR == 2 { print $1 }'
 }
 
 # Get Memory usage
 get_mem () {
-  free --mega | sed -n -E '2s/^[^0-9]*([0-9]+) *([0-9]+).*/'"${space}"'\2 MB/p'
+  free --mega | awk 'NR == 2 { print $3" MB" }'
 }
 
 # Get DE/WM
