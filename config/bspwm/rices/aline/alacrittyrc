@@ -46,7 +46,7 @@ colors:
     blue:    '#008ec4'
     magenta: '#523c79'
     cyan:    '#20a5ba'
-    white:   '#B5BFE2'
+    white:   '#51576d'
 
   bright:
     black:   '#212121'
@@ -56,7 +56,7 @@ colors:
     blue:    '#20bbfc'
     magenta: '#6855de'
     cyan:    '#4fb8cc'
-    white:   '#A5ADCE'
+    white:   '#51576d'
     
   cursor:
     cursor: '#20bbfc'

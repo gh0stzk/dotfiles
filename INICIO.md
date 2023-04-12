@@ -198,7 +198,7 @@ Aumenta o disminuye la transparencia de la ventana de trabajo en la que estes.
 
 |<img src="config/bspwm/rices/cristina/walls/wall-02.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/walls/wall-03.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/walls/wall-04.webp" alt="Cristina Rice" align="center" width="150px">|
 |:-:|:-:|:-:|
-<img src="config/bspwm/rices/cristina/walls/wall-05.webp" alt="Cristina Rice" align="center" width="150px">|
+<img src="config/bspwm/rices/cristina/walls/wall-05.webp" alt="Cristina Rice" align="center" width="150px">|<img src="config/bspwm/rices/cristina/walls/wall-06.webp" alt="Cristina Rice" align="center" width="150px">|
 
 </details>
 
