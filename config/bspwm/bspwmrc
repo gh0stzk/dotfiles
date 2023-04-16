@@ -95,22 +95,18 @@ bspc config pointer_action3               resize_corner
 
 bspc wm --adopt-orphans
 
-#  ┬  ┌─┐┬ ┬┌┐┌┌─┐┬ ┬  ┌┬┐┬ ┬┌─┐  ┬─┐┬┌─┐┌─┐
-#  │  ├─┤│ │││││  ├─┤   │ ├─┤├┤   ├┬┘││  ├┤ 
-#  ┴─┘┴ ┴└─┘┘└┘└─┘┴ ┴   ┴ ┴ ┴└─┘  ┴└─┴└─┘└─┘
+#  ┬  ┌─┐┬ ┬┌┐┌┌─┐┬ ┬  ┌─┐┌─┐─┐ ┬┬ ┬  ┬─┐┬┌─┐┌─┐┌─┐
+#  │  ├─┤│ │││││  ├─┤  └─┐├┤ ┌┴┬┘└┬┘  ├┬┘││  ├┤ └─┐
+#  ┴─┘┴ ┴└─┘┘└┘└─┘┴ ┴  └─┘└─┘┴ └─ ┴   ┴└─┴└─┘└─┘└─┘
 
 # Terminate already running polybar, eww, picom, sxhkd and dunst instances
-processes=("polybar" "picom" "sxhkd" "dunst" "eww")
+processes=("picom" "polybar" "eww" "sxhkd" "dunst")
 
 for process in "${processes[@]}"; do
   if pidof -q "$process"; then
-    pkill -9 "$process" > /dev/null
+    pkill -x "$process" > /dev/null; sleep 0.1
   fi
 done
-
-sleep 0.15
-
-## Reloading sexy rices ##
 
 # Reload terminal colors
 cat $HOME/.config/bspwm/rices/$RICETHEME/alacrittyrc > $HOME/.config/alacritty/alacritty.yml
