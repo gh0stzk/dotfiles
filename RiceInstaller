@@ -103,10 +103,10 @@ xdg-user-dirs-update   ## Could also use 'xdg-user-dirs-update --set PICTURES $H
 ########## ---------- Cloning the Rice! ---------- ##########
 
 logo "Downloading dotfiles"
-[ -d ~/dotfiles ] && rm -rf ~/dotfiles
+## [ -d ~/dotfiles ] && rm -rf ~/dotfiles
 printf "Cloning rice from https://github.com/Nathan-Shea/dotfiles\n"
-cd
-git clone --depth=1 https://github.com/Nathan-Shea/dotfiles.git
+cd dotfiles
+git pull     ## git clone --depth=1 https://github.com/Nathan-Shea/dotfiles.git
 sleep 2
 clear
 
