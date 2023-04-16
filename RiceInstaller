@@ -73,7 +73,8 @@ dependencias=(base-devel rustup pacman-contrib bspwm polybar sxhkd \
 			  feh ueberzug maim pamixer libwebp \
 			  webp-pixbuf-loader xorg-xprop xorg-xkill physlock papirus-icon-theme \
 			  ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels \
-			  zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting)
+			  zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting \
+			  xdg-user-dirs)
 
 is_installed() {
   pacman -Qi "$1" &> /dev/null
@@ -94,13 +95,18 @@ done
 sleep 3
 clear
 
+########## ---------- Preparing Folders ---------- ##########
+
+xdg-user-dirs-update   ## Could also use 'xdg-user-dirs-update --set PICTURES $HOME/Pictures' to set folders
+
+
 ########## ---------- Cloning the Rice! ---------- ##########
 
 logo "Downloading dotfiles"
 [ -d ~/dotfiles ] && rm -rf ~/dotfiles
-printf "Cloning rice from https://github.com/gh0stzk/dotfiles\n"
+printf "Cloning rice from https://github.com/Nathan-Shea/dotfiles\n"
 cd
-git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
+git clone --depth=1 https://github.com/Nathan-Shea/dotfiles.git
 sleep 2
 clear
 
