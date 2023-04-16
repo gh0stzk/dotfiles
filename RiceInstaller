@@ -97,8 +97,15 @@ clear
 
 ########## ---------- Preparing Folders ---------- ##########
 
-xdg-user-dirs-update   ## Could also use 'xdg-user-dirs-update --set PICTURES $HOME/Pictures' to set folders
-
+logo "Preparing Folders"
+if [ ! -e $HOME/.config/user-dirs.dirs ]; then
+	xdg-user-dirs-update
+	echo "Creating xdg-user-dirs"
+else
+	echo "user-dirs.dirs already exists"
+fi
+sleep 2 
+clear
 
 ########## ---------- Cloning the Rice! ---------- ##########
 
