@@ -235,9 +235,8 @@ logo "installing Paru & Eww"
 if ! command -v paru >/dev/null 2>&1; then
 	printf "%s%sInstalling paru%s\n" "${BLD}" "${CBL}" "${CNC}"
 	cd
-	rustup default stable
-	git clone https://aur.archlinux.org/paru.git
-	cd paru
+	git clone https://aur.archlinux.org/paru-bin.git
+	cd paru-bin
 	makepkg -si --noconfirm
 	cd
 else
@@ -247,7 +246,7 @@ fi
 if ! command -v eww >/dev/null 2>&1; then 
 	printf "\n%s%sInstalling Eww, this could take 10 mins or more.%s\n" "${BLD}" "${CBL}" "${CNC}"
 	paru -S eww --skipreview --noconfirm
-	rm -rf {paru,.cargo,.rustup}
+	rm -rf {paru-bin,.cargo,.rustup}
 	rm -rf $HOME/.cache/paru/clone/eww
 else
 	printf "\n%s%sEww is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
