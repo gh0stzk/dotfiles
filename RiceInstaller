@@ -70,7 +70,7 @@ dependencias=(base-devel rustup pacman-contrib bspwm polybar sxhkd \
 			  alacritty brightnessctl dunst rofi lsd \
 			  jq polkit-gnome git playerctl mpd \
 			  ncmpcpp geany ranger mpc picom \
-			  feh ueberzug maim pamixer libwebp \
+			  feh ueberzug maim pamixer libwebp xdg-user-dirs-update \
 			  webp-pixbuf-loader xorg-xprop xorg-xkill physlock papirus-icon-theme \
 			  ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels \
 			  zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting)
@@ -92,6 +92,18 @@ do
   fi
 done
 sleep 3
+clear
+
+########## ---------- Preparing Folders ---------- ##########
+
+logo "Preparing Folders"
+if [ ! -e $HOME/.config/user-dirs.dirs ]; then
+	xdg-user-dirs-update
+	echo "Creating xdg-user-dirs"
+else
+	echo "user-dirs.dirs already exists"
+fi
+sleep 2 
 clear
 
 ########## ---------- Cloning the Rice! ---------- ##########
