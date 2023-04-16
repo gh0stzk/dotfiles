@@ -174,11 +174,11 @@ tracking-protection-icon-container, #identity-box {
 #tracking-protection-icon-box {
     display: none;
 }
-
+/*
 #unified-extensions-button {
 	display: none;
 }
-
+*/
 /* Hide show all tabs button */
 #alltabs-button { 
 	display: none !important;
