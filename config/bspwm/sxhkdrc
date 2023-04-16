@@ -49,7 +49,7 @@ Print
 	ScreenShoTer --now
 
 # Screenshot Select
-super + Print
+ctrl + Print
 	ScreenShoTer --sel
 
 # Screenshot in 10s
