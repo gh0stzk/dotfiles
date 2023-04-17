@@ -185,6 +185,7 @@ Aumenta o disminuye la transparencia de la ventana de trabajo en la que estes.
 
 |<img src="config/bspwm/rices/pamela/walls/wall-02.webp" alt="Pamela Rice" align="center" width="150px">|<img src="config/bspwm/rices/pamela/walls/wall-03.webp" alt="Pamela Rice" align="center" width="150px">|<img src="config/bspwm/rices/pamela/walls/wall-04.webp" alt="Pamela Rice" align="center" width="150px">|
 |:-:|:-:|:-:|
+|<img src="config/bspwm/rices/pamela/walls/wall-05.webp" alt="Pamela Rice" align="center" width="150px">|<img src="config/bspwm/rices/pamela/walls/wall-06.webp" alt="Pamela Rice" align="center" width="150px">|<img src="config/bspwm/rices/pamela/walls/wall-07.webp" alt="Pamela Rice" align="center" width="150px">|
 
 </details>
 
