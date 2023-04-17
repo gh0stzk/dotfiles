@@ -31,18 +31,14 @@
 - name: Install paru
   ansible.builtin.shell: "cd /home/{{ username }} && git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si --noconfirm"
   when: paru_check.rc != 0
+  ignore_errors: true
   changed_when: paru_check.rc != 0
 
 - name: Check if eww is installed
-  ansible.builtin.shell: which eww
-  register: eww_check
-  ignore_errors: true
-  changed_when: false
-
-- name: Install eww
-  ansible.builtin.shell: paru -S eww --skipreview --noconfirm
-  when: eww_check.rc != 0
-  changed_when: eww_check.rc != 0
+  ansible.builtin.pacman:
+    name: eww
+    state: present
+    executable: paru
 
 - name: Cleanup unncessary files
   ansible.builtin.file:
