@@ -1,10 +1,4 @@
 ---
-- name: Clone the rice repo
-  ansible.builtin.git:
-    repo: https://github.com/gh0stzk/dotfiles.git
-    dest: /home/{{ username }}/dotfiles
-    version: master
-
 - name: Ensure required directories exist
   ansible.builtin.file:
     path: "{{ item }}"
