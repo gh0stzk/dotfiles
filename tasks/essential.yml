@@ -28,6 +28,12 @@
   ignore_errors: true
   changed_when: false
 
+- name: Ensure rustup default toolchain is set
+  ansible.builtin.shell: rustup default stable
+  when: paru_check.rc != 0
+  ignore_errors: true
+  changed_when: paru_check.rc != 0
+
 - name: Install paru
   ansible.builtin.shell: "cd /home/{{ username }} && git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si --noconfirm"
   when: paru_check.rc != 0
