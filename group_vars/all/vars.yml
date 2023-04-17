@@ -30,7 +30,6 @@ packages:
   - maim
   - pamixer
   - libwebp
-  - xdg-user-dirs-update
   - webp-pixbuf-loader
   - xorg-xprop
   - xorg-xkill

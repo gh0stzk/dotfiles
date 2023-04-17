@@ -79,7 +79,7 @@
     mode: 0755
 
 - name: Refresh the font cache
-  ansible.builtin.command: fc-cache -f -v
+  ansible.builtin.shell: fc-cache -f -v
   changed_when: false
 
 - name: Set zsh as default shell
