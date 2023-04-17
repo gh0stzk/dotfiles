@@ -1,0 +1,57 @@
+---
+- name: Update the system
+  community.general.pacman:
+    update_cache: true
+    upgrade: true
+
+- name: Install dependencies
+  community.general.pacman:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ packages }}"
+
+- name: Check if user-dirs.dirs exists
+  ansible.builtin.stat:
+    path: /home/{{ username }}/.config/user-dirs.dirs
+  register: user_dirs
+
+- name: Update xdg user dirs if file doesn't exist
+  ansible.builtin.command: xdg-user-dirs-update
+  when: not user_dirs.stat.exists
+  changed_when: not user_dirs.stat.exists
+
+- name: Check if paru is installed
+  ansible.builtin.command: which paru
+  register: paru_check
+  ignore_errors: true
+  changed_when: false
+
+- name: Install paru
+  ansible.builtin.command: cd /home/{{ username }} && git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si --noconfirm
+  when: paru_check.rc != 0
+  changed_when: paru_check.rc != 0
+
+- name: Check if eww is installed
+  ansible.builtin.command: which eww
+  register: eww_check
+  ignore_errors: true
+  changed_when: false
+
+- name: Install eww
+  ansible.builtin.command: paru -S eww --skipreview --noconfirm
+  when: eww_check.rc != 0
+  changed_when: eww_check.rc != 0
+
+- name: Cleanup unncessary files
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+    recurse: true
+  loop:
+    - "{{ cleanup_folders }}"
+
+- name: Ensure mpd service is enabled
+  ansible.builtin.systemd:
+    name: mpd
+    state: started
+    enabled: true

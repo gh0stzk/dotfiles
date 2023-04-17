@@ -1,0 +1,94 @@
+---
+- name: Clone the rice repo
+  ansible.builtin.git:
+    repo: https://github.com/gh0stzk/dotfiles.git
+    dest: /home/{{ username }}/dotfiles
+    version: master
+
+- name: Ensure required directories exist
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0755
+  loop:
+    - "{{ rice_folders }}"
+
+- name: Copy config files
+  ansible.builtin.copy:
+    src: /home/{{ username }}/dotfiles/config/
+    dest: /home/{{ username }}/.config
+    remote_src: true
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0755
+
+- name: Copy bin files
+  ansible.builtin.copy:
+    src: /home/{{ username }}/dotfiles/misc/bin/
+    dest: /home/{{ username }}/.local/bin
+    remote_src: true
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0755
+
+- name: Copy applications files
+  ansible.builtin.copy:
+    src: /home/{{ username }}/dotfiles/misc/applications/
+    dest: /home/{{ username }}/.local/share/applications
+    remote_src: true
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0755
+
+- name: Copy fonts
+  ansible.builtin.copy:
+    src: /home/{{ username }}/dotfiles/misc/fonts/
+    dest: /home/{{ username }}/.local/share/fonts
+    remote_src: true
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0755
+
+- name: Copy ascii art
+  ansible.builtin.copy:
+    src: /home/{{ username }}/dotfiles/misc/asciiart/
+    dest: /home/{{ username }}/.local/share/asciiart
+    remote_src: true
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0755
+
+- name: Find the firefox default release folder
+  ansible.builtin.find:
+    paths: /home/{{ username }}/.mozilla/firefox/
+    patterns: default-release
+  register: firefox_default_release
+
+- name: Copy firefox folders
+  ansible.builtin.copy:
+    src: /home/{{ username }}/dotfiles/misc/firefox/
+    dest: "{{ firefox_default_release.path }}"
+    remote_src: true
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0755
+
+- name: Copy zshrc file
+  ansible.builtin.copy:
+    src: /home/{{ username }}/dotfiles/home/zshrc
+    dest: /home/{{ username }}/.zshrc
+    remote_src: true
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0755
+
+- name: Refresh the font cache
+  ansible.builtin.command: fc-cache -f -v
+  changed_when: false
+
+- name: Set zsh as default shell
+  ansible.builtin.user:
+    name: "{{ username }}"
+    shell: /bin/zsh

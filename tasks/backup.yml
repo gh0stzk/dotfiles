@@ -1,0 +1,80 @@
+---
+- name: Create backup directory
+  ansible.builtin.file:
+    path: "{{ backup_dir }}"
+    state: directory
+    mode: 0755
+
+- name: Backup folders in config directory
+  ansible.builtin.copy:
+    src: /home/{{ username }}/.config/{{ item }}
+    dest: "{{ backup_dir }}/{{ item }}_{{ ansible_date_time.date }}"
+    remote_src: true
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0755
+  loop: "{{ config_folders }}"
+
+- name: Remove backed up folders
+  ansible.builtin.file:
+    path: /home/{{ username }}/.config/{{ item }}
+    state: absent
+  loop: "{{ config_folders }}"
+
+- name: Find firefox chrome folder
+  ansible.builtin.find:
+    paths: /home/{{ username }}/.mozilla/firefox/*.default-release/
+    patterns: chrome
+  register: chrome_folder
+
+- name: Backup firefox chrome folder
+  ansible.builtin.copy:
+    src: "{{ item.path }}"
+    dest: "{{ backup_dir }}/{{ item.path | basename }}_{{ ansible_date_time.date }}"
+    remote_src: true
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0755
+  loop: "{{ chrome_folder.files }}"
+
+- name: Remove backed up firefox chrome folder
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    state: absent
+  loop: "{{ chrome_folder.files }}"
+
+- name: Find firefox user.js file
+  ansible.builtin.find:
+    paths: /home/{{ username }}/.mozilla/firefox/*.default-release/
+    patterns: user.js
+  register: user_js
+
+- name: Backup firefox user.js file
+  ansible.builtin.copy:
+    src: "{{ item.path }}"
+    dest: "{{ backup_dir }}/{{ item.path | basename }}_{{ ansible_date_time.date }}"
+    remote_src: true
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0755
+  loop: "{{ user_js.files }}"
+
+- name: Remove backed up firefox user.js file
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    state: absent
+  loop: "{{ user_js.files }}"
+
+- name: Backup zshrc file
+  ansible.builtin.copy:
+    src: /home/{{ username }}/.zshrc
+    dest: "{{ backup_dir }}/.zshrc_{{ ansible_date_time.date }}"
+    remote_src: true
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0755
+
+- name: Remove backed up zshrc file
+  ansible.builtin.file:
+    path: /home/{{ username }}/.zshrc
+    state: absent
