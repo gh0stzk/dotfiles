@@ -54,7 +54,6 @@
   ansible.builtin.file:
     path: "{{ item }}"
     state: absent
-    recurse: true
   loop:
     - "{{ cleanup_folders }}"
 
@@ -63,3 +62,5 @@
     name: mpd
     state: started
     enabled: true
+  become: true
+  ignore_errors: true
