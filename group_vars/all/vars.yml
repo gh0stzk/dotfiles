@@ -1,6 +1,4 @@
 ---
-username: <your username>
-
 backup_dir: /home/{{ username }}/config_backups
 
 packages:

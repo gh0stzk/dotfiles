@@ -282,6 +282,26 @@ chmod +x RiceInstaller
 ./RiceInstaller
 ```
 
+## 📦 setup with Ansible (WIP)
+
+### 💾 Installation:
+The playbook only works for **ARCH** Linux, and based distros.
+
+- **Make sure you have ansible installed**
+```sh
+sudo pacman -S ansible
+```
+
+- **Clone the repo**
+```sh
+git clone https://github.com/gh0stzk/dotfiles
+```
+
+- **Run the playbook**
+```sh
+cd dotfiles && ansible-playbook run.yml -K
+```
+
 ## Troubleshooting & Tips
 
 See the [Wiki](https://github.com/gh0stzk/dotfiles/wiki)

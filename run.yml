@@ -2,6 +2,11 @@
 - name: Setup arch and rice bspwm
   hosts: all
 
+  vars_prompt:
+    - name: username
+      prompt: What is your username?
+      private: false
+
   tasks:
     - name: Update system and install essential packages
       ansible.builtin.include_tasks:
