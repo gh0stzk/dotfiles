@@ -3,12 +3,14 @@
   community.general.pacman:
     update_cache: true
     upgrade: true
+  become: true
 
 - name: Install dependencies
   community.general.pacman:
     name: "{{ item }}"
     state: latest
   loop: "{{ packages }}"
+  become: true
 
 - name: Check if user-dirs.dirs exists
   ansible.builtin.stat:

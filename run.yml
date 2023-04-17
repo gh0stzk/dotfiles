@@ -1,0 +1,19 @@
+---
+- name: Setup arch and rice bspwm
+  hosts: all
+
+  tasks:
+    - name: Update system and install essential packages
+      ansible.builtin.include_tasks:
+        file: tasks/essential.yml
+      tags: essential
+
+    - name: Backup and remove default config files
+      ansible.builtin.include_tasks:
+        file: tasks/backup.yml
+      tags: backup
+
+    - name: Install and configure bspwm
+      ansible.builtin.include_tasks:
+        file: tasks/rice.yml
+      tags: rice
