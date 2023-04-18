@@ -58,6 +58,7 @@
   ansible.builtin.find:
     paths: /home/{{ username }}/.mozilla/firefox/
     patterns: default-release
+  ignore_errors: true
   register: firefox_default_release
 
 - name: Copy firefox folders
@@ -68,6 +69,7 @@
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: 0755
+  ignore_errors: true
 
 - name: Copy zshrc file
   ansible.builtin.copy:

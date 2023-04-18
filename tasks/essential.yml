@@ -54,6 +54,7 @@
   ansible.builtin.file:
     path: "{{ item }}"
     state: absent
+  ignore_errors: true
   loop:
     - "{{ cleanup_folders }}"
 

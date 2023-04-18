@@ -20,12 +20,14 @@
   ansible.builtin.file:
     path: /home/{{ username }}/.config/{{ item }}
     state: absent
+  ignore_errors: true
   loop: "{{ config_folders }}"
 
 - name: Find firefox chrome folder
   ansible.builtin.find:
     paths: /home/{{ username }}/.mozilla/firefox/*.default-release/
     patterns: chrome
+  ignore_errors: true
   register: chrome_folder
 
 - name: Backup firefox chrome folder
@@ -36,18 +38,21 @@
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: 0755
+  ignore_errors: true
   loop: "{{ chrome_folder.files }}"
 
 - name: Remove backed up firefox chrome folder
   ansible.builtin.file:
     path: "{{ item.path }}"
     state: absent
+  ignore_errors: true
   loop: "{{ chrome_folder.files }}"
 
 - name: Find firefox user.js file
   ansible.builtin.find:
     paths: /home/{{ username }}/.mozilla/firefox/*.default-release/
     patterns: user.js
+  ignore_errors: true
   register: user_js
 
 - name: Backup firefox user.js file
@@ -58,12 +63,14 @@
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: 0755
+  ignore_errors: true
   loop: "{{ user_js.files }}"
 
 - name: Remove backed up firefox user.js file
   ansible.builtin.file:
     path: "{{ item.path }}"
     state: absent
+  ignore_errors: true
   loop: "{{ user_js.files }}"
 
 - name: Backup zshrc file
@@ -74,8 +81,10 @@
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: 0755
+  ignore_errors: true
 
 - name: Remove backed up zshrc file
   ansible.builtin.file:
     path: /home/{{ username }}/.zshrc
     state: absent
+  ignore_errors: true
