@@ -58,22 +58,25 @@
   ansible.builtin.find:
     paths: /home/{{ username }}/.mozilla/firefox/
     patterns: default-release
+    file_type: directory
+    recurse: true
   ignore_errors: true
   register: firefox_default_release
 
 - name: Copy firefox folders
   ansible.builtin.copy:
     src: /home/{{ username }}/dotfiles/misc/firefox/
-    dest: "{{ firefox_default_release.path }}"
+    dest: "{{ firefox_default_release.files[0].path }}"
     remote_src: true
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: 0755
   ignore_errors: true
+  when: firefox_default_release.files | length > 0
 
 - name: Copy zshrc file
   ansible.builtin.copy:
-    src: /home/{{ username }}/dotfiles/home/zshrc
+    src: /home/{{ username }}/dotfiles/home/.zshrc
     dest: /home/{{ username }}/.zshrc
     remote_src: true
     owner: "{{ username }}"
