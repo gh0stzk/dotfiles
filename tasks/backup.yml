@@ -13,7 +13,7 @@
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: 0755
-    ignore_errors: true
+  ignore_errors: true
   loop: "{{ config_folders }}"
 
 - name: Remove backed up folders
