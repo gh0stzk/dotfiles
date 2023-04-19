@@ -17,6 +17,12 @@ bspc config left_padding 5
 bspc config right_padding 5
 bspc config window_gap 10
 
+# Reload terminal colors
+cat "$HOME"/.config/bspwm/rices/melissa/alacrittyrc > "$HOME"/.config/alacritty/alacritty.yml
+
 # Launch the bar
 polybar -q mel-bar -c $HOME/.config/bspwm/rices/melissa/config.ini &
 polybar -q mel2-bar -c $HOME/.config/bspwm/rices/melissa/config.ini &
+
+# Launch dunst notification daemon
+dunst -config "$HOME"/.config/bspwm/rices/melissa/dunstrc &
