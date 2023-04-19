@@ -5,11 +5,13 @@
 #  ┬  ┬┌─┐┬─┐┌─┐
 #  └┐┌┘├─┤├┬┘└─┐
 #   └┘ ┴ ┴┴└─└─┘
-export VISUAL='geany'
+export VISUAL='nvim'
 export EDITOR='nvim'
 export TERMINAL='alacritty'
 export BROWSER='firefox'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
+export OPENAI_KEY=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
+
 
 if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.local/bin:$PATH"
