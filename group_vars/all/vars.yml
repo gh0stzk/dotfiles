@@ -33,6 +33,7 @@ packages:
   - webp-pixbuf-loader
   - xorg-xprop
   - xorg-xkill
+  - xdg-user-dirs
   - physlock
   - papirus-icon-theme
   - ttf-jetbrains-mono
