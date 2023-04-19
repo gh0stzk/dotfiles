@@ -17,7 +17,13 @@ bspc config left_padding 5
 bspc config right_padding 5
 bspc config window_gap 10
 
+# Reload terminal colors
+cat "$HOME"/.config/bspwm/rices/karla/alacrittyrc > "$HOME"/.config/alacritty/alacritty.yml
+
 # Launch the bar
 eww -c $HOME/.config/bspwm/rices/karla/bar open bar &
 polybar -q karla-bar -c $HOME/.config/bspwm/rices/karla/config.ini &
 polybar -q karla-bar2 -c $HOME/.config/bspwm/rices/karla/config.ini &
+
+# Launch dunst notification daemon
+dunst -config "$HOME"/.config/bspwm/rices/karla/dunstrc &

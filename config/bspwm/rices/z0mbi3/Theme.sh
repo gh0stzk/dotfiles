@@ -21,7 +21,13 @@ if pidof -q bspc; then
 	pkill -9 bspc > /dev/null
 fi
 
+# Reload terminal colors
+cat "$HOME"/.config/bspwm/rices/z0mbi3/alacrittyrc > "$HOME"/.config/alacritty/alacritty.yml
+
 # Launch the bar and or eww widgets
 eww -c $HOME/.config/bspwm/rices/z0mbi3/bar open bar &
 eww -c $HOME/.config/bspwm/rices/z0mbi3/dashboard daemon &
 polybar -q tray -c $HOME/.config/bspwm/rices/z0mbi3/bar/polybar_tray.ini &
+
+# Launch dunst notification daemon
+dunst -config "$HOME"/.config/bspwm/rices/z0mbi3/dunstrc &

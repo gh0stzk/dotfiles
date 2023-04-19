@@ -17,5 +17,11 @@ bspc config left_padding 5
 bspc config right_padding 5
 bspc config window_gap 10
 
+# Reload terminal colors
+cat "$HOME"/.config/bspwm/rices/andrea/alacrittyrc > "$HOME"/.config/alacritty/alacritty.yml
+
 # Launch the bar
 eww -c $HOME/.config/bspwm/rices/andrea/arin open-many search apps weather music system &
+
+# Launch dunst notification daemon
+dunst -config "$HOME"/.config/bspwm/rices/andrea/dunstrc &

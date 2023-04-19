@@ -17,6 +17,12 @@ bspc config left_padding 5
 bspc config right_padding 5
 bspc config window_gap 10
 
+# Reload terminal colors
+cat "$HOME"/.config/bspwm/rices/cristina/alacrittyrc > "$HOME"/.config/alacritty/alacritty.yml
+
 # Launch the bar and or eww widgets
 eww -c $HOME/.config/bspwm/rices/cristina/widgets daemon &
 polybar -q cristina-bar -c $HOME/.config/bspwm/rices/cristina/config.ini &
+
+# Launch dunst notification daemon
+dunst -config "$HOME"/.config/bspwm/rices/cristina/dunstrc &

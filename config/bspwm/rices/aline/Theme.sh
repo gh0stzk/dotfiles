@@ -17,5 +17,11 @@ bspc config left_padding 5
 bspc config right_padding 5
 bspc config window_gap 10
 
+# Reload terminal colors
+cat "$HOME"/.config/bspwm/rices/aline/alacrittyrc > "$HOME"/.config/alacritty/alacritty.yml
+
 # Launch the bar
 polybar -q aline-bar -c $HOME/.config/bspwm/rices/aline/config.ini &
+
+# Launch dunst notification daemon
+dunst -config "$HOME"/.config/bspwm/rices/aline/dunstrc &
