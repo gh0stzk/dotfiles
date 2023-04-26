@@ -239,13 +239,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defwindow bar
-	:geometry (geometry :x "1%" 
+	:geometry (geometry :x "15px" 
 						:y "0%" 
 						:anchor "left center"
 						:height "86%" 
 						:width "47px")
 	:monitor 0
-	:reserve (struts :distance "25px" 
+	:reserve (struts :distance "5px" 
 					 :side "left")
 	:wm-ignore false
 	:hexpand "false"

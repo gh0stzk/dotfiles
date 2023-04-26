@@ -69,11 +69,11 @@ logo "Installing needed packages.."
 dependencias=(base-devel rustup pacman-contrib bspwm polybar sxhkd \
 			  alacritty brightnessctl dunst rofi lsd \
 			  jq polkit-gnome git playerctl mpd \
-			  ncmpcpp geany ranger mpc picom \
+			  ncmpcpp geany ranger mpc picom xdotool \
 			  feh ueberzug maim pamixer libwebp xdg-user-dirs \
 			  webp-pixbuf-loader xorg-xprop xorg-xkill physlock papirus-icon-theme \
 			  ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels \
-			  zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting xorg-xsetroot)
+			  zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting xorg-xsetroot xorg-xwininfo)
 
 is_installed() {
   pacman -Qi "$1" &> /dev/null
@@ -262,6 +262,14 @@ if ! command -v eww >/dev/null 2>&1; then
 	rm -rf $HOME/.cache/paru/clone/eww
 else
 	printf "\n%s%sEww is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+fi
+
+## Intalling tdrop for scratchpads
+if ! command -v tdrop >/dev/null 2>&1; then
+	printf "\n%s%sInstalling tdrop, this must be fast!.%s\n" "${BLD}" "${CBL}" "${CNC}"
+	paru -S tdrop-git --skipreview --noconfirm
+else
+	printf "\n%s%sTdrop is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 fi
 
 ########## ---------- Enabling MPD service ---------- ##########

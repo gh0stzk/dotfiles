@@ -6,28 +6,115 @@
 ## and launch the bars corresponding to each theme.
 
 # Set bspwm configuration for Pamela
-bspc config border_width 0
-bspc config top_padding 60
-bspc config bottom_padding 5
-bspc config normal_border_color "#C574DD"
-bspc config active_border_color "#C574DD"
-bspc config focused_border_color "#8897F4"
-bspc config presel_feedback_color "#FF4971"
-bspc config left_padding 5
-bspc config right_padding 5
-bspc config window_gap 10
+set_bspwm_config() {
+		bspc config border_width 0
+		bspc config top_padding 59
+		bspc config bottom_padding 2
+		bspc config normal_border_color "#C574DD"
+		bspc config active_border_color "#C574DD"
+		bspc config focused_border_color "#8897F4"
+		bspc config presel_feedback_color "#FF4971"
+		bspc config left_padding 2
+		bspc config right_padding 2
+		bspc config window_gap 6
+}
 
 # Reload terminal colors
-cat "$HOME"/.config/bspwm/rices/pamela/alacrittyrc > "$HOME"/.config/alacritty/alacritty.yml
+set_term_config() {
+		sed -i "$HOME"/.config/alacritty/fonts.yml \
+		-e "s/family: .*/family: JetBrainsMono Nerd Font/g" \
+		-e "s/size: .*/size: 10/g"
+		
+		cat > "$HOME"/.config/alacritty/colors.yml <<- _EOF_
+				# Colors (Elenapan) Pamela Rice
+				colors:
+				  primary:
+				    background: '#1D1F28'
+				    foreground: '#FDFDFD'
+
+				  normal:
+				    black:   '#3D4C5F'
+				    red:     '#F37F97'
+				    green:   '#5ADECD'
+				    yellow:  '#F2A272'
+				    blue:    '#8897F4'
+				    magenta: '#C574DD'
+				    cyan:    '#79E6F3'
+				    white:   '#FDFDFD'
+
+				  bright:
+				    black:   '#56687E'
+				    red:     '#FF4971'
+				    green:   '#18E3C8'
+				    yellow:  '#FF8037'
+				    blue:    '#556FFF'
+				    magenta: '#B043D1'
+				    cyan:    '#3FDCEE'
+				    white:   '#BEBEC1'
+    
+				  cursor:
+				    cursor: '#FF4971'
+				    text:	'#1D1F28'
+_EOF_
+}
+
+# Set compositor configuration
+set_picom_config() {
+		sed -i "$HOME"/.config/bspwm/picom.conf \
+			-e "s/shadow-color = .*/shadow-color = \"#000000\"/g" \
+			-e "s/corner-radius = .*/corner-radius = 6/g" \
+			-e "s/\".*:class_g = 'Alacritty'\"/\"100:class_g = 'Alacritty'\"/g" \
+			-e "s/\".*:class_g = 'FloaTerm'\"/\"100:class_g = 'FloaTerm'\"/g" \
+			-e "s/\".*:class_g = 'Updating'\"/\"100:class_g = 'Updating'\"/g" \
+			-e "s/\".*:class_g = 'MusicPlayer'\"/\"100:class_g = 'MusicPlayer'\"/g" \
+			-e "s/\".*:class_g = 'Sysfetch'\"/\"100:class_g = 'Sysfetch'\"/g" \
+			-e "s/\".*:class_g = 'scratch'\"/\"90:class_g = 'scratch'\"/g"
+}
+
+# Set dunst notification daemon config
+set_dunst_config() {
+		sed -i "$HOME"/.config/bspwm/dunstrc \
+		-e "s/transparency = .*/transparency = 9/g" \
+		-e "s/frame_color = .*/frame_color = \"#1D1F28\"/g" \
+		-e "s/separator_color = .*/separator_color = \"#8897F4\"/g" \
+		-e "s/font = .*/font = JetBrainsMono Nerd Font Medium 9/g" \
+		-e "s/foreground='.*'/foreground='#79E6F3'/g"
+		
+		sed -i '/urgency_low/Q' "$HOME"/.config/bspwm/dunstrc
+		cat >> "$HOME"/.config/bspwm/dunstrc <<- _EOF_
+				[urgency_low]
+				timeout = 3
+				background = "#1D1F28"
+				foreground = "#FDFDFD"
+
+				[urgency_normal]
+				timeout = 6
+				background = "#1D1F28"
+				foreground = "#FDFDFD"
+
+				[urgency_critical]
+				timeout = 0
+				background = "#1D1F28"
+				foreground = "#FDFDFD"
+_EOF_
+}
 
 # Launch the bar
-eww -c $HOME/.config/bspwm/rices/pamela/widgets daemon &
-polybar -q pam1 -c $HOME/.config/bspwm/rices/pamela/config.ini &
-polybar -q pam2 -c $HOME/.config/bspwm/rices/pamela/config.ini &
-polybar -q pam3 -c $HOME/.config/bspwm/rices/pamela/config.ini &
-polybar -q pam4 -c $HOME/.config/bspwm/rices/pamela/config.ini &
-polybar -q pam5 -c $HOME/.config/bspwm/rices/pamela/config.ini &
-polybar -q pam6 -c $HOME/.config/bspwm/rices/pamela/config.ini &
+launch_bars() {
+		eww -c $HOME/.config/bspwm/rices/pamela/widgets daemon &
+		polybar -q pam1 -c $HOME/.config/bspwm/rices/pamela/config.ini &
+		polybar -q pam2 -c $HOME/.config/bspwm/rices/pamela/config.ini &
+		polybar -q pam3 -c $HOME/.config/bspwm/rices/pamela/config.ini &
+		polybar -q pam4 -c $HOME/.config/bspwm/rices/pamela/config.ini &
+		polybar -q pam5 -c $HOME/.config/bspwm/rices/pamela/config.ini &
+		polybar -q pam6 -c $HOME/.config/bspwm/rices/pamela/config.ini &
+}
 
-# Launch dunst notification daemon
-dunst -config "$HOME"/.config/bspwm/rices/pamela/dunstrc &
+
+### ---------- Apply Configurations ---------- ###
+
+set_bspwm_config
+set_term_config
+set_picom_config
+set_dunst_config
+launch_bars

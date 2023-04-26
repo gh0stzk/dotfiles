@@ -150,7 +150,7 @@
 ;; ** Windows ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   (defwindow dashboard
-  :geometry (geometry :x "5%" 
+  :geometry (geometry :x "80px" 
 					  :y "0px"
 					  :anchor "left center")
 					  :stacking "fg"

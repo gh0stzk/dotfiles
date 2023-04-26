@@ -1,62 +1,24 @@
+#  ╔═╗╦  ╔═╗╔═╗╦═╗╦╔╦╗╔╦╗╦ ╦  ╔═╗╔═╗╔╗╔╔═╗╦╔═╗
+#  ╠═╣║  ╠═╣║  ╠╦╝║ ║  ║ ╚╦╝  ║  ║ ║║║║╠╣ ║║ ╦	- Config by z0mbi3
+#  ╩ ╩╩═╝╩ ╩╚═╝╩╚═╩ ╩  ╩  ╩   ╚═╝╚═╝╝╚╝╚  ╩╚═╝	- https://github.com/gh0stzk/dotfiles
+#  General configuration
 
+import:
+  - ~/.config/alacritty/colors.yml
+  - ~/.config/alacritty/fonts.yml
+  
 window:
   padding:
-    x: 10
-    y: 5
+    x: 15
+    y: 15
 
-  decorations: full
+  decorations: none
 
   opacity: 1.0
   dynamic_title: true
 
   history: 10000
   multiplier: 3
-
-font:
-  normal:
-    family: JetBrainsMono Nerd Font
-    #style: Regular
-
-  bold:
-    family: JetBrainsMono Nerd Font
-    #style: Bold
-
-  
-  italic:
-    family: JetBrainsMono Nerd Font
-    #style: Italic
-
-  bold_italic:
-    family: JetBrainsMono Nerd Font
-    #style: Bold Italic
-
-  size: 10
-
-# Colors (Tokyo Night) Emilia Rice
-colors:
-  primary:
-    background: '#1a1b26'
-    foreground: '#c0caf5'
-
-  normal:
-    black:   '#414868'
-    red:     '#f7768e'
-    green:   '#9ece6a'
-    yellow:  '#e0af68'
-    blue:    '#7aa2f7'
-    magenta: '#bb9af7'
-    cyan:    '#7dcfff'
-    white:   '#787c99'
-
-  bright:
-    black:   '#414868'
-    red:     '#f7768e'
-    green:   '#9ece6a'
-    yellow:  '#e0af68'
-    blue:    '#7aa2f7'
-    magenta: '#bb9af7'
-    cyan:    '#7dcfff'
-    white:   '#c0caf5'
 
 selection:
   save_to_clipboard: false

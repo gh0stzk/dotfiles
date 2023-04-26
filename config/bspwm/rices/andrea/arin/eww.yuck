@@ -115,7 +115,7 @@
                                :height "45px"
                                :anchor "top left")
            :stacking "fg"
-           :reserve (struts :distance "80px" :side "top")
+           :reserve (struts :distance "5px" :side "top")
            :windowtype "dock"
            :wm-ignore false
            
@@ -131,7 +131,7 @@
                                :height "45px"
                                :anchor "top left")
            :stacking "fg"
-           :reserve (struts :distance "80px" :side "top")                                                                 
+           :reserve (struts :distance "5px" :side "top")                                                                 
            :windowtype "dock"
            :wm-ignore false
 (apps))
@@ -145,7 +145,7 @@
                                :height "45px"
                                :anchor "top left")
            :stacking "fg"
-           :reserve (struts :distance "80px" :side "top")
+           :reserve (struts :distance "5px" :side "top")
            :windowtype "dock"
            :wm-ignore false
 (weather))
@@ -159,7 +159,7 @@
                                :height "45px"
                                :anchor "top left")
            :stacking "fg"
-           :reserve (struts :distance "80px" :side "top")
+           :reserve (struts :distance "5px" :side "top")
            :windowtype "dock"
            :wm-ignore false
 (music))
@@ -173,7 +173,7 @@
                                :height "45px"
                                :anchor "top left")
            :stacking "fg"
-           :reserve (struts :distance "80px" :side "top")
+           :reserve (struts :distance "5px" :side "top")
            :windowtype "dock"
            :wm-ignore false
 (system))

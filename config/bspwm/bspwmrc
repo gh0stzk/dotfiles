@@ -80,7 +80,7 @@ workspaces
 
 bspc config external_rules_command $HOME/.config/bspwm/scripts/ExternalRules
 
-bspc config split_ratio                   0.52
+bspc config split_ratio                   0.51
 bspc config single_monocle                true
 bspc config borderless_monocle            false
 bspc config gapless_monocle               false
@@ -93,7 +93,8 @@ bspc config pointer_action1               move
 bspc config pointer_action2               resize_side 
 bspc config pointer_action3               resize_corner
 
-bspc wm --adopt-orphans
+#bspc wm --adopt-orphans
+bspc rule -a scratch sticky=on state=floating focus=on
 
 #  ┬  ┌─┐┬ ┬┌┐┌┌─┐┬ ┬  ┌─┐┌─┐─┐ ┬┬ ┬  ┬─┐┬┌─┐┌─┐┌─┐
 #  │  ├─┤│ │││││  ├─┤  └─┐├┤ ┌┴┬┘└┬┘  ├┬┘││  ├┤ └─┐
@@ -108,13 +109,16 @@ for process in "${processes[@]}"; do
   fi
 done
 
-# Launch picom // If you have old hardware or encounter problems 
-# uncomment the picom "--legacy-backends" line and comment the current one.
-picom --config "$HOME"/.config/bspwm/rices/"$RICETHEME"/picom.conf &
-#picom --legacy-backends --config "$HOME"/.config/bspwm/rices/"$RICETHEME"/picom.conf &
-
 # Load colors, dunst, bars and/or eww widgets
 . "$HOME"/.config/bspwm/rices/"$RICETHEME"/Theme.sh
+
+# Launch picom // If you have old hardware or encounter problems 
+# uncomment the picom "--legacy-backends" line and comment the current one.
+picom --config "$HOME"/.config/bspwm/picom.conf &
+#picom --legacy-backends --config "$HOME"/.config/bspwm/picom.conf &
+
+# Launch dunst notification daemon
+dunst -config "$HOME"/.config/bspwm/dunstrc &
 
 # Set random wallpaper for actual rice
 feh -z --no-fehbg --bg-fill "$HOME"/.config/bspwm/rices/"$RICETHEME"/walls/
