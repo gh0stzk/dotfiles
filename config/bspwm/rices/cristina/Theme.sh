@@ -101,8 +101,8 @@ _EOF_
 
 # Launch the bar and or eww widgets
 launch_bars() {
-		eww -c $HOME/.config/bspwm/rices/cristina/widgets daemon &
-		polybar -q cristina-bar -c $HOME/.config/bspwm/rices/cristina/config.ini &
+		eww -c ${rice_dir}/widgets daemon &
+		polybar -q cristina-bar -c ${rice_dir}/config.ini &
 }
 
 

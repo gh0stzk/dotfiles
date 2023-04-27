@@ -101,7 +101,7 @@ _EOF_
 
 # Launch the bar
 launch_bars() {
-		polybar -q emi-bar -c $HOME/.config/bspwm/rices/emilia/config.ini &
+		polybar -q emi-bar -c ${rice_dir}/config.ini &
 }
 
 

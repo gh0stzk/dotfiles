@@ -8,56 +8,13 @@
 #  ││││├─┘│ │├┬┘ │ ├─┤│││ │   └┐┌┘├─┤├┬┘│├─┤├┴┐│  ├┤ └─┐
 #  ┴┴ ┴┴  └─┘┴└─ ┴ ┴ ┴┘└┘ ┴    └┘ ┴ ┴┴└─┴┴ ┴└─┘┴─┘└─┘└─┘
 
-export RICETHEME=$(<$HOME/.config/bspwm/.rice)
+read -r RICETHEME < "$HOME"/.config/bspwm/.rice
+export RICETHEME
 PATH="$HOME/.config/bspwm/scripts:$PATH"
+rice_dir="$HOME/.config/bspwm/rices/$RICETHEME"
 
 ## Fix java applications
 export _JAVA_AWT_WM_NONREPARENTING=1
-
-#  ┌─┐┬ ┬┌┐┌┌─┐┌┬┐┬┌─┐┌┐┌┌─┐
-#  ├┤ │ │││││   │ ││ ││││└─┐
-#  └  └─┘┘└┘└─┘ ┴ ┴└─┘┘└┘└─┘
-
-function get_values() {
-DEFNETWORK=$(ip route | grep '^default' | awk '{print $5}' | head -n1)
-CARD=$(ls -1 /sys/class/backlight/)
-power_supply_files=$(ls /sys/class/power_supply/)
-
-for file in $power_supply_files
-do
-	if [ -e "/sys/class/power_supply/$file/capacity" ]; then
-		battery_file=$file
-    fi
-
-    if [ -e "/sys/class/power_supply/$file/online" ]; then
-        adapter_file=$file
-    fi
-done
-
-BATTERY="$battery_file"
-ADAPTER="$adapter_file"
-}
-
-set_values() {
-	if [[ "$DEFNETWORK" ]]; then
-		sed -i -e "s/sys_network_interface = .*/sys_network_interface = $DEFNETWORK/g" $HOME/.config/bspwm/scripts/system.ini
-	fi
-	if [[ "$ADAPTER" ]]; then
-		sed -i -e "s/sys_adapter = .*/sys_adapter = $ADAPTER/g" $HOME/.config/bspwm/scripts/system.ini
-	fi
-	if [[ "$BATTERY" ]]; then
-		sed -i -e "s/sys_battery = .*/sys_battery = $BATTERY/g" $HOME/.config/bspwm/scripts/system.ini
-	fi
-	if [[ "$CARD" ]]; then
-		sed -i -e "s/sys_graphics_card = .*/sys_graphics_card = $CARD/g" $HOME/.config/bspwm/scripts/system.ini
-	fi
-}
-
-if [[ ! -f "$SFILE" ]]; then
-	get_values
-	set_values
-	touch $HOME/.config/bspwm/scripts/.sys
-fi
 
 #  ┬ ┬┌─┐┬─┐┬┌─┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐
 #  ││││ │├┬┘├┴┐└─┐├─┘├─┤│  ├┤ └─┐
@@ -100,6 +57,9 @@ bspc rule -a scratch sticky=on state=floating focus=on
 #  │  ├─┤│ │││││  ├─┤  └─┐├┤ ┌┴┬┘└┬┘  ├┬┘││  ├┤ └─┐
 #  ┴─┘┴ ┴└─┘┘└┘└─┘┴ ┴  └─┘└─┘┴ └─ ┴   ┴└─┴└─┘└─┘└─┘
 
+# Set system vars for polybar
+. SetSysVars
+
 # Terminate already running polybar, eww, picom, sxhkd and dunst instances
 processes=("picom" "polybar" "eww" "sxhkd" "dunst")
 
@@ -110,7 +70,7 @@ for process in "${processes[@]}"; do
 done
 
 # Load colors, dunst, bars and/or eww widgets
-. "$HOME"/.config/bspwm/rices/"$RICETHEME"/Theme.sh
+. ${rice_dir}/Theme.sh
 
 # Launch picom // If you have old hardware or encounter problems 
 # uncomment the picom "--legacy-backends" line and comment the current one.
@@ -121,7 +81,7 @@ picom --config "$HOME"/.config/bspwm/picom.conf &
 dunst -config "$HOME"/.config/bspwm/dunstrc &
 
 # Set random wallpaper for actual rice
-feh -z --no-fehbg --bg-fill "$HOME"/.config/bspwm/rices/"$RICETHEME"/walls/
+feh -z --no-fehbg --bg-fill ${rice_dir}/walls
 
 # Reload sxhkd daemon
 sxhkd -c "$HOME"/.config/bspwm/sxhkdrc &

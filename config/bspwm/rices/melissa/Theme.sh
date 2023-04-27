@@ -101,8 +101,8 @@ _EOF_
 
 # Launch the bar
 launch_bars() {
-		polybar -q mel-bar -c $HOME/.config/bspwm/rices/melissa/config.ini &
-		polybar -q mel2-bar -c $HOME/.config/bspwm/rices/melissa/config.ini &
+		polybar -q mel-bar -c ${rice_dir}/config.ini &
+		polybar -q mel2-bar -c ${rice_dir}/config.ini &
 }
 
 

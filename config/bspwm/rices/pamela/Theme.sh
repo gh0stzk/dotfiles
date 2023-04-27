@@ -101,13 +101,13 @@ _EOF_
 
 # Launch the bar
 launch_bars() {
-		eww -c $HOME/.config/bspwm/rices/pamela/widgets daemon &
-		polybar -q pam1 -c $HOME/.config/bspwm/rices/pamela/config.ini &
-		polybar -q pam2 -c $HOME/.config/bspwm/rices/pamela/config.ini &
-		polybar -q pam3 -c $HOME/.config/bspwm/rices/pamela/config.ini &
-		polybar -q pam4 -c $HOME/.config/bspwm/rices/pamela/config.ini &
-		polybar -q pam5 -c $HOME/.config/bspwm/rices/pamela/config.ini &
-		polybar -q pam6 -c $HOME/.config/bspwm/rices/pamela/config.ini &
+		eww -c ${rice_dir}/widgets daemon &
+		polybar -q pam1 -c ${rice_dir}/config.ini &
+		polybar -q pam2 -c ${rice_dir}/config.ini &
+		polybar -q pam3 -c ${rice_dir}/config.ini &
+		polybar -q pam4 -c ${rice_dir}/config.ini &
+		polybar -q pam5 -c ${rice_dir}/config.ini &
+		polybar -q pam6 -c ${rice_dir}/config.ini &
 }
 
 

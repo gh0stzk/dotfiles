@@ -101,7 +101,7 @@ _EOF_
 
 # Launch the bar
 launch_bars() {
-		polybar -q main -c $HOME/.config/bspwm/rices/jan/config.ini &
+		polybar -q main -c ${rice_dir}/config.ini &
 }
 
 

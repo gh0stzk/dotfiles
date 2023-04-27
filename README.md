@@ -116,8 +116,9 @@ Increase and decrease transparency in focused or selected window.
 <details>
 <summary><b>Extra wallpapers in Andrea</b></summary>
 
-|<img src="config/bspwm/rices/andrea/walls/wall-02.webp" alt="Andrea Rice" align="center" width="150px">|<img src="config/bspwm/rices/andrea/walls/wall-03.webp" alt="Andrea Rice" align="center" width="150px">|<img src="config/bspwm/rices/andrea/walls/wall-04.webp" alt="Andrea Rice" align="center" width="150px">|<img src="config/bspwm/rices/andrea/walls/wall-05.webp" alt="Andrea Rice" align="center" width="150px">|
+|<img src="config/bspwm/rices/andrea/walls/wall-02.webp" alt="Andrea Rice" align="center" width="150px">|<img src="config/bspwm/rices/andrea/walls/wall-03.webp" alt="Andrea Rice" align="center" width="150px">|<img src="config/bspwm/rices/andrea/walls/wall-04.webp" alt="Andrea Rice" align="center" width="150px">
 |:-:|:-:|:-:|
+|<img src="config/bspwm/rices/andrea/walls/wall-05.webp" alt="Andrea Rice" align="center" width="150px">|
 
 </details>
 

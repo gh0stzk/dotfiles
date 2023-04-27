@@ -101,7 +101,7 @@ _EOF_
 
 # Launch the bar
 launch_bars() {
-		eww -c $HOME/.config/bspwm/rices/andrea/arin open-many search apps weather music system &
+		eww -c ${rice_dir}/arin open-many search apps weather music system &
 }
 
 

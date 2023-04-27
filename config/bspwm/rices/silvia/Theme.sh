@@ -101,7 +101,7 @@ _EOF_
 
 # Launch the bar
 launch_bars() {
-		polybar -q cata-bar -c $HOME/.config/bspwm/rices/silvia/config.ini &
+		polybar -q cata-bar -c ${rice_dir}/config.ini &
 }
 
 

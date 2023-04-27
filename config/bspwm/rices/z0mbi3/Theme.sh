@@ -105,9 +105,9 @@ _EOF_
 
 # Launch the bar and or eww widgets
 launch_bars() {
-		eww -c $HOME/.config/bspwm/rices/z0mbi3/bar open bar &
-		eww -c $HOME/.config/bspwm/rices/z0mbi3/dashboard daemon &
-		polybar -q tray -c $HOME/.config/bspwm/rices/z0mbi3/bar/polybar_tray.ini &
+		eww -c ${rice_dir}/bar open bar &
+		eww -c ${rice_dir}/dashboard daemon &
+		polybar -q tray -c ${rice_dir}/bar/polybar_tray.ini &
 }
 
 

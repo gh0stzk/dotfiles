@@ -11,7 +11,7 @@
 case "$1" in
   --menu)
     rofi -show drun \
-    -theme $HOME/.config/bspwm/rices/$RICETHEME/launcher.rasi & disown;;
+    -theme $HOME/.config/bspwm/rices/${RICETHEME}/launcher.rasi & disown;;
   --rice)
 	RiceSelector & disown;;
   --terminal)

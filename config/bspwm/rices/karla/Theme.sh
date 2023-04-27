@@ -101,9 +101,9 @@ _EOF_
 
 # Launch the bar
 launch_bars() {
-		eww -c $HOME/.config/bspwm/rices/karla/bar open bar &
-		polybar -q karla-bar -c $HOME/.config/bspwm/rices/karla/config.ini &
-		polybar -q karla-bar2 -c $HOME/.config/bspwm/rices/karla/config.ini &
+		eww -c ${rice_dir}/bar open bar &
+		polybar -q karla-bar -c ${rice_dir}/config.ini &
+		polybar -q karla-bar2 -c ${rice_dir}/config.ini &
 }
 
 ### ---------- Apply Configurations ---------- ###

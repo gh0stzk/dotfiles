@@ -101,8 +101,8 @@ _EOF_
 
 # Launch the bar
 launch_bars() {
-		polybar -q cyn-bar -c $HOME/.config/bspwm/rices/cynthia/config.ini &
-		polybar -q cyn-bar2 -c $HOME/.config/bspwm/rices/cynthia/config.ini &
+		polybar -q cyn-bar -c ${rice_dir}/config.ini &
+		polybar -q cyn-bar2 -c ${rice_dir}/config.ini &
 }
 
 

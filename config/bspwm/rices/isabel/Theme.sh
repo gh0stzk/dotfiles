@@ -101,7 +101,7 @@ _EOF_
 
 # Launch the bar
 launch_bars() {
-		polybar -q isa-bar -c $HOME/.config/bspwm/rices/isabel/config.ini &
+		polybar -q isa-bar -c ${rice_dir}/config.ini &
 }
 
 

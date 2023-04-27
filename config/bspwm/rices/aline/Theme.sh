@@ -101,7 +101,7 @@ _EOF_
 
 # Launch the bar
 launch_bars() {
-		polybar -q aline-bar -c $HOME/.config/bspwm/rices/aline/config.ini &
+		polybar -q aline-bar -c ${rice_dir}/config.ini &
 }
 
 
