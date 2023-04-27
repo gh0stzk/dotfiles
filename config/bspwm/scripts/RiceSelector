@@ -3,16 +3,21 @@
 #  ╠╦╝║║  ║╣   ╚═╗║╣ ║  ║╣ ║   ║ ║ ║╠╦╝  - https://github.com/gh0stzk/dotfiles
 #  ╩╚═╩╚═╝╚═╝  ╚═╝╚═╝╩═╝╚═╝╚═╝ ╩ ╚═╝╩╚═  - z0mbi3.zk@protonmail.com
 
-rofi_command="rofi -dmenu -theme $HOME/.config/bspwm/scripts/RiceSelector.rasi"
+bspwm_dir="$HOME/.config/bspwm"
+rofi_command="rofi -dmenu -theme $bspwm_dir/scripts/RiceSelector.rasi"
 
-# Array de opciones
-options=("emilia" "jan" "aline" "isabel" "andrea" "cynthia" "silvia" "melissa" "pamela" "cristina" "karla" "z0mbi3")
+# List rices
+options=()
+for dir in "$bspwm_dir"/rices/*/; do
+    options+=("$(basename "$dir")")
+done
 
-# Mostrar el menú de selección de rofi y almacenar el resultado en una variable
+# Show the rofi selection menu and store the result in a variable.
 selected=$(printf "%s\n" "${options[@]}" | $rofi_command)
 
-# Si se seleccionó una opción válida, escribir el valor en el archivo de configuración y reiniciar el gestor de ventanas
-if [[ -n "$selected" ]]; then
-	echo "$selected" > "$HOME"/.config/bspwm/.rice
-	bspc wm -r
-fi
+# If a valid option was selected, write the value to the configuration file and restart BSPWM.
+[[ -n "$selected" ]] || exit 1
+echo "$selected" > "$HOME/.config/bspwm/.rice"
+bspc wm -r
+
+exit 0
