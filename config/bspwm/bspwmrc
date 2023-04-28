@@ -50,8 +50,8 @@ bspc config pointer_action1               move
 bspc config pointer_action2               resize_side 
 bspc config pointer_action3               resize_corner
 
-#bspc wm --adopt-orphans
-bspc rule -a scratch sticky=on state=floating focus=on
+bspc wm --adopt-orphans
+bspc rule -a scratch sticky=on state=floating focus=on manage=off flags=locked
 
 #  ┬  ┌─┐┬ ┬┌┐┌┌─┐┬ ┬  ┌─┐┌─┐─┐ ┬┬ ┬  ┬─┐┬┌─┐┌─┐┌─┐
 #  │  ├─┤│ │││││  ├─┤  └─┐├┤ ┌┴┬┘└┬┘  ├┬┘││  ├┤ └─┐
