@@ -17,7 +17,7 @@ selected=$(printf "%s\n" "${options[@]}" | $rofi_command)
 
 # If a valid option was selected, write the value to the configuration file and restart BSPWM.
 [[ -n "$selected" ]] || exit 1
-echo "$selected" > "$HOME/.config/bspwm/.rice"
+echo "$selected" > "${bspwm_dir}/.rice"
 bspc wm -r
 
 exit 0

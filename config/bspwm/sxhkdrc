@@ -3,6 +3,10 @@
 #  ╚═╝╩ ╚═╩ ╩╩ ╩═╩╝╩╚═╚═╝  - z0mbi3.zk@protonmail.com
 #			z0mbi3 config..
 
+# Show keybindings help
+alt + F1
+	KeybindingsHelp
+	
 # Open Terminal (alacritty)
 super + Return
 	OpenApps --terminal
