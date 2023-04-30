@@ -15,6 +15,10 @@ configuration {
 	drun-display-format:        "{name}";
 	disable-history:            true;
 	sidebar-mode: 				false;
+
+	hover-select:				true;
+	me-select-entry:			"";
+	me-accept-entry:			"MousePrimary";
 }
 
 /*****----- Global Properties -----*****/
@@ -33,8 +37,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       500px;
-    height:                      39%;
+    width:                       550px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -104,7 +107,8 @@ dummy {
 listview {
     enabled:                     true;
     columns:                     3;
-    cycle:                       false;
+    lines:						 5;
+    cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
     layout:                      vertical;
@@ -112,7 +116,7 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     
-    spacing:                     0px;
+    spacing:                     1px;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      "default";

@@ -10,13 +10,17 @@
 configuration {
     show-icons:                 false;
 	drun-display-format:        "{name}";
-	disable-history:                true;
-	sidebar-mode: 					false;
+	disable-history:            true;
+	sidebar-mode: 				false;
+
+	hover-select:				true;
+	me-select-entry:			"";
+	me-accept-entry:			"MousePrimary";
 }
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "JetBrainsMono Nerd Font Bold 10";
+    font:                        "JetBrainsMono Nerd Font Bold 12";
     background:                  #14171c;
     background-alt:              #14171cE0;
     foreground:                  #b8bfe5;
@@ -30,14 +34,15 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       500px;
-    height:                      378px;
+    width:                       480px;
     x-offset:                    0px;
     y-offset:                    0px;
 
     /* properties for all widgets */
     enabled:                     true;
     border-radius:               0px;
+    border:				 		 0px;
+    border-color:				 #766d90;
     cursor:                      "default";
     background-color:            @background;
 }
@@ -82,10 +87,11 @@ textbox-prompt-colon {
 entry {
     enabled:                     true;
     expand:                      true;
-    padding:                     12px 16px;
+    padding:                     16px 16px;
     border-radius:               8px;
     background-color:            @background-alt;
     text-color:                  inherit;
+    font:                        "JetBrainsMono Nerd Font Bold 9";
     cursor:                      text;
     placeholder:                 "Search Rice!";
     placeholder-color:           inherit;
@@ -102,7 +108,7 @@ listview {
     enabled:                     true;
     columns:                     3;
     lines:                       4;
-    cycle:                       false;
+    cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
     layout:                      vertical;
@@ -131,7 +137,7 @@ element normal.normal {
     text-color:                  inherit;
 }
 element selected.normal {
-    background-image: linear-gradient(#1c9ee0, #afa4ec);
+    background-image: 			 linear-gradient(#1c9ee0, #afa4ec);
     text-color:                  @background;
 }
 element-text {
