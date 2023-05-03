@@ -244,15 +244,15 @@ sleep 3
 
 logo "installing Paru & Eww"
 
-if ! command -v paru >/dev/null 2>&1; then
+if ! command -v yay >/dev/null 2>&1; then
 	printf "%s%sInstalling paru%s\n" "${BLD}" "${CBL}" "${CNC}"
 	cd
-	git clone https://aur.archlinux.org/paru-bin.git
-	cd paru-bin
+	git clone https://aur.archlinux.org/yay.git
+	cd yay
 	makepkg -si --noconfirm
 	cd
 else
-	printf "%s%sParu is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+	printf "%s%sYay is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 fi
 
 if ! command -v eww >/dev/null 2>&1; then 

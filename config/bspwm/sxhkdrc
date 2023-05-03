@@ -16,12 +16,8 @@ super + alt + Return
 	OpenApps --floating
 
 # Menu aplicaciones
-super + @space
+super + F1
 	OpenApps --menu
-
-# Theme Selector
-alt + @space
-	RiceSelector
 
 # Scratchpad
 super + alt + o

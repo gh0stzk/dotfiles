@@ -8,10 +8,8 @@
 #  ││││├─┘│ │├┬┘ │ ├─┤│││ │   └┐┌┘├─┤├┬┘│├─┤├┴┐│  ├┤ └─┐
 #  ┴┴ ┴┴  └─┘┴└─ ┴ ┴ ┴┘└┘ ┴    └┘ ┴ ┴┴└─┴┴ ┴└─┘┴─┘└─┘└─┘
 
-read -r RICETHEME < "$HOME"/.config/bspwm/.rice
-export RICETHEME
 PATH="$HOME/.config/bspwm/scripts:$PATH"
-rice_dir="$HOME/.config/bspwm/rices/$RICETHEME"
+rice_dir="$HOME/.config/bspwm/rice"
 
 ## Fix java applications
 export _JAVA_AWT_WM_NONREPARENTING=1
