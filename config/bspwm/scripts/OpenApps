@@ -41,6 +41,8 @@ case "$1" in
 	whatsapp-nativefier --disable-gpu & disown;;
   --soundcontrol)
     pavucontrol & disown;;
+  --github)
+    github-desktop & disown;;
   *)
     echo "Opción no válida";;
 esac

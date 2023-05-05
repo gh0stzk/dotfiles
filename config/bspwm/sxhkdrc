@@ -3,14 +3,9 @@
 #  ╚═╝╩ ╚═╩ ╩╩ ╩═╩╝╩╚═╚═╝  - z0mbi3.zk@protonmail.com
 #			z0mbi3 config..
 
-# Show keybindings help
-alt + F1
-	KeybindingsHelp
-	
 # Open Terminal (alacritty)
 super + Return
-	OpenApps --terminal
-	
+	OpenApps --terminal	
 # Open floating Terminal
 super + alt + Return
 	OpenApps --floating
@@ -28,14 +23,12 @@ ctrl + super + alt + {p,r,q,l,k}
 	{systemctl poweroff, systemctl reboot,bspc quit,physlock -d,xkill}
 
 # Apps
-shift + alt + {b,g,n,p,r,t,w,m,v,k}
+ctrl + alt + {b,t,g,p,f,m,v,k}
 	{firefox, \
-	 geany, \
-	 thunar, \
+	 codium, \
+     github-desktop, \
 	 pavucontrol, \
 	 OpenApps --ranger, \
-	 telegram-desktop, \
-	 whatsapp-nativefier --disable-gpu, \
 	 env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --disable-gpu --no-zygote %U, \
 	 OpenApps --nvim, \
 	 OpenApps --music}
