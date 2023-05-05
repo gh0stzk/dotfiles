@@ -245,13 +245,8 @@ sleep 3
 logo "installing Yay & Eww"
 
 if ! command -v yay >/dev/null 2>&1; then
-<<<<<<< Updated upstream
-	printf "%s%sInstalling paru%s\n" "${BLD}" "${CBL}" "${CNC}"
-	cd || exit
-=======
 	printf "%s%sInstalling yay%s\n" "${BLD}" "${CBL}" "${CNC}"
 	cd
->>>>>>> Stashed changes
 	git clone https://aur.archlinux.org/yay.git
 	cd yay || exit
 	makepkg -si --noconfirm
@@ -284,15 +279,16 @@ else
 fi
 ## Installing github-desktop
 if ! command -v github-desktop >/dev/null 2>&1; then
-    printf "\n%s%sInstalling github-desktop.%s\n" "${BLD}" "${CBL}" "${CNC}"
-    cd
-    git clone https://aur.archlinux.org/github-desktop-bin.git
-    cd github-desktop-bin
-    makepkg -si --noconfirm
-    cd
+        printf "\n%s%sInstalling github-desktop.%s\n" "${BLD}" "${CBL}" "${CNC}"
+        cd
+        git clone https://aur.archlinux.org/github-desktop-bin.git
+        cd github-desktop-bin
+        makepkg -si --noconfirm
+        cd
 else
-    printf "\n%s%sGithubDesktop is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+        printf "\n%s%sGithubDesktop is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 fi
+
 ########## ---------- Enabling MPD service ---------- ##########
 
 logo "Enabling mpd service"
