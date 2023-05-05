@@ -97,7 +97,7 @@ clear
 ########## ---------- Preparing Folders ---------- ##########
 
 logo "Preparing Folders"
-if [ ! -e $HOME/.config/user-dirs.dirs ]; then
+if [ ! -e "$HOME/.config/user-dirs.dirs" ]; then
 	xdg-user-dirs-update
 	echo "Creating xdg-user-dirs"
 else
@@ -111,7 +111,7 @@ clear
 logo "Downloading dotfiles"
 [ -d ~/dotfiles ] && rm -rf ~/dotfiles
 printf "Cloning rice from https://github.com/edwark43/dotfiles\n"
-cd
+cd || exit
 git clone --depth=1 https://github.com/edwark43/dotfiles.git
 sleep 2
 clear
@@ -137,7 +137,7 @@ done
 
 for folder in chrome; do
   if [ -d "$HOME"/.mozilla/firefox/*.default-release/$folder ]; then
-    mv "$HOME"/.mozilla/firefox/*.default-release/$folder "$backup_folder"/${folder}_$date
+    mv "$HOME"/.mozilla/firefox/*.default-release/$folder "$backup_folder"/${folder}_"$date"
     echo "$folder folder backed up successfully at $backup_folder/${folder}_$date"
   else
     echo "The folder $folder does not exist in $HOME/.mozilla/firefox/"
@@ -146,7 +146,7 @@ done
 
 for file in user.js; do
   if [ -e "$HOME"/.mozilla/firefox/*.default-release/$file ]; then
-    mv "$HOME"/.mozilla/firefox/*.default-release/$file "$backup_folder"/${file}_$date
+    mv "$HOME"/.mozilla/firefox/*.default-release/$file "$backup_folder"/${file}_"$date"
     echo "$file file backed up successfully at $backup_folder/${file}_$date"
   else
     echo "The file $file does not exist in $HOME/.mozilla/firefox/"
@@ -246,22 +246,22 @@ logo "installing Yay & Eww"
 
 if ! command -v yay >/dev/null 2>&1; then
 	printf "%s%sInstalling paru%s\n" "${BLD}" "${CBL}" "${CNC}"
-	cd
+	cd || exit
 	git clone https://aur.archlinux.org/yay.git
-	cd yay
+	cd yay || exit
 	makepkg -si --noconfirm
-	cd
+	cd || exit
 else
 	printf "%s%sYay is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 fi
 
 if ! command -v eww >/dev/null 2>&1; then 
 	printf "\n%s%sInstalling Eww, this could take 10 mins or more.%s\n" "${BLD}" "${CBL}" "${CNC}"
-	cd
+	cd || exit
 	git clone https://aur.archlinux.org/eww.git
-	cd eww
+	cd eww || exit
 	makepkg -si --noconfirm
-	cd
+	cd || exit
 else
 	printf "\n%s%sEww is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 fi
@@ -269,11 +269,11 @@ fi
 ## Intalling tdrop for scratchpads
 if ! command -v tdrop >/dev/null 2>&1; then
 	printf "\n%s%sInstalling tdrop, this must be fast!.%s\n" "${BLD}" "${CBL}" "${CNC}"
-	cd
+	cd || exit
 	git clone https://aur.archlinux.org/tdrop.git
-	cd tdrop
+	cd tdrop || exit
 	makepkg -si --noconfirm
-	cd
+	cd || exit
 else
 	printf "\n%s%sTdrop is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 fi
