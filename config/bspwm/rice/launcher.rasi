@@ -23,7 +23,7 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "TerminessTTF Nerd Font Mono Bold 10";
+    font:                        "Terminess Nerd Font Mono Bold 10";
     background:                  #1f2329;
     background-alt:              #1f2329E0;
     foreground:                  #b8bfe5;
