@@ -21,7 +21,7 @@ case "$class" in
 		;;
 	Ranger)
 		eval "$consequences"
-		[ "$state" ] || echo "state=floating rectangle=811x286+0+0 center=on"
+		[ "$state" ] || echo "state=floating rectangle=811x386+0+0 center=on"
 		;;
 	MusicPlayer)
 		eval "$consequences"
@@ -65,7 +65,7 @@ case "$class" in
 	    ;;
 	firefox|Navigator)
 	    eval "$consequences"
-	    [ "$state" ] || echo "desktop=^3 follow=on"
+	    [ "$state" ] || echo "follow=on"
 	    ;;
 	 Transmission-gtk)
 	    eval "$consequences"
