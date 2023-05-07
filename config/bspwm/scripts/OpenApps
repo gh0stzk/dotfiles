@@ -23,18 +23,18 @@ case "$1" in
   --ranger)
     alacritty --class Ranger,Alacritty -e ranger & disown;;
   --nvim)
-    alacritty -e nvim & disown;;
+    alacritty -e vim & disown;;
   --music)
     alacritty --class MusicPlayer,Alacritty -e ncmpcpp & disown;;
   --fetch)
-    alacritty --hold --class Sysfetch,Alacritty -e ~/.local/bin/sysfetch & disown;;
+    alacritty --hold --class FloaTerm,Alacritty -e neofetch & disown;;
   #Apps
   --filemanager)
-	thunar & disown;;
+	alacritty --class Ranger,Alacritty -e ranger & disown;;
   --browser)
 	firefox & disown;;
   --editor)
-	geany & disown;;
+	alacritty -e vim & disown;;
   --telegram)
 	telegram & disown;;
   --whats)
