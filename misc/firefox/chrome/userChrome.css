@@ -60,7 +60,9 @@
 
 /* Move tabs down */
 #titlebar {
-  -moz-box-ordinal-group: 3 !important;
+  order: 2;
+  -moz-appearance: none !important;
+  --tabs-navbar-shadow-size: 0px;
 }
 
 /* tabs */
