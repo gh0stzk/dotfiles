@@ -65,7 +65,7 @@ processes=("picom" "polybar" "eww" "sxhkd" "dunst")
 
 for process in "${processes[@]}"; do
   if pidof -q "$process"; then
-    pkill -x "$process" > /dev/null; sleep 0.1
+    pkill -9 -x "$process" > /dev/null; sleep 0.1
   fi
 done
 
@@ -87,7 +87,7 @@ feh -z --no-fehbg --bg-fill ${rice_dir}/walls
 sxhkd -c "$HOME"/.config/bspwm/sxhkdrc &
 
 # Launch polkit
-pgrep -x polkit-gnome-au > /dev/null || /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+pidof -q polkit-gnome-authentication-agent-1 || { /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & }
 
 # Fix cursor
 xsetroot -cursor_name left_ptr
