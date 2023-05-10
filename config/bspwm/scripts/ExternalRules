@@ -13,7 +13,7 @@ main () {
 case "$class" in
 	FloaTerm)
 		eval "$consequences"
-		[ "$state" ] || echo "state=floating center=on rectangle=780x450+0+0"
+		[ "$state" ] || echo "state=floating center=on rectangle=780x470+0+0"
 		;;
 	Updating)
 		eval "$consequences"
