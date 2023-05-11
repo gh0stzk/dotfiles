@@ -6,8 +6,6 @@ My version of gh0stzk's bspwm theme
 ## :book: Wiki
 I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki), you should give it a read. If it is your first time with a WM, you may be interested in reading [First steps after installing the dotfiles](https://github.com/gh0stzk/dotfiles/wiki/Firsts-steps-after-installing) or maybe read [frequently asked questions and answers](https://github.com/gh0stzk/dotfiles/wiki/Questions---Answers).
 
-https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-afed-f352c5d2979e.mp4
-
 ## Info
 <img src="https://user-images.githubusercontent.com/67278339/221605474-21d65156-0cf7-485c-bd1a-40792c37817e.png" alt="Linux Fetch" align="right" width="450">
 
@@ -91,8 +89,7 @@ Complementarily you can install [this extension](https://github.com/PonyLucky/gh
 
 ## Very useful keybindigs to know...
 
-- <code>alt + @space</code> Display menu to select theme selector.
-- <code>super + @space</code> Apps Menu.
+- <code>super + F1</code> Apps Menu.
 - <code>super + h </code> Hides bar/s <code>super + u</code> unhide bar/s
 - <code>super + Print</code> Takes screenshot.
 - <code>ctrl + alt {plus,minus,t}</code> Changes transparency on focused window.
@@ -130,4 +127,4 @@ See the [Wiki](https://github.com/gh0stzk/dotfiles/wiki)
 
 
 ## Credits
-- [turquoise-hexagon](https://github.com/turquoise-hexagon/fonts), [adi1090x](https://github.com/adi1090x/widgets), [gabrielzschmitz](https://github.com/gabrielzschmitz), [elenapan](https://github.com/elenapan/dotfiles), [rxyhn](https://github.com/rxyhn/bspdots), [okklol](https://github.com/okklol/eww-bar), [ikz87](https://github.com/ikz87).
+- [turquoise-hexagon](https://github.com/turquoise-hexagon/fonts), [adi1090x](https://github.com/adi1090x/widgets), [gabrielzschmitz](https://github.com/gabrielzschmitz), [elenapan](https://github.com/elenapan/dotfiles), [rxyhn](https://github.com/rxyhn/bspdots), [okklol](https://github.com/okklol/eww-bar), [ikz87](https://github.com/ikz87), [Narmis-E](https://github.com/Narmis-E/onedark-wallpapers).
