@@ -62,7 +62,7 @@ Increase and decrease transparency in focused or selected window.
 |---|---|
 
 <details>
-<summary><b>Extra wallpapers in Cynthia</b></summary>
+<summary><b>Extra wallpapers</b></summary>
 
 |<img src="config/bspwm/rice/walls/wall-01.png" alt="Rice" align="center" width="150px">|<img src="config/bspwm/rice/walls/wall-02.png" alt="Rice" align="center" width="150px">|<img src="config/bspwm/rice/walls/wall-04.png" alt="Rice" align="center" width="150px">|
 |:-:|:-:|:-:|
