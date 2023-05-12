@@ -1,5 +1,7 @@
 # BSPWM | Polybar themes collection with Theme Selector
 
+## Puedes leer esta pagina en español [AQUI](INICIO.md)
+
 ## 🌿 Information
 My version of gh0stzk's bspwm theme
 
