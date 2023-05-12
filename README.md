@@ -20,9 +20,9 @@ I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wik
 |Terminal|[Alacritty](https://github.com/alacritty/alacritty)|
 |Widgets|[ElKowars wacky widgets ](https://github.com/elkowar/eww)|
 |Music/Player|[mpd](https://archlinux.org/packages/extra/x86_64/mpd/)-[ncmpcpp](https://archlinux.org/packages/community/x86_64/ncmpcpp/)|
-|File Manager|[Ranger](https://archlinux.org/packages/extra/x86_64/thunar/)|
+|File Manager|[Ranger](https://github.com/ranger/ranger)|
 |Shell|[Zsh](https://archlinux.org/packages/extra/x86_64/zsh/)|
-|Aur Helper|[Yay](https://github.com/Morganamilo/paru)|
+|Aur Helper|[Yay](https://github.com/Jguer/yay)|
 
 <br>
 
@@ -56,19 +56,17 @@ Increase and decrease transparency in focused or selected window.
    </tr>
    </table>
 
-## 🎨 The themes
+## 🎨 The theme
 
-### 🌸Cynthia
-
-|<img src="https://user-images.githubusercontent.com/67278339/221425848-a28fda79-9b3f-4cba-9e56-ea4759cd56e2.png" alt="Cynthia Rice" align="center" width="600px">|<img src="https://user-images.githubusercontent.com/67278339/221425853-ce5af1fe-f03d-48cc-a4d3-445adbe3e566.png" alt="Cynthia Rice" align="center" width="600px">|
+|<img src="https://user-images.githubusercontent.com/67278339/221425848-a28fda79-9b3f-4cba-9e56-ea4759cd56e2.png" alt="Rice" align="center" width="600px">|<img src="https://user-images.githubusercontent.com/67278339/221425853-ce5af1fe-f03d-48cc-a4d3-445adbe3e566.png" alt="Rice" align="center" width="600px">|
 |---|---|
 
 <details>
 <summary><b>Extra wallpapers in Cynthia</b></summary>
 
-|<img src="config/bspwm/rices/cynthia/walls/wall-01.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/walls/wall-02.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/walls/wall-04.webp" alt="Cynthia Rice" align="center" width="150px">|
+|<img src="config/bspwm/rice/walls/wall-01.png" alt="Rice" align="center" width="150px">|<img src="config/bspwm/rice/walls/wall-02.png" alt="Rice" align="center" width="150px">|<img src="config/bspwm/rice/walls/wall-04.png" alt="Rice" align="center" width="150px">|
 |:-:|:-:|:-:|
-<img src="config/bspwm/rices/cynthia/walls/wall-05.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/walls/wall-06.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/walls/wall-07.webp" alt="Cynthia Rice" align="center" width="150px">|
+<img src="config/bspwm/rice/walls/wall-05.png" alt="Rice" align="center" width="150px">|<img src="config/bspwm/rice/walls/wall-06.png" alt="Rice" align="center" width="150px">|<img src="config/bspwm/rice/walls/wall-07.png" alt="Rice" align="center" width="150px">|
 
 </details>
 
