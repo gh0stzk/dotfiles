@@ -58,7 +58,7 @@ Increase and decrease transparency in focused or selected window.
 
 ## 🎨 The theme
 
-|<img src="https://user-images.githubusercontent.com/67278339/221425848-a28fda79-9b3f-4cba-9e56-ea4759cd56e2.png" alt="Rice" align="center" width="600px">|<img src="https://user-images.githubusercontent.com/67278339/221425853-ce5af1fe-f03d-48cc-a4d3-445adbe3e566.png" alt="Rice" align="center" width="600px">|
+|<img src="https://github.com/edwark43/dotfiles/assets/97860398/c25dd470-6305-4cdc-921a-787b6edd6294" alt="Rice" align="center" width="600px">|<img src="https://user-images.githubusercontent.com/67278339/221425853-ce5af1fe-f03d-48cc-a4d3-445adbe3e566.png" alt="Rice" align="center" width="600px">|
 |---|---|
 
 <details>
