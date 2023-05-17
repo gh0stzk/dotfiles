@@ -24,7 +24,7 @@ ctrl + super + alt + {p,r,q,l,k}
 
 # Apps
 ctrl + alt + {b,t,g,p,f,m,v,k}
-	{firefox, \
+	{qutebrowser, \
 	 codium, \
      github-desktop, \
 	 pavucontrol, \
