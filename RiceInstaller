@@ -69,7 +69,7 @@ logo "Installing needed packages.."
 dependencias=(base-devel rustup pacman-contrib bspwm polybar sxhkd \
 			  alacritty brightnessctl dunst rofi lsd \
 			  jq polkit-gnome git playerctl mpd \
-			  ncmpcpp geany ranger mpc picom xdotool scrcpy \
+			  ncmpcpp python-adblock qutebrowser ranger mpc picom xdotool scrcpy \
 			  feh ueberzug maim pamixer libwebp xdg-user-dirs \
 			  webp-pixbuf-loader xorg-xprop xorg-xkill physlock papirus-icon-theme \
 			  ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels \
@@ -135,25 +135,9 @@ for folder in bspwm alacritty picom rofi eww sxhkd dunst polybar ncmpcpp nvim ra
   fi
 done
 
-for folder in chrome; do
-  if [ -d "$HOME"/.mozilla/firefox/*.default-release/$folder ]; then
-    mv "$HOME"/.mozilla/firefox/*.default-release/$folder "$backup_folder"/${folder}_"$date"
-    echo "$folder folder backed up successfully at $backup_folder/${folder}_$date"
-  else
-    echo "The folder $folder does not exist in $HOME/.mozilla/firefox/"
-  fi
-done
-
-for file in user.js; do
-  if [ -e "$HOME"/.mozilla/firefox/*.default-release/$file ]; then
-    mv "$HOME"/.mozilla/firefox/*.default-release/$file "$backup_folder"/${file}_"$date"
-    echo "$file file backed up successfully at $backup_folder/${file}_$date"
-  else
-    echo "The file $file does not exist in $HOME/.mozilla/firefox/"
-  fi
-done
-
 [ -f ~/.zshrc ] && mv ~/.zshrc ~/.RiceBackup/.zshrc-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+
+[ -f ~/.config/qutebrowser/config.py ] && mv ~/.config/qutebrowser/config.py ~/.RiceBackup/.configpyqute-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
 
 printf "%s%sDone!!%s\n\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 5
@@ -224,18 +208,12 @@ for archivos in ~/dotfiles/misc/asciiart/*; do
   fi
 done
 
-for archivos in ~/dotfiles/misc/firefox/*; do
-  cp -R "${archivos}" ~/.mozilla/firefox/*.default-release/
-  if [ $? -eq 0 ]; then
-	printf "%s%s%s folder copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
-	sleep 1
-  else
-	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
-	sleep 1
-  fi
-done
-
 cp -f "$HOME"/dotfiles/home/.zshrc "$HOME"
+fc-cache -rv >/dev/null 2>&1
+printf "%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"
+sleep 3
+
+cp -f "$HOME"/dotfiles/config/qutebrowser/config.py ~/.config/qutebrowser/
 fc-cache -rv >/dev/null 2>&1
 printf "%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 3
