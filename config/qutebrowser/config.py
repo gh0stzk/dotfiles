@@ -48,6 +48,8 @@ c.colors.completion.category.border.bottom = base00
 # Foreground color of the selected completion item.
 c.colors.completion.item.selected.fg = base05
 
+config.load_autoconfig()
+
 # Background color of the selected completion item.
 c.colors.completion.item.selected.bg = base02
 

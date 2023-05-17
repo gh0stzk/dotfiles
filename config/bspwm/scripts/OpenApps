@@ -32,7 +32,7 @@ case "$1" in
   --filemanager)
 	alacritty --class Ranger,Alacritty -e ranger & disown;;
   --browser)
-	firefox & disown;;
+	qutebrowser & disown;;
   --editor)
 	alacritty -e vim & disown;;
   --telegram)
