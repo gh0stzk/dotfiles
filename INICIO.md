@@ -7,7 +7,7 @@ Mi versión del tema bspwm de gh0stzk
 Ya comencé a escribir la [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki), deberías darle una lectura. Si es tu primera vez con un WM tal vez te interese leer [Primeros pasos despues de instalar los dotfiles](https://github.com/gh0stzk/dotfiles/wiki/Firsts-steps-after-installing) ó tal vez leer las [pregumtas y respuestas](https://github.com/gh0stzk/dotfiles/wiki/Questions---Answers).
  
 ## Información
-<img src="https://user-images.githubusercontent.com/67278339/221605474-21d65156-0cf7-485c-bd1a-40792c37817e.png" alt="Linux Fetch" align="right" width="600">
+<img src="https://github.com/edwark43/dotfiles/assets/97860398/bf9610b2-bb06-473f-8182-1ae743841c7a" alt="Linux Fetch" align="right" width="600">
 
 |Distro|[Arch](https://archlinux.org/)|
 |:---:|:---:|

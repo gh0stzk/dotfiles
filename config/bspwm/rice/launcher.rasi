@@ -23,11 +23,11 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "Terminess Nerd Font Mono Bold 10";
-    background:                  #1f2329;
-    background-alt:              #1f2329E0;
-    foreground:                  #b8bfe5;
-    selected:                    #3f5273;
+    font:                        "JetBrainsMono Nerd Font Bold 9";
+    background:                  #e1eaff;
+    background-alt:              #e1eaffE0;
+    foreground:                  #151515;
+    selected:                    #3d7fea;
 }
 
 /*****----- Main Window -----*****/
@@ -137,7 +137,7 @@ element normal.normal {
     text-color:                  inherit;
 }
 element selected.normal {
-    background-color:            @selected;
+    background-image: linear-gradient(#1c9ee0, #f05393, #afa4ec);
     text-color:                  @background;
 }
 element-icon {

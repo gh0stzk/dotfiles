@@ -25,7 +25,7 @@ case "${RICETHEME}" in
         eww -c "$HOME"/.config/bspwm/rices/andrea/arin close-all | bspc config top_padding 2
         ;;
     karla)
-        eww -c "$HOME"/.config/bspwm/rices/karla/bar close bar & polybar-msg cmd hide | bspc config top_padding 2
+        polybar-msg cmd hide | bspc config top_padding 2
         ;;
     *)
         echo "Error: Something fails dud.."
@@ -68,7 +68,7 @@ case "${RICETHEME}" in
 		eww -c "$HOME"/.config/bspwm/rices/z0mbi3/bar open bar | bspc config left_padding 79
 		;;
 	karla)
-		eww -c "$HOME"/.config/bspwm/rices/karla/bar open bar & polybar-msg cmd show | bspc config top_padding 64
+		polybar-msg cmd show | bspc config top_padding 48
 		;;
 	andrea)
 		eww -c "$HOME"/.config/bspwm/rices/andrea/arin open-many \
