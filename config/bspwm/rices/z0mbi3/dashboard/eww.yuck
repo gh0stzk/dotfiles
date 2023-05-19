@@ -48,15 +48,15 @@
                (button :class "launcher-btn"
                        :onclick "OpenApps --filemanager"
                        :tooltip "File Manager"
-                       "")
+                       "󰝰")
                (button :class "launcher-btn"
                        :onclick "OpenApps --terminal"
                        :tooltip "Terminal"
-                       "")
+                       "󰆍")
                (button :class "launcher-btn"
                        :onclick "OpenApps --editor"
                        :tooltip "Editor"
-                       ""))
+                       "󱇧"))
         ))
   )
  
@@ -106,15 +106,15 @@
 	(box :orientation "v" :height 100 :class "sysbox" :hexpand true :space-evenly false
       (box :orientation "v" :class "systop" :space-evenly false :spacing 15
         (box :class "stats" :hexpand "false" :vexpand "false" :space-evenly "false"
-		  (label :tooltip "${round(EWW_CPU.avg, 0)}%" :class "stats-icon-cpu" :text "")
+		  (label :tooltip "${round(EWW_CPU.avg, 0)}%" :class "stats-icon-cpu" :text "󰍛")
 		  (scale :min 0 :max 101 :active false :value {EWW_CPU.avg} :class "scale-cpu" :width 265)
 		)
 		(box :class "stats" :hexpand "false" :vexpand "false" :space-evenly "false"
-		  (label :tooltip "${round(EWW_RAM.used_mem_perc, 0)}%" :class "stats-icon-ram" :text "﬙")
+		  (label :tooltip "${round(EWW_RAM.used_mem_perc, 0)}%" :class "stats-icon-ram" :text "󰘚")
 		  (scale :min 0 :max 101 :active false :value {EWW_RAM.used_mem_perc} :class "scale-ram" :width 265)
 		)
 		(box :class "stats" :hexpand "false" :vexpand "false" :space-evenly "false"
-		  (label :tooltip "${round(EWW_DISK["/"].used_perc, 0)}%" :class "stats-icon-fs" :text "")
+		  (label :tooltip "${round(EWW_DISK["/"].used_perc, 0)}%" :class "stats-icon-fs" :text "󰝰")
 		  (scale :min 0 :max 101 :active false :value {(EWW_DISK["/"].used / EWW_DISK["/"].total) * 100} :class "scale-fs" :width 265)
 		)
 	  )

@@ -2,7 +2,7 @@
 #  ╔═╗═╗ ╦╔╦╗╔═╗╦═╗╔╗╔╔═╗╦    ╦═╗╦ ╦╦  ╔═╗╔═╗
 #  ║╣ ╔╩╦╝ ║ ║╣ ╠╦╝║║║╠═╣║    ╠╦╝║ ║║  ║╣ ╚═╗
 #  ╚═╝╩ ╚═ ╩ ╚═╝╩╚═╝╚╝╩ ╩╩═╝  ╩╚═╚═╝╩═╝╚═╝╚═╝
-#  url: https://github.com/gh0stzk
+#  url: https://github.com/gh0stzk/dotfiles
 
 wid=$1
 class=$2
@@ -13,27 +13,15 @@ main () {
 case "$class" in
 	FloaTerm)
 		eval "$consequences"
-		[ "$state" ] || echo "state=floating center=on rectangle=780x450+0+0"
+		[ "$state" ] || echo "state=floating center=on"
 		;;
 	Updating)
 		eval "$consequences"
-		[ "$state" ] || echo "state=floating center=on rectangle=400x430+0+0 sticky=on"
-		;;
-	Ranger)
-		eval "$consequences"
-		[ "$state" ] || echo "state=floating rectangle=811x286+0+0 center=on"
-		;;
-	MusicPlayer)
-		eval "$consequences"
-		[ "$state" ] || echo "state=floating rectangle=525x370+0+0 center=on"
-		;;
-	Sysfetch)
-		eval "$consequences"
-		[ "$state" ] || echo "state=floating rectangle=352x500+0+0 center=on"
+		[ "$state" ] || echo "state=floating sticky=on center=on"
 		;;
 	mpv)
 	    eval "$consequences"
-		[ "$state" ] || echo "state=floating focus=on center=on rectangle=849x477+0+0"
+		[ "$state" ] || echo "state=floating focus=on rectangle=849x477+0+0 center=on"
 		;;
 	Viewnior)
 	    eval "$consequences"
@@ -41,15 +29,11 @@ case "$class" in
 		;;
 	whatsapp-nativefier-d40211|TelegramDesktop)
 	    eval "$consequences"
-	    [ "$state" ] || echo "state=pseudo_tiled desktop=^4 center=on follow=on rectangle=930x617+0+0"
+	    [ "$state" ] || echo "state=pseudo_tiled desktop=^4 follow=on rectangle=930x617+0+0"
 		;;
 	retroarch)
 	    eval "$consequences"
-	    [ "$state" ] || echo "state=pseudo_tiled desktop=^6 center=on follow=on"
-	    ;;
-	ranger)
-	    eval "$consequences"
-	    [ "$state" ] || echo "state=floating rectangle=811x316+0+0 center=on"
+	    [ "$state" ] || echo "state=pseudo_tiled desktop=^6 follow=on"
 	    ;;
 	Pavucontrol)
 	    eval "$consequences"
@@ -61,7 +45,7 @@ case "$class" in
 	    ;;
 	Thunar)
 	    eval "$consequences"
-	    [ "$state" ] || echo "state=pseudo_tiled desktop=^2 rectangle=966x576+0+0 follow=on center=on"
+	    [ "$state" ] || echo "state=pseudo_tiled desktop=^2 rectangle=966x576+0+0 follow=on"
 	    ;;
 	firefox|Navigator)
 	    eval "$consequences"
@@ -73,7 +57,7 @@ case "$class" in
 	    ;;
 	  Spotify)
 		eval "$consequences"
-	    [ "$state" ] || echo "state=pseudo_tiled center=on rectangle=1125x600 desktop=^6 follow=on"
+	    [ "$state" ] || echo "state=pseudo_tiled rectangle=1125x600 desktop=^6 follow=on"
 		;;
 		"") ## spotify hack
         sleep 0.5

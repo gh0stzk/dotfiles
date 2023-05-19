@@ -207,8 +207,8 @@ Increase and decrease transparency in focused or selected window.
 </details>
 
 ### 🌸Karla
-
-|<img src="https://user-images.githubusercontent.com/67278339/221426157-64268f2e-1946-455c-9245-61d0fcfe1cc9.png" alt="Karla Rice" align="center" width="600px">|<img src="https://user-images.githubusercontent.com/67278339/221426162-8477edff-82ec-47e3-9c9f-de98842f581f.png" alt="Karla Rice" align="center" width="600px">|
+**(Zombie-Night Color Scheme)**
+|<img src="https://user-images.githubusercontent.com/67278339/239428839-c30eba84-5c18-4397-9e92-3d8735b46d7b.png" alt="Karla Rice" align="center" width="600px">|<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/67278339/239429213-2d3d62ae-3c7b-4c7a-b50a-637517145c7a.png" alt="Karla Rice" align="center" width="600px">|
 |---|---|
 
 <details>
@@ -217,6 +217,7 @@ Increase and decrease transparency in focused or selected window.
 |<img src="config/bspwm/rices/karla/walls/wall-02.webp" alt="Karla Rice" align="center" width="150px">|<img src="config/bspwm/rices/karla/walls/wall-03.webp" alt="Karla Rice" align="center" width="150px">|<img src="config/bspwm/rices/karla/walls/wall-04.webp" alt="Karla Rice" align="center" width="150px">|
 |:-:|:-:|:-:|
 <img src="config/bspwm/rices/karla/walls/wall-05.webp" alt="Karla Rice" align="center" width="150px">|<img src="config/bspwm/rices/karla/walls/wall-06.webp" alt="Karla Rice" align="center" width="150px">|<img src="config/bspwm/rices/karla/walls/wall-07.webp" alt="Karla Rice" align="center" width="150px">|
+<img src="config/bspwm/rices/karla/walls/wall-08.webp" alt="Karla Rice" align="center" width="150px">|
 
 </details>
 

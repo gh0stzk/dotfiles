@@ -11,38 +11,71 @@
 case "$1" in
   --menu)
     rofi -show drun \
-    -theme $HOME/.config/bspwm/rices/${RICETHEME}/launcher.rasi & disown;;
+		 -theme $HOME/.config/bspwm/rices/${RICETHEME}/launcher.rasi;;
+
   --rice)
-	RiceSelector & disown;;
+	RiceSelector;;
+
   --terminal)
-    alacritty & disown;;
+    alacritty;;
+
   --floating)
-    alacritty --class FloaTerm,Alacritty & disown;;
+    alacritty --class FloaTerm,Alacritty \
+					-o window.dimensions.lines=22 \
+					window.dimensions.columns=90;;
+
   --update)
-    alacritty --hold --class FloaTerm,Alacritty -e Updates --update-system & disown;;
+    alacritty --hold --class FloaTerm,Alacritty \
+					-o window.dimensions.lines=22 \
+					   window.dimensions.columns=90 \
+					-e Updates --update-system;;
+
   --checkupdates)
-	alacritty --hold --class Updating,Alacritty -e Updates --print-updates & disown;;
+	alacritty --hold --class Updating,Alacritty \
+					-o window.dimensions.lines=22 \
+					   window.dimensions.columns=47 \
+					-e Updates --print-updates;;
+
   --ranger)
-    alacritty --class Ranger,Alacritty -e ranger & disown;;
+    alacritty --class FloaTerm,Alacritty \
+					-o window.dimensions.lines=14 \
+					   window.dimensions.columns=90 \
+					-e ranger;;
+
   --nvim)
-    alacritty -e nvim & disown;;
+    alacritty -e nvim;;
+
   --music)
-    alacritty --class MusicPlayer,Alacritty -e ncmpcpp & disown;;
+    alacritty --class FloaTerm,Alacritty \
+					-o window.dimensions.lines=18 \
+					   window.dimensions.columns=67 \
+					-e ncmpcpp;;
+
   --fetch)
-    alacritty --hold --class Sysfetch,Alacritty -e ~/.local/bin/sysfetch & disown;;
+    alacritty --hold --class FloaTerm,Alacritty \
+					-o window.dimensions.lines=26 \
+					   window.dimensions.columns=40 \
+					-e ~/.local/bin/sysfetch;;
+
   #Apps
   --filemanager)
-	thunar & disown;;
+	thunar;;
+
   --browser)
-	firefox & disown;;
+	firefox;;
+
   --editor)
-	geany & disown;;
+	geany;;
+
   --telegram)
-	telegram & disown;;
+	telegram;;
+
   --whats)
-	whatsapp-nativefier --disable-gpu & disown;;
+	whatsapp-nativefier --disable-gpu;;
+
   --soundcontrol)
-    pavucontrol & disown;;
+    pavucontrol;;
+
   *)
     echo "Opción no válida";;
 esac

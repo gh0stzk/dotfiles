@@ -177,9 +177,9 @@ tracking-protection-icon-container, #identity-box {
     display: none;
 }
 
-#unified-extensions-button {
+/*#unified-extensions-button {
 	display: none;
-}
+}+/
 
 /* Hide show all tabs button */
 #alltabs-button { 

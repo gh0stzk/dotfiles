@@ -24,9 +24,9 @@ configuration {
 /*****----- Global Properties -----*****/
 * {
     font:                        "JetBrainsMono Nerd Font Bold 9";
-    background:                  #e1eaff;
-    background-alt:              #e1eaffE0;
-    foreground:                  #151515;
+    background:                  #0E1113F7;
+    background-alt:              #0E1113;
+    foreground:                  #afb1db;
     selected:                    #3d7fea;
 }
 
@@ -137,7 +137,7 @@ element normal.normal {
     text-color:                  inherit;
 }
 element selected.normal {
-    background-image: linear-gradient(#1c9ee0, #f05393, #afa4ec);
+    background-image: linear-gradient(0deg,#353c52,#7a44e3);
     text-color:                  @background;
 }
 element-icon {
