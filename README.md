@@ -1,12 +1,10 @@
 # BSPWM | Polybar themes collection with Theme Selector
 
-## Puedes leer esta pagina en español [AQUI](INICIO.md)
-
 ## 🌿 Information
 My version of gh0stzk's bspwm theme
 
 ## :book: Wiki
-I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki), you should give it a read. If it is your first time with a WM, you may be interested in reading [First steps after installing the dotfiles](https://github.com/gh0stzk/dotfiles/wiki/Firsts-steps-after-installing) or maybe read [frequently asked questions and answers](https://github.com/gh0stzk/dotfiles/wiki/Questions---Answers).
+ You definitally should give the [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki) a read. If it is your first time with a WM, you may be interested in reading [First steps after installing the dotfiles](https://github.com/gh0stzk/dotfiles/wiki/Firsts-steps-after-installing) or maybe read [frequently asked questions and answers](https://github.com/gh0stzk/dotfiles/wiki/Questions---Answers).
 
 ## Info
 <img src="https://github.com/edwark43/dotfiles/assets/97860398/bf9610b2-bb06-473f-8182-1ae743841c7a" alt="Linux Fetch" align="right" width="450">
@@ -71,7 +69,7 @@ Increase and decrease transparency in focused or selected window.
 </details>
 
 ## Neovim themes
-Actually the neovim theme is OneDark, but the background will adapt to the colorscheme in the rice you are. Now is configured in "lua". i wanna keepit simple so there are a few plugins.
+The neovim theme is OneDark. It is currently configured in "lua". I want to keep it simple so there are a few plugins.
 - Lualine
 - Nvim-Tree
 - Colorizer
@@ -81,11 +79,11 @@ The plugin manager is Packer.
 
 <img src="https://user-images.githubusercontent.com/67278339/221430203-23308e84-c974-4481-8c17-9aab53b37766.gif" alt="Neovim Themes" align="center" width="400px">
 
-## Firefox Theme (z0mbi3 Fox)
+<!-- for later
+## Qutebrowser Theme ([OneDark](https://github.com/tinted-theming/base16-qutebrowser/blob/main/themes/default/base16-onedark.config.py))
 
-|<img src="https://user-images.githubusercontent.com/67278339/228313955-670436db-d502-4249-9817-d67e3de86aa1.png" alt="Firefox theme - z0mbi3-Fox" width="700">|
-|:-:|
-Complementarily you can install [this extension](https://github.com/PonyLucky/gh0stzk-Firefox/tree/master/extension) made by [PonyLucky](https://github.com/PonyLucky). It is a startpage to enhance UX. [Preview and configuration options](https://github.com/PonyLucky/gh0stzk-Firefox/tree/master/extension). Looks awesome with the firefox theme.
+|<img src="https://user-images.githubusercontent.com/67278339/228313955-670436db-d502-4249-9817-d67e3de86aa1.png" alt="Qutebrowser theme - OneDark" width="700">|
+|:-:|-->
 
 ## Very useful keybindigs to know...
 
