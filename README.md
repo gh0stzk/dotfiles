@@ -9,7 +9,7 @@ My version of gh0stzk's bspwm theme
 I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki), you should give it a read. If it is your first time with a WM, you may be interested in reading [First steps after installing the dotfiles](https://github.com/gh0stzk/dotfiles/wiki/Firsts-steps-after-installing) or maybe read [frequently asked questions and answers](https://github.com/gh0stzk/dotfiles/wiki/Questions---Answers).
 
 ## Info
-<img src="https://github.com/edwark43/dotfiles/assets/97860398/bf9610b2-bb06-473f-8182-1ae743841c7a" alt="Linux Fetch" align="right" width="550">
+<img src="https://github.com/edwark43/dotfiles/assets/97860398/bf9610b2-bb06-473f-8182-1ae743841c7a" alt="Linux Fetch" align="right" width="450">
 
 |Distro|[Arch](https://archlinux.org/)|
 |:---:|:---:|
