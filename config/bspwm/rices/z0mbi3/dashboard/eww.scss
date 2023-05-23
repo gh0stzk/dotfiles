@@ -125,6 +125,10 @@ $archlogo: #0f94d2;
   font-size: 20px;
 }
 
+.btn_prev {
+  margin-right: -5px;
+}
+
 .sysbox {
   background-color: $bg-alt;
   border-radius: 12px;
@@ -192,6 +196,7 @@ $archlogo: #0f94d2;
 .stats-icon-cpu,
 .stats-icon-ram,
 .stats-icon-fs {
+  font-family: Material Design Icons Desktop;
   font-size: 1.5rem;
 }
 

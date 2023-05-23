@@ -5,9 +5,9 @@ mplayer() {
 
 if [[ ! -f "$LOCKFILE" ]]; then
     touch "$LOCKFILE"
-    eww open music -c ~/.config/bspwm/rices/cristina/widgets/
+    eww open music -c ~/.config/bspwm/rices/"$RICETHEME"/widgets/
 elif [[ -f "$LOCKFILE" ]]; then
-    eww close music -c ~/.config/bspwm/rices/cristina/widgets/
+    eww close music -c ~/.config/bspwm/rices/"$RICETHEME"/widgets/
     rm "$LOCKFILE"
 fi
 }

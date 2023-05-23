@@ -27,9 +27,9 @@
 		 	:space-evenly "false"
 			:halign "center"
 			:spacing 30
-			(button :class "btn_prev" :onclick "MediaControl --previous" "ﭣ")
+			(button :class "btn_prev" :onclick "MediaControl --previous" "󰒮")
 			(button :class "btn_play" :onclick "MediaControl --toggle" playpause)
-			(button :class "btn_next" :onclick "MediaControl --next" "ﭡ"))
+			(button :class "btn_next" :onclick "MediaControl --next" "󰒭"))
 	(box    :orientation "h"
 			:class "metric-player"
 			:space-evenly "false"

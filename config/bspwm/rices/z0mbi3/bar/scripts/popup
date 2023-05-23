@@ -5,9 +5,9 @@ FILE="$HOME/.cache/eww_z0mbi3.dashboard"
 
 if [[ ! -f "$FILE" ]]; then
 	touch "$FILE"
-	eww --config $HOME/.config/bspwm/rices/z0mbi3/dashboard open dashboard
+	eww --config $HOME/.config/bspwm/rices/"$RICETHEME"/dashboard open dashboard
 else
-	eww --config $HOME/.config/bspwm/rices/z0mbi3/dashboard close dashboard
+	eww --config $HOME/.config/bspwm/rices/"$RICETHEME"/dashboard close dashboard
 	rm "$FILE"
 fi
 }
@@ -17,9 +17,9 @@ LOCK_FILE="$HOME/.cache/eww-z0mbi3-calendar.lock"
 
 if [[ ! -f "$LOCK_FILE" ]]; then
     touch "$LOCK_FILE"
-    eww -c $HOME/.config/bspwm/rices/z0mbi3/bar open calendar
+    eww -c $HOME/.config/bspwm/rices/"$RICETHEME"/bar open calendar
 else
-    eww -c $HOME/.config/bspwm/rices/z0mbi3/bar close calendar
+    eww -c $HOME/.config/bspwm/rices/"$RICETHEME"/bar close calendar
     rm "$LOCK_FILE"
 fi
 }

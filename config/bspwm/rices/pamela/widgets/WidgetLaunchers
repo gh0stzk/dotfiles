@@ -5,9 +5,9 @@ power() {
 
 if [[ ! -f "$LOCKFILE_POWER" ]]; then
     touch "$LOCKFILE_POWER"
-    eww open powermenu -c ~/.config/bspwm/rices/pamela/widgets/
+    eww open powermenu -c ~/.config/bspwm/rices/"$RICETHEME"/widgets/
 elif [[ -f "$LOCKFILE_POWER" ]]; then
-    eww close powermenu -c ~/.config/bspwm/rices/pamela/widgets/
+    eww close powermenu -c ~/.config/bspwm/rices/"$RICETHEME"/widgets/
     rm "$LOCKFILE_POWER"
 fi
 }
@@ -17,9 +17,9 @@ profile() {
 
 if [[ ! -f "$LOCKFILE_PROFILE" ]]; then
     touch "$LOCKFILE_PROFILE"
-    eww open launchermenu -c ~/.config/bspwm/rices/pamela/widgets/
+    eww open launchermenu -c ~/.config/bspwm/rices/"$RICETHEME"/widgets/
 elif [[ -f "$LOCKFILE_PROFILE" ]]; then
-    eww close launchermenu -c ~/.config/bspwm/rices/pamela/widgets/
+    eww close launchermenu -c ~/.config/bspwm/rices/"$RICETHEME"/widgets/
     rm "$LOCKFILE_PROFILE"
 fi
 }
@@ -29,9 +29,9 @@ LOCKFILE_MPLAYER="$HOME/.cache/eww-pam-mplayer.lock"
 
 if [[ ! -f "$LOCKFILE_MPLAYER" ]]; then
     touch "$LOCKFILE_MPLAYER"
-    eww open music -c ~/.config/bspwm/rices/pamela/widgets/
+    eww open music -c ~/.config/bspwm/rices/"$RICETHEME"/widgets/
 elif [[ -f "$LOCKFILE_MPLAYER" ]]; then
-    eww close music -c ~/.config/bspwm/rices/pamela/widgets/
+    eww close music -c ~/.config/bspwm/rices/"$RICETHEME"/widgets/
     rm "$LOCKFILE_MPLAYER"
 fi
 }
@@ -41,9 +41,9 @@ calendar() {
 
 if [[ ! -f "$LOCKFILE_CALENDAR" ]]; then
     touch "$LOCKFILE_CALENDAR"
-    eww open calendar -c ~/.config/bspwm/rices/pamela/widgets/
+    eww open calendar -c ~/.config/bspwm/rices/"$RICETHEME"/widgets/
 elif [[ -f "$LOCKFILE_CALENDAR" ]]; then
-    eww close calendar -c ~/.config/bspwm/rices/pamela/widgets/
+    eww close calendar -c ~/.config/bspwm/rices/"$RICETHEME"/widgets/
     rm "$LOCKFILE_CALENDAR"
 fi
 }

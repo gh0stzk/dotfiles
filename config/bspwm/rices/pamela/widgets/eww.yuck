@@ -104,15 +104,15 @@
                (button :class "launcher-btn"
                        :onclick "OpenApps --filemanager"
                        :tooltip "File Manager"
-                       "")
+                       "󰝰")
                (button :class "launcher-btn"
                        :onclick "OpenApps --terminal"
                        :tooltip "Terminal"
-                       "")
+                       "󰆍")
                (button :class "launcher-btn"
                        :onclick "OpenApps --editor"
                        :tooltip "Editor"
-                       ""))))
+                       "󰷈"))))
 
 ;;  Music Widgets
 (defwidget music [] 
@@ -136,9 +136,9 @@
 		 	:space-evenly "false"
 			:halign "center"
 			:spacing 30
-			(button :class "btn_prev" :onclick "MediaControl --previous" "ﭣ")
+			(button :class "btn_prev" :onclick "MediaControl --previous" "󰒮")
 			(button :class "btn_play" :onclick "MediaControl --toggle" playpause)
-			(button :class "btn_next" :onclick "MediaControl --next" "ﭡ"))
+			(button :class "btn_next" :onclick "MediaControl --next" "󰒭"))
 	(box    :orientation "h"
 			:class "metric-player"
 			:space-evenly "false"
@@ -182,7 +182,7 @@
 
 ;; Music Player ;;
 (defwindow music
-    :geometry (geometry :x "45%"
+    :geometry (geometry :x "43%"
                         :y "7%"
                         :width "18%"
                         :height "47%")

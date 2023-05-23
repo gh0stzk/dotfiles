@@ -56,7 +56,7 @@
                (button :class "launcher-btn"
                        :onclick "OpenApps --editor"
                        :tooltip "Editor"
-                       "󱇧"))
+                       "󰷈"))
         ))
   )
  
