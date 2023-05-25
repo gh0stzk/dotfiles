@@ -1,18 +1,7 @@
 #!/usr/bin/env bash
-
-# ╔╦╗ ╦ ╦ ╔═╗ ╦ ╔═╗
-# ║║║ ║ ║ ╚═╗ ║ ║  
-# ╩ ╩ ╚═╝ ╚═╝ ╩ ╚═╝
-
 # author	Niraj
 # github	niraj998
-
-# ┌─┐┌─┐┌┐┌┌─┐┬┌─┐┬ ┬┬─┐┌─┐┌┬┐┬┌─┐┌┐┌┌─┐
-# │  │ ││││├┤ ││ ┬│ │├┬┘├─┤ │ ││ ││││└─┐
-# └─┘└─┘┘└┘└  ┴└─┘└─┘┴└─┴ ┴ ┴ ┴└─┘┘└┘└─┘
-
-# uncomment your music players below.
-# 
+# uncomment your music players below. 
 
 Control="MPD"
 [ -n "$(pgrep spotify)" ] && Control="spotify"

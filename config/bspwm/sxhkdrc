@@ -1,8 +1,3 @@
-#  ╔═╗═╗ ╦╦ ╦╦╔═╔╦╗╦═╗╔═╗  - z0mbi3
-#  ╚═╗╔╩╦╝╠═╣╠╩╗ ║║╠╦╝║    - https://github.com/gh0stzk/dotfiles
-#  ╚═╝╩ ╚═╩ ╩╩ ╩═╩╝╩╚═╚═╝  - z0mbi3.zk@protonmail.com
-#			z0mbi3 config..
-
 # Open Terminal (alacritty)
 super + Return
 	OpenApps --terminal	
@@ -59,7 +54,7 @@ super + Escape
 
 # Random wallpaper
 super + alt + w
-	feh -z --no-fehbg --bg-fill ~/.config/bspwm/rices/$RICETHEME/walls/
+	feh -z --no-fehbg --bg-fill ~/.config/bspwm/rice/walls/
 
 #
 # bspwm hotkeys

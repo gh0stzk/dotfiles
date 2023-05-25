@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
-#  ╔╗ ╔═╗╔═╗╦ ╦╔╦╗  - z0mbi3
-#  ╠╩╗╚═╗╠═╝║║║║║║  - https://github.com/gh0stzk/dotfiles
-#  ╚═╝╚═╝╩  ╚╩╝╩ ╩  - z0mbi3.zk@protonmail.com
+#		z0mbi3
+#		https://github.com/gh0stzk/dotfiles
+#		z0mbi3.zk@protonmail.com
 
 
-#  ┬┌┬┐┌─┐┌─┐┬─┐┌┬┐┌─┐┌┐┌┌┬┐  ┬  ┬┌─┐┬─┐┬┌─┐┌┐ ┬  ┌─┐┌─┐
-#  ││││├─┘│ │├┬┘ │ ├─┤│││ │   └┐┌┘├─┤├┬┘│├─┤├┴┐│  ├┤ └─┐
-#  ┴┴ ┴┴  └─┘┴└─ ┴ ┴ ┴┘└┘ ┴    └┘ ┴ ┴┴└─┴┴ ┴└─┘┴─┘└─┘└─┘
+#  Important Variables
 
 PATH="$HOME/.config/bspwm/scripts:$PATH"
 rice_dir="$HOME/.config/bspwm/rice"
@@ -14,9 +12,7 @@ rice_dir="$HOME/.config/bspwm/rice"
 ## Fix java applications
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-#  ┬ ┬┌─┐┬─┐┬┌─┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐
-#  ││││ │├┬┘├┴┐└─┐├─┘├─┤│  ├┤ └─┐
-#  └┴┘└─┘┴└─┴ ┴└─┘┴  ┴ ┴└─┘└─┘└─┘
+#  Workspaces
 
 workspaces() {
 	name=1
@@ -29,9 +25,7 @@ workspaces() {
 
 workspaces
 
-#  ┌┐ ┌─┐┌─┐┬ ┬┌┬┐  ┌─┐┌─┐┌┐┌┌─┐┬┌─┐
-#  ├┴┐└─┐├─┘││││││  │  │ ││││├┤ ││ ┬
-#  └─┘└─┘┴  └┴┘┴ ┴  └─┘└─┘┘└┘└  ┴└─┘
+#  Bspwm Config
 
 bspc config external_rules_command $HOME/.config/bspwm/scripts/ExternalRules
 
@@ -51,9 +45,7 @@ bspc config pointer_action3               resize_corner
 #bspc wm --adopt-orphans
 bspc rule -a scratch sticky=on state=floating focus=on
 
-#  ┬  ┌─┐┬ ┬┌┐┌┌─┐┬ ┬  ┌─┐┌─┐─┐ ┬┬ ┬  ┬─┐┬┌─┐┌─┐┌─┐
-#  │  ├─┤│ │││││  ├─┤  └─┐├┤ ┌┴┬┘└┬┘  ├┬┘││  ├┤ └─┐
-#  ┴─┘┴ ┴└─┘┘└┘└─┘┴ ┴  └─┘└─┘┴ └─ ┴   ┴└─┴└─┘└─┘└─┘
+#  Launch Steamy Hot Rices
 
 # Set system vars for polybar
 . SetSysVars

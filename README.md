@@ -1,7 +1,7 @@
-# BSPWM | Polybar themes collection with Theme Selector
+# BSPWM | Polybar theme
 
 ## 🌿 Information
-My version of gh0stzk's bspwm theme
+My version of [gh0stzk's bspwm theme](https://github.com/gh0stzk/dotfiles)
 
 ## :book: Wiki
  You definitally should give the [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki) a read. If it is your first time with a WM, you may be interested in reading [First steps after installing the dotfiles](https://github.com/gh0stzk/dotfiles/wiki/Firsts-steps-after-installing) or maybe read [frequently asked questions and answers](https://github.com/gh0stzk/dotfiles/wiki/Questions---Answers).

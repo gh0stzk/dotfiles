@@ -1,6 +1,6 @@
-#  ╔╦╗╦ ╦╔╗╔╔═╗╔╦╗  ╔═╗╔═╗╔╗╔╔═╗╦╔═╗	- Dunst config file for the rice
-#   ║║║ ║║║║╚═╗ ║   ║  ║ ║║║║╠╣ ║║ ╦	- https://github.com/edwark43/dotfiles
-#  ═╩╝╚═╝╝╚╝╚═╝ ╩   ╚═╝╚═╝╝╚╝╚  ╩╚═╝	- z0mbi3
+#       Dunst config file for the rice
+#       https://github.com/edwark43/dotfiles
+#       z0mbi3
 
 [global]
 title = Dunst

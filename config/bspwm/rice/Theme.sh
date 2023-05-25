@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
-#  ╔═╗╦ ╦╔╗╔╔╦╗╦ ╦╦╔═╗  ╦═╗╦╔═╗╔═╗
-#  ║  ╚╦╝║║║ ║ ╠═╣║╠═╣  ╠╦╝║║  ║╣ 	https://github.com/gh0stzk/dotfiles
-#  ╚═╝ ╩ ╝╚╝ ╩ ╩ ╩╩╩ ╩  ╩╚═╩╚═╝╚═╝
-## This file will configure the options
-## and launch the bars corresponding to each theme.
 
-# Set bspwm configuration for Cynthia
+# Set bspwm configuration for the rice
 set_bspwm_config() {
 		bspc config border_width 0
 		bspc config top_padding 48
@@ -26,7 +21,7 @@ set_term_config() {
 		-e "s/size: .*/size: 10/g"
 		
 		cat > "$HOME"/.config/alacritty/colors.yml <<- _EOF_
-				# Colors Cynthia Rice
+				# Colors for Rice
 				colors:
 				  primary:
 				    background: '#1f2329'

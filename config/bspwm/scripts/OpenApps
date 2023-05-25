@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
-#  ╔═╗╔═╗╔═╗╔═╗  ╦  ╔═╗╦ ╦╔╗╔╔═╗╦ ╦╔═╗╦═╗
-#  ╠═╣╠═╝╠═╝╚═╗  ║  ╠═╣║ ║║║║║  ╠═╣║╣ ╠╦╝
-#  ╩ ╩╩  ╩  ╚═╝  ╩═╝╩ ╩╚═╝╝╚╝╚═╝╩ ╩╚═╝╩╚═
-#	Script to control apps launcher
 #   Author: z0mbi3
-#	url: https://github.com/gh0stzk
-
-# From here you can control your favorite applications for all themes.
 
 case "$1" in
   --menu)
