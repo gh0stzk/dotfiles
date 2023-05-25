@@ -69,6 +69,7 @@ user_pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
 user_pref("browser.newtabpage.activity-stream.telemetry", false);
 user_pref("toolkit.telemetry.reportingpolicy.firstRun", false);
 user_pref("toolkit.telemetry.shutdownPingSender.enabledFirstsession", false);
+user_pref("browser.vpn_promo.enabled", false);
 
 /** STUDIES ***/
 
