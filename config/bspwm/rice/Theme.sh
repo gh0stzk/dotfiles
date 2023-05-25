@@ -14,45 +14,6 @@ set_bspwm_config() {
 		bspc config window_gap 6
 }
 
-# Reload terminal colors
-set_term_config() {
-		sed -i "$HOME"/.config/alacritty/fonts.yml \
-		-e "s/family: .*/family: JetBrainsMono Nerd Font/g" \
-		-e "s/size: .*/size: 10/g"
-		
-		cat > "$HOME"/.config/alacritty/colors.yml <<- _EOF_
-				# Colors for Rice
-				colors:
-				  primary:
-				    background: '#1f2329'
-				    foreground: '#b8bfe5'
-
-				  normal:
-				    black:   '#0f1319'
-				    red:     '#644d66'
-				    green:   '#375759'
-				    yellow:  '#736871'
-				    blue:    '#3f5273'
-				    magenta: '#543f66'
-				    cyan:    '#324f66'
-				    white:   '#b3b3b3'
-
-				  bright:
-				    black:   '#b3b3b3'
-				    red:     '#735771'
-				    green:   '#3f6566'
-				    yellow:  '#807476'
-				    blue:    '#465b80'
-				    magenta: '#533969'
-				    cyan:    '#385a73'
-				    white:   '#e5e5e5'
-    
-				  cursor:
-				    cursor: '#465b80'
-				    text:	'#e5e5e5'
-_EOF_
-}
-
 # Set compositor configuration
 set_picom_config() {
 		sed -i "$HOME"/.config/bspwm/picom.conf \
@@ -101,7 +62,6 @@ launch_bars() {
 ### ---------- Apply Configurations ---------- ###
 
 set_bspwm_config
-set_term_config
 set_picom_config
 set_dunst_config
 launch_bars

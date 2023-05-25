@@ -108,15 +108,15 @@ The installer only works for **ARCH** Linux, and based distros.
 <b>Open a terminal in HOME</b>
 - **First download the installer**
 ```sh
-curl https://raw.githubusercontent.com/edwark43/dotfiles/master/RiceInstaller -o $HOME/RiceInstaller
+curl https://raw.githubusercontent.com/edwark43/dotfiles/master/setup.sh -o $HOME/setup.sh
 ```
 - **Now give it execute permissions**
 ```sh
-chmod +x RiceInstaller
+chmod +x setup.sh
 ```
 - **Finally run the installer**
 ```sh
-./RiceInstaller
+./setup.sh
 ```
 
 ## Troubleshooting & Tips

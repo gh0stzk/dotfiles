@@ -1,29 +1,29 @@
-# Colors (Tokyo Night) Emilia Rice
+# Colors for the Rice
 colors:
   primary:
-    background: '#1a1b26'
-    foreground: '#c0caf5'
+    background: '#1f2329'
+    foreground: '#b8bfe5'
 
-  normal:
-    black:   '#414868'
-    red:     '#f7768e'
-    green:   '#9ece6a'
-    yellow:  '#e0af68'
-    blue:    '#7aa2f7'
-    magenta: '#bb9af7'
-    cyan:    '#7dcfff'
-    white:   '#787c99'
+	normal:
+		black:   '#0f1319'
+		red:     '#644d66'
+		green:   '#375759'
+		yellow:  '#736871'
+		blue:    '#3f5273'
+		magenta: '#543f66'
+		cyan:    '#324f66'
+		white:   '#b3b3b3'
 
   bright:
-    black:   '#414868'
-    red:     '#f7768e'
-    green:   '#9ece6a'
-    yellow:  '#e0af68'
-    blue:    '#7aa2f7'
-    magenta: '#bb9af7'
-    cyan:    '#7dcfff'
-    white:   '#c0caf5'
+		black:   '#b3b3b3'
+		red:     '#735771'
+		green:   '#3f6566'
+		yellow:  '#807476'
+		blue:    '#465b80'
+		magenta: '#533969'
+		cyan:    '#385a73'
+		white:   '#e5e5e5'
 
   cursor:
-    cursor: '#bb9af7'
-    text:	'#1a1b26'
+    cursor: '#465b80'
+    text:	  '#e5e5e5'
