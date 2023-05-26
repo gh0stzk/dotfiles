@@ -29,7 +29,7 @@
   --z0mbi3-urlbar-results-font-family: "JetBrainsMono Nerd Font", serif;
   --z0mbi3-urlbar-results-font-size: 9pt;
   --z0mbi3-urlbar-results-font-weight: 700;
-  --z0mbi3-urlbar-results-url-color: #98c1d9;
+  --z0mbi3-urlbar-results-url-color: #4d4168;
 
   /* Overriden Firefox variables*/
   --toolbar-bgcolor: var(--z0mbi3-bg) !important;
@@ -149,6 +149,10 @@ hbox.tab-content .tab-icon-image {
   font-size: var(--z0mbi3-urlbar-font-size) !important;
 }
 
+.urlbarView-row:hover > .urlbarView-row-inner {
+  background-color: var(--z0mbi3-urlbar-results-url-color) !important;
+}
+
 .urlbarView-favicon, .urlbarView-type-icon {
   display: none !important;
 }
@@ -179,7 +183,7 @@ tracking-protection-icon-container, #identity-box {
 
 /*#unified-extensions-button {
 	display: none;
-}+/
+}*/
 
 /* Hide show all tabs button */
 #alltabs-button { 
@@ -267,6 +271,24 @@ toolbarbutton.bookmark-item:hover,
 #PlacesToolbar menuitem:hover {
     background-color: var(--z0mbi3-tab-selected-bg) !important;
 }
+
+#appMenu-popup toolbarbutton.subviewbutton:not([disabled],
+[open],
+:active):is(:hover) {
+    color: black !important;
+    background-color: var(--z0mbi3-tab-selected-bg) !important;
+}
+
+#unified-extensions-view #unified-extensions-manage-extensions,
+#unified-extensions-view {
+    background-color: var(--z0mbi3-bg) !important;
+}
+
+#context-navigation,
+#contentAreaContextMenu {
+  background-color: var(--z0mbi3-bg) !important;
+}
+
 
 /************************************/
 
