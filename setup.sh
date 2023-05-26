@@ -65,7 +65,7 @@ logo "Installing needed packages.."
 dependencias=(base-devel rustup pacman-contrib bspwm polybar sxhkd \
 			  alacritty brightnessctl dunst rofi lsd \
 			  jq polkit-gnome git playerctl mpd neofetch neovim \
-			  ncmpcpp python-adblock qutebrowser ranger mpc picom xdotool scrcpy \
+			  ncmpcpp ranger mpc picom xdotool scrcpy \
 			  feh ueberzug maim pamixer libwebp xdg-user-dirs \
 			  webp-pixbuf-loader xorg-xprop xorg-xkill physlock papirus-icon-theme \
 			  ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels \
@@ -128,6 +128,15 @@ for folder in bspwm alacritty picom rofi eww sxhkd dunst polybar ncmpcpp nvim ra
     echo "$folder folder backed up successfully at $backup_folder/${folder}_$date"
   else
     echo "The folder $folder does not exist in $HOME/.config/"
+  fi
+done
+
+for folder in chrome; do
+  if [ -d "$HOME"/.librewolf/*.default-default/$folder ]; then
+    mv "$HOME"/.librewolf/*.default-default/$folder "$backup_folder"/${folder}_$date
+    echo "$folder folder backed up successfully at $backup_folder/${folder}_$date"
+  else
+    echo "The folder $folder does not exist in $HOME/.librewolf/"
   fi
 done
 
@@ -204,19 +213,25 @@ for archivos in ~/dotfiles/misc/asciiart/*; do
   fi
 done
 
-cp -f "$HOME"/dotfiles/home/.zshrc "$HOME"
-fc-cache -rv >/dev/null 2>&1
-printf "%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"
-sleep 3
+for archivos in ~/dotfiles/misc/librewolf/*; do
+  cp -R "${archivos}" ~/.librewolf/*.default-default/
+  if [ $? -eq 0 ]; then
+	printf "%s%s%s folder copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
+	sleep 1
+  else
+	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
+	sleep 1
+  fi
+done
 
-cp -f "$HOME"/dotfiles/config/qutebrowser/config.py ~/.config/qutebrowser/
+cp -f "$HOME"/dotfiles/home/.zshrc "$HOME"
 fc-cache -rv >/dev/null 2>&1
 printf "%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 3
 
 ########## ---------- Installing Paru & Eww from source ---------- ##########
 
-logo "installing Yay & Eww"
+logo "installing Yay & Eww & librewolf"
 
 if ! command -v yay >/dev/null 2>&1; then
 	printf "%s%sInstalling yay%s\n" "${BLD}" "${CBL}" "${CNC}"
@@ -261,6 +276,17 @@ if ! command -v github-desktop >/dev/null 2>&1; then
         cd
 else
         printf "\n%s%sGithubDesktop is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+fi
+
+if ! command -v librewolf >/dev/null 2>&1; then
+        printf "\n%s%sInstalling librewolf.%s\n" "${BLD}" "${CBL}" "${CNC}"
+        cd
+        git clone https://aur.archlinux.org/librewolf.git
+        cd librewolf
+        makepkg -si --noconfirm
+        cd
+else
+        printf "\n%s%sLibrewolf is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 fi
 
 ########## ---------- Enabling MPD service ---------- ##########
