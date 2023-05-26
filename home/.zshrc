@@ -5,7 +5,6 @@
 #  ┬  ┬┌─┐┬─┐┌─┐
 #  └┐┌┘├─┤├┬┘└─┐
 #   └┘ ┴ ┴┴└─└─┘
-export VISUAL='nvim'
 export EDITOR='nvim'
 export TERMINAL='alacritty'
 export BROWSER='qutebrowser'

@@ -64,7 +64,7 @@ logo "Installing needed packages.."
 
 dependencias=(base-devel rustup pacman-contrib bspwm polybar sxhkd \
 			  alacritty brightnessctl dunst rofi lsd \
-			  jq polkit-gnome git playerctl mpd neovim \
+			  jq polkit-gnome git playerctl mpd neofetch neovim \
 			  ncmpcpp python-adblock qutebrowser ranger mpc picom xdotool scrcpy \
 			  feh ueberzug maim pamixer libwebp xdg-user-dirs \
 			  webp-pixbuf-loader xorg-xprop xorg-xkill physlock papirus-icon-theme \

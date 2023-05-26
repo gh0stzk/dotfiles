@@ -32,7 +32,7 @@ case "$1" in
 					-e ranger;;
 
   --nvim)
-    alacritty -e vim & disown;;
+    alacritty -e nvim & disown;;
   --music)
     alacritty --class FloaTerm,Alacritty \
 					-o window.dimensions.lines=18 \
@@ -40,10 +40,7 @@ case "$1" in
 					-e ncmpcpp;;
 
   --fetch)
-    alacritty --hold --class FloaTerm,Alacritty \
-					-o window.dimensions.lines=26 \
-					   window.dimensions.columns=40 \
-					-e ~/.local/bin/sysfetch;;
+    alacritty --hold --class FloaTerm,Alacritty -e neofetch & disown;;
 
   #Apps
   --filemanager)
