@@ -231,7 +231,7 @@ sleep 3
 
 ########## ---------- Installing Paru & Eww from source ---------- ##########
 
-logo "installing Yay, Eww, Tdrop, Github Desktop, and Librewolf"
+logo "installing Yay, Tdrop, Github Desktop, and Librewolf"
 
 if ! command -v yay >/dev/null 2>&1; then
 	printf "%s%sInstalling yay%s\n" "${BLD}" "${CBL}" "${CNC}"
@@ -242,17 +242,6 @@ if ! command -v yay >/dev/null 2>&1; then
 	cd || exit
 else
 	printf "%s%sYay is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
-fi
-
-if ! command -v eww >/dev/null 2>&1; then 
-	printf "\n%s%sInstalling Eww, this could take 10 mins or more.%s\n" "${BLD}" "${CBL}" "${CNC}"
-	cd || exit
-	git clone https://aur.archlinux.org/eww.git
-	cd eww || exit
-	makepkg -si --noconfirm
-	cd || exit
-else
-	printf "\n%s%sEww is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 fi
 
 ## Intalling tdrop for scratchpads

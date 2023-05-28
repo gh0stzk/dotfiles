@@ -16,7 +16,6 @@ My version of [gh0stzk's bspwm theme](https://github.com/gh0stzk/dotfiles)
 |Menu|[Rofi](https://github.com/davatorium/rofi)|
 |Compositor|[Picom](https://archlinux.org/packages/community/x86_64/picom/)|
 |Terminal|[Alacritty](https://github.com/alacritty/alacritty)|
-|Widgets|[ElKowars wacky widgets ](https://github.com/elkowar/eww)|
 |Music/Player|[mpd](https://archlinux.org/packages/extra/x86_64/mpd/)-[ncmpcpp](https://archlinux.org/packages/community/x86_64/ncmpcpp/)|
 |File Manager|[Ranger](https://github.com/ranger/ranger)|
 |Shell|[Zsh](https://archlinux.org/packages/extra/x86_64/zsh/)|
@@ -125,4 +124,4 @@ See the [Wiki](https://github.com/gh0stzk/dotfiles/wiki)
 
 
 ## Credits
-- [turquoise-hexagon](https://github.com/turquoise-hexagon/fonts), [adi1090x](https://github.com/adi1090x/widgets), [gabrielzschmitz](https://github.com/gabrielzschmitz), [elenapan](https://github.com/elenapan/dotfiles), [rxyhn](https://github.com/rxyhn/bspdots), [okklol](https://github.com/okklol/eww-bar), [ikz87](https://github.com/ikz87), [Narmis-E](https://github.com/Narmis-E/onedark-wallpapers), [gh0stzk](https://github.com/gh0stzk/dotfiles), [tinted-theming](https://github.com/tinted-theming/base16-qutebrowser).
+- [turquoise-hexagon](https://github.com/turquoise-hexagon/fonts), [gabrielzschmitz](https://github.com/gabrielzschmitz), [elenapan](https://github.com/elenapan/dotfiles), [rxyhn](https://github.com/rxyhn/bspdots), [okklol](https://github.com/okklol/eww-bar), [ikz87](https://github.com/ikz87), [Narmis-E](https://github.com/Narmis-E/onedark-wallpapers), [gh0stzk](https://github.com/gh0stzk/dotfiles), [tinted-theming](https://github.com/tinted-theming/base16-qutebrowser).
