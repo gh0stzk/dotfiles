@@ -18,13 +18,11 @@ ctrl + super + alt + {p,r,q,l,k}
 	{systemctl poweroff, systemctl reboot,bspc quit,physlock -d,xkill}
 
 # Apps
-ctrl + alt + {b,t,g,p,f,m,v,k}
-	{qutebrowser, \
-	 codium, \
+ctrl + alt + {b,g,p,f,v,k}
+	{librewolf, \
      github-desktop, \
 	 pavucontrol, \
 	 OpenApps --ranger, \
-	 env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --disable-gpu --no-zygote %U, \
 	 OpenApps --nvim, \
 	 OpenApps --music}
 
