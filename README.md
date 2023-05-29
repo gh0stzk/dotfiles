@@ -99,7 +99,7 @@ The plugin manager is Packer.
 
 And more.. You need to look sxhkdrc file for more.
 
-## 📦 setup
+## 📦 Stable Version Setup
 
 ### 💾 Installation:
 The installer only works for **ARCH** Linux, and based distros.
@@ -107,7 +107,26 @@ The installer only works for **ARCH** Linux, and based distros.
 <b>Open a terminal in HOME</b>
 - **First download the installer**
 ```sh
-curl https://raw.githubusercontent.com/edwark43/dotfiles/master/setup.sh -o $HOME/setup.sh
+curl https://raw.githubusercontent.com/edwark43/dotfiles/stable/setup.sh -o $HOME/setup.sh
+```
+- **Now give it execute permissions**
+```sh
+chmod +x setup.sh
+```
+- **Finally run the installer**
+```sh
+./setup.sh
+```
+
+## 📦 Testing Version Setup
+
+### 💾 Installation:
+The installer only works for **ARCH** Linux, and based distros.
+
+<b>Open a terminal in HOME</b>
+- **First download the installer**
+```sh
+curl https://raw.githubusercontent.com/edwark43/dotfiles/tree/testing/setup.sh -o $HOME/setup.sh
 ```
 - **Now give it execute permissions**
 ```sh
