@@ -126,7 +126,7 @@ The installer only works for **ARCH** Linux, and based distros.
 <b>Open a terminal in HOME</b>
 - **First download the installer**
 ```sh
-curl https://raw.githubusercontent.com/edwark43/dotfiles/tree/testing/setup.sh -o $HOME/setup.sh
+curl https://raw.githubusercontent.com/edwark43/dotfiles/testing/setup.sh -o $HOME/setup.sh
 ```
 - **Now give it execute permissions**
 ```sh
