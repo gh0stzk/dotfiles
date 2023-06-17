@@ -5,15 +5,27 @@
 
 bspwm_dir="$HOME/.config/bspwm"
 rofi_command="rofi -dmenu -theme $bspwm_dir/scripts/RiceSelector.rasi"
+read -r current_rice < "$HOME"/.config/bspwm/.rice
 
 # List rices
 options=()
+index=0
+selected_index=0
+
 for dir in "$bspwm_dir"/rices/*/; do
-    options+=("$(basename "$dir")")
+    rice_name=$(basename "$dir")
+    options+=("$rice_name")
+
+    # Check if the current rice matches the current iteration rice
+    if [[ "$current_rice" == "$rice_name" ]]; then
+        selected_index=$index
+    fi
+
+    ((index++))
 done
 
-# Show the rofi selection menu and store the result in a variable.
-selected=$(printf "%s\n" "${options[@]}" | $rofi_command)
+# Show the rofi selection menu with the starting point set to the current rice and store the result in a variable.
+selected=$(printf "%s\n" "${options[@]}" | $rofi_command -selected-row "$selected_index")
 
 # If a valid option was selected, write the value to the configuration file and restart BSPWM.
 [[ -n "$selected" ]] || exit 1
