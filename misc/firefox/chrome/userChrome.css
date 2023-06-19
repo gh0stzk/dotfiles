@@ -302,3 +302,6 @@ toolbarbutton.bookmark-item:hover,
 /*stops possible clashes with extension popups*/
 .webextension-popup-browser {
   background: #fff;}
+
+/* Remove main window buttons */
+.titlebar-buttonbox-container{ display:none }
