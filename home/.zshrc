@@ -125,8 +125,8 @@ alias vm-off="sudo systemctl stop libvirtd.service"
 
 alias musica="ncmpcpp"
 
-alias ls='lsd -a --group-directories-first'
-alias ll='lsd -la --group-directories-first'
+alias ls='lsd -a --group-dirs'
+alias ll='lsd -la --group-dirs'
 
 #  ┌─┐┬ ┬┌┬┐┌─┐  ┌─┐┌┬┐┌─┐┬─┐┌┬┐
 #  ├─┤│ │ │ │ │  └─┐ │ ├─┤├┬┘ │ 
