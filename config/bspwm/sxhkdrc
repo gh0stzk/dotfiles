@@ -49,7 +49,7 @@ super + {h,u}
 	HideBar {-h,-u}
 
 # Change transparency on focused window
-ctrl + alt {plus,minus,t}
+ctrl + alt + {plus,minus,t}
 	{picom-trans -c -o +3, picom-trans -c -o -1, picom-trans -c -d}
 
 # Screenshot Now
