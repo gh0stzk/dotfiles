@@ -49,7 +49,7 @@ super + {h,u}
 	HideBar {-h,-u}
 
 # Change transparency on focused window
-ctrl + alt {plus,minus,t}
+ctrl + alt + {plus,minus,t}
 	{picom-trans -c -o +3, picom-trans -c -o -1, picom-trans -c -d}
 
 # Screenshot Now
@@ -115,7 +115,7 @@ super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
-ctrl + alt {m,x,s,p,i}
+ctrl + alt + {m,x,s,p,i}
 	bspc node -g {marked,locked,sticky,private,hidden}
 
 # Focused desktop window gaps scroll
@@ -189,7 +189,7 @@ super + alt + shift + {h,j,k,l}
 	bspc node -z {right -10 0,top 0 10,bottom 0 -10,left 10 0}
 
 # move a floating window
-alt + shift {Left,Down,Up,Right}
+alt + shift + {Left,Down,Up,Right}
 	bspc node -v {-10 0,0 10,0 -10,10 0}
 
 # Manage brightness
