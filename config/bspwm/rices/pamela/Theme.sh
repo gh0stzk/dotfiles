@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
-#  ╔═╗╔═╗╔╦╗╔═╗╦  ╔═╗  ╦═╗╦╔═╗╔═╗
-#  ╠═╝╠═╣║║║║╣ ║  ╠═╣  ╠╦╝║║  ║╣	https://github.com/gh0stzk/dotfiles 
-#  ╩  ╩ ╩╩ ╩╚═╝╩═╝╩ ╩  ╩╚═╩╚═╝╚═╝
-## This file will configure the options
-## and launch the bars corresponding to each theme.
+#  ██████╗  █████╗ ███╗   ███╗███████╗██╗      █████╗     ██████╗ ██╗ ██████╗███████╗
+#  ██╔══██╗██╔══██╗████╗ ████║██╔════╝██║     ██╔══██╗    ██╔══██╗██║██╔════╝██╔════╝
+#  ██████╔╝███████║██╔████╔██║█████╗  ██║     ███████║    ██████╔╝██║██║     █████╗  
+#  ██╔═══╝ ██╔══██║██║╚██╔╝██║██╔══╝  ██║     ██╔══██║    ██╔══██╗██║██║     ██╔══╝  
+#  ██║     ██║  ██║██║ ╚═╝ ██║███████╗███████╗██║  ██║    ██║  ██║██║╚██████╗███████╗
+#  ╚═╝     ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝
+#  Author  :  z0mbi3
+#  Url     :  https://github.com/gh0stzk/dotfiles
+#  About   :  This file will configure and launch the rice.
+#
 
 # Set bspwm configuration for Pamela
 set_bspwm_config() {
@@ -25,37 +30,8 @@ set_term_config() {
 		-e "s/family: .*/family: JetBrainsMono Nerd Font/g" \
 		-e "s/size: .*/size: 10/g"
 		
-		cat > "$HOME"/.config/alacritty/colors.yml <<- _EOF_
-				# Colors (Elenapan) Pamela Rice
-				colors:
-				  primary:
-				    background: '#1D1F28'
-				    foreground: '#FDFDFD'
-
-				  normal:
-				    black:   '#3D4C5F'
-				    red:     '#F37F97'
-				    green:   '#5ADECD'
-				    yellow:  '#F2A272'
-				    blue:    '#8897F4'
-				    magenta: '#C574DD'
-				    cyan:    '#79E6F3'
-				    white:   '#FDFDFD'
-
-				  bright:
-				    black:   '#56687E'
-				    red:     '#FF4971'
-				    green:   '#18E3C8'
-				    yellow:  '#FF8037'
-				    blue:    '#556FFF'
-				    magenta: '#B043D1'
-				    cyan:    '#3FDCEE'
-				    white:   '#BEBEC1'
-    
-				  cursor:
-				    cursor: '#FF4971'
-				    text:	'#1D1F28'
-_EOF_
+		sed -i "$HOME"/.config/alacritty/rice-colors.yml \
+		-e "s/colors: .*/colors: *pamela_color_scheme/"
 }
 
 # Set compositor configuration
@@ -106,6 +82,7 @@ launch_bars() {
 		polybar -q pam5 -c ${rice_dir}/config.ini &
 		polybar -q pam6 -c ${rice_dir}/config.ini &
 }
+
 
 
 ### ---------- Apply Configurations ---------- ###

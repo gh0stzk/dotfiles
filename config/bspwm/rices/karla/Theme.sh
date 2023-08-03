@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
-#  ╦╔═╔═╗╦═╗╦  ╔═╗  ╦═╗╦╔═╗╔═╗
-#  ╠╩╗╠═╣╠╦╝║  ╠═╣  ╠╦╝║║  ║╣ 	https://github.com/gh0stzk/dotfiles
-#  ╩ ╩╩ ╩╩╚═╩═╝╩ ╩  ╩╚═╩╚═╝╚═╝
-## This file will configure the options
-## and launch the bars corresponding to each theme.
+#  ██╗  ██╗ █████╗ ██████╗ ██╗      █████╗     ██████╗ ██╗ ██████╗███████╗
+#  ██║ ██╔╝██╔══██╗██╔══██╗██║     ██╔══██╗    ██╔══██╗██║██╔════╝██╔════╝
+#  █████╔╝ ███████║██████╔╝██║     ███████║    ██████╔╝██║██║     █████╗  
+#  ██╔═██╗ ██╔══██║██╔══██╗██║     ██╔══██║    ██╔══██╗██║██║     ██╔══╝  
+#  ██║  ██╗██║  ██║██║  ██║███████╗██║  ██║    ██║  ██║██║╚██████╗███████╗
+#  ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝
+#  Author  :  z0mbi3
+#  Url     :  https://github.com/gh0stzk/dotfiles
+#  About   :  This file will configure and launch the rice.
+#
 
 # Set bspwm configuration for Karla
 set_bspwm_config() {
@@ -25,37 +30,8 @@ set_term_config() {
 		-e "s/family: .*/family: JetBrainsMono Nerd Font/g" \
 		-e "s/size: .*/size: 10/g"
 		
-		cat > "$HOME"/.config/alacritty/colors.yml <<- _EOF_
-				# Colors (Zombie-Night color scheme) Karla Rice
-				colors:
-				  primary:
-				    background: '#0E1113'
-				    foreground: '#afb1db'
-
-				  normal:
-				    black:   '#2d2b36'
-				    red:     '#e7034a'
-				    green:   '#61b33e'
-				    yellow:  '#ffb964'
-				    blue:    '#5884d4'
-				    magenta: '#7a44e3'
-				    cyan:    '#7df0f0'
-				    white:   '#faf7ff'
-
-				  bright:
-				    black:   '#373542'
-				    red:     '#e71c5b'
-				    green:   '#6fb352'
-				    yellow:  '#ffb964'
-				    blue:    '#5f90ea'
-				    magenta: '#8656e3'
-				    cyan:    '#97f0f0'
-				    white:   '#fdfcff'
-    
-				  cursor:
-				     cursor: '#8656e3'
-				     text:	'#0b0b12'
-_EOF_
+		sed -i "$HOME"/.config/alacritty/rice-colors.yml \
+		-e "s/colors: .*/colors: *karla_z0mbi3_night/"
 }
 
 # Set compositor configuration
@@ -102,6 +78,8 @@ launch_bars() {
 		polybar -q karla-bar2 -c ${rice_dir}/config.ini &
 		polybar -q karla-bar3 -c ${rice_dir}/config.ini &
 }
+
+
 
 ### ---------- Apply Configurations ---------- ###
 

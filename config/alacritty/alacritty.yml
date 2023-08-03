@@ -4,7 +4,7 @@
 #  General configuration
 
 import:
-  - ~/.config/alacritty/colors.yml
+  - ~/.config/alacritty/rice-colors.yml
   - ~/.config/alacritty/fonts.yml
   
 window:

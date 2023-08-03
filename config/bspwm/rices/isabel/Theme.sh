@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
-#  ╦╔═╗╔═╗╔╗ ╔═╗╦    ╦═╗╦╔═╗╔═╗
-#  ║╚═╗╠═╣╠╩╗║╣ ║    ╠╦╝║║  ║╣     https://github.com/gh0stzk/dotfiles
-#  ╩╚═╝╩ ╩╚═╝╚═╝╩═╝  ╩╚═╩╚═╝╚═╝
-## This file will configure the options
-## and launch the bars corresponding to each theme.
+#  ██╗███████╗ █████╗ ██████╗ ███████╗██╗         ██████╗ ██╗ ██████╗███████╗
+#  ██║██╔════╝██╔══██╗██╔══██╗██╔════╝██║         ██╔══██╗██║██╔════╝██╔════╝
+#  ██║███████╗███████║██████╔╝█████╗  ██║         ██████╔╝██║██║     █████╗  
+#  ██║╚════██║██╔══██║██╔══██╗██╔══╝  ██║         ██╔══██╗██║██║     ██╔══╝  
+#  ██║███████║██║  ██║██████╔╝███████╗███████╗    ██║  ██║██║╚██████╗███████╗
+#  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝    ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝
+#  Author  :  z0mbi3
+#  Url     :  https://github.com/gh0stzk/dotfiles
+#  About   :  This file will configure and launch the rice.
+#
 
 # Set bspwm configuration for Isabel
 set_bspwm_config() {
@@ -25,37 +30,8 @@ set_term_config() {
 		-e "s/family: .*/family: JetBrainsMono Nerd Font/g" \
 		-e "s/size: .*/size: 10/g"
 		
-		cat > "$HOME"/.config/alacritty/colors.yml <<- _EOF_
-				# Colors (Onedark) Isabel Rice
-				colors:
-				  primary:
-				    background: '#14171c'
-				    foreground: '#b8bfe5'
-
-				  normal:
-				    black:   '#5c6370'
-				    red:     '#be5046'
-				    green:   '#81ae5f'
-				    yellow:  '#d19a66'
-				    blue:    '#4889be'
-				    magenta: '#7560d3'
-				    cyan:    '#49919a'
-				    white:   '#c5cddb'
-
-				  bright:
-				    black:   '#5c6370'
-				    red:     '#e06c75'
-				    green:   '#98c379'
-				    yellow:  '#e5c07b'
-				    blue:    '#61afef'
-				    magenta: '#8677cf'
-				    cyan:    '#56b6c2'
-				    white:   '#abb2bf'
-
-				  cursor:
-				    cursor: '#abb2bf'
-				    text:	'#14171c'
-_EOF_
+		sed -i "$HOME"/.config/alacritty/rice-colors.yml \
+		-e "s/colors: .*/colors: *isabel_onedark/"
 }
 
 # Set compositor configuration
@@ -100,6 +76,7 @@ _EOF_
 launch_bars() {
 		polybar -q isa-bar -c ${rice_dir}/config.ini &
 }
+
 
 
 ### ---------- Apply Configurations ---------- ###

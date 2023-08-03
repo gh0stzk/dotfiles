@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
-#  ╔═╗╦═╗╦╔═╗╔╦╗╦╔╗╔╔═╗  ╦═╗╦╔═╗╔═╗
-#  ║  ╠╦╝║╚═╗ ║ ║║║║╠═╣  ╠╦╝║║  ║╣ 	https://github.com/gh0stzk/dotfiles
-#  ╚═╝╩╚═╩╚═╝ ╩ ╩╝╚╝╩ ╩  ╩╚═╩╚═╝╚═╝
-## This file will configure the options
-## and launch the bars corresponding to each theme.
+#   ██████╗██████╗ ██╗███████╗████████╗██╗███╗   ██╗ █████╗     ██████╗ ██╗ ██████╗███████╗
+#  ██╔════╝██╔══██╗██║██╔════╝╚══██╔══╝██║████╗  ██║██╔══██╗    ██╔══██╗██║██╔════╝██╔════╝
+#  ██║     ██████╔╝██║███████╗   ██║   ██║██╔██╗ ██║███████║    ██████╔╝██║██║     █████╗  
+#  ██║     ██╔══██╗██║╚════██║   ██║   ██║██║╚██╗██║██╔══██║    ██╔══██╗██║██║     ██╔══╝  
+#  ╚██████╗██║  ██║██║███████║   ██║   ██║██║ ╚████║██║  ██║    ██║  ██║██║╚██████╗███████╗
+#   ╚═════╝╚═╝  ╚═╝╚═╝╚══════╝   ╚═╝   ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝
+#  Author  :  z0mbi3
+#  Url     :  https://github.com/gh0stzk/dotfiles
+#  About   :  This file will configure and launch the rice.
+#
 
 # Set bspwm configuration for Cristina
 set_bspwm_config() {
@@ -25,37 +30,8 @@ set_term_config() {
 		-e "s/family: .*/family: JetBrainsMono Nerd Font/g" \
 		-e "s/size: .*/size: 10/g"
 		
-		cat > "$HOME"/.config/alacritty/colors.yml <<- _EOF_
-				# Colors (Rose-Pine Moon) Cristina Rice
-				colors:
-				  primary:
-				    background: '#1f1d29'
-				    foreground: '#eaeaea'
-
-				  normal:
-				    black:   '#6f6e85'
-				    red:     '#ea6f91'
-				    green:   '#9bced7'
-				    yellow:  '#f1ca93'
-				    blue:    '#34738e'
-				    magenta: '#c3a5e6'
-				    cyan:    '#eabbb9'
-				    white:   '#faebd7'
-
-				  bright:
-				    black:   '#6f6e85'
-				    red:     '#ea6f91'
-				    green:   '#9bced7'
-				    yellow:  '#f1ca93'
-				    blue:    '#34738e'
-				    magenta: '#c3a5e6'
-				    cyan:    '#ebbcba'
-				    white:   '#e0def4'
-    
-				  cursor:
-				    cursor: '#c3a5e6'
-				    text:	'#1f1d29'
-_EOF_
+		sed -i "$HOME"/.config/alacritty/rice-colors.yml \
+		-e "s/colors: .*/colors: *cristina_rose_pine/"
 }
 
 # Set compositor configuration
@@ -101,6 +77,7 @@ launch_bars() {
 		eww -c ${rice_dir}/widgets daemon &
 		polybar -q cristina-bar -c ${rice_dir}/config.ini &
 }
+
 
 
 ### ---------- Apply Configurations ---------- ###

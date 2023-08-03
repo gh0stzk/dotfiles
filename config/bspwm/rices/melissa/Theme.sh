@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
-#  ╔╦╗╔═╗╦  ╦╔═╗╔═╗╔═╗  ╦═╗╦╔═╗╔═╗
-#  ║║║║╣ ║  ║╚═╗╚═╗╠═╣  ╠╦╝║║  ║╣ 	https://github.com/gh0stzk/dotfiles
-#  ╩ ╩╚═╝╩═╝╩╚═╝╚═╝╩ ╩  ╩╚═╩╚═╝╚═╝
-## This file will configure the options
-## and launch the bars corresponding to each theme.
+#  ███╗   ███╗███████╗██╗     ██╗███████╗███████╗ █████╗     ██████╗ ██╗ ██████╗███████╗
+#  ████╗ ████║██╔════╝██║     ██║██╔════╝██╔════╝██╔══██╗    ██╔══██╗██║██╔════╝██╔════╝
+#  ██╔████╔██║█████╗  ██║     ██║███████╗███████╗███████║    ██████╔╝██║██║     █████╗  
+#  ██║╚██╔╝██║██╔══╝  ██║     ██║╚════██║╚════██║██╔══██║    ██╔══██╗██║██║     ██╔══╝  
+#  ██║ ╚═╝ ██║███████╗███████╗██║███████║███████║██║  ██║    ██║  ██║██║╚██████╗███████╗
+#  ╚═╝     ╚═╝╚══════╝╚══════╝╚═╝╚══════╝╚══════╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝
+#  Author  :  z0mbi3
+#  Url     :  https://github.com/gh0stzk/dotfiles
+#  About   :  This file will configure and launch the rice.
+#
 
 # Set bspwm configuration for Melissa
 set_bspwm_config() {
@@ -25,37 +30,8 @@ set_term_config() {
 		-e "s/family: .*/family: JetBrainsMono Nerd Font/g" \
 		-e "s/size: .*/size: 10/g"
 		
-		cat > "$HOME"/.config/alacritty/colors.yml <<- _EOF_
-				# Colors (Nord) Melissa Rice
-				colors:
-				  primary:
-				    background: '#2e3440'
-				    foreground: '#d8dee9'
-
-				  normal:
-				    black:   '#4c566a'
-				    red:     '#bf616a'
-				    green:   '#a3be8c'
-				    yellow:  '#ebcb8b'
-				    blue:    '#81a1c1'
-				    magenta: '#b48ead'
-				    cyan:    '#88c0d0'
-				    white:   '#e5e9f0'
-
-				  bright:
-				    black:   '#4c566a'
-				    red:     '#bf616a'
-				    green:   '#a3be8c'
-				    yellow:  '#ebcb8b'
-				    blue:    '#81a1c1'
-				    magenta: '#b48ead'
-				    cyan:    '#8fbcbb'
-				    white:   '#eceff4'
-    
-				  cursor:
-				    cursor: '#81a1c1'
-				    text:	'#2e3440'
-_EOF_
+		sed -i "$HOME"/.config/alacritty/rice-colors.yml \
+		-e "s/colors: .*/colors: *melissa_nord/"
 }
 
 # Set compositor configuration
@@ -101,6 +77,7 @@ launch_bars() {
 		polybar -q mel-bar -c ${rice_dir}/config.ini &
 		polybar -q mel2-bar -c ${rice_dir}/config.ini &
 }
+
 
 
 ### ---------- Apply Configurations ---------- ###
