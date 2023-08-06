@@ -64,6 +64,10 @@ ctrl + Print
 alt + Print
 	ScreenShoTer --in10
 
+# Screenshot active window
+shift + Print
+	ScreenShoTer --active
+
 # Reload sxhkd
 super + Escape
 	pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'

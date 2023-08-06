@@ -2,74 +2,49 @@
 #  ╔═╗╔═╗╦═╗╔═╗╔═╗╔╗╔╔═╗╦ ╦╔═╗╔╦╗╔═╗╦═╗
 #  ╚═╗║  ╠╦╝║╣ ║╣ ║║║╚═╗╠═╣║ ║ ║ ║╣ ╠╦╝
 #  ╚═╝╚═╝╩╚═╚═╝╚═╝╝╚╝╚═╝╩ ╩╚═╝ ╩ ╚═╝╩╚═
-#	Modified by z0mbi3 https://github.com/gh0stzk
 
-time=$(date +%Y-%m-%d-%I-%M-%S)
-geometry=`xrandr | head -n1 | cut -d',' -f2 | tr -d '[:blank:],current'`
+#	Author : z0mbi3
+#   Url    : https://github.com/gh0stzk/dotfiles
+#   Info   : Script to take screenshots using maim.
+
+timestamp=$(date +%d_%m_%Y-%I-%M-%S)
 dir="$(xdg-user-dir PICTURES)/ScreenShots"
-file="ShoT_${time}_${geometry}.png"
+filename="$dir/Screenshot-${timestamp}.png"
 
-	if ! [ -d "$dir" ]; then
-		mkdir -p $dir
-	fi
+[ -d "$dir" ] || mkdir -p "$dir"
 
-function notify_view() {
-	if [[ -e "$dir/$file" ]]; then
-		dunstify --replace=699 -i $dir/$file Screenshot "Screenshot Saved"
-	else
-		dunstify --replace=699 -i $dir/$file Screenshot "Screenshot Deleted."
-	fi
+# Función para mostrar una notificación con dunst
+show_notification() {
+    dunstify --replace=699 -i "$1" "Screenshot" "$2"
 }
 
-function imgtemp() {
-	if [ "$bytes" ]; then
-		echo "$bytes" | base64 --decode | tee "$file"
-		notify_view
-	else
-		dunstify -i ~/.config/bspwm/assets/cancel.svg Screenshot "Operation Cancelled."
-	fi
-}
-
-function countdown() {
-	for sec in `seq $1 -1 1`; do
+countdown() {
+	for sec in $(seq "$1" -1 1); do
 		dunstify -t 1000 --replace=699 -i  ~/.config/bspwm/assets/screenshot.svg "Taking shot in : $sec"
 		sleep 1
 	done
 }
 
-function ShotNow() {
-	
-	cd "$dir" || return
-	local bytes
-	bytes="$(maim -u -o -f png | base64)"
-	imgtemp
+take_screenshot() {
+    maim -u "$filename"
+    xclip -selection clipboard -t image/png -i "$filename"
+    show_notification "$filename" "$1"
 }
 
-function ShotSelect() {
-	
-	cd "$dir" || return
-	local bytes
-	bytes="$(maim -u -o -f png -s -b 2 -c 0.35,0.55,0.85,0.25 -l | base64)"
-	imgtemp
-}
-
-function Shot10 () {
-	countdown '10'
-	sleep 1 
-	cd "$dir" || return
-	local bytes
-	bytes="$(maim -u -o -f png | base64)"
-	imgtemp
-}
-
-if [[ "$1" == "--now" ]]; then
-	ShotNow
-elif [[ "$1" == "--sel" ]]; then
-	ShotSelect
-elif [[ "$1" == "--in10" ]]; then
-	Shot10
-else
-	echo -e "Available Options : --now --in10"
-fi
-
-exit 0
+case $1 in
+	--now)
+		take_screenshot "Screensot saved and copied to clipboard";;
+	--in10)
+		countdown 10
+		take_screenshot "Scheduled capture taken after 10 seconds and copied to clipboard";;
+	--sel)
+		maim -u -s "$filename"
+		xclip -selection clipboard -t image/png -i "$filename"
+		show_notification "$filename" "Screenshot of selected area saved and copied to clipboard";;
+	--active)
+		maim -u -i "$(xdotool getactivewindow)" "$filename"
+		xclip -selection clipboard -t image/png -i "$filename"
+		show_notification "$filename" "Screenshot of active window saved and copied to clipboard";;
+	*)
+		take_screenshot "Screensot saved and copied to clipboard";;
+esac
