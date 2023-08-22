@@ -257,6 +257,8 @@ fi
 
 if ! command -v eww >/dev/null 2>&1; then 
 	printf "\n%s%sInstalling Eww, this could take 10 mins or more.%s\n" "${BLD}" "${CBL}" "${CNC}"
+	curl -sS https://github.com/elkowar.gpg | gpg --import -i -
+	curl -sS https://github.com/web-flow.gpg | gpg --import -i -
 	paru -S eww-x11 --skipreview --noconfirm
 	rm -rf {paru-bin,.cargo,.rustup}
 	rm -rf $HOME/.cache/paru/clone/eww
