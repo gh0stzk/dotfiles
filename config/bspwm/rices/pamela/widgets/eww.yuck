@@ -1,15 +1,13 @@
 
-(defpoll time0 :interval "10s"  "date '+%H':%M")
-(defpoll date :interval "10s"  "date '+%b %d'")
-
 ;; Profile vars
 (defvar IMAGEP "../../../assets/profile.png")
 
 ;; Music Variables
-(defpoll art		:interval "2s"  "MediaControl coverloc")
-(defpoll title		:interval "2s"  "MediaControl title")
-(defpoll artist		:interval "2s"  "MediaControl artist")
-(defpoll playpause	:interval "2s"  "MediaControl statusicon")
+(defpoll art		:interval "1s"  "MediaControl coverloc")
+(defpoll title		:interval "1s"  "MediaControl title")
+(defpoll artist		:interval "1s"  "MediaControl artist")
+(defpoll playpause	:interval "1s"  "MediaControl statusicon")
+(defpoll mlength    :interval "1s"  "MediaControl length")
 (defpoll songtime 	:interval "1s"  "MediaControl percent")
 
 ;; Calendar Widgets ;;
@@ -135,17 +133,17 @@
 	(box 	:orientation "h"  
 		 	:space-evenly "false"
 			:halign "center"
-			:spacing 30
-			(button :class "btn_prev" :onclick "MediaControl --previous" "󰒮")
+			:spacing 5
+			(button :class "btn_prev" :onclick "MediaControl --previous" "󰼨")
 			(button :class "btn_play" :onclick "MediaControl --toggle" playpause)
-			(button :class "btn_next" :onclick "MediaControl --next" "󰒭"))
+			(button :class "btn_next" :onclick "MediaControl --next" "󰼧"))
 	(box    :orientation "h"
 			:class "metric-player"
 			:space-evenly "false"
-			(scale  :min 0
-					:max 101
+			(scale	:min 0
+					:max mlength
 					:active "false"
-					:value {songtime != "" ? "${songtime}" : "0"}
+					:value songtime
 				)       
 			)	
 		)

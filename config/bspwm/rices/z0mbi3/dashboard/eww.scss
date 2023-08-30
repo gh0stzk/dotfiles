@@ -120,13 +120,13 @@ $archlogo: #0f94d2;
 .btn_prev,
 .btn_play,
 .btn_next {
-  font-family: JetBrainsMono Nerd Font;
+  font-family: Material Design Icons DEsktop;
   color: $fg;
-  font-size: 20px;
+  font-size: 25px;
 }
 
-.btn_prev {
-  margin-right: -5px;
+.btn_play {
+	font-size: 2rem;
 }
 
 .sysbox {

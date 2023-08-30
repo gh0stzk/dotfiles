@@ -210,21 +210,19 @@ color: #8C8C8C;
 	margin-top: -5px;
 }
 .btn_prev, .btn_play, .btn_next {
-	font-family: JetBrainsMono Nerd Font;
+	font-family: Material Design Icons Desktop;
 }
 .btn_prev {
-	color: #FDFDFD;
-	font-size : 2.6em;
-	margin-right: -10px;
+	color: #eaeaea;
+	font-size: 2.6em;
 }
 .btn_play {
-	color: #FDFDFD;
-	font-size : 2.6em;
-	font-weight : bold;
+	color: #eaeaea;
+	font-size: 3.0em;
 }
 .btn_next {
-	color: #FDFDFD;
-	font-size : 2.6em;
+	color: #eaeaea;
+	font-size: 2.6em;
 }
 .metric-player  scale trough highlight {
 	all: unset;

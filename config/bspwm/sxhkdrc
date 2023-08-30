@@ -124,11 +124,11 @@ ctrl + alt + {m,x,s,p,i}
 
 # Focused desktop window gaps scroll
 super + button{4,5}
-	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 5 ))
+	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 2 ))
 
 # Global window gaps scroll
 super + alt + button{4,5}
-	bspc config window_gap $(( $(bspc config window_gap) {-,+} 5 ))
+	bspc config window_gap $(( $(bspc config window_gap) {-,+} 2 ))
 
 # focus the node in the given direction
 super + {_,shift + }{Left,Down,Up,Right}
