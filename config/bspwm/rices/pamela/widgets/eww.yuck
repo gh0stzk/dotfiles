@@ -1,6 +1,7 @@
-
 ;; Profile vars
 (defvar IMAGEP "../../../assets/profile.png")
+(defpoll time0 :interval "10s"  "date '+%H':%M")
+(defpoll date :interval "10s"  "date '+%b %d'")
 
 ;; Music Variables
 (defpoll art		:interval "1s"  "MediaControl coverloc")
