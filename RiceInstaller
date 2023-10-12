@@ -67,9 +67,9 @@ clear
 logo "Installing needed packages.."
 
 dependencias=(base-devel rustup pacman-contrib bspwm polybar sxhkd \
-			  alacritty brightnessctl dunst rofi lsd \
+			  alacritty brightnessctl dunst rofi lsd stalonetray \
 			  jq polkit-gnome git playerctl mpd xclip \
-			  ncmpcpp geany ranger mpc picom xdotool \
+			  ncmpcpp geany ranger mpc picom xdo xdotool jgmenu \
 			  feh ueberzug maim pamixer libwebp xdg-user-dirs \
 			  webp-pixbuf-loader xorg-xprop xorg-xkill physlock papirus-icon-theme \
 			  ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels \
@@ -96,23 +96,31 @@ clear
 
 ########## ---------- Preparing Folders ---------- ##########
 
-logo "Preparing Folders"
-if [ ! -e $HOME/.config/user-dirs.dirs ]; then
-	xdg-user-dirs-update
-	echo "Creating xdg-user-dirs"
-else
-	echo "user-dirs.dirs already exists"
-fi
+# Verifica si el archivo user-dirs.dirs no existe en ~/.config
+	if [ ! -e "$HOME/.config/user-dirs.dirs" ]; then
+		xdg-user-dirs-update
+		echo "Creating xdg-user-dirs"
+	fi
 sleep 2 
 clear
 
 ########## ---------- Cloning the Rice! ---------- ##########
 
 logo "Downloading dotfiles"
-[ -d ~/dotfiles ] && rm -rf ~/dotfiles
-printf "Cloning rice from https://github.com/gh0stzk/dotfiles\n"
-cd
-git clone --depth=1 https://github.com/gh0stzk/dotfiles.git
+
+repo_url="https://github.com/gh0stzk/dotfiles"
+repo_dir="$HOME/dotfiles"
+
+# Verifica si el directorio del repositorio ya existe y, si es así, lo elimina
+	if [ -d "$repo_dir" ]; then
+		printf "Removing existing dotfiles repository\n"
+		rm -rf "$repo_dir"
+	fi
+
+# Clona el repositorio
+printf "Cloning dotfiles from %s\n" "$repo_url"
+git clone --depth=1 "$repo_url" "$repo_dir"
+
 sleep 2
 clear
 
@@ -240,57 +248,88 @@ fc-cache -rv >/dev/null 2>&1
 printf "%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 3
 
-########## ---------- Installing Paru & Eww from source ---------- ##########
+########## ---------- Installing Paru & others ---------- ##########
 
-logo "installing Paru & Eww"
+logo "installing Paru, Eww, tdrop & xqp"
 
-if ! command -v paru >/dev/null 2>&1; then
-	printf "%s%sInstalling paru%s\n" "${BLD}" "${CBL}" "${CNC}"
-	cd
-	git clone https://aur.archlinux.org/paru-bin.git
-	cd paru-bin
-	makepkg -si --noconfirm
-	cd
-else
-	printf "%s%sParu is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
-fi
+# Installing Paru
+	if command -v paru >/dev/null 2>&1; then
+		printf "%s%sParu is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+	else
+		printf "%s%sInstalling paru%s\n" "${BLD}" "${CBL}" "${CNC}"
+		{
+			cd "$HOME" || exit
+			git clone https://aur.archlinux.org/paru-bin.git
+			cd paru-bin || exit
+			makepkg -si --noconfirm
+		} || {
+			printf "\n%s%sFailed to install Paru. You may need to install it manually%s\n" "${BLD}" "${CRE}" "${CNC}"
+			}
+	fi
 
-if ! command -v eww >/dev/null 2>&1; then 
-	printf "\n%s%sInstalling Eww, this could take 10 mins or more.%s\n" "${BLD}" "${CBL}" "${CNC}"
-	curl -sS https://github.com/elkowar.gpg | gpg --import -i -
-	curl -sS https://github.com/web-flow.gpg | gpg --import -i -
-	paru -S eww-x11 --skipreview --noconfirm
-	rm -rf {paru-bin,.cargo,.rustup}
-	rm -rf $HOME/.cache/paru/clone/eww
-else
-	printf "\n%s%sEww is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
-fi
+# Intalling tdrop for scratchpads
+	if command -v tdrop >/dev/null 2>&1; then
+		printf "\n%s%sTdrop is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+	else
+		printf "\n%s%sInstalling tdrop, this should be fast!%s\n" "${BLD}" "${CBL}" "${CNC}"
+		paru -S tdrop-git --skipreview --noconfirm
+	fi
 
-## Intalling tdrop for scratchpads
-if ! command -v tdrop >/dev/null 2>&1; then
-	printf "\n%s%sInstalling tdrop, this must be fast!.%s\n" "${BLD}" "${CBL}" "${CNC}"
-	paru -S tdrop-git --skipreview --noconfirm
-else
-	printf "\n%s%sTdrop is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+# Intalling xqpp
+	if command -v xqp >/dev/null 2>&1; then
+		printf "\n%s%sxqp is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+	else
+		printf "\n%s%sInstalling xqp, this should be fast!%s\n" "${BLD}" "${CBL}" "${CNC}"
+		paru -S xqp --skipreview --noconfirm
+	fi
+	
+# Installing Eww
+	if command -v eww >/dev/null 2>&1; then 
+		printf "\n%s%sEww is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+	else
+		printf "\n%s%sInstalling Eww, this could take 10 mins or more.%s\n" "${BLD}" "${CBL}" "${CNC}"
+		{
+			sudo pacman -S rustup --noconfirm
+			cd "$HOME" || exit
+			git clone https://github.com/elkowar/eww
+			cd eww || exit
+			cargo build --release --no-default-features --features x11
+			sudo install -m 755 "$HOME/eww/target/release/eww" -t /usr/bin/
+		} && {
+			cd "$HOME" || exit
+			rm -rf {paru-bin,.cargo,.rustup,eww}
+		} || {
+        printf "\n%s%sFailed to install Eww. You may need to install it manually%s\n" "${BLD}" "${CRE}" "${CNC}"
+    }
 fi
 
 ########## ---------- Enabling MPD service ---------- ##########
 
 logo "Enabling mpd service"
 
-systemctl --user enable mpd.service
-systemctl --user start mpd.service
+# Verifica si el servicio mpd está habilitado a nivel global (sistema)
+	if systemctl is-enabled --quiet mpd.service; then
+		printf "\n%s%sDisabling and stopping the global mpd service%s\n" "${BLD}" "${CBL}" "${CNC}"
+		sudo systemctl stop mpd.service
+		sudo systemctl disable mpd.service
+	fi
+
+printf "\n%s%sEnabling and starting the user-level mpd service%s\n" "${BLD}" "${CYE}" "${CNC}"
+systemctl --user enable --now mpd.service
+
 printf "%s%sDone!!%s\n\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 2
 
 ########## --------- Changing shell to zsh ---------- ##########
 
 logo "Changing default shell to zsh"
-printf "%s%sIf your shell is not zsh will be changed now.\nYour root password is needed to make the change.\n\nAfter that is important for you to reboot.\n %s\n" "${BLD}" "${CYE}" "${CNC}"
-if [[ $SHELL != "/usr/bin/zsh" ]]; then
-  echo "Changing shell to zsh, your root pass is needed."
-  chsh -s /usr/bin/zsh
-else
-  printf "%s%sYour shell is already zsh\nGood bye! installation finished, now reboot%s\n" "${BLD}" "${CGR}" "${CNC}"
-  zsh
-fi
+
+	if [[ $SHELL != "/usr/bin/zsh" ]]; then
+		printf "\n%s%sChanging your shell to zsh. Your root password is needed.%s\n\n" "${BLD}" "${CYE}" "${CNC}"
+		# Cambia la shell a zsh
+		chsh -s /usr/bin/zsh
+		printf "%s%sShell changed to zsh. Please reboot.%s\n\n" "${BLD}" "${CGR}" "${CNC}"
+	else
+		printf "%s%sYour shell is already zsh\nGood bye! installation finished, now reboot%s\n" "${BLD}" "${CGR}" "${CNC}"
+	fi
+zsh

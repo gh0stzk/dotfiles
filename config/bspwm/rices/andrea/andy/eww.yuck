@@ -1,0 +1,354 @@
+
+;;	Original work by adi1090x
+;;	redesigned, improved and re-coded by gh0stzk
+;;	https://github.com/gh0stzk/dotfiles
+
+;;---------- Widgets ----------;;
+
+;; Workspaces
+(deflisten workspaces "scripts/WorkSpaces")
+
+;; Time vars
+(defpoll TIME :interval "1s" "date '+%I:%M %p'")
+(defpoll DATE :interval "1m" "date '+%A, %B %d'")
+
+;; Weather vars
+(defpoll ICON :interval "15m" "Weather icon")
+(defpoll TEMP :interval "15m" "Weather current_temp")
+(defpoll HEX  :interval "15m" "Weather hex")
+(defpoll CITY  :interval "15m" "Weather city")
+
+;; Updates vars
+(defpoll UPDATES :interval "2m" "Updates --get-updates")
+
+;; Volume vars
+(defpoll volume_icon :interval "1s" "scripts/volume.sh --icon")
+(defpoll volume_value :interval "1s" "scripts/volume.sh --vol")
+
+;; Music vars
+(defpoll SONG 	:interval "1s" "MediaControl --title")
+(defpoll ARTIST :interval "1s" "MediaControl --artist")
+(defpoll COVER 	:interval "1s" "MediaControl --cover")
+(defpoll STATUS :interval "1s" "MediaControl --status")
+
+;; Network
+(defpoll WIFIICON :interval "10s" "scripts/check-network --icon")
+(defpoll NETSTAT  :interval "10s" "scripts/check-network --stat")
+
+;; User
+(defvar IMAGE "../../../assets/profile.png")
+(defpoll USER :interval "12h" "whoami")
+
+;;---------- Widgets ----------;;
+
+;; Launcher ;;
+(defwidget launcher []
+	(box :class "mainbars"
+		 (eventbox :cursor "pointer"
+			(button :style "background-image: url('images/dashboard.png');"
+				    :class "icons"
+				    :valign "center"
+				    :onclick "cd ; OpenApps --menu"
+				    :onrightclick "OpenApps --rice")
+		 )
+	)
+)
+
+;; Workspaces Widgets ;;
+(defwidget workspaces []
+	(literal :content workspaces)
+)
+	
+;; Apps ;;
+(defwidget apps []
+	(box :class "mainbars"
+		 :spacing 15
+			(eventbox :cursor "pointer"
+			(button :style "background-image: url('images/zombie.png');"
+					:class "icons"
+					:valign "center"
+					:onclick "OpenApps --fetch"))
+			
+			(eventbox :cursor "pointer"		  
+			(button :style "background-image: url('images/terminal.png');"
+					:class "icons"
+					:valign "center"
+					:onclick "cd ; OpenApps --terminal"))
+			
+			(eventbox :cursor "pointer"		  
+			(button :style "background-image: url('images/firefox.png');"
+					:class "icons"
+					:valign "center"
+					:onclick "OpenApps --browser"))
+			
+			(eventbox :cursor "pointer"		  
+			(button :style "background-image: url('images/files.png');"
+					:class "icons"
+					:valign "center"
+					:onclick "cd ; OpenApps --filemanager"))
+			
+			(eventbox :cursor "pointer"		  
+			(button :style "background-image: url('images/notes.png');"
+					:class "icons"
+					:valign "center"
+					:onclick "OpenApps --editor"))
+			
+			(eventbox :cursor "pointer"		  
+			(button :style "background-image: url('images/telegram.png');"
+					:class "icons"
+					:valign "center"
+					:onclick "OpenApps --telegram"))
+	)
+)
+
+;; Music Control ;;
+(defwidget music [] 
+	(box :class "mainbars"
+		 :spacing 10
+		 :space-evenly "false"
+		 
+		 (box :class "album_art"
+			  :valign "center"
+			  :halign "start"
+			  :style "background-image: url('${COVER}');")
+			  
+		 (eventbox :cursor "pointer"
+		 (button :onclick "OpenApps --player"
+		 (box :orientation "v"
+			  :class "song-info"
+			  :spacing 0
+			  :valign "center"
+			  
+				(label :class "song"
+					   :xalign 0
+					   :justify "fill"
+					   :wrap "false"
+					   :limit-width 18
+					   :text SONG)
+					   
+				(label :class "artist"
+					   :xalign 0
+					   :justify "fill"
+					   :wrap "false"
+					   :limit-width 18
+					   :text ARTIST))))
+
+		 (box :spacing 8
+			  :valign "center"
+			  :halign "end"
+			  :space-evenly "false"
+			  
+			  (eventbox :cursor "pointer"
+				(button :class "player-previous" 
+						:onclick "MediaControl --previous" "󰒮"))
+						
+			  (eventbox :cursor "pointer"
+				(button :class "player-toggle" 
+						:onclick "MediaControl --toggle" 
+						{STATUS == "Playing" ? "󰏤" : STATUS == "Paused" ? "󰐊" : "󰓛 "}))
+						
+			  (eventbox :cursor "pointer"
+				(button :class "player-next" 
+						:onclick "MediaControl --next" "󰒭"))
+		 )
+	)
+)
+				
+;; system
+(defwidget system []
+	(box :class "mainbars"
+		 :spacing 15
+		 :space-evenly "false"
+
+		 (eventbox :cursor "pointer"
+		 (button :onclick "OpenApps --update"
+				 :onrightclick "OpenApps --checkupdates"
+				 (box :orientation "h"
+					  :spacing 2
+					  :valign "center"
+					  :halign "center"
+					  :space-evenly "false"
+					  (box :style "background-image: url('images/pacman.png');"
+						   :class "icons")
+					  (label :class "infotext-pac"
+							 :halign "start"
+							 :valign "center"
+							 :text UPDATES
+					  )
+				 )
+		 ))
+		 
+		 (eventbox :cursor "pointer"
+		 (button :onclick "${EWW_CMD} open --toggle audio_ctl"
+				 :onrightclick "scripts/volume.sh --toggle-muted"
+				 (box :orientation "h"
+					  :spacing 3
+					  :valign "center"
+					  :halign "center"
+					  :space-evenly "false"
+					  (box :style "background-image: url('${volume_icon}');"
+						   :class "icons")
+					  (label :class "infotext"
+							 :halign "start"
+							 :valign "center"
+							 :text "${volume_value}%"
+					  )
+				 )
+		 ))
+
+		 (eventbox :cursor "pointer"
+		 (button :onclick ""
+				 (box :orientation "h"
+					  :spacing 3
+					  :valign "center"
+					  :halign "center"
+					  :space-evenly "false"
+					  (box :style "background-image: url('${WIFIICON}');"
+						   :class "icons")
+					  (label :class "infotext"
+							 :halign "start"
+							 :valign "center"
+							 :text NETSTAT
+					  )
+				 )
+		 ))
+
+		 (eventbox :cursor "pointer"
+		 (button :onclick "OpenApps --usercard"
+				 (box :orientation "h"
+					  :spacing 3
+					  :valign "center"
+					  :halign "center"
+					  :space-evenly "false"
+					  (box :style "background-image: url('${IMAGE}');"
+						   :class "icons")
+					  (label :class "infotext"
+							 :halign "start"
+							 :valign "center"
+							 :text USER
+					  )
+				 )
+		 ))
+
+		 (eventbox :cursor "pointer"
+		 (button :onclick "OpenApps --powermenu"
+				 (box :orientation "h"
+					  :spacing 3
+					  :valign "center"
+					  :halign "center"
+					  :space-evenly "false"
+					  (box :style "background-image: url('images/poweroff.png');"
+						   :class "icon-power"
+					  )
+				 )
+		 ))
+	)
+)
+
+;; weather
+(defwidget clock [] 
+	(box :class "mainbars"
+		 :spacing 15
+		 :space-evenly "false"
+		 
+		 (eventbox :cursor "pointer"
+		 (button :onclick "OpenApps --calendar"
+		 (box :orientation "v"
+			  :spacing 0
+			  :halign "start"
+			(label :class "time" :halign "start" :text TIME)
+			(label :class "date" :halign "start" :text DATE)
+		 )))
+			
+		 (box :orientation "h" :spacing 5
+			(label :class "weathericon" :style "color: ${HEX};" :tooltip CITY :text ICON)
+			(label :class "weathertemp" :text "${TEMP}°C")
+		)
+	)
+)
+
+
+            
+            
+(defwidget audio []
+	(box :class "audio-box"
+		 :orientation "v"
+		 (box :halign "start"
+			  :space-evenly "false"
+			  (box :class "speaker_icon"
+				   :orientation "v")
+		 (box :class "speaker_bar"
+			  :halign "center"
+		 (scale :value volume_value
+                :space-evenly "false"
+			    :orientation "h"
+			    :onchange "pamixer --set-volume {}" 
+                :tooltip "volume on ${volume_value}%"
+			    :max 100
+			    :min 0
+		 )))
+	)
+)
+
+
+;;---------- Bar Widgets ----------;;
+
+(defwidget left []
+	(box :halign "start"
+	     :spacing 15
+	     ;;:valign "center"
+		 :space-evenly "false"
+(launcher)
+(apps)))
+
+
+(defwidget middle []
+	(box :halign "center"
+		 ;;:valign "center"
+		 :spacing 15
+		 :space-evenly "false"
+(clock)
+(workspaces)))
+
+(defwidget right []
+	(box :space-evenly "false"
+		 :spacing 15
+		 :halign "end"
+		 ;;:valign "center"
+(music)
+(system)))
+
+
+(defwidget allbars []
+	(box :class "allbars"
+		 :space-evenly "false"
+		 :spacing 15
+		 :halign "center"
+		 :valign "center"
+		 
+(left)
+(middle)
+(right)))
+
+
+;;---------- Main windows ----------;;
+
+(defwindow bar
+           :monitor 0
+           :geometry (geometry :y "10px"
+							   :width "100%"
+							   :anchor "top center"
+							  )
+                               
+           :stacking "fg"
+           :reserve (struts :distance "5px" :side "top")
+           :windowtype "dock"
+           :wm-ignore false
+(allbars))
+
+(defwindow audio_ctl
+	:geometry (geometry :x "-210px" 
+						:y "8%" 
+                        :anchor "top right")
+(audio))
+

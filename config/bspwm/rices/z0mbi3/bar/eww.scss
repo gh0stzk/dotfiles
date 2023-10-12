@@ -74,11 +74,11 @@ $archlogo: #0f94d2;
 }
 
 .bar-updates-text {
-  font-family: "JetBrainsMono Nerd Font";
+  font-family: "JetBrainsMono Nerd Font Bold";
   font-size: 14px;
   font-weight: Bold;
   color: #8ea6c4;
-  padding: 0.2rem 0 0.2rem 0.3rem;
+  margin: .4rem 0 .2rem .2rem;
 }
 
 scale trough {
@@ -107,50 +107,6 @@ scale trough {
   margin: 0.5rem 0 0.5rem 0;
 }
 
-// Calendar
-.cal-box {
-  background-color: $black;
-  border-radius: 5px;
-  font-family: Comic Mono;
-  font-size: 1em;
-  font-weight: bold;
-
-  .cal-inner-box {
-    padding: 1rem 1rem 0.2rem;
-
-    .cal {
-      &.highlight {
-        padding: 10rem;
-      }
-
-      padding: 0.8rem 0.25rem 0rem;
-      margin-left: 10px;
-    }
-  }
-}
-
-calendar:selected {
-  color: $blue;
-}
-
-calendar.header {
-  color: $blue;
-  font-weight: bold;
-}
-
-calendar.button {
-  color: $magenta;
-}
-
-calendar.highlight {
-  color: $magenta;
-  font-weight: bold;
-}
-
-calendar:indeterminate {
-  color: $background;
-}
-
 // Powermenu
 .powermenu {
   font-family: Material Design Icons Desktop;
@@ -158,31 +114,19 @@ calendar:indeterminate {
   font-weight: bold;
 }
 
+.powericons {
+  margin: 0.2rem 0 0.2rem 0;
+}
+
 .button-bspres,
 .button-reb,
 .button-lock,
 .button-quit,
+.button-powermenu,
 .button-off {
-  padding: 0.5rem 0.2rem 0.3rem 0.2rem;
-}
-
-.button-off {
-  margin-bottom: 0.5rem;
-  color: $red;
-}
-
-.button-bspres {
-  color: $green;
-}
-
-.button-reb {
-  color: $yellow;
-}
-
-.button-quit {
-  color: $magenta;
-}
-
-.button-lock {
-  color: $blue;
+  background-repeat: no-repeat;
+  background-size: 22px;
+  min-height: 22px;
+  min-width: 7px;
+  margin: 0rem 0rem .5rem 9px;
 }

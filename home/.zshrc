@@ -5,7 +5,7 @@
 #  ┬  ┬┌─┐┬─┐┌─┐
 #  └┐┌┘├─┤├┬┘└─┐
 #   └┘ ┴ ┴┴└─└─┘
-export VISUAL='geany'
+export VISUAL="${EDITOR}"
 export EDITOR='nvim'
 export TERMINAL='alacritty'
 export BROWSER='firefox'

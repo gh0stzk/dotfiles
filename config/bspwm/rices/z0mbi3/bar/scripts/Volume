@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+#  ██╗   ██╗ ██████╗ ██╗     ██╗   ██╗███╗   ███╗███████╗
+#  ██║   ██║██╔═══██╗██║     ██║   ██║████╗ ████║██╔════╝
+#  ██║   ██║██║   ██║██║     ██║   ██║██╔████╔██║█████╗  
+#  ╚██╗ ██╔╝██║   ██║██║     ██║   ██║██║╚██╔╝██║██╔══╝  
+#   ╚████╔╝ ╚██████╔╝███████╗╚██████╔╝██║ ╚═╝ ██║███████╗
+#    ╚═══╝   ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
+#	gh0stzk
+#	https://github.com/gh0stzk/dotfiles
+#	Script to control the eww bar in z0mbi3 rice
+#	23.09.2023 12:30:34
+
+get_vol () {
+  volumen=$(pamixer --get-volume-human | tr -d '%')
+  [[ $volumen == 'muted' ]] && echo "0" || echo "${volumen}"
+}
+
+get_icon () {
+  local vol=$(get_vol)
+  echo "images/$( [[ $vol == "0" ]] && echo "mute" || echo "volume" ).png"
+}
+
+case "$1" in
+  --vol) get_vol;;
+  --icon) get_icon;;
+  --toggle-muted) pamixer -t;;
+esac

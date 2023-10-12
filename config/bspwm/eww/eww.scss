@@ -1,0 +1,17 @@
+* {
+  all: unset;
+}
+
+tooltip {
+    background-color: #14171c;
+    color: #b8bfe5;
+    font-family: Inconsolata SemiCondensed Medium;
+    font-weight: Bold;
+    font-size: 1rem;
+}
+
+@import "colors.scss";
+@import "calendar/calendar.scss";
+@import "powermenu/powermenu.scss";
+@import "profilecard/profilecard.scss";
+@import "player/player.scss";

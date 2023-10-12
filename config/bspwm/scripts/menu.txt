@@ -1,0 +1,36 @@
+Terminal,OpenApps --floating,/usr/share/icons/Papirus/32x32/apps/terminal.svg
+Web Browser,OpenApps --browser,/usr/share/icons/Papirus/32x32/apps/internet-web-browser.svg
+File Manager,OpenApps --filemanager,/usr/share/icons/Papirus/32x32/apps/org.xfce.thunar.svg
+
+^sep()
+
+Favorites,^checkout(favorites),/usr/share/icons/Papirus/32x32/status/starred.svg
+
+^sep()
+
+Widgets,^checkout(wg),/usr/share/icons/Papirus/32x32/apps/kmenuedit.svg
+BSPWM,^checkout(wm),/usr/share/icons/Papirus/32x32/apps/gnome-windows.svg
+Exit,^checkout(exit),/usr/share/icons/Papirus/32x32/apps/system-shutdown.svg
+
+^tag(favorites)
+Editor,OpenApps --editor,/usr/share/icons/Papirus/32x32/apps/standard-notes.svg
+Neovim,OpenApps --nvim,nvim
+Firefox,OpenApps --browser,firefox
+Retroarch,retroarch,/usr/share/icons/Papirus/32x32/apps/retroarch.svg
+
+^tag(wg)
+User Card,OpenApps --usercard,/usr/share/icons/Papirus/32x32/apps/system-users.svg
+Music Player,OpenApps --player,/usr/share/icons/Papirus/32x32/apps/musique.svg
+Power Menu,OpenApps --powermenu,/usr/share/icons/Papirus/32x32/status/changes-allow.svg
+Calendar,OpenApps --calendar,/usr/share/icons/Papirus/32x32/apps/office-calendar.svg
+
+^tag(wm)
+Change Theme,OpenApps --rice,/usr/share/icons/Papirus/32x32/apps/colors.svg
+Keybinds,KeybindingsHelp,/usr/share/icons/Papirus/32x32/apps/preferences-desktop-keyboard-shortcuts.svg
+Restart WM,bspc wm -r,/usr/share/icons/Papirus/32x32/apps/system-reboot.svg
+Quit,bspc quit,/usr/share/icons/Papirus/32x32/apps/system-log-out.svg
+
+^tag(exit)
+Block computer,physlock -d,/usr/share/icons/Papirus/32x32/status/changes-prevent.svg
+Reboot,systemctl reboot,/usr/share/icons/Papirus/32x32/apps/system-reboot.svg
+Shutdown,systemctl poweroff,/usr/share/icons/Papirus/32x32/apps/system-shutdown.svg

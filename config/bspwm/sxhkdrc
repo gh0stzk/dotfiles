@@ -6,7 +6,7 @@
 # Show keybindings help
 alt + F1
 	KeybindingsHelp
-	
+
 # Open Terminal (alacritty)
 super + Return
 	OpenApps --terminal
@@ -31,15 +31,19 @@ super + alt + o
 ctrl + super + alt + {p,r,q,l,k}
 	{systemctl poweroff, systemctl reboot,bspc quit,physlock -d,xkill}
 
+# jgmenu
+~button3
+  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu --csv-file=~/.config/bspwm/scripts/menu.txt --config-file=~/.config/bspwm/jgmenurc
+
 # Apps
 shift + alt + {b,g,n,p,r,t,w,m,v,k}
-	{firefox, \
-	 geany, \
-	 thunar, \
-	 pavucontrol, \
+	{OpenApps --browser, \
+	 OpenApps --editor, \
+	 OpenApps --filemanager, \
+	 OpenApps --soundcontrol, \
 	 OpenApps --ranger, \
-	 telegram-desktop, \
-	 whatsapp-nativefier --disable-gpu, \
+	 OpenApps --telegram, \
+	 OpenApps --whats, \
 	 env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --disable-gpu --no-zygote %U, \
 	 OpenApps --nvim, \
 	 OpenApps --music}
@@ -119,8 +123,12 @@ super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
-ctrl + alt + {m,x,s,p,i}
+ctrl + alt {m,x,s,p,i}
 	bspc node -g {marked,locked,sticky,private,hidden}
+
+# Unhide if hidden (all nodes/windows)
+ctrl + alt + u
+	while bspc node any.hidden.window -g hidden=off; do :; done
 
 # Focused desktop window gaps scroll
 super + button{4,5}
@@ -193,7 +201,7 @@ super + alt + shift + {h,j,k,l}
 	bspc node -z {right -10 0,top 0 10,bottom 0 -10,left 10 0}
 
 # move a floating window
-alt + shift + {Left,Down,Up,Right}
+alt + shift {Left,Down,Up,Right}
 	bspc node -v {-10 0,0 10,0 -10,10 0}
 
 # Manage brightness

@@ -1,0 +1,290 @@
+;; Vars ;;
+
+(defpoll completeday :interval "1s" "date '+%A, %d %B'")
+
+
+(defvar IMAGEP "../assets/profile.png")
+
+(defpoll username :interval "24h" "whoami")
+(defpoll hostname :interval "24h" "cat /etc/hostname")
+(defpoll uptime :interval "30s" "uptime -p | sed -E -e 's/hour(s)?/hrs/g' -e 's/minute(s)?/min/g'")
+
+(defpoll updates :interval "2m" "Updates --get-updates")
+(defpoll packages :interval "1h" "pacman -Q | wc -l")
+
+(defpoll weathericon :interval "15m" "Weather icon")
+(defpoll weathercity :interval "15m" "Weather city")
+(defpoll weathertemp :interval "15m" "Weather current_temp")
+(defpoll weatherdesc :interval "15m" "Weather weather_desc")
+(defpoll weatherhex :interval "15m" "Weather hex")
+
+(defpoll temp :interval "5s" "../scripts/temp.sh")
+
+;; Widegets ;;
+
+(defwidget launchermenu []
+     (box :class "launchermenu"
+          :orientation "v"
+          :space-evenly "false"
+          :spacing 7
+          (time)
+          (pfp)
+          (iuse)
+          (infoarch)
+          (weather)
+          ;;(sysinfo)
+          (system)
+          (apps)))
+          
+(defwidget divider []
+  (box :class "divider"
+       :orientation "v"
+       :space-evenly true)
+)
+
+(defwidget time []
+  (box :class "timebox"
+       :orientation "v"
+       :space-evenly false
+    (box :class "time-container"
+         :orientation "h"
+         :space-evenly false
+         :halign "center"
+         :valign "center"
+      (label :text "${formattime(EWW_TIME, "%H")}" :class "content")
+      (divider)
+      (label :text "${formattime(EWW_TIME, "%M")}" :class "content")
+    )
+    (box :class "date-container"
+         :orientation "h"
+         :space-evenly true
+         :halign "center"
+      (label :text "${completeday}")
+    )
+  )
+)
+
+(defwidget pfp []
+	(box :orientation "h"
+		 :space-evenly "false"
+		 :class "usercard"
+		 (box :space-evenly "false"
+			  :hexpand true
+			  :orientation "h"
+			  :spacing "15"
+			  (box :style "background-image: url('${IMAGEP}');"
+				   :class "face"
+				   :halign "center")
+			  (box :orientation "v"
+				   :space-evenly "false"
+				   :hexpand true
+				   :valign "center"
+				   (box :class "user-host"
+						:halign "start"
+						(label :text username))
+			       (box :class "host"
+						:halign "start"
+						(label :text "@${hostname}"))
+				   (box :class "uptime"
+						:halign "start"
+						(label :text uptime)))
+			  (box :orientation "v"
+				   :space-evenly "false"
+				   :spacing 10
+				   :valign "center"
+				   :halign "start"
+				   :hexpand false
+				   ;;:style "border: 1px solid #ffffff;"
+				   (eventbox :cursor "pointer"
+				   (button :class "btn-info" :tooltip "Lock Computer" :onclick "physlock -d" "󱅞"))
+				   (eventbox :cursor "pointer"
+				   (button :class "btn-info" :tooltip "Logout BSPWM" :onclick "bspc quit" "󰍃")))
+		)
+	)
+)	  
+(defwidget iuse []
+	(box :orientation "v"
+		 :space-evenly "false"
+		 :class "usearch"
+		 :hexpand true
+         (label :class "launcher-pfp-label"
+				:xalign 0.5
+				:limit-width 30
+				:text "I use Arch btw..")))
+                 
+(defwidget infoarch []
+          (box :orientation "h"
+	           :space-evenly "false"
+	           :spacing 7
+	           (box :orientation "v"
+					:class "pacman"
+					:hexpand true
+					(label :halign "start"
+						   :class "pacman-icon"
+						   :text "󰮯")
+					(box :space-evenly "false"
+						 (eventbox :cursor "pointer"
+						 (button :class "pacman-updates"
+								 :halign "start"
+								 :tooltip "Click to update"
+								 :onclick "OpenApps --update" "${updates} Updates"))))
+			   (box :orientation "h"
+					:space-evenly "false"
+					:class "fetch"
+					:spacing 8
+					(label :class "arch-icon"
+						   :halign "start"
+						   :text "󰣇")
+					(box 
+						 :space-evenly "false"
+						 (box :orientation "v"
+							  :spacing 3
+							  :halign "end"
+							  :style "margin-left: 10px;"
+							  (label :class "os-icon" 
+									 :halign "start"
+									 :text "󰣇")
+							  (label :class "pkgs-icon"
+									 :halign "start"
+									 :text "󰮯")
+							  (label :class "wm-icon"
+									 :halign "start"
+									 :text "󱪳")))
+					(box 
+						 :space-evenly "false"
+						 (box :orientation "v"
+							  :spacing 3
+							  :halign "start"
+							  (label :class "os-text"
+									 :halign "start"
+									 :text "Arch")
+							  (label :class "pkgs-text"
+									 :halign "start"
+									 :text packages)
+							  (label :class "wm-text"
+									 :halign "start"
+									 :text "Bspwm"))))))
+									 
+(defwidget weather[] 
+  (box :orientation "h" :class "weatherboxfull" :space-evenly false
+	(box :orientation "v" :class "weatherbox" :hexpand true :space-evenly false
+      (box :orientation "h" :class "weathertop" :space-evenly false
+        (box :class "weatherdesc" :style "color: ${weatherhex};" :halign "start" :hexpand true weatherdesc)
+        (box :class "weathertemp" :halign "end" "${weathertemp}°C")
+      )
+      (box :orientation "v" :class "weatherbot" :space-evenly false
+        (box :class "weathercity" :halign "start" :hexpand true
+			 (label :limit-width 22 :text weathercity))
+      )
+    )
+      (box :class "weathericon" :style "color: ${weatherhex};" :halign "center" weathericon)
+  )
+)
+
+(defwidget system_progress [data icon css tip] 
+  (box 
+    :class "progress" 
+    (circular-progress
+      :class css
+      :value data
+      :thickness 6
+      :tooltip tip
+      (overlay
+        :valign "center"
+        (label 
+          :class "icon" 
+          :text icon
+        )
+      )
+    )
+  )
+)
+
+(defwidget cpu [] 
+  (system_progress
+    :css "cpu"
+    :tip "CPU ${round(EWW_CPU.avg,0)}%"
+    :data {round(EWW_CPU.avg, 0)} 
+    :icon ""
+  )
+)
+
+(defwidget ram [] 
+  (system_progress
+    :css "ram"
+    :tip "RAM ${round(EWW_RAM.used_mem / 1048576, 2)}MB"
+    :data {round(EWW_RAM.used_mem_perc, 0)}
+    :icon ""
+  )
+)
+
+(defwidget disk [] 
+  (system_progress
+    :css "disk"
+    :tip "SSD ${round(EWW_DISK["/"].used_perc, 2)}%"
+    :data {round(EWW_DISK["/"].used_perc, 0)}
+    :icon ""
+  )
+)
+
+(defwidget temp [] 
+  (system_progress
+    :css "temp"
+    :tip "Cpu temperature ${temp}°C"
+    :data temp
+    :icon ""
+  )
+)
+
+(defwidget system []
+  (box 
+    :class "system"
+    :spacing 8
+    (cpu)
+    (ram)
+    (disk)
+    (temp)
+  )
+)
+
+(defwidget apps []
+          (box :orientation "v"
+               :space-evenly "false"
+               :class "launcher-apps"
+               (box :orientation "h"
+					:space-evenly "false"
+					:hexpand true
+					:halign "center"
+					:spacing 12
+			   (eventbox :cursor "pointer"
+               (button :class "launcher-btn"
+                       :onclick "OpenApps --browser"
+                       :tooltip "Browser"
+                       "󰇧"))
+               (eventbox :cursor "pointer"
+               (button :class "launcher-btn"
+                       :onclick "OpenApps --fetch"
+                       :tooltip "System Fetch"
+                       "󰚌"))
+               (eventbox :cursor "pointer"
+               (button :class "launcher-btn"
+                       :onclick "cd && OpenApps --filemanager"
+                       :tooltip "File Manager"
+                       "󰝰"))
+               (eventbox :cursor "pointer"
+               (button :class "launcher-btn"
+                       :onclick "cd && OpenApps --terminal"
+                       :tooltip "Terminal"
+                       "󰆍"))
+               (eventbox :cursor "pointer"
+               (button :class "launcher-btn"
+                       :onclick "OpenApps --editor"
+                       :tooltip "Editor"
+                       "󰷈")))))
+                       
+;; Windows ;;
+
+(defwindow launchermenu
+    :geometry (geometry :x "80px" :y "0px" :anchor "left center")
+    :wm-ignore false
+    (launchermenu))

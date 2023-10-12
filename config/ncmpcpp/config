@@ -15,11 +15,11 @@ execute_on_song_change  = "MediaControl nccover ; dunstify --replace=27072 -i /t
 visualizer_data_source = /tmp/mpd.fifo
 visualizer_output_name = my_fifo
 
-visualizer_in_stereo = "no"
+visualizer_in_stereo = "yes"
 visualizer_fps = "60"
-visualizer_type = "wave"
-visualizer_look = "∗▐"
-visualizer_color = "199,200,201,202,166,130,94,58,22"
+visualizer_type = "ellipse"
+visualizer_look = ●●
+visualizer_color = "33,39,63,75,81,99,117,153,189"
 visualizer_spectrum_smooth_look = "yes"
 
 # GENERAL
@@ -48,7 +48,7 @@ startup_screen = "playlist"
 
 # PROGRESS BAR
 # ---
-progressbar_look = "━━━"
+progressbar_look = "▪▪▪"
 #progressbar_look = "▃▃▃"
 progressbar_elapsed_color = "magenta"
 progressbar_color = "black"

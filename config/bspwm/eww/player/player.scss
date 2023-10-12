@@ -1,0 +1,111 @@
+.player {
+  font-family: "JetBrains Mono Medium", "Material Design Icons Desktop";
+  background-color: $bg;
+  padding: 0.6rem;
+  min-height: 12rem;
+  border-radius: 0.6rem;
+
+  .player-art {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 0 0.3rem black;
+    border-radius: 1.2rem;
+    min-width: 22rem;
+
+    .player-info {
+      border-radius: 1rem;
+      background: linear-gradient(to right, rgb(#191919, 1), rgba(#262626, 0.5));
+      padding: 0.65rem;
+
+      .player-shuffle,
+      .player-loop {
+        font-size: 1rem;
+        text-shadow: 0 0 0.2rem black;
+      }
+
+      .spotify-icon {
+        font-size: 1.25rem;
+        color: $green;
+        text-shadow: 0 0 0.2rem black;
+      }
+      
+      .mpd-icon {
+        font-size: 1.25rem;
+        color: $magenta;
+        text-shadow: 0 0 0.2rem black;
+      }
+
+      .player-title {
+        font-style: italic;
+		font-family: Cartograph CF;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: $fg;
+        text-shadow: 0 0 0.5rem rgba($color: black, $alpha: 1);
+      }
+
+      .player-artist {
+		font-family: JetBrainsMono Nerd Font;
+		font-weight: bolder;
+		font-size: 0.8rem;
+        color: $fg;
+        text-shadow: 0 0 0.5rem rgba($color: black, $alpha: 1);
+      }
+
+      .player-time {
+		font-style: italic;
+		font-family: Cartograph CF;
+        font-size: 0.8rem;
+        color: $fg;
+      }
+
+      .player-bar scale trough highlight {
+        all: unset;
+        background-image: linear-gradient(
+          to right,
+          darken($color: $green, $amount: 15%),
+          $green
+        );
+        border-radius: 2rem;
+      }
+
+      .player-bar scale trough {
+        all: unset;
+        background-color: rgba($fg, 0.3);
+        box-shadow: 0px 0px 2px 1px rgba(black, 0.5);
+        border-radius: 1rem;
+        min-height: 0.35rem;
+        margin: 0rem 0.2rem 0.2rem 0rem;
+      }
+
+      .player-position {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: $fg;
+      }
+    }
+  }
+
+  .player-controls {
+    padding: 0rem 0.7rem 0rem 1rem;
+    border-radius: 1rem;
+
+    .player-toggle {
+      font-size: 1.6rem;
+      color: $fg;
+    }
+
+    .player-previous,
+    .player-next {
+      font-size: 1.6rem;
+      color: $fg;
+    }
+
+    button {
+      &:hover {
+        color: $magenta;
+      }
+    }
+  }
+}

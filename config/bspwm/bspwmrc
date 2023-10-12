@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
-#  ╔╗ ╔═╗╔═╗╦ ╦╔╦╗  - z0mbi3
-#  ╠╩╗╚═╗╠═╝║║║║║║  - https://github.com/gh0stzk/dotfiles
-#  ╚═╝╚═╝╩  ╚╩╝╩ ╩  - z0mbi3.zk@protonmail.com
-
-
-#  ┬┌┬┐┌─┐┌─┐┬─┐┌┬┐┌─┐┌┐┌┌┬┐  ┬  ┬┌─┐┬─┐┬┌─┐┌┐ ┬  ┌─┐┌─┐
-#  ││││├─┘│ │├┬┘ │ ├─┤│││ │   └┐┌┘├─┤├┬┘│├─┤├┴┐│  ├┤ └─┐
-#  ┴┴ ┴┴  └─┘┴└─ ┴ ┴ ┴┘└┘ ┴    └┘ ┴ ┴┴└─┴┴ ┴└─┘┴─┘└─┘└─┘
+#
+#  ██████╗ ███████╗██████╗ ██╗    ██╗███╗   ███╗██████╗  ██████╗
+#  ██╔══██╗██╔════╝██╔══██╗██║    ██║████╗ ████║██╔══██╗██╔════╝
+#  ██████╔╝███████╗██████╔╝██║ █╗ ██║██╔████╔██║██████╔╝██║     
+#  ██╔══██╗╚════██║██╔═══╝ ██║███╗██║██║╚██╔╝██║██╔══██╗██║     
+#  ██████╔╝███████║██║     ╚███╔███╔╝██║ ╚═╝ ██║██║  ██║╚██████╗
+#  ╚═════╝ ╚══════╝╚═╝      ╚══╝╚══╝ ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
+#	- z0mbi3
+#	- https://github.com/gh0stzk/dotfiles
+#	- z0mbi3.zk@protonmail.com
+#
 
 read -r RICETHEME < "$HOME"/.config/bspwm/.rice
 export RICETHEME
@@ -16,75 +19,79 @@ rice_dir="$HOME/.config/bspwm/rices/$RICETHEME"
 ## Fix java applications
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-#  ┬ ┬┌─┐┬─┐┬┌─┌─┐┌─┐┌─┐┌─┐┌─┐┌─┐
-#  ││││ │├┬┘├┴┐└─┐├─┘├─┤│  ├┤ └─┐
-#  └┴┘└─┘┴└─┴ ┴└─┘┴  ┴ ┴└─┘└─┘└─┘
+#  ╦ ╦╔═╗╦═╗╦╔═╔═╗╔═╗╔═╗╔═╗╔═╗╔═╗
+#  ║║║║ ║╠╦╝╠╩╗╚═╗╠═╝╠═╣║  ║╣ ╚═╗
+#  ╚╩╝╚═╝╩╚═╩ ╩╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
 
-workspaces() {
-	name=1
-	for monitor in $(bspc query -M); do
-		bspc monitor "${monitor}" -n "$name" -d '1' '2' '3' '4' '5' '6'
-		#bspc monitor ${monitor} -n "$name" -d '' '' '' '' '' ''
-		(( name++ ))
+	# Default 1 monitor with 6 workspaces
+	for monitor in "$(xrandr -q | grep -w 'connected' | cut -d' ' -f1)"; do
+		bspc monitor "$monitor" -d '1' '2' '3' '4' '5' '6'
+		#bspc monitor "$monitor" -d '' '' '' '' '' ''
 	done
-}
 
-workspaces
+	## For two or three monitors configuration see https://github.com/gh0stzk/dotfiles/wiki/Two-or-more-monitors-setup
 
-#  ┌┐ ┌─┐┌─┐┬ ┬┌┬┐  ┌─┐┌─┐┌┐┌┌─┐┬┌─┐
-#  ├┴┐└─┐├─┘││││││  │  │ ││││├┤ ││ ┬
-#  └─┘└─┘┴  └┴┘┴ ┴  └─┘└─┘┘└┘└  ┴└─┘
+#  ╔╗ ╔═╗╔═╗╦ ╦╔╦╗  ╔═╗╔═╗╔╗╔╔═╗╦╔═╗
+#  ╠╩╗╚═╗╠═╝║║║║║║  ║  ║ ║║║║╠╣ ║║ ╦
+#  ╚═╝╚═╝╩  ╚╩╝╩ ╩  ╚═╝╚═╝╝╚╝╚  ╩╚═╝
 
-bspc config external_rules_command $HOME/.config/bspwm/scripts/ExternalRules
+bspc config external_rules_command "$HOME"/.config/bspwm/scripts/ExternalRules
 
-bspc config split_ratio                   0.51
-bspc config single_monocle                true
-bspc config borderless_monocle            false
-bspc config gapless_monocle               false
+bspc config window_gap					6
+bspc config split_ratio					0.51
+bspc config single_monocle				true
+bspc config borderless_monocle			false
+bspc config gapless_monocle				false
 
-bspc config focus_follows_pointer         true
-bspc config pointer_follows_focus         false
-bspc config pointer_motion_interval       5
-bspc config pointer_modifier              mod4 
-bspc config pointer_action1               move 
-bspc config pointer_action2               resize_side 
-bspc config pointer_action3               resize_corner
+bspc config focus_follows_pointer		true
+bspc config pointer_follows_focus		false
+bspc config pointer_motion_interval		5
+bspc config pointer_modifier			mod4
+bspc config pointer_action1				move
+bspc config pointer_action2				resize_side
+bspc config pointer_action3				resize_corner
 
 #bspc wm --adopt-orphans
 bspc rule -a scratch sticky=on state=floating focus=on
 
-#  ┬  ┌─┐┬ ┬┌┐┌┌─┐┬ ┬  ┌─┐┌─┐─┐ ┬┬ ┬  ┬─┐┬┌─┐┌─┐┌─┐
-#  │  ├─┤│ │││││  ├─┤  └─┐├┤ ┌┴┬┘└┬┘  ├┬┘││  ├┤ └─┐
-#  ┴─┘┴ ┴└─┘┘└┘└─┘┴ ┴  └─┘└─┘┴ └─ ┴   ┴└─┴└─┘└─┘└─┘
+#  ╔═╗╦ ╦╔╦╗╔═╗╔═╗╔╦╗╔═╗╦═╗╔╦╗
+#  ╠═╣║ ║ ║ ║ ║╚═╗ ║ ╠═╣╠╦╝ ║ 
+#  ╩ ╩╚═╝ ╩ ╚═╝╚═╝ ╩ ╩ ╩╩╚═ ╩
 
 # Set system vars for polybar
 . SetSysVars
 
-# Terminate already running polybar, eww, picom, sxhkd and dunst instances
-processes=("picom" "polybar" "eww" "sxhkd" "dunst")
+# Terminate already running polybar, stalonetray, sxhkd and dunst instances
+processes=("eww.*bar" "polybar" "sxhkd" "dunst" "stalonetray")
 
-for process in "${processes[@]}"; do
-  if pidof -q "$process"; then
-    pkill -9 -x "$process" > /dev/null; sleep 0.1
-  fi
-done
+	for process in "${processes[@]}"; do
+		if pgrep -f "$process"; then
+			pkill -9 -f "$process" > /dev/null; sleep 0.1
+		fi
+	done
 
-# Load colors, dunst, bars and/or eww widgets
+# Load bspwm conf, colors, dunst, bars and/or eww widgets
 . ${rice_dir}/Theme.sh
 
 # Launch picom // If you have old hardware or encounter problems 
 # uncomment the picom "--legacy-backends" line and comment the current one.
-picom --config "$HOME"/.config/bspwm/picom.conf &
-#picom --legacy-backends --config "$HOME"/.config/bspwm/picom.conf &
-
-# Launch dunst notification daemon
-dunst -config "$HOME"/.config/bspwm/dunstrc &
+pidof -q picom || { picom --config "$HOME"/.config/bspwm/picom.conf & }
+#pidof -q picom || { picom --legacy-backends --config "$HOME"/.config/bspwm/picom.conf & }
 
 # Set random wallpaper for actual rice
 feh -z --no-fehbg --bg-fill ${rice_dir}/walls
 
+# Launch eww daemon
+pidof -q eww || { eww -c "$HOME"/.config/bspwm/eww daemon & }
+
 # Reload sxhkd daemon
 sxhkd -c "$HOME"/.config/bspwm/sxhkdrc &
+
+# Launch dunst notification daemon
+dunst -config "$HOME"/.config/bspwm/dunstrc &
+
+# Launch stalonetray
+stalonetray -c "$HOME"/.config/bspwm/stalonetrayrc & sleep 0.1 && xdo hide -N stalonetray && touch "/tmp/syshide.lock"
 
 # Launch polkit
 pidof -q polkit-gnome-authentication-agent-1 || { /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & }

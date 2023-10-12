@@ -19,10 +19,10 @@ case "${RICETHEME}" in
         polybar-msg cmd hide | bspc config top_padding 2 | bspc config bottom_padding 2
         ;;
     z0mbi3)
-        eww -c "$HOME"/.config/bspwm/rices/z0mbi3/bar close bar | bspc config left_padding 2
+        eww -c "$HOME"/.config/bspwm/rices/z0mbi3/bar open --toggle bar | bspc config left_padding 2
         ;;
     andrea)
-        eww -c "$HOME"/.config/bspwm/rices/andrea/arin close-all | bspc config top_padding 2
+        eww -c "$HOME"/.config/bspwm/rices/andrea/andy open --toggle bar | bspc config top_padding 2
         ;;
     karla)
         polybar-msg cmd hide | bspc config top_padding 2
@@ -41,7 +41,7 @@ case "${RICETHEME}" in
 		polybar-msg cmd show | bspc config top_padding 59
 		;;
 	jan)
-		polybar-msg cmd show | bspc config top_padding 64
+		polybar-msg cmd show | bspc config top_padding 50
 		;;
 	pamela)
 		polybar-msg cmd show | bspc config top_padding 59
@@ -65,18 +65,13 @@ case "${RICETHEME}" in
 		polybar-msg cmd show | bspc config bottom_padding 60
 		;;
 	z0mbi3)
-		eww -c "$HOME"/.config/bspwm/rices/z0mbi3/bar open bar | bspc config left_padding 79
+		eww -c "$HOME"/.config/bspwm/rices/z0mbi3/bar open --toggle bar | bspc config left_padding 79
 		;;
 	karla)
 		polybar-msg cmd show | bspc config top_padding 48
 		;;
 	andrea)
-		eww -c "$HOME"/.config/bspwm/rices/andrea/arin open-many \
-		   search \
-		   apps \
-		   weather \
-		   music \
-		   system | bspc config top_padding 67
+		eww -c "$HOME"/.config/bspwm/rices/andrea/andy open --toggle bar | bspc config top_padding 67
 		;;
 	*)
 		echo "Error: Something fails dud.."

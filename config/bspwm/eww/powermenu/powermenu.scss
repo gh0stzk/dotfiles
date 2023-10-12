@@ -1,0 +1,36 @@
+window>.powermenu {
+  margin: .5rem;
+  background-color: $bg;
+}
+
+.powermenu {
+  font-family: "Font Awesome 6 Free Solid";
+  font-size: 1.5rem;
+  padding: .3rem;
+  border-radius: .5rem;
+
+  &.shutdown {
+    color: $red;
+  }
+
+  &.reboot {
+    color: $green;
+  }
+
+  &.lock {
+    color: $yellow;
+  }
+
+  &.exit {
+    color: $magenta;
+  }
+
+  button {
+    background-color: $bg-alt;
+    padding: 1.2rem;
+
+  &:hover {
+      background-color: lighten($color: $bg-alt, $amount: 4%);
+    }  
+  }
+}

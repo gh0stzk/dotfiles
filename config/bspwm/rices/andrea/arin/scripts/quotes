@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-quote="Hola UnixPorn!!"
-echo "$quote"

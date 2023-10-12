@@ -1,0 +1,243 @@
+.launchermenu {
+    background-color: $bg;
+    border-radius: 0.5rem;
+    margin: .8rem .8rem;
+    min-width: 18rem;
+}
+
+.timebox {
+  margin: 0 2.5rem;
+    .time-container {
+    .content {
+      font-family: JetBrainsMono Nerd Font;
+      font-weight: Bolder;
+      font-size: 3.6rem;
+      color: $fg;
+    }
+    .divider {
+      margin: .2rem 15px;
+      padding: 0px 1px;
+      background: linear-gradient($red, $magenta, $blue, $cyan);
+    }
+  }
+  .date-container {
+    font-family: Inconsolata SemiCondensed Medium;
+    font-weight: Bold;
+    font-size: 1rem;
+    color: $fg;
+    margin: 3px 0;
+  }
+}
+
+.usercard {
+	background-color: $bg-alt;
+	border-radius: 0.5rem;
+}
+
+.face {
+	background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+	min-height: 65px;
+	min-width: 65px;
+	//border: .2rem solid $bg;
+	border-radius: 100%;
+	box-shadow: 0 0 7px 1px rgba($fg, 0.3);
+	margin: 10px -8px 10px 10px;
+}
+
+.user-host {
+	color: $fg;
+	font-family: Cartograph CF;
+	font-weight: Normal;
+	font-size: 1rem;
+}
+
+.host {
+	color: $fg;
+	font-family: Cartograph CF;
+	font-size: .8rem;
+}
+
+.uptime {
+	color: $fg;
+	font-family: Cartograph CF;
+	font-size: .7rem;
+	margin-top: .5rem;
+}
+
+.btn-info {
+	font-family: Material Design Icons Desktop;
+	font-size: 1.2rem;
+	color: $fg;
+	padding: 0 .6rem;
+}
+
+.btn-info:hover {
+	text-shadow: 0 0 2px $fg;
+}
+
+.usearch {
+	background-color: $bg-alt;
+	padding: .8rem;
+	border-radius: 0.5rem;
+	color: $fg;
+}
+
+.launcher-pfp-label {
+    font-family: Inconsolata SemiCondensed Medium;
+    font-weight: Bold;
+    font-size: 1rem;
+}
+
+.pacman {
+	background-color: $bg-alt;
+	padding: .8rem;
+	border-radius: 0.5rem;
+	color: $fg;
+	
+	.pacman-icon {
+		font-family: Material Design Icons Desktop;
+		font-size: 1.2rem;
+		color: $yellow;
+	}
+	.pacman-info {
+		font-family: Inconsolata SemiCondensed Medium;
+		font-weight: Bold;
+		font-size: 1rem;
+	}
+	.pacman-updates {
+		font-family: Inconsolata Condensed Medium;
+		font-weight: Bold;
+		font-size: 1rem;
+	}
+}
+
+.fetch {
+		background-color: $bg-alt;
+		padding: .8rem 2rem .8rem 1rem;
+		border-radius: 0.5rem;
+		color: $fg;
+		
+		.arch-icon {
+			font-family: Material Design Icons Desktop;
+			font-size: 3rem;
+			color: $archicon;
+	}
+}
+
+.os-icon {
+	font-family: Material Design Icons Desktop;
+	font-size: .8rem;
+	color: $archicon;
+}
+
+.pkgs-icon {
+	font-family: Material Design Icons Desktop;
+	font-size: .8rem;
+	color: $yellow;
+}
+
+.wm-icon {
+	font-family: Material Design Icons Desktop;
+	font-size: .8rem;
+	color: $magenta;
+}
+
+.os-text,
+.pkgs-text,
+.wm-text {
+	font-family: Inconsolata SemiCondensed Medium;
+	font-weight: Bold;
+	font-size: 1rem;
+}
+
+.weatherbox {
+  background-color: $bg-alt;
+  border-radius: 0.5rem;
+  padding: .8rem;
+}
+
+.weathericon {
+  padding: 0 .8rem;
+  border-radius: 0.5rem;
+  margin-left: .6rem;
+  background-color: $bg-alt;
+  font-size: 1.5rem;
+  font-family: "Font Awesome 6 Free Solid";
+}
+
+.weatherdesc {
+  font-size: 1.75rem;
+  font-family: "Inconsolata SemiCondensed Medium";
+  font-weight: Bold;
+}
+
+.weathertemp {
+  font-family: "Iosevka Nerd Font";
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $fg;
+}
+
+.weathercity {
+  font-size: .9rem;
+  margin-top: .2rem;
+  color: $fg;
+  font-family: Inconsolata SemiCondensed Medium;
+  font-weight: Bold;
+}
+
+.launcher-apps {
+	background-color: $bg-alt;
+	padding: .8rem;
+	border-radius: 0.5rem;
+}
+
+.launcher-btn {
+    color: $black;
+    font-family: Material Design Icons Desktop;
+    font-size: 1.5rem;
+}
+
+.launcher-btn:hover {
+    color: $fg;
+    font-family: Material Design Icons Desktop;
+    font-size: 1.5rem;
+    text-shadow: 0 0 0.2rem $fg;
+}
+
+
+    .progress {
+      background-color: $bg-alt;
+      padding: .7rem .7rem;
+      border-radius: 1rem;
+
+      circular-progress {
+        background-color: $black;
+
+        &.ram {
+          color: $blue;
+        }
+
+        &.cpu {
+          color: $green;
+        }
+
+        &.temp {
+          color: $red;
+        }
+
+        &.disk {
+          color: $magenta;
+        }
+      }
+
+
+    .icon {
+	  font-family: "Font Awesome 6 Free Solid";
+      font-size: 1rem;
+      padding: 1.1rem;
+    }
+
+  }

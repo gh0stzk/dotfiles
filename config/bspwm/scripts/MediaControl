@@ -13,12 +13,8 @@
 #				spotify, ncmpcpp, clementine, strawberry and others.
 
 
-# uncomment your music players below.
-Control="MPD"
-[ -n "$(pgrep spotify)" ] && Control="spotify"
-# [ -n "$(pgrep brave-bin)" ] && Control="brave-bin"
-# [ -n "$(pgrep rhythmbox)" ] && Control="rhythmbox"
-# [ -n "$(pgrep strawberry)" ] && Control="strawberry"
+# Set the player
+[ -n "$(pgrep spotify)" ] && Control="spotify" || Control="MPD"
 
 # Here the cover image will be saved.
 Cover=/tmp/cover.png
@@ -26,7 +22,6 @@ Cover=/tmp/cover.png
 bkpCover=~/.config/bspwm/assets/fallback.webp
 # mpd music directory for mpd clients.
 mpddir=~/Music
-
 
 case $Control in
 	MPD)
@@ -43,55 +38,51 @@ case $Control in
 		--stop)
 			mpc -q stop
 			;;
-		title)
+		--title)
 			title=$(mpc -f %title% current)
 			echo "${title:-Play Something}"
 			;;
-		artist)
+		--artist)
 			artist=$(mpc -f %artist% current)
 			echo "${artist:-No Artist}"
 			;;
-		album)
-			album=$(mpc -f %album% current)
-			echo "${album:-No Album}"
+		--status)
+			status=$(mpc status | head -2 | tail -1 | cut -c2-8 | sed 's/]//g' | sed 's/./\U&/')
+			echo "${status:-Stopped}"
 			;;
-		statusicon)
-			statusico=$(mpc status | head -2 | tail -1 | cut -c2-7 )
-
-			case "$statusico" in
-				playin)
-					icon="󰏦"
-					;;
-				paused)
-					icon="󰐌"
-					;;
-				*)
-					icon="󰙧"
-					;;
-			esac
-
-			echo "$icon"
-			;;
-		player)
+		--player)
 			echo "$Control"
 			;;
-		coverloc)
+		--cover)
 			ffmpeg -i "$mpddir"/"$(mpc current -f %file%)" "${Cover}" -y &> /dev/null || cp $bkpCover $Cover
 			echo "$Cover"
 			;;
 		nccover)
 			ffmpeg -i "$mpddir"/"$(mpc current -f %file%)" "${Cover}" -y &> /dev/null || cp $bkpCover $Cover
 			;;
-		time)
-			time=$(mpc status %currenttime%)
-			echo "${time:-0:00}"
+		--position)
+			position=$(mpc status %currenttime%)
+			echo "${position:-0:00}"
 			;;
-		length)
-			echo "100"
+		--positions)
+			positions=$(mpc status %currenttime% | awk -F: '{print ($1 * 60) + $2}')
+			echo "${positions:-0}"
 			;;
-		percent)
-			perc=$(mpc status | grep "%)" | awk '{ print $4 }' | awk -F% '{ print $1 }' | awk 'sub(/^.{1}/,"")')
-			echo "${perc:-0}"
+		--length)
+			length=$(mpc status %totaltime%)
+			echo "${length:-0:00}"
+			;;
+		--lengths)
+			lengths=$(mpc status %totaltime% | awk -F: '{print ($1 * 60) + $2}')
+			echo "${lengths:-0}"
+			;;
+		--shuffle)
+			shuffle=$(mpc status | sed -n '3s/.*random: \([^ ]*\).*/\1/p' | sed 's/.*/\u&/')
+			echo "${shuffle:-Off}"
+			;;
+		--loop)
+			loop=$(mpc status | sed -n '3s/.*repeat: \([^ ]*\).*/\1/p' | sed 's/.*/\u&/')
+			echo "${loop:-Off}"
 			;;
 	esac
 	;;
@@ -109,54 +100,49 @@ case $Control in
 		--stop)
 			playerctl --player=$Control stop
 			;;
-		title)
+		--title)
 			title=$(playerctl --player=$Control metadata --format {{title}})
 			echo "${title:-Play Something}"
 			;;
-		artist)
+		--artist)
 			artist=$(playerctl --player=$Control metadata --format {{artist}})
 			echo "${artist:-No Artist}"
 			;;
-		album)
-			album=$(playerctl --player=$Control metadata --format {{album}})
-			echo "${album:-No Album}"
+		--status)
+			status=$(playerctl --player=$Control status)
+			echo "${status:-Stopped}"
 			;;
-		statusicon)
-			statusico=$(playerctl --player="$Control" status)
-
-			case "$statusico" in
-				Playing)
-					icon="󰏦"
-					;;
-				Paused)
-					icon="󰐌"
-					;;
-				*)
-					icon="󰙧"
-					;;
-			esac
-
-			echo "$icon"
-			;;
-		player)
+		--player)
 			echo "$Control"
 			;;
-		coverloc)
+		--cover)
 			albumart="$(playerctl --player=$Control metadata mpris:artUrl | sed -e 's/open.spotify.com/i.scdn.co/g')"
 			[ $(playerctl --player=$Control metadata mpris:artUrl) ] && curl -s "$albumart" --output $Cover || cp $bkpCover $Cover 
 			echo "$Cover"
 			;;
-		time)
-			time=$(playerctl --player=$Control position --format "{{ duration(position) }}")
-			echo "${time:-0:00}"
+		--position)
+			position=$(playerctl --player=$Control position --format "{{ duration(position) }}")
+			echo "${position:-0:00}"
 			;;
-		length)
-			length=$(playerctl --player=$Control metadata mpris:length | sed 's/.\{6\}$//')
-			echo "${length:-0}"
+		--positions)
+			positions=$(playerctl --player=$Control position | sed 's/..\{6\}$//')
+			echo "${positions:-0}"
 			;;
-		percent)
-			perc=$(playerctl -p $Control position | sed 's/..\{6\}$//')
-			echo "${perc:-0}"
+		--length)
+			length=$(playerctl --player=$Control metadata --format "{{ duration(mpris:length) }}")
+			echo "${length:-0:00}"
+			;;
+		--lengths)
+			lengths=$(playerctl --player=$Control metadata mpris:length | sed 's/.\{6\}$//')
+			echo "${lengths:-0}"
+			;;
+		--shuffle)
+			shuffle=$(playerctl --player=$Control shuffle)
+			echo "${shuffle:-Off}"
+			;;
+		--loop)
+			loop=$(playerctl --player=$Control loop)
+			echo "${loop:-None}"
 			;;
 	esac
 esac 2>/dev/null

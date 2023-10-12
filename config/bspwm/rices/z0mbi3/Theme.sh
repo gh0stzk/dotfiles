@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #  ███████╗ ██████╗ ███╗   ███╗██████╗ ██╗██████╗     ██████╗ ██╗ ██████╗███████╗
 #  ╚══███╔╝██╔═████╗████╗ ████║██╔══██╗██║╚════██╗    ██╔══██╗██║██╔════╝██╔════╝
-#    ███╔╝ ██║██╔██║██╔████╔██║██████╔╝██║ █████╔╝    ██████╔╝██║██║     █████╗  
-#   ███╔╝  ████╔╝██║██║╚██╔╝██║██╔══██╗██║ ╚═══██╗    ██╔══██╗██║██║     ██╔══╝  
+#    ███╔╝ ██║██╔██║██╔████╔██║██████╔╝██║ █████╔╝    ██████╔╝██║██║     █████╗
+#   ███╔╝  ████╔╝██║██║╚██╔╝██║██╔══██╗██║ ╚═══██╗    ██╔══██╗██║██║     ██╔══╝
 #  ███████╗╚██████╔╝██║ ╚═╝ ██║██████╔╝██║██████╔╝    ██║  ██║██║╚██████╗███████╗
 #  ╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚═╝╚═════╝     ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝
 #  Author  :  z0mbi3
@@ -76,10 +76,38 @@ set_dunst_config() {
 _EOF_
 }
 
+# Set eww colors
+set_eww_colors() {
+	cat > "$HOME"/.config/bspwm/eww/colors.scss << EOF
+// Eww colors for z0mbi3 rice
+\$bg: #0d0f18;
+\$bg-alt: #151720;
+\$fg: #a5b6cf;
+\$black: #3d414f;
+\$lightblack: #262831;
+\$red: #dd6777;
+\$blue: #86aaec;
+\$cyan: #93cee9;
+\$magenta: #c296eb;
+\$green: #90ceaa;
+\$yellow: #ecd3a0;
+\$archicon: #0f94d2;
+EOF
+}
+
+# Set jgmenu colors for z0mbi3
+set_jgmenu_colors() {
+	sed -i "$HOME"/.config/bspwm/jgmenurc \
+	-e 's/color_menu_bg = .*/color_menu_bg = #0d0f18/' \
+	-e 's/color_norm_fg = .*/color_norm_fg = #a5b6cf/' \
+	-e 's/color_sel_bg = .*/color_sel_bg = #151720/' \
+	-e 's/color_sel_fg = .*/color_sel_fg = #a5b6cf/' \
+	-e 's/color_sep_fg = .*/color_sep_fg = #3d414f/'
+}
+
 # Launch the bar and or eww widgets
 launch_bars() {
-		eww -c ${rice_dir}/bar open bar &
-		eww -c ${rice_dir}/dashboard daemon &
+		eww -c ${rice_dir}/bar open --toggle bar
 		polybar -q tray -c ${rice_dir}/bar/polybar_tray.ini &
 }
 
@@ -90,5 +118,7 @@ launch_bars() {
 set_bspwm_config
 set_term_config
 set_picom_config
-set_dunst_config
 launch_bars
+set_dunst_config
+set_eww_colors
+set_jgmenu_colors

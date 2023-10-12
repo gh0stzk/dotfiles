@@ -1,0 +1,42 @@
+(defwidget powermenu []
+     (box :class "powermenu"
+          :orientation "v"
+          :space-evenly "false"
+          (lock-power-restart)))
+
+
+(defwidget lock-power-restart []
+	(box :class "powermenu"
+		 :orientation "v"
+		 :spacing 10
+    (eventbox :cursor "pointer"
+		(button :class "powermenu lock" 
+				:onclick "physlock -d"
+				:tooltip "Lock session"
+				""))
+    (eventbox :cursor "pointer"
+		(button :class "powermenu exit" 
+				:onclick "bspc quit" 
+				:tooltip "Logout bspwm"
+				""))
+    (eventbox :cursor "pointer"
+		(button :class "powermenu reboot" 
+				:onclick "systemctl reboot"
+				:tooltip "Restart"
+				""))
+    (eventbox :cursor "pointer"
+		(button :class "powermenu shutdown" 
+				:onclick "systemctl poweroff"
+				:tooltip "Shutdown"
+				""))     
+  )
+)
+
+;; Power Menu ;;
+(defwindow powermenu
+    :geometry (geometry :x "0%"
+                        :y "0%"
+                        :anchor "center right")
+    :wm-ignore false
+    (powermenu))
+    

@@ -1,10 +1,20 @@
 #!/usr/bin/env bash
-
-## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
+#  ██╗   ██╗ ██████╗ ██╗     ██╗   ██╗███╗   ███╗███████╗
+#  ██║   ██║██╔═══██╗██║     ██║   ██║████╗ ████║██╔════╝
+#  ██║   ██║██║   ██║██║     ██║   ██║██╔████╔██║█████╗  
+#  ╚██╗ ██╔╝██║   ██║██║     ██║   ██║██║╚██╔╝██║██╔══╝  
+#   ╚████╔╝ ╚██████╔╝███████╗╚██████╔╝██║ ╚═╝ ██║███████╗
+#    ╚═══╝   ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
+#
+#	gh0stzk
+#	https://github.com/gh0stzk/dotfiles
+#	This script controls the volume of your system, using pamixer.
+#	23.09.2023 09:30:24
+#
 
 # Icons
-iDIR="$HOME/.config/bspwm/assets"
-notify_cmd='dunstify -u low -h string:x-dunst-stack-tag:obvolume'
+vol_dir="$HOME/.config/bspwm/assets"
+notify_cmd='dunstify -u low -h string:x-dunst-stack-tag:cvolum'
 
 # Get Volume
 get_volume() {
@@ -14,12 +24,10 @@ get_volume() {
 # Get icons
 get_icon() {
 	current="$(get_volume)"
-	if [[ "$current" -eq "0" ]]; then
-		icon="$iDIR/mute.png"
-	elif [[ "$current" == "muted" ]]; then
-		icon="$iDIR/mute.png"
-	elif [[ ("$current" -ge "0") && ("$current" -le "150") ]]; then
-		icon="$iDIR/vol.png"
+	if [[ "$current" -eq "0" || "$current" == "muted" ]]; then
+		icon="$vol_dir/mute.png"
+	else
+		icon="$vol_dir/vol.png"
 	fi
 }
 
@@ -28,40 +36,35 @@ notify_user() {
 	${notify_cmd} -i "$icon" "Volume : $(get_volume)%"
 }
 
-# Increase Volume
-inc_volume() {
+# Adjust Volume
+adjust_volume() {
 	[[ $(pamixer --get-mute) == true ]] && pamixer -u
-	pamixer --allow-boost --set-limit 150 -i 5 && get_icon && notify_user
-}
-
-# Decrease Volume
-dec_volume() {
-	[[ $(pamixer --get-mute) == true ]] && pamixer -u
-	pamixer --allow-boost --set-limit 150 -d 5 && get_icon && notify_user
+	pamixer --allow-boost --set-limit 150 "$1" "$2" && get_icon && notify_user
 }
 
 # Toggle Mute
 toggle_mute() {
 	if [[ $(pamixer --get-mute) == false ]]; then
-		pamixer --toggle-mute && ${notify_cmd} -i "$iDIR/mute.png" "Mute"
+		pamixer --toggle-mute
+		get_icon
+		message="Mute"
 	else
-		pamixer --toggle-mute && get_icon && ${notify_cmd} -i "$icon" "Unmute"
+		pamixer --toggle-mute
+		get_icon
+		message="Unmute"
 	fi
+	${notify_cmd} -i "$icon" "$message"
 }
 
 # Execute accordingly
-if [[ -x $(which pamixer) ]]; then
-	if [[ "$1" == "--get" ]]; then
-		get_volume
-	elif [[ "$1" == "--inc" ]]; then
-		inc_volume
-	elif [[ "$1" == "--dec" ]]; then
-		dec_volume
-	elif [[ "$1" == "--toggle" ]]; then
-		toggle_mute
-	else
-		echo "$(get_volume)%"
-	fi
+if command -v pamixer &>/dev/null; then
+	case "$1" in
+		--get) get_volume ;;
+		--inc) adjust_volume -i 5 ;;
+		--dec) adjust_volume -d 5 ;;
+		--toggle) toggle_mute ;;
+		*) echo "$(get_volume)%" ;;
+	esac
 else
 	${notify_cmd} "'pamixer' is not installed."
 fi

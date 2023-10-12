@@ -1,0 +1,53 @@
+.date {
+  background-color: $bg;
+  color: $fg;
+  border-radius: .5rem;
+}
+
+.cal-box {
+  font-family: Cantarell;
+  font-weight: Bold;
+  font-size: .9rem;
+  background-color: $bg;
+  border-radius: .5rem;
+  padding: 0 1rem .2rem;
+  color: $fg;
+  background-color: $bg-alt;
+  margin: .6rem .6rem .6rem .6rem;
+
+  .cal {
+    background-color: inherit;
+    padding: .5rem .15rem .2rem;
+    margin-left: 10px;
+
+    & > * {
+      border: solid 0px transparent;
+    }
+    
+    &.highlight {
+      padding: 10rem;
+    }
+  }
+}
+
+calendar:selected {
+  color: $magenta;
+}
+
+calendar.header {
+  color: $magenta;
+  font-weight: bold;
+}
+
+calendar.button {
+  color: $fg;
+}
+
+calendar.highlight {
+  color: $green;
+  font-weight: bold;
+}
+
+calendar:indeterminate {
+  color: $lightblack;
+}
