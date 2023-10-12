@@ -113,12 +113,16 @@ set_jgmenu_colors() {
 
 # Launch the bar
 launch_bars() {
-	(polybar -q pam1 -c ${rice_dir}/config.ini)&
-	(polybar -q pam2 -c ${rice_dir}/config.ini)&
-	(polybar -q pam3 -c ${rice_dir}/config.ini)&
-	(polybar -q pam4 -c ${rice_dir}/config.ini)&
-	(polybar -q pam5 -c ${rice_dir}/config.ini)&
-	(polybar -q pam6 -c ${rice_dir}/config.ini)&
+
+	for mon in $(polybar --list-monitors | cut -d":" -f1); do
+		(MONITOR=$mon polybar -q pam1 -c ${rice_dir}/config.ini)&
+		(MONITOR=$mon polybar -q pam2 -c ${rice_dir}/config.ini)&
+		(MONITOR=$mon polybar -q pam3 -c ${rice_dir}/config.ini)&
+		(MONITOR=$mon polybar -q pam4 -c ${rice_dir}/config.ini)&
+		(MONITOR=$mon polybar -q pam5 -c ${rice_dir}/config.ini)&
+		(MONITOR=$mon polybar -q pam6 -c ${rice_dir}/config.ini)&
+	done
+
 }
 
 

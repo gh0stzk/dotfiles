@@ -112,7 +112,11 @@ set_jgmenu_colors() {
 
 # Launch the bar and or eww widgets
 launch_bars() {
-	polybar -q cristina-bar -c ${rice_dir}/config.ini &
+
+	for mon in $(polybar --list-monitors | cut -d":" -f1); do
+		MONITOR=$mon polybar -q cristina-bar -c ${rice_dir}/config.ini &
+	done
+
 }
 
 

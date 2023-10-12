@@ -334,21 +334,20 @@
 ;;---------- Main windows ----------;;
 
 (defwindow bar
-           :monitor 0
-           :geometry (geometry :y "10px"
-							   :width "100%"
-							   :anchor "top center"
-							  )
-                               
-           :stacking "fg"
-           :reserve (struts :distance "5px" :side "top")
-           :windowtype "dock"
-           :wm-ignore false
+	:geometry (geometry :y "10px"
+						:width "100%"
+						:anchor "top center")
+
+	:stacking "fg"
+	:reserve (struts :distance "5px" :side "top")
+	:windowtype "dock"
+	:wm-ignore false
 (allbars))
 
 (defwindow audio_ctl
-	:geometry (geometry :x "-210px" 
+	:geometry (geometry :x "-13%" 
 						:y "8%" 
                         :anchor "top right")
+	:stacking "fg"
+    :wm-ignore false
 (audio))
-

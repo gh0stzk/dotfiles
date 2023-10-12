@@ -112,8 +112,12 @@ set_jgmenu_colors() {
 
 # Launch the bar
 launch_bars() {
-	(polybar -q cyn-bar -c ${rice_dir}/config.ini)&
-	(polybar -q cyn-bar2 -c ${rice_dir}/config.ini)&
+
+	for mon in $(polybar --list-monitors | cut -d":" -f1); do
+		(MONITOR=$mon polybar -q cyn-bar -c ${rice_dir}/config.ini)&
+		(MONITOR=$mon polybar -q cyn-bar2 -c ${rice_dir}/config.ini)&
+	done
+
 }
 
 
