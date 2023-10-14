@@ -110,9 +110,20 @@ set_jgmenu_colors() {
 		-e 's/color_sep_fg = .*/color_sep_fg = #4c566a/'
 }
 
+# Set Rofi launcher config
+set_launcher_config () {
+	sed -i "$HOME/.config/bspwm/scripts/Launcher.rasi" \
+		-e 's/\(font: \).*/\1"Terminess Nerd Font Mono Bold 10";/' \
+		-e 's/\(background: \).*/\1#2e3440;/' \
+		-e 's/\(background-alt: \).*/\1#2e3440E0;/' \
+		-e 's/\(foreground: \).*/\1#e5e9f0;/' \
+		-e 's/\(selected: \).*/\1#88c0d0;/' \
+		-e 's/[^/]*-rofi/me-rofi/'
+}
+
 # Launch the bar
 launch_bars() {
-
+	
 	for mon in $(polybar --list-monitors | cut -d":" -f1); do
 		(MONITOR=$mon polybar -q mel-bar -c ${rice_dir}/config.ini)&
 		(MONITOR=$mon polybar -q mel2-bar -c ${rice_dir}/config.ini)&
@@ -132,3 +143,4 @@ launch_bars
 set_dunst_config
 set_eww_colors
 set_jgmenu_colors
+set_launcher_config

@@ -102,6 +102,17 @@ set_jgmenu_colors() {
 		-e 's/color_sep_fg = .*/color_sep_fg = #1A1C23/'
 }
 
+# Set Rofi launcher config
+set_launcher_config () {
+	sed -i "$HOME/.config/bspwm/scripts/Launcher.rasi" \
+		-e 's/\(font: \).*/\1"JetBrainsMono Nerd Font Bold 9";/' \
+		-e 's/\(background: \).*/\1#f5eee6;/' \
+		-e 's/\(background-alt: \).*/\1#f5eee6E0;/' \
+		-e 's/\(foreground: \).*/\1#151515;/' \
+		-e 's/\(selected: \).*/\1#67d4f1;/' \
+		-e 's/[^/]*-rofi/an-rofi/'
+}
+
 # Launch the bar
 launch_bars() {
 	eww -c ${rice_dir}/andy open --toggle bar
@@ -118,3 +129,4 @@ launch_bars
 set_dunst_config
 set_eww_colors
 set_jgmenu_colors
+set_launcher_config

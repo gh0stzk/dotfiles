@@ -1,11 +1,6 @@
-// # Modification by 	-  z0mbi3
-// # Source 			-  https://github.com/gh0stzk/dotfiles
-// # Maintainer 		-  z0mbi3.zk@protonmail.com
+// # z0mbi3 - https://github.com/gh0stzk/dotfiles
 
-/** Original Work
- * Author : Aditya Shakya (adi1090x)
- * Github : https://github.com/adi1090x/rofi
- **/
+//----- Main Configuration -----//
 
 configuration {
 	modi: 						"drun";
@@ -21,16 +16,18 @@ configuration {
 	me-accept-entry:			"MousePrimary";
 }
 
-/*****----- Global Properties -----*****/
+//----- Global Properties -----//
+
 * {
-    font:                        "scientifica 12";
-    background:                  #282828;
-    background-alt:              #282828E0;
-    foreground:                  #fbf1c7;
-    selected:                    #d79921;
+font: "JetBrainsMono Nerd Font Bold 9";
+background: #1A1B26;
+background-alt: #1A1B26E0;
+foreground: #c0caf5;
+selected: #7aa2f7;
 }
 
-/*****----- Main Window -----*****/
+//----- Main Window -----//
+
 window {
     /* properties for window widget */
     transparency:                "real";
@@ -48,7 +45,8 @@ window {
     background-color:            @background;
 }
 
-/*****----- Main Box -----*****/
+//----- Main Box -----//
+
 mainbox {
     enabled:                     true;
     spacing:                     0px;
@@ -65,13 +63,14 @@ listbox {
     children:                    [ "message", "listview" ];
 }
 
-/*****----- Inputbar -----*****/
+//----- Inputbar -----//
+
 inputbar {
     enabled:                     true;
     spacing:                     10px;
     padding:                     40px 40px 45px;
     background-color:            transparent;
-    background-image:            url("~/.config/bspwm/assets/si-rofi.webp", width);
+    background-image:            url("~/.config/bspwm/assets/em-rofi.webp", width);
     text-color:                  @foreground;
     orientation:                 horizontal;
     children:                    [ "textbox-prompt-colon", "entry" ];
@@ -101,9 +100,8 @@ dummy {
     background-color:            transparent;
 }
 
+//----- Listview -----//
 
-
-/*****----- Listview -----*****/
 listview {
     enabled:                     true;
     columns:                     3;
@@ -122,7 +120,8 @@ listview {
     cursor:                      "default";
 }
 
-/*****----- Elements -----*****/
+//----- Elements -----//
+
 element {
     enabled:                     true;
     spacing:                     10px;
@@ -154,7 +153,8 @@ element-text {
     horizontal-align:            0.0;
 }
 
-/*****----- Message -----*****/
+//----- Message -----//
+
 message {
     background-color:            transparent;
 }
