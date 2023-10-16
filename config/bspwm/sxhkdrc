@@ -1,16 +1,18 @@
-#  ╔═╗═╗ ╦╦ ╦╦╔═╔╦╗╦═╗╔═╗  - z0mbi3
-#  ╚═╗╔╩╦╝╠═╣╠╩╗ ║║╠╦╝║    - https://github.com/gh0stzk/dotfiles
-#  ╚═╝╩ ╚═╩ ╩╩ ╩═╩╝╩╚═╚═╝  - z0mbi3.zk@protonmail.com
-#			z0mbi3 config..
+#  ███████╗██╗  ██╗██╗  ██╗██╗  ██╗██████╗ ██████╗  ██████╗
+#  ██╔════╝╚██╗██╔╝██║  ██║██║ ██╔╝██╔══██╗██╔══██╗██╔════╝
+#  ███████╗ ╚███╔╝ ███████║█████╔╝ ██║  ██║██████╔╝██║     
+#  ╚════██║ ██╔██╗ ██╔══██║██╔═██╗ ██║  ██║██╔══██╗██║     
+#  ███████║██╔╝ ██╗██║  ██║██║  ██╗██████╔╝██║  ██║╚██████╗
+#  ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝
+#	z0mbi3			https://github.com/gh0stzk/dotfiles
+#
 
-# Show keybindings help
-alt + F1
-	KeybindingsHelp
+#|||----- Applications -----|||#
 
 # Open Terminal (alacritty)
 super + Return
 	OpenApps --terminal
-	
+
 # Open floating Terminal
 super + alt + Return
 	OpenApps --floating
@@ -19,9 +21,30 @@ super + alt + Return
 super + @space
 	OpenApps --menu
 
+#####
+
+# Apps (browser, editor, filemanager)
+shift + alt + {b,g,n}
+	OpenApps {--browser,--editor,--filemanager}
+
+# Terminal apps (ranger, nvim, ncmpcpp)
+shift + alt + {r,v,k}
+	OpenApps {--ranger,--nvim,--music}
+
+
+#|||----- System Keybindings -----|||#
+
+# Show keybindings help
+alt + F1
+	KeybindingsHelp
+
 # Theme Selector
 alt + @space
 	RiceSelector
+
+# jgmenu
+~button3
+  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu --csv-file=~/.config/bspwm/scripts/menu.txt --config-file=~/.config/bspwm/jgmenurc
 
 # Scratchpad
 super + alt + o
@@ -31,23 +54,6 @@ super + alt + o
 ctrl + super + alt + {p,r,q,l,k}
 	{systemctl poweroff, systemctl reboot,bspc quit,physlock -d,xkill}
 
-# jgmenu
-~button3
-  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu --csv-file=~/.config/bspwm/scripts/menu.txt --config-file=~/.config/bspwm/jgmenurc
-
-# Apps
-shift + alt + {b,g,n,p,r,t,w,m,v,k}
-	{OpenApps --browser, \
-	 OpenApps --editor, \
-	 OpenApps --filemanager, \
-	 OpenApps --soundcontrol, \
-	 OpenApps --ranger, \
-	 OpenApps --telegram, \
-	 OpenApps --whats, \
-	 env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --disable-gpu --no-zygote %U, \
-	 OpenApps --nvim, \
-	 OpenApps --music}
-
 # Hide/Show Bar (Polybar and/or eww)
 super + {h,u}
 	HideBar {-h,-u}
@@ -55,6 +61,10 @@ super + {h,u}
 # Change transparency on focused window
 ctrl + alt + {plus,minus,t}
 	{picom-trans -c -o +3, picom-trans -c -o -1, picom-trans -c -d}
+
+# Random wallpaper
+super + alt + w
+	feh -z --no-fehbg --bg-fill ~/.config/bspwm/rices/$RICETHEME/walls/
 
 # Screenshot Now
 Print
@@ -72,17 +82,16 @@ alt + Print
 shift + Print
 	ScreenShoTer --active
 
-# Reload sxhkd
-super + Escape
-	pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
+# Volume control
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+	Volume{ --inc, --dec, --toggle}
 
-# Random wallpaper
-super + alt + w
-	feh -z --no-fehbg --bg-fill ~/.config/bspwm/rices/$RICETHEME/walls/
+# Music Control
+XF86Audio{Next,Prev,Play,Stop}
+	MediaControl {--next,--previous,--toggle,--stop}
 
-#
-# bspwm hotkeys
-#
+
+#|||----- Bspwm hotkeys -----|||#
 
 # Reload BSPWM
 super + alt + r
@@ -91,8 +100,30 @@ super + alt + r
 # close and kill
 super + {_,shift + }q
 	bspc node -{c,k}
+	
+# Reload Keybindings
+super + Escape
+	pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
 
-####
+#####
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+ctrl + alt {m,x,s,p}
+	bspc node -g {marked,locked,sticky,private}
+
+# Hide/Unhide Window
+ctrl + alt + h
+	BspHideNode
+
+#####
 
 # rotate desktop
 super + r
@@ -102,78 +133,30 @@ super + r
 super + c
 	bspc node @/ --circulate {backward,forward}
 
-# Make split ratios equal
-super + equal
-	bspc node @/ --equalize
-
-# Make split ratios balanced
-super + minus
-	bspc node @/ --balance
-
-# alternate between the tiled and monocle layout
-super + m
-	bspc desktop -l next
-
-# swap the current node and the biggest node
-super + g
-	bspc node -s biggest
-
-# set the window state
-super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-
-# set the node flags
-ctrl + alt {m,x,s,p,i}
-	bspc node -g {marked,locked,sticky,private,hidden}
-
-# Unhide if hidden (all nodes/windows)
-ctrl + alt + u
-	while bspc node any.hidden.window -g hidden=off; do :; done
-
-# Focused desktop window gaps scroll
-super + button{4,5}
-	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {-,+} 2 ))
-
-# Global window gaps scroll
-super + alt + button{4,5}
-	bspc config window_gap $(( $(bspc config window_gap) {-,+} 2 ))
-
-# focus the node in the given direction
+# Change focus of the Node or Swap Nodes
 super + {_,shift + }{Left,Down,Up,Right}
 	bspc node -{f,s} {west,south,north,east}
 
-# focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
-
-# focus the next/previous node in the current desktop
-alt + {_,shift + }Tab
-	bspc node -f {next,prev}.local
-
-# focus the next/previous desktop in the current monitor
-super + alt + {Left,Right}
+# Switch workspace
+super + ctrl + {Left,Right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
 super + {grave,Tab}
 	bspc {node,desktop} -f last
 
-# focus the older or newer node in the focus history
-super + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
-
 # focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+super + ctrl + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}' '--follow'
+	
+# Send focused Node to workspace directionally
+super + ctrl + shift + {Left,Right}
+	bspc node -d {prev,next} '--follow'
 
-#
-# preselect
-#
+#####
 
 # preselect the direction
-super + ctrl + {Left,Down,Up,Right}
+super + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
 
 # preselect the ratio
@@ -188,30 +171,16 @@ super + ctrl + space
 super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
-#
-# move/resize
-#
-
-# expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
+#####
+	
+# expand a window
+super + alt + {Left,Down,Up,Right}
 	bspc node -z {left -10 0,bottom 0 10,top 0 -10,right 10 0}
 
-# contract a window by moving one of its side inward
-super + alt + shift + {h,j,k,l}
+# contract a window
+super + alt + shift + {Left,Down,Up,Right}
 	bspc node -z {right -10 0,top 0 10,bottom 0 -10,left 10 0}
 
 # move a floating window
 alt + shift {Left,Down,Up,Right}
 	bspc node -v {-10 0,0 10,0 -10,10 0}
-
-# Manage brightness
-XF86MonBrightness{Up,Down}
-    sh Brightness {up,down}
-
-# Volume control
-XF86Audio{RaiseVolume,LowerVolume,Mute}
-	Volume{ --inc, --dec, --toggle}
-
-# Music Control
-XF86Audio{Next,Prev,Play,Stop}
-	MediaControl {--next,--previous,--toggle,--stop}
