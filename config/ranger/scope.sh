@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-## Copyright (C) 2020-2023 Aditya Shakya <adi1090x@gmail.com>
-
 set -o noclobber -o noglob -o nounset -o pipefail
 IFS=$'\n'
 
