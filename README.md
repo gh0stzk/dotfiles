@@ -277,6 +277,9 @@ The installer only works for **ARCH** Linux, and based distros.
 - **First download the installer**
 ```sh
 curl https://raw.githubusercontent.com/gh0stzk/dotfiles/master/RiceInstaller -o $HOME/RiceInstaller
+
+Maybe you want a short url??
+curl -L https://is.gd/gh0stzk_dotfiles -o $HOME/RiceInstaller
 ```
 - **Now give it execute permissions**
 ```sh
