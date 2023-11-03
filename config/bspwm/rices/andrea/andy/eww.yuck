@@ -346,7 +346,7 @@
 
 (defwindow audio_ctl
 	:geometry (geometry :x "-13%" 
-						:y "8%" 
+						:y "9%" 
                         :anchor "top right")
 	:stacking "fg"
     :wm-ignore false

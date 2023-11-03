@@ -22,7 +22,7 @@ tooltip {
 //----- Main Bar widget -----//
 
 .allbars {
-	margin: 0 1.3rem;
+	margin: .8rem 1.3rem;
 }
 
 .mainbars {
@@ -30,6 +30,7 @@ tooltip {
 	border: 1px solid $borderbg;
 	border-radius: 12px;
 	padding: .5rem .8rem;
+	box-shadow: 3px 3px 5px 0px $borderbg;
 }
 
 .icons {
