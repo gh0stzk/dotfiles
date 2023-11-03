@@ -82,6 +82,10 @@ alt + Print
 shift + Print
 	ScreenShoTer --active
 
+# Manage brightness
+XF86MonBrightness{Up,Down}
+    sh Brightness {up,down}
+
 # Volume control
 XF86Audio{RaiseVolume,LowerVolume,Mute}
 	Volume{ --inc, --dec, --toggle}
