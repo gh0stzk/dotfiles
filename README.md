@@ -96,7 +96,7 @@ Increase and decrease transparency in focused or selected window.
 
 ### 🌸Aline
 
-|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/874fe328-de49-4af9-8381-fce80fa9f11b" alt="Aline Rice" align="center" width="800px">|
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/874fe328-de49-4af9-8381-fce80fa9f11b" alt="Aline Rice" align="center">|
 |---|
 
 <details>
@@ -110,7 +110,7 @@ Increase and decrease transparency in focused or selected window.
 
 ### 🌸Andrea
 
-|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/1bfd302f-0e3f-4973-975b-56c78d6140ee" alt="Andrea Rice" align="center" width="800px">|
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/1bfd302f-0e3f-4973-975b-56c78d6140ee" alt="Andrea Rice" align="center">|
 |---|
 
 <details>
@@ -124,7 +124,7 @@ Increase and decrease transparency in focused or selected window.
 
 ### 🌸Cynthia
 
-|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/e927c626-38a7-4317-b885-076055918695" alt="Cynthia Rice" align="center" width="800px">|
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/e927c626-38a7-4317-b885-076055918695" alt="Cynthia Rice" align="center">|
 |---|
 
 <details>
@@ -138,7 +138,7 @@ Increase and decrease transparency in focused or selected window.
 
 ### 🌸Isabel
 
-|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/f2a0002f-3370-4361-9301-08abadcad600" alt="Isabel Rice" align="center" width="800px">|
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/f2a0002f-3370-4361-9301-08abadcad600" alt="Isabel Rice" align="center">|
 |---|
 
 <details>
@@ -152,7 +152,7 @@ Increase and decrease transparency in focused or selected window.
 
 ### 🌸Silvia
 
-|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/616c2d93-fabf-41c2-9ab8-9c7b4d6a2e35" alt="Silvia Rice" align="center" width="800px">|
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/616c2d93-fabf-41c2-9ab8-9c7b4d6a2e35" alt="Silvia Rice" align="center">|
 |---|
 
 <details>
@@ -166,7 +166,7 @@ Increase and decrease transparency in focused or selected window.
 
 ### 🌸Melissa
 
-|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/a63e250d-c5d1-4360-afd7-cf64bf55a0fc" alt="Melissa Rice" align="center" width="800px">|
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/a63e250d-c5d1-4360-afd7-cf64bf55a0fc" alt="Melissa Rice" align="center">|
 |---|
 
 <details>
@@ -180,7 +180,7 @@ Increase and decrease transparency in focused or selected window.
 
 ### 🌸Pamela
 
-|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/f9e85839-53c9-4e15-a800-8a2f7ca40691" alt="Pamela Rice" align="center" width="800px">|
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/f9e85839-53c9-4e15-a800-8a2f7ca40691" alt="Pamela Rice" align="center">|
 |---|
 
 <details>
@@ -194,7 +194,7 @@ Increase and decrease transparency in focused or selected window.
 
 ### 🌸Cristina
 
-|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/e14c6777-25f6-4621-a88b-4fda71dbcc7f" alt="Cristina Rice" align="center" width="800px">|
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/e14c6777-25f6-4621-a88b-4fda71dbcc7f" alt="Cristina Rice" align="center">|
 |---|
 
 <details>
@@ -208,7 +208,7 @@ Increase and decrease transparency in focused or selected window.
 
 ### 🌸Karla
 **(Zombie-Night Color Scheme)**
-|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/5455afdf-cc2f-4a8c-8fcd-526c59066d50" alt="Karla Rice" align="center" width="800px">|
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/5455afdf-cc2f-4a8c-8fcd-526c59066d50" alt="Karla Rice" align="center">|
 |---|
 
 <details>
@@ -223,7 +223,7 @@ Increase and decrease transparency in focused or selected window.
 
 ### 🌸z0mbi3:
 
-|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/ff65caa8-6a15-4873-bf05-edf89ac0985d" alt="z0mbi3 Rice" align="center" width="700px">|
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/ff65caa8-6a15-4873-bf05-edf89ac0985d" alt="z0mbi3 Rice" align="center">|
 |---|
 
 <details>
