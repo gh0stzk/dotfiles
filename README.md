@@ -68,7 +68,7 @@ Increase and decrease transparency in focused or selected window.
 
 ### 🌸Emilia:
 
-|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/8f56d12d-4efa-4024-99e1-4679591b45ca" alt="Emilia Rice" align="center" width="800px">|
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/8f56d12d-4efa-4024-99e1-4679591b45ca" alt="Emilia Rice" align="center" width="700px">|
 |---|
 
 <details>
