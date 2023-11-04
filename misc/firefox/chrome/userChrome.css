@@ -103,9 +103,17 @@ hbox.tab-content .tab-icon-image {
   --toolbarbutton-inner-padding: 4px !important;
 }
 
+/* Always show new tab button on hover and never otherwise */
+#tabbrowser-tabs #tabs-newtab-button{
+  display: none;
+}
+#tabbrowser-tabs:hover #tabs-newtab-button{
+  display: flex !important;
+}
+
 /* No sound icon and text in tabs */
 .tab-close-button[pinned],
-#tabbrowser-tabs[closebuttons="activetab"] > #tabbrowser-arrowscrollbox > .tabbrowser-tab > .tab-stack > .tab-content > .tab-close-button:not([selected="true"]),
+#tabbrowser-tabs[closebuttons="activetab"] > #tabbrowser-arrowscrollbox > .tabbrowser-tab > .tab-stack > .tab-content > .tab-close-button:not([selected]),
 .tab-icon-pending:not([pendingicon]),
 .tab-icon-pending[busy],
 .tab-icon-pending[pinned],
@@ -119,7 +127,12 @@ hbox.tab-content .tab-icon-image {
 .tab-icon-overlay {
   display: none;
 }
-.tab-secondary-label[soundplaying="true"]:not([pictureinpicture]){ display: none }
+
+/* secondary audio label ain't much use with this style, but feel free to remove the next line if you want to show it. */
+.tab-secondary-label{ display: none }
+
+/* show the secondary label when video is in PiP */
+.tab-secondary-label[pictureinpicture]{ display: flex }
 
 /**************************************************/
 
@@ -180,6 +193,68 @@ tracking-protection-icon-container, #identity-box {
 /*#unified-extensions-button {
 	display: none;
 }*/
+
+panelview#unified-extensions-view {
+    background-color: var(--z0mbi3-bg) !important;
+    color: var(--z0mbi3-icon-color) !important;
+}
+
+/*  Clean and tight extensions menu */
+#unified-extensions-panel #unified-extensions-view {
+    width: 100% !important; /*  For firefox v115.x */
+}
+
+#unified-extensions-view{
+    --uei-icon-size: 22px; /*  Change icon size */
+    --firefoxcss-number-of-extensions-in-a-row: 3; /*  Increase to the number of icons you want in one row */
+}
+
+#unified-extensions-view .panel-header,
+#unified-extensions-view .panel-header + toolbarseparator,
+#unified-extensions-view .panel-subview-body + toolbarseparator,
+#unified-extensions-view #unified-extensions-manage-extensions,
+#unified-extensions-view .unified-extensions-item-menu-button.subviewbutton,
+#unified-extensions-view .unified-extensions-item-action-button .unified-extensions-item-contents{
+    display:none !important;
+}
+
+#unified-extensions-view .panel-subview-body {
+    padding:4px !important;
+}
+
+#unified-extensions-view .unified-extensions-item .unified-extensions-item-icon, 
+#unified-extensions-view .unified-extensions-item .toolbarbutton-badge-stack {
+    margin-inline-end: 0px !important;
+}
+
+#unified-extensions-view #overflowed-extensions-list,
+#unified-extensions-view #unified-extensions-area,
+#unified-extensions-view .unified-extensions-list {
+    display: grid !important;
+    grid-template-columns: repeat(var(--firefoxcss-number-of-extensions-in-a-row),auto);
+    justify-items:left !important;
+    align-items:left !important;
+}
+
+#unified-extensions-view .unified-extensions-list .unified-extensions-item,
+#unified-extensions-view .unified-extensions-list{
+     max-width: max-content;
+}
+
+#unified-extensions-view #unified-extensions-area {
+    padding-bottom: 3px !important;
+    border-bottom: 1px solid #aeaeae33 !important;
+}
+
+#unified-extensions-view .unified-extensions-list {
+/*     border-top: 1px solid #aeaeae33 !important; */
+}
+
+#wrapper-edit-controls:is([place="palette"], 
+[place="panel"]) > #edit-controls, #wrapper-zoom-controls:is([place="palette"], 
+[place="panel"]) > #zoom-controls, :is(panelview, #widget-overflow-fixed-list) .toolbaritem-combined-buttons {
+  margin: 0px !important;
+}
 
 /* Hide show all tabs button */
 #alltabs-button { 
