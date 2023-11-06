@@ -37,6 +37,11 @@
   --tab-border-radius: 0 !important;
   --lwt-toolbarbutton-icon-fill-attention: #8677cf !important;
   --toolbarbutton-icon-fill-attention: var(--lwt-toolbarbutton-icon-fill-attention) !important;
+  --arrowpanel-border-color: none !important;
+}
+
+::selection {
+  background: var(--z0mbi3-tab-selected-bg) !important;
 }
 
 .toolbarbutton-icon {
@@ -355,3 +360,18 @@ toolbarbutton.bookmark-item:hover,
 /*stops possible clashes with extension popups*/
 .webextension-popup-browser {
   background: #fff;}
+
+/* color bg of context menu */
+menupopup {
+  --panel-background: var(--z0mbi3-bg) !important;
+  --panel-border-color: none !important;
+  --panel-color: var(--z0mbi3-icon-color) !important;
+}
+
+/* color fg of context menu */
+menupopup > menuitem[_moz-menuactive="true"],
+menupopup > menu[_moz-menuactive="true"],
+#context-navigation > menuitem[_moz-menuactive="true"] > .menu-iconic-left > .menu-iconic-icon{
+  color: var(--z0mbi3-icon-color) !important;
+  background: var(--z0mbi3-tab-selected-bg) !important;
+}
