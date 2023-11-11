@@ -60,7 +60,7 @@ super + {h,u}
 
 # Change transparency on focused window
 ctrl + alt + {plus,minus,t}
-	{picom-trans -c -o +3, picom-trans -c -o -1, picom-trans -c -d}
+	picom-trans {-c -o +3,-c -o -1,-c -d}
 
 # Random wallpaper
 super + alt + w
@@ -150,8 +150,8 @@ super + {grave,Tab}
 	bspc {node,desktop} -f last
 
 # focus or send to the given desktop
-super + ctrl + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}' '--follow'
+super + ctrl + {1-9,0}
+	bspc {node -d} '^{1-9,10}' '--follow'
 	
 # Send focused Node to workspace directionally
 super + ctrl + shift + {Left,Right}
@@ -162,10 +162,6 @@ super + ctrl + shift + {Left,Right}
 # preselect the direction
 super + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
-
-# preselect the ratio
-super + ctrl + {1-9}
-	bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
 super + ctrl + space
