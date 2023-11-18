@@ -29,7 +29,7 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 <br>
 
 ## 🚀 Features
-<img src="https://user-images.githubusercontent.com/67278339/221426400-6029bdd7-f183-4860-9ade-a5fe35d2251a.png" alt="Rice Menu" align="right" width="400px">
+<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/5d13a0de-e9cd-4e7f-a778-22b00a868a90" alt="Rice Menu" align="right" width="400px">
 
 * **Change themes on the fly:** 12 different Rices now!.
 
