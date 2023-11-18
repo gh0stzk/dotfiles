@@ -1,11 +1,4 @@
-// # Modification by 	-  z0mbi3
-// # Source 			-  https://github.com/gh0stzk/dotfiles
-// # Maintainer 		-  z0mbi3.zk@protonmail.com
-
-/** Original Work
- * Author : Aditya Shakya (adi1090x)
- * Github : https://github.com/adi1090x/rofi
- **/
+// # z0mbi3 -  https://github.com/gh0stzk/dotfiles
 
 configuration {
     show-icons:                 false;
@@ -18,23 +11,25 @@ configuration {
 	me-accept-entry:			"MousePrimary";
 }
 
-/*****----- Global Properties -----*****/
+//----- Global Properties -----//
+
 * {
-    font:                        "JetBrainsMono Nerd Font Bold 12";
+    font:                        "JetBrainsMono Nerd Font Bold 11";
     background:                  #14171c;
     background-alt:              #14171cE0;
     foreground:                  #b8bfe5;
     selected:                    #81ae5f;
 }
 
-/*****----- Main Window -----*****/
+//----- Main Window -----//
+
 window {
     /* properties for window widget */
     transparency:                "real";
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       480px;
+    width:                       400px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -47,7 +42,8 @@ window {
     background-color:            @background;
 }
 
-/*****----- Main Box -----*****/
+//----- Main Box -----//
+
 mainbox {
     enabled:                     true;
     spacing:                     0px;
@@ -58,36 +54,39 @@ mainbox {
 
 listbox {
     spacing:                     7px;
-    padding:                     35px;
+    padding:                     20px 40px;
     background-color:            transparent;
     orientation:                 vertical;
-    children:                    [ "message", "listview" ];
+    children:                    [ "listview" ];
 }
 
-/*****----- Inputbar -----*****/
+//----- Inputbar -----//
+
 inputbar {
     enabled:                     true;
     spacing:                     10px;
-    padding:                     40px 40px 45px;
+    padding:                     40px 40px 40px;
     background-color:            transparent;
     background-image:            url("~/.config/bspwm/assets/rs.webp", width);
     text-color:                  @foreground;
     orientation:                 horizontal;
     children:                    [ "textbox-prompt-colon", "entry" ];
 }
+
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
     str:                         "";
-    padding:                     12px 15px;
+    padding:                     10px 15px 0px 10px;
     border-radius:               8px;
     background-color:            @background-alt;
     text-color:                  inherit;
 }
+
 entry {
     enabled:                     true;
     expand:                      true;
-    padding:                     16px 16px;
+    padding:                     11px 11px;
     border-radius:               8px;
     background-color:            @background-alt;
     text-color:                  inherit;
@@ -96,19 +95,14 @@ entry {
     placeholder:                 "Search Rice!";
     placeholder-color:           inherit;
 }
-dummy {
-    expand:                      true;
-    background-color:            transparent;
-}
 
+//----- Listview -----//
 
-
-/*****----- Listview -----*****/
 listview {
     enabled:                     true;
     columns:                     3;
     lines:                       4;
-    cycle:                       true;
+    cycle:                       false;
     dynamic:                     true;
     scrollbar:                   false;
     layout:                      vertical;
@@ -116,13 +110,14 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     
-    spacing:                     15px;
+    spacing:                     8px;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      "default";
 }
 
-/*****----- Elements -----*****/
+//----- Elements -----//
+
 element {
     enabled:                     true;
     spacing:                     10px;
@@ -132,37 +127,21 @@ element {
     text-color:                  @foreground;
     cursor:                      pointer;
 }
+
 element normal.normal {
     background-color:            inherit;
     text-color:                  inherit;
 }
+
 element selected.normal {
     background-image: 			 linear-gradient(#1c9ee0, #afa4ec);
     text-color:                  @background;
 }
+
 element-text {
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
     vertical-align:              0.5;
     horizontal-align:            0.0;
-}
-
-/*****----- Message -----*****/
-message {
-    background-color:            transparent;
-}
-textbox {
-    padding:                     12px;
-    border-radius:               5px;
-    background-color:            @background-alt;
-    text-color:                  @foreground;
-    vertical-align:              0.5;
-    horizontal-align:            0.0;
-}
-error-message {
-    padding:                     12px;
-    border-radius:               5px;
-    background-color:            @background;
-    text-color:                  @foreground;
 }
