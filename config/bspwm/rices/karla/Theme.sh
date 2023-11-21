@@ -113,7 +113,7 @@ set_jgmenu_colors() {
 # Set Rofi launcher config
 set_launcher_config () {
 	sed -i "$HOME/.config/bspwm/scripts/Launcher.rasi" \
-		-e 's/\(font: \).*/\1"JetBrainsMono Nerd Font Bold 9";/' \
+		-e '22s/\(font: \).*/\1"JetBrainsMono Nerd Font Bold 9";/' \
 		-e 's/\(background: \).*/\1#0E1113F7;/' \
 		-e 's/\(background-alt: \).*/\1#0E1113F5;/' \
 		-e 's/\(foreground: \).*/\1#afb1db;/' \

@@ -27,7 +27,7 @@
 		 :spacing -15
 	(eventbox :cursor "pointer"
   	(button :class "launcher_icon" 
-		   	:onclick "OpenApps --menu"
+		   	:onclick "cd ; OpenApps --menu"
 		   	:onrightclick "OpenApps --rice" "󰣇"))))
 
 ;; Workspaces Widgets ;;
