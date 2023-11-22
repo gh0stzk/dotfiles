@@ -14,7 +14,7 @@ configuration {
 //----- Global Properties -----//
 
 * {
-    font:                        "JetBrainsMono Nerd Font Bold 11";
+    font:                        "JetBrainsMono NF Bold 11";
     background:                  #14171c;
     background-alt:              #14171cE0;
     foreground:                  #b8bfe5;
@@ -76,6 +76,7 @@ inputbar {
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
+    font:                        "JetBrainsMono NF Bold 9";
     str:                         "";
     padding:                     10px 15px 0px 10px;
     border-radius:               8px;
@@ -90,7 +91,7 @@ entry {
     border-radius:               8px;
     background-color:            @background-alt;
     text-color:                  inherit;
-    font:                        "JetBrainsMono Nerd Font Bold 9";
+    font:                        "JetBrainsMono NF Bold 9";
     cursor:                      text;
     placeholder:                 "Search Rice!";
     placeholder-color:           inherit;

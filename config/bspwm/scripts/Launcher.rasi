@@ -19,7 +19,7 @@ configuration {
 //----- Global Properties -----//
 
 * {
-font: "JetBrainsMono Nerd Font Bold 9";
+font: "JetBrainsMono NF Bold 9";
 background: #1A1B26;
 background-alt: #1A1B26E0;
 foreground: #c0caf5;
@@ -78,7 +78,7 @@ inputbar {
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
-    font:                        "JetBrainsMono Nerd Font Bold 9";
+    font:                        "JetBrainsMono NF Bold 9";
     str:                         "";
     padding:                     12px 19px 0 15px;
     border-radius:               8px;

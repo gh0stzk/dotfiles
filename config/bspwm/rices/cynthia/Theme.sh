@@ -26,7 +26,7 @@ set_bspwm_config() {
 # Reload terminal colors
 set_term_config() {
 	sed -i "$HOME"/.config/alacritty/fonts.yml \
-		-e "s/family: .*/family: JetBrainsMono Nerd Font/g" \
+		-e "s/family: .*/family: JetBrainsMono NF/g" \
 		-e "s/size: .*/size: 10/g"
 		
 	sed -i "$HOME"/.config/alacritty/rice-colors.yml \
@@ -59,7 +59,7 @@ set_dunst_config() {
 		-e "s/transparency = .*/transparency = 4/g" \
 		-e "s/frame_color = .*/frame_color = \"#1f2329\"/g" \
 		-e "s/separator_color = .*/separator_color = \"#3f5273\"/g" \
-		-e "s/font = .*/font = JetBrainsMono Nerd Font Medium 9/g" \
+		-e "s/font = .*/font = JetBrainsMono NF Medium 9/g" \
 		-e "s/foreground='.*'/foreground='#3f5273'/g"
 		
 	sed -i '/urgency_low/Q' "$HOME"/.config/bspwm/dunstrc

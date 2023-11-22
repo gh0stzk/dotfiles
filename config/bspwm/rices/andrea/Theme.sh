@@ -28,7 +28,7 @@ pidof -q bspc && pkill -9 bspc > /dev/null
 # Reload terminal colors
 set_term_config() {
 	sed -i "$HOME"/.config/alacritty/fonts.yml \
-		-e "s/family: .*/family: JetBrainsMono Nerd Font/g" \
+		-e "s/family: .*/family: JetBrainsMono NF/g" \
 		-e "s/size: .*/size: 10/g"
 		
 	sed -i "$HOME"/.config/alacritty/rice-colors.yml \
@@ -51,7 +51,7 @@ set_dunst_config() {
 		-e "s/transparency = .*/transparency = 1/g" \
 		-e "s/frame_color = .*/frame_color = \"#FDF0ED\"/g" \
 		-e "s/separator_color = .*/separator_color = \"#605692\"/g" \
-		-e "s/font = .*/font = JetBrainsMono Nerd Font Medium 9/g" \
+		-e "s/font = .*/font = JetBrainsMono NF Medium 9/g" \
 		-e "s/foreground='.*'/foreground='#605692'/g"
 		
 	sed -i '/urgency_low/Q' "$HOME"/.config/bspwm/dunstrc
@@ -105,7 +105,7 @@ set_jgmenu_colors() {
 # Set Rofi launcher config
 set_launcher_config () {
 	sed -i "$HOME/.config/bspwm/scripts/Launcher.rasi" \
-		-e '22s/\(font: \).*/\1"JetBrainsMono Nerd Font Bold 9";/' \
+		-e '22s/\(font: \).*/\1"JetBrainsMono NF Bold 9";/' \
 		-e 's/\(background: \).*/\1#f5eee6;/' \
 		-e 's/\(background-alt: \).*/\1#f5eee6E0;/' \
 		-e 's/\(foreground: \).*/\1#151515;/' \
