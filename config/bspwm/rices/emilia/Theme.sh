@@ -13,7 +13,7 @@
 # Set bspwm configuration for Emilia
 set_bspwm_config() {
 	bspc config border_width 0
-	bspc config top_padding 59
+	bspc config top_padding 56
 	bspc config bottom_padding 2
 	bspc config left_padding 2
 	bspc config right_padding 2

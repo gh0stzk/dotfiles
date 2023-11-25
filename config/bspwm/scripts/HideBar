@@ -38,7 +38,7 @@ function unhide() {
 	
 case "${RICETHEME}" in
 	emilia)
-		polybar-msg cmd show | bspc config top_padding 59
+		polybar-msg cmd show | bspc config top_padding 56
 		;;
 	jan)
 		polybar-msg cmd show | bspc config top_padding 50
