@@ -1,26 +1,27 @@
 // # z0mbi3 -  https://github.com/gh0stzk/dotfiles
 
-// Config //
 configuration {
     modi:                        "drun";
     show-icons:                  true;
     drun-display-format:         "{name}";
     font:                        "JetBrainsMono NF Bold 11";
-
+    
     //hover-select:				 true;
 	//me-select-entry:			 "";
 	//me-accept-entry:			 "MousePrimary";
 }
 
+//----- Global Properties -----//
+
 * {
-main-bg: #14171c;
-main-fg: #b8bfe5;
-select-bg: #7560d3;
-select-fg: #14171c;
+main-bg: #282828E6;
+main-fg: #fbf1c7;
+select-bg: #d79921;
+select-fg: #282828;
 }
 
+//----- Main Window -----//
 
-// Main //
 window {
     enabled:                     true;
     fullscreen:                  false;
@@ -34,20 +35,23 @@ window {
     border-color:                transparent;
     background-color:            transparent;
 }
+
+//----- Main Box -----//
+
 mainbox {
     enabled:                     true;
     children:                    [ "listview" ];
     background-color:            @main-bg;
 }
 
+//----- Listview -----//
 
-// Lists //
 listview {
     enabled:                     true;
     columns:                     6;
     lines:                       1;
-    spacing:                     40px;
-    padding:                     20px;
+    spacing:                     50px;
+    padding:                     20px 30px;
     cycle:                       true;
     dynamic:                     false;
     scrollbar:                   false;
@@ -60,38 +64,42 @@ listview {
     text-color:                  @main-fg;
 }
 
+//----- Elements -----//
 
-// Elements //
 element {
     enabled:                     true;
     orientation:                 horizontal;
     spacing:                     0px;
-    padding:                     10px;
+    padding:                     0px;
     border-radius:               20px;
     cursor:                      pointer;
     background-color:            transparent;
     text-color:                  @main-fg;
 }
+
 @media(max-aspect-ratio: 1.8) {
     element {
         orientation:             vertical;
     }
 }
+
 element selected.normal {
     background-color:            @select-bg;
     text-color:                  @select-fg;
 }
+
 element-icon {
     size:                        33%;
     cursor:                      inherit;
-    border-radius:               20px;
+    border-radius:               0px;
     background-color:            transparent;
     text-color:                  inherit;
 }
+
 element-text {
     vertical-align:              0.5;
     horizontal-align:            0.5;
-    padding:                     15px 0px 0px 0px;
+    padding:                     20px;
     cursor:                      inherit;
     background-color:            transparent;
     text-color:                  inherit;

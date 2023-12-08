@@ -35,7 +35,7 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 
 * **Wallpapers al azar:**  Cada vez que cambias de tema o reinicias bspwm <code>super + alt + r</code> tendras un wallpaper diferente dependiendo el tema en el que estes.
 
-* **Super + Alt + w** Cambia entre los diferentes wallpapers que tiene el tema.
+* **Super + Alt + w** Menu para seleccionar un wallpaper del tema en el que te encuentras.
 
 * **Mostrar / Ocultar barra:** Podras ocultar y volver a mostrar la barra ( Polybar y EWW )
 
@@ -250,7 +250,7 @@ Tambien puedes instalar [esta extension](https://github.com/PonyLucky/gh0stzk-Fi
 - <code>super + Return</code> Abre una terminal.
 - <code>super + Alt + Return</code> Abre una terminal flotante.
 - <code>ctrl + super + alt + k</code> Mata un proceso o ventana.
-- <code>super + alt + w</code> Cambia al azar el wallpaper.
+- <code>super + alt + w</code> Menu para seleccionar un wallpaper del tema en el que te encuentras..
 - <code>super + alt + r</code> Reinicia bspwm.
 
 Y mas... Necesitaras mirar el archivo sxhkdrc file para ver todos los atajos.

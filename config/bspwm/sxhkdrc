@@ -64,7 +64,7 @@ ctrl + alt + {plus,minus,t}
 
 # Random wallpaper
 super + alt + w
-	feh -z --no-fehbg --bg-fill ~/.config/bspwm/rices/$RICETHEME/walls/
+	WallSelect
 
 # Screenshot Now
 Print

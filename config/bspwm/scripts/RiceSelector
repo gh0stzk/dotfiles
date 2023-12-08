@@ -1,11 +1,24 @@
 #!/usr/bin/env bash
-#  ╦═╗╦╔═╗╔═╗  ╔═╗╔═╗╦  ╔═╗╔═╗╔╦╗╔═╗╦═╗  - z0mbi3
-#  ╠╦╝║║  ║╣   ╚═╗║╣ ║  ║╣ ║   ║ ║ ║╠╦╝  - https://github.com/gh0stzk/dotfiles
-#  ╩╚═╩╚═╝╚═╝  ╚═╝╚═╝╩═╝╚═╝╚═╝ ╩ ╚═╝╩╚═  - z0mbi3.zk@protonmail.com
+#  ██████╗ ██╗ ██████╗███████╗
+#  ██╔══██╗██║██╔════╝██╔════╝        gh0stzk
+#  ██████╔╝██║██║     █████╗          https://github.com/gh0stzk/dotfiles
+#  ██╔══██╗██║██║     ██╔══╝          08.12.2023 08:48:08
+#  ██║  ██║██║╚██████╗███████╗
+#  ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝
+#
+#            ███████╗███████╗██╗     ███████╗ ██████╗████████╗ ██████╗ ██████╗
+#            ██╔════╝██╔════╝██║     ██╔════╝██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗
+#            ███████╗█████╗  ██║     █████╗  ██║        ██║   ██║   ██║██████╔╝
+#            ╚════██║██╔══╝  ██║     ██╔══╝  ██║        ██║   ██║   ██║██╔══██╗
+#            ███████║███████╗███████╗███████╗╚██████╗   ██║   ╚██████╔╝██║  ██║
+#            ╚══════╝╚══════╝╚══════╝╚══════╝ ╚═════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝
+#
 
+# Some vars
 bspwm_dir="$HOME/.config/bspwm"
+preview_dir="$bspwm_dir/rices/${options[*]}"
 rofi_command="rofi -dmenu -theme $bspwm_dir/scripts/RiceSelector.rasi"
-read -r current_rice < "$HOME"/.config/bspwm/.rice
+read -r current_rice < "$bspwm_dir"/.rice
 
 # List rices
 options=()
@@ -24,12 +37,18 @@ for dir in "$bspwm_dir"/rices/*/; do
     ((index++))
 done
 
+# Variables to try to define the correct size of the images for your resolution
+monitor_res=$(xdpyinfo | grep dimensions | awk '{print $2}' | cut -d 'x' -f1)
+monitor_scale=$(xdpyinfo | grep -oP "resolution:.*" | awk '{print $2}' | cut -d 'x' -f1)
+monitor_res=$(( monitor_res * 17 / monitor_scale ))
+rofi_override="element-icon{size:${monitor_res}px;}"
+
 # Show the rofi selection menu with the starting point set to the current rice and store the result in a variable.
-selected=$(printf "%s\n" "${options[@]}" | $rofi_command -selected-row "$selected_index")
+selected=$(printf "%s\n" "${options[@]}" | while read -r A ; do  echo -en "$A\x00icon\x1f${preview_dir}$A/preview.webp\n" ; done | $rofi_command -theme-str "$rofi_override" -selected-row "$selected_index")
 
 # If a valid option was selected, write the value to the configuration file and restart BSPWM.
 [[ -n "$selected" ]] || exit 1
-echo "$selected" > "${bspwm_dir}/.rice"
+echo "$selected" > "$bspwm_dir/.rice"
 bspc wm -r
 
 exit 0

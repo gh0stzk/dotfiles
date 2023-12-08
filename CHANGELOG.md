@@ -1,3 +1,64 @@
+## Rofi Launchers Update
+##### December 8 2023:
+
+I have updated the theme selection menu (Rice Selector), now it looks beautiful.
+
+And I have modified the behavior of the **Super + Alt + w** key shortcut, now it does not change to a random wallpaper, but instead opens a menu to select the wallpapers of the theme you are in. (Each theme has its own wallpapers) and it also looks beautiful too.
+
+The color theme in the Wall Selector menu changes depending on the theme you are in.
+Not the Rice Selector menu, the color is unique for all themes.
+
+|![Screenshot-08_12_2023-09-25-54](https://github.com/gh0stzk/dotfiles/assets/67278339/764b6ad3-f1dd-4abb-a127-b5b9ffa01b4a)|
+|:-:|
+|Rice Selector|
+
+|![Screenshot-08_12_2023-09-26-35](https://github.com/gh0stzk/dotfiles/assets/67278339/5f21121d-5b6c-4bfe-82c1-09aa129ed183)|
+|:-:|
+|Wallpaper Selector|
+
+If you already have my dotfiles installed, you need to install the xorg-xdpyinfo and imagemagick packages.
+
+```bash
+sudo pacman -S xorg-xdpyinfo imagemagick
+```
+
+Clone my dotfiles again (or do a pull) and copy these 4 files located in **~/dotfiles/config/bspwm/scripts/**
+
+* RiceSelector
+* RiceSelector.rasi
+* WallSelect
+* WallSelect.rasi
+
+Then copy/overwrite them to **~/.config/bspwm/scripts/**
+
+The **Theme.sh** files inside each rice were also modified, you need to copy and overwrite them as well.
+
+Finally you need to edit the **sxhkdrc** file, from lines 65 to 67 you will find this:
+
+```bash
+# Random wallpaper
+super + alt + w
+  feh -z --no-fehbg --bg-fill ~/.config/bspwm/rices/$RICETHEME/walls/
+```
+
+Replace it with this:
+
+```bash
+# Random wallpaper
+super + alt + w
+  WallSelect
+```
+
+Now just reload the sxhkd daemon with **Super + Esc** and you're all set.
+
+If this is the first time you are installing my dotfiles, you don't need to do anything, the installation script will do everything for you.
+
+It is important that you know that the first time you run the Wallpaper Selector in each theme, it will take 3 to 5 seconds to open, it is because it is converting the images and saving them in the cache directory. This does not happen with RiceSelector, because it does not need to convert any images.
+
+And thats all, possibly i forgot something, make an issue :P
+
+***
+
 ## Massive update
 ##### October 11 2023: 
 

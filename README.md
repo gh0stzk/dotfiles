@@ -37,7 +37,7 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 
 * **Random wallpaper:**  Every time you switch between rices or reload bspwm with <code>super + alt + r</code> a new wallpaper is set depending on the rice you are on.
 
-* **Wallpaper Changer** <code>Super + Alt + w</code> changes bethween different wallpapers in the actual rice.
+* **Wallpaper Changer** <code>Super + Alt + w</code> Opens a menu to select a wallpaper from the actual rice you are in.
 
 * **Hide / Unhide Bar:** If you needit you can hide bars
 
@@ -252,7 +252,7 @@ Complementarily you can install [this extension](https://github.com/PonyLucky/gh
 - <code>super + Return</code> Open a terminal.
 - <code>super + Alt + Return</code> Open a floating terminal.
 - <code>ctrl + super + alt + k</code> Brute Kill a window/process.
-- <code>super + alt + w</code> Changes randomly wallpaper.
+- <code>super + alt + w</code> Opens a menu to select a wallpaper from the actual rice you are in.
 - <code>super + alt + r</code> Restart bspwm.
 
 And more.. You need to look sxhkdrc file for more.

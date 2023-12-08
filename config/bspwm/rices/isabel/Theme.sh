@@ -119,6 +119,13 @@ set_launcher_config () {
 		-e 's/\(foreground: \).*/\1#b8bfe5;/' \
 		-e 's/\(selected: \).*/\1#7560d3;/' \
 		-e 's/[^/]*-rofi/is-rofi/'
+		
+	# WallSelect menu colors	
+	sed -i "$HOME/.config/bspwm/scripts/WallSelect.rasi" \
+		-e 's/\(main-bg: \).*/\1#14171cE6;/' \
+		-e 's/\(main-fg: \).*/\1#b8bfe5;/' \
+		-e 's/\(select-bg: \).*/\1#7560d3;/' \
+		-e 's/\(select-fg: \).*/\1#14171c;/'
 }
 
 # Launch the bar
