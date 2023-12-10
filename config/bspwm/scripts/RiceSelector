@@ -20,6 +20,12 @@ preview_dir="$bspwm_dir/rices/${options[*]}"
 rofi_command="rofi -dmenu -theme $bspwm_dir/scripts/RiceSelector.rasi"
 read -r current_rice < "$bspwm_dir"/.rice
 
+# Verificar si xdpyinfo e imagemagick están instalados
+if ! command -v xdpyinfo > /dev/null 2>&1; then
+    dunstify "Missing package" "Please install the xorg-xdpyinfo package to continue" -u critical
+    exit 1
+fi
+
 # List rices
 options=()
 index=0
