@@ -184,3 +184,7 @@ super + alt + shift + {Left,Down,Up,Right}
 # move a floating window
 alt + shift {Left,Down,Up,Right}
 	bspc node -v {-10 0,0 10,0 -10,10 0}
+
+## Move between workspaces
+super + {_,shift + }{1-8}
+    bspc {desktop --focus,node --to-desktop} 'focused:^{1-8}'
