@@ -150,8 +150,8 @@ super + {grave,Tab}
 	bspc {node,desktop} -f last
 
 # focus or send to the given desktop
-super + ctrl + {1-9,0}
-	bspc {node -d} '^{1-9,10}' '--follow'
+super + ctrl + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
 	
 # Send focused Node to workspace directionally
 super + ctrl + shift + {Left,Right}

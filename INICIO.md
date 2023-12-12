@@ -27,7 +27,6 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 <br>
 
 ## 🚀 Caracteristicas
-<img src="https://user-images.githubusercontent.com/67278339/221426400-6029bdd7-f183-4860-9ade-a5fe35d2251a.png" alt="Rice Menu" align="right" width="400px">
 
 * **Cambia el tema al momento:** 12 diferentes temas!.
 
@@ -61,6 +60,14 @@ Aumenta o disminuye la transparencia de la ventana de trabajo en la que estes.
      
    </tr>
    </table>
+
+| :tshirt: Menu de Temas |
+|:-:|
+|![Screenshot-11_12_2023-01-06-03](https://github.com/gh0stzk/dotfiles/assets/67278339/b11b5c58-b9ec-446b-8980-4f77bebb3432)|
+
+| :traffic_light: Menu Wallpapers |
+|:-:|
+|![Screenshot-11_12_2023-01-03-00](https://github.com/gh0stzk/dotfiles/assets/67278339/0746df0f-6a56-44d6-a899-7bdbc0f1a593)|
 
 ## 🎨 Los Temas
 
@@ -241,17 +248,17 @@ Tambien puedes instalar [esta extension](https://github.com/PonyLucky/gh0stzk-Fi
 
 ## Atajos de teclado utiles que deberias saber...
 
-- <code>alt + @space</code> Abre el menu para seleccionar un nuevo tema.
-- <code>super + @space</code> Menu de apps.
-- <code>super + h </code> Esconde la barra <code>super + u</code> Muestra nuevamente la barra.
-- <code>Print</code> Toma captura de pantalla.
-- <code>ctrl + alt + plus</code> Incrementa la transparencia de la ventana. <code>ctrl + alt + minus</code> Decrementa la transparencia. <code>ctrl + alt + t</code> Reestablece la transparencia por default.
-- <code>ctrl + super + alt + p</code> Apaga la computadora. <code>ctrl + super + alt + r</code> Reinicia la computadora.
-- <code>super + Return</code> Abre una terminal.
-- <code>super + Alt + Return</code> Abre una terminal flotante.
-- <code>ctrl + super + alt + k</code> Mata un proceso o ventana.
-- <code>super + alt + w</code> Menu para seleccionar un wallpaper del tema en el que te encuentras..
-- <code>super + alt + r</code> Reinicia bspwm.
+| Keys | Action |
+|:-|:-|
+|<kbd>super</kbd> + <kbd>Enter</kbd><br><kbd>super</kbd> + <kbd>alt</kbd> + <kbd>Enter</kbd>| Abre una terminal<br>Abre una terminal flotante
+|<kbd>alt</kbd> + <kbd>@space</kbd>| Abre el menu para seleccionar un nuevo tema
+|<kbd>super</kbd> + <kbd>@space</kbd>| Menu de apps
+|<kbd>super</kbd> + <kbd>alt</kbd> + <kbd>w</kbd>| Menu para seleccionar un wallpaper
+|<kbd>super</kbd> + <kbd>h</kbd><br><kbd>super</kbd> + <kbd>u</kbd>|Esconde la barra/s<br>Muestra nuevamente la barra/s
+|<kbd>Print</kbd>| Toma captura de pantalla
+|<kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>[plus,minus,t]</kbd>| Changes transparency on focused window
+|<kbd>ctrl</kbd> + <kbd>super</kbd> + <kbd>alt</kbd> + <kbd>p</kbd><br><kbd>ctrl</kbd> + <kbd>super</kbd> + <kbd>alt</kbd> + <kbd>r</kbd><br><kbd>ctrl</kbd> + <kbd>super</kbd> + <kbd>alt</kbd> + <kbd>k| Apaga la computadora<br>Reinicia la computadora<br>Mata un proceso o ventana
+|<kbd>super</kbd> + <kbd>alt</kbd> + <kbd>r</kbd>| Reinicia bspwm
 
 Y mas... Necesitaras mirar el archivo sxhkdrc file para ver todos los atajos.
 
@@ -281,7 +288,3 @@ chmod +x RiceInstaller
 ## Problemas y Tips
 
 Mira la [Wiki](https://github.com/gh0stzk/dotfiles/wiki)
-
-## Creditos
-
-- [turquoise-hexagon](https://github.com/turquoise-hexagon/fonts), [adi1090x](https://github.com/adi1090x/widgets), [gabrielzschmitz](https://github.com/gabrielzschmitz), [elenapan](https://github.com/elenapan/dotfiles), [rxyhn](https://github.com/rxyhn/bspdots), [okklol](https://github.com/okklol/eww-bar), [ikz87](https://github.com/ikz87).

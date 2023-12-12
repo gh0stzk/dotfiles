@@ -29,7 +29,6 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 <br>
 
 ## 🚀 Features
-<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/5d13a0de-e9cd-4e7f-a778-22b00a868a90" alt="Rice Menu" align="right" width="400px">
 
 * **Change themes on the fly:** 12 different Rices now!.
 
@@ -63,6 +62,14 @@ Increase and decrease transparency in focused or selected window.
      
    </tr>
    </table>
+
+| :tshirt: Theme Selector |
+|:-:|
+|![Screenshot-11_12_2023-01-06-03](https://github.com/gh0stzk/dotfiles/assets/67278339/b11b5c58-b9ec-446b-8980-4f77bebb3432)|
+
+| :traffic_light: Wallpaper Selector |
+|:-:|
+|![Screenshot-11_12_2023-01-03-00](https://github.com/gh0stzk/dotfiles/assets/67278339/0746df0f-6a56-44d6-a899-7bdbc0f1a593)|
 
 ## 🎨 The themes
 
@@ -243,17 +250,17 @@ Complementarily you can install [this extension](https://github.com/PonyLucky/gh
 
 ## Very useful keybindigs to know...
 
-- <code>alt + @space</code> Display menu to select theme selector.
-- <code>super + @space</code> Apps Menu.
-- <code>super + h </code> Hides bar/s <code>super + u</code> unhide bar/s
-- <code>Print</code> Takes screenshot.
-- <code>ctrl + alt + {plus,minus,t}</code> Changes transparency on focused window.
-- <code>ctrl + super + alt + p</code> Power off computer. <code>ctrl + super + alt + r</code> Restart computer.
-- <code>super + Return</code> Open a terminal.
-- <code>super + Alt + Return</code> Open a floating terminal.
-- <code>ctrl + super + alt + k</code> Brute Kill a window/process.
-- <code>super + alt + w</code> Opens a menu to select a wallpaper from the actual rice you are in.
-- <code>super + alt + r</code> Restart bspwm.
+| Keys | Action |
+|:-|:-|
+|<kbd>super</kbd> + <kbd>Enter</kbd><br><kbd>super</kbd> + <kbd>alt</kbd> + <kbd>Enter</kbd>| Open a terminal<br>Open a floating terminal.
+|<kbd>alt</kbd> + <kbd>@space</kbd>| Display menu to select a theme.
+|<kbd>super</kbd> + <kbd>@space</kbd>| Apps Menu.
+|<kbd>super</kbd> + <kbd>alt</kbd> + <kbd>w</kbd>| Opens a menu to select a wallpaper.
+|<kbd>super</kbd> + <kbd>h</kbd><br><kbd>super</kbd> + <kbd>u</kbd>|Hides bar/s<br>unhide bar/s
+|<kbd>Print</kbd>| Takes screenshot.
+|<kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>[plus,minus,t]</kbd>| Changes transparency on focused window.
+|<kbd>ctrl</kbd> + <kbd>super</kbd> + <kbd>alt</kbd> + <kbd>p</kbd><br><kbd>ctrl</kbd> + <kbd>super</kbd> + <kbd>alt</kbd> + <kbd>r</kbd><br><kbd>ctrl</kbd> + <kbd>super</kbd> + <kbd>alt</kbd> + <kbd>k| Power off computer<br>Restart computer<br>Brute kill a window/process
+|<kbd>super</kbd> + <kbd>alt</kbd> + <kbd>r</kbd>| Restart bspwm.
 
 And more.. You need to look sxhkdrc file for more.
 
@@ -283,7 +290,3 @@ chmod +x RiceInstaller
 ## Troubleshooting & Tips
 
 See the [Wiki](https://github.com/gh0stzk/dotfiles/wiki)
-
-
-## Credits
-- [turquoise-hexagon](https://github.com/turquoise-hexagon/fonts), [adi1090x](https://github.com/adi1090x/widgets), [gabrielzschmitz](https://github.com/gabrielzschmitz), [elenapan](https://github.com/elenapan/dotfiles), [rxyhn](https://github.com/rxyhn/bspdots), [okklol](https://github.com/okklol/eww-bar), [ikz87](https://github.com/ikz87).
