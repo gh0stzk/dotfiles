@@ -1,9 +1,15 @@
-# BSPWM | Polybar themes collection with Theme Selector
+# BSPWM themes | A complete bspwm environment for your linux
+<div align = center>
+   
+![55712c55-49be-4d85-9ba6-47520dfb2e4b](https://github.com/gh0stzk/dotfiles/assets/67278339/8792eb21-8a7b-45a8-8af7-9d33025948e0)
 
-## Puedes leer esta pagina en español [AQUI](INICIO.md)
-
-## 🌿 Information
-12 different themes for BSPWM and Polybar. With a theme selector to change on the fly.
+&ensp;[<kbd> <br> Install <br> </kbd>](#-setup)&ensp;
+&ensp;[<kbd> <br> Features <br> </kbd>](#-features)&ensp;
+&ensp;[<kbd> <br> Themes <br> </kbd>](#-the-themes)&ensp;
+&ensp;[<kbd> <br> Keybindings <br> </kbd>](#very-useful-keybindigs-to-know)&ensp;
+&ensp;[<kbd> <br> Wiki <br> </kbd>](https://github.com/gh0stzk/dotfiles/wiki)&ensp;
+&ensp;[<kbd> <br> En Español <br> </kbd>](INICIO.md)&ensp;
+<br><br><br><br></div>
 
 ## :book: Wiki
 I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki), you should give it a read. If it is your first time with a WM, you may be interested in reading [First steps after installing the dotfiles](https://github.com/gh0stzk/dotfiles/wiki/Firsts-steps-after-installing) or maybe read [frequently asked questions and answers](https://github.com/gh0stzk/dotfiles/wiki/Questions---Answers).
@@ -29,6 +35,8 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 <br>
 
 ## 🚀 Features
+
+12 different themes for BSPWM and Polybar. With a theme selector to change on the fly.
 
 * **Change themes on the fly:** 12 different Rices now!.
 
@@ -63,6 +71,8 @@ Increase and decrease transparency in focused or selected window.
    </tr>
    </table>
 
+## 🎨 The themes
+
 | :tshirt: Theme Selector |
 |:-:|
 |![Screenshot-11_12_2023-01-06-03](https://github.com/gh0stzk/dotfiles/assets/67278339/b11b5c58-b9ec-446b-8980-4f77bebb3432)|
@@ -70,8 +80,6 @@ Increase and decrease transparency in focused or selected window.
 | :traffic_light: Wallpaper Selector |
 |:-:|
 |![Screenshot-11_12_2023-01-03-00](https://github.com/gh0stzk/dotfiles/assets/67278339/0746df0f-6a56-44d6-a899-7bdbc0f1a593)|
-
-## 🎨 The themes
 
 ### 🌸Emilia:
 
@@ -286,7 +294,3 @@ chmod +x RiceInstaller
 ```sh
 ./RiceInstaller
 ```
-
-## Troubleshooting & Tips
-
-See the [Wiki](https://github.com/gh0stzk/dotfiles/wiki)
