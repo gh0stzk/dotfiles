@@ -1,65 +1,80 @@
-# BSPWM | Polybar | Coleccion de temas
+# BSPWM Temas | Entorno completo con bspwm
 
-## 🌿 Informacion
-Mi coleccion de 12 temas para BSPWM y Polybar. Con menu para seleccionar los temas.
+<div align = center>
+   
+![55712c55-49be-4d85-9ba6-47520dfb2e4b](https://github.com/gh0stzk/dotfiles/assets/67278339/23b9cc27-9051-4ec0-a311-962270749a3b)
+
+
+&ensp;[<kbd> <br> Instalacion <br> </kbd>](#-el-setup)&ensp;
+&ensp;[<kbd> <br> Caracteristicas <br> </kbd>](#-caracteristicas)&ensp;
+&ensp;[<kbd> <br> Temas <br> </kbd>](#-los-temas)&ensp;
+&ensp;[<kbd> <br> Atajos de teclado <br> </kbd>](#atajos-de-teclado-utiles-que-deberias-saber)&ensp;
+&ensp;[<kbd> <br> Wiki <br> </kbd>](https://github.com/gh0stzk/dotfiles/wiki)&ensp;
+<br><br><br></div>
+
+https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-afed-f352c5d2979e.mp4
+ 
+<br>
+
+## 🚀 Caracteristicas
+<img src="https://user-images.githubusercontent.com/67278339/221605474-21d65156-0cf7-485c-bd1a-40792c37817e.png" alt="Linux Fetch" align="right" width="450">
+
+**Experimenta la Magia de la Personalización con los dotfiles de gh0stzk para bspwm**
+
+<sup>¡Bienvenido al mundo de la personalización sin límites! Los dotfiles de gh0stzk para bspwm ofrecen una experiencia única y emocionante con 12 temas distintos, cada uno con esquemas de colores, estilo y personalidad cautivadora. Sumérgete en un viaje visual que transformará tu entorno de trabajo de una manera impresionante.</sup>
+
+**Cambia de temas al instante**
+
+<sup>Con el menú personalizado basado en rofi launcher, cambiar entre los 12 temas es tan fácil como un clic. Disfruta de la versatilidad de estilos y esquemas de colores al momento.</sup>
+
+**Coherencia en Todo el Sistema**
+
+<sup>Cada tema no solo cambia la apariencia de bspwm, sino que también transforma al instante el esquema de colores en la terminal alacritty, widgets eww, barras polybar, notificaciones y más. La armonía visual está garantizada en todos los rincones de tu sistema.</sup>
+
+**Widgets Eww Únicos**
+
+<sup>Descubre 4 widgets eww únicos, que incluyen un calendario, menú de apagado, reproductor de música y tarjeta de usuario. Estos widgets no solo son funcionales, sino que también se adaptan instantáneamente al esquema de colores del tema que elijas.</sup>
+
+**Personalización Completa**
+
+<sup>Menú de clic derecho elegante hecho con Jgmenu, que también se sincroniza con los temas para una coherencia visual impecable. Además, 10 barras hechas con polybar y 2 con widgets eww ofrecen una experiencia de usuario completamente personalizable.</sup>
+
+**Variedad de Fondos de Pantalla**
+
+<sup>Cada inicio de sesión te sorprenderá con un fondo de pantalla al azar seleccionado específicamente para el tema en uso. Pero si la sorpresa no es lo tuyo, nuestro menú de fondos de pantalla te permite elegir entre más de 5 fondos de pantalla exclusivos para cada tema.</sup>
+
+**Composición Visual con Picom**
+
+<sup>Experimenta la belleza sin esfuerzo con picom como compositor, proporcionando una estética agradable sin sacrificar rendimiento. Disfruta de una experiencia de trabajo sin complicaciones con efectos visuales agradables. Una configuracion balanceada entre rendimiento y estética.
+Ajusta la transparencia de tus ventanas abiertas con una simple combinación de teclas. Controla la apariencia de tu escritorio para que se adapte perfectamente a tu estado de ánimo y estilo.</sup>
+
+**Funcionalidades Adicionales:**
+
+- **Control de Música Local:**
+
+  <sup>Administra tu música local desde el módulo polybar y el reproductor ncmpcpp, ambos con un diseño único que se ajusta al esquema de colores del tema.</sup>
+- **Flexibilidad:**
+
+  <sup>Esconde y muestra la barra polybar y los widgets eww según tus necesidades, brindándote un control completo sobre tu espacio de trabajo.</sup>
+
+- **Scratchpad Funcional:**
+  
+  <sup>Accede a la funcionalidad scratchpad, una ventana de terminal que puedes mostrar o esconder según tus tareas, evitando que ocupe espacio innecesario en tu escritorio.</sup>
+
+¡Transforma tu experiencia de usuario con los dotfiles de gh0stzk para bspwm! Descarga ahora y da vida a tu escritorio con estilo y personalidad.
 
 ## :book: Wiki
 Ya comencé a escribir la [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki), deberías darle una lectura. Si es tu primera vez con un WM tal vez te interese leer [Primeros pasos despues de instalar los dotfiles](https://github.com/gh0stzk/dotfiles/wiki/Firsts-steps-after-installing) ó tal vez leer las [pregumtas y respuestas](https://github.com/gh0stzk/dotfiles/wiki/Questions---Answers).
 
-https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-afed-f352c5d2979e.mp4
- 
-## Información
-<img src="https://user-images.githubusercontent.com/67278339/221605474-21d65156-0cf7-485c-bd1a-40792c37817e.png" alt="Linux Fetch" align="right" width="600">
+<br>
 
-|Distro|[Arch](https://archlinux.org/)|
-|:---:|:---:|
-|WM|[BSPWM](https://github.com/baskerville/bspwm)|
-|Bar|[Polybar](https://github.com/polybar/polybar)|
-|Menu|[Rofi](https://github.com/davatorium/rofi)|
-|Compositor|[Picom](https://archlinux.org/packages/community/x86_64/picom/)|
-|Terminal|[Alacritty](https://github.com/alacritty/alacritty)|
-|Widgets|[ElKowars wacky widgets ](https://github.com/elkowar/eww)|
-|Music/Player|[mpd](https://archlinux.org/packages/extra/x86_64/mpd/)-[ncmpcpp](https://archlinux.org/packages/community/x86_64/ncmpcpp/)|
-|File Manager|[Thunar](https://archlinux.org/packages/extra/x86_64/thunar/)|
-|Shell|[Zsh](https://archlinux.org/packages/extra/x86_64/zsh/)|
-|Aur Helper|[Paru](https://github.com/Morganamilo/paru)|
+> [!CAUTION]
+> ⚠️⚠️⚠️ Esta configuración fue hecha en una resolución **1600x900** con **96** DPI y **1** monitor.
+> Algunas cosas prodrian romperse en una resolucion menor o mayor, pero igual funcionara!! ⚠️⚠️⚠️
 
 <br>
 
-## 🚀 Caracteristicas
-
-* **Cambia el tema al momento:** 12 diferentes temas!.
-
-* **Menu de temas:** <code>Alt + Space bar</code> para abrir menu.
-
-* **Wallpapers al azar:**  Cada vez que cambias de tema o reinicias bspwm <code>super + alt + r</code> tendras un wallpaper diferente dependiendo el tema en el que estes.
-
-* **Super + Alt + w** Menu para seleccionar un wallpaper del tema en el que te encuentras.
-
-* **Mostrar / Ocultar barra:** Podras ocultar y volver a mostrar la barra ( Polybar y EWW )
-
-* **Cambia la transparencia:** 
-Aumenta o disminuye la transparencia de la ventana de trabajo en la que estes.
-
-**Y mas..**
-
-<table align="center">
-   <tr>
-      <th align="center">
-         <sup><sub>:warning: Cuidado!! :warning:</sub></sup>
-      </th>
-   </tr>
-   <tr>
-      <td align="center">
-      
-      
-      
-     MIS CONFIGURACIONES LAS HICE CON UNA RESOLUCION 1600x900 CON 96 DPI! 1 MONITOR
-     ALGUNAS COSAS TAL VEZ SE ROMPAN CON RESOLUCIONES DIFERENTES
-     PERO IGUAL FUNCIONARA!
-     
-   </tr>
-   </table>
+## 🎨 Los Temas
 
 | :tshirt: Menu de Temas |
 |:-:|
@@ -69,7 +84,6 @@ Aumenta o disminuye la transparencia de la ventana de trabajo en la que estes.
 |:-:|
 |![Screenshot-11_12_2023-01-03-00](https://github.com/gh0stzk/dotfiles/assets/67278339/0746df0f-6a56-44d6-a899-7bdbc0f1a593)|
 
-## 🎨 Los Temas
 
 ### 🌸Emilia:
 
@@ -284,7 +298,3 @@ chmod +x RiceInstaller
 ```sh
 ./RiceInstaller
 ```
-
-## Problemas y Tips
-
-Mira la [Wiki](https://github.com/gh0stzk/dotfiles/wiki)
