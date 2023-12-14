@@ -17,29 +17,14 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 ## :book: Wiki
 I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki), you should give it a read. If it is your first time with a WM, you may be interested in reading [First steps after installing the dotfiles](https://github.com/gh0stzk/dotfiles/wiki/Firsts-steps-after-installing) or maybe read [frequently asked questions and answers](https://github.com/gh0stzk/dotfiles/wiki/Questions---Answers).
 
-## Info
-<img src="https://user-images.githubusercontent.com/67278339/221605474-21d65156-0cf7-485c-bd1a-40792c37817e.png" alt="Linux Fetch" align="right" width="450">
-
-|Distro|[Arch](https://archlinux.org/)|
-|:---:|:---:|
-|WM|[BSPWM](https://github.com/baskerville/bspwm)|
-|Bar|[Polybar](https://github.com/polybar/polybar)|
-|Menu|[Rofi](https://github.com/davatorium/rofi)|
-|Compositor|[Picom](https://archlinux.org/packages/community/x86_64/picom/)|
-|Terminal|[Alacritty](https://github.com/alacritty/alacritty)|
-|Widgets|[ElKowars wacky widgets ](https://github.com/elkowar/eww)|
-|Music/Player|[mpd](https://archlinux.org/packages/extra/x86_64/mpd/)-[ncmpcpp](https://archlinux.org/packages/community/x86_64/ncmpcpp/)|
-|File Manager|[Thunar](https://archlinux.org/packages/extra/x86_64/thunar/)|
-|Shell|[Zsh](https://archlinux.org/packages/extra/x86_64/zsh/)|
-|Aur Helper|[Paru](https://github.com/Morganamilo/paru)|
-
 <br>
 
 ## 🚀 Features
+<img src="https://user-images.githubusercontent.com/67278339/221605474-21d65156-0cf7-485c-bd1a-40792c37817e.png" alt="Linux Fetch" align="right" width="450">
 
 **Experience the Magic of Customization with gh0stzk's bspwm dotfiles**
 
-<sup>Welcome to the world of limitless customization! gh0stzk's dotfiles for bspwm offer a unique and exciting experience with 12 different themes, each featuring captivating color schemes. Immerse yourself in a visual journey that will transform your workspace in an impressive way.</sup>
+<sup>Welcome to the world of limitless customization! gh0stzk's dotfiles for bspwm offer a unique and exciting experience with 12 different themes, each featuring captivating color schemes, styles and personality. Immerse yourself in a visual journey that will transform your workspace in an impressive way.</sup>
 
 **Instant Changes with a theme menu changer**
 
@@ -68,9 +53,15 @@ And you can adjust the transparency of your open windows with a simple key combi
 
 **Additional Features:**
 
-- **Local Music Control:** Manage your local music from the polybar module and the ncmpcpp player, both with a unique design that adapts to the theme's color scheme.
-- **Flexibility:** Hide and show the polybar and eww widgets according to your needs, giving you complete control over your workspace.
-- **Functional Scratchpad:** Access the scratchpad functionality, a terminal window you can show or hide for tasks when you don't want the window taking up unnecessary space.
+- **Local Music Control:**
+  
+  <sup>Manage your local music from the polybar module and the ncmpcpp player, both with a unique design that adapts to the theme's color scheme.</sup>
+- **Flexibility:**
+
+  <sup>Hide and show the polybar and eww widgets according to your needs, giving you complete control over your workspace.</sup>
+- **Functional Scratchpad:**
+
+  <sup>Access the scratchpad functionality, a terminal window you can show or hide for tasks when you don't want the window taking up unnecessary space.</sup>
 
 Transform your user experience with gh0stzk's dotfiles for bspwm! Install now and breathe life into your desktop with style and personality.
 
@@ -80,7 +71,6 @@ Transform your user experience with gh0stzk's dotfiles for bspwm! Install now an
 > [!CAUTION]
 > ⚠️⚠️⚠️ This dotfiles are configured at **1600x900** resolution with **96** DPI and **1** monitor.
 > Some stuff might break on lower or higher resolutions, but still work!! ⚠️⚠️⚠️
-
 
 <br>
 
