@@ -1,7 +1,7 @@
 # BSPWM themes | A complete bspwm environment for your linux
 <div align = center>
    
-![55712c55-49be-4d85-9ba6-47520dfb2e4b](https://github.com/gh0stzk/dotfiles/assets/67278339/8792eb21-8a7b-45a8-8af7-9d33025948e0)
+![55712c55-49be-4d85-9ba6-47520dfb2e4b](https://github.com/gh0stzk/dotfiles/assets/67278339/0035eeec-8ab7-4a5c-a25a-bdabc1e0cbaa)
 
 &ensp;[<kbd> <br> Install <br> </kbd>](#-setup)&ensp;
 &ensp;[<kbd> <br> Features <br> </kbd>](#-features)&ensp;
