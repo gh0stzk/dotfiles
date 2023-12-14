@@ -1,7 +1,8 @@
-# BSPWM themes | A complete bspwm environment for your linux
+# BSPWM themes | A complete bspwm environment
 <div align = center>
    
-![55712c55-49be-4d85-9ba6-47520dfb2e4b](https://github.com/gh0stzk/dotfiles/assets/67278339/0035eeec-8ab7-4a5c-a25a-bdabc1e0cbaa)
+![55712c55-49be-4d85-9ba6-47520dfb2e4b](https://github.com/gh0stzk/dotfiles/assets/67278339/23b9cc27-9051-4ec0-a311-962270749a3b)
+
 
 &ensp;[<kbd> <br> Install <br> </kbd>](#-setup)&ensp;
 &ensp;[<kbd> <br> Features <br> </kbd>](#-features)&ensp;
@@ -9,12 +10,12 @@
 &ensp;[<kbd> <br> Keybindings <br> </kbd>](#very-useful-keybindigs-to-know)&ensp;
 &ensp;[<kbd> <br> Wiki <br> </kbd>](https://github.com/gh0stzk/dotfiles/wiki)&ensp;
 &ensp;[<kbd> <br> En Español <br> </kbd>](INICIO.md)&ensp;
-<br><br><br><br></div>
+<br><br><br></div>
+
+https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-afed-f352c5d2979e.mp4
 
 ## :book: Wiki
 I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki), you should give it a read. If it is your first time with a WM, you may be interested in reading [First steps after installing the dotfiles](https://github.com/gh0stzk/dotfiles/wiki/Firsts-steps-after-installing) or maybe read [frequently asked questions and answers](https://github.com/gh0stzk/dotfiles/wiki/Questions---Answers).
-
-https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-afed-f352c5d2979e.mp4
 
 ## Info
 <img src="https://user-images.githubusercontent.com/67278339/221605474-21d65156-0cf7-485c-bd1a-40792c37817e.png" alt="Linux Fetch" align="right" width="450">
@@ -36,40 +37,53 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 
 ## 🚀 Features
 
-12 different themes for BSPWM and Polybar. With a theme selector to change on the fly.
+**Experience the Magic of Customization with gh0stzk's bspwm dotfiles**
 
-* **Change themes on the fly:** 12 different Rices now!.
+<sup>Welcome to the world of limitless customization! gh0stzk's dotfiles for bspwm offer a unique and exciting experience with 12 different themes, each featuring captivating color schemes. Immerse yourself in a visual journey that will transform your workspace in an impressive way.</sup>
 
-* **Theme Selector:** <code>Alt + Space bar</code> to launch it.
+**Instant Changes with a theme menu changer**
 
-* **Random wallpaper:**  Every time you switch between rices or reload bspwm with <code>super + alt + r</code> a new wallpaper is set depending on the rice you are on.
+<sup>With our custom menu based on rofi launcher, switching between the 12 themes is as easy as a click. Enjoy the versatility of styles and color combinations instantly.</sup>
 
-* **Wallpaper Changer** <code>Super + Alt + w</code> Opens a menu to select a wallpaper from the actual rice you are in.
+**Consistency Across the Environment**
 
-* **Hide / Unhide Bar:** If you needit you can hide bars
+<sup>Each theme not only changes the appearance of bspwm but also instantly transforms the color scheme in alacritty terminal, eww widgets, polybar bars, notifications, and more. Visual harmony is guaranteed in every corner of your system.</sup>
 
-* **Change transparency on the fly:** 
-Increase and decrease transparency in focused or selected window.
+**Unique Eww Widgets**
 
-**And more..**
+<sup>Discover 4 unique eww widgets, including a calendar, power menu, music player, and user card. These widgets are not only functional but also instantly adapt to the color scheme of the selected theme.</sup>
 
-<table align="center">
-   <tr>
-      <th align="center">
-         <sup><sub>:warning: WARNING :warning:</sub></sup>
-      </th>
-   </tr>
-   <tr>
-      <td align="center">
-      
-      
-      
-     THIS DOTFILES ARE CONFIGURED AT 1600x900 WITH 96 DPI! 1 MONITOR
-     SOME STUFF MIGHT BREAK ON LOWER OR HIGHER
-     RESOLUTIONS BUT WILL STILL WORK!
-     
-   </tr>
-   </table>
+**Complete Customization**
+
+<sup>Explore an elegant right-click menu made with Jgmenu, which also syncs with themes for flawless visual consistency. Additionally, 10 polybar bars and 2 eww widgets offer a fully customizable user experience.</sup>
+
+**Variety of Wallpapers**
+
+<sup>Each login surprises you with a randomly selected wallpaper specifically tailored to the theme in use. But if surprises aren't your thing, our wallpaper menu lets you choose from over 5 exclusive wallpapers for each theme.</sup>
+
+**Visual Composition with Picom**
+
+<sup>Experience effortless beauty with picom as the compositor, providing a pleasing aesthetic without sacrificing performance. Enjoy a hassle-free working experience with delightful visual effects, balance between performance and beauty..
+And you can adjust the transparency of your open windows with a simple key combination. Control the appearance of your desktop to perfectly suit your mood and style.</sup>
+
+**Additional Features:**
+
+- **Local Music Control:** Manage your local music from the polybar module and the ncmpcpp player, both with a unique design that adapts to the theme's color scheme.
+- **Flexibility:** Hide and show the polybar and eww widgets according to your needs, giving you complete control over your workspace.
+- **Functional Scratchpad:** Access the scratchpad functionality, a terminal window you can show or hide for tasks when you don't want the window taking up unnecessary space.
+
+Transform your user experience with gh0stzk's dotfiles for bspwm! Install now and breathe life into your desktop with style and personality.
+
+
+<br>
+
+> [!CAUTION]
+> ⚠️⚠️⚠️ This dotfiles are configured at **1600x900** resolution with **96** DPI and **1** monitor.
+> Some stuff might break on lower or higher resolutions, but still work!! ⚠️⚠️⚠️
+
+
+<br>
+
 
 ## 🎨 The themes
 
