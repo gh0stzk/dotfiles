@@ -2,7 +2,7 @@
 
 <div align = center>
    
-![bspwm-dotfiles](https://github.com/gh0stzk/dotfiles/assets/67278339/53344885-db4d-46ab-b8c1-2bdcecb03cd4)
+![bspwm-dotfiles](https://github.com/gh0stzk/dotfiles/assets/67278339/c5095d59-7d2b-439a-8578-2936bb95801b)
 
 
 &ensp;[<kbd> <br> Instalacion <br> </kbd>](#-el-setup)&ensp;
