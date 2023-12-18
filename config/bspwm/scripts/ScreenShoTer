@@ -40,7 +40,7 @@ case $1 in
 	--sel)
 		maim -u -s "$filename"
 		xclip -selection clipboard -t image/png -i "$filename"
-		show_notification "$filename" "Screenshot of selected area saved and copied to clipboard";;
+		show_notification "$filename" "Screenshot of the selected area saved and copied to clipboard";;
 	--active)
 		maim -u -i "$(xdotool getactivewindow)" "$filename"
 		xclip -selection clipboard -t image/png -i "$filename"
