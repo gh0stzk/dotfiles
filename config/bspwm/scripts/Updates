@@ -44,7 +44,7 @@ case "$1" in
   --help|*)echo -e "Updates [options]
   
 Options:
-	--get-updates		Get the numer of updates available.
-	--print-updates		Print the available package to updates.
-	--update-system		Update your system including AUR.\n"
+	--get-updates		Get the nubmer of updates available.
+	--print-updates		Print the number of available package to update.
+	--update-system		Update your system including the AUR packages.\n"
 esac

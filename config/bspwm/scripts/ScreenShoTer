@@ -33,18 +33,18 @@ take_screenshot() {
 
 case $1 in
 	--now)
-		take_screenshot "Screensot saved and copied to clipboard";;
+		take_screenshot "Screenshot saved and copied to clipboard";;
 	--in10)
 		countdown 10
 		take_screenshot "Scheduled capture taken after 10 seconds and copied to clipboard";;
 	--sel)
 		maim -u -s "$filename"
 		xclip -selection clipboard -t image/png -i "$filename"
-		show_notification "$filename" "Screenshot of selected area saved and copied to clipboard";;
+		show_notification "$filename" "Screenshot of the selected area saved and copied to clipboard";;
 	--active)
 		maim -u -i "$(xdotool getactivewindow)" "$filename"
 		xclip -selection clipboard -t image/png -i "$filename"
 		show_notification "$filename" "Screenshot of active window saved and copied to clipboard";;
 	*)
-		take_screenshot "Screensot saved and copied to clipboard";;
+		take_screenshot "Screenshot saved and copied to clipboard";;
 esac

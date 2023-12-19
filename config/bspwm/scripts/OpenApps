@@ -74,6 +74,6 @@ WIDGET_DIR="$HOME/.config/bspwm/eww"
 			eww -c "$WIDGET_DIR" open --toggle date
 			;;
 		*)
-			echo "Opción no válida"
+			echo "Invalid Option"
 			;;
 	esac
