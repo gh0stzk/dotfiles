@@ -62,7 +62,7 @@ bspc rule -a scratch sticky=on state=floating focus=on
 . SetSysVars
 
 # Terminate already running polybar, stalonetray, sxhkd and dunst instances
-processes=("eww.*bar" "polybar" "sxhkd" "dunst" "stalonetray")
+processes=("sxhkd" "polybar" "stalonetray" "dunst" "eww.*bar")
 
 	for process in "${processes[@]}"; do
 		if pgrep -f "$process"; then
@@ -73,10 +73,15 @@ processes=("eww.*bar" "polybar" "sxhkd" "dunst" "stalonetray")
 # Load bspwm conf, colors, dunst, bars and/or eww widgets
 . ${rice_dir}/Theme.sh
 
-# Launch picom // If you have old hardware or encounter problems 
-# uncomment the picom "--legacy-backends" line and comment the current one.
-pidof -q picom || { picom --config "$HOME"/.config/bspwm/picom.conf & }
-#pidof -q picom || { picom --legacy-backends --config "$HOME"/.config/bspwm/picom.conf & }
+
+# Reload sxhkd daemon
+sxhkd -c "$HOME"/.config/bspwm/sxhkdrc &
+
+# Launch stalonetray
+[[ "$RICETHEME" != "z0mbi3" ]] && stalonetray -c "$HOME"/.config/bspwm/stalonetrayrc & sleep 0.1 && xdo hide -N stalonetray && touch "/tmp/syshide.lock"
+
+# Launch dunst notification daemon
+dunst -config "$HOME"/.config/bspwm/dunstrc &
 
 # Set random wallpaper for actual rice
 feh -z --no-fehbg --bg-fill ${rice_dir}/walls
@@ -84,17 +89,13 @@ feh -z --no-fehbg --bg-fill ${rice_dir}/walls
 # Launch eww daemon
 pidof -q eww || { eww -c "$HOME"/.config/bspwm/eww daemon & }
 
-# Reload sxhkd daemon
-sxhkd -c "$HOME"/.config/bspwm/sxhkdrc &
-
-# Launch dunst notification daemon
-dunst -config "$HOME"/.config/bspwm/dunstrc &
-
-# Launch stalonetray
-[[ "$RICETHEME" != "z0mbi3" ]] && stalonetray -c "$HOME"/.config/bspwm/stalonetrayrc & sleep 0.1 && xdo hide -N stalonetray && touch "/tmp/syshide.lock"
-
 # Launch polkit
 pidof -q polkit-gnome-authentication-agent-1 || { /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & }
 
 # Fix cursor
 xsetroot -cursor_name left_ptr
+
+# Launch picom // If you have old hardware or encounter problems 
+# uncomment the picom "--legacy-backends" line and comment the current one.
+pidof -q picom || { picom -b --config "$HOME"/.config/bspwm/picom.conf & }
+#pidof -q picom || { picom --legacy-backends --config "$HOME"/.config/bspwm/picom.conf & }

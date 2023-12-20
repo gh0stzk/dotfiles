@@ -244,6 +244,7 @@ for archivos in ~/dotfiles/misc/firefox/*; do
   fi
 done
 
+cp -r "$HOME"/dotfiles/startup-page "$HOME"/.local/share
 cp -f "$HOME"/dotfiles/home/.zshrc "$HOME"
 fc-cache -rv >/dev/null 2>&1
 printf "%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"

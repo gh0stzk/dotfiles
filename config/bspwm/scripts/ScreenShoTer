@@ -2,20 +2,32 @@
 #  ╔═╗╔═╗╦═╗╔═╗╔═╗╔╗╔╔═╗╦ ╦╔═╗╔╦╗╔═╗╦═╗
 #  ╚═╗║  ╠╦╝║╣ ║╣ ║║║╚═╗╠═╣║ ║ ║ ║╣ ╠╦╝
 #  ╚═╝╚═╝╩╚═╚═╝╚═╝╝╚╝╚═╝╩ ╩╚═╝ ╩ ╚═╝╩╚═
+#
+#	z0mbi3
+#   https://github.com/gh0stzk/dotfiles
+#   Script to take screenshots using maim.
+#   20.12.2023 16:10:25
 
-#	Author : z0mbi3
-#   Url    : https://github.com/gh0stzk/dotfiles
-#   Info   : Script to take screenshots using maim.
 
-timestamp=$(date +%d_%m_%Y-%I-%M-%S)
+timestamp=$(date +%Y-%m-%d-%I%M%S)
 dir="$(xdg-user-dir PICTURES)/ScreenShots"
-filename="$dir/Screenshot-${timestamp}.png"
+filename="$dir/Shot-${timestamp}.png"
 
 [ -d "$dir" ] || mkdir -p "$dir"
 
-# Función para mostrar una notificación con dunst
+
 show_notification() {
-    dunstify --replace=699 -i "$1" "Screenshot" "$2"
+	if [[ -e "$filename" ]]; then
+		dunstify --replace=699 -i "$filename" "Screenshot" "Screenshot saved and copied to clipboard"
+	else
+		dunstify --replace=699 -i custom-trash-bin "Screenshot" "Screenshot Canceled"
+	fi
+}
+
+take_screenshot() {
+    maim -u "$@" "$filename"
+    xclip -selection clipboard -t image/png -i "$filename"
+    show_notification
 }
 
 countdown() {
@@ -25,26 +37,15 @@ countdown() {
 	done
 }
 
-take_screenshot() {
-    maim -u "$filename"
-    xclip -selection clipboard -t image/png -i "$filename"
-    show_notification "$filename" "$1"
-}
-
 case $1 in
 	--now)
-		take_screenshot "Screenshot saved and copied to clipboard";;
+		take_screenshot;;
 	--in10)
-		countdown 10
-		take_screenshot "Scheduled capture taken after 10 seconds and copied to clipboard";;
+		countdown 10 && take_screenshot;;
 	--sel)
-		maim -u -s "$filename"
-		xclip -selection clipboard -t image/png -i "$filename"
-		show_notification "$filename" "Screenshot of the selected area saved and copied to clipboard";;
+		take_screenshot -s -o;;
 	--active)
-		maim -u -i "$(xdotool getactivewindow)" "$filename"
-		xclip -selection clipboard -t image/png -i "$filename"
-		show_notification "$filename" "Screenshot of active window saved and copied to clipboard";;
+		take_screenshot -i "$(xdotool getactivewindow)";;
 	*)
-		take_screenshot "Screenshot saved and copied to clipboard";;
+		take_screenshot;;
 esac
