@@ -1,3 +1,11 @@
+## Startup Page added to FireFox
+##### December 20 2023:
+
+Add a startup home page for firefox, to configure it please refer to the wiki [Firefox Theme](https://github.com/gh0stzk/dotfiles/wiki/Firefox-Theme)
+
+<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/9b956d3d-fc7b-49ca-b27f-dc6aa83d9e2f" alt="Firefox theme - z0mbi3-Fox" width="700">
+
+
 ## Rofi Launchers Update
 ##### December 8 2023:
 
