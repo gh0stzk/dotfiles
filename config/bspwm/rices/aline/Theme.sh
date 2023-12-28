@@ -25,12 +25,41 @@ set_bspwm_config() {
 
 # Reload terminal colors
 set_term_config() {
-	sed -i "$HOME"/.config/alacritty/fonts.yml \
-		-e "s/family: .*/family: JetBrainsMono NF/g" \
-		-e "s/size: .*/size: 10/g"
+	cat > "$HOME"/.config/alacritty/rice-colors.toml << EOF
+# (Pencil light) color scheme for Aline Rice
 
-	sed -i "$HOME"/.config/alacritty/rice-colors.yml \
-		-e "s/colors: .*/colors: *aline_pencil_light/"
+# Default colors
+[colors.primary]
+background = "#e5eafe"
+foreground = "#51576d"
+
+# Cursor colors
+[colors.cursor]
+cursor = "#20bbfc"
+text = "#e5eafe"
+
+# Normal colors
+[colors.normal]
+black = "#212121"
+blue = "#008ec4"
+cyan = "#20a5ba"
+green = "#10a778"
+magenta = "#523c79"
+red = "#c30771"
+white = "#51576d"
+yellow = "#a89c14"
+
+# Bright colors
+[colors.bright]
+black = "#212121"
+blue = "#20bbfc"
+cyan = "#4fb8cc"
+green = "#5fd7af"
+magenta = "#6855de"
+red = "#fb007a"
+white = "#51576d"
+yellow = "#f3e430"
+EOF
 }
 
 # Set compositor configuration

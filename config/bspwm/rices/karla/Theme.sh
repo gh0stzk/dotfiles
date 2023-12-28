@@ -25,12 +25,41 @@ set_bspwm_config() {
 
 # Reload terminal colors
 set_term_config() {
-	sed -i "$HOME"/.config/alacritty/fonts.yml \
-		-e "s/family: .*/family: JetBrainsMono NF/g" \
-		-e "s/size: .*/size: 10/g"
-		
-	sed -i "$HOME"/.config/alacritty/rice-colors.yml \
-		-e "s/colors: .*/colors: *karla_z0mbi3_night/"
+	cat > "$HOME"/.config/alacritty/rice-colors.toml << EOF
+# (Zombie-Night) Color scheme for Karla Rice
+
+# Default colors
+[colors.primary]
+background = "#0E1113"
+foreground = "#afb1db"
+
+# Cursor colors
+[colors.cursor]
+cursor = "#8656e3"
+text = "#0b0b12"
+
+# Normal colors
+[colors.normal]
+black = "#2d2b36"
+blue = "#5884d4"
+cyan = "#7df0f0"
+green = "#61b33e"
+magenta = "#7a44e3"
+red = "#e7034a"
+white = "#faf7ff"
+yellow = "#ffb964"
+
+# Bright colors
+[colors.bright]
+black = "#373542"
+blue = "#5f90ea"
+cyan = "#97f0f0"
+green = "#6fb352"
+magenta = "#8656e3"
+red = "#e71c5b"
+white = "#fdfcff"
+yellow = "#ffb964"
+EOF
 }
 
 # Set compositor configuration

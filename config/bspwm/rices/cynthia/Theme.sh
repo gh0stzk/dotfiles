@@ -25,12 +25,41 @@ set_bspwm_config() {
 
 # Reload terminal colors
 set_term_config() {
-	sed -i "$HOME"/.config/alacritty/fonts.yml \
-		-e "s/family: .*/family: JetBrainsMono NF/g" \
-		-e "s/size: .*/size: 10/g"
-		
-	sed -i "$HOME"/.config/alacritty/rice-colors.yml \
-		-e "s/colors: .*/colors: *cynthia_color_scheme/"
+	cat > "$HOME"/.config/alacritty/rice-colors.toml << EOF
+# Color scheme for Cynthia Rice
+
+# Default colors
+[colors.primary]
+background = "#1f2329"
+foreground = "#b8bfe5"
+
+# Cursor colors
+[colors.cursor]
+cursor = "#465b80"
+text = "#e5e5e5"
+
+# Normal colors
+[colors.normal]
+black = "#0f1319"
+blue = "#3f5273"
+cyan = "#324f66"
+green = "#375759"
+magenta = "#543f66"
+red = "#644d66"
+white = "#b3b3b3"
+yellow = "#736871"
+
+# Bright colors
+[colors.bright]
+black = "#b3b3b3"
+blue = "#465b80"
+cyan = "#385a73"
+green = "#3f6566"
+magenta = "#533969"
+red = "#735771"
+white = "#e5e5e5"
+yellow = "#807476"
+EOF
 }
 
 # Set compositor configuration

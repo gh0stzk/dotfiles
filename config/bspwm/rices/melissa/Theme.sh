@@ -25,12 +25,41 @@ set_bspwm_config() {
 
 # Reload terminal colors
 set_term_config() {
-	sed -i "$HOME"/.config/alacritty/fonts.yml \
-		-e "s/family: .*/family: JetBrainsMono NF/g" \
-		-e "s/size: .*/size: 10/g"
-		
-	sed -i "$HOME"/.config/alacritty/rice-colors.yml \
-		-e "s/colors: .*/colors: *melissa_nord/"
+	cat > "$HOME"/.config/alacritty/rice-colors.toml << EOF
+# (Nord) Color scheme for Melissa Rice
+
+# Default colors
+[colors.primary]
+background = "#2e3440"
+foreground = "#d8dee9"
+
+# Cursor colors
+[colors.cursor]
+cursor = "#81a1c1"
+text = "#2e3440"
+
+# Normal colors
+[colors.normal]
+black = "#4c566a"
+blue = "#81a1c1"
+cyan = "#88c0d0"
+green = "#a3be8c"
+magenta = "#b48ead"
+red = "#bf616a"
+white = "#e5e9f0"
+yellow = "#ebcb8b"
+
+# Bright colors
+[colors.bright]
+black = "#4c566a"
+blue = "#81a1c1"
+cyan = "#8fbcbb"
+green = "#a3be8c"
+magenta = "#b48ead"
+red = "#bf616a"
+white = "#eceff4"
+yellow = "#ebcb8b"
+EOF
 }
 
 # Set compositor configuration

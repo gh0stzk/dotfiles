@@ -25,12 +25,41 @@ set_bspwm_config() {
 
 # Reload terminal colors
 set_term_config() {
-	sed -i "$HOME"/.config/alacritty/fonts.yml \
-		-e "s/family: .*/family: JetBrainsMono NF/g" \
-		-e "s/size: .*/size: 10/g"
-		
-	sed -i "$HOME"/.config/alacritty/rice-colors.yml \
-		-e "s/colors: .*/colors: *isabel_onedark/"
+	cat > "$HOME"/.config/alacritty/rice-colors.toml << EOF
+# (Onedark) Color scheme for Isabel Rice
+
+# Default colors
+[colors.primary]
+background = "#14171c"
+foreground = "#b8bfe5"
+
+# Cursor colors
+[colors.cursor]
+cursor = "#abb2bf"
+text = "#14171c"
+
+# Normal colors
+[colors.normal]
+black = "#5c6370"
+blue = "#4889be"
+cyan = "#49919a"
+green = "#81ae5f"
+magenta = "#7560d3"
+red = "#be5046"
+white = "#c5cddb"
+yellow = "#d19a66"
+
+# Bright colors
+[colors.bright]
+black = "#5c6370"
+blue = "#61afef"
+cyan = "#56b6c2"
+green = "#98c379"
+magenta = "#8677cf"
+red = "#e06c75"
+white = "#abb2bf"
+yellow = "#e5c07b"
+EOF
 }
 
 # Set compositor configuration

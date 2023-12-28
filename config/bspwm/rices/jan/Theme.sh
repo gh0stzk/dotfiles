@@ -25,12 +25,41 @@ set_bspwm_config() {
 
 # Reload terminal colors
 set_term_config() {
-	sed -i "$HOME"/.config/alacritty/fonts.yml \
-		-e "s/family: .*/family: JetBrainsMono NF/g" \
-		-e "s/size: .*/size: 10/g"
-		
-	sed -i "$HOME"/.config/alacritty/rice-colors.yml \
-		-e "s/colors: .*/colors: *jan_cyberpunk/"
+	cat > "$HOME"/.config/alacritty/rice-colors.toml << EOF
+# (CyberPunk) Color scheme for Jan Rice
+
+# Default colors
+[colors.primary]
+background = "#070219"
+foreground = "#c0caf5"
+
+# Cursor colors
+[colors.cursor]
+cursor = "#fb007a"
+text = "#070219"
+
+# Normal colors
+[colors.normal]
+black = "#626483"
+blue = "#58AFC2"
+cyan = "#926BCA"
+green = "#a6e22e"
+magenta = "#583794"
+red = "#fb007a"
+white = "#d9d9d9"
+yellow = "#f3e430"
+
+# Bright colors
+[colors.bright]
+black = "#626483"
+blue = "#58AFC2"
+cyan = "#926BCA"
+green = "#a6e22e"
+magenta = "#472575"
+red = "#fb007a"
+white = "#f1f1f1"
+yellow = "#f3e430"
+EOF
 }
 
 # Set compositor configuration

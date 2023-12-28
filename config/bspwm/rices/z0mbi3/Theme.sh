@@ -27,12 +27,41 @@ pidof -q bspc && pkill -9 bspc > /dev/null
 
 # Reload terminal colors
 set_term_config() {
-	sed -i "$HOME"/.config/alacritty/fonts.yml \
-		-e "s/family: .*/family: JetBrainsMono NF/g" \
-		-e "s/size: .*/size: 10/g"
-		
-	sed -i "$HOME"/.config/alacritty/rice-colors.yml \
-		-e "s/colors: .*/colors: *z0mbi3_decay/"
+	cat > "$HOME"/.config/alacritty/rice-colors.toml << EOF
+# (Decay, decayce variant) Color scheme for z0mbi3 Rice
+
+# Default colors
+[colors.primary]
+background = "#0d0f18"
+foreground = "#a5b6cf"
+
+# Cursor colors
+[colors.cursor]
+cursor = "#a5b6cf"
+text = "#0d0f18"
+
+# Normal colors
+[colors.normal]
+black = "#3d414f"
+blue = "#86aaec"
+cyan = "#93cee9"
+green = "#90ceaa"
+magenta = "#c296eb"
+red = "#dd6777"
+white = "#cbced3"
+yellow = "#ecd3a0"
+
+# Bright colors
+[colors.bright]
+black = "#3d414f"
+blue = "#86aaec"
+cyan = "#93cee9"
+green = "#90ceaa"
+magenta = "#c296eb"
+red = "#dd6777"
+white = "#cbced3"
+yellow = "#ecd3a0"
+EOF
 }
 
 # Set compositor configuration

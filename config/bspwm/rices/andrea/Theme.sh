@@ -27,12 +27,41 @@ pidof -q bspc && pkill -9 bspc > /dev/null
 
 # Reload terminal colors
 set_term_config() {
-	sed -i "$HOME"/.config/alacritty/fonts.yml \
-		-e "s/family: .*/family: JetBrainsMono NF/g" \
-		-e "s/size: .*/size: 10/g"
-		
-	sed -i "$HOME"/.config/alacritty/rice-colors.yml \
-		-e "s/colors: .*/colors: *andrea_color_scheme/"
+	cat > "$HOME"/.config/alacritty/rice-colors.toml << EOF
+# Color scheme for Andrea Rice
+
+# Default colors
+[colors.primary]
+background = "#FDF0ED"
+foreground = "#151515"
+
+# Cursor colors
+[colors.cursor]
+cursor = "#b0a5ed"
+text = "#ededed"
+
+# Normal colors
+[colors.normal]
+black = "#151515"
+blue = "#65C7E3"
+cyan = "#2eccca"
+green = "#1EB980"
+magenta = "#b0a5ed"
+red = "#DA103F"
+white = "#ededed"
+yellow = "#FFCC57"
+
+# Bright colors
+[colors.bright]
+black = "#666666"
+blue = "#3FC6DE"
+cyan = "#1EAEAE"
+green = "#07DA8C"
+magenta = "#F075B7"
+red = "#F43E5C"
+white = "#16161C"
+yellow = "#F77D26"
+EOF
 }
 
 # Set compositor configuration

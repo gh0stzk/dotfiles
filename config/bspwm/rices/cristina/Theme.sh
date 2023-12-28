@@ -25,12 +25,41 @@ set_bspwm_config() {
 
 # Reload terminal colors
 set_term_config() {
-	sed -i "$HOME"/.config/alacritty/fonts.yml \
-		-e "s/family: .*/family: JetBrainsMono NF/g" \
-		-e "s/size: .*/size: 10/g"
-		
-	sed -i "$HOME"/.config/alacritty/rice-colors.yml \
-		-e "s/colors: .*/colors: *cristina_rose_pine/"
+	cat > "$HOME"/.config/alacritty/rice-colors.toml << EOF
+# (Rose-Pine Moon) Color scheme for Cristina Rice
+
+# Default colors
+[colors.primary]
+background = "#1f1d29"
+foreground = "#eaeaea"
+
+# Cursor colors
+[colors.cursor]
+cursor = "#c3a5e6"
+text = "#1f1d29"
+
+# Normal colors
+[colors.normal]
+black = "#6f6e85"
+blue = "#34738e"
+cyan = "#eabbb9"
+green = "#9bced7"
+magenta = "#c3a5e6"
+red = "#ea6f91"
+white = "#faebd7"
+yellow = "#f1ca93"
+
+# Bright colors
+[colors.bright]
+black = "#6f6e85"
+blue = "#34738e"
+cyan = "#ebbcba"
+green = "#9bced7"
+magenta = "#c3a5e6"
+red = "#ea6f91"
+white = "#e0def4"
+yellow = "#f1ca93"
+EOF
 }
 
 # Set compositor configuration
