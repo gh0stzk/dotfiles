@@ -1,3 +1,11 @@
+#   █████╗ ██╗      █████╗  ██████╗██████╗ ██╗████████╗████████╗██╗   ██╗
+#  ██╔══██╗██║     ██╔══██╗██╔════╝██╔══██╗██║╚══██╔══╝╚══██╔══╝╚██╗ ██╔╝
+#  ███████║██║     ███████║██║     ██████╔╝██║   ██║      ██║    ╚████╔╝ 
+#  ██╔══██║██║     ██╔══██║██║     ██╔══██╗██║   ██║      ██║     ╚██╔╝  
+#  ██║  ██║███████╗██║  ██║╚██████╗██║  ██║██║   ██║      ██║      ██║   
+#  ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝      ╚═╝   
+#	gh0stzk - https://github.com/gh0stzk/dotfiles
+
 import = ["~/.config/alacritty/rice-colors.toml", "~/.config/alacritty/fonts.toml"]
 
 live_config_reload = true
@@ -5,19 +13,30 @@ live_config_reload = true
 [cursor]
 blink_interval = 550
 unfocused_hollow = false
+thickness = 0.15
 
 [cursor.style]
 blinking = "On"
 shape = "Block"
 
 [selection]
-save_to_clipboard = false
+save_to_clipboard = true
 
 [window]
 decorations = "none"
 dynamic_title = true
 opacity = 1.0
+dynamic_padding = true
 
 [window.padding]
 x = 15
 y = 15
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[bell]
+animation = "Linear"
+duration = 20
+command = { program = "paplay", args = ["/usr/share/sounds/freedesktop/stereo/dialog-error.oga"] }
