@@ -1,14 +1,9 @@
 [font]
 size = 10
 
-[font.bold]
-family = "JetBrainsMono NF"
+builtin_box_drawing = true
 
-[font.bold_italic]
-family = "JetBrainsMono NF"
-
-[font.italic]
-family = "JetBrainsMono NF"
-
-[font.normal]
-family = "JetBrainsMono NF"
+normal = { family = "JetBrainsMono NF", style = "Regular" }
+bold = { family = "JetBrainsMono NF", style = "Bold" }
+italic = { family = "JetBrainsMono NF", style = "Italic" }
+bold_italic = { family = "JetBrainsMono NF", style = "Bold Italic" }
