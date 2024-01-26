@@ -244,9 +244,12 @@ for archivos in ~/dotfiles/misc/firefox/*; do
   fi
 done
 
+sed -i "s/user_pref(\"browser.startup.homepage\", \"file:\/\/\/home\/z0mbi3\/.local\/share\/startup-page\/index.html\")/user_pref(\"browser.startup.homepage\", \"file:\/\/\/home\/$USER\/.local\/share\/startup-page\/index.html\")/" "$HOME"/.mozilla/firefox/*.default-release/user.js
 cp -r "$HOME"/dotfiles/misc/startup-page "$HOME"/.local/share
+sed -i "s/name: 'gh0stzk'/name: '$USER'/" "$HOME"/.local/share/startup-page/config.js
 cp -f "$HOME"/dotfiles/home/.zshrc "$HOME"
 fc-cache -rv >/dev/null 2>&1
+
 printf "%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 3
 
