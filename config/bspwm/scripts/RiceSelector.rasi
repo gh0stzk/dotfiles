@@ -52,7 +52,7 @@ listview {
     dynamic:                     false;
     scrollbar:                   false;
     layout:                      vertical;
-    reverse:                     true;
+    reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
     cursor:                      "default";
