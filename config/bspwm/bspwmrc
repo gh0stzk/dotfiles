@@ -2,8 +2,8 @@
 #
 #  ██████╗ ███████╗██████╗ ██╗    ██╗███╗   ███╗██████╗  ██████╗
 #  ██╔══██╗██╔════╝██╔══██╗██║    ██║████╗ ████║██╔══██╗██╔════╝
-#  ██████╔╝███████╗██████╔╝██║ █╗ ██║██╔████╔██║██████╔╝██║     
-#  ██╔══██╗╚════██║██╔═══╝ ██║███╗██║██║╚██╔╝██║██╔══██╗██║     
+#  ██████╔╝███████╗██████╔╝██║ █╗ ██║██╔████╔██║██████╔╝██║
+#  ██╔══██╗╚════██║██╔═══╝ ██║███╗██║██║╚██╔╝██║██╔══██╗██║
 #  ██████╔╝███████║██║     ╚███╔███╔╝██║ ╚═╝ ██║██║  ██║╚██████╗
 #  ╚═════╝ ╚══════╝╚═╝      ╚══╝╚══╝ ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 #	- z0mbi3
@@ -23,13 +23,13 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 #  ║║║║ ║╠╦╝╠╩╗╚═╗╠═╝╠═╣║  ║╣ ╚═╗
 #  ╚╩╝╚═╝╩╚═╩ ╩╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
 
-	# Default 1 monitor with 6 workspaces
-	for monitor in "$(xrandr -q | grep -w 'connected' | cut -d' ' -f1)"; do
-		bspc monitor "$monitor" -d '1' '2' '3' '4' '5' '6'
-		#bspc monitor "$monitor" -d '' '' '' '' '' ''
-	done
+# Default 1 monitor with 6 workspaces
+for monitor in $(xrandr -q | grep -w 'connected' | cut -d' ' -f1); do
+    bspc monitor "$monitor" -d '1' '2' '3' '4' '5' '6'
+    #bspc monitor "$monitor" -d '' '' '' '' '' ''
+done
 
-	## For two or three monitors configuration see https://github.com/gh0stzk/dotfiles/wiki/Two-or-more-monitors-setup
+## For two or three monitors configuration see https://github.com/gh0stzk/dotfiles/wiki/Two-or-more-monitors-setup
 
 #  ╔╗ ╔═╗╔═╗╦ ╦╔╦╗  ╔═╗╔═╗╔╗╔╔═╗╦╔═╗
 #  ╠╩╗╚═╗╠═╝║║║║║║  ║  ║ ║║║║╠╣ ║║ ╦
@@ -37,25 +37,25 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 bspc config external_rules_command "$HOME"/.config/bspwm/scripts/ExternalRules
 
-bspc config window_gap					6
-bspc config split_ratio					0.51
-bspc config single_monocle				true
-bspc config borderless_monocle			false
-bspc config gapless_monocle				false
+bspc config window_gap                6
+bspc config split_ratio               0.51
+bspc config single_monocle            true
+bspc config borderless_monocle        false
+bspc config gapless_monocle           false
 
-bspc config focus_follows_pointer		true
-bspc config pointer_follows_focus		false
-bspc config pointer_motion_interval		5
-bspc config pointer_modifier			mod4
-bspc config pointer_action1				move
-bspc config pointer_action2				resize_side
-bspc config pointer_action3				resize_corner
+bspc config focus_follows_pointer     true
+bspc config pointer_follows_focus     false
+bspc config pointer_motion_interval   5
+bspc config pointer_modifier          mod4
+bspc config pointer_action1           move
+bspc config pointer_action2           resize_side
+bspc config pointer_action3           resize_corner
 
 #bspc wm --adopt-orphans
 bspc rule -a scratch sticky=on state=floating focus=on
 
 #  ╔═╗╦ ╦╔╦╗╔═╗╔═╗╔╦╗╔═╗╦═╗╔╦╗
-#  ╠═╣║ ║ ║ ║ ║╚═╗ ║ ╠═╣╠╦╝ ║ 
+#  ╠═╣║ ║ ║ ║ ║╚═╗ ║ ╠═╣╠╦╝ ║
 #  ╩ ╩╚═╝ ╩ ╚═╝╚═╝ ╩ ╩ ╩╩╚═ ╩
 
 # Set system vars for polybar
@@ -64,14 +64,14 @@ bspc rule -a scratch sticky=on state=floating focus=on
 # Terminate already running polybar, stalonetray, sxhkd and dunst instances
 processes=("sxhkd" "polybar" "stalonetray" "dunst" "eww.*bar")
 
-	for process in "${processes[@]}"; do
-		if pgrep -f "$process"; then
-			pkill -9 -f "$process" > /dev/null; sleep 0.1
-		fi
-	done
+for process in "${processes[@]}"; do
+    if pgrep -f "$process"; then
+        pkill -9 -f "$process" > /dev/null; sleep 0.1
+    fi
+done
 
 # Load bspwm conf, colors, dunst, bars and/or eww widgets
-. ${rice_dir}/Theme.sh
+. "${rice_dir}"/Theme.sh
 
 
 # Reload sxhkd daemon
@@ -84,7 +84,7 @@ sxhkd -c "$HOME"/.config/bspwm/sxhkdrc &
 dunst -config "$HOME"/.config/bspwm/dunstrc &
 
 # Set random wallpaper for actual rice
-feh -z --no-fehbg --bg-fill ${rice_dir}/walls
+feh -z --no-fehbg --bg-fill "${rice_dir}"/walls
 
 # Launch eww daemon
 pidof -q eww || { eww -c "$HOME"/.config/bspwm/eww daemon & }
@@ -95,7 +95,7 @@ pidof -q polkit-gnome-authentication-agent-1 || { /usr/lib/polkit-gnome/polkit-g
 # Fix cursor
 xsetroot -cursor_name left_ptr
 
-# Launch picom // If you have old hardware or encounter problems 
+# Launch picom // If you have old hardware or encounter problems
 # uncomment the picom "--legacy-backends" line and comment the current one.
 pidof -q picom || { picom -b --config "$HOME"/.config/bspwm/picom.conf & }
 #pidof -q picom || { picom --legacy-backends --config "$HOME"/.config/bspwm/picom.conf & }
