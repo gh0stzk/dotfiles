@@ -16,9 +16,15 @@
 
 # Some vars
 bspwm_dir="$HOME/.config/bspwm"
+current_rice_file="$bspwm_dir/.rice"
 preview_dir="$bspwm_dir/rices/${options[*]}"
 rofi_command="rofi -dmenu -theme $bspwm_dir/scripts/RiceSelector.rasi"
-read -r current_rice < "$bspwm_dir"/.rice
+
+# Variables to try to define the correct size of the images for your resolution
+monitor_res=$(xdpyinfo | awk '/dimensions/{print $2}' | cut -d 'x' -f1)
+monitor_scale=$(xdpyinfo | awk '/resolution/{print $2}' | cut -d 'x' -f1)
+monitor_res=$(( monitor_res * 17 / monitor_scale ))
+rofi_override="element-icon{size:${monitor_res}px;}"
 
 # Verificar si xdpyinfo e imagemagick están instalados
 if ! command -v xdpyinfo > /dev/null 2>&1; then
@@ -30,9 +36,10 @@ fi
 options=()
 index=0
 selected_index=0
+current_rice=$(< "$current_rice_file")
 
-for dir in "$bspwm_dir"/rices/*/; do
-    rice_name=$(basename "$dir")
+for rice_dir in "$bspwm_dir"/rices/*/; do
+    rice_name=$(basename "$rice_dir")
     options+=("$rice_name")
 
     # Check if the current rice matches the current iteration rice
@@ -43,18 +50,11 @@ for dir in "$bspwm_dir"/rices/*/; do
     ((index++))
 done
 
-# Variables to try to define the correct size of the images for your resolution
-monitor_res=$(xdpyinfo | grep dimensions | awk '{print $2}' | cut -d 'x' -f1)
-monitor_scale=$(xdpyinfo | grep -oP "resolution:.*" | awk '{print $2}' | cut -d 'x' -f1)
-monitor_res=$(( monitor_res * 17 / monitor_scale ))
-rofi_override="element-icon{size:${monitor_res}px;}"
-
 # Show the rofi selection menu with the starting point set to the current rice and store the result in a variable.
 selected=$(printf "%s\n" "${options[@]}" | while read -r A ; do  echo -en "$A\x00icon\x1f${preview_dir}$A/preview.webp\n" ; done | $rofi_command -theme-str "$rofi_override" -selected-row "$selected_index")
 
 # If a valid option was selected, write the value to the configuration file and restart BSPWM.
-[[ -n "$selected" ]] || exit 1
-echo "$selected" > "$bspwm_dir/.rice"
+[[ -n "$selected" && "$selected" != "$current_rice" ]] || exit 1
+echo "$selected" > "$current_rice_file"
 bspc wm -r
-
 exit 0

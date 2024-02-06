@@ -1,153 +1,153 @@
 // Colors //
-$bg: #F5EEE6;
+$bg: #f5eee6;
 $borderbg: #161616;
 $fg: #151515;
 $magenta: #c5abff;
 $gray: #e6dfd7;
 
 // Global //
-*{
-	all: unset;
-	font-family: "JetBrainsMono NF";
-	color: $fg;
+* {
+  all: unset;
+  font-family: "JetBrainsMono NF";
+  color: $fg;
 }
 
 tooltip {
-    background-color: $bg;
-    color: $fg;
-    font-weight: Bold;
-    font-size: .8rem;
+  background-color: $bg;
+  color: $fg;
+  font-weight: Bold;
+  font-size: 0.8rem;
 }
 
 //----- Main Bar widget -----//
 
 .allbars {
-	margin: .8rem 1.3rem;
+  margin: 0.8rem 1.3rem;
 }
 
 .mainbars {
-	background-color: $bg;
-	border: 1px solid $borderbg;
-	border-radius: 12px;
-	padding: .5rem .8rem;
-	box-shadow: 3px 3px 5px 0px $borderbg;
+  background-color: $bg;
+  border: 1px solid $borderbg;
+  border-radius: 12px;
+  padding: 0.5rem 0.8rem;
+  box-shadow: 3px 3px 5px 0px $borderbg;
 }
 
 .icons {
-	background-repeat: no-repeat;
-	background-size: 24px;
-	min-height: 24px;
-	min-width: 24px;
-  }
-  
+  background-repeat: no-repeat;
+  background-size: 24px;
+  min-height: 24px;
+  min-width: 24px;
+}
+
 .icon-power {
-	background-repeat: no-repeat;
-	background-size: 18px;
-	min-height: 18px;
-	min-width: 18px;
-  }
+  background-repeat: no-repeat;
+  background-size: 18px;
+  min-height: 18px;
+  min-width: 18px;
+}
 
 .infotext {
-	background-color: $gray;
-	border-radius: 16px;
-	padding: 0 5px;
-	font-size : 0.813rem;
-	font-weight : bold;
-  }
-  
+  background-color: $gray;
+  border-radius: 16px;
+  padding: 0 5px;
+  font-size: 0.813rem;
+  font-weight: bold;
+}
+
 .infotext-pac {
-	background-color: $magenta;
-	border-radius: 16px;
-	padding: 0 5px;
-	font-size : 0.813rem;
-	font-weight : bold;
-  }
+  background-color: $magenta;
+  border-radius: 16px;
+  padding: 0 5px;
+  font-size: 0.813rem;
+  font-weight: bold;
+}
 
 //----- Music -----//
 
 .album_art {
-    background-repeat: no-repeat;
-	background-size: 30px;
-	min-height: 30px;
-	min-width: 30px;
-	border-radius: 8px;
+  background-repeat: no-repeat;
+  background-size: 30px;
+  min-height: 30px;
+  min-width: 30px;
+  border-radius: 8px;
 }
 
 .song-info {
-	min-width: 150px;
+  min-width: 150px;
 }
 
 .song {
-	font-size : .8rem;
-	font-weight : bold;
+  font-size: 0.8rem;
+  font-weight: bold;
 }
 
 .artist {
-	font-size : .7rem;
-	font-weight : bold;
+  font-size: 0.7rem;
+  font-weight: bold;
 }
 
 .player-toggle {
-	font-family: "Material Design Icons Desktop";
-    font-size: 1.6rem;
-    }
+  font-family: "Material Design Icons Desktop";
+  font-size: 1.6rem;
+}
 
 .player-previous,
 .player-next {
-	font-family: "Material Design Icons Desktop";
-	font-size: 1.2rem;
-  }
-  
+  font-family: "Material Design Icons Desktop";
+  font-size: 1.2rem;
+}
+
 //----- Clock -----//
-  
+
 .time {
-	font-size : .8rem;
-	font-weight : bold;
+  font-size: 0.8rem;
+  font-weight: bold;
 }
 
 .date {
-	font-size : .7rem;
-	font-weight : bold;
+  font-size: 0.7rem;
+  font-weight: bold;
 }
 
 .weathericon {
-	font-family: "Font Awesome 6 Free Solid";
-	font-size : 1.4rem;
-	font-weight : normal;
+  font-family: "Font Awesome 6 Free Solid";
+  font-size: 1.4rem;
+  font-weight: normal;
 }
 
 .weathertemp {
-	font-size : 1rem;
-	font-weight : bold;
-	
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .audio-box {
-    background-color: $bg;
-	border: 1px solid $borderbg;
-	border-radius: 12px;
-	padding: .5rem .8rem;
-  }
+  background-color: $bg;
+  border: 1px solid $borderbg;
+  border-radius: 12px;
+  padding: 0.5rem 0.8rem;
+}
 
 .speaker_icon {
-	background-size: 55px;
-    background-image: url('images/volume.png');
-	background-position: center;
-	background-repeat: no-repeat;
-	min-height: 55px;
-	min-width: 55px;
-	margin: 0 9px 0 0;
-	border-radius: 12px;
+  background-size: 55px;
+  background-image: url("images/volume.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 55px;
+  min-width: 55px;
+  margin: 0 9px 0 0;
+  border-radius: 12px;
 }
 
 .speaker_bar scale trough highlight {
-    background-color: #67D4F1;
-	border-radius: 24px;
+  background-color: #67d4f1;
+  border-radius: 24px;
 }
+
 .speaker_bar scale trough {
-	background-color: $bg;
-    border: 3px solid $borderbg; 
-	border-radius: 24px;
-	min-height: 13px;
-	min-width: 120px;
+  background-color: $bg;
+  border: 3px solid $borderbg;
+  border-radius: 24px;
+  min-height: 13px;
+  min-width: 120px;
 }

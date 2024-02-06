@@ -1,13 +1,13 @@
 window>.powermenu {
-  margin: .5rem;
+  margin: 0.5rem;
   background-color: $bg;
 }
 
 .powermenu {
   font-family: "Font Awesome 6 Free Solid";
   font-size: 1.5rem;
-  padding: .3rem;
-  border-radius: .5rem;
+  padding: 0.3rem;
+  border-radius: 0.5rem;
 
   &.shutdown {
     color: $red;
@@ -29,8 +29,8 @@ window>.powermenu {
     background-color: $bg-alt;
     padding: 1.2rem;
 
-  &:hover {
+    &:hover {
       background-color: lighten($color: $bg-alt, $amount: 4%);
-    }  
+    }
   }
 }

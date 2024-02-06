@@ -1,29 +1,29 @@
 .date {
   background-color: $bg;
   color: $fg;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 }
 
 .cal-box {
   font-family: Cantarell;
   font-weight: Bold;
-  font-size: .9rem;
+  font-size: 0.9rem;
   background-color: $bg;
-  border-radius: .5rem;
-  padding: 0 1rem .2rem;
+  border-radius: 0.5rem;
+  padding: 0 1rem 0.2rem;
   color: $fg;
   background-color: $bg-alt;
-  margin: .6rem .6rem .6rem .6rem;
+  margin: 0.6rem 0.6rem 0.6rem 0.6rem;
 
   .cal {
     background-color: inherit;
-    padding: .5rem .15rem .2rem;
+    padding: 0.5rem 0.15rem 0.2rem;
     margin-left: 10px;
 
-    & > * {
+    &>* {
       border: solid 0px transparent;
     }
-    
+
     &.highlight {
       padding: 10rem;
     }

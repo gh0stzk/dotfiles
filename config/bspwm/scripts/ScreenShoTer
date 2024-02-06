@@ -3,11 +3,10 @@
 #  ╚═╗║  ╠╦╝║╣ ║╣ ║║║╚═╗╠═╣║ ║ ║ ║╣ ╠╦╝
 #  ╚═╝╚═╝╩╚═╚═╝╚═╝╝╚╝╚═╝╩ ╩╚═╝ ╩ ╚═╝╩╚═
 #
-#	z0mbi3
+#   z0mbi3
 #   https://github.com/gh0stzk/dotfiles
 #   Script to take screenshots using maim.
 #   20.12.2023 16:10:25
-
 
 timestamp=$(date +%Y-%m-%d-%I%M%S)
 dir="$(xdg-user-dir PICTURES)/ScreenShots"
@@ -17,11 +16,11 @@ filename="$dir/Shot-${timestamp}.png"
 
 
 show_notification() {
-	if [[ -e "$filename" ]]; then
-		dunstify --replace=699 -i "$filename" "Screenshot" "Screenshot saved and copied to clipboard"
-	else
-		dunstify --replace=699 -i custom-trash-bin "Screenshot" "Screenshot Canceled"
-	fi
+    if [[ -e "$filename" ]]; then
+        dunstify --replace=699 -i "$filename" "Screenshot" "Screenshot saved and copied to clipboard"
+    else
+        dunstify --replace=699 -i custom-trash-bin "Screenshot" "Screenshot Canceled"
+    fi
 }
 
 take_screenshot() {
@@ -31,21 +30,21 @@ take_screenshot() {
 }
 
 countdown() {
-	for sec in $(seq "$1" -1 1); do
-		dunstify -t 1000 --replace=699 -i  ~/.config/bspwm/assets/screenshot.svg "Taking shot in : $sec"
-		sleep 1
-	done
+    for sec in $(seq "$1" -1 1); do
+        dunstify -t 1000 --replace=699 -i  ~/.config/bspwm/assets/screenshot.svg "Taking shot in : $sec"
+        sleep 1
+    done
 }
 
 case $1 in
-	--now)
-		take_screenshot;;
-	--in10)
-		countdown 10 && take_screenshot;;
-	--sel)
-		take_screenshot -s -o;;
-	--active)
-		take_screenshot -i "$(xdotool getactivewindow)";;
-	*)
-		take_screenshot;;
+    --now)
+        take_screenshot ;;
+    --in10)
+        countdown 10 && take_screenshot ;;
+    --sel)
+        take_screenshot -s -o ;;
+    --active)
+        take_screenshot -i "$(xdotool getactivewindow)" ;;
+    *)
+        take_screenshot ;;
 esac

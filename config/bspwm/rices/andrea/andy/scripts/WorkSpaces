@@ -2,41 +2,37 @@
 
 # Checks if a list ($1) contains an element ($2)
 contains() {
-  for e in $1; do
-    [ "$e" -eq "$2" ] && echo 1 && return
-  done
-  echo 0
+    for e in $1; do
+        [ "$e" -eq "$2" ] && echo 1 && return
+    done
+    echo 0
 }
 
 print_workspaces() {
-  buf=""
-  desktops="$(bspc query -D --names)"
-  focused_desktop="$(bspc query -D -d focused --names)"
-  occupied_desktops="$(bspc query -D -d .occupied --names)"
-  urgent_desktops="$(bspc query -D -d .urgent --names)"
+    buf=""
+    desktops="$(bspc query -D --names)"
+    focused_desktop="$(bspc query -D -d focused --names)"
+    occupied_desktops="$(bspc query -D -d .occupied --names)"
 
-  for d in $desktops; do
-    if [ "$(contains "$focused_desktop" "$d")" -eq 1 ]; then
-      ws=$d
-      icon="./images/pacman.png"
-      class="focused"
-    elif [ "$(contains "$occupied_desktops" "$d")" -eq 1 ]; then
-      ws=$d
-      icon="./images/ghost.png"
-      class="occupied"
-    else
-      ws=$d
-      icon="./images/empty.png"
-      class="empty"
-    fi
+    for d in $desktops; do
+        if [ "$(contains "$focused_desktop" "$d")" -eq 1 ]; then
+            ws=$d
+            icon="./images/pacman.png"
+        elif [ "$(contains "$occupied_desktops" "$d")" -eq 1 ]; then
+            ws=$d
+            icon="./images/ghost.png"
+        else
+            ws=$d
+            icon="./images/empty.png"
+        fi
 
-    buf="$buf (eventbox :cursor \"pointer\" (button :style \"background-image: url('$icon');\" :class \"icons\" :valign \"center\" :onclick \"bspc desktop -f $ws\"))"
-  done
-  echo "(box :class \"mainbars\" :spacing 10 :space-evenly \"false\" :vexpand \"true\" $buf)"
+        buf="$buf (eventbox :cursor \"pointer\" (button :style \"background-image: url('$icon');\" :class \"icons\" :valign \"center\" :onclick \"bspc desktop -f $ws\"))"
+    done
+    echo "(box :class \"mainbars\" :spacing 10 :space-evenly \"false\" :vexpand \"true\" $buf)"
 }
 
 # Listen to bspwm changes
 print_workspaces
 bspc subscribe desktop node_transfer | while read -r _ ; do
-  print_workspaces &
+    print_workspaces &
 done

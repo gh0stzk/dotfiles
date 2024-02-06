@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #  ███╗   ██╗███████╗████████╗██╗    ██╗ ██████╗ ██████╗ ██╗  ██╗
 #  ████╗  ██║██╔════╝╚══██╔══╝██║    ██║██╔═══██╗██╔══██╗██║ ██╔╝
-#  ██╔██╗ ██║█████╗     ██║   ██║ █╗ ██║██║   ██║██████╔╝█████╔╝ 
-#  ██║╚██╗██║██╔══╝     ██║   ██║███╗██║██║   ██║██╔══██╗██╔═██╗ 
+#  ██╔██╗ ██║█████╗     ██║   ██║ █╗ ██║██║   ██║██████╔╝█████╔╝
+#  ██║╚██╗██║██╔══╝     ██║   ██║███╗██║██║   ██║██╔══██╗██╔═██╗
 #  ██║ ╚████║███████╗   ██║   ╚███╔███╔╝╚██████╔╝██║  ██║██║  ██╗
 #  ╚═╝  ╚═══╝╚══════╝   ╚═╝    ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 #	gh0stzk
@@ -14,9 +14,9 @@ ID=$(ip link | awk '/state UP/ {print $2}' | tr -d :)
 SSID=""
 ICON="images/wifi.png"
 
-	if command -v iwgetid >/dev/null 2>&1 ; then
-		SSID=$(iwgetid -r)
-	fi
+if command -v iwgetid >/dev/null 2>&1 ; then
+    SSID=$(iwgetid -r)
+fi
 
 ping_servers=("archlinux.org" "google.com")
 
@@ -29,18 +29,18 @@ is_online() {
     return 1  # Offline
 }
 
-	if is_online; then
-		if [[ $ID == e* ]]; then
-			STATUS="$ID"
-		else
-			STATUS="$SSID"
-		fi
-	else
-		STATUS="Offline"
-		ICON="images/no-wifi.png"
-	fi
+if is_online; then
+    if [[ $ID == e* ]]; then
+        STATUS="$ID"
+    else
+        STATUS="$SSID"
+    fi
+else
+    STATUS="Offline"
+    ICON="images/no-wifi.png"
+fi
 
-	case "$1" in
-		--stat) echo "$STATUS" ;;
-		--icon) echo "$ICON" ;;
-	esac
+case "$1" in
+    --stat) echo "$STATUS" ;;
+    --icon) echo "$ICON" ;;
+esac

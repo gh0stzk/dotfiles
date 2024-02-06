@@ -15,7 +15,9 @@
 
     .player-info {
       border-radius: 1rem;
-      background: linear-gradient(to right, rgb(#191919, 1), rgba(#262626, 0.5));
+      background: linear-gradient(to right,
+          rgb(#191919, 1),
+          rgba(#262626, 0.5));
       padding: 0.65rem;
 
       .player-shuffle,
@@ -29,7 +31,7 @@
         color: $green;
         text-shadow: 0 0 0.2rem black;
       }
-      
+
       .mpd-icon {
         font-size: 1.25rem;
         color: $magenta;
@@ -38,7 +40,7 @@
 
       .player-title {
         font-style: italic;
-		font-family: Cartograph CF;
+        font-family: Cartograph CF;
         font-size: 1.1rem;
         font-weight: bold;
         color: $fg;
@@ -46,27 +48,25 @@
       }
 
       .player-artist {
-		font-family: JetBrainsMono NF;
-		font-weight: bolder;
-		font-size: 0.8rem;
+        font-family: JetBrainsMono NF;
+        font-weight: bolder;
+        font-size: 0.8rem;
         color: $fg;
         text-shadow: 0 0 0.5rem rgba($color: black, $alpha: 1);
       }
 
       .player-time {
-		font-style: italic;
-		font-family: Cartograph CF;
+        font-style: italic;
+        font-family: Cartograph CF;
         font-size: 0.8rem;
         color: $fg;
       }
 
       .player-bar scale trough highlight {
         all: unset;
-        background-image: linear-gradient(
-          to right,
-          darken($color: $green, $amount: 15%),
-          $green
-        );
+        background-image: linear-gradient(to right,
+            darken($color: $green, $amount: 15%),
+            $green );
         border-radius: 2rem;
       }
 

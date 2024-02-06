@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #  ██╗   ██╗ ██████╗ ██╗     ██╗   ██╗███╗   ███╗███████╗
 #  ██║   ██║██╔═══██╗██║     ██║   ██║████╗ ████║██╔════╝
-#  ██║   ██║██║   ██║██║     ██║   ██║██╔████╔██║█████╗  
-#  ╚██╗ ██╔╝██║   ██║██║     ██║   ██║██║╚██╔╝██║██╔══╝  
+#  ██║   ██║██║   ██║██║     ██║   ██║██╔████╔██║█████╗
+#  ╚██╗ ██╔╝██║   ██║██║     ██║   ██║██║╚██╔╝██║██╔══╝
 #   ╚████╔╝ ╚██████╔╝███████╗╚██████╔╝██║ ╚═╝ ██║███████╗
 #    ╚═══╝   ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
 #
@@ -18,53 +18,53 @@ notify_cmd='dunstify -u low -h string:x-dunst-stack-tag:cvolum'
 
 # Get Volume
 get_volume() {
-	pamixer --get-volume-human | sed 's/%//'
+    pamixer --get-volume-human | sed 's/%//'
 }
 
 # Get icons
 get_icon() {
-	current="$(get_volume)"
-	if [[ "$current" -eq "0" || "$current" == "muted" ]]; then
-		icon="$vol_dir/mute.png"
-	else
-		icon="$vol_dir/vol.png"
-	fi
+    current="$(get_volume)"
+    if [[ "$current" -eq "0" || "$current" == "muted" ]]; then
+        icon="$vol_dir/mute.png"
+    else
+        icon="$vol_dir/vol.png"
+    fi
 }
 
 # Notify
 notify_user() {
-	${notify_cmd} -i "$icon" "Volume : $(get_volume)%"
+    ${notify_cmd} -i "$icon" "Volume : $(get_volume)%"
 }
 
 # Adjust Volume
 adjust_volume() {
-	[[ $(pamixer --get-mute) == true ]] && pamixer -u
-	pamixer --allow-boost --set-limit 150 "$1" "$2" && get_icon && notify_user
+    [[ $(pamixer --get-mute) == true ]] && pamixer -u
+    pamixer --allow-boost --set-limit 150 "$1" "$2" && get_icon && notify_user
 }
 
 # Toggle Mute
 toggle_mute() {
-	if [[ $(pamixer --get-mute) == false ]]; then
-		pamixer --toggle-mute
-		get_icon
-		message="Mute"
-	else
-		pamixer --toggle-mute
-		get_icon
-		message="Unmute"
-	fi
-	${notify_cmd} -i "$icon" "$message"
+    if [[ $(pamixer --get-mute) == false ]]; then
+        pamixer --toggle-mute
+        get_icon
+        message="Mute"
+    else
+        pamixer --toggle-mute
+        get_icon
+        message="Unmute"
+    fi
+    ${notify_cmd} -i "$icon" "$message"
 }
 
 # Execute accordingly
 if command -v pamixer &>/dev/null; then
-	case "$1" in
-		--get) get_volume ;;
-		--inc) adjust_volume -i 5 ;;
-		--dec) adjust_volume -d 5 ;;
-		--toggle) toggle_mute ;;
-		*) echo "$(get_volume)%" ;;
-	esac
+    case "$1" in
+        --get) get_volume ;;
+        --inc) adjust_volume -i 5 ;;
+        --dec) adjust_volume -d 5 ;;
+        --toggle) toggle_mute ;;
+        *) echo "$(get_volume)%" ;;
+    esac
 else
-	${notify_cmd} "'pamixer' is not installed."
+    ${notify_cmd} "'pamixer' is not installed."
 fi
