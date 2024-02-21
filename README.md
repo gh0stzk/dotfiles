@@ -261,6 +261,12 @@ I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wik
 |:-:|
 Complementarily you can install [this extension](https://github.com/PonyLucky/gh0stzk-Firefox/tree/master/extension) made by [PonyLucky](https://github.com/PonyLucky). It is a startpage to enhance UX. [Preview and configuration options](https://github.com/PonyLucky/gh0stzk-Firefox/tree/master/extension). Looks awesome with the firefox theme.
 
+## Neovim Setup
+
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/17a1eb30-437e-4bf2-980c-6a410eff76bb" alt="Neovim configuration" width="700">|
+|:-:|
+Plugins included [Neovim setup wiki](https://github.com/gh0stzk/dotfiles/wiki/Neovim-setup)
+
 ## Very useful keybindigs to know...
 
 | Keys | Action |

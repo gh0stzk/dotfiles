@@ -260,6 +260,12 @@ Ya comencé a escribir la [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki), 
 |:-:|
 Tambien puedes instalar [esta extension](https://github.com/PonyLucky/gh0stzk-Firefox/tree/master/extension) hecha por [PonyLucky](https://github.com/PonyLucky). Es una pagina de inicioi. [Preview y opciones de configuracion](https://github.com/PonyLucky/gh0stzk-Firefox/tree/master/extension). Se ve genial con mi tema de firefox.
 
+## Neovim Setup
+
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/17a1eb30-437e-4bf2-980c-6a410eff76bb" alt="Neovim configuration" width="700">|
+|:-:|
+Plugins incluidos [Neovim setup wiki](https://github.com/gh0stzk/dotfiles/wiki/Neovim-setup)
+
 ## Atajos de teclado utiles que deberias saber...
 
 | Keys | Action |

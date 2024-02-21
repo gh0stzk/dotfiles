@@ -72,16 +72,6 @@ set_picom_config() {
         -e "s/\".*:class_g = 'FloaTerm'\"/\"98:class_g = 'FloaTerm'\"/g"
 }
 
-# Set stalonetray config
-set_stalonetray_config() {
-    sed -i "$HOME"/.config/bspwm/stalonetrayrc \
-        -e "s/background .*/background \"#0B0910\"/" \
-        -e "s/vertical .*/vertical true/" \
-        -e "s/geometry .*/geometry 1x1-415+45/" \
-        -e "s/grow_gravity .*/grow_gravity NE/" \
-        -e "s/icon_gravity .*/icon_gravity NE/"
-}
-
 # Set dunst notification daemon config
 set_dunst_config() {
     sed -i "$HOME"/.config/bspwm/dunstrc \
@@ -174,7 +164,6 @@ launch_bars() {
 set_bspwm_config
 set_term_config
 set_picom_config
-set_stalonetray_config
 launch_bars
 set_dunst_config
 set_eww_colors

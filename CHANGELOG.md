@@ -1,3 +1,38 @@
+## Returns to polybar's default systemtray.
+##### February 21 2024
+
+- Due to the ease in configuring the systemtray that comes with polybar, the stalonetray is droped from the dotfiles.
+- Fixed minor visual bugs in some themes
+- The installer now has more descriptive colors and error handling in RiceError.log, to make it easier to track if you had any errors.
+- The neovim configuration is returned to the dotfiles
+    - I try to make a simple but powerful neovim configuration, of course if you are a pro with neovim and have your own super pro configuration, you will not be interested, remember that your neovim folder was moved to the backup folder, so you can return to it without problems. But if you start with neovim, you will surely be able to get a lot of juice out of it.
+
+##### Plugins included:
+- Alpha
+- Autopairs
+- Bufferline
+- Comments
+- LSP stuff (completions, snippets, code actions, definitions, etc)
+- Highlight-colors
+- Indent-blankline
+- Lualine
+- Neotree
+- None-ls (null-ls)
+- OneDark Pro colorscheme (The colors adapt to different rices.)
+- Rainbow delimiters
+- Ranger
+- Telescope
+- Treesitter
+
+Lazy is used to manage plugins and of course the configuration is in lua. Loading time is **Startuptime: 44.1ms**.
+
+It is not my intention to add many languages to the LSP, by default those used in dotfiles, bash, lua, css, python are configured.
+
+But of course you can add more and in case you don't know how, here is the YouTube link where I took the configuration from, the guy is a machine its name is "Typecraft" and you will surely learn something new. [TypeCraft From 0 to IDE in neovim](https://www.youtube.com/watch?v=zHTeCSVAFNY&list=PLsz00TDipIffreIaUNk64KxTIkQaGguqn) The one you want is episode 3.
+
+![ezgif com-animated-gif-maker](https://github.com/gh0stzk/dotfiles/assets/67278339/17a1eb30-437e-4bf2-980c-6a410eff76bb)
+
+
 ## Startup Page added to FireFox
 ##### December 20 2023:
 

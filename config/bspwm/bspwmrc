@@ -15,6 +15,7 @@ read -r RICETHEME < "$HOME"/.config/bspwm/.rice
 export RICETHEME
 PATH="$HOME/.config/bspwm/scripts:$PATH"
 rice_dir="$HOME/.config/bspwm/rices/$RICETHEME"
+export XDG_CURRENT_DESKTOP='bspwm'
 
 ## Fix java applications
 export _JAVA_AWT_WM_NONREPARENTING=1
@@ -62,11 +63,11 @@ bspc rule -a scratch sticky=on state=floating focus=on
 . SetSysVars
 
 # Terminate already running polybar, stalonetray, sxhkd and dunst instances
-processes=("sxhkd" "polybar" "stalonetray" "dunst" "eww.*bar")
+processes=("sxhkd" "polybar" "dunst" "eww.*bar")
 
 for process in "${processes[@]}"; do
     if pgrep -f "$process"; then
-        pkill -9 -f "$process" > /dev/null; sleep 0.1
+        pkill -9 -f "$process" > /dev/null; sleep 0.25
     fi
 done
 
@@ -77,8 +78,10 @@ done
 # Reload sxhkd daemon
 sxhkd -c "$HOME"/.config/bspwm/sxhkdrc &
 
-# Launch stalonetray
-[[ "$RICETHEME" != "z0mbi3" ]] && stalonetray -c "$HOME"/.config/bspwm/stalonetrayrc & sleep 0.1 && xdo hide -N stalonetray && touch "/tmp/syshide.lock"
+# Launch picom // If you have old hardware or encounter problems
+# uncomment the picom "--legacy-backends" line and comment the current one.
+pidof -q picom || { picom --config "$HOME"/.config/bspwm/picom.conf & }
+#pidof -q picom || { picom --legacy-backends --config "$HOME"/.config/bspwm/picom.conf & }
 
 # Launch dunst notification daemon
 dunst -config "$HOME"/.config/bspwm/dunstrc &
@@ -94,8 +97,3 @@ pidof -q polkit-gnome-authentication-agent-1 || { /usr/lib/polkit-gnome/polkit-g
 
 # Fix cursor
 xsetroot -cursor_name left_ptr
-
-# Launch picom // If you have old hardware or encounter problems
-# uncomment the picom "--legacy-backends" line and comment the current one.
-pidof -q picom || { picom --config "$HOME"/.config/bspwm/picom.conf & }
-#pidof -q picom || { picom --legacy-backends --config "$HOME"/.config/bspwm/picom.conf & }

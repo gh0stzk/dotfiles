@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
-#  ╦═╗╦╔═╗╔═╗  ╦╔╗╔╔═╗╔╦╗╔═╗╦  ╦  ╔═╗╦═╗
-#  ╠╦╝║║  ║╣   ║║║║╚═╗ ║ ╠═╣║  ║  ║╣ ╠╦╝
-#  ╩╚═╩╚═╝╚═╝  ╩╝╚╝╚═╝ ╩ ╩ ╩╩═╝╩═╝╚═╝╩╚═
-#	Script to install my dotfiles
+#  ██████╗ ██╗ ██████╗███████╗    ██╗███╗   ██╗███████╗████████╗ █████╗ ██╗     ██╗     ███████╗██████╗
+#  ██╔══██╗██║██╔════╝██╔════╝    ██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║     ██║     ██╔════╝██╔══██╗
+#  ██████╔╝██║██║     █████╗      ██║██╔██╗ ██║███████╗   ██║   ███████║██║     ██║     █████╗  ██████╔╝
+#  ██╔══██╗██║██║     ██╔══╝      ██║██║╚██╗██║╚════██║   ██║   ██╔══██║██║     ██║     ██╔══╝  ██╔══██╗
+#  ██║  ██║██║╚██████╗███████╗    ██║██║ ╚████║███████║   ██║   ██║  ██║███████╗███████╗███████╗██║  ██║
+#  ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝    ╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝
+#   Script to install my dotfiles
 #   Author: z0mbi3
-#	url: https://github.com/gh0stzk
+#   url: https://github.com/gh0stzk
 
 CRE=$(tput setaf 1)
 CYE=$(tput setaf 3)
@@ -17,12 +20,12 @@ backup_folder=~/.RiceBackup
 date=$(date +%Y%m%d-%H%M%S)
 
 logo () {
-	
-	local text="${1:?}"
-	echo -en "                                  
-	               %%%                
-	        %%%%%//%%%%%              
-	      %%************%%%           
+
+    local text="${1:?}"
+    echo -en "
+	               %%%
+	        %%%%%//%%%%%
+	      %%************%%%
 	  (%%//############*****%%
 	%%%%%**###&&&&&&&&&###**//
 	%%(**##&&&#########&&&##**
@@ -35,8 +38,8 @@ logo () {
 	       &&&         &&&
 	       &&&////   &&
 	          &&//@@@**
-	            ..***                
-			  z0mbi3 Dotfiles\n\n"
+	            ..***
+    z0mbi3 Dotfiles\n\n"
     printf ' %s [%s%s %s%s %s]%s\n\n' "${CRE}" "${CNC}" "${CYE}" "${text}" "${CNC}" "${CRE}" "${CNC}"
 }
 
@@ -47,19 +50,27 @@ if [ "$(id -u)" = 0 ]; then
     exit 1
 fi
 
+home_dir=$HOME
+current_dir=$(pwd)
+
+if [ "$current_dir" != "$home_dir" ]; then
+    printf "%s%sThe script must be executed from the HOME directory.%s\n" "${BLD}" "${CYE}" "${CNC}"
+    exit 1
+fi
+
 ########## ---------- Welcome ---------- ##########
 
 logo "Welcome!"
-printf '%s%sThis script will check if you have the necessary dependencies, and if not, it will install them. Then, it will clone the RICE in your HOME directory.\nAfter that, it will create a secure backup of your files, and then copy the new files to your computer.\n\nMy dotfiles DO NOT modify any of your system configurations.\nYou will be prompted for your root password to install missing dependencies and/or to switch to zsh shell if its not your default.\n\nThis script doesnt have the potential power to break your system, it only copies files from my repository to your HOME directory.%s\n\n' "${BLD}" "${CRE}" "${CNC}"
+printf '%s%sThis script will check if you have the necessary dependencies, and if not, it will install them. Then, it will clone my repository in your HOME directory.\nAfter that, it will create a backup of your files, and then copy the new files to your computer.\n\nMy dotfiles DO NOT modify any of your system configurations.\nYou will be prompted for your root password to install missing dependencies and/or to switch to zsh shell if its not your default.\n\nThis script doesnt have the potential power to break your system, it only copies files from my repository to your HOME directory.%s\n\n' "${BLD}" "${CRE}" "${CNC}"
 
 while true; do
-	read -rp " Do you wish to continue? [y/N]: " yn
-		case $yn in
-			[Yy]* ) break;;
-			[Nn]* ) exit;;
-			* ) printf " Error: just write 'y' or 'n'\n\n";;
-		esac
-    done
+    read -rp " Do you wish to continue? [y/N]: " yn
+    case $yn in
+        [Yy]* ) break ;;
+        [Nn]* ) exit ;;
+        * ) printf " Error: just write 'y' or 'n'\n\n" ;;
+    esac
+done
 clear
 
 ########## ---------- Install packages ---------- ##########
@@ -67,43 +78,44 @@ clear
 logo "Installing needed packages.."
 
 dependencias=(base-devel rustup pacman-contrib bspwm polybar sxhkd \
-			  alacritty brightnessctl dunst rofi lsd stalonetray \
-			  jq polkit-gnome git playerctl mpd xclip \
-			  ncmpcpp geany ranger mpc picom xdo xdotool jgmenu \
-			  feh ueberzug maim pamixer libwebp xdg-user-dirs \
-			  webp-pixbuf-loader xorg-xprop xorg-xkill physlock papirus-icon-theme \
-			  ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels \
-			  zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting \
-			  imagemagick xorg-xdpyinfo xorg-xsetroot xorg-xwininfo xorg-xrandr)
+        alacritty brightnessctl dunst rofi lsd \
+        jq polkit-gnome git playerctl mpd xclip \
+        ncmpcpp geany ranger mpc picom xdo xdotool jgmenu \
+        feh ueberzug maim pamixer libwebp xdg-user-dirs \
+        webp-pixbuf-loader xorg-xprop xorg-xkill physlock papirus-icon-theme \
+        ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels \
+        zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting \
+    imagemagick xorg-xdpyinfo xorg-xsetroot xorg-xwininfo xorg-xrandr)
 
 is_installed() {
-  pacman -Qi "$1" &> /dev/null
-  return $?
+    pacman -Qi "$1" &> /dev/null
+    return $?
 }
 
 printf "%s%sChecking for required packages...%s\n" "${BLD}" "${CBL}" "${CNC}"
-for paquete in "${dependencias[@]}"
-do
-  if ! is_installed "$paquete"; then
-    sudo pacman -S "$paquete" --noconfirm
-    printf "\n"
-  else
-    printf '%s%s is already installed on your system!%s\n' "${CGR}" "$paquete" "${CNC}"
-    sleep 1
-  fi
+for paquete in "${dependencias[@]}"; do
+    if ! is_installed "$paquete"; then
+        if sudo pacman -S "$paquete" --noconfirm >/dev/null 2>> RiceError.log; then
+            printf "%s%s%s %shas been installed succesfully.%s\n" "${BLD}" "${CYE}" "$paquete" "${CBL}" "${CNC}"
+            sleep 1
+        else
+            printf "%s%s%s %shas not been installed correctly. See %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "$paquete" "${CRE}" "${CBL}" "${CRE}" "${CNC}"
+            sleep 1
+        fi
+    else
+        printf '%s%s%s %sis already installed on your system!%s\n' "${BLD}" "${CYE}" "$paquete" "${CGR}" "${CNC}"
+        sleep 1
+    fi
 done
-sleep 3
+sleep 5
 clear
 
 ########## ---------- Preparing Folders ---------- ##########
 
 # Verifica si el archivo user-dirs.dirs no existe en ~/.config
-	if [ ! -e "$HOME/.config/user-dirs.dirs" ]; then
-		xdg-user-dirs-update
-		echo "Creating xdg-user-dirs"
-	fi
-sleep 2 
-clear
+if [ ! -e "$HOME/.config/user-dirs.dirs" ]; then
+    xdg-user-dirs-update
+fi
 
 ########## ---------- Cloning the Rice! ---------- ##########
 
@@ -113,15 +125,14 @@ repo_url="https://github.com/gh0stzk/dotfiles"
 repo_dir="$HOME/dotfiles"
 
 # Verifica si el directorio del repositorio ya existe y, si es así, lo elimina
-	if [ -d "$repo_dir" ]; then
-		printf "Removing existing dotfiles repository\n"
-		rm -rf "$repo_dir"
-	fi
+if [ -d "$repo_dir" ]; then
+    printf "Removing existing dotfiles repository\n"
+    rm -rf "$repo_dir"
+fi
 
 # Clona el repositorio
 printf "Cloning dotfiles from %s\n" "$repo_url"
 git clone --depth=1 "$repo_url" "$repo_dir"
-
 sleep 2
 clear
 
@@ -131,38 +142,56 @@ logo "Backup files"
 printf "Backup files will be stored in %s%s%s/.RiceBackup%s \n\n" "${BLD}" "${CRE}" "$HOME" "${CNC}"
 sleep 10
 
-if [ ! -d "$backup_folder" ]; then
-  mkdir -p "$backup_folder"
-fi
+[ ! -d "$backup_folder" ] && mkdir -p "$backup_folder"
 
 for folder in bspwm alacritty picom rofi eww sxhkd dunst polybar ncmpcpp nvim ranger zsh mpd paru; do
-  if [ -d "$HOME/.config/$folder" ]; then
-    mv "$HOME/.config/$folder" "$backup_folder/${folder}_$date"
-    echo "$folder folder backed up successfully at $backup_folder/${folder}_$date"
-  else
-    echo "The folder $folder does not exist in $HOME/.config/"
-  fi
+    if [ -d "$HOME/.config/$folder" ]; then
+        if mv "$HOME/.config/$folder" "$backup_folder/${folder}_$date" 2>> RiceError.log; then
+            printf "%s%s%s folder backed up successfully at %s%s/%s_%s%s\n" "${BLD}" "${CGR}" "$folder" "${CBL}" "$backup_folder" "$folder" "$date" "${CNC}"
+            sleep 1
+        else
+            printf "%s%sFailed to backup %s folder. See %sRiceError.log%s\n" "${BLD}" "${CRE}" "$folder" "${CBL}" "${CNC}"
+            sleep 1
+        fi
+    else
+        printf "%s%s%s folder does not exist, %sno backup needed%s\n" "${BLD}" "${CGR}" "$folder" "${CYE}" "${CNC}"
+        sleep 1
+    fi
 done
 
-for folder in chrome; do
-  if [ -d "$HOME"/.mozilla/firefox/*.default-release/$folder ]; then
-    mv "$HOME"/.mozilla/firefox/*.default-release/$folder "$backup_folder"/${folder}_$date
-    echo "$folder folder backed up successfully at $backup_folder/${folder}_$date"
-  else
-    echo "The folder $folder does not exist in $HOME/.mozilla/firefox/"
-  fi
+for folder in "$HOME"/.mozilla/firefox/*.default-release/chrome; do
+    if [ -d "$folder" ]; then
+        if mv "$folder" "$backup_folder"/chrome_"$date" 2>> RiceError.log; then
+            printf "%s%sChrome folder backed up successfully at %s%s/chrome_%s%s\n" "${BLD}" "${CGR}" "${CBL}" "$backup_folder" "${date}" "${CNC}"
+        else
+            printf "%s%sFailed to backup Chrome folder. See %sRiceError.log%s\n" "${BLD}" "${CRE}" "${CBL}" "${CNC}"
+        fi
+    else
+        printf "%s%sThe folder Chrome does not exist, %sno backup needed%s\n" "${BLD}" "${CGR}" "${CYE}" "${CNC}"
+    fi
 done
 
-for file in user.js; do
-  if [ -e "$HOME"/.mozilla/firefox/*.default-release/$file ]; then
-    mv "$HOME"/.mozilla/firefox/*.default-release/$file "$backup_folder"/${file}_$date
-    echo "$file file backed up successfully at $backup_folder/${file}_$date"
-  else
-    echo "The file $file does not exist in $HOME/.mozilla/firefox/"
-  fi
+for file in "$HOME"/.mozilla/firefox/*.default-release/user.js; do
+    if [ -f "$file" ]; then
+        if mv "$file" "$backup_folder"/user.js_"$date" 2>> RiceError.log; then
+            printf "%s%suser.js file backed up successfully at %s%s/user.js_%s%s\n" "${BLD}" "${CGR}" "${CBL}" "$backup_folder" "${date}" "${CNC}"
+        else
+            printf "%s%sFailed to backup user.js file. See %sRiceError.log%s\n" "${BLD}" "${CRE}" "${CBL}" "${CNC}"
+        fi
+    else
+        printf "%s%sThe file user.js does not exist, %sno backup needed%s\n" "${BLD}" "${CGR}" "${CYE}" "${CNC}"
+    fi
 done
 
-[ -f ~/.zshrc ] && mv ~/.zshrc ~/.RiceBackup/.zshrc-backup-"$(date +%Y.%m.%d-%H.%M.%S)"
+if [ -f ~/.zshrc ]; then
+    if mv ~/.zshrc "$backup_folder"/.zshrc_"$date" 2>> RiceError.log; then
+        printf "%s%s.zshrc file backed up successfully at %s%s/.zshrc_%s%s\n" "${BLD}" "${CGR}" "${CBL}" "$backup_folder" "${date}" "${CNC}"
+    else
+        printf "%s%sFailed to backup .zshrc file. See %sRiceError.log%s\n" "${BLD}" "${CRE}" "${CBL}" "${CNC}"
+    fi
+else
+    printf "%s%sThe file .zshrc does not exist, %sno backup needed%s\n" "${BLD}" "${CGR}" "${CYE}" "${CNC}"
+fi
 
 printf "%s%sDone!!%s\n\n" "${BLD}" "${CGR}" "${CNC}"
 sleep 5
@@ -174,136 +203,103 @@ printf "Copying files to respective directories..\n"
 
 [ ! -d ~/.config ] && mkdir -p ~/.config
 [ ! -d ~/.local/bin ] && mkdir -p ~/.local/bin
-[ ! -d ~/.local/share/applications ] && mkdir -p ~/.local/share/applications
-[ ! -d ~/.local/share/fonts ] && mkdir -p ~/.local/share/fonts
-[ ! -d ~/.local/share/asciiart ] && mkdir -p ~/.local/share/asciiart
+[ ! -d ~/.local/share ] && mkdir -p ~/.local/share
 
-for archivos in ~/dotfiles/config/*; do
-  cp -R "${archivos}" ~/.config/
-  if [ $? -eq 0 ]; then
-	printf "%s%s%s folder copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
-	sleep 1
-  else
-	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
-	sleep 1
-  fi
+for dirs in ~/dotfiles/config/*; do
+    dir_name=$(basename "$dirs")
+    if cp -R "${dirs}" ~/.config/ 2>> RiceError.log; then
+        printf "%s%s%s %sconfiguration installed succesfully%s\n" "${BLD}" "${CYE}" "${dir_name}" "${CGR}" "${CNC}"
+        sleep 1
+    else
+        printf "%s%s%s %sconfiguration failed to been installed, see %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "${dir_name}" "${CRE}" "${CBL}" "${CRE}" "${CNC}"
+        sleep 1
+    fi
 done
 
-for archivos in ~/dotfiles/misc/bin/*; do
-  cp -R "${archivos}" ~/.local/bin/
-  if [ $? -eq 0 ]; then
-	printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
-	sleep 1
-  else
-	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
-	sleep 1
-  fi
+for folder in applications asciiart fonts startup-page; do
+    if cp -R ~/dotfiles/misc/$folder ~/.local/share/ 2>> RiceError.log; then
+        printf "%s%s%s %sfolder copied succesfully!%s\n" "${BLD}" "${CYE}" "$folder" "${CGR}" "${CNC}"
+        sleep 1
+    else
+        printf "%s%s%s %sfolder failed to been copied, see %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "$folder" "${CRE}" "${CBL}" "${CRE}" "${CNC}"
+        sleep 1
+    fi
 done
 
-for archivos in ~/dotfiles/misc/applications/*; do
-  cp -R "${archivos}" ~/.local/share/applications/
-  if [ $? -eq 0 ]; then
-	printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
-	sleep 1
-  else
-	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
-	sleep 1
-  fi
-done
+if cp -R ~/dotfiles/misc/bin ~/.local/ 2>> RiceError.log; then
+    printf "%s%sbin %sfolder copied succesfully!%s\n" "${BLD}" "${CYE}" "${CGR}" "${CNC}"
+    sleep 1
+else
+    printf "%s%sbin %sfolder failed to been copied, see %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "${CRE}" "${CBL}" "${CRE}" "${CNC}"
+    sleep 1
+fi
 
-for archivos in ~/dotfiles/misc/fonts/*; do
-  cp -R "${archivos}" ~/.local/share/fonts/
-  if [ $? -eq 0 ]; then
-	printf "%s%s%s copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
-	sleep 1
-  else
-	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
-	sleep 1
-  fi
-done
-
-for archivos in ~/dotfiles/misc/asciiart/*; do
-  cp -R "${archivos}" ~/.local/share/asciiart/
-  if [ $? -eq 0 ]; then
-	printf "%s%s%s file copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
-	sleep 1
-  else
-	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
-	sleep 1
-  fi
-done
-
-for archivos in ~/dotfiles/misc/firefox/*; do
-  cp -R "${archivos}" ~/.mozilla/firefox/*.default-release/
-  if [ $? -eq 0 ]; then
-	printf "%s%s%s folder copied succesfully!%s\n" "${BLD}" "${CGR}" "${archivos}" "${CNC}"
-	sleep 1
-  else
-	printf "%s%s%s failed to been copied, you must copy it manually%s\n" "${BLD}" "${CRE}" "${archivos}" "${CNC}"
-	sleep 1
-  fi
-done
+if cp -R ~/dotfiles/misc/firefox/* ~/.mozilla/firefox/*.default-release/ 2>> RiceError.log; then
+    printf "%s%sFirefox theme %scopied succesfully!%s\n" "${BLD}" "${CYE}" "${CGR}" "${CNC}"
+    sleep 1
+else
+    printf "%s%sFirefox theme %sfailed to been copied, see %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "${CRE}" "${CBL}" "${CRE}" "${CNC}"
+    sleep 1
+fi
 
 sed -i "s/user_pref(\"browser.startup.homepage\", \"file:\/\/\/home\/z0mbi3\/.local\/share\/startup-page\/index.html\")/user_pref(\"browser.startup.homepage\", \"file:\/\/\/home\/$USER\/.local\/share\/startup-page\/index.html\")/" "$HOME"/.mozilla/firefox/*.default-release/user.js
-cp -r "$HOME"/dotfiles/misc/startup-page "$HOME"/.local/share
 sed -i "s/name: 'gh0stzk'/name: '$USER'/" "$HOME"/.local/share/startup-page/config.js
 cp -f "$HOME"/dotfiles/home/.zshrc "$HOME"
 fc-cache -rv >/dev/null 2>&1
 
-printf "%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"
-sleep 3
+printf "\n\n%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"
+sleep 5
 
 ########## ---------- Installing Paru & others ---------- ##########
 
 logo "installing Paru, Eww, tdrop & xqp"
 
 # Installing Paru
-	if command -v paru >/dev/null 2>&1; then
-		printf "%s%sParu is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
-	else
-		printf "%s%sInstalling paru%s\n" "${BLD}" "${CBL}" "${CNC}"
-		{
-			cd "$HOME" || exit
-			git clone https://aur.archlinux.org/paru-bin.git
-			cd paru-bin || exit
-			makepkg -si --noconfirm
-		} || {
-			printf "\n%s%sFailed to install Paru. You may need to install it manually%s\n" "${BLD}" "${CRE}" "${CNC}"
-			}
-	fi
+if command -v paru >/dev/null 2>&1; then
+    printf "%s%sParu is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+else
+    printf "%s%sInstalling paru%s\n" "${BLD}" "${CBL}" "${CNC}"
+    {
+        cd "$HOME" || exit
+        git clone https://aur.archlinux.org/paru-bin.git
+        cd paru-bin || exit
+        makepkg -si --noconfirm
+        } || {
+        printf "\n%s%sFailed to install Paru. You may need to install it manually%s\n" "${BLD}" "${CRE}" "${CNC}"
+    }
+fi
 
 # Intalling tdrop for scratchpads
-	if command -v tdrop >/dev/null 2>&1; then
-		printf "\n%s%sTdrop is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
-	else
-		printf "\n%s%sInstalling tdrop, this should be fast!%s\n" "${BLD}" "${CBL}" "${CNC}"
-		paru -S tdrop-git --skipreview --noconfirm
-	fi
+if command -v tdrop >/dev/null 2>&1; then
+    printf "\n%s%sTdrop is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+else
+    printf "\n%s%sInstalling tdrop, this should be fast!%s\n" "${BLD}" "${CBL}" "${CNC}"
+    paru -S tdrop-git --skipreview --noconfirm
+fi
 
 # Intalling xqpp
-	if command -v xqp >/dev/null 2>&1; then
-		printf "\n%s%sxqp is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
-	else
-		printf "\n%s%sInstalling xqp, this should be fast!%s\n" "${BLD}" "${CBL}" "${CNC}"
-		paru -S xqp --skipreview --noconfirm
-	fi
-	
+if command -v xqp >/dev/null 2>&1; then
+    printf "\n%s%sxqp is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+else
+    printf "\n%s%sInstalling xqp, this should be fast!%s\n" "${BLD}" "${CBL}" "${CNC}"
+    paru -S xqp --skipreview --noconfirm
+fi
+
 # Installing Eww
-	if command -v eww >/dev/null 2>&1; then 
-		printf "\n%s%sEww is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
-	else
-		printf "\n%s%sInstalling Eww, this could take 10 mins or more.%s\n" "${BLD}" "${CBL}" "${CNC}"
-		{
-			sudo pacman -S rustup --noconfirm
-			cd "$HOME" || exit
-			git clone https://github.com/elkowar/eww
-			cd eww || exit
-			cargo build --release --no-default-features --features x11
-			sudo install -m 755 "$HOME/eww/target/release/eww" -t /usr/bin/
-		} && {
-			cd "$HOME" || exit
-			rm -rf {paru-bin,.cargo,.rustup,eww}
-		} || {
+if command -v eww >/dev/null 2>&1; then
+    printf "\n%s%sEww is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+else
+    printf "\n%s%sInstalling Eww, this could take 10 mins or more.%s\n" "${BLD}" "${CBL}" "${CNC}"
+    {
+        sudo pacman -S rustup --noconfirm
+        cd "$HOME" || exit
+        git clone https://github.com/elkowar/eww
+        cd eww || exit
+        cargo build --release --no-default-features --features x11
+        sudo install -m 755 "$HOME/eww/target/release/eww" -t /usr/bin/
+        cd "$HOME" || exit
+        rm -rf {paru-bin,.cargo,.rustup,eww}
+        } || {
         printf "\n%s%sFailed to install Eww. You may need to install it manually%s\n" "${BLD}" "${CRE}" "${CNC}"
     }
 fi
@@ -313,11 +309,11 @@ fi
 logo "Enabling mpd service"
 
 # Verifica si el servicio mpd está habilitado a nivel global (sistema)
-	if systemctl is-enabled --quiet mpd.service; then
-		printf "\n%s%sDisabling and stopping the global mpd service%s\n" "${BLD}" "${CBL}" "${CNC}"
-		sudo systemctl stop mpd.service
-		sudo systemctl disable mpd.service
-	fi
+if systemctl is-enabled --quiet mpd.service; then
+    printf "\n%s%sDisabling and stopping the global mpd service%s\n" "${BLD}" "${CBL}" "${CNC}"
+    sudo systemctl stop mpd.service
+    sudo systemctl disable mpd.service
+fi
 
 printf "\n%s%sEnabling and starting the user-level mpd service%s\n" "${BLD}" "${CYE}" "${CNC}"
 systemctl --user enable --now mpd.service
@@ -329,12 +325,12 @@ sleep 2
 
 logo "Changing default shell to zsh"
 
-	if [[ $SHELL != "/usr/bin/zsh" ]]; then
-		printf "\n%s%sChanging your shell to zsh. Your root password is needed.%s\n\n" "${BLD}" "${CYE}" "${CNC}"
-		# Cambia la shell a zsh
-		chsh -s /usr/bin/zsh
-		printf "%s%sShell changed to zsh. Please reboot.%s\n\n" "${BLD}" "${CGR}" "${CNC}"
-	else
-		printf "%s%sYour shell is already zsh\nGood bye! installation finished, now reboot%s\n" "${BLD}" "${CGR}" "${CNC}"
-	fi
+if [[ $SHELL != "/usr/bin/zsh" ]]; then
+    printf "\n%s%sChanging your shell to zsh. Your root password is needed.%s\n\n" "${BLD}" "${CYE}" "${CNC}"
+    # Cambia la shell a zsh
+    chsh -s /usr/bin/zsh
+    printf "%s%sShell changed to zsh. Please reboot.%s\n\n" "${BLD}" "${CGR}" "${CNC}"
+else
+    printf "%s%sYour shell is already zsh\nGood bye! installation finished, now reboot%s\n" "${BLD}" "${CGR}" "${CNC}"
+fi
 zsh

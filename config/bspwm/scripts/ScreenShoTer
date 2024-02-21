@@ -8,7 +8,7 @@
 #   Script to take screenshots using maim.
 #   20.12.2023 16:10:25
 
-timestamp=$(date +%Y-%m-%d-%I%M%S)
+timestamp=$(date +%Y-%m-%d-%H%M%S)
 dir="$(xdg-user-dir PICTURES)/ScreenShots"
 filename="$dir/Shot-${timestamp}.png"
 
