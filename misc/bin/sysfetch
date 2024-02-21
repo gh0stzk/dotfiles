@@ -26,7 +26,7 @@ name=$USER
 host=$(uname -n)
 distro=$(uname -o | awk -F '"' '/PRETTY_NAME/ { print $2 }' /etc/os-release)
 packages=$(pacman -Q | wc -l)
-wm=$(xprop -id $(xprop -root -notype | awk '$1=="_NET_SUPPORTING_WM_CHECK:"{print $5}') -notype -f _NET_WM_NAME 8t | grep "WM_NAME" | cut -f2 -d \")
+wm=$(xprop -id "$(xprop -root -notype | awk '$1=="_NET_SUPPORTING_WM_CHECK:"{print $5}')" -notype -f _NET_WM_NAME 8t | grep "WM_NAME" | cut -f2 -d \")
 storage=$(df -h --output=used / | awk 'NR == 2 { print $1 }')
 term=$(ps -o sid= -p "$$" | xargs ps -o ppid= -p | xargs ps -o comm= -p)
 uptm=$(uptime -p | sed -e 's/hour/hr/' -e 's/hours/hrs/' -e 's/minutes/mins/' -e 's/minute/min/' -e 's/up //')
@@ -41,11 +41,11 @@ ROW=$(tput lines)
 ((PADX = COL / 2 - 34 / 2))
 
 for ((i = 0; i < PADX; ++i)); do
-	PADC="$PADC "
+    PADC="$PADC "
 done
 
 for ((i = 0; i < PADY; ++i)); do
-	PADR="$PADR\n"
+    PADR="$PADR\n"
 done
 
 # vertical padding
@@ -54,7 +54,7 @@ printf "\n"
 
 PADXX=$((PADX - 3))
 for ((i = 0; i < PADXX; ++i)); do
-	PADCC="$PADCC "
+    PADCC="$PADCC "
 done
 
 # Ascii art arms
@@ -92,17 +92,17 @@ printf " %s\n" "$CNC"
 
 # progress bar
 draw() {
-	perc=$1
-	size=$2
-	inc=$((perc * size / 100))
-	out=
-	color="$3"
-	for v in $(seq 0 $((size - 1))); do
-		test "$v" -le "$inc" &&
-			out="${out}\e[1;${color}m${FULL}" ||
-			out="${out}\e[0;37m${CWH}${EMPTY}"
-	done
-	printf "$out"
+    perc=$1
+    size=$2
+    inc=$((perc * size / 100))
+    out=
+    color="$3"
+    for v in $(seq 0 $((size - 1))); do
+        test "$v" -le "$inc" &&
+        out="${out}\e[1;${color}m${FULL}" ||
+        out="${out}\e[0;37m${CWH}${EMPTY}"
+    done
+    printf "$out"
 }
 
 # cpu
@@ -115,7 +115,7 @@ printf "   $CMA%-4s $CWH%-5s %-25s \n" " cpu" "$c_lvl%" "$(draw "$c_lvl" 15 35)"
 ram=$(free | awk '/Mem:/ {print int($3/$2 * 100.0)}')
 printf "%b" "$CNC" "$PADC"
 printf "   $CMA%-4s $CWH%-5s %-25s \n" " ram" "$ram%" "$(draw "$ram" 15 35)"
-    
+
 # hide the cursor and wait for user input
 tput civis
 read -n 1
