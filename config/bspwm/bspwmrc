@@ -67,7 +67,7 @@ processes=("sxhkd" "polybar" "dunst" "eww.*bar")
 
 for process in "${processes[@]}"; do
     if pgrep -f "$process"; then
-        pkill -9 -f "$process" > /dev/null; sleep 0.25
+        pkill -f "$process" > /dev/null; sleep 0.25
     fi
 done
 

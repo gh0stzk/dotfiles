@@ -31,7 +31,7 @@ set_term_config() {
 # Default colors
 [colors.primary]
 background = "#14171c"
-foreground = "#b8bfe5"
+foreground = "#abb2bf"
 
 # Cursor colors
 [colors.cursor]
@@ -40,13 +40,13 @@ text = "#14171c"
 
 # Normal colors
 [colors.normal]
-black = "#5c6370"
+black = "#1e2127"
 blue = "#4889be"
 cyan = "#49919a"
 green = "#81ae5f"
 magenta = "#7560d3"
 red = "#be5046"
-white = "#c5cddb"
+white = "#abb2bf"
 yellow = "#d19a66"
 
 # Bright colors
@@ -57,7 +57,7 @@ cyan = "#56b6c2"
 green = "#98c379"
 magenta = "#8677cf"
 red = "#e06c75"
-white = "#abb2bf"
+white = "#ffffff"
 yellow = "#e5c07b"
 EOF
 }

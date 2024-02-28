@@ -1,3 +1,10 @@
+## Changed Cynthia's general color scheme to Kanagawa Dragon
+##### February 27 2024
+
+- I change the general color scheme to Kanagawa Dragon in Cynthia. (See gif)
+- Deleted colors.ini in ../bspwm/scripts/ I considered that having that file was unnecessary, and that made it difficult for people who were just starting out and wanted to modify the polybar colors to understand it. Now, as it should be, the colors are defined in config.ini
+- Minor color fixes to almost all rices. "Cristina is beautiful." (Rose Pine Moon)
+
 ## Returns to polybar's default systemtray.
 ##### February 21 2024
 

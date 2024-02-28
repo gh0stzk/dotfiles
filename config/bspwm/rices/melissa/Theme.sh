@@ -40,7 +40,7 @@ text = "#2e3440"
 
 # Normal colors
 [colors.normal]
-black = "#4c566a"
+black = "#3b4252"
 blue = "#81a1c1"
 cyan = "#88c0d0"
 green = "#a3be8c"

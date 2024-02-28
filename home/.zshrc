@@ -75,7 +75,7 @@ setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
 #   ┴ ┴ ┴└─┘  ┴  ┴└─└─┘┴ ┴┴   ┴
 function dir_icon {
   if [[ "$PWD" == "$HOME" ]]; then
-    echo "%B%F{black}%f%b"
+    echo "%B%F{cyan}%f%b"
   else
     echo "%B%F{cyan}%f%b"
   fi

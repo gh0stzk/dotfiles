@@ -26,39 +26,39 @@ set_bspwm_config() {
 # Reload terminal colors
 set_term_config() {
     cat > "$HOME"/.config/alacritty/rice-colors.toml << EOF
-# Color scheme for Cynthia Rice
+# (Kanagawa Dragon) Color scheme for Cynthia Rice
 
 # Default colors
 [colors.primary]
-background = "#1f2329"
-foreground = "#b8bfe5"
+background = '#181616'
+foreground = '#c5c9c5'
 
 # Cursor colors
 [colors.cursor]
-cursor = "#465b80"
-text = "#e5e5e5"
+cursor = "#8a9a7b"
+text = "#181616"
 
 # Normal colors
 [colors.normal]
-black = "#0f1319"
-blue = "#3f5273"
-cyan = "#324f66"
-green = "#375759"
-magenta = "#543f66"
-red = "#644d66"
-white = "#b3b3b3"
-yellow = "#736871"
+black = '#0d0c0c'
+blue = '#8ba4b0'
+cyan = '#8ea4a2'
+green = '#8a9a7b'
+magenta = '#a292a3'
+red = '#c4746e'
+white = '#C8C093'
+yellow = '#c4b28a'
 
 # Bright colors
 [colors.bright]
-black = "#b3b3b3"
-blue = "#465b80"
-cyan = "#385a73"
-green = "#3f6566"
-magenta = "#533969"
-red = "#735771"
-white = "#e5e5e5"
-yellow = "#807476"
+black = '#a6a69c'
+blue = '#7FB4CA'
+cyan = '#7AA89F'
+green = '#87a987'
+magenta = '#938AA9'
+red = '#E46876'
+white = '#c5c9c5'
+yellow = '#E6C384'
 EOF
 }
 
@@ -68,35 +68,35 @@ set_picom_config() {
         -e "s/normal = .*/normal =  { fade = true; shadow = true; }/g" \
         -e "s/shadow-color = .*/shadow-color = \"#000000\"/g" \
         -e "s/corner-radius = .*/corner-radius = 6/g" \
-        -e "s/\".*:class_g = 'Alacritty'\"/\"98:class_g = 'Alacritty'\"/g" \
-        -e "s/\".*:class_g = 'FloaTerm'\"/\"98:class_g = 'FloaTerm'\"/g"
+        -e "s/\".*:class_g = 'Alacritty'\"/\"99:class_g = 'Alacritty'\"/g" \
+        -e "s/\".*:class_g = 'FloaTerm'\"/\"99:class_g = 'FloaTerm'\"/g"
 }
 
 # Set dunst notification daemon config
 set_dunst_config() {
     sed -i "$HOME"/.config/bspwm/dunstrc \
         -e "s/transparency = .*/transparency = 4/g" \
-        -e "s/frame_color = .*/frame_color = \"#1f2329\"/g" \
-        -e "s/separator_color = .*/separator_color = \"#3f5273\"/g" \
+        -e "s/frame_color = .*/frame_color = \"#181616\"/g" \
+        -e "s/separator_color = .*/separator_color = \"#c5c9c5\"/g" \
         -e "s/font = .*/font = JetBrainsMono NF Medium 9/g" \
-        -e "s/foreground='.*'/foreground='#3f5273'/g"
+        -e "s/foreground='.*'/foreground='#c5c9c5'/g"
 
     sed -i '/urgency_low/Q' "$HOME"/.config/bspwm/dunstrc
     cat >> "$HOME"/.config/bspwm/dunstrc <<- _EOF_
 			[urgency_low]
 			timeout = 3
-			background = "#1f2329"
-			foreground = "#b3b3b3"
+			background = "#181616"
+			foreground = "#c5c9c5"
 
 			[urgency_normal]
 			timeout = 6
-			background = "#1f2329"
-			foreground = "#b3b3b3"
+			background = "#181616"
+			foreground = "#c5c9c5"
 
 			[urgency_critical]
 			timeout = 0
-			background = "#1f2329"
-			foreground = "#b3b3b3"
+			background = "#181616"
+			foreground = "#c5c9c5"
 _EOF_
 }
 
@@ -104,17 +104,17 @@ _EOF_
 set_eww_colors() {
     cat > "$HOME"/.config/bspwm/eww/colors.scss << EOF
 // Eww colors for Cynthia rice
-\$bg: #1f2329;
-\$bg-alt: #23272e;
-\$fg: #b8bfe5;
-\$black: #b3b3b3;
+\$bg: #181616;
+\$bg-alt: #1c1a1a;
+\$fg: #c5c9c5;
+\$black: #a6a69c;
 \$lightblack: #262831;
-\$red: #735771;
-\$blue: #465b80;
-\$cyan: #385a73;
-\$magenta: #533969;
-\$green: #3f6566;
-\$yellow: #807476;
+\$red: #c4746e;
+\$blue: #8ba4b0;
+\$cyan: #8ea4a2;
+\$magenta: #a292a3;
+\$green: #8a9a7b;
+\$yellow: #c4b28a;
 \$archicon: #0f94d2;
 EOF
 }
@@ -122,29 +122,29 @@ EOF
 # Set jgmenu colors for Cynthia
 set_jgmenu_colors() {
     sed -i "$HOME"/.config/bspwm/jgmenurc \
-        -e 's/color_menu_bg = .*/color_menu_bg = #1f2329/' \
-        -e 's/color_norm_fg = .*/color_norm_fg = #b8bfe5/' \
-        -e 's/color_sel_bg = .*/color_sel_bg = #23272e/' \
-        -e 's/color_sel_fg = .*/color_sel_fg = #b8bfe5/' \
-        -e 's/color_sep_fg = .*/color_sep_fg = #b3b3b3/'
+        -e 's/color_menu_bg = .*/color_menu_bg = #181616/' \
+        -e 's/color_norm_fg = .*/color_norm_fg = #c5c9c5/' \
+        -e 's/color_sel_bg = .*/color_sel_bg = #8a9a7b/' \
+        -e 's/color_sel_fg = .*/color_sel_fg = #181616/' \
+        -e 's/color_sep_fg = .*/color_sep_fg = #8a9a7b/'
 }
 
 # Set Rofi launcher config
 set_launcher_config () {
     sed -i "$HOME/.config/bspwm/scripts/Launcher.rasi" \
         -e '22s/\(font: \).*/\1"Terminess Nerd Font Mono Bold 10";/' \
-        -e 's/\(background: \).*/\1#1f2329;/' \
-        -e 's/\(background-alt: \).*/\1#1f2329E0;/' \
-        -e 's/\(foreground: \).*/\1#b8bfe5;/' \
-        -e 's/\(selected: \).*/\1#3f5273;/' \
+        -e 's/\(background: \).*/\1#181616;/' \
+        -e 's/\(background-alt: \).*/\1#181616E0;/' \
+        -e 's/\(foreground: \).*/\1#c5c9c5;/' \
+        -e 's/\(selected: \).*/\1#8ba4b0;/' \
         -e 's/[^/]*-rofi/cy-rofi/'
 
     # WallSelect menu colors
     sed -i "$HOME/.config/bspwm/scripts/WallSelect.rasi" \
-        -e 's/\(main-bg: \).*/\1#1f2329E6;/' \
-        -e 's/\(main-fg: \).*/\1#b8bfe5;/' \
-        -e 's/\(select-bg: \).*/\1#3f5273;/' \
-        -e 's/\(select-fg: \).*/\1#1f2329;/'
+        -e 's/\(main-bg: \).*/\1#181616E6;/' \
+        -e 's/\(main-fg: \).*/\1#c5c9c5;/' \
+        -e 's/\(select-bg: \).*/\1#8ea4a2;/' \
+        -e 's/\(select-fg: \).*/\1#181616;/'
 }
 
 # Launch the bar

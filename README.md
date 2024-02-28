@@ -144,7 +144,7 @@ I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wik
 
 ### 🌸Cynthia
 
-|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/e927c626-38a7-4317-b885-076055918695" alt="Cynthia Rice" align="center">|
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/5df45139-1d73-4f5f-8e8d-a417c86bfb96" alt="Cynthia Rice" align="center">|
 |---|
 
 <details>

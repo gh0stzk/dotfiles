@@ -30,17 +30,17 @@ set_term_config() {
 
 # Default colors
 [colors.primary]
-background = "#1f1d29"
-foreground = "#eaeaea"
+background = "#232136"
+foreground = "#e0def4"
 
 # Cursor colors
 [colors.cursor]
 cursor = "#c3a5e6"
-text = "#1f1d29"
+text = "#232136"
 
 # Normal colors
 [colors.normal]
-black = "#6f6e85"
+black = "#393552"
 blue = "#34738e"
 cyan = "#eabbb9"
 green = "#9bced7"
@@ -51,7 +51,7 @@ yellow = "#f1ca93"
 
 # Bright colors
 [colors.bright]
-black = "#6f6e85"
+black = "#6e6a86"
 blue = "#34738e"
 cyan = "#ebbcba"
 green = "#9bced7"
@@ -76,7 +76,7 @@ set_picom_config() {
 set_dunst_config() {
     sed -i "$HOME"/.config/bspwm/dunstrc \
         -e "s/transparency = .*/transparency = 0/g" \
-        -e "s/frame_color = .*/frame_color = \"#1f1d29\"/g" \
+        -e "s/frame_color = .*/frame_color = \"#232136\"/g" \
         -e "s/separator_color = .*/separator_color = \"#ea6f91\"/g" \
         -e "s/font = .*/font = JetBrainsMono NF Medium 9/g" \
         -e "s/foreground='.*'/foreground='#9bced7'/g"
@@ -85,18 +85,18 @@ set_dunst_config() {
     cat >> "$HOME"/.config/bspwm/dunstrc <<- _EOF_
 			[urgency_low]
 			timeout = 3
-			background = "#1f1d29"
-			foreground = "#eaeaea"
+			background = "#232136"
+			foreground = "#e0def4"
 
 			[urgency_normal]
 			timeout = 6
-			background = "#1f1d29"
-			foreground = "#eaeaea"
+			background = "#232136"
+			foreground = "#e0def4"
 
 			[urgency_critical]
 			timeout = 0
-			background = "#1f1d29"
-			foreground = "#eaeaea"
+			background = "#232136"
+			foreground = "#e0def4"
 _EOF_
 }
 
@@ -104,9 +104,9 @@ _EOF_
 set_eww_colors() {
     cat > "$HOME"/.config/bspwm/eww/colors.scss << EOF
 // Eww colors for Cristina rice
-\$bg: #1f1d29;
-\$bg-alt: #272433;
-\$fg: #eaeaea;
+\$bg: #232136;
+\$bg-alt: #2a2740
+\$fg: #e0def4;
 \$black: #6f6e85;
 \$lightblack: #262831;
 \$red: #ea6f91;
@@ -122,10 +122,10 @@ EOF
 # Set jgmenu colors for Cristina
 set_jgmenu_colors() {
     sed -i "$HOME"/.config/bspwm/jgmenurc \
-        -e 's/color_menu_bg = .*/color_menu_bg = #1f1d29/' \
-        -e 's/color_norm_fg = .*/color_norm_fg = #eaeaea/' \
-        -e 's/color_sel_bg = .*/color_sel_bg = #272433/' \
-        -e 's/color_sel_fg = .*/color_sel_fg = #eaeaea/' \
+        -e 's/color_menu_bg = .*/color_menu_bg = #232136/' \
+        -e 's/color_norm_fg = .*/color_norm_fg = #e0def4/' \
+        -e 's/color_sel_bg = .*/color_sel_bg = #2a2740/' \
+        -e 's/color_sel_fg = .*/color_sel_fg = #e0def4/' \
         -e 's/color_sep_fg = .*/color_sep_fg = #6f6e85/'
 }
 
@@ -133,18 +133,18 @@ set_jgmenu_colors() {
 set_launcher_config () {
     sed -i "$HOME/.config/bspwm/scripts/Launcher.rasi" \
         -e '22s/\(font: \).*/\1"Terminess Nerd Font Mono Bold 10";/' \
-        -e 's/\(background: \).*/\1#1f1d29;/' \
-        -e 's/\(background-alt: \).*/\1#1f1d29E0;/' \
-        -e 's/\(foreground: \).*/\1#eaeaea;/' \
+        -e 's/\(background: \).*/\1#232136;/' \
+        -e 's/\(background-alt: \).*/\1#232136E0;/' \
+        -e 's/\(foreground: \).*/\1#e0def4;/' \
         -e 's/\(selected: \).*/\1#c3a5e6;/' \
         -e 's/[^/]*-rofi/cr-rofi/'
 
     # WallSelect menu colors
     sed -i "$HOME/.config/bspwm/scripts/WallSelect.rasi" \
-        -e 's/\(main-bg: \).*/\1#1f1d29E6;/' \
-        -e 's/\(main-fg: \).*/\1#eaeaea;/' \
+        -e 's/\(main-bg: \).*/\1#232136E6;/' \
+        -e 's/\(main-fg: \).*/\1#e0def4;/' \
         -e 's/\(select-bg: \).*/\1#c3a5e6;/' \
-        -e 's/\(select-fg: \).*/\1#1f1d29;/'
+        -e 's/\(select-fg: \).*/\1#232136;/'
 }
 
 # Launch the bar and or eww widgets

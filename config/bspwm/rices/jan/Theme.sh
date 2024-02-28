@@ -31,7 +31,7 @@ set_term_config() {
 # Default colors
 [colors.primary]
 background = "#070219"
-foreground = "#c0caf5"
+foreground = "#27fbfe"
 
 # Cursor colors
 [colors.cursor]
@@ -41,10 +41,10 @@ text = "#070219"
 # Normal colors
 [colors.normal]
 black = "#626483"
-blue = "#58AFC2"
-cyan = "#926BCA"
+blue = "#19bffe"
+cyan = "#43fbff"
 green = "#a6e22e"
-magenta = "#583794"
+magenta = "#6800d2"
 red = "#fb007a"
 white = "#d9d9d9"
 yellow = "#f3e430"
@@ -79,24 +79,24 @@ set_dunst_config() {
         -e "s/frame_color = .*/frame_color = \"#070219\"/g" \
         -e "s/separator_color = .*/separator_color = \"#fb007a\"/g" \
         -e "s/font = .*/font = JetBrainsMono NF Medium 9/g" \
-        -e "s/foreground='.*'/foreground='#f9f9f9'/g"
+        -e "s/foreground='.*'/foreground='#27fbfe'/g"
 
     sed -i '/urgency_low/Q' "$HOME"/.config/bspwm/dunstrc
     cat >> "$HOME"/.config/bspwm/dunstrc <<- _EOF_
 			[urgency_low]
 			timeout = 3
 			background = "#070219"
-			foreground = "#c0caf5"
+			foreground = "#27fbfe"
 
 			[urgency_normal]
 			timeout = 6
 			background = "#070219"
-			foreground = "#c0caf5"
+			foreground = "#27fbfe"
 
 			[urgency_critical]
 			timeout = 0
 			background = "#070219"
-			foreground = "#c0caf5"
+			foreground = "#27fbfe"
 _EOF_
 }
 
