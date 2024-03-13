@@ -77,19 +77,16 @@ clear
 
 logo "Installing needed packages.."
 
-dependencias=(base-devel rustup pacman-contrib bspwm polybar sxhkd \
-        alacritty brightnessctl dunst rofi lsd \
-        jq polkit-gnome git playerctl mpd xclip \
-        ncmpcpp geany ranger mpc picom xdo xdotool jgmenu \
-        feh ueberzug maim pamixer libwebp xdg-user-dirs \
-        webp-pixbuf-loader xorg-xprop xorg-xkill physlock papirus-icon-theme \
-        ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-inconsolata ttf-joypixels \
-        zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting \
-    imagemagick xorg-xdpyinfo xorg-xsetroot xorg-xwininfo xorg-xrandr)
+dependencias=(alacritty base-devel brightnessctl bspwm dunst feh geany git imagemagick jq \
+			        jgmenu libwebp lsd maim mpc mpd neovim ncmpcpp npm pamixer pacman-contrib \
+			        papirus-icon-theme physlock picom playerctl polybar polkit-gnome ranger \
+			        rofi rustup sxhkd ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd \
+			        ttf-joypixels ttf-terminus-nerd ueberzug webp-pixbuf-loader xclip xdg-user-dirs \
+			        xdo xdotool xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot \
+			        xorg-xwininfo zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting)
 
 is_installed() {
-    pacman -Qi "$1" &> /dev/null
-    return $?
+    pacman -Q "$1" &> /dev/null
 }
 
 printf "%s%sChecking for required packages...%s\n" "${BLD}" "${CBL}" "${CNC}"

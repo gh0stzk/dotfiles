@@ -10,7 +10,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     event = "VeryLazy",
     opts = {
-      ensure_installed = { "bashls", "lua_ls", "html", "cssls" },
+      ensure_installed = { "bashls", "lua_ls", "html", "cssls", "pylsp" },
       auto_install = true,
     },
   },
@@ -22,6 +22,9 @@ return {
 
       local lspconfig = require("lspconfig")
       lspconfig.bashls.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.pylsp.setup({
         capabilities = capabilities,
       })
       lspconfig.html.setup({

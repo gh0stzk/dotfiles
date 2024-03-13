@@ -254,6 +254,48 @@ Ya comencé a escribir la [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki), 
 
 </details>
 
+### 🌸Brenda:
+
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/22e37944-5aad-46bf-8934-3a57d1718ed2" alt="Brenda Rice" align="center">|
+|---|
+
+<details>
+<summary><b>Extra wallpapers en Brenda</b></summary>
+
+|<img src="config/bspwm/rices/brenda/walls/wall-01.webp" alt="Brenda Rice" align="center" width="150px">|<img src="config/bspwm/rices/brenda/walls/wall-02.webp" alt="Brenda Rice" align="center" width="150px">|<img src="config/bspwm/rices/brenda/walls/wall-04.webp" alt="Brenda Rice" align="center" width="150px">|
+|:-:|:-:|:-:|
+<img src="config/bspwm/rices/brenda/walls/wall-05.webp" alt="Brenda Rice" align="center" width="150px">|<img src="config/bspwm/rices/brenda/walls/wall-06.webp" alt="Brenda Rice" align="center" width="150px">|<img src="config/bspwm/rices/brenda/walls/wall-07.webp" alt="Brenda Rice" align="center" width="150px">|
+
+</details>
+
+### 🌸Daniela:
+
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/f296d6b4-9c8a-49ae-bf63-d82e5105f122" alt="Daniela Rice" align="center">|
+|---|
+
+<details>
+<summary><b>Extra wallpapers en Daniela</b></summary>
+
+|<img src="config/bspwm/rices/daniela/walls/wall-01.webp" alt="Daniela Rice" align="center" width="150px">|<img src="config/bspwm/rices/daniela/walls/wall-03.webp" alt="Daniela Rice" align="center" width="150px">|<img src="config/bspwm/rices/daniela/walls/wall-04.webp" alt="Daniela Rice" align="center" width="150px">|
+|:-:|:-:|:-:|
+<img src="config/bspwm/rices/daniela/walls/wall-05.webp" alt="Daniela Rice" align="center" width="150px">|<img src="config/bspwm/rices/daniela/walls/wall-06.webp" alt="Daniela Rice" align="center" width="150px">|<img src="config/bspwm/rices/daniela/walls/wall-07.webp" alt="Daniela Rice" align="center" width="150px">|
+
+</details>
+
+### 🌸Marisol:
+
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/d11d20c5-1edc-44c8-901b-a4103a139617" alt="Daniela Rice" align="center">|
+|---|
+
+<details>
+<summary><b>Extra wallpapers en Marisol</b></summary>
+
+|<img src="config/bspwm/rices/marisol/walls/wall-01.webp" alt="Marisol Rice" align="center" width="150px">|<img src="config/bspwm/rices/marisol/walls/wall-02.webp" alt="Marisol Rice" align="center" width="150px">|<img src="config/bspwm/rices/marisol/walls/wall-03.webp" alt="Marisol Rice" align="center" width="150px">|
+|:-:|:-:|:-:|
+<img src="config/bspwm/rices/marisol/walls/wall-05.webp" alt="Marisol Rice" align="center" width="150px">|<img src="config/bspwm/rices/marisol/walls/wall-06.webp" alt="Marisol Rice" align="center" width="150px">|<img src="config/bspwm/rices/marisol/walls/wall-07.webp" alt="Marisol Rice" align="center" width="150px">|
+
+</details>
+
 ## Firefox Theme (z0mbi3 Fox)
 
 |<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/9b956d3d-fc7b-49ca-b27f-dc6aa83d9e2f" alt="Firefox theme - z0mbi3-Fox" width="700">|

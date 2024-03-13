@@ -8,6 +8,7 @@ return {
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.prettier,
         null_ls.builtins.formatting.shfmt,
+        null_ls.builtins.formatting.black,
         -- null_ls.builtins.code_actions.shellcheck,
         -- null_ls.builtins.diagnostics.erb_lint,
         -- null_ls.builtins.diagnostics.eslint_d,
