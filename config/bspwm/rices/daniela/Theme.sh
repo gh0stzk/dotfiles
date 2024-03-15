@@ -107,7 +107,7 @@ _EOF_
 # Set eww colors
 set_eww_colors() {
     cat > "$HOME"/.config/bspwm/eww/colors.scss << EOF
-// Eww colors for Emilia rice
+// Eww colors for Daniela rice
 \$bg: #181825;
 \$bg-alt: #1e1e2e;
 \$fg: #CDD6F4;
@@ -141,7 +141,7 @@ set_launcher_config () {
         -e 's/\(background-alt: \).*/\1#181825E0;/' \
         -e 's/\(foreground: \).*/\1#CDD6F4;/' \
         -e 's/\(selected: \).*/\1#F5C2E7;/' \
-        -e 's/[^/]*-rofi/da-rofi/'
+        -e "s/rices\/[[:alnum:]\-]*/rices\/${RICETHEME}/g"
 
     # WallSelect menu colors
     sed -i "$HOME/.config/bspwm/scripts/WallSelect.rasi" \

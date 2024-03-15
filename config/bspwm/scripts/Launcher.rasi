@@ -70,7 +70,7 @@ inputbar {
     spacing:                     10px;
     padding:                     50px 100px;
     background-color:            transparent;
-    background-image:            url("~/.config/bspwm/assets/em-rofi.webp", width);
+    background-image:            url("~/.config/bspwm/rices/emilia/rofi.webp", width);
     text-color:                  @foreground;
     orientation:                 horizontal;
     children:                    [ "textbox-prompt-colon", "entry" ];

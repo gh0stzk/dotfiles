@@ -139,7 +139,7 @@ set_launcher_config () {
         -e 's/\(background-alt: \).*/\1#0b0d16C7;/' \
         -e 's/\(foreground: \).*/\1#a5b6cf;/' \
         -e 's/\(selected: \).*/\1#087152;/' \
-        -e 's/[^/]*-rofi/gh-rofi/'
+        -e "s/rices\/[[:alnum:]\-]*/rices\/${RICETHEME}/g"
 
     # WallSelect menu colors
     sed -i "$HOME/.config/bspwm/scripts/WallSelect.rasi" \

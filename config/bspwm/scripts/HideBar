@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
-#  ╦ ╦╦╔╦╗╔═╗  ╔╗ ╔═╗╦═╗
-#  ╠═╣║ ║║║╣   ╠╩╗╠═╣╠╦╝
-#  ╩ ╩╩═╩╝╚═╝  ╚═╝╩ ╩╩╚═
+#  ██╗  ██╗██╗██████╗ ███████╗    ██████╗  █████╗ ██████╗ 
+#  ██║  ██║██║██╔══██╗██╔════╝    ██╔══██╗██╔══██╗██╔══██╗
+#  ███████║██║██║  ██║█████╗      ██████╔╝███████║██████╔╝
+#  ██╔══██║██║██║  ██║██╔══╝      ██╔══██╗██╔══██║██╔══██╗
+#  ██║  ██║██║██████╔╝███████╗    ██████╔╝██║  ██║██║  ██║
+#  ╚═╝  ╚═╝╚═╝╚═════╝ ╚══════╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 # Simple script to hide/show polybar
 # Author: z0mbi3
-# url:    https://github.com/gh0stzk
+# url:    https://github.com/gh0stzk/dotfiles
 
 conf_file="$HOME/.config/bspwm/rices/$RICETHEME/Theme.sh"
 T_Padding=$(grep "bspc config top_padding" "$conf_file" | awk '{print $NF}')
@@ -19,13 +22,17 @@ hide() {
 
 	if pgrep -f 'eww.*bar'; then
 		if [ "$RICETHEME" = "z0mbi3" ]; then
-			(eww -c "$HOME"/.config/bspwm/rices/z0mbi3/bar open --toggle bar)
-			(bspc config left_padding 2)
-			(bspc config right_padding 2)
+			if eww -c "$HOME"/.config/bspwm/rices/z0mbi3/bar active-windows | grep -q "bar: bar"; then
+				(eww -c "$HOME"/.config/bspwm/rices/z0mbi3/bar close bar)
+				(bspc config left_padding 2)
+				(bspc config right_padding 2)
+			fi
 		elif [ "$RICETHEME" = "andrea" ]; then
-			(eww -c "$HOME"/.config/bspwm/rices/andrea/andy/ open --toggle bar)
-			(bspc config top_padding 2)
-			(bspc config bottom_padding 2)
+			if eww -c "$HOME"/.config/bspwm/rices/andrea/andy active-windows | grep -q "bar: bar"; then
+				(eww -c "$HOME"/.config/bspwm/rices/andrea/andy/ close bar)
+				(bspc config top_padding 2)
+				(bspc config bottom_padding 2)
+			fi
 		fi
 	fi
 }
@@ -37,20 +44,26 @@ unhide() {
 
 	if pgrep -f 'eww.*bar'; then
 		if [ "$RICETHEME" = "z0mbi3" ]; then
-			(eww -c "$HOME"/.config/bspwm/rices/z0mbi3/bar open --toggle bar)
-			(bspc config left_padding "$L_Padding")
-			(bspc config right_padding "$R_Padding")
+      if ! eww -c "$HOME"/.config/bspwm/rices/z0mbi3/bar active-windows | grep -q "bar: bar"; then
+			  (eww -c "$HOME"/.config/bspwm/rices/z0mbi3/bar open bar)
+			  (bspc config left_padding "$L_Padding")
+			  (bspc config right_padding "$R_Padding")
+      fi
 		elif [ "$RICETHEME" = "andrea" ]; then
-			(eww -c "$HOME"/.config/bspwm/rices/andrea/andy/ open --toggle bar)
-			(bspc config top_padding "$T_Padding")
-			(bspc config bottom_padding "$B_Padding")
+      if ! eww -c "$HOME"/.config/bspwm/rices/andrea/andy active-windows | grep -q "bar: bar"; then
+			  (eww -c "$HOME"/.config/bspwm/rices/andrea/andy open bar)
+			  (bspc config top_padding "$T_Padding")
+			  (bspc config bottom_padding "$B_Padding")
+      fi
 		fi
 	fi
 }
 
 case $1 in
-  -h)
-	  hide;;
-  -u)
-	  unhide;;
+-h)
+	hide
+	;;
+-u)
+	unhide
+	;;
 esac

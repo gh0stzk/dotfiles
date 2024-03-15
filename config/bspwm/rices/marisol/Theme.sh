@@ -26,7 +26,7 @@ set_bspwm_config() {
 # Reload terminal colors
 set_term_config() {
     cat > "$HOME"/.config/alacritty/rice-colors.toml << EOF
-# (Kanagawa) color scheme for Marisol Rice
+# (Dracula) color scheme for Marisol Rice
 
 # Default colors
 [colors.primary]
@@ -137,7 +137,7 @@ set_launcher_config () {
         -e 's/\(background-alt: \).*/\1#282a36E0;/' \
         -e 's/\(foreground: \).*/\1#f8f8f2;/' \
         -e 's/\(selected: \).*/\1#bd93f9;/' \
-        -e 's/[^/]*-rofi/ma-rofi/'
+        -e "s/rices\/[[:alnum:]\-]*/rices\/${RICETHEME}/g"
 
     # WallSelect menu colors
     sed -i "$HOME/.config/bspwm/scripts/WallSelect.rasi" \
