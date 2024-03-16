@@ -136,12 +136,14 @@ clear
 ########## ---------- Backup files ---------- ##########
 
 logo "Backup files"
-printf "Backup files will be stored in %s%s%s/.RiceBackup%s \n\n" "${BLD}" "${CRE}" "$HOME" "${CNC}"
+printf "If you already have a powerful and super Pro NEOVIM configuration, write 'n' in the next question. If you answer 'y' your neovim configuration will be moved to the backup directory.\n\n"
+read -rp "Do you want to try my nvim config? (y/n): " try_nvim
+printf "\nBackup files will be stored in %s%s%s/.RiceBackup%s \n\n" "${BLD}" "${CRE}" "$HOME" "${CNC}"
 sleep 10
 
 [ ! -d "$backup_folder" ] && mkdir -p "$backup_folder"
 
-for folder in bspwm alacritty picom rofi eww sxhkd dunst polybar ncmpcpp nvim ranger zsh mpd paru; do
+for folder in bspwm alacritty picom rofi eww sxhkd dunst polybar ncmpcpp ranger zsh mpd paru; do
     if [ -d "$HOME/.config/$folder" ]; then
         if mv "$HOME/.config/$folder" "$backup_folder/${folder}_$date" 2>> RiceError.log; then
             printf "%s%s%s folder backed up successfully at %s%s/%s_%s%s\n" "${BLD}" "${CGR}" "$folder" "${CBL}" "$backup_folder" "$folder" "$date" "${CNC}"
@@ -155,6 +157,22 @@ for folder in bspwm alacritty picom rofi eww sxhkd dunst polybar ncmpcpp nvim ra
         sleep 1
     fi
 done
+
+if [[ $try_nvim == [Yy] ]]; then
+        # Download nvim
+    if [ -d "$HOME/.config/nvim" ]; then
+        if mv "$HOME/.config/nvim" "$backup_folder/nvim_$date" 2>> RiceError.log; then
+                printf "%s%snvim folder backed up successfully at %s%s/nvim_%s%s\n" "${BLD}" "${CGR}" "${CBL}" "$backup_folder" "$date" "${CNC}"
+                sleep 1
+            else
+                printf "%s%sFailed to backup nvim folder. See %sRiceError.log%s\n" "${BLD}" "${CRE}" "${CBL}" "${CNC}"
+                sleep 1
+        fi
+        else
+            printf "%s%snvim folder does not exist, %sno backup needed%s\n" "${BLD}" "${CGR}" "${CYE}" "${CNC}"
+            sleep 1
+    fi
+fi
 
 for folder in "$HOME"/.mozilla/firefox/*.default-release/chrome; do
     if [ -d "$folder" ]; then
@@ -204,6 +222,10 @@ printf "Copying files to respective directories..\n"
 
 for dirs in ~/dotfiles/config/*; do
     dir_name=$(basename "$dirs")
+# If the directory is nvim and the user doesn't want to try it, skip this loop
+    if [[ $dir_name == "nvim" && $try_nvim != [Yy] ]]; then
+        continue
+    fi
     if cp -R "${dirs}" ~/.config/ 2>> RiceError.log; then
         printf "%s%s%s %sconfiguration installed succesfully%s\n" "${BLD}" "${CYE}" "${dir_name}" "${CGR}" "${CNC}"
         sleep 1
