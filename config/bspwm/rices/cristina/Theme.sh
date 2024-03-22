@@ -105,7 +105,7 @@ set_eww_colors() {
     cat > "$HOME"/.config/bspwm/eww/colors.scss << EOF
 // Eww colors for Cristina rice
 \$bg: #232136;
-\$bg-alt: #2a2740
+\$bg-alt: #2a2740;
 \$fg: #e0def4;
 \$black: #6f6e85;
 \$lightblack: #262831;

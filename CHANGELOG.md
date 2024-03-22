@@ -1,3 +1,12 @@
+## Many fixes to polybar modules
+
+##### March 22 2024
+
+- Many changes in the modules of all rices, especially the battery and brightness. Corrected many visual defects, positions and etc...
+- The Aline theme has a new colors scheme (Rose Pine Dawn)
+
+---
+
 ## 3 New rices
 
 ##### March 12 2024

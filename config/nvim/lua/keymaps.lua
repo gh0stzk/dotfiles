@@ -26,16 +26,16 @@ map("n", "<leader>sh", ":split<Return><C-w>w", { desc = "Split horizontal", nore
 map("n", "<leader>sv", ":vsplit<Return><C-w>w", { desc = "Split vertical", noremap = true })
 
 -- Navigate vim panes better
-map("n", "<c-UP>", ":wincmd k<CR>", { desc = "Navigate up" })
-map("n", "<c-Down>", ":wincmd j<CR>", { desc = "Navigate down" })
-map("n", "<c-Left>", ":wincmd h<CR>", { desc = "Navigate left" })
-map("n", "<c-right>", ":wincmd l<CR>", { desc = "Navigate right" })
+map("n", "<c-k>", ":wincmd k<CR>", { desc = "Navigate up" })
+map("n", "<c-j>", ":wincmd j<CR>", { desc = "Navigate down" })
+map("n", "<c-h>", ":wincmd h<CR>", { desc = "Navigate left" })
+map("n", "<c-l>", ":wincmd l<CR>", { desc = "Navigate right" })
 
 -- Resize window
-map("n", "<C-k>", ":resize -3<CR>")
-map("n", "<C-j>", ":resize +3<CR>")
-map("n", "<C-h>", ":vertical resize -3<CR>")
-map("n", "<C-l>", ":vertical resize +3<CR>")
+map("n", "<C-Up>", ":resize -3<CR>")
+map("n", "<C-Down>", ":resize +3<CR>")
+map("n", "<C-Left>", ":vertical resize -3<CR>")
+map("n", "<C-Right>", ":vertical resize +3<CR>")
 
 local api = vim.api
 
