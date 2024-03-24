@@ -12,20 +12,20 @@
 
 # Set bspwm configuration for Isabel
 set_bspwm_config() {
-    bspc config border_width 0
-    bspc config top_padding 2
-    bspc config bottom_padding 42
-    bspc config left_padding 2
-    bspc config right_padding 2
-    bspc config normal_border_color "#b8bfe5"
-    bspc config active_border_color "#b8bfe5"
-    bspc config focused_border_color "#7560d3"
-    bspc config presel_feedback_color "#81ae5f"
+	bspc config border_width 0
+	bspc config top_padding 2
+	bspc config bottom_padding 42
+	bspc config left_padding 2
+	bspc config right_padding 2
+	bspc config normal_border_color "#b8bfe5"
+	bspc config active_border_color "#b8bfe5"
+	bspc config focused_border_color "#7560d3"
+	bspc config presel_feedback_color "#81ae5f"
 }
 
 # Reload terminal colors
 set_term_config() {
-    cat > "$HOME"/.config/alacritty/rice-colors.toml << EOF
+	cat >"$HOME"/.config/alacritty/rice-colors.toml <<EOF
 # (Onedark) Color scheme for Isabel Rice
 
 # Default colors
@@ -64,45 +64,45 @@ EOF
 
 # Set compositor configuration
 set_picom_config() {
-    sed -i "$HOME"/.config/bspwm/picom.conf \
-        -e "s/normal = .*/normal =  { fade = true; shadow = true; }/g" \
-        -e "s/shadow-color = .*/shadow-color = \"#000000\"/g" \
-        -e "s/corner-radius = .*/corner-radius = 6/g" \
-        -e "s/\".*:class_g = 'Alacritty'\"/\"100:class_g = 'Alacritty'\"/g" \
-        -e "s/\".*:class_g = 'FloaTerm'\"/\"100:class_g = 'FloaTerm'\"/g"
+	sed -i "$HOME"/.config/bspwm/picom.conf \
+		-e "s/normal = .*/normal =  { fade = true; shadow = true; }/g" \
+		-e "s/shadow-color = .*/shadow-color = \"#000000\"/g" \
+		-e "s/corner-radius = .*/corner-radius = 6/g" \
+		-e "s/\".*:class_g = 'Alacritty'\"/\"100:class_g = 'Alacritty'\"/g" \
+		-e "s/\".*:class_g = 'FloaTerm'\"/\"100:class_g = 'FloaTerm'\"/g"
 }
 
 # Set dunst notification daemon config
 set_dunst_config() {
-    sed -i "$HOME"/.config/bspwm/dunstrc \
-        -e "s/transparency = .*/transparency = 0/g" \
-        -e "s/frame_color = .*/frame_color = \"#14171c\"/g" \
-        -e "s/separator_color = .*/separator_color = \"#abb2bf\"/g" \
-        -e "s/font = .*/font = JetBrainsMono NF Medium 9/g" \
-        -e "s/foreground='.*'/foreground='#7560d3'/g"
+	sed -i "$HOME"/.config/bspwm/dunstrc \
+		-e "s/transparency = .*/transparency = 0/g" \
+		-e "s/frame_color = .*/frame_color = \"#14171c\"/g" \
+		-e "s/separator_color = .*/separator_color = \"#abb2bf\"/g" \
+		-e "s/font = .*/font = JetBrainsMono NF Medium 9/g" \
+		-e "s/foreground='.*'/foreground='#7560d3'/g"
 
-    sed -i '/urgency_low/Q' "$HOME"/.config/bspwm/dunstrc
-    cat >> "$HOME"/.config/bspwm/dunstrc <<- _EOF_
-			[urgency_low]
-			timeout = 3
-			background = "#14171c"
-			foreground = "#b8bfe5"
+	sed -i '/urgency_low/Q' "$HOME"/.config/bspwm/dunstrc
+	cat >>"$HOME"/.config/bspwm/dunstrc <<-_EOF_
+		[urgency_low]
+		timeout = 3
+		background = "#14171c"
+		foreground = "#b8bfe5"
 
-			[urgency_normal]
-			timeout = 6
-			background = "#14171c"
-			foreground = "#b8bfe5"
+		[urgency_normal]
+		timeout = 6
+		background = "#14171c"
+		foreground = "#b8bfe5"
 
-			[urgency_critical]
-			timeout = 0
-			background = "#14171c"
-			foreground = "#b8bfe5"
-_EOF_
+		[urgency_critical]
+		timeout = 0
+		background = "#14171c"
+		foreground = "#b8bfe5"
+	_EOF_
 }
 
 # Set eww colors
 set_eww_colors() {
-    cat > "$HOME"/.config/bspwm/eww/colors.scss << EOF
+	cat >"$HOME"/.config/bspwm/eww/colors.scss <<EOF
 // Eww colors for Isabel rice
 \$bg: #14171c;
 \$bg-alt: #181b21;
@@ -121,42 +121,49 @@ EOF
 
 # Set jgmenu colors for Isabel
 set_jgmenu_colors() {
-    sed -i "$HOME"/.config/bspwm/jgmenurc \
-        -e 's/color_menu_bg = .*/color_menu_bg = #14171c/' \
-        -e 's/color_norm_fg = .*/color_norm_fg = #b8bfe5/' \
-        -e 's/color_sel_bg = .*/color_sel_bg = #181b21/' \
-        -e 's/color_sel_fg = .*/color_sel_fg = #b8bfe5/' \
-        -e 's/color_sep_fg = .*/color_sep_fg = #5c6370/'
+	sed -i "$HOME"/.config/bspwm/jgmenurc \
+		-e 's/color_menu_bg = .*/color_menu_bg = #14171c/' \
+		-e 's/color_norm_fg = .*/color_norm_fg = #b8bfe5/' \
+		-e 's/color_sel_bg = .*/color_sel_bg = #181b21/' \
+		-e 's/color_sel_fg = .*/color_sel_fg = #b8bfe5/' \
+		-e 's/color_sep_fg = .*/color_sep_fg = #5c6370/'
 }
 
 # Set Rofi launcher config
-set_launcher_config () {
-    sed -i "$HOME/.config/bspwm/scripts/Launcher.rasi" \
-        -e '22s/\(font: \).*/\1"Terminess Nerd Font Mono Bold 10";/' \
-        -e 's/\(background: \).*/\1#14171c;/' \
-        -e 's/\(background-alt: \).*/\1#14171cE0;/' \
-        -e 's/\(foreground: \).*/\1#b8bfe5;/' \
-        -e 's/\(selected: \).*/\1#7560d3;/' \
-        -e "s/rices\/[[:alnum:]\-]*/rices\/${RICETHEME}/g"
+set_launcher_config() {
+	sed -i "$HOME/.config/bspwm/scripts/Launcher.rasi" \
+		-e '22s/\(font: \).*/\1"Terminess Nerd Font Mono Bold 10";/' \
+		-e 's/\(background: \).*/\1#14171c;/' \
+		-e 's/\(background-alt: \).*/\1#14171cE0;/' \
+		-e 's/\(foreground: \).*/\1#b8bfe5;/' \
+		-e 's/\(selected: \).*/\1#8677cf;/' \
+		-e "s/rices\/[[:alnum:]\-]*/rices\/${RICETHEME}/g"
 
-    # WallSelect menu colors
-    sed -i "$HOME/.config/bspwm/scripts/WallSelect.rasi" \
-        -e 's/\(main-bg: \).*/\1#14171cE6;/' \
-        -e 's/\(main-fg: \).*/\1#b8bfe5;/' \
-        -e 's/\(select-bg: \).*/\1#7560d3;/' \
-        -e 's/\(select-fg: \).*/\1#14171c;/'
+	# NetworkManager launcher
+	sed -i "$HOME/.config/bspwm/scripts/NetManagerDM.rasi" \
+		-e '12s/\(background: \).*/\1#14171c;/' \
+		-e '13s/\(background-alt: \).*/\1#181b21;/' \
+		-e '14s/\(foreground: \).*/\1#b8bfe5;/' \
+		-e '15s/\(selected: \).*/\1#8677cf;/' \
+		-e '16s/\(active: \).*/\1#81ae5f;/' \
+		-e '17s/\(urgent: \).*/\1#e06c75;/'
+
+	# WallSelect menu colors
+	sed -i "$HOME/.config/bspwm/scripts/WallSelect.rasi" \
+		-e 's/\(main-bg: \).*/\1#14171cE6;/' \
+		-e 's/\(main-fg: \).*/\1#b8bfe5;/' \
+		-e 's/\(select-bg: \).*/\1#8677cf;/' \
+		-e 's/\(select-fg: \).*/\1#14171c;/'
 }
 
 # Launch the bar
 launch_bars() {
 
-    for mon in $(polybar --list-monitors | cut -d":" -f1); do
-        MONITOR=$mon polybar -q isa-bar -c "${rice_dir}"/config.ini &
-    done
+	for mon in $(polybar --list-monitors | cut -d":" -f1); do
+		MONITOR=$mon polybar -q isa-bar -c "${rice_dir}"/config.ini &
+	done
 
 }
-
-
 
 ### ---------- Apply Configurations ---------- ###
 

@@ -79,7 +79,7 @@ logo "Installing needed packages.."
 
 dependencias=(alacritty base-devel brightnessctl bspwm dunst feh geany git imagemagick jq \
 			        jgmenu libwebp lsd maim mpc mpd neovim ncmpcpp npm pamixer pacman-contrib \
-			        papirus-icon-theme physlock picom playerctl polybar polkit-gnome ranger \
+			        papirus-icon-theme physlock picom playerctl polybar polkit-gnome python-gobject ranger \
 			        rofi rustup sxhkd ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd \
 			        ttf-joypixels ttf-terminus-nerd ueberzug webp-pixbuf-loader xclip xdg-user-dirs \
 			        xdo xdotool xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot \

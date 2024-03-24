@@ -5,6 +5,8 @@
 
 ;; Volume vars
 (defvar volum false)
+(defvar notify false)
+(defvar power false)
 (defpoll volume_icon :interval "1s" "scripts/Volume --icon")
 (defpoll volume_value :interval "1s" "scripts/Volume --vol")
 
@@ -23,24 +25,36 @@
 ;; Launcher Widgets ;;
 (defwidget launcher []
 	(box :orientation "v" 
-		 :space-evenly "false" 
-		 :spacing -15
-	(eventbox :cursor "pointer"
-  	(button :class "launcher_icon" 
-		   	:onclick "cd ; OpenApps --menu"
-		   	:onrightclick "OpenApps --rice" "󰣇"))))
+		   :space-evenly "false" 
+		   :spacing -15
+	  (eventbox :cursor "pointer"
+  	  (button :class "launcher_icon" 
+		   	      :onclick "cd ; OpenApps --menu"
+		   	      :onrightclick "OpenApps --rice" "󰣇"
+      )
+    )
+  )
+)
 
 ;; Workspaces Widgets ;;
 (defwidget workspaces []
-	(literal :content workspaces))
+	(literal :content workspaces
+  )
+)
 
 
 ;; Wifi Widgets ;;
 (defwidget wifi []
-	(box		:orientation "v"  			
-	(button		:style "background-image: url('${WIFIICON}');"
-				:class "trayicon"
-				:tooltip "${NETSTAT}")))
+	(box		:orientation "v"
+    (eventbox :cursor "pointer"
+      (button :style "background-image: url('${WIFIICON}');"
+              :onclick "OpenApps --netmanager"
+				      :class "trayicon"
+				      :tooltip "${NETSTAT}"
+      )
+    )
+  )
+)
 
 
 ;; control center ;;
@@ -80,7 +94,6 @@
 				:class "trayicon" 									
 				:tooltip "Widgets"))))
 
-(defvar notify false)
 
 
 ;; Pacman Widgets ;;
@@ -184,7 +197,6 @@
 				:style "background-image: url('images/sys-powermenu.png');"
 				:class "button-powermenu"					
 				:tooltip "Power Menu"))))
-(defvar power false)
 
 
 ;; Top Widgets ;;

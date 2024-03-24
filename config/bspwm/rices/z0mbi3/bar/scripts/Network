@@ -14,8 +14,8 @@ ID=$(ip link | awk '/state UP/ {print $2}' | tr -d :)
 SSID=""
 ICON="images/wifi.png"
 
-if command -v iwgetid >/dev/null 2>&1 ; then
-    SSID=$(iwgetid -r)
+if command -v nmcli >/dev/null 2>&1 ; then
+    SSID=$(nmcli -t -f active,ssid dev wifi show | sed -n '1{s/SSID: //p}')
 fi
 
 ping_servers=("archlinux.org" "google.com")

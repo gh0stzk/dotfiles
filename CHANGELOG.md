@@ -1,3 +1,40 @@
+## Add rofi launcher to manage connections.
+
+##### March 24 2024
+
+Finally add a rofi menu to manage your connections, wired and wireless. But it works only with Networkmanager.
+
+| <img src="https://github.com/gh0stzk/dotfiles/assets/67278339/405f9e08-416d-47ca-855c-e9d20b5304e3" width="700">  |
+| :---------------------------------------------------------------------------------------------------------------: |
+| <img src ="https://github.com/gh0stzk/dotfiles/assets/67278339/32ef2559-0e02-4d7e-b30e-2522b48169f2" width="700"> |
+
+Requirements:
+
+- networkmanager
+- python-gobject (In new installtions of my dots, this is already a dependency, if not install it.)
+
+**Instructions to manually update:**
+
+If u already have my dots in your system and already made changes and you dont wanna lost your changes,you need to clone the repo again to somewhere.
+
+`git clone --depth=1 https://github.com/gh0stzk/dotfiles.git`
+
+There are 3 new files **NetManagerDM, NetManagerDM.ini and NetManagerDM.rasi**
+
+Copy them to the folder **~/.config/bspwm/scripts/**
+
+Replace the **Theme.sh** file inside all rices with the new Theme.sh files
+
+Copy **OpenApps** file to **~/.config/bspwm/scripts**
+
+And the hard work is in modules.ini file inside all rices except "Andrea and z0mbi3"
+
+You have to edit the network module, just copy the code from the new files to the new ones, one by one.
+
+\*If you only downloaded the files and did not clone the repo again, do not forget to give execution permissions to NetManagerDM, since when downloading the single file, the permissions are lost.
+
+---
+
 ## Many fixes to polybar modules
 
 ##### March 22 2024

@@ -197,7 +197,7 @@
 		 ))
 
 		 (eventbox :cursor "pointer"
-		 (button :onclick ""
+		 (button :onclick "OpenApps --netmanager"
 				 (box :orientation "h"
 					  :spacing 3
 					  :valign "center"
