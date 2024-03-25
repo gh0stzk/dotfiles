@@ -136,8 +136,18 @@ clear
 ########## ---------- Backup files ---------- ##########
 
 logo "Backup files"
+
 printf "If you already have a powerful and super Pro NEOVIM configuration, write 'n' in the next question. If you answer 'y' your neovim configuration will be moved to the backup directory.\n\n"
-read -rp "Do you want to try my nvim config? (y/n): " try_nvim
+
+while true; do
+    read -rp "Do you want to try my nvim config? (y/n): " try_nvim
+    if [[ "$try_nvim" == "y" || "$try_nvim" == "n" ]]; then
+        break
+    else
+        echo "Invalid input. Please enter 'y' or 'n'."
+    fi
+done
+
 printf "\nBackup files will be stored in %s%s%s/.RiceBackup%s \n\n" "${BLD}" "${CRE}" "$HOME" "${CNC}"
 sleep 10
 
@@ -158,7 +168,7 @@ for folder in bspwm alacritty picom rofi eww sxhkd dunst polybar ncmpcpp ranger 
     fi
 done
 
-if [[ $try_nvim == [Yy] ]]; then
+if [[ $try_nvim == "y" ]]; then
         # Download nvim
     if [ -d "$HOME/.config/nvim" ]; then
         if mv "$HOME/.config/nvim" "$backup_folder/nvim_$date" 2>> RiceError.log; then
@@ -223,7 +233,7 @@ printf "Copying files to respective directories..\n"
 for dirs in ~/dotfiles/config/*; do
     dir_name=$(basename "$dirs")
 # If the directory is nvim and the user doesn't want to try it, skip this loop
-    if [[ $dir_name == "nvim" && $try_nvim != [Yy] ]]; then
+    if [[ $dir_name == "nvim" && $try_nvim != "y" ]]; then
         continue
     fi
     if cp -R "${dirs}" ~/.config/ 2>> RiceError.log; then
