@@ -8,7 +8,7 @@ configuration {
 }
 
 * {
-font: "JetBrainsMono Nerd Font Bold 11";
+font: "JetBrainsMono Nerd Font Bold 9";
 background: #1A1B26;
 background-alt: #222330;
 foreground: #c0caf5;
@@ -50,10 +50,10 @@ window {
     location:                    north;
     anchor:                      north;
     fullscreen:                  false;
-    width:                       23%;
-    height:                      58%;
-    x-offset:                    38%;
-    y-offset:                    9%;
+    width:                       17%;
+    height:                      44%;
+    x-offset:                    41%;
+    y-offset:                    8%;
 
     /* properties for all widgets */
     enabled:                     true;
@@ -188,7 +188,7 @@ element {
     cursor:                      pointer;
 }
 element normal.normal {
-    background-color:            var(normal-background);
+    background-color:            transparent;
     text-color:                  var(normal-foreground);
 }
 element normal.urgent {
@@ -212,7 +212,7 @@ element selected.active {
     text-color:                  var(selected-active-foreground);
 }
 element alternate.normal {
-    background-color:            var(alternate-normal-background);
+    background-color:            transparent;
     text-color:                  var(alternate-normal-foreground);
 }
 element alternate.urgent {
