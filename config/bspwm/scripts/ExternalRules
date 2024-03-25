@@ -52,7 +52,7 @@ case "$class" in
         result "state=floating desktop=^5 follow=on center=on"
         ;;
     Thunar)
-        result "state=pseudo_tiled desktop=^2 rectangle=966x576+0+0 follow=on"
+        result "desktop=^2 follow=on"
         ;;
     firefox|Navigator)
         result "desktop=^3 follow=on"
@@ -61,7 +61,7 @@ case "$class" in
         result "desktop=^6 follow=on"
         ;;
     Spotify)
-        result "state=pseudo_tiled desktop=^6 follow=on"
+        result "state=floating desktop=^6 follow=on center=on"
         ;;
 esac
 

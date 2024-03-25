@@ -23,11 +23,11 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 
 **Experience the Magic of Customization with gh0stzk's bspwm dotfiles**
 
-<sup>Welcome to the world of limitless customization! gh0stzk's dotfiles for bspwm offer a unique and exciting experience with 12 different themes, each featuring captivating color schemes, styles and personality. Immerse yourself in a visual journey that will transform your workspace in an impressive way.</sup>
+<sup>Welcome to the world of limitless customization! gh0stzk's dotfiles for bspwm offer a unique and exciting experience with 15 different themes, each featuring captivating color schemes, styles and personality. Immerse yourself in a visual journey that will transform your workspace in an impressive way.</sup>
 
 **Change themes on the fly**
 
-<sup>With our custom menu based on rofi launcher, switching between the 12 themes is as easy as a click. Enjoy the versatility of styles and color combinations instantly.</sup>
+<sup>With our custom menu based on rofi launcher, switching between the 15 themes is as easy as a click. Enjoy the versatility of styles and color combinations instantly.</sup>
 
 **Consistency Across the Environment**
 

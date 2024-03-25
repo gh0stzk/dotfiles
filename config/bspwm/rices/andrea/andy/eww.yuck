@@ -145,7 +145,7 @@
 			  (eventbox :cursor "pointer"
 				(button :class "player-toggle" 
 						:onclick "MediaControl --toggle" 
-						{STATUS == "Playing" ? "󰏤" : STATUS == "Paused" ? "󰐊" : "󰓛 "}))
+						{STATUS == "Playing" ? "󰏤" : STATUS == "Paused" ? "󰐊" : "󰓛"}))
 						
 			  (eventbox :cursor "pointer"
 				(button :class "player-next" 
