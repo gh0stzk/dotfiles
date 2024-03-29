@@ -6,6 +6,20 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 	config = function()
-		require("bufferline").setup()
+		local bufferline = require("bufferline")
+		bufferline.setup({
+			options = {
+				mode = "buffers",
+				offsets = {
+					{
+						filetype = "neo-tree",
+						text = "File Explorer",
+						text_align = "center",
+						highlight = "Directory",
+						separator = true,
+					},
+				},
+			},
+		})
 	end,
 }

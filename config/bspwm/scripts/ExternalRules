@@ -39,8 +39,8 @@ case "$class" in
     Viewnior)
         result "state=floating focus=on center=on"
         ;;
-    whatsapp-nativefier-d40211|TelegramDesktop)
-        result "state=pseudo_tiled desktop=^4 follow=on rectangle=930x617+0+0"
+    whatsdesk|TelegramDesktop)
+        result "desktop=^4 follow=on"
         ;;
     retroarch)
         result "state=pseudo_tiled desktop=^6"

@@ -4,6 +4,9 @@ vim.g.mapleader = " "
 -- Save current file
 map("n", "<C-s>", "<cmd>w<cr>", { desc = "Save file", remap = true })
 
+-- ESC pressing jk or lk
+map("i", "jk", "<ESC>", { desc = "jk to esc", noremap = true })
+
 -- Quit Neovim
 map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit Buffer/Neovim", remap = true })
 
@@ -37,6 +40,11 @@ map("n", "<C-Down>", ":resize +3<CR>")
 map("n", "<C-Left>", ":vertical resize -3<CR>")
 map("n", "<C-Right>", ":vertical resize +3<CR>")
 
+-- Bufferline
+map("n", "<S-l>", ":bnext<cr>", { desc = "Move to next tab", noremap = true })
+map("n", "<S-h>", ":bprevious<cr>", { desc = "Move to previous tab", noremap = true })
+
+
 local api = vim.api
 
 -- Comments
@@ -48,3 +56,4 @@ map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Telescope find
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Comment line", noremap = true })
 map("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Comment line", noremap = true })
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Comment line", noremap = true })
+

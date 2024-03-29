@@ -59,7 +59,7 @@ case "$1" in
         telegram-desktop
         ;;
     --whats)
-        whatsapp-nativefier --disable-gpu
+        whatsdesk --disable-gpu
         ;;
     --soundcontrol)
         pavucontrol
