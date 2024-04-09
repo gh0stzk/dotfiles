@@ -109,7 +109,9 @@ clear
 
 ########## ---------- Preparing Folders ---------- ##########
 
-# Verifica si el archivo user-dirs.dirs no existe en ~/.config
+# ES : Verifica si el archivo user-dirs.dirs no existe en ~/.config
+# EN : Verifies if the archive user-dirs.dirs doesn't exist in ~/.config
+
 if [ ! -e "$HOME/.config/user-dirs.dirs" ]; then
     xdg-user-dirs-update
 fi
@@ -121,13 +123,17 @@ logo "Downloading dotfiles"
 repo_url="https://github.com/gh0stzk/dotfiles"
 repo_dir="$HOME/dotfiles"
 
-# Verifica si el directorio del repositorio ya existe y, si es así, lo elimina
+# ES : Verifica si el directorio del repositorio ya existe y, si es así, lo elimina
+# EN : Verifies if the folder of the repository exists, and if it does, deletes it
+
 if [ -d "$repo_dir" ]; then
     printf "Removing existing dotfiles repository\n"
     rm -rf "$repo_dir"
 fi
 
-# Clona el repositorio
+# ES : Clona el repositorio
+# EN : Clone the repository
+
 printf "Cloning dotfiles from %s\n" "$repo_url"
 git clone --depth=1 "$repo_url" "$repo_dir"
 sleep 2
@@ -298,7 +304,7 @@ else
     }
 fi
 
-# Intalling tdrop for scratchpads
+# Installing tdrop for scratchpads
 if command -v tdrop >/dev/null 2>&1; then
     printf "\n%s%sTdrop is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 else
@@ -306,7 +312,7 @@ else
     paru -S tdrop-git --skipreview --noconfirm
 fi
 
-# Intalling xqpp
+# Installing xqpp
 if command -v xqp >/dev/null 2>&1; then
     printf "\n%s%sxqp is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 else
