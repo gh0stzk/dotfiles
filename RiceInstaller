@@ -109,7 +109,6 @@ clear
 
 ########## ---------- Preparing Folders ---------- ##########
 
-# ES : Verifica si el archivo user-dirs.dirs no existe en ~/.config
 # EN : Verifies if the archive user-dirs.dirs doesn't exist in ~/.config
 
 if [ ! -e "$HOME/.config/user-dirs.dirs" ]; then
@@ -123,7 +122,6 @@ logo "Downloading dotfiles"
 repo_url="https://github.com/gh0stzk/dotfiles"
 repo_dir="$HOME/dotfiles"
 
-# ES : Verifica si el directorio del repositorio ya existe y, si es así, lo elimina
 # EN : Verifies if the folder of the repository exists, and if it does, deletes it
 
 if [ -d "$repo_dir" ]; then
@@ -131,7 +129,6 @@ if [ -d "$repo_dir" ]; then
     rm -rf "$repo_dir"
 fi
 
-# ES : Clona el repositorio
 # EN : Clone the repository
 
 printf "Cloning dotfiles from %s\n" "$repo_url"
