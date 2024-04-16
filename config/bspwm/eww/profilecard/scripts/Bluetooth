@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+get_status() {
+  if ! systemctl is-active --quiet bluetooth.service; then
+    B_STATUS="died"
+  elif [[ $(bluetoothctl show | grep "Powered" | awk '{print $2}') == "yes" ]]; then
+    B_STATUS="poweron"
+  elif [[ $(bluetoothctl show | grep "Powered" | awk '{print $2}') == "no" ]]; then
+    B_STATUS="poweroff"
+  fi
+
+  echo "${B_STATUS}"
+}
+
+get_icon() {
+	if systemctl is-active --quiet bluetooth.service; then
+
+		powered=$(bluetoothctl show | grep "Powered" | awk '{print $2}')
+		if [ "$powered" == "yes" ]; then
+			echo "󰂯"
+		else
+			echo "󰂲"
+		fi
+	else
+		echo "󰂲"
+	fi
+}
+
+get_name() {
+	if systemctl is-active --quiet bluetooth.service; then
+
+		powered=$(bluetoothctl show | grep "Powered" | awk '{print $2}')
+		if [ "$powered" == "yes" ]; then
+			connected_devices=$(bluetoothctl devices Connected | awk '{print $3}')
+			if [ -n "$connected_devices" ]; then
+				echo "$connected_devices"
+			else
+				echo "On"
+			fi
+		else
+			echo "Off"
+		fi
+	else
+		echo "Null"
+	fi
+}
+
+toggle() {
+	powered=$(bluetoothctl show | grep "Powered" | awk '{print $2}')
+	if [[ "$powered" == "no" ]]; then
+		bluetoothctl power on
+	else
+		bluetoothctl power off
+	fi
+}
+
+if [[ "$1" == "--status" ]]; then
+  get_status
+elif [[ "$1" == "--icon" ]]; then
+	get_icon
+elif [[ "$1" == "--name" ]]; then
+	get_name
+elif [[ "$1" == "--toggle" ]]; then
+	toggle
+fi

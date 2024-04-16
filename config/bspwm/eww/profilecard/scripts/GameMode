@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+## GameMode script
+## Disables picom composer, notifications and configure the processor in performance mode
+## gh0stzk | https://github.com/gh0stzk/dotfiles
+
+cache_file=$HOME/.cache/$(whoami)/gamemode_state
+
+initial_hook() {
+	if [ ! -d "$(dirname "$cache_file")" ]; then
+		mkdir -p "$(dirname "$cache_file")"
+	fi
+	if [ ! -f "$cache_file" ]; then
+		echo Off >"$cache_file"
+	fi
+}
+
+get_state() {
+	# check if redshift is running
+	cat "$cache_file"
+}
+
+gamemode_on() {
+	dunstctl set-paused true
+	pkill -f picom
+	if [[ ! $(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor) = performance ]]; then
+		echo performance | pkexec tee /sys/devices/system/cpu/*/cpufreq/scaling_governor
+	fi
+	echo On >"$cache_file"
+}
+
+gamemode_off() {
+	dunstctl set-paused false
+	pidof -q picom || { picom --config "$HOME"/.config/bspwm/picom.conf & }
+	if [[ ! $(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor) = ondemand ]]; then
+		echo ondemand | pkexec tee /sys/devices/system/cpu/*/cpufreq/scaling_governor
+	fi
+	echo Off >"$cache_file"
+}
+
+toggle() {
+	local state=$(get_state)
+	if [[ $state = "Off" ]]; then
+		gamemode_on
+	else
+		gamemode_off
+	fi
+}
+
+initial_hook
+
+if [[ "$1" == "--toggle" ]]; then
+	toggle
+elif [[ "$1" == "--status" ]]; then
+	get_state
+fi

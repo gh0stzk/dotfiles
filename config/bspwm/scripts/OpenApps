@@ -18,32 +18,32 @@ case "$1" in
     --rice)
         RiceSelector
         ;;
-    --terminal)
-        alacritty
+    ---terminal)
+        Term --terminal
         ;;
     --floating)
-        alacritty --class FloaTerm,FloaTerm -o window.dimensions.lines=22 window.dimensions.columns=90
+        Term --floating
         ;;
     --update)
-        alacritty --hold --class FloaTerm,FloaTerm -o window.dimensions.lines=22 window.dimensions.columns=90 -e Updates --update-system
+        Term --update 
         ;;
     --checkupdates)
-        alacritty --hold --class Updating,Updating -o window.dimensions.lines=22 window.dimensions.columns=47 -e Updates --print-updates
+        Term --checkupdates
         ;;
     --netmanager)
 		NetManagerDM
 		;;
     --ranger)
-        alacritty --class FloaTerm,FloaTerm -o window.dimensions.lines=14 window.dimensions.columns=90 -e ranger
+        Term --ranger
         ;;
     --nvim)
-        alacritty -e nvim
+        Term --nvim
         ;;
     --music)
-        alacritty --class FloaTerm,FloaTerm -o window.dimensions.lines=18 window.dimensions.columns=67 -e ncmpcpp
+        Term --music
         ;;
     --fetch)
-        alacritty --hold --class FloaTerm,FloaTerm -o window.dimensions.lines=26 window.dimensions.columns=40 -e ~/.local/bin/sysfetch
+        Term --fetch
         ;;
         # Apps
     --filemanager)
@@ -65,6 +65,9 @@ case "$1" in
         pavucontrol
         ;;
         # Eww Widgets
+    --KeyHelp)
+		eww -c "$WIDGET_DIR" open --toggle csheet
+		;;    
     --powermenu)
         eww -c "$WIDGET_DIR" open --toggle powermenu
         ;;

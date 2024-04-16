@@ -77,10 +77,10 @@ clear
 
 logo "Installing needed packages.."
 
-dependencias=(alacritty base-devel brightnessctl bspwm dunst feh geany git imagemagick jq \
+dependencias=(alacritty base-devel brightnessctl bspwm dunst feh geany git kitty imagemagick jq \
 			        jgmenu libwebp lsd maim mpc mpd neovim ncmpcpp npm pamixer pacman-contrib \
 			        papirus-icon-theme physlock picom playerctl polybar polkit-gnome python-gobject ranger \
-			        rofi rustup sxhkd ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd \
+			        redshift rofi rustup sxhkd ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd \
 			        ttf-joypixels ttf-terminus-nerd ueberzug webp-pixbuf-loader xclip xdg-user-dirs \
 			        xdo xdotool xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot \
 			        xorg-xwininfo zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting)
@@ -109,7 +109,7 @@ clear
 
 ########## ---------- Preparing Folders ---------- ##########
 
-# Verifica si el archivo user-dirs.dirs no existe en ~/.config
+# Verifies if the archive user-dirs.dirs doesn't exist in ~/.config
 if [ ! -e "$HOME/.config/user-dirs.dirs" ]; then
     xdg-user-dirs-update
 fi
@@ -121,13 +121,13 @@ logo "Downloading dotfiles"
 repo_url="https://github.com/gh0stzk/dotfiles"
 repo_dir="$HOME/dotfiles"
 
-# Verifica si el directorio del repositorio ya existe y, si es así, lo elimina
+# Verifies if the folder of the repository exists, and if it does, deletes it
 if [ -d "$repo_dir" ]; then
     printf "Removing existing dotfiles repository\n"
     rm -rf "$repo_dir"
 fi
 
-# Clona el repositorio
+# Clone the repository
 printf "Cloning dotfiles from %s\n" "$repo_url"
 git clone --depth=1 "$repo_url" "$repo_dir"
 sleep 2
@@ -153,7 +153,7 @@ sleep 10
 
 [ ! -d "$backup_folder" ] && mkdir -p "$backup_folder"
 
-for folder in bspwm alacritty picom rofi eww sxhkd dunst polybar ncmpcpp ranger zsh mpd paru; do
+for folder in bspwm alacritty picom rofi eww sxhkd dunst kitty polybar ncmpcpp ranger zsh mpd paru; do
     if [ -d "$HOME/.config/$folder" ]; then
         if mv "$HOME/.config/$folder" "$backup_folder/${folder}_$date" 2>> RiceError.log; then
             printf "%s%s%s folder backed up successfully at %s%s/%s_%s%s\n" "${BLD}" "${CGR}" "$folder" "${CBL}" "$backup_folder" "$folder" "$date" "${CNC}"
@@ -169,7 +169,7 @@ for folder in bspwm alacritty picom rofi eww sxhkd dunst polybar ncmpcpp ranger 
 done
 
 if [[ $try_nvim == "y" ]]; then
-        # Download nvim
+        # Backup nvim
     if [ -d "$HOME/.config/nvim" ]; then
         if mv "$HOME/.config/nvim" "$backup_folder/nvim_$date" 2>> RiceError.log; then
                 printf "%s%snvim folder backed up successfully at %s%s/nvim_%s%s\n" "${BLD}" "${CGR}" "${CBL}" "$backup_folder" "$date" "${CNC}"
@@ -298,7 +298,7 @@ else
     }
 fi
 
-# Intalling tdrop for scratchpads
+# Installing tdrop for scratchpads
 if command -v tdrop >/dev/null 2>&1; then
     printf "\n%s%sTdrop is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 else
@@ -306,7 +306,7 @@ else
     paru -S tdrop-git --skipreview --noconfirm
 fi
 
-# Intalling xqpp
+# Installing xqpp
 if command -v xqp >/dev/null 2>&1; then
     printf "\n%s%sxqp is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 else

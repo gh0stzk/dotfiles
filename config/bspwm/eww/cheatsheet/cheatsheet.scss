@@ -1,0 +1,127 @@
+.cheatsheet {
+  background-color: $bg;
+  border-radius: 0.5rem;
+  margin: 0.8rem 0.8rem;
+}
+
+.title {
+  font-family: JetBrainsMono NF;
+  font-weight: Bolder;
+  font-size: 0.9rem;
+  color: $magenta;
+  margin: 1.6rem 1.6rem 0 1.6rem;
+}
+
+.title-info {
+  font-family: JetBrainsMono NF;
+  font-style: Italic;
+  font-size: 0.8rem;
+  margin-top: 3px;
+  color: $fg;
+}
+
+.content {
+  margin: 0.8rem 0.8rem;
+}
+
+.left-content {
+  margin: 10px 0 10px 15px;
+}
+
+.center-content {
+  margin: 10px 0;
+}
+
+.right-content {
+  margin: 10px 15px 10px 0;
+}
+
+.category-bspwm {
+  font-family: JetBrainsMono NF;
+  font-weight: Bold;
+  font-size: 0.8rem;
+  background-color: $green;
+  color: $bg;
+  margin-bottom: 4px;
+  padding: 2px 0;
+  border-radius: 2px;
+}
+
+.category-system {
+  font-family: JetBrainsMono NF;
+  font-weight: Bold;
+  font-size: 0.8rem;
+  background-color: $red;
+  color: $bg;
+  margin-bottom: 4px;
+  padding: 2px 0;
+  border-radius: 2px;
+}
+
+.category-nodes {
+  font-family: JetBrainsMono NF;
+  font-weight: Bold;
+  font-size: 0.8rem;
+  background-color: $yellow;
+  color: $bg;
+  margin-bottom: 4px;
+  padding: 2px 0;
+  border-radius: 2px;
+}
+
+.category-workspaces {
+  font-family: JetBrainsMono NF;
+  font-weight: Bold;
+  font-size: 0.8rem;
+  background-color: $magenta;
+  color: $bg;
+  margin-bottom: 4px;
+  padding: 2px 0;
+  border-radius: 2px;
+}
+
+.category-move {
+  font-family: JetBrainsMono NF;
+  font-weight: Bold;
+  font-size: 0.8rem;
+  background-color: $archicon;
+  color: $bg;
+  margin-bottom: 4px;
+  padding: 2px 0;
+  border-radius: 2px;
+}
+
+.category-apps {
+  font-family: JetBrainsMono NF;
+  font-weight: Bold;
+  font-size: 0.8rem;
+  background-color: $green;
+  color: $bg;
+  margin-bottom: 4px;
+  padding: 2px 0;
+  border-radius: 2px;
+}
+
+.category-preselection {
+  font-family: JetBrainsMono NF;
+  font-weight: Bold;
+  font-size: 0.8rem;
+  background-color: $blue;
+  color: $bg;
+  margin-bottom: 4px;
+  padding: 2px 0;
+  border-radius: 2px;
+}
+
+.keys {
+  font-family: BebasNeue;
+  font-size: 1rem;
+  color: $fg;
+}
+
+.keys-alt {
+  font-family: JetBrainsMono NF;
+  font-style: Italic;
+  font-size: 0.8rem;
+  color: $fg;
+}

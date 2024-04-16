@@ -7,8 +7,6 @@
 #   └┘ ┴ ┴┴└─└─┘
 export VISUAL="${EDITOR}"
 export EDITOR='nvim'
-export TERM='alacritty'
-export TERMINAL='alacritty'
 export BROWSER='firefox'
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 

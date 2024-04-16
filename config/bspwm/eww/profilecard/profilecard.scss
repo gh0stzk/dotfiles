@@ -5,31 +5,15 @@
   min-width: 18rem;
 }
 
-.timebox {
-  margin: 0 2.5rem;
+.min {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 1.1rem;
+  padding: 0 0.9rem;
+  color: $red;
+}
 
-  .time-container {
-    .content {
-      font-family: JetBrainsMono NF;
-      font-weight: Bolder;
-      font-size: 3.6rem;
-      color: $fg;
-    }
-
-    .divider {
-      margin: 0.2rem 15px;
-      padding: 0px 1px;
-      background: linear-gradient($red, $magenta, $blue, $cyan);
-    }
-  }
-
-  .date-container {
-    font-family: Inconsolata SemiCondensed Medium;
-    font-weight: Bold;
-    font-size: 1rem;
-    color: $fg;
-    margin: 3px 0;
-  }
+.min:hover {
+  color: $magenta;
 }
 
 .usercard {
@@ -78,13 +62,6 @@
 
 .btn-info:hover {
   text-shadow: 0 0 2px $fg;
-}
-
-.usearch {
-  background-color: $bg-alt;
-  padding: 0.8rem;
-  border-radius: 0.5rem;
-  color: $fg;
 }
 
 .launcher-pfp-label {
@@ -193,23 +170,64 @@
   font-weight: Bold;
 }
 
-.launcher-apps {
+.tools-main {
+  padding: 0.4rem 0.6rem;
+}
+
+.tools-box {
+  font-family: "Material Design Icons Desktop";
+  font-size: 1.4rem;
+  border-radius: 100%;
   background-color: $bg-alt;
-  padding: 0.8rem;
-  border-radius: 0.5rem;
+}
+.wifi-btn {
+  color: $blue;
 }
 
-.launcher-btn {
+.wifi-no-btn {
   color: $black;
-  font-family: Material Design Icons Desktop;
-  font-size: 1.5rem;
 }
 
-.launcher-btn:hover {
+.bluetooth-btn {
+  color: $blue;
+}
+
+.bluetooth-no-btn {
+  color: $black;
+}
+
+.airplane-btn {
+  color: $blue;
+}
+
+.airplane-no-btn {
+  color: $black;
+}
+
+.redshift-btn {
+  color: $blue;
+}
+
+.redshift-no-btn {
+  color: $black;
+}
+
+.term-btn {
+  color: $blue;
+}
+
+.game-btn {
+  color: $blue;
+}
+
+.game-no-btn {
+  color: $black;
+}
+
+.info-btn {
+  font-family: BebasNeue;
+  font-size: 1.1rem;
   color: $fg;
-  font-family: Material Design Icons Desktop;
-  font-size: 1.5rem;
-  text-shadow: 0 0 0.2rem $fg;
 }
 
 .progress {
@@ -228,10 +246,6 @@
       color: $green;
     }
 
-    &.temp {
-      color: $red;
-    }
-
     &.disk {
       color: $magenta;
     }
@@ -243,3 +257,10 @@
     padding: 1.1rem;
   }
 }
+
+.temp {
+  font-family: "Font Awesome 6 Free Solid";
+  font-size: 1rem;
+  color: $magenta;
+}
+

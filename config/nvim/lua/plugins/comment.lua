@@ -1,14 +1,7 @@
 return {
-	"numToStr/Comment.nvim",
+	"terrortylor/nvim-comment",
 	event = { "BufReadPre", "BufNewFile" },
-	opts = {
-		toggler = {
-			line = "gtc",
-			block = "gtb",
-		},
-		opleader = {
-			line = "goc",
-			block = "gob",
-		},
-	},
+	config = function()
+      require("nvim_comment").setup({ create_mappings = false })
+    end
 }

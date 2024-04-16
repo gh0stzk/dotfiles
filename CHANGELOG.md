@@ -1,3 +1,50 @@
+## Eww widgets updated, keybinds, new select terminal menu and others.
+
+##### April 16 2024
+
+First of all, sorry for changing the keyboard shortcuts, specifically the ones used to move through the different workspaces, but they are simpler now.
+
+Switch throught workspaces `Super + ⬅️ ➡️`
+
+Switch to specific workspace `Super + 1-9`
+
+**New cheatsheet** so you know what the keyboard shortcuts are for bspwm and my dotfiles. You can access it by pressing **F1**. They include the new changes.
+
+![Shot-2024-04-16-093950](https://github.com/gh0stzk/dotfiles/assets/67278339/48cc2146-b4d1-4c91-a54c-2cf6d4c1056e)
+
+**I updated the eww widgets**, added a close button, someone ask for it in the issues and redesign and new functions to dashboard widget, calendar widget changes too.
+
+![Shot-2024-04-16-094459](https://github.com/gh0stzk/dotfiles/assets/67278339/24794b67-5f0b-42f3-9d30-24a98f4a66ee)
+![Shot-2024-04-16-094508](https://github.com/gh0stzk/dotfiles/assets/67278339/b6686ced-e8b9-4afb-96fd-26d7a53ab226)
+![Shot-2024-04-16-094512](https://github.com/gh0stzk/dotfiles/assets/67278339/844dcb4d-4631-45a4-beb2-252c3e97acc5)
+
+About the gamemode in the new dashboard.
+Activate it, kill the picom composer process, disable notifications and change the cpu governor to performance mode.
+
+Disabling it restarts the composer and notifications and switches the cpu governor to **ondemand** mode.
+
+When you activate game mode, a window will appear and ask you for your super user password, this is because changing the cpu governor obviously requires elevated permissions.
+
+![Shot-2024-04-16-095447](https://github.com/gh0stzk/dotfiles/assets/67278339/0495e8a9-4bb2-4236-b35c-88eb4b812e6f)
+
+New rofi menu to change default terminal. Add a terminal selection menu, now the 2 that my dotfiles use are alacritty and kitty. Alacritty is the one that will be by default, and alternatively you can change to kitty.
+
+Just select one from the menu which you can launch with `Super + alt + t` immediately after selecting one, each action of opening a terminal will open the selected one. You can change terminal too from new dashboard.
+
+![Shot-2024-04-16-101731](https://github.com/gh0stzk/dotfiles/assets/67278339/66c79f96-4010-4388-add7-5284ef4bb1ff)
+
+And about the kitty terminal, of course it changes its color scheme when changing rice, the splits, tabs and everything else changes accordingly.
+
+Kitty's keyboard shortcuts are the ones that come by default.
+
+![Shot-2024-04-16-102402](https://github.com/gh0stzk/dotfiles/assets/67278339/3947a128-ccab-4bfa-bec9-59bbf7efb0cd)
+
+And general fixes, edited some texts in Spanish, changed to English, thanks @AzhamProdLive
+
+Added/changed some nvim keymaps
+
+---
+
 ## Add rofi launcher to manage connections.
 
 ##### March 24 2024

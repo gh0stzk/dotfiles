@@ -1,3 +1,19 @@
+(defwidget divider []
+  (box :class "divider"
+       :orientation "v"
+       :space-evenly true)
+)
+
+(defwidget time []
+  (box :class "timebox" :orientation "v" :space-evenly false
+    (box :class "time-container" :orientation "h" :space-evenly false :halign "center" :valign "center"
+      (label :class "content" :text "${formattime(EWW_TIME, "%H")}")
+    (divider)
+      (label :class "content" :text "${formattime(EWW_TIME, "%M")}"))
+
+    (box :class "date-container" :orientation "h" :space-evenly true :halign "center"
+      (label :text "${formattime(EWW_TIME, "%A, %d %B")}"))
+))
 
 (defwidget cal []
   (box :class "cal-box"
@@ -7,13 +23,20 @@
               :day {formattime(EWW_TIME, "%d")}
               :month {formattime(EWW_TIME, "%m")}
               :year {formattime(EWW_TIME, "%Y")}
-  ))
+    )
+  )
 )
 
-;; Windows ;;
+(defwidget date []
+  (box :class "date"
+       :orientation "v"
+       :space-evenly false
+    (time)
+    (cal)
+  )
+)
+
 (defwindow date
-  :geometry (geometry :x "40%"
-                      :y "8%"
-                      :anchor "center top")
+  :geometry (geometry :x "0%" :y "8%" :anchor "top center")
   :wm-ignore true
-(cal))
+(date))

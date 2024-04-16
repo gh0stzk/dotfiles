@@ -87,6 +87,17 @@
     }
   }
 
+.min {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 1.1rem;
+  padding: 0 0.9rem;
+  color: $red;
+}
+
+.min:hover {
+  color: $magenta;
+}
+
   .player-controls {
     padding: 0rem 0.7rem 0rem 1rem;
     border-radius: 1rem;

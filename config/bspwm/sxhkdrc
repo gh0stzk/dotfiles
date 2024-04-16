@@ -7,6 +7,10 @@
 #	z0mbi3			https://github.com/gh0stzk/dotfiles
 #
 
+# Show help
+F1
+	OpenApps --KeyHelp
+
 #|||----- Applications -----|||#
 
 # Open Terminal (alacritty)
@@ -31,16 +35,20 @@ shift + alt + {b,g,n}
 shift + alt + {r,v,k}
 	OpenApps {--ranger,--nvim,--music}
 
+# Pavucontrol
+shift + alt + p
+	OpenApps --soundcontrol
+
 
 #|||----- System Keybindings -----|||#
-
-# Show keybindings help
-alt + F1
-	KeybindingsHelp
 
 # Theme Selector
 alt + @space
 	RiceSelector
+
+#Terminal Selector
+super + alt + t
+	Term --selecterm
 
 # jgmenu
 ~button3
@@ -55,11 +63,11 @@ ctrl + super + alt + {p,r,q,l,k}
 	{systemctl poweroff, systemctl reboot,bspc quit,physlock -d,xkill}
 
 # Hide/Show Bar (Polybar and/or eww)
-super + {h,u}
+super + alt + {h,u}
 	HideBar {-h,-u}
 
 # Change transparency on focused window
-ctrl + alt + {plus,minus,t}
+ctrl + alt + {plus,minus,equal}
 	picom-trans {-c -o +3,-c -o -1,-c -d}
 
 # Random wallpaper
@@ -133,52 +141,44 @@ ctrl + alt + h
 super + r
 	bspc node @/ --rotate {90,-90}
 
-# Circulate the leaves of the tree
-super + c
-	bspc node @/ --circulate {backward,forward}
-
 # Change focus of the Node or Swap Nodes
-super + {_,shift + }{Left,Down,Up,Right}
+shift + {_,ctrl + }{Left,Down,Up,Right}
 	bspc node -{f,s} {west,south,north,east}
 
 # Switch workspace
-super + ctrl + {Left,Right}
+super + {Left,Right}
 	bspc desktop -f {prev,next}.local
 
-# focus the last node/desktop
-super + {grave,Tab}
-	bspc {node,desktop} -f last
-
 # focus or send to the given desktop
-super + ctrl + {_,shift + }{1-9,0}
+super + {_,alt + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
-	
+
 # Send focused Node to workspace directionally
-super + ctrl + shift + {Left,Right}
+super + alt + {Left,Right}
 	bspc node -d {prev,next} '--follow'
+
+# focus the last node/desktop
+super + {comma,Tab}
+	bspc {node,desktop} -f last
 
 #####
 
 # preselect the direction
-super + ctrl + {h,j,k,l}
+super + {h,j,k,l}
 	bspc node -p {west,south,north,east}
 
 # cancel the preselection for the focused node
-super + ctrl + space
+super + alt + space
 	bspc node -p cancel
-
-# cancel the preselection for the focused desktop
-super + ctrl + shift + space
-	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 #####
 	
 # expand a window
-super + alt + {Left,Down,Up,Right}
+ctrl + alt {Left,Down,Up,Right}
 	bspc node -z {left -10 0,bottom 0 10,top 0 -10,right 10 0}
 
 # contract a window
-super + alt + shift + {Left,Down,Up,Right}
+ctrl + shift + alt + {Left,Down,Up,Right}
 	bspc node -z {right -10 0,top 0 10,bottom 0 -10,left 10 0}
 
 # move a floating window
