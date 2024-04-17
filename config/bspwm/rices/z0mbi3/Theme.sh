@@ -25,8 +25,8 @@ set_bspwm_config() {
 
 pidof -q bspc && pkill -9 bspc >/dev/null
 
-# Reload terminal colors
-set_term_config() {
+# Set alacritty colorscheme
+set_alacritty_config() {
 	cat >"$HOME"/.config/alacritty/rice-colors.toml <<EOF
 # (Decay, decayce variant) Color scheme for z0mbi3 Rice
 
@@ -238,7 +238,7 @@ launch_bars() {
 ### ---------- Apply Configurations ---------- ###
 
 set_bspwm_config
-set_term_config
+set_alacritty_config
 set_kitty_config
 set_picom_config
 launch_bars

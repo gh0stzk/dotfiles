@@ -23,8 +23,8 @@ set_bspwm_config() {
 	bspc config presel_feedback_color "#FF4971"
 }
 
-# Reload terminal colors
-set_term_config() {
+# Set alacritty colorscheme
+set_alacritty_config() {
 	cat >"$HOME"/.config/alacritty/rice-colors.toml <<EOF
 # Color scheme for Pamela Rice
 
@@ -244,7 +244,7 @@ launch_bars() {
 ### ---------- Apply Configurations ---------- ###
 
 set_bspwm_config
-set_term_config
+set_alacritty_config
 set_kitty_config
 set_picom_config
 launch_bars
