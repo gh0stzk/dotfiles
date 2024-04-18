@@ -49,8 +49,10 @@ toggle() {
 	powered=$(bluetoothctl show | grep "Powered" | awk '{print $2}')
 	if [[ "$powered" == "no" ]]; then
 		bluetoothctl power on
+		dunstify --icon=bluetooth --appname=Bluetooth --urgency=normal "Bluetooth" "Bluetooth has been turned on."
 	else
 		bluetoothctl power off
+		dunstify --icon=bluetooth-disabled --appname=Bluetooth --urgency=normal "Bluetooth" "Bluetooth has been turned off."
 	fi
 }
 
