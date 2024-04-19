@@ -21,19 +21,7 @@
 }
 
 .content {
-  margin: 0.8rem 0.8rem;
-}
-
-.left-content {
-  margin: 10px 0 10px 15px;
-}
-
-.center-content {
-  margin: 10px 0;
-}
-
-.right-content {
-  margin: 10px 15px 10px 0;
+  margin: 1rem 1rem;
 }
 
 .category-bspwm {
@@ -42,7 +30,7 @@
   font-size: 0.8rem;
   background-color: $green;
   color: $bg;
-  margin-bottom: 4px;
+  margin: 8px 0;
   padding: 2px 0;
   border-radius: 2px;
 }
@@ -53,7 +41,7 @@
   font-size: 0.8rem;
   background-color: $red;
   color: $bg;
-  margin-bottom: 4px;
+  margin: 8px 0;
   padding: 2px 0;
   border-radius: 2px;
 }
@@ -64,7 +52,7 @@
   font-size: 0.8rem;
   background-color: $yellow;
   color: $bg;
-  margin-bottom: 4px;
+  margin: 8px 0;
   padding: 2px 0;
   border-radius: 2px;
 }
@@ -75,7 +63,7 @@
   font-size: 0.8rem;
   background-color: $magenta;
   color: $bg;
-  margin-bottom: 4px;
+  margin: 8px 0;
   padding: 2px 0;
   border-radius: 2px;
 }
@@ -86,7 +74,7 @@
   font-size: 0.8rem;
   background-color: $archicon;
   color: $bg;
-  margin-bottom: 4px;
+  margin: 8px 0;
   padding: 2px 0;
   border-radius: 2px;
 }
@@ -97,7 +85,7 @@
   font-size: 0.8rem;
   background-color: $green;
   color: $bg;
-  margin-bottom: 4px;
+  margin: 8px 0;
   padding: 2px 0;
   border-radius: 2px;
 }
@@ -108,7 +96,18 @@
   font-size: 0.8rem;
   background-color: $blue;
   color: $bg;
-  margin-bottom: 4px;
+  margin: 8px 0;
+  padding: 2px 0;
+  border-radius: 2px;
+}
+
+.category-power {
+  font-family: JetBrainsMono NF;
+  font-weight: Bold;
+  font-size: 0.8rem;
+  background-color: $cyan;
+  color: $bg;
+  margin: 8px 0;
   padding: 2px 0;
   border-radius: 2px;
 }
