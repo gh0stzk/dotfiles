@@ -44,7 +44,7 @@
         font-size: 1.1rem;
         font-weight: bold;
         color: $fg;
-        text-shadow: 0 0 0.5rem rgba($color: black, $alpha: 1);
+        text-shadow: 0 0 0.5rem rgba($color: $bg-alt, $alpha: 0.5);
       }
 
       .player-artist {
@@ -52,7 +52,7 @@
         font-weight: bolder;
         font-size: 0.8rem;
         color: $fg;
-        text-shadow: 0 0 0.5rem rgba($color: black, $alpha: 1);
+        text-shadow: 0 0 0.5rem rgba($color: $bg-alt, $alpha: 0.5);
       }
 
       .player-time {
@@ -60,6 +60,7 @@
         font-family: Cartograph CF;
         font-size: 0.8rem;
         color: $fg;
+        text-shadow: 0 0 0.5rem rgba($color: $bg-alt, $alpha: 0.5);
       }
 
       .player-bar scale trough highlight {
