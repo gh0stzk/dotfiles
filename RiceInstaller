@@ -306,7 +306,7 @@ else
     paru -S tdrop-git --skipreview --noconfirm
 fi
 
-# Installing xqpp
+# Installing xqp
 if command -v xqp >/dev/null 2>&1; then
     printf "\n%s%sxqp is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 else
