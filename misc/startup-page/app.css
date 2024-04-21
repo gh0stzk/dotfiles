@@ -161,8 +161,7 @@ body {
   color: var(--fg);
 }
 
-#month,
-#day {
+#date {
   font-size: var(--fg-date);
   font-weight: bold;
   color: var(--fg);
