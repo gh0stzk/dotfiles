@@ -15,6 +15,7 @@ const CONFIG = {
 	imageBackground: false,
 	openInNewTab: true,
 	twelveHourFormat: true,
+	timeZone: 'America/Mexico_City',
 
 	// Greetings
 	greetingMorning: 'Good morning!',
