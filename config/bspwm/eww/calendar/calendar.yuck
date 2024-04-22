@@ -7,9 +7,9 @@
 (defwidget time []
   (box :class "timebox" :orientation "v" :space-evenly false
     (box :class "time-container" :orientation "h" :space-evenly false :halign "center" :valign "center"
-      (label :class "content" :text "${formattime(EWW_TIME, "%H")}")
+      (label :class "content" :show-truncated "false" :text "${formattime(EWW_TIME, "%H")}")
     (divider)
-      (label :class "content" :text "${formattime(EWW_TIME, "%M")}"))
+      (label :class "content" :show-truncated "false" :text "${formattime(EWW_TIME, "%M")}"))
 
     (box :class "date-container" :orientation "h" :space-evenly true :halign "center"
       (label :text "${formattime(EWW_TIME, "%A, %d %B")}"))
