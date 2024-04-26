@@ -17,14 +17,14 @@
         :orientation "v"
         :spacing 0
         :space-evenly "false"
-    (label  :class "title"
+    (label  :class "title" :show-truncated false
             :xalign 0.5
             :text " ██████ ██   ██ ███████  █████  ████████     ███████ ██   ██ ███████ ███████ ████████ 
 ██      ██   ██ ██      ██   ██    ██        ██      ██   ██ ██      ██         ██    
 ██      ███████ █████   ███████    ██        ███████ ███████ █████   █████      ██    
 ██      ██   ██ ██      ██   ██    ██             ██ ██   ██ ██      ██         ██    
  ██████ ██   ██ ███████ ██   ██    ██        ███████ ██   ██ ███████ ███████    ██")
-    (label  :class "title-info"
+    (label  :class "title-info" :show-truncated false
             :yalign 0
             :text "(Press F1 to close this window)")
 
@@ -36,197 +36,197 @@
   (box :class "content" :orientation "h" :spacing 20 :space-evenly "true"
     (box :orientation "v" :space-evenly "false" :spacing 2
       (box :orientation "h" :space-evenly "true"
-        (label :class "category-bspwm" :xalign 0.5 :text "Bspwm")
-        (label :text ""))
+        (label :show-truncated false :class "category-bspwm" :xalign 0.5 :text "Bspwm")
+        (label :show-truncated false :text ""))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Keybindings")
-        (label :class "keys-alt" :xalign 1 :text "F1"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Keybindings")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "F1"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Restart BSPWM")
-        (label :class "keys-alt" :xalign 1 :text "Super + Alt + r"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Restart BSPWM")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + Alt + r"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Reload sxhkd daemon")
-        (label :class "keys-alt" :xalign 1 :text "Super + Esc"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Reload sxhkd daemon")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + Esc"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "category-system" :xalign 0.5 :text "Base System")
-        (label :text ""))
+        (label :show-truncated false :class "category-system" :xalign 0.5 :text "Base System")
+        (label :show-truncated false :text ""))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Terminal")
-        (label :class "keys-alt" :xalign 1 :text "Super + Enter"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Terminal")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + Enter"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Floating terminal")
-        (label :class "keys-alt" :xalign 1 :text "Super + Alt + Enter"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Floating terminal")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + Alt + Enter"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Menu Apps")
-        (label :class "keys-alt" :xalign 1 :text "Super + Space Bar"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Menu Apps")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + Space Bar"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Theme Selector")
-        (label :class "keys-alt" :xalign 1 :text "Alt + Space Bar"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Theme Selector")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Alt + Space Bar"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Wallpaper Selector")
-        (label :class "keys-alt" :xalign 1 :text "Super + Alt + w"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Wallpaper Selector")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + Alt + w"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "category-workspaces" :xalign 0.5 :text "Workspaces")
-        (label :text ""))
+        (label :show-truncated false :class "category-workspaces" :xalign 0.5 :text "Workspaces")
+        (label :show-truncated false :text ""))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Switch workspaces")
-        (label :class "keys-alt" :xalign 1 :text "Super +  "))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Switch workspaces")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super +  "))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Switch to specific workspace")
-        (label :class "keys-alt" :xalign 1 :text "Super + 1-9"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Switch to specific workspace")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + 1-9"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Rotate workspace")
-        (label :class "keys-alt" :xalign 1 :text "Super + r"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Rotate workspace")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + r"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "category-preselection" :xalign 0.5 :text "Preselection")
-        (label :text ""))
+        (label :show-truncated false :class "category-preselection" :xalign 0.5 :text "Preselection")
+        (label :show-truncated false :text ""))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Preselect direction")
-        (label :class "keys-alt" :xalign 1 :text "Super + {h,j,k,l}"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Preselect direction")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + {h,j,k,l}"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Cancel preselection")
-        (label :class "keys-alt" :xalign 1 :text "Super + Alt + SpaceBar"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Cancel preselection")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + Alt + SpaceBar"))
     )
 
     (box :orientation "v" :space-evenly "false" :spacing 2
       (box :orientation "h" :space-evenly "true"
-        (label :class "category-nodes" :xalign 0.5 :text "Nodes")
-        (label :text ""))
+        (label :show-truncated false :class "category-nodes" :xalign 0.5 :text "Nodes")
+        (label :show-truncated false :text ""))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Close Node")
-        (label :class "keys-alt" :xalign 1 :text "Super + q"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Close Node")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + q"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Kill Node")
-        (label :class "keys-alt" :xalign 1 :text "Super + Shift + q"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Kill Node")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + Shift + q"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Set Node Floating")
-        (label :class "keys-alt" :xalign 1 :text "Super + s"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Set Node Floating")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + s"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Set Node Pseudo tiled")
-        (label :class "keys-alt" :xalign 1 :text "Super + Shift + t"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Set Node Pseudo tiled")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + Shift + t"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Set Node Tiled")
-        (label :class "keys-alt" :xalign 1 :text "Super + t"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Set Node Tiled")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + t"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Set Node Fullscreen")
-        (label :class "keys-alt" :xalign 1 :text "Super + f"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Set Node Fullscreen")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + f"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "")
-        (label :class "keys-alt" :xalign 1 :text ""))
+        (label :show-truncated false :class "keys" :xalign 0 :text "")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text ""))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Mark Node")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt + m"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Mark Node")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Ctrl + Alt + m"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Lock Node")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt + x"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Lock Node")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Ctrl + Alt + x"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Sticky Node")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt + s"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Sticky Node")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Ctrl + Alt + s"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Private Node")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt + p"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Private Node")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Ctrl + Alt + p"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Hide/Unhide Node")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt + h"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Hide/Unhide Node")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Ctrl + Alt + h"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "")
-        (label :class "keys-alt" :xalign 1 :text ""))
+        (label :show-truncated false :class "keys" :xalign 0 :text "")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text ""))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Change Node focus")
-        (label :class "keys-alt" :xalign 1 :text "Shift +    "))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Change Node focus")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Shift +    "))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Swap Nodes")
-        (label :class "keys-alt" :xalign 1 :text "Shift + Ctrl +    "))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Swap Nodes")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Shift + Ctrl +    "))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "")
-        (label :class "keys-alt" :xalign 1 :text ""))
+        (label :show-truncated false :class "keys" :xalign 0 :text "")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text ""))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Send to other workspace")
-        (label :class "keys-alt" :xalign 1 :text "Super + Alt + 1-9"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Send to other workspace")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + Alt + 1-9"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Send to other workspace & follow")
-        (label :class "keys-alt" :xalign 1 :text "Super + Alt +  "))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Send to other workspace & follow")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + Alt +  "))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Focus last Node/Workspace")
-        (label :class "keys-alt" :xalign 1 :text "Super + {comma,tab}"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Focus last Node/Workspace")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + {comma,tab}"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "category-move" :xalign 0.5 :text "Move/Resize")
-        (label :text ""))
+        (label :show-truncated false :class "category-move" :xalign 0.5 :text "Move/Resize")
+        (label :show-truncated false :text ""))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Expand node")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt +    "))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Expand node")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Ctrl + Alt +    "))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Contract node")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl Shift Alt    "))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Contract node")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Ctrl Shift Alt    "))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Move floating node")
-        (label :class "keys-alt" :xalign 1 :text "Alt + Shift +    "))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Move floating node")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Alt + Shift +    "))
     )
 
     (box :orientation "v" :space-evenly "false" :spacing 2
       (box :orientation "h" :space-evenly "true"
-        (label :class "category-workspaces" :xalign 0.5 :text "System Apps")
-        (label :text ""))
+        (label :show-truncated false :class "category-workspaces" :xalign 0.5 :text "System Apps")
+        (label :show-truncated false :text ""))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Scratchpad")
-        (label :class "keys-alt" :xalign 1 :text "Super + Alt + o"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Scratchpad")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + Alt + o"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Hide/Unhide Polybar")
-        (label :class "keys-alt" :xalign 1 :text "Super + Alt + {h,u}"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Hide/Unhide Polybar")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Super + Alt + {h,u}"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Change transparency")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt +   "))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Change transparency")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Ctrl + Alt +   "))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Screenshot now")
-        (label :class "keys-alt" :xalign 1 :text "Print"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Screenshot now")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Print"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Screenshot select")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Print"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Screenshot select")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Ctrl + Print"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Screenshot in 10s")
-        (label :class "keys-alt" :xalign 1 :text "Alt + Print"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Screenshot in 10s")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Alt + Print"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Screenshot active node")
-        (label :class "keys-alt" :xalign 1 :text "Shift + Print"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Screenshot active node")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Shift + Print"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "category-apps" :xalign 0.5 :text "Apps")
-        (label :text ""))
+        (label :show-truncated false :class "category-apps" :xalign 0.5 :text "Apps")
+        (label :show-truncated false :text ""))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Browser")
-        (label :class "keys-alt" :xalign 1 :text "Shift + Alt + b"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Browser")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Shift + Alt + b"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "File Manager")
-        (label :class "keys-alt" :xalign 1 :text "Shift + Alt + n"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "File Manager")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Shift + Alt + n"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Editor")
-        (label :class "keys-alt" :xalign 1 :text "Shift + Alt + g"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Editor")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Shift + Alt + g"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Ranger")
-        (label :class "keys-alt" :xalign 1 :text "Shift + Alt + r"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Ranger")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Shift + Alt + r"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Ncmpcpp")
-        (label :class "keys-alt" :xalign 1 :text "Shift + Alt + k"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Ncmpcpp")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Shift + Alt + k"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Pavucontrol")
-        (label :class "keys-alt" :xalign 1 :text "Shift + Alt + p"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Pavucontrol")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "Shift + Alt + p"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "category-power" :xalign 0.5 :text "Power")
-        (label :text ""))
+        (label :show-truncated false :class "category-power" :xalign 0.5 :text "Power")
+        (label :show-truncated false :text ""))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Shutdown PC")
-        (label :class "keys-alt" :xalign 1 :text "ctrl + super + alt + p"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Shutdown PC")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "ctrl + super + alt + p"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Reboot PC")
-        (label :class "keys-alt" :xalign 1 :text "ctrl + super + alt + r"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Reboot PC")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "ctrl + super + alt + r"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Log Out")
-        (label :class "keys-alt" :xalign 1 :text "ctrl + super + alt + q"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Log Out")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "ctrl + super + alt + q"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Lockscreen")
-        (label :class "keys-alt" :xalign 1 :text "ctrl + super + alt + l"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Lockscreen")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "ctrl + super + alt + l"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Kill App")
-        (label :class "keys-alt" :xalign 1 :text "ctrl + super + alt + k"))
+        (label :show-truncated false :class "keys" :xalign 0 :text "Kill App")
+        (label :show-truncated false :class "keys-alt" :xalign 1 :text "ctrl + super + alt + k"))
     )
   )
 )
