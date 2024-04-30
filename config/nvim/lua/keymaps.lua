@@ -50,10 +50,16 @@ map("n", "<S-h>", ":bprevious<cr>", { desc = "Move to previous tab", noremap = t
 map("n", "<leader>x", ":bd<cr>", { desc = "Close buffer", noremap = true })
 
 -- Comments
-map({"n", "v"}, "<leader>co", ":CommentToggle<cr>", { desc = "Comment line/block", noremap = true})
+map({"n", "v"}, "<leader>co", ":CommentToggle<cr>", { desc = "Comment line/block", noremap = true })
 
 -- Telescope
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Telescope find files", noremap = true })
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Comment line", noremap = true })
 map("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Comment line", noremap = true })
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Comment line", noremap = true })
+
+-- Spectre
+map('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', { desc = "Toggle Spectre", noremap = true })
+map('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', { desc = "Search current word", noremap = true })
+map('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', { desc = "Search current word", noremap = true })
+map('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', { desc = "Search on current file", noremap = true})
