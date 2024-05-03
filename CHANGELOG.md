@@ -1,3 +1,21 @@
+## May 03 2024
+##### Add finally systemtray to eww in z0mbi3 rice.
+
+Well, there is finally a system tray system to host the icons in eww. I have already added it to the z0mbi3 theme.
+
+**IMPORTANT**
+You need to update your eww binary here are the steps.
+- git clone https://github.com/elkowar/eww
+- cd eww
+- cargo build --release --no-default-features --features x11
+- cd target/release
+- chmod +x ./eww
+- sudo install -m 755 "eww" -t /usr/bin/
+
+![Shot-2024-05-03-091756](https://github.com/gh0stzk/dotfiles/assets/67278339/7174f4d6-93ac-4e02-9bf4-b59ff9037d96)
+
+---
+
 ## Eww widgets updated, keybinds, new select terminal menu and others.
 
 ##### April 16 2024

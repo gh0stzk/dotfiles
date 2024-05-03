@@ -199,6 +199,14 @@
 				:tooltip "Power Menu"))))
 
 
+;; Systray widget ;;
+(defwidget systemtray []
+  (box :orientation "v" :halign "center"
+    (systray :class "tray" :orientation "v" :icon-size 16 :spacing 5)
+  )
+)
+
+
 ;; Top Widgets ;;
 (defwidget top []
 	(box	:orientation "v" 
@@ -230,6 +238,7 @@
 		 :space-evenly "false" 
 		 :valign "end" 
 		 :spacing 5
+(systemtray)
 (control)
 (bottom)))
 
@@ -250,7 +259,7 @@
 	:geometry (geometry :x "15px"
 						:y "0%"
 						:anchor "left center"
-						:height "86%"
+						:height "90%"
 						:width "47px")
 						
 	:reserve (struts :distance "5px"

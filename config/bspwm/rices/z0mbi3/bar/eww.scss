@@ -58,6 +58,36 @@ $archlogo: #0f94d2;
   margin: 0.35rem 0 0.35rem 0;
 }
 
+// System Tray
+.tray menu {
+	padding: 5px 5px;
+	background-color: $background;
+
+	>menuitem {
+    font-family: JetBrainsMono NF;
+    font-size: 14px;
+		padding: 2px 5px;
+    color: $foreground;
+
+		&:disabled label {
+			color: $black;
+		}
+
+		&:hover {
+			background-color: $gray;
+		}
+	}
+
+	separator {
+		background-color: $foreground;
+		padding-top: 1px;
+
+		&:last-child {
+			padding: unset;
+		}
+	}
+}
+
 // icons info
 .control {
   padding: 0.5rem;

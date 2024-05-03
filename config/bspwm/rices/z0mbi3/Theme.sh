@@ -15,7 +15,7 @@ set_bspwm_config() {
 	bspc config border_width 0
 	bspc config top_padding 3
 	bspc config bottom_padding 2
-	bspc config left_padding 79
+	bspc config left_padding 68
 	bspc config right_padding 2
 	bspc config normal_border_color "#3d414f"
 	bspc config active_border_color "#3d414f"
@@ -232,7 +232,6 @@ set_launcher_config() {
 # Launch the bar and or eww widgets
 launch_bars() {
 	eww -c "${rice_dir}"/bar open --toggle bar
-	polybar -q tray -c "${rice_dir}"/bar/polybar_tray.ini &
 }
 
 ### ---------- Apply Configurations ---------- ###
