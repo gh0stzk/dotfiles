@@ -133,10 +133,10 @@
         (label :class "keys-alt" :xalign 1 :text ""))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Change Node focus")
-        (label :class "keys-alt" :xalign 1 :text "Shift + h, j, k, l"))
+        (label :class "keys-alt" :xalign 1 :text "Shift + Super +    "))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Swap Nodes")
-        (label :class "keys-alt" :xalign 1 :text "Shift + Ctrl + h, j, k, l"))
+        (label :class "keys-alt" :xalign 1 :text "Shift Super Ctrl +    "))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "")
         (label :class "keys-alt" :xalign 1 :text ""))

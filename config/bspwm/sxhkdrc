@@ -142,7 +142,7 @@ super + r
 	bspc node @/ --rotate {90,-90}
 
 # Change focus of the Node or Swap Nodes
-shift + {_,ctrl + }{h,j,k,l}
+shift + super {_,ctrl + }{Left,Down,Up,Right}
 	bspc node -{f,s} {west,south,north,east}
 
 # Switch workspace
