@@ -1,3 +1,12 @@
+## May 07 2024
+##### Added Tmux config.
+
+I wanted to upload my tmux configuration but not until I had a theme that would change the color scheme when changing rice and here it is.
+
+![ezgif com-animated-gif-maker](https://github.com/gh0stzk/dotfiles/assets/67278339/dd5f7261-0631-4a91-b584-51ca8859c197)
+
+---
+
 ## May 03 2024
 ##### Add finally systemtray to eww in z0mbi3 rice.
 

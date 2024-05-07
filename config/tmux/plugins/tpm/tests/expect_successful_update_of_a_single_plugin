@@ -1,0 +1,55 @@
+#!/usr/bin/env expect
+
+# disables script output
+log_user 0
+
+spawn tmux
+
+# Waiting for tmux to attach. If this is not done, next command, `send` will
+# not work properly.
+sleep 1
+
+# this is tmux prefix + U
+send "U"
+
+set timeout 15
+
+expect_after {
+  timeout { exit 1 }
+}
+
+expect {
+  "Installed plugins"
+}
+
+expect {
+  "tmux-example-plugin"
+}
+
+expect {
+  "\"all\" - updates all plugins"
+}
+
+expect {
+  "ENTER - cancels"
+}
+
+# wait for tmux to display prompt before sending characters
+sleep 1
+send "tmux-example-plugin\r"
+
+expect {
+  "Updating \"tmux-example-plugin\""
+}
+
+expect {
+  "\"tmux-example-plugin\" update success"
+}
+
+expect {
+  "Done, press ENTER to continue." {
+    exit 0
+  }
+}
+
+exit 1
