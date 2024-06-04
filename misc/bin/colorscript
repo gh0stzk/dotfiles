@@ -23,7 +23,7 @@ function _list() {
 }
 
 function _random() {
-    declare -i random_index=$RANDOM%$length_colorscripts
+    declare -i random_index=$((RANDOM % length_colorscripts + 1))
     [[ $random_index -eq 0 ]] && random_index=1
 
     random_colorscript="$(echo  "${list_colorscripts}" | sed -n ${random_index}p \
