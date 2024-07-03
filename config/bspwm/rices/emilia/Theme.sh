@@ -13,7 +13,7 @@
 # Set bspwm configuration for Emilia
 set_bspwm_config() {
 	bspc config border_width 0
-	bspc config top_padding 56
+	bspc config top_padding 54
 	bspc config bottom_padding 2
 	bspc config left_padding 2
 	bspc config right_padding 2
@@ -200,31 +200,23 @@ set_jgmenu_colors() {
 		-e 's/color_sep_fg = .*/color_sep_fg = #414868/'
 }
 
-# Set Rofi launcher config
+# Set rofi colors
 set_launcher_config() {
-	sed -i "$HOME/.config/bspwm/scripts/Launcher.rasi" \
-		-e '22s/\(font: \).*/\1"JetBrainsMono NF Bold 9";/' \
-		-e 's/\(background: \).*/\1#1A1B26;/' \
-		-e 's/\(background-alt: \).*/\1#1A1B26E0;/' \
-		-e 's/\(foreground: \).*/\1#c0caf5;/' \
-		-e 's/\(selected: \).*/\1#7aa2f7;/' \
-		-e "s/rices\/[[:alnum:]\-]*/rices\/${RICETHEME}/g"
+	cat >"$HOME"/.config/bspwm/src/rofi-themes/shared.rasi <<EOF
+// Rofi colors for Emilia
 
-	# NetworkManager launcher
-	sed -i "$HOME/.config/bspwm/scripts/NetManagerDM.rasi" \
-		-e '12s/\(background: \).*/\1#1A1B26;/' \
-		-e '13s/\(background-alt: \).*/\1#222330;/' \
-		-e '14s/\(foreground: \).*/\1#c0caf5;/' \
-		-e '15s/\(selected: \).*/\1#7aa2f7;/' \
-		-e '16s/\(active: \).*/\1#9ece6a;/' \
-		-e '17s/\(urgent: \).*/\1#f7768e;/'
-
-	# WallSelect menu colors
-	sed -i "$HOME/.config/bspwm/scripts/WallSelect.rasi" \
-		-e 's/\(main-bg: \).*/\1#1A1B26E6;/' \
-		-e 's/\(main-fg: \).*/\1#C0CAF5;/' \
-		-e 's/\(select-bg: \).*/\1#7aa2f7;/' \
-		-e 's/\(select-fg: \).*/\1#1A1B26;/'
+* {
+    font: "JetBrainsMono NF Bold 9";
+    background: #1A1B26;
+    background-alt: #1A1B26E0;
+    foreground: #c0caf5;
+    selected: #7aa2f7;
+    active: #9ece6a;
+    urgent: #f7768e;
+    
+    img-background: url("~/.config/bspwm/rices/emilia/rofi.webp", width);
+}
+EOF
 }
 
 # Launch the bar

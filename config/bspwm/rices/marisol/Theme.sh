@@ -200,31 +200,23 @@ set_jgmenu_colors() {
 		-e 's/color_sep_fg = .*/color_sep_fg = #bd93f9/'
 }
 
-# Set Rofi launcher config
+# Set rofi colors
 set_launcher_config() {
-	sed -i "$HOME/.config/bspwm/scripts/Launcher.rasi" \
-		-e '22s/\(font: \).*/\1"JetBrainsMono NF Bold 9";/' \
-		-e 's/\(background: \).*/\1#282a36;/' \
-		-e 's/\(background-alt: \).*/\1#282a36E0;/' \
-		-e 's/\(foreground: \).*/\1#f8f8f2;/' \
-		-e 's/\(selected: \).*/\1#bd93f9;/' \
-		-e "s/rices\/[[:alnum:]\-]*/rices\/${RICETHEME}/g"
+	cat >"$HOME"/.config/bspwm/src/rofi-themes/shared.rasi <<EOF
+// Rofi colors for Marisol
 
-	# NetworkManager launcher
-	sed -i "$HOME/.config/bspwm/scripts/NetManagerDM.rasi" \
-		-e '12s/\(background: \).*/\1#282a36;/' \
-		-e '13s/\(background-alt: \).*/\1#2f3240;/' \
-		-e '14s/\(foreground: \).*/\1#f8f8f2;/' \
-		-e '15s/\(selected: \).*/\1#bd93f9;/' \
-		-e '16s/\(active: \).*/\1#50fa7b;/' \
-		-e '17s/\(urgent: \).*/\1#ff6e6e;/'
-
-	# WallSelect menu colors
-	sed -i "$HOME/.config/bspwm/scripts/WallSelect.rasi" \
-		-e 's/\(main-bg: \).*/\1#282a36E6;/' \
-		-e 's/\(main-fg: \).*/\1#f8f8f2;/' \
-		-e 's/\(select-bg: \).*/\1#bd93f9;/' \
-		-e 's/\(select-fg: \).*/\1#f8f8f2;/'
+* {
+    font: "JetBrainsMono NF Bold 9";
+    background:#282a36;
+    background-alt: #282a36E0;
+    foreground: #f8f8f2;
+    selected: #bd93f9;
+    active: #50fa7b;
+    urgent: #ff6e6e;
+    
+    img-background: url("~/.config/bspwm/rices/marisol/rofi.webp", width);
+}
+EOF
 }
 
 # Launch the bar

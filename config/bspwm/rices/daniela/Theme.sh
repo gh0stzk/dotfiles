@@ -204,31 +204,23 @@ set_jgmenu_colors() {
 		-e 's/color_sep_fg = .*/color_sep_fg = #45475A/'
 }
 
-# Set Rofi launcher config
+# Set rofi colors
 set_launcher_config() {
-	sed -i "$HOME/.config/bspwm/scripts/Launcher.rasi" \
-		-e '22s/\(font: \).*/\1"JetBrainsMono NF Bold 9";/' \
-		-e 's/\(background: \).*/\1#181825;/' \
-		-e 's/\(background-alt: \).*/\1#181825E0;/' \
-		-e 's/\(foreground: \).*/\1#CDD6F4;/' \
-		-e 's/\(selected: \).*/\1#F5C2E7;/' \
-		-e "s/rices\/[[:alnum:]\-]*/rices\/${RICETHEME}/g"
+	cat >"$HOME"/.config/bspwm/src/rofi-themes/shared.rasi <<EOF
+// Rofi colors for Daniela
 
-	# NetworkManager launcher
-	sed -i "$HOME/.config/bspwm/scripts/NetManagerDM.rasi" \
-		-e '12s/\(background: \).*/\1#181825;/' \
-		-e '13s/\(background-alt: \).*/\1#1e1e2e;/' \
-		-e '14s/\(foreground: \).*/\1#CDD6F4;/' \
-		-e '15s/\(selected: \).*/\1#89B4FA;/' \
-		-e '16s/\(active: \).*/\1#A6E3A1;/' \
-		-e '17s/\(urgent: \).*/\1#F38BA8;/'
-
-	# WallSelect menu colors
-	sed -i "$HOME/.config/bspwm/scripts/WallSelect.rasi" \
-		-e 's/\(main-bg: \).*/\1#181825E6;/' \
-		-e 's/\(main-fg: \).*/\1#CDD6F4;/' \
-		-e 's/\(select-bg: \).*/\1#F5C2E7;/' \
-		-e 's/\(select-fg: \).*/\1#181825;/'
+* {
+    font: "JetBrainsMono NF Bold 9";
+    background: #181825;
+    background-alt: #181825E0;
+    foreground: #CDD6F4;
+    selected: #F5C2E7;
+    active: #A6E3A1;
+    urgent: #F38BA8;
+    
+    img-background: url("~/.config/bspwm/rices/daniela/rofi.webp", width);
+}
+EOF
 }
 
 # Launch the bar

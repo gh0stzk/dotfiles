@@ -200,31 +200,23 @@ set_jgmenu_colors() {
 		-e 's/color_sep_fg = .*/color_sep_fg = #907aa9/'
 }
 
-# Set Rofi launcher config
+# Set rofi colors
 set_launcher_config() {
-	sed -i "$HOME/.config/bspwm/scripts/Launcher.rasi" \
-		-e '22s/\(font: \).*/\1"JetBrainsMono NF Bold 9";/' \
-		-e 's/\(background: \).*/\1#faf4ed;/' \
-		-e 's/\(background-alt: \).*/\1#faf4edE0;/' \
-		-e 's/\(foreground: \).*/\1#575279;/' \
-		-e 's/\(selected: \).*/\1#d7827e;/' \
-		-e "s/rices\/[[:alnum:]\-]*/rices\/${RICETHEME}/g"
+	cat >"$HOME"/.config/bspwm/src/rofi-themes/shared.rasi <<EOF
+// Rofi colors for Aline
 
-	# NetworkManager launcher
-	sed -i "$HOME/.config/bspwm/scripts/NetManagerDM.rasi" \
-		-e '12s/\(background: \).*/\1#faf4ed;/' \
-		-e '13s/\(background-alt: \).*/\1#f2e9e1;/' \
-		-e '14s/\(foreground: \).*/\1#575279;/' \
-		-e '15s/\(selected: \).*/\1#d7827e;/' \
-		-e '16s/\(active: \).*/\1#286983;/' \
-		-e '17s/\(urgent: \).*/\1#d7827e;/'
-
-	# WallSelect menu colors
-	sed -i "$HOME/.config/bspwm/scripts/WallSelect.rasi" \
-		-e 's/\(main-bg: \).*/\1#faf4edE6;/' \
-		-e 's/\(main-fg: \).*/\1#575279;/' \
-		-e 's/\(select-bg: \).*/\1#d7827e;/' \
-		-e 's/\(select-fg: \).*/\1#575279;/'
+* {
+    font: "JetBrainsMono NF Bold 9";
+    background: #faf4ed;
+    background-alt: #faf4edE0;
+    foreground: #575279;
+    selected: #d7827e;
+    active: #286983;
+    urgent: #ea9d34;
+    
+    img-background: url("~/.config/bspwm/rices/aline/rofi.webp", width);
+}
+EOF
 }
 
 # Launch the bar

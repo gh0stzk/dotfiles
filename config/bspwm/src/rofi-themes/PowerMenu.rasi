@@ -1,0 +1,103 @@
+// # z0mbi3 - https://github.com/gh0stzk/dotfiles
+
+configuration {
+	hover-select:				true;
+	me-select-entry:			"";
+	me-accept-entry:			"MousePrimary";
+}
+
+@import "shared.rasi"
+
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       1000px;
+    border-radius:               50px;
+    cursor:                      "default";
+    background-color:            @background-alt;
+}
+
+mainbox {
+    enabled:                     true;
+    spacing:                     50px;
+    margin:                      50px;
+    background-color:            transparent;
+    children:                    [ "inputbar", "listview", "message" ];
+}
+
+inputbar {
+    enabled:                     true;
+    background-color:            transparent;
+    children:                    [ "dummy", "prompt", "dummy"];
+}
+
+dummy {
+    background-color:            transparent;
+}
+
+prompt {
+    enabled:                     true;
+    font:                        "JetBrainsMono Nerd Font Bold 48";
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+message {
+    enabled:                     true;
+    margin:                      0px 300px;
+    padding:                     12px;
+    border-radius:               12px;
+    background-color:            white/5%;
+    text-color:                  @foreground;
+}
+
+textbox {
+    font:                        "JetBrainsMono Nerd Font 12";
+    background-color:            transparent;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
+
+listview {
+    enabled:                     true;
+    expand:                      false;
+    columns:                     5;
+    lines:                       1;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     25px;
+    background-color:            transparent;
+    cursor:                      "default";
+}
+
+element {
+    enabled:                     true;
+    padding:                     30px 0px;
+    border-radius:               50px;
+    background-color:            white/5%;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+
+element-text {
+    font:                        "Material Design Icons Desktop 58";
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
+
+element selected.normal {
+    background-color:            white/15%;
+    text-color:                  @selected;
+}

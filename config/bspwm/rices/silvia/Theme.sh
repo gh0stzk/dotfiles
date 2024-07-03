@@ -200,31 +200,23 @@ set_jgmenu_colors() {
 		-e 's/color_sep_fg = .*/color_sep_fg = #a89984/'
 }
 
-# Set Rofi launcher config
+# Set rofi colors
 set_launcher_config() {
-	sed -i "$HOME/.config/bspwm/scripts/Launcher.rasi" \
-		-e '22s/\(font: \).*/\1"scientifica 12";/' \
-		-e 's/\(background: \).*/\1#282828;/' \
-		-e 's/\(background-alt: \).*/\1#282828E0;/' \
-		-e 's/\(foreground: \).*/\1#fbf1c7;/' \
-		-e 's/\(selected: \).*/\1#d79921;/' \
-		-e "s/rices\/[[:alnum:]\-]*/rices\/${RICETHEME}/g"
+	cat >"$HOME"/.config/bspwm/src/rofi-themes/shared.rasi <<EOF
+// Rofi colors for Silvia
 
-	# NetworkManager launcher
-	sed -i "$HOME/.config/bspwm/scripts/NetManagerDM.rasi" \
-		-e '12s/\(background: \).*/\1#282828;/' \
-		-e '13s/\(background-alt: \).*/\1#2E2E2E;/' \
-		-e '14s/\(foreground: \).*/\1#fbf1c7;/' \
-		-e '15s/\(selected: \).*/\1#d79921;/' \
-		-e '16s/\(active: \).*/\1#689d6a;/' \
-		-e '17s/\(urgent: \).*/\1#fb4934;/'
-
-	# WallSelect menu colors
-	sed -i "$HOME/.config/bspwm/scripts/WallSelect.rasi" \
-		-e 's/\(main-bg: \).*/\1#282828E6;/' \
-		-e 's/\(main-fg: \).*/\1#fbf1c7;/' \
-		-e 's/\(select-bg: \).*/\1#d79921;/' \
-		-e 's/\(select-fg: \).*/\1#282828;/'
+* {
+    font: "scientifica 12";
+    background: #282828;
+    background-alt: #282828E0;
+    foreground: #fbf1c7;
+    selected: #d79921;
+    active: #689d6a;
+    urgent: #fb4934;
+    
+    img-background: url("~/.config/bspwm/rices/silvia/rofi.webp", width);
+}
+EOF
 }
 
 # Launch the bar

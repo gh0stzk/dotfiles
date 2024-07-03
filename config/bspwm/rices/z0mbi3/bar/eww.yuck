@@ -1,7 +1,7 @@
 ;; Modified   by https://github.com/gh0stzk/dotfiles
 
 ;; Workspaces
-(deflisten workspaces "./scripts/WorkSpaces")
+(deflisten workspaces "scripts/WorkSpaces")
 
 ;; Volume vars
 (defvar volum false)

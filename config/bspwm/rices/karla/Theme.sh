@@ -200,31 +200,23 @@ set_jgmenu_colors() {
 		-e 's/color_sep_fg = .*/color_sep_fg = #373542/'
 }
 
-# Set Rofi launcher config
+# Set rofi colors
 set_launcher_config() {
-	sed -i "$HOME/.config/bspwm/scripts/Launcher.rasi" \
-		-e '22s/\(font: \).*/\1"JetBrainsMono NF Bold 9";/' \
-		-e 's/\(background: \).*/\1#0E1113F7;/' \
-		-e 's/\(background-alt: \).*/\1#0E1113F5;/' \
-		-e 's/\(foreground: \).*/\1#afb1db;/' \
-		-e 's/\(selected: \).*/\1#5884d4;/' \
-		-e "s/rices\/[[:alnum:]\-]*/rices\/${RICETHEME}/g"
+	cat >"$HOME"/.config/bspwm/src/rofi-themes/shared.rasi <<EOF
+// Rofi colors for Karla
 
-	# NetworkManager launcher
-	sed -i "$HOME/.config/bspwm/scripts/NetManagerDM.rasi" \
-		-e '12s/\(background: \).*/\1#0E1113F7;/' \
-		-e '13s/\(background-alt: \).*/\1#0E1113F5;/' \
-		-e '14s/\(foreground: \).*/\1#afb1db;/' \
-		-e '15s/\(selected: \).*/\1#5884d4;/' \
-		-e '16s/\(active: \).*/\1#61b33e;/' \
-		-e '17s/\(urgent: \).*/\1#e71c5b;/'
-
-	# WallSelect menu colors
-	sed -i "$HOME/.config/bspwm/scripts/WallSelect.rasi" \
-		-e 's/\(main-bg: \).*/\1#0E1113F7;/' \
-		-e 's/\(main-fg: \).*/\1#afb1db;/' \
-		-e 's/\(select-bg: \).*/\1#3d7fea;/' \
-		-e 's/\(select-fg: \).*/\1#0E1113;/'
+* {
+    font: "JetBrainsMono NF Bold 9";
+    background: #0E1113F7;
+    background-alt: #0E1113F5;
+    foreground: #afb1db;
+    selected: #5884d4;
+    active: #61b33e;
+    urgent: #e71c5b;
+    
+    img-background: url("~/.config/bspwm/rices/karla/rofi.webp", width);
+}
+EOF
 }
 
 # Launch the bar

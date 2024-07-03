@@ -13,7 +13,7 @@
 # Set bspwm configuration for Andrea
 set_bspwm_config() {
 	bspc config border_width 0
-	bspc config top_padding 78
+	bspc config top_padding 70
 	bspc config bottom_padding 2
 	bspc config left_padding 2
 	bspc config right_padding 2
@@ -202,31 +202,23 @@ set_jgmenu_colors() {
 		-e 's/color_sep_fg = .*/color_sep_fg = #1A1C23/'
 }
 
-# Set Rofi launcher config
+# Set rofi colors
 set_launcher_config() {
-	sed -i "$HOME/.config/bspwm/scripts/Launcher.rasi" \
-		-e '22s/\(font: \).*/\1"JetBrainsMono NF Bold 9";/' \
-		-e 's/\(background: \).*/\1#f5eee6;/' \
-		-e 's/\(background-alt: \).*/\1#f5eee6E0;/' \
-		-e 's/\(foreground: \).*/\1#151515;/' \
-		-e 's/\(selected: \).*/\1#67d4f1;/' \
-		-e "s/rices\/[[:alnum:]\-]*/rices\/${RICETHEME}/g"
+	cat >"$HOME"/.config/bspwm/src/rofi-themes/shared.rasi <<EOF
+// Rofi colors for Andrea
 
-	# NetworkManager launcher
-	sed -i "$HOME/.config/bspwm/scripts/NetManagerDM.rasi" \
-		-e '12s/\(background: \).*/\1#f5eee6;/' \
-		-e '13s/\(background-alt: \).*/\1#F0E9E2;/' \
-		-e '14s/\(foreground: \).*/\1#151515;/' \
-		-e '15s/\(selected: \).*/\1#67d4f1;/' \
-		-e '16s/\(active: \).*/\1#b0a5ed;/' \
-		-e '17s/\(urgent: \).*/\1#F43E5C;/'
-
-	# WallSelect menu colors
-	sed -i "$HOME/.config/bspwm/scripts/WallSelect.rasi" \
-		-e 's/\(main-bg: \).*/\1#f5eee6E6;/' \
-		-e 's/\(main-fg: \).*/\1#151515;/' \
-		-e 's/\(select-bg: \).*/\1#67d4f1;/' \
-		-e 's/\(select-fg: \).*/\1#f5eee6;/'
+* {
+    font: "JetBrainsMono NF Bold 9";
+    background: #f5eee6;
+    background-alt: #f5eee6E0;
+    foreground: #151515;
+    selected: #67d4f1;
+    active: #b0a5ed;
+    urgent: #F43E5C;
+    
+    img-background: url("~/.config/bspwm/rices/andrea/rofi.webp", width);
+}
+EOF
 }
 
 # Launch the bar

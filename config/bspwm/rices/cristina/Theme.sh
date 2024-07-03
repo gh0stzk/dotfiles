@@ -200,31 +200,23 @@ set_jgmenu_colors() {
 		-e 's/color_sep_fg = .*/color_sep_fg = #6f6e85/'
 }
 
-# Set Rofi launcher config
+# Set rofi colors
 set_launcher_config() {
-	sed -i "$HOME/.config/bspwm/scripts/Launcher.rasi" \
-		-e '22s/\(font: \).*/\1"Terminess Nerd Font Mono Bold 10";/' \
-		-e 's/\(background: \).*/\1#232136;/' \
-		-e 's/\(background-alt: \).*/\1#232136E0;/' \
-		-e 's/\(foreground: \).*/\1#e0def4;/' \
-		-e 's/\(selected: \).*/\1#c3a5e6;/' \
-		-e "s/rices\/[[:alnum:]\-]*/rices\/${RICETHEME}/g"
+	cat >"$HOME"/.config/bspwm/src/rofi-themes/shared.rasi <<EOF
+// Rofi colors for Cristina
 
-	# NetworkManager launcher
-	sed -i "$HOME/.config/bspwm/scripts/NetManagerDM.rasi" \
-		-e '12s/\(background: \).*/\1#232136;/' \
-		-e '13s/\(background-alt: \).*/\1#2a2740;/' \
-		-e '14s/\(foreground: \).*/\1#e0def4;/' \
-		-e '15s/\(selected: \).*/\1#c3a5e6;/' \
-		-e '16s/\(active: \).*/\1#9bced7;/' \
-		-e '17s/\(urgent: \).*/\1#ea6f91;/'
-
-	# WallSelect menu colors
-	sed -i "$HOME/.config/bspwm/scripts/WallSelect.rasi" \
-		-e 's/\(main-bg: \).*/\1#232136E6;/' \
-		-e 's/\(main-fg: \).*/\1#e0def4;/' \
-		-e 's/\(select-bg: \).*/\1#c3a5e6;/' \
-		-e 's/\(select-fg: \).*/\1#232136;/'
+* {
+    font: "JetBrainsMono NF Bold 9";
+    background: #232136;
+    background-alt: #232136E0;
+    foreground: #e0def4;
+    selected: #c3a5e6;
+    active: #9bced7;
+    urgent: #ea6f91;
+    
+    img-background: url("~/.config/bspwm/rices/cristina/rofi.webp", width);
+}
+EOF
 }
 
 # Launch the bar and or eww widgets

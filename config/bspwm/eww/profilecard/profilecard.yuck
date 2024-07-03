@@ -26,7 +26,7 @@
 (defpoll net_icon :interval "3s" "../eww/profilecard/scripts/Network --icon")
 
 ;; Temp
-(defpoll temp :interval "5s" "../scripts/temp.sh")
+(defpoll temp :interval "5s" "../src/temp.sh")
 
 ;; Battery
 ;;(defpoll battery :interval "3s" "../eww/profilecard/scripts/Battery get_battery")
@@ -45,7 +45,7 @@
 (defpoll redshift_status :interval "3s" "../eww/profilecard/scripts/Redshift state")
 
 ;; Terminal selector
-(defpoll terminal_status :interval "2s" "cat ~/.config/bspwm/scripts/.term")
+(defpoll terminal_status :interval "2s" "cat ../src/.term")
 
 ;; GameMode
 (defpoll game_state :interval "2s" "../eww/profilecard/scripts/GameMode --status")
@@ -83,6 +83,7 @@
 		 :class "usercard"
 		 (box :space-evenly "false"
 			  :hexpand true
+			  :width 320
 			  :orientation "h"
 			  :spacing "15"
 			  (box :style "background-image: url('${IMAGEP}');"
@@ -275,7 +276,7 @@
         (eventbox :class "tools-box" :width 43 :height 43 :halign "center" :cursor "pointer" :tooltip "Change your default terminal
 for all the environment.
 Alacritty / Kitty"
-          (button :class "term-btn" :onclick {terminal_status == "alacritty" ? "echo kitty > ~/.config/bspwm/scripts/.term" : "echo alacritty > ~/.config/bspwm/scripts/.term"} "󰆍"))
+          (button :class "term-btn" :onclick {terminal_status == "alacritty" ? "echo kitty > ~/.config/bspwm/src/.term" : "echo alacritty > ~/.config/bspwm/src/.term"} "󰆍"))
         (label :class "info-btn" :limit-width 12 :xalign 0.5 :text terminal_status))
 
       (box  :class "tools-main" :orientation "v" :space-evenly "false" :spacing 2

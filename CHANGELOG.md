@@ -1,3 +1,71 @@
+## 3 New rices, rofi applets and fixes
+##### July 03 2024
+
+3 New themes (rices) added.
+
+For those who **ALREADY** use my dotfiles, don't forget to install the bat and eza packages because I made changes to the .zshrc aliases and the Varinka theme uses a new ttf-maple font and the new clipboard manager uses the rofi-greenclip aur package.
+
+`paru -S bat eza ttf-maple rofi-greenclip`
+
+- **h4ck3r** - Hack the box colorschame.
+  - I'm not into hacking, but I saw a Spanish YouTuber who did a review of environments focused on hacking, including my dotfiles, and I thought, why not? so i made this.
+  - Special polybar modules **VPN** (if you have one configured) and **Target** (Open a terminal and writte `target {some ip}` to add it. To reset `target reset`
+  - ![Shot-2024-07-03-074759](https://github.com/gh0stzk/dotfiles/assets/67278339/21c49120-870f-4723-b88a-5312e0abcb4d)
+
+- **Varinka** - Monochrome blue-gray colorscheme.
+- **Yael** - OxoCarbon colorscheme.
+  -  The name of this theme is after the Israeli model Yael Cohen Aris. She is a system engineer and a former military officer. She is beautiful, and yes, I am in love. https://www.instagram.com/yaelaris/
+
+| <img src="https://github.com/gh0stzk/dotfiles/assets/67278339/44ff8b57-5fad-4d10-8e0a-b04563302ab3" alt="Bspwm theme" width="700"> |
+| :--------------------------------------------------------------------------------------------------------------------------------: |
+|                                                               Hacker                                                               |
+
+| <img src="https://github.com/gh0stzk/dotfiles/assets/67278339/e75ff30a-2ea9-48cb-b919-fa7254ae970c" alt="Bspwm theme" width="700"> |
+| :--------------------------------------------------------------------------------------------------------------------------------: |
+|                                                              Varinka                                                               |
+
+| <img src="https://github.com/gh0stzk/dotfiles/assets/67278339/53ac83a5-68df-4956-9956-2741f60bb650" alt="Bspwm theme" width="700"> |
+| :--------------------------------------------------------------------------------------------------------------------------------: |
+|                                                              Yael                                                                  |
+
+##### Rofi Applets
+
+| <img src="https://github.com/gh0stzk/dotfiles/assets/67278339/7df07d69-614e-4c1d-822c-213982347c97" alt="Clipboard manager" width="700"> |
+| :--------------------------------------------------------------------------------------------------------------------------------: |
+|                                                              Clipboard                                                             |
+
+| <img src="https://github.com/gh0stzk/dotfiles/assets/67278339/d0ccde5e-6e49-4edd-8344-06f60a9013cd" alt="Screenshoter" width="700"> |
+| :--------------------------------------------------------------------------------------------------------------------------------: |
+|                                                              Screenshoter                                                            |
+
+| <img src="https://github.com/gh0stzk/dotfiles/assets/67278339/a09cd42e-440a-4fd7-9f78-72de85336336" alt="Power menu" width="700"> |
+| :--------------------------------------------------------------------------------------------------------------------------------: |
+|                                                              Power Menu                                                            |
+
+| <img src="https://github.com/gh0stzk/dotfiles/assets/67278339/13e7fe5b-8df1-4d26-afd8-75e2632e1959" alt="Power menu" width="700"> |
+| :--------------------------------------------------------------------------------------------------------------------------------: |
+|                                                              Bluetooth Manager                                                            |
+
+##### Other changes:
+
+- Change the directory structure now instead of being ~/.config/bspwm/scripts/ it is ~/.config/bspwm/src/ and inside this there are 2 new directories "jgmenu" and "rofi-themes" and src is still PATH for binaries. So that they can make the corresponding changes.
+- Remove the eww widget from PowerMenu in favor of the new one made in rofi.
+- A new welcome window the first time you enter the environment, with links and tips to get started in bspwm.
+  
+| <img src="https://github.com/gh0stzk/dotfiles/assets/67278339/376d2cfe-ba13-4952-bd0d-b8a22f55ffbf" alt="Power menu" width="700"> |
+| :--------------------------------------------------------------------------------------------------------------------------------: |
+|                                                              Welcome Message                                                            |
+
+- With the new bluetooth applet i add a new module in polybar for all rices, except the ones made with eww (z0mbi3, andrea)
+- Installer updated, added new dependencies and remove the old ones.
+- I update the .zshrc config file, trying to made it more optimized with the history stuff and add error message and new message when you sudo something. Change the alias for ls, now uses eza.
+- Optimized Theme.sh in all rices, Try to reduce the "sed" processes for the rofi menus, now the application launcher, the wallpaper selector, the terminal selector, and all the new applets, use a single file called "shared.rasi" that you find inside the rofi-themes folder.
+- And well another minor stuff like fixes, style fixes etc..
+
+
+---
+
+
 ## May 07 2024
 ##### Added Tmux config.
 

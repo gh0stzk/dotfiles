@@ -1,4 +1,4 @@
-# BSPWM themes | A complete bspwm environment
+# BSPWM themes | A complete bspwm window manager environment
 <div align = center>
    
 ![bspwm-dotfiles](https://github.com/gh0stzk/dotfiles/assets/67278339/0340846a-74d4-4a43-9430-142b0832738d)
@@ -23,23 +23,23 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 
 **Experience the Magic of Customization with gh0stzk's bspwm dotfiles**
 
-<sup>Welcome to the world of limitless customization! gh0stzk's dotfiles for bspwm offer a unique and exciting experience with 15 different themes, each featuring captivating color schemes, styles and personality. Immerse yourself in a visual journey that will transform your workspace in an impressive way.</sup>
+<sup>Welcome to the world of limitless customization! gh0stzk's dotfiles for bspwm offer a unique and exciting experience with 18 different themes, each featuring captivating color schemes, styles and personality. Immerse yourself in a visual journey that will transform your workspace in an impressive way.</sup>
 
 **Change themes on the fly**
 
-<sup>With our custom menu based on rofi launcher, switching between the 15 themes is as easy as a click. Enjoy the versatility of styles and color combinations instantly.</sup>
+<sup>With our custom menu based on rofi launcher, switching between the 18 themes is as easy as a click. Enjoy the versatility of styles and color combinations instantly.</sup>
 
 **Consistency Across the Environment**
 
 <sup>Each theme not only changes the appearance of bspwm but also instantly transforms the color scheme in alacritty terminal, eww widgets, polybar bars, notifications, and more. Visual harmony is guaranteed in every corner of your system.</sup>
 
-**Unique Eww Widgets**
+**Eww Widgets**
 
-<sup>Discover 4 unique eww widgets, including a calendar, power menu, music player, and user card. These widgets are not only functional but also instantly adapt to the color scheme of the selected theme.</sup>
+<sup>Discover eww widgets, including a calendar, music player, and user card. These widgets are not only functional but also instantly adapt to the color scheme of the selected theme.</sup>
 
 **Complete Customization**
 
-<sup>Explore an elegant right-click menu made with Jgmenu, which also syncs with themes for flawless visual consistency. Additionally, 10 polybar bars and 2 eww widgets offer a fully customizable user experience.</sup>
+<sup>Explore an elegant right-click menu made with Jgmenu, which also syncs with themes for flawless visual consistency. Additionally, 16 polybar bars and 2 eww widgets offer a fully customizable user experience.</sup>
 
 **Variety of Wallpapers**
 
@@ -49,6 +49,26 @@ https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-
 
 <sup>Experience effortless beauty with picom as the compositor, providing a pleasing aesthetic without sacrificing performance. Enjoy a hassle-free working experience with delightful visual effects, balance between performance and beauty..
 And you can adjust the transparency of your open windows with a simple key combination. Control the appearance of your desktop to perfectly suit your mood and style.</sup>
+
+**Enhanced Rofi Applets**
+
+<sup>Take control of your network connections effortlessly with our new rofi applet for NetworkManager. Manage your Bluetooth devices with ease using the Bluetooth control applet. Take control of your clipboard with the new Clipboard manager applet, never lose something you copied again. Capture screenshots seamlessly with the dedicated screenshot applet. Plus, enjoy a new power menu applet, offering options to shutdown, reboot, logout, suspend, or restart bspwm.</sup>
+
+**Terminal Selection Menu**
+
+<sup>Choose your preferred terminal emulator between alacritty and kitty through a simple menu. The selected terminal will be the default for your environment, with alacritty set as the default.</sup>
+
+**Tmux Configuration**
+
+<sup>Benefit from a newly added tmux configuration and design, enhancing your terminal multiplexing experience.</sup>
+
+**Complete Neovim Setup**
+
+<sup>Immerse yourself in a fully configured Neovim setup with plugins, written in Lua, providing a simple but powerful and efficient code editing environment.</sup>
+
+**Optimized ZSH Configuration**
+
+<sup>Enjoy a complete and optimized configuration of ZSH with features such as autocompletion, syntax highlighting, history substring search, and a simple yet powerful and beautiful prompt. Elevate your command line experience to a new level of efficiency and aesthetics.</sup>
 
 **Additional Features:**
 
@@ -297,6 +317,49 @@ I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wik
 
 </details>
 
+### 🌸h4ck3r:
+
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/2d55fcc6-1ea4-4d56-8c46-3a3fe10566fe" alt="Hacker Rice" align="center">|
+|---|
+
+<details>
+<summary><b>Extra wallpapers in h4ck3r</b></summary>
+
+|<img src="config/bspwm/rices/h4ck3r/walls/wall-02.webp" alt="Hacker Rice" align="center" width="150px">|<img src="config/bspwm/rices/h4ck3r/walls/wall-03.webp" alt="Hacker Rice" align="center" width="150px">|<img src="config/bspwm/rices/h4ck3r/walls/wall-04.webp" alt="Hacker Rice" align="center" width="150px">|
+|:-:|:-:|:-:|
+<img src="config/bspwm/rices/h4ck3r/walls/wall-05.webp" alt="Hacker Rice" align="center" width="150px">|<img src="config/bspwm/rices/h4ck3r/walls/wall-06.webp" alt="Hacker Rice" align="center" width="150px">|<img src="config/bspwm/rices/h4ck3r/walls/wall-07.webp" alt="Hacker Rice" align="center" width="150px">|
+<img src="config/bspwm/rices/h4ck3r/walls/wall-08.webp" alt="Hacker Rice" align="center" width="150px">|
+
+</details>
+
+### 🌸Varinka:
+
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/454d82b4-8f09-4768-bf51-6ce7818ad226" alt="Varinka Rice" align="center">|
+|---|
+
+<details>
+<summary><b>Extra wallpapers in Varinka</b></summary>
+
+|<img src="config/bspwm/rices/varinka/walls/wall-02.webp" alt="Varinka Rice" align="center" width="150px">|<img src="config/bspwm/rices/varinka/walls/wall-03.webp" alt="Varinka Rice" align="center" width="150px">|<img src="config/bspwm/rices/varinka/walls/wall-04.webp" alt="Varinka Rice" align="center" width="150px">|
+|:-:|:-:|:-:|
+<img src="config/bspwm/rices/varinka/walls/wall-05.webp" alt="Varinka Rice" align="center" width="150px">|<img src="config/bspwm/rices/varinka/walls/wall-06.webp" alt="Varinka Rice" align="center" width="150px">|<img src="config/bspwm/rices/varinka/walls/wall-07.webp" alt="Varinka Rice" align="center" width="150px">|
+
+</details>
+
+### 🌸Yael:
+
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/cbb0a1cc-4e2d-46a2-a4f2-ee0be3d08b50" alt="Yael Rice" align="center">|
+|---|
+
+<details>
+<summary><b>Extra wallpapers in Yael</b></summary>
+
+|<img src="config/bspwm/rices/yael/walls/wall-01.webp" alt="Yael Rice" align="center" width="150px">|<img src="config/bspwm/rices/yael/walls/wall-02.webp" alt="Yael Rice" align="center" width="150px">|<img src="config/bspwm/rices/yael/walls/wall-04.webp" alt="Yael Rice" align="center" width="150px">|
+|:-:|:-:|:-:|
+<img src="config/bspwm/rices/yael/walls/wall-05.webp" alt="Yael Rice" align="center" width="150px">|<img src="config/bspwm/rices/yael/walls/wall-06.webp" alt="Yael Rice" align="center" width="150px">|<img src="config/bspwm/rices/yael/walls/wall-07.webp" alt="Yael Rice" align="center" width="150px">|
+
+</details>
+
 ## Firefox Theme (z0mbi3 Fox)
 
 |<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/9b956d3d-fc7b-49ca-b27f-dc6aa83d9e2f" alt="Firefox theme - z0mbi3-Fox" width="700">|
@@ -317,13 +380,13 @@ Plugins included [Neovim setup wiki](https://github.com/gh0stzk/dotfiles/wiki/Ne
 |<kbd>alt</kbd> + <kbd>@space</kbd>| Display menu to select a theme.
 |<kbd>super</kbd> + <kbd>@space</kbd>| Apps Menu.
 |<kbd>super</kbd> + <kbd>alt</kbd> + <kbd>w</kbd>| Opens a menu to select a wallpaper.
-|<kbd>super</kbd> + <kbd>h</kbd><br><kbd>super</kbd> + <kbd>u</kbd>|Hides bar/s<br>unhide bar/s
-|<kbd>Print</kbd>| Takes screenshot.
+|<kbd>super</kbd> + <kbd>alt</kbd> + <kbd>h</kbd><br><kbd>super</kbd> + <kbd>alt</kbd> + <kbd>u</kbd>|Hides bar/s<br>unhide bar/s
+|<kbd>super</kbd> + <kbd>alt</kbd> + <kbd>s</kbd>| Takes screenshot.
 |<kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>[plus,minus,t]</kbd>| Changes transparency on focused window.
 |<kbd>ctrl</kbd> + <kbd>super</kbd> + <kbd>alt</kbd> + <kbd>p</kbd><br><kbd>ctrl</kbd> + <kbd>super</kbd> + <kbd>alt</kbd> + <kbd>r</kbd><br><kbd>ctrl</kbd> + <kbd>super</kbd> + <kbd>alt</kbd> + <kbd>k| Power off computer<br>Restart computer<br>Brute kill a window/process
 |<kbd>super</kbd> + <kbd>alt</kbd> + <kbd>r</kbd>| Restart bspwm.
 
-And more.. You need to look sxhkdrc file for more.
+And more.. You need to look sxhkdrc file for more, or press F1 for a cheatsheet.
 
 ## 📦 setup
 

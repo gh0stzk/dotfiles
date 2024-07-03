@@ -200,31 +200,23 @@ set_jgmenu_colors() {
 		-e 's/color_sep_fg = .*/color_sep_fg = #4c566a/'
 }
 
-# Set Rofi launcher config
+# Set rofi colors
 set_launcher_config() {
-	sed -i "$HOME/.config/bspwm/scripts/Launcher.rasi" \
-		-e '22s/\(font: \).*/\1"Terminess Nerd Font Mono Bold 10";/' \
-		-e 's/\(background: \).*/\1#2e3440;/' \
-		-e 's/\(background-alt: \).*/\1#2e3440E0;/' \
-		-e 's/\(foreground: \).*/\1#e5e9f0;/' \
-		-e 's/\(selected: \).*/\1#88c0d0;/' \
-		-e "s/rices\/[[:alnum:]\-]*/rices\/${RICETHEME}/g"
+	cat >"$HOME"/.config/bspwm/src/rofi-themes/shared.rasi <<EOF
+// Rofi colors for Melissa
 
-	# NetworkManager launcher
-	sed -i "$HOME/.config/bspwm/scripts/NetManagerDM.rasi" \
-		-e '12s/\(background: \).*/\1#2e3440;/' \
-		-e '13s/\(background-alt: \).*/\1#353C4A;/' \
-		-e '14s/\(foreground: \).*/\1#e5e9f0;/' \
-		-e '15s/\(selected: \).*/\1#88c0d0;/' \
-		-e '16s/\(active: \).*/\1#a3be8c;/' \
-		-e '17s/\(urgent: \).*/\1#bf616a;/'
-
-	# WallSelect menu colors
-	sed -i "$HOME/.config/bspwm/scripts/WallSelect.rasi" \
-		-e 's/\(main-bg: \).*/\1#2e3440E6;/' \
-		-e 's/\(main-fg: \).*/\1#e5e9f0;/' \
-		-e 's/\(select-bg: \).*/\1#88c0d0;/' \
-		-e 's/\(select-fg: \).*/\1#2e3440;/'
+* {
+    font: "Terminess Nerd Font Mono Bold 10";
+    background: #2e3440;
+    background-alt: #2e3440E0;
+    foreground: #e5e9f0;
+    selected: #88c0d0;
+    active: #a3be8c;
+    urgent: #bf616a;
+    
+    img-background: url("~/.config/bspwm/rices/melissa/rofi.webp", width);
+}
+EOF
 }
 
 # Launch the bar

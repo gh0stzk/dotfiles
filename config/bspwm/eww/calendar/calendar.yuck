@@ -1,3 +1,13 @@
+(defpoll date :interval "1s" "date '+%d %b, %I:%M %p'")
+(defpoll completeday :interval "1h" "date '+%A, %d %B'")
+
+(defpoll lithour :interval "30m" "date +%H")
+(defpoll litmin :interval "30s" "date +%M")
+
+(defpoll calendar_day :interval "10h" "date '+%d'")
+(defpoll calendar_month :interval "10h" "date '+%m")
+(defpoll calendar_year :interval "10h" "date '+%Y'")
+
 (defwidget divider []
   (box :class "divider"
        :orientation "v"
@@ -7,12 +17,12 @@
 (defwidget time []
   (box :class "timebox" :orientation "v" :space-evenly false
     (box :class "time-container" :orientation "h" :space-evenly false :halign "center" :valign "center"
-      (label :class "content" :show-truncated "false" :text "${formattime(EWW_TIME, "%H")}")
+      (label :class "content" :text "${lithour}")
     (divider)
-      (label :class "content" :show-truncated "false" :text "${formattime(EWW_TIME, "%M")}"))
+      (label :class "content" :text "${litmin}"))
 
     (box :class "date-container" :orientation "h" :space-evenly true :halign "center"
-      (label :text "${formattime(EWW_TIME, "%A, %d %B")}"))
+      (label :text "${completeday}"))
 ))
 
 (defwidget cal []
@@ -20,9 +30,9 @@
        :orientation "v"
        :space-evenly false
     (calendar :class "cal"
-              :day {formattime(EWW_TIME, "%d")}
-              :month {formattime(EWW_TIME, "%m")}
-              :year {formattime(EWW_TIME, "%Y")}
+              :day calendar_day
+              :month calendar_month
+              :year calendar_year
     )
   )
 )
@@ -37,6 +47,6 @@
 )
 
 (defwindow date
-  :geometry (geometry :x "0%" :y "8%" :anchor "top center")
+  :geometry (geometry :x "0px" :y "8%" :anchor "top center")
   :wm-ignore true
 (date))
