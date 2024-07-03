@@ -60,7 +60,11 @@ For those who **ALREADY** use my dotfiles, don't forget to install the bat and e
 - Installer updated, added new dependencies and remove the old ones.
 - I update the .zshrc config file, trying to made it more optimized with the history stuff and add error message and new message when you sudo something. Change the alias for ls, now uses eza.
 - Optimized Theme.sh in all rices, Try to reduce the "sed" processes for the rofi menus, now the application launcher, the wallpaper selector, the terminal selector, and all the new applets, use a single file called "shared.rasi" that you find inside the rofi-themes folder.
-- And well another minor stuff like fixes, style fixes etc..
+- Fixed Calendar widget.
+- Updated Cheatsheet with all new keybinds.
+- Imagemagick changed the convert command to magick so i already change it in WallSelect script to avoid warnings.
+- Updated jgmenu options (added the new rices)
+- And well another minor stuff like fixes, style fixes etc.. and the necessary scripts are updated.
 
 
 ---
