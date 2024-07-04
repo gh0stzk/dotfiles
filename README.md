@@ -1,4 +1,4 @@
-# BSPWM themes | A complete bspwm window manager environment
+# A complete BSPWM Window Manager Environment
 <div align = center>
    
 ![bspwm-dotfiles](https://github.com/gh0stzk/dotfiles/assets/67278339/0340846a-74d4-4a43-9430-142b0832738d)
