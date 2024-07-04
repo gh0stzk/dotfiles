@@ -1,4 +1,4 @@
-# BSPWM Temas | Entorno completo con bspwm window manager
+# Entorno completo con BSPWM Window Manager
 
 <div align = center>
    
