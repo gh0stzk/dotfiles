@@ -6,39 +6,20 @@ function get_values() {
 
     DEFNETWORK=$(ip route | awk '/^default/ {print $5; exit}')
     CARD=$(ls -1 /sys/class/backlight/)
-    power_supply_files=$(ls /sys/class/power_supply/)
 
-    for file in $power_supply_files
-    do
-        if [ -e "/sys/class/power_supply/$file/capacity" ]; then
-            battery_file=$file
-        fi
-
-        if [ -e "/sys/class/power_supply/$file/online" ]; then
-            adapter_file=$file
-        fi
+    for file in /sys/class/power_supply/*; do
+        [ -e "$file/capacity" ] && BATTERY=$(basename "$file")
+        [ -e "$file/online" ] && ADAPTER=$(basename "$file")
     done
-
-    BATTERY="$battery_file"
-    ADAPTER="$adapter_file"
-
 }
 
 function set_values() {
 
-    if [[ "$DEFNETWORK" ]]; then
-        sed -i -e "s/sys_network_interface = .*/sys_network_interface = $DEFNETWORK/g" "$HOME"/.config/bspwm/src/system.ini
-    fi
-    if [[ "$ADAPTER" ]]; then
-        sed -i -e "s/sys_adapter = .*/sys_adapter = $ADAPTER/g" "$HOME"/.config/bspwm/src/system.ini
-    fi
-    if [[ "$BATTERY" ]]; then
-        sed -i -e "s/sys_battery = .*/sys_battery = $BATTERY/g" "$HOME"/.config/bspwm/src/system.ini
-    fi
-    if [[ "$CARD" ]]; then
-        sed -i -e "s/sys_graphics_card = .*/sys_graphics_card = $CARD/g" "$HOME"/.config/bspwm/src/system.ini
-    fi
-
+    CONFIG_FILE="$HOME/.config/bspwm/src/system.ini"
+    [ "$DEFNETWORK" ] && sed -i "s/sys_network_interface = .*/sys_network_interface = $DEFNETWORK/" "$CONFIG_FILE"
+    [ "$ADAPTER" ] && sed -i "s/sys_adapter = .*/sys_adapter = $ADAPTER/" "$CONFIG_FILE"
+    [ "$BATTERY" ] && sed -i "s/sys_battery = .*/sys_battery = $BATTERY/" "$CONFIG_FILE"
+    [ "$CARD" ] && sed -i "s/sys_graphics_card = .*/sys_graphics_card = $CARD/" "$CONFIG_FILE"
 }
 
 if [[ ! -f "$SFILE" ]]; then
