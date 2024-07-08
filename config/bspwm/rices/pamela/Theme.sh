@@ -239,8 +239,8 @@ set_bspwm_config
 set_alacritty_config
 set_kitty_config
 set_picom_config
-launch_bars
 set_dunst_config
 set_eww_colors
 set_jgmenu_colors
 set_launcher_config
+launch_bars
