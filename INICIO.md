@@ -50,7 +50,50 @@ Ajusta la transparencia de tus ventanas abiertas con una simple combinación de 
 
 **Rofi Applets**
 
-<sup>Toma el control de tus conexiones de red sin esfuerzo con nuestro nuevo applet rofi para NetworkManager. Administra tus dispositivos Bluetooth con facilidad usando el applet de control de Bluetooth. Toma el control de tu clipboard con el nuevo applet Clipboard manager, nunca mas pierdas algo que hayas copiado. Captura pantallas de manera fluida con el applet dedicado para capturas de pantalla. Además, disfruta de un nuevo applet powermenu, que ofrece opciones para apagar, reiniciar, cerrar sesión, suspender o reiniciar bspwm.</sup>
+<sup>Toma el control de tus conexiones de red sin esfuerzo con nuestro nuevo applet rofi para **NetworkManager**. Administra tus dispositivos Bluetooth con facilidad usando el **applet de control de Bluetooth**. Toma el control de tu clipboard con el nuevo applet **Clipboard manager**, nunca mas pierdas algo que hayas copiado. Captura pantallas de manera fluida con el applet dedicado para **capturas de pantalla**. Administre sus teléfonos Android a través de USB con el nuevo **applet MTP de Android**. Además, disfruta de un nuevo **applet powermenu**, que ofrece opciones para apagar, reiniciar, cerrar sesión, suspender o reiniciar bspwm.</sup>
+
+<details>
+<summary><b>NetworkManager Applet</b></summary>
+   
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/36072ec6-5a55-430d-9f89-6990676b4222" alt="NetworkManager Applet" align="center">|
+|:--:|
+</details>
+
+<details>
+<summary><b>Bluetooth Applet</b></summary>
+
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/923d6327-1a72-4cfc-87bb-4e29b66699c4" alt="Bluetooth Applet" align="center">|
+|:--:|
+</details>
+
+<details>
+<summary><b>Android Mount Applet</b></summary>
+
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/4c387426-17cb-4965-83f8-31a21f14bd47" alt="Android Mount Applet" align="center">|
+|:--:|
+</details>
+
+<details>
+<summary><b>Clipboard Manager Applet</b></summary>
+
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/2effe7d3-c9c0-4511-85b0-6b078a6753ca" alt="Clipboard Manager Applet" align="center">|
+|:--:|
+</details>
+
+<details>
+<summary><b>Screenshoter Applet</b></summary>
+
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/1fc63d01-03b6-414f-8a9c-64239d841d77" alt="Screenshoter Applet" align="center">|
+|:--:|
+</details>
+
+<details>
+<summary><b>PowerMenu Applet</b></summary>
+
+|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/453d19f0-23c4-43e1-b2f6-0e021d95ec99" alt="PowerMenu Applet" align="center">|
+|:--:|
+</details>
+
 
 **Menú de Selección de Terminal**
 

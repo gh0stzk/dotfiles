@@ -192,6 +192,9 @@
         (label :class "keys" :xalign 0 :text "Clipboard")
         (label :class "keys-alt" :xalign 1 :text "Super + Alt + c"))
       (box :orientation "h" :space-evenly "true"
+        (label :class "keys" :xalign 0 :text "Android Mount")
+        (label :class "keys-alt" :xalign 1 :text "Super + Alt + a"))
+      (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Power Menu")
         (label :class "keys-alt" :xalign 1 :text "Super + Alt + p"))
       (box :orientation "h" :space-evenly "true"

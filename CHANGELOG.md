@@ -1,3 +1,17 @@
+## Android Mount applet
+##### July 10 2024
+
+New applet to manage your android phones via USB. I already test it with 3 phones connected at same time, so if you find errors pls report.
+It uses simple-mtpfs app, from AUR. If you already have my dots, just install it `paru -S simple-mtpfs` Additionally you may need gvfs-mtp from regular repos.
+
+| <img src="https://github.com/gh0stzk/dotfiles/assets/67278339/4c387426-17cb-4965-83f8-31a21f14bd47" alt="Android Mount applet"> |
+| :--------------------------------------------------------------------------------------------------------------------------------: |
+|                                                               Android Mount applet                                                               |
+
+
+---
+
+
 ## 3 New rices, rofi applets and fixes
 ##### July 03 2024
 

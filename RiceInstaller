@@ -77,7 +77,7 @@ clear
 
 logo "Installing needed packages.."
 
-dependencias=(alacritty base-devel bat brightnessctl bspwm dunst eza feh firefox geany git kitty imagemagick jq \
+dependencias=(alacritty base-devel bat brightnessctl bspwm dunst eza feh gvfs-mtp firefox geany git kitty imagemagick jq \
 			        jgmenu libwebp maim mpc mpd neovim ncmpcpp npm pamixer pacman-contrib \
 			        papirus-icon-theme physlock picom playerctl polybar polkit-gnome python-gobject ranger \
 			        redshift rofi rustup sxhkd tmux ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd \
@@ -328,6 +328,14 @@ if pacman -Q ttf-maple >/dev/null 2>&1; then
 else
     printf "\n%s%sInstalling ttf-maple, this should be fast!%s\n" "${BLD}" "${CBL}" "${CNC}"
     paru -S ttf-maple --skipreview --noconfirm
+fi
+
+# Installing simple-mtpfs
+if pacman -Q simple-mtpfs >/dev/null 2>&1; then
+    printf "\n%s%ssimple-mtpfs is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+else
+    printf "\n%s%sInstalling simple-mtpfs, this should be fast!%s\n" "${BLD}" "${CBL}" "${CNC}"
+    paru -S simple-mtpfs --skipreview --noconfirm
 fi
 
 # Installing Eww
