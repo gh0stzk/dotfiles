@@ -1,22 +1,17 @@
 #!/usr/bin/env bash
-
-get_status() {
-  if ! systemctl is-active --quiet bluetooth.service; then
-    B_STATUS="died"
-  elif [[ $(bluetoothctl show | grep "Powered" | awk '{print $2}') == "yes" ]]; then
-    B_STATUS="poweron"
-  elif [[ $(bluetoothctl show | grep "Powered" | awk '{print $2}') == "no" ]]; then
-    B_STATUS="poweroff"
-  fi
-
-  echo "${B_STATUS}"
-}
+#  ██████╗ ██╗     ██╗   ██╗███████╗████████╗ ██████╗  ██████╗ ████████╗██╗  ██╗
+#  ██╔══██╗██║     ██║   ██║██╔════╝╚══██╔══╝██╔═══██╗██╔═══██╗╚══██╔══╝██║  ██║
+#  ██████╔╝██║     ██║   ██║█████╗     ██║   ██║   ██║██║   ██║   ██║   ███████║
+#  ██╔══██╗██║     ██║   ██║██╔══╝     ██║   ██║   ██║██║   ██║   ██║   ██╔══██║
+#  ██████╔╝███████╗╚██████╔╝███████╗   ██║   ╚██████╔╝╚██████╔╝   ██║   ██║  ██║
+#  ╚═════╝ ╚══════╝ ╚═════╝ ╚══════╝   ╚═╝    ╚═════╝  ╚═════╝    ╚═╝   ╚═╝  ╚═╝
+#	Script to detect and control the bluetooth information on my eww widget.
+#	gh0stzk | https://github.com/gh0stzk/dotfiles
+#	12.07.2024 09:51:19
 
 get_icon() {
 	if systemctl is-active --quiet bluetooth.service; then
-
-		powered=$(bluetoothctl show | grep "Powered" | awk '{print $2}')
-		if [ "$powered" == "yes" ]; then
+		if [[ $(bluetoothctl show | grep "Powered" | awk '{print $2}') == "yes" ]]; then
 			echo "󰂯"
 		else
 			echo "󰂲"
@@ -28,9 +23,7 @@ get_icon() {
 
 get_name() {
 	if systemctl is-active --quiet bluetooth.service; then
-
-		powered=$(bluetoothctl show | grep "Powered" | awk '{print $2}')
-		if [ "$powered" == "yes" ]; then
+		if [[ $(bluetoothctl show | grep "Powered" | awk '{print $2}') == "yes" ]]; then
 			connected_devices=$(bluetoothctl devices Connected | awk '{print $3}')
 			if [ -n "$connected_devices" ]; then
 				echo "$connected_devices"
@@ -46,8 +39,7 @@ get_name() {
 }
 
 toggle() {
-	powered=$(bluetoothctl show | grep "Powered" | awk '{print $2}')
-	if [[ "$powered" == "no" ]]; then
+	if [[ $(bluetoothctl show | grep "Powered" | awk '{print $2}') == "no" ]]; then
 		bluetoothctl power on
 		dunstify --icon=bluetooth --appname=Bluetooth --urgency=normal "Bluetooth" "Bluetooth has been turned on."
 	else
@@ -56,12 +48,9 @@ toggle() {
 	fi
 }
 
-if [[ "$1" == "--status" ]]; then
-  get_status
-elif [[ "$1" == "--icon" ]]; then
-	get_icon
-elif [[ "$1" == "--name" ]]; then
-	get_name
-elif [[ "$1" == "--toggle" ]]; then
-	toggle
-fi
+case "$1" in
+  --status) get_status ;;
+  --icon) get_icon ;;
+  --name) get_name ;;
+  --toggle) toggle ;;
+esac

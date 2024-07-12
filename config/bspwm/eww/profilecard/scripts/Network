@@ -11,22 +11,13 @@
 #	23.09.2023 13:39:59
 
 ID=$(ip link | awk '/state UP/ {print $2}' | tr -d :)
-SSID=""
-ICON=""
 
 if command -v nmcli >/dev/null 2>&1 ; then
     SSID=$(nmcli -t -f active,ssid dev wifi show | sed -n '1{s/SSID: //p}')
 fi
 
-ping_servers=("archlinux.org" "google.com")
-
 is_online() {
-    for server in "${ping_servers[@]}"; do
-        if ping -c 1 "$server" &>/dev/null; then
-            return 0  # Online
-        fi
-    done
-    return 1  # Offline
+	ping -c 1 archlinux.org &>/dev/null
 }
 
 if is_online; then

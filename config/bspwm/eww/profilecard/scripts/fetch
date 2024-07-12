@@ -1,5 +1,14 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
+#  ███████╗███████╗████████╗ ██████╗██╗  ██╗
+#  ██╔════╝██╔════╝╚══██╔══╝██╔════╝██║  ██║
+#  █████╗  █████╗     ██║   ██║     ███████║
+#  ██╔══╝  ██╔══╝     ██║   ██║     ██╔══██║
+#  ██║     ███████╗   ██║   ╚██████╗██║  ██║
+#  ╚═╝     ╚══════╝   ╚═╝    ╚═════╝╚═╝  ╚═╝
+#	Little fetch made to work with my eww widget
+# 	gh0stzk | https://github.com/gh0stzk/dotfiles
+#	11.07.2024 10:20:07
+ 
 os() {
   awk -F '"' '/PRETTY_NAME/ {print $2}' /etc/os-release | awk '{print $1}'
 }

@@ -19,13 +19,12 @@
 
 
 # Verifies if xdpyinfo and imagemagick are installed
-if ! command -v xdpyinfo > /dev/null 2>&1; then
-    dunstify "Missing package" "Please install the xorg-xdpyinfo package to continue" -u critical
-    exit 1
-elif ! command -v convert > /dev/null 2>&1; then
-    dunstify "Missing package" "Please install the imagemagick package to continue" -u critical
-    exit 1
-fi
+for app in xorg-xdpyinfo imagemagick; do
+    if ! pacman -Q $app > /dev/null 2>&1; then
+        dunstify "Missing package" "Please install the $app package to continue" -u critical
+        exit 1
+    fi
+done
 
 # Set some variables
 wall_dir="${HOME}/.config/bspwm/rices/${RICETHEME}/walls"
@@ -44,18 +43,13 @@ fi
 
 # Convert images in directory and save to cache dir
 for imagen in "$wall_dir"/*.{jpg,jpeg,png,webp}; do
-    if [ -f "$imagen" ]; then
-        nombre_archivo=$(basename "$imagen")
-        if [ ! -f "${cacheDir}/${nombre_archivo}" ] ; then
-            magick "$imagen" -resize 500x500^ -gravity center -extent 500x500 "${cacheDir}/${nombre_archivo}"
-        fi
-    fi
+    [ -f "$imagen" ] || continue
+    nombre_archivo=$(basename "$imagen")
+    [ -f "${cacheDir}/${nombre_archivo}" ] || magick "$imagen" -resize 500x500^ -gravity center -extent 500x500 "${cacheDir}/${nombre_archivo}"
 done
 
 # Launch rofi
 wall_selection=$(find "${wall_dir}" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) -exec basename {} \; | sort | while read -r A ; do  echo -en "$A\x00icon\x1f""${cacheDir}"/"$A\n" ; done | $rofi_command)
 
 # Set wallpaper
-[[ -n "$wall_selection" ]] || exit 1
-feh --no-fehbg --bg-fill "${wall_dir}"/"${wall_selection}"
-exit 0
+[[ -n "$wall_selection" ]] && feh --no-fehbg --bg-fill "${wall_dir}/${wall_selection}"

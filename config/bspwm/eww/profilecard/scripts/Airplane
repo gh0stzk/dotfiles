@@ -1,63 +1,56 @@
 #!/usr/bin/env bash
+#   █████╗ ██╗██████╗ ██████╗ ██╗      █████╗ ███╗   ██╗███████╗
+#  ██╔══██╗██║██╔══██╗██╔══██╗██║     ██╔══██╗████╗  ██║██╔════╝
+#  ███████║██║██████╔╝██████╔╝██║     ███████║██╔██╗ ██║█████╗  
+#  ██╔══██║██║██╔══██╗██╔═══╝ ██║     ██╔══██║██║╚██╗██║██╔══╝  
+#  ██║  ██║██║██║  ██║██║     ███████╗██║  ██║██║ ╚████║███████╗
+#  ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝
+#	Script to control my eww widget arirplane options.
+#	gh0stzk | https://github.com/gh0stzk/dotfiles
+#	12.07.2024 10:12:26
+
 
 cache_file=$HOME/.cache/$(whoami)/airplane_state
 
-initial_hook() {
-	if [ ! -d "$(dirname "$cache_file")" ]; then
-		mkdir -p "$(dirname "$cache_file")"
-	fi
-	if [ ! -f "$cache_file" ]; then
-		echo Off >"$cache_file"
-	fi
-}
+mkdir -p "$(dirname "$cache_file")"
+[[ ! -f "$cache_file" ]] && echo Off > "$cache_file"
 
 get_state() {
-	# check if airplane-mode is running
 	cat "$cache_file"
 }
 
 icon() {
-  local state=$(get_state)
-	if [[ $state == "On" ]]; then
-		echo "󰀞"
-	else
+	if [[ $(get_state) == "On" ]]; then
 		echo "󰀝"
+	else
+		echo "󰀞"
 	fi
 }
 
 airplane_on() {
 	nmcli networking off
-	if which bluetoothctl; then
-		bluetoothctl power off
-	fi
+	command -v bluetoothctl >/dev/null && bluetoothctl power off
 	notify-send --urgency=normal -i airplane-mode "Airplane Mode" "Airplane mode has been turned on!"
-  echo On >"$cache_file"
+	echo On >"$cache_file"
 }
 
 airplane_off() {
 	nmcli networking on
-	if which bluetoothctl; then
-		bluetoothctl power on
-	fi
+	command -v bluetoothctl >/dev/null && bluetoothctl power on
 	notify-send --urgency=normal -i airplane-mode "Airplane Mode" "Airplane mode has been turned off!"
-  echo Off >"$cache_file"
+	echo Off >"$cache_file"
 }
 
 toggle() {
-  local state=$(get_state)
-	if [[ $state == "Off" ]]; then
+	if [[ $(get_state) == "Off" ]]; then
 		airplane_on
 	else
 		airplane_off
 	fi
 }
 
-initial_hook
-
-if [[ $1 == "--toggle" ]]; then
-	toggle
-elif [[ $1 == "--icon" ]]; then
-	icon
-elif [[ $1 == "--status" ]]; then
-	get_state
-fi
+case "$1" in
+    --toggle) toggle ;;
+    --icon) icon ;;
+    --status) get_state ;;
+esac
