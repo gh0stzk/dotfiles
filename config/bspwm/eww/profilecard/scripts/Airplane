@@ -29,14 +29,14 @@ icon() {
 
 airplane_on() {
 	nmcli networking off
-	command -v bluetoothctl >/dev/null && bluetoothctl power off
+	systemctl is-active --quiet bluetooth.service && bluetoothctl power off
 	notify-send --urgency=normal -i airplane-mode "Airplane Mode" "Airplane mode has been turned on!"
 	echo On >"$cache_file"
 }
 
 airplane_off() {
 	nmcli networking on
-	command -v bluetoothctl >/dev/null && bluetoothctl power on
+	systemctl is-active --quiet bluetooth.service && bluetoothctl power on
 	notify-send --urgency=normal -i airplane-mode "Airplane Mode" "Airplane mode has been turned off!"
 	echo Off >"$cache_file"
 }
