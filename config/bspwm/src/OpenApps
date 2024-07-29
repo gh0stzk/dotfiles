@@ -5,9 +5,9 @@
 #  ██╔══██║██╔═══╝ ██╔═══╝ ╚════██║    ██║     ██╔══██║██║   ██║██║╚██╗██║██║     ██╔══██║██╔══╝  ██╔══██╗
 #  ██║  ██║██║     ██║     ███████║    ███████╗██║  ██║╚██████╔╝██║ ╚████║╚██████╗██║  ██║███████╗██║  ██║
 #  ╚═╝  ╚═╝╚═╝     ╚═╝     ╚══════╝    ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
-# Script to control prefered apps to launch for all themes
-# Author: z0mbi3
-# url:    https://github.com/gh0stzk
+#	Script to control prefered apps to launch for all themes
+#	Author: z0mbi3
+#	url:    https://github.com/gh0stzk/dotfiles
 
 WIDGET_DIR="$HOME/.config/bspwm/eww"
 

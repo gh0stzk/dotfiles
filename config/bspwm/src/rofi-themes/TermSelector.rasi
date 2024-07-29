@@ -1,11 +1,9 @@
-// # Author 	-  z0mbi3
-// # Source   -  https://github.com/gh0stzk/dotfiles
+// # z0mbi3 - https://github.com/gh0stzk/dotfiles
 
 configuration {
-    show-icons:                 false;
-	drun-display-format:        "{name}";
-	disable-history:            true;
-	sidebar-mode: 				false;
+	hover-select:				true;
+	me-select-entry:			"";
+	me-accept-entry:			"MousePrimary";
 }
 
 @import "shared.rasi"
@@ -15,76 +13,102 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       13%;
-    height:                      15%;
+    width:                       600px;
     x-offset:                    0px;
     y-offset:                    0px;
-
-    /* properties for all widgets */
-    enabled:                     true;
-    border-radius:               10px;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      1px solid;
+    border-radius:               0px;
+    border-color:                @selected;
     cursor:                      "default";
     background-color:            @background;
 }
 
 mainbox {
     enabled:                     true;
-    spacing:                     0px;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     15px;
     background-color:            transparent;
-    orientation:                 vertical;
-    children:                    [ "listbox" ];
+    children:                    [ "message", "listview" ];
 }
 
-listbox {
-    spacing:                     2px;
-    padding:                     20px;
-    background-color:            transparent;
-    orientation:                 vertical;
-    children:                    [ "listview" ];
+message {
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     10px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @selected;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+}
+
+textbox {
+    background-color:            inherit;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
 }
 
 listview {
     enabled:                     true;
-    columns:                     1;
-    lines:                       2;
-    cycle:                       false;
-    dynamic:                     true;
+    columns:                     5;
+    lines:                       1;
+    cycle:                       true;
     scrollbar:                   false;
     layout:                      vertical;
-    reverse:                     false;
-    fixed-height:                true;
-    fixed-columns:               true;
     
-    spacing:                     5px;
+    spacing:                     10px;
     background-color:            transparent;
-    text-color:                  @foreground;
     cursor:                      "default";
 }
 
 element {
     enabled:                     true;
-    spacing:                     5px;
-    padding:                     8px;
-    border-radius:               4px;
+    padding:                     22px 22px 22px 10px;
+    border:                      0px solid;
+    border-radius:               0px;
+    border-color:                @selected;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      pointer;
 }
 
-element normal.normal {
-    background-color:            inherit;
-    text-color:                  inherit;
-}
-
-element selected.normal {
-    background-image: 			 linear-gradient(#8677cf, #61afef);
-    text-color:                  @background;
-}
-
 element-text {
+    font:                        "JetbrainsMono NF Bold 20";
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
     vertical-align:              0.5;
-    horizontal-align:            0.0;
+    horizontal-align:            0.5;
+}
+
+element normal.normal,
+element alternate.normal {
+    border:                      1px solid;
+    border-radius:               0px;
+    border-color:                @selected;
+    background-color:            @background;
+    text-color:                  @foreground;
+}
+
+element normal.urgent,
+element alternate.urgent,
+element selected.active {
+    background-color:            @urgent;
+    text-color:                  @background;
+}
+
+element normal.active,
+element alternate.active,
+element selected.urgent {
+    background-color:            @active;
+    text-color:                  @background;
+}
+
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @background;
 }

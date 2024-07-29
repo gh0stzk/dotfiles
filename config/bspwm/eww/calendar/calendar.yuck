@@ -5,7 +5,7 @@
 (defpoll litmin :interval "30s" "date +%M")
 
 (defpoll calendar_day :interval "10h" "date '+%d'")
-(defpoll calendar_month :interval "10h" "date '+%m")
+(defpoll calendar_month :interval "10h" "date '+%m'")
 (defpoll calendar_year :interval "10h" "date '+%Y'")
 
 (defwidget divider []
@@ -30,9 +30,9 @@
        :orientation "v"
        :space-evenly false
     (calendar :class "cal"
-              :day calendar_day
-              :month calendar_month
-              :year calendar_year
+              :day {calendar_day ?: "1"}
+              :month {calendar_month ?: "1"}
+              :year {calendar_year ?: "2023"}
     )
   )
 )

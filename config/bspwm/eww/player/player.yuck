@@ -1,7 +1,7 @@
 ;; Vars ;;
 
 (defpoll music-player		:interval "1s" "MediaControl --player")
-(defpoll music-art			:interval "1s" "MediaControl --cover")
+(defpoll music-art			:interval "3s" "MediaControl --cover")
 (defpoll music-title 		:interval "1s" "MediaControl --title")
 (defpoll music-artist 		:interval "1s" "MediaControl --artist")
 (defpoll music-status 		:interval "1s" "MediaControl --status")
@@ -107,8 +107,8 @@
 							(scale 
 								:onchange {music-player != "spotify" ? "mpc seek {}" : "playerctl -p ${music-player} position {}"}
 								:min 0 
-								:max music-lengths
-								:value music-positions
+								:max {music-lengths ?: "100"}
+								:value {music-positions ?: "0"}
 							)
 						)
 					)
@@ -119,12 +119,12 @@
 						:spacing 3
 						(label 
 							:class "player-time"
-							:text music-position
+							:text {music-position ?: "0:00"}
 						)
 						(label :class "player-time" :text "/")
 						(label 
 							:class "player-time"
-							:text music-length
+							:text {music-length ?: "0:00"}
 						)	
 					)
 				)

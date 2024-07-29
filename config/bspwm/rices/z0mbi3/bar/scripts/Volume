@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 #  ██╗   ██╗ ██████╗ ██╗     ██╗   ██╗███╗   ███╗███████╗
 #  ██║   ██║██╔═══██╗██║     ██║   ██║████╗ ████║██╔════╝
 #  ██║   ██║██║   ██║██║     ██║   ██║██╔████╔██║█████╗
@@ -8,7 +7,7 @@
 #    ╚═══╝   ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
 #	gh0stzk
 #	https://github.com/gh0stzk/dotfiles
-#	Script to control the eww bar in z0mbi3 rice
+#	Get volume info for eww bar.
 #	23.09.2023 12:30:34
 
 get_vol () {

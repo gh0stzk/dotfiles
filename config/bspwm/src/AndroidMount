@@ -14,9 +14,10 @@
 #  ╚═╝     ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝
 
 BASE_MOUNT_POINT="$HOME/Android_Mount"
+ROFI_THEME="$HOME/.config/bspwm/src/rofi-themes/Android.rasi"
 
 list_devices() {
-	simple-mtpfs -l | awk -F': ' '{print $1 " " $2}' | rofi -dmenu -p "Select device" -theme ~/.config/bspwm/src/rofi-themes/Android.rasi
+	simple-mtpfs -l | awk -F': ' '{print $1 " " $2}' | rofi -dmenu -p "Select device" -theme "$ROFI_THEME"
 }
 
 is_mounted() {
@@ -58,12 +59,12 @@ if [ -z "$DEVICE_NUM" ]; then
 fi
 
 if is_mounted "$MOUNT_POINT"; then
-	ACTION=$(echo "Unmount" | rofi -dmenu -p "$DEVICE_NAME is mounted" -theme ~/.config/bspwm/src/rofi-themes/Android.rasi)
+	ACTION=$(echo "Unmount" | rofi -dmenu -p "$DEVICE_NAME is mounted" -theme "$ROFI_THEME")
 	if [ "$ACTION" == "Unmount" ]; then
 		unmount_device "$MOUNT_POINT"
 	fi
 else
-	ACTION=$(echo "Mount" | rofi -dmenu -p "$DEVICE_NAME is not mounted" -theme ~/.config/bspwm/src/rofi-themes/Android.rasi)
+	ACTION=$(echo "Mount" | rofi -dmenu -p "$DEVICE_NAME is not mounted" -theme "$ROFI_THEME")
 	if [ "$ACTION" == "Mount" ]; then
 		mount_device "$DEVICE_NUM" "$MOUNT_POINT"
 	fi

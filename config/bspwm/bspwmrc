@@ -6,17 +6,16 @@
 #  ██╔══██╗╚════██║██╔═══╝ ██║███╗██║██║╚██╔╝██║██╔══██╗██║
 #  ██████╔╝███████║██║     ╚███╔███╔╝██║ ╚═╝ ██║██║  ██║╚██████╗
 #  ╚═════╝ ╚══════╝╚═╝      ╚══╝╚══╝ ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
-#	- z0mbi3
-#	- https://github.com/gh0stzk/dotfiles
-#	- z0mbi3.zk@protonmail.com
-#
+#	Author	-	gh0stzk
+#	Repo	-	https://github.com/gh0stzk/dotfiles
+#	Copyright (C) 2021-2024 gh0stzk <z0mbi3.zk@protonmail.com>
 
-read -r RICETHEME < "$HOME"/.config/bspwm/.rice
-export RICETHEME
-PATH="$HOME/.config/bspwm/src:$PATH"
-rice_dir="$HOME/.config/bspwm/rices/$RICETHEME"
+# Current rice
+read -r RICETHEME < "${HOME}"/.config/bspwm/.rice
+
+# Set environment variables
+export PATH="$HOME/.config/bspwm/src:$PATH"
 export XDG_CURRENT_DESKTOP='bspwm'
-
 ## Fix java applications
 export _JAVA_AWT_WM_NONREPARENTING=1
 
@@ -36,7 +35,7 @@ done
 #  ╠╩╗╚═╗╠═╝║║║║║║  ║  ║ ║║║║╠╣ ║║ ╦
 #  ╚═╝╚═╝╩  ╚╩╝╩ ╩  ╚═╝╚═╝╝╚╝╚  ╩╚═╝
 
-bspc config external_rules_command "$HOME"/.config/bspwm/src/ExternalRules
+bspc config external_rules_command "${HOME}"/.config/bspwm/src/ExternalRules
 
 bspc config window_gap                6
 bspc config split_ratio               0.51
@@ -52,7 +51,6 @@ bspc config pointer_action1           move
 bspc config pointer_action2           resize_side
 bspc config pointer_action3           resize_corner
 
-#bspc wm --adopt-orphans
 bspc rule -a scratch sticky=on state=floating focus=on
 
 #  ╔═╗╦ ╦╔╦╗╔═╗╔═╗╔╦╗╔═╗╦═╗╔╦╗
@@ -60,37 +58,19 @@ bspc rule -a scratch sticky=on state=floating focus=on
 #  ╩ ╩╚═╝ ╩ ╚═╝╚═╝ ╩ ╩ ╩╩╚═ ╩
 
 # Set system vars for polybar
-. SetSysVars
+"$HOME"/.config/bspwm/src/SetSysVars
 
-# Terminate already running polybar, stalonetray, sxhkd and dunst instances
-processes=("sxhkd" "polybar" "dunst" "eww.*bar")
+# Load current theme
+"${HOME}"/.config/bspwm/rices/"${RICETHEME}"/Theme.sh
 
-for process in "${processes[@]}"; do
-    if pgrep -f "$process"; then
-        pkill -f "$process" > /dev/null; sleep 0.25
-    fi
-done
+# Launch sxhkd daemon
+pidof -q sxhkd || { sxhkd -c "${HOME}"/.config/bspwm/sxhkdrc & }
 
-# Load bspwm conf, colors, dunst, bars and/or eww widgets
-. "${rice_dir}"/Theme.sh
-
-
-# Reload sxhkd daemon
-sxhkd -c "$HOME"/.config/bspwm/sxhkdrc &
-
-# Launch picom // If you have old hardware or encounter problems
-# uncomment the picom "--legacy-backends" line and comment the current one.
-pidof -q picom || { picom --config "$HOME"/.config/bspwm/picom.conf & }
-#pidof -q picom || { picom --legacy-backends --config "$HOME"/.config/bspwm/picom.conf & }
-
-# Launch dunst notification daemon
-dunst -config "$HOME"/.config/bspwm/dunstrc &
-
-# Set random wallpaper for actual rice
-feh -z --no-fehbg --bg-fill "${rice_dir}"/walls
+# Launch picom
+pidof -q picom || { picom --config "${HOME}"/.config/bspwm/picom.conf & }
 
 # Launch eww daemon
-pidof -q eww || { eww -c "$HOME"/.config/bspwm/eww daemon & }
+pidof -q eww || { eww -c "${HOME}"/.config/bspwm/eww daemon & }
 
 # Launch clipboard daemon
 pidof -q greenclip || { greenclip daemon & }
@@ -102,6 +82,5 @@ pidof -q polkit-gnome-authentication-agent-1 || { /usr/lib/polkit-gnome/polkit-g
 xsetroot -cursor_name left_ptr
 
 # Start one time code
-alacritty --hold -e cat $HOME/.config/bspwm/src/FirstMessage.txt
-sed -i '/# Start one time code/,/# End one time code/d' ~/.config/bspwm/bspwmrc
+sh -c 'alacritty --hold -e cat $HOME/.config/bspwm/src/FirstMessage.txt && sed -i "/# Start one time code/,/# End one time code/d" ~/.config/bspwm/bspwmrc'
 # End one time code

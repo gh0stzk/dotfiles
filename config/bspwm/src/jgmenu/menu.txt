@@ -12,24 +12,24 @@ BSPWM,^checkout(wm),gnome-windows
 Exit,^checkout(exit),system-shutdown
 
 ^tag(rices)
-Aline,echo aline > ~/.config/bspwm/.rice ; bspc wm -r,colors
-Andrea,echo andrea > ~/.config/bspwm/.rice ; bspc wm -r,colors
-Brenda,echo brenda > ~/.config/bspwm/.rice ; bspc wm -r,colors
-Cristina,echo cristina > ~/.config/bspwm/.rice ; bspc wm -r,colors
-Cynthia,echo cynthia > ~/.config/bspwm/.rice ; bspc wm -r,colors
-Daniela,echo daniela > ~/.config/bspwm/.rice ; bspc wm -r,colors
-Emilia,echo emilia > ~/.config/bspwm/.rice ; bspc wm -r,colors
-h4ck3r,echo h4ck3r > ~/.config/bspwm/.rice ; bspc wm -r,colors
-Isabel,echo isabel > ~/.config/bspwm/.rice ; bspc wm -r,colors
-Jan,echo jan > ~/.config/bspwm/.rice ; bspc wm -r,colors
-Karla,echo karla > ~/.config/bspwm/.rice ; bspc wm -r,colors
-Marisol,echo marisol > ~/.config/bspwm/.rice ; bspc wm -r,colors
-Melissa,echo melissa > ~/.config/bspwm/.rice ; bspc wm -r,colors
-Pamela,echo pamela > ~/.config/bspwm/.rice ; bspc wm -r,colors
-Silvia,echo silvia > ~/.config/bspwm/.rice ; bspc wm -r,colors
-Varinka,echo varinka > ~/.config/bspwm/.rice ; bspc wm -r,colors
-Yael,echo yael > ~/.config/bspwm/.rice ; bspc wm -r,colors
-z0mbi3,echo z0mbi3 > ~/.config/bspwm/.rice ; bspc wm -r,colors
+Aline,echo aline > ~/.config/bspwm/.rice ; ~/.config/bspwm/rices/aline/Theme.sh,colors
+Andrea,echo andrea > ~/.config/bspwm/.rice ; ~/.config/bspwm/rices/andrea/Theme.sh,colors
+Brenda,echo brenda > ~/.config/bspwm/.rice ; ~/.config/bspwm/rices/brenda/Theme.sh,colors
+Cristina,echo cristina > ~/.config/bspwm/.rice ; ~/.config/bspwm/rices/cristina/Theme.sh,colors
+Cynthia,echo cynthia > ~/.config/bspwm/.rice ; ~/.config/bspwm/rices/cynthia/Theme.sh,colors
+Daniela,echo daniela > ~/.config/bspwm/.rice ; ~/.config/bspwm/rices/daniela/Theme.sh,colors
+Emilia,echo emilia > ~/.config/bspwm/.rice ; ~/.config/bspwm/rices/emilia/Theme.sh,colors
+h4ck3r,echo h4ck3r > ~/.config/bspwm/.rice ; ~/.config/bspwm/rices/h4ck3r/Theme.sh,colors
+Isabel,echo isabel > ~/.config/bspwm/.rice ; ~/.config/bspwm/rices/isabel/Theme.sh,colors
+Jan,echo jan > ~/.config/bspwm/.rice ; ~/.config/bspwm/rices/jan/Theme.sh,colors
+Karla,echo karla > ~/.config/bspwm/.rice ; ~/.config/bspwm/rices/karla/Theme.sh,colors
+Marisol,echo marisol > ~/.config/bspwm/.rice ; ~/.config/bspwm/rices/marisol/Theme.sh,colors
+Melissa,echo melissa > ~/.config/bspwm/.rice ; ~/.config/bspwm/rices/melissa/Theme.sh,colors
+Pamela,echo pamela > ~/.config/bspwm/.rice ; ~/.config/bspwm/rices/pamela/Theme.sh,colors
+Silvia,echo silvia > ~/.config/bspwm/.rice ; ~/.config/bspwm/rices/silvia/Theme.sh,colors
+Varinka,echo varinka > ~/.config/bspwm/.rice ; ~/.config/bspwm/rices/varinka/Theme.sh,colors
+Yael,echo yael > ~/.config/bspwm/.rice ; ~/.config/bspwm/rices/yael/Theme.sh,colors
+z0mbi3,echo z0mbi3 > ~/.config/bspwm/.rice ; ~/.config/bspwm/rices/z0mbi3/Theme.sh,colors
 
 ^tag(favorites)
 Editor,OpenApps --editor,standard-notes

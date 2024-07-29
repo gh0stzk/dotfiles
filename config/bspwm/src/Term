@@ -9,35 +9,31 @@
 #   Author: z0mbi3
 #   url: https://github.com/gh0stzk/dotfiles
 
+CFG_TERM="$HOME/.config/bspwm/src/.term"
+DEFAULT_TERM="alacritty"
+ROFI_THEME="$HOME/.config/bspwm/src/rofi-themes/TermSelector.rasi"
 
-cfg_term="$HOME/.config/bspwm/src/.term"
+# Creating config file if not exists.
+[ ! -f "$CFG_TERM" ] && echo "$DEFAULT_TERM" > "$CFG_TERM"
 
-if [ ! -e "$cfg_term" ]; then
-    echo alacritty >"$cfg_term"
-fi
-
-MY_TERM=$(<"$cfg_term")
-export MY_TERM
+# Main var
+MY_TERM=$(< "$CFG_TERM")
 
 # Function to choose the terminal using rofi
 choose_terminal() {
-    local options="Alacritty\nKitty"
+    local options=("Alacritty" "Kitty")
+    local current_term=$(tr '[:upper:]' '[:lower:]' < "$CFG_TERM")
+
+    local selected_index=$(printf '%s\n' "${options[@],,}" | awk -v cur="$current_term" '$0==cur {print NR-1; exit}')
+
     local chosen
-    chosen=$(echo -e "$options" | rofi -theme "$HOME/.config/bspwm/src/rofi-themes/TermSelector.rasi" -dmenu)
+    chosen=$(printf '%s\n' "${options[@]}" | rofi -theme "$ROFI_THEME" -mesg "[ Your current terminal is $MY_TERM ]" -dmenu -selected-row "$selected_index")
     
-    case $chosen in
-        "Alacritty")
-            echo alacritty >"$cfg_term"
-            ;;
-        "Kitty")
-            echo kitty >"$cfg_term"
-            ;;
-    esac
+    [[ -n "$chosen" ]] && echo "${chosen,,}" > "$CFG_TERM"
 }
 
-if [[ "$1" == "--selecterm" ]]; then
-    choose_terminal
-fi
+# Terminal selector
+[ "$1" = "--selecterm" ] && choose_terminal
 
 # Launch the terminal with appropriate options
 case $MY_TERM in

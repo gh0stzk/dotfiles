@@ -19,21 +19,21 @@
 (defpoll CITY  :interval "15m" "Weather city")
 
 ;; Updates vars
-(defpoll UPDATES :interval "2m" "Updates --get-updates")
+(defpoll UPDATES :interval "5m" "Updates --get-updates")
 
 ;; Volume vars
-(defpoll volume_icon :interval "1s" "scripts/volume.sh --icon")
-(defpoll volume_value :interval "1s" "scripts/volume.sh --vol")
+(defpoll volume_icon :interval "1s" "scripts/Volume --icon")
+(defpoll volume_value :interval "1s" "scripts/Volume --vol")
 
 ;; Music vars
 (defpoll SONG 	:interval "1s" "MediaControl --title")
 (defpoll ARTIST :interval "1s" "MediaControl --artist")
-(defpoll COVER 	:interval "1s" "MediaControl --cover")
+(defpoll COVER 	:interval "3s" "MediaControl --cover")
 (defpoll STATUS :interval "1s" "MediaControl --status")
 
 ;; Network
-(defpoll WIFIICON :interval "10s" "scripts/check-network --icon")
-(defpoll NETSTAT  :interval "10s" "scripts/check-network --stat")
+(defpoll WIFIICON :interval "15s" "scripts/Network --icon")
+(defpoll NETSTAT  :interval "15s" "scripts/Network --stat")
 
 ;; User
 (defvar IMAGE "../../../assets/profile.png")
@@ -48,8 +48,8 @@
 			(button :style "background-image: url('images/dashboard.png');"
 				    :class "icons"
 				    :valign "center"
-				    :onclick "cd ; OpenApps --menu"
-				    :onrightclick "OpenApps --rice")
+				    :onclick "cd ; OpenApps --menu &"
+				    :onrightclick "OpenApps --rice &")
 		 )
 	)
 )
@@ -67,37 +67,37 @@
 			(button :style "background-image: url('images/zombie.png');"
 					:class "icons"
 					:valign "center"
-					:onclick "OpenApps --fetch"))
+					:onclick "OpenApps --fetch &"))
 			
 			(eventbox :cursor "pointer"		  
 			(button :style "background-image: url('images/terminal.png');"
 					:class "icons"
 					:valign "center"
-					:onclick "cd ; OpenApps --terminal"))
+					:onclick "cd ; OpenApps --terminal &"))
 			
 			(eventbox :cursor "pointer"		  
 			(button :style "background-image: url('images/firefox.png');"
 					:class "icons"
 					:valign "center"
-					:onclick "OpenApps --browser"))
+					:onclick "OpenApps --browser &"))
 			
 			(eventbox :cursor "pointer"		  
 			(button :style "background-image: url('images/files.png');"
 					:class "icons"
 					:valign "center"
-					:onclick "cd ; OpenApps --filemanager"))
+					:onclick "cd ; OpenApps --filemanager &"))
 			
 			(eventbox :cursor "pointer"		  
 			(button :style "background-image: url('images/notes.png');"
 					:class "icons"
 					:valign "center"
-					:onclick "OpenApps --editor"))
+					:onclick "OpenApps --editor &"))
 			
 			(eventbox :cursor "pointer"		  
 			(button :style "background-image: url('images/telegram.png');"
 					:class "icons"
 					:valign "center"
-					:onclick "OpenApps --telegram"))
+					:onclick "OpenApps --telegram &"))
 	)
 )
 
@@ -113,7 +113,7 @@
 			  :style "background-image: url('${COVER}');")
 			  
 		 (eventbox :cursor "pointer"
-		 (button :onclick "OpenApps --player"
+		 (button :onclick "OpenApps --player &"
 		 (box :orientation "v"
 			  :class "song-info"
 			  :spacing 0
@@ -161,8 +161,8 @@
 		 :space-evenly "false"
 
 		 (eventbox :cursor "pointer"
-		 (button :onclick "OpenApps --update"
-				 :onrightclick "OpenApps --checkupdates"
+		 (button :onclick "OpenApps --update &"
+				 :onrightclick "OpenApps --checkupdates &"
 				 (box :orientation "h"
 					  :spacing 2
 					  :valign "center"
@@ -179,8 +179,8 @@
 		 ))
 		 
 		 (eventbox :cursor "pointer"
-		 (button :onclick "${EWW_CMD} open --toggle audio_ctl"
-				 :onrightclick "scripts/volume.sh --toggle-muted"
+		 (button :onclick "${EWW_CMD} open --toggle audio_ctl &"
+				 :onrightclick "scripts/volume.sh --toggle-muted &"
 				 (box :orientation "h"
 					  :spacing 3
 					  :valign "center"
@@ -197,7 +197,7 @@
 		 ))
 
 		 (eventbox :cursor "pointer"
-		 (button :onclick "OpenApps --netmanager"
+		 (button :onclick "OpenApps --netmanager &"
 				 (box :orientation "h"
 					  :spacing 3
 					  :valign "center"
@@ -214,7 +214,7 @@
 		 ))
 
 		 (eventbox :cursor "pointer"
-		 (button :onclick "OpenApps --usercard"
+		 (button :onclick "OpenApps --usercard &"
 				 (box :orientation "h"
 					  :spacing 3
 					  :valign "center"
@@ -231,7 +231,7 @@
 		 ))
 
 		 (eventbox :cursor "pointer"
-		 (button :onclick "OpenApps --powermenu"
+		 (button :onclick "OpenApps --powermenu &"
 				 (box :orientation "h"
 					  :spacing 3
 					  :valign "center"
@@ -252,7 +252,7 @@
 		 :space-evenly "false"
 		 
 		 (eventbox :cursor "pointer"
-		 (button :onclick "OpenApps --calendar"
+		 (button :onclick "OpenApps --calendar &"
 		 (box :orientation "v"
 			  :spacing 0
 			  :halign "start"
@@ -261,7 +261,7 @@
 		 )))
 			
 		 (box :orientation "h" :spacing 5
-			(label :class "weathericon" :style "color: ${HEX};" :tooltip CITY :text ICON)
+			(label :class "weathericon" :style "color: ${HEX ?: '#adadff'};" :tooltip CITY :text ICON)
 			(label :class "weathertemp" :text "${TEMP}°C")
 		)
 	)
@@ -279,8 +279,7 @@
 				   :orientation "v")
 		 (box :class "speaker_bar"
 			  :halign "center"
-		 (scale :value volume_value
-                :space-evenly "false"
+		 (scale :value {volume_value ?: "0"}
 			    :orientation "h"
 			    :onchange "pamixer --set-volume {}" 
                 :tooltip "volume on ${volume_value}%"

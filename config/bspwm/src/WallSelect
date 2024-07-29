@@ -20,26 +20,23 @@
 
 # Verifies if xdpyinfo and imagemagick are installed
 for app in xorg-xdpyinfo imagemagick; do
-    if ! pacman -Q $app > /dev/null 2>&1; then
+    if ! pacman -Qq $app > /dev/null 2>&1; then
         dunstify "Missing package" "Please install the $app package to continue" -u critical
         exit 1
     fi
 done
 
 # Set some variables
-wall_dir="${HOME}/.config/bspwm/rices/${RICETHEME}/walls"
-cacheDir="${HOME}/.cache/$(whoami)/${RICETHEME}"
-rofi_command="rofi -dmenu -theme ${HOME}/.config/bspwm/src/rofi-themes/WallSelect.rasi -theme-str ${rofi_override}"
+read -r current_rice < "$HOME"/.config/bspwm/.rice
+wall_dir="$HOME/.config/bspwm/rices/$current_rice/walls"
+cacheDir="$HOME/.cache/$USER/$current_rice"
+rofi_command="rofi -dmenu -theme $HOME/.config/bspwm/src/rofi-themes/WallSelect.rasi -theme-str $rofi_override"
 
-monitor_res=$(xdpyinfo | awk '/dimensions/{print $2}' | cut -d 'x' -f1)
-monitor_scale=$(xdpyinfo | awk '/resolution/{print $2}' | cut -d 'x' -f1)
-monitor_res=$(( monitor_res * 17 / monitor_scale ))
+monitor_res=$(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d 'x' -f1) * 17 / $(xdpyinfo | awk '/resolution/{print $2}' | cut -d 'x' -f1)))
 rofi_override="element-icon{size:${monitor_res}px;border-radius:0px;}"
 
 # Create cache dir if not exists
-if [ ! -d "${cacheDir}" ] ; then
-    mkdir -p "${cacheDir}"
-fi
+mkdir -p "${cacheDir}"
 
 # Convert images in directory and save to cache dir
 for imagen in "$wall_dir"/*.{jpg,jpeg,png,webp}; do
