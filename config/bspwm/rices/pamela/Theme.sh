@@ -20,11 +20,11 @@ read -r RICE < "$HOME"/.config/bspwm/.rice
 # Bspwm border		# Fade windows true|false	# Shadows true|false	# Corner radius
 BORDER_WIDTH="0"	P_FADE="true"				P_SHADOWS="true"		P_CORNER_R="6"
 
-# Colorscheme for Pamela
+# (Lovelace) colorscheme from Elenapan
 bg="#1D1F28"  fg="#FDFDFD"
 
-black="#3D4C5F"   red="#F37F97"   green="#5ADECD"   yellow="#F2A272"
-blackb="#56687E"  redb="#FF4971"  greenb="#18E3C8"  yellowb="#FF8037"
+black="#282A36"   red="#F37F97"   green="#5ADECD"   yellow="#F2A272"
+blackb="#414458"  redb="#FF4971"  greenb="#18E3C8"  yellowb="#FF8037"
 
 blue="#8897F4"   magenta="#C574DD"   cyan="#79E6F3"   white="#FDFDFD"
 blueb="#556FFF"  magentab="#B043D1"  cyanb="#3FDCEE"  whiteb="#BEBEC1"
@@ -52,7 +52,7 @@ foreground = "${fg}"
 
 # Cursor colors
 [colors.cursor]
-cursor = "${redb}"
+cursor = "${magenta}"
 text = "${bg}"
 
 # Normal colors
@@ -87,7 +87,7 @@ selection_foreground    ${bg}
 selection_background    ${magenta}
 
 # Cursor colors
-cursor                  ${redb}
+cursor                  ${magenta}
 cursor_text_color       ${bg}
 
 # URL underline color when hovering with mouse
