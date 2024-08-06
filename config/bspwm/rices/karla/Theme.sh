@@ -147,6 +147,7 @@ pidof -x kitty && killall -USR1 kitty
 set_picom_config() {
 	sed -i "$HOME"/.config/bspwm/picom.conf \
 		-e "s/normal = .*/normal =  { fade = ${P_FADE}; shadow = ${P_SHADOWS}; }/g" \
+		-e "s/dock = .*/dock =  { fade = ${P_FADE}; }/g" \
 		-e "s/shadow-color = .*/shadow-color = \"${bg}\"/g" \
 		-e "s/corner-radius = .*/corner-radius = ${P_CORNER_R}/g" \
 		-e "s/\".*:class_g = 'Alacritty'\"/\"95:class_g = 'Alacritty'\"/g" \
