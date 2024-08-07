@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if ! command -v bluetoothctl; then
+    exit 0
+fi
+
 read -r current_rice < "$HOME"/.config/bspwm/.rice
 
 # Colors
