@@ -6,6 +6,11 @@
 #	gh0stzk - https://github.com/gh0stzk/dotfiles
 #	07.08.2024 11:55:34
 
+if [ ! -d /sys/class/bluetooth ]; then
+        echo # No Bluetooth interface
+        exit 0
+fi
+
 # Load current theme
 read -r current_rice < "$HOME"/.config/bspwm/.rice
 
@@ -16,15 +21,15 @@ POWER_OFF=$(awk '/^grey =/ {print $3; exit}' "$FILE")
 
 # Check if Bluetooth interface exists and its status
 check_bluetooth() {
-    if [ -d /sys/class/bluetooth ]; then
+    if systemctl is-active --quiet bluetooth.service; then
         if bluetoothctl show | grep -q "Powered: yes"; then
             echo "%{F$POWER_ON}󰂯%{F-}"  # Bluetooth is on
         else
             echo "%{F$POWER_OFF}󰂲%{F-}"  # Bluetooth is off
         fi
     else
-        echo "%{F$POWER_OFF}󰂲%{F-}"  # No Bluetooth interface
-    fi
+		echo "%{F$POWER_OFF}󰂲%{F-}"
+	fi
 }
 
 check_bluetooth
