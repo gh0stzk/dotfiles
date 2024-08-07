@@ -77,7 +77,7 @@ clear
 
 logo "Installing needed packages.."
 
-dependencias=(alacritty base-devel bat brightnessctl bspwm dunst eza feh gvfs-mtp firefox geany git kitty imagemagick jq \
+dependencias=(alacritty base-devel bat brightnessctl bluez-utils bspwm dunst eza feh gvfs-mtp firefox geany git kitty imagemagick jq \
 			        jgmenu libwebp maim mpc mpd neovim ncmpcpp npm pamixer pacman-contrib \
 			        papirus-icon-theme physlock picom playerctl polybar polkit-gnome python-gobject ranger \
 			        redshift rofi rustup sxhkd tmux ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd \

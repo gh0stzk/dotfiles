@@ -1,31 +1,30 @@
 #!/usr/bin/env bash
 
-if ! command -v bluetoothctl; then
-    exit 0
-fi
+#	The function of this script is only to detect if your Bluetooth interface is present
+#	and active and display the information in POLYBAR.
+#
+#	gh0stzk - https://github.com/gh0stzk/dotfiles
+#	07.08.2024 11:55:34
 
+# Load current theme
 read -r current_rice < "$HOME"/.config/bspwm/.rice
 
 # Colors
-DIR="$HOME/.config/bspwm/rices/${current_rice}/config.ini"
-POWER_ON=`cat $DIR | grep -m 1 '^blue =' | sed -n 's/.*= \(#[0-9a-fA-F]\+\).*/\1/p'`
-POWER_OFF=`cat $DIR | grep -m 1 '^grey =' | sed -n 's/.*= \(#[0-9a-fA-F]\+\).*/\1/p'`
+FILE="$HOME/.config/bspwm/rices/${current_rice}/config.ini"
+POWER_ON=$(awk '/^blue =/ {print $3; exit}' "$FILE")
+POWER_OFF=$(awk '/^grey =/ {print $3; exit}' "$FILE")
 
-# Checks if bluetooth controller is powered on
-power_on() {
-    if bluetoothctl show | grep -q "Powered: yes"; then
-        return 0
+# Check if Bluetooth interface exists and its status
+check_bluetooth() {
+    if [ -d /sys/class/bluetooth ]; then
+        if bluetoothctl show | grep -q "Powered: yes"; then
+            echo "%{F$POWER_ON}󰂯%{F-}"  # Bluetooth is on
+        else
+            echo "%{F$POWER_OFF}󰂲%{F-}"  # Bluetooth is off
+        fi
     else
-        return 1
+        echo "%{F$POWER_OFF}󰂲%{F-}"  # No Bluetooth interface
     fi
 }
 
-print_status() {
-    if power_on; then
-		echo "%{F$POWER_ON}󰂯%{F-}"
-    else
-        echo "%{F$POWER_OFF}󰂲%{F-}"
-    fi
-}
-
-print_status
+check_bluetooth
