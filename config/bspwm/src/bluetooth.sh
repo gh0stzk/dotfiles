@@ -7,12 +7,12 @@
 #	07.08.2024 11:55:34
 
 if [ ! -d /sys/class/bluetooth ]; then
-        echo # No Bluetooth interface
-        exit 0
+	echo # No Bluetooth interface
+	exit 0
 fi
 
 # Load current theme
-read -r current_rice < "$HOME"/.config/bspwm/.rice
+read -r current_rice <"$HOME"/.config/bspwm/.rice
 
 # Colors
 FILE="$HOME/.config/bspwm/rices/${current_rice}/config.ini"
@@ -21,14 +21,14 @@ POWER_OFF=$(awk '/^grey =/ {print $3; exit}' "$FILE")
 
 # Check if Bluetooth interface exists and its status
 check_bluetooth() {
-    if systemctl is-active --quiet bluetooth.service; then
-        if bluetoothctl show | grep -q "Powered: yes"; then
-            echo "%{F$POWER_ON}󰂯%{F-}"  # Bluetooth is on
-        else
-            echo "%{F$POWER_OFF}󰂲%{F-}"  # Bluetooth is off
-        fi
-    else
-		echo "%{F$POWER_OFF}󰂲%{F-}"
+	if systemctl is-active --quiet bluetooth.service; then
+		if bluetoothctl show | grep -q "Powered: yes"; then
+			echo "%{F$POWER_ON}󰂯%{F-}" # Bluetooth is on
+		else
+			echo "%{F$POWER_OFF}󰂲%{F-}" # Bluetooth is off
+		fi
+	else
+		echo
 	fi
 }
 
