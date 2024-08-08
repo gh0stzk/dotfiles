@@ -19,7 +19,7 @@ visualizer_in_stereo = "yes"
 visualizer_fps = "60"
 visualizer_type = "ellipse"
 visualizer_look = ●●
-visualizer_color = "33,39,63,75,81,99,117,153,189"
+visualizer_color = "magenta,cyan,blue,red,white,green,yellow,black,magenta"
 visualizer_spectrum_smooth_look = "yes"
 
 # GENERAL
