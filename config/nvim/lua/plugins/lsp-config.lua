@@ -8,7 +8,7 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    event = "VeryLazy",
+    Lazy = true,
     opts = {
       ensure_installed = { "bashls", "lua_ls", "html", "cssls", "pylsp" },
       auto_install = true,
