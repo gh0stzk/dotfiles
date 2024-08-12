@@ -238,6 +238,16 @@ launch_theme() {
 
 	# Launch dunst notification daemon
 	dunst -config "${HOME}"/.config/bspwm/dunstrc &
+
+    # Fix eww,  when entering fullscreen state
+	bspc subscribe node_state | while read -r _ _ _ _ state flag; do
+        [[ "$state" == "fullscreen" ]] || continue
+            if [ "$flag" == on ]; then
+                HideBar -h
+            else
+                HideBar -u
+            fi
+    done &
 }
 
 ### Apply Configurations
