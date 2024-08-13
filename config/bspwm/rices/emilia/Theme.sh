@@ -32,10 +32,10 @@ blueb="#7aa2f7"  magentab="#bb9af7"  cyanb="#7dcfff"  whiteb="#c0caf5"
 # Set bspwm configuration
 set_bspwm_config() {
 	bspc config border_width ${BORDER_WIDTH}
-	bspc config top_padding 54
-	bspc config bottom_padding 2
-	bspc config left_padding 2
-	bspc config right_padding 2
+	bspc config top_padding 50
+	bspc config bottom_padding 1
+	bspc config left_padding 1
+	bspc config right_padding 1
 	bspc config normal_border_color "${blackb}"
 	bspc config active_border_color "${fg}"
 	bspc config focused_border_color "${magenta}"

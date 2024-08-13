@@ -259,7 +259,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defwindow bar
-	:geometry (geometry :x "15px"
+	:geometry (geometry :x "10px"
 						:y "0%"
 						:anchor "left center"
 						:height "90%"
