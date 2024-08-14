@@ -11,7 +11,6 @@ configuration {
 
 @import "shared.rasi"
 
-
 window {
     enabled:                     true;
     fullscreen:                  false;
@@ -36,7 +35,7 @@ listview {
     enabled:                     true;
     columns:                     6;
     lines:                       1;
-    spacing:                     50px;
+    spacing:                     30px;
     padding:                     20px 30px;
     cycle:                       true;
     dynamic:                     false;
@@ -54,7 +53,7 @@ element {
     enabled:                     true;
     orientation:                 horizontal;
     spacing:                     0px;
-    padding:                     0px;
+    padding:                     3px;
     border-radius:               20px;
     cursor:                      pointer;
     background-color:            transparent;
@@ -73,9 +72,8 @@ element selected.normal {
 }
 
 element-icon {
-    size:                        33%;
+	border-radius:				 20px;
     cursor:                      inherit;
-    border-radius:               0px;
     background-color:            transparent;
     text-color:                  inherit;
 }
@@ -83,7 +81,7 @@ element-icon {
 element-text {
     vertical-align:              0.5;
     horizontal-align:            0.5;
-    padding:                     20px;
+    padding:                     10px 0px 8px 0px;
     cursor:                      inherit;
     background-color:            transparent;
     text-color:                  inherit;

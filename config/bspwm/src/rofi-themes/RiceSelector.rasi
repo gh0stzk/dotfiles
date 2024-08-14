@@ -34,6 +34,7 @@ window {
     border-color:                transparent;
     background-color:            transparent;
 }
+
 mainbox {
     enabled:                     true;
     children:                    [ "listview" ];
@@ -66,7 +67,7 @@ element {
     enabled:                     true;
     orientation:                 horizontal;
     spacing:                     0px;
-    padding:                     10px;
+    padding:                     7px;
     border-radius:               20px;
     cursor:                      pointer;
     background-color:            transparent;
@@ -82,7 +83,6 @@ element selected.normal {
     text-color:                  @select-fg;
 }
 element-icon {
-    size:                        33%;
     cursor:                      inherit;
     border-radius:               20px;
     background-color:            transparent;
@@ -91,7 +91,7 @@ element-icon {
 element-text {
     vertical-align:              0.5;
     horizontal-align:            0.5;
-    padding:                     15px 0px 0px 0px;
+    padding:                     10px 0px 5px 0px;
     cursor:                      inherit;
     background-color:            transparent;
     text-color:                  inherit;

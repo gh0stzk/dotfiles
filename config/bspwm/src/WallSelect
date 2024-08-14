@@ -30,19 +30,29 @@ done
 read -r current_rice < "$HOME"/.config/bspwm/.rice
 wall_dir="$HOME/.config/bspwm/rices/$current_rice/walls"
 cacheDir="$HOME/.cache/$USER/$current_rice"
-rofi_command="rofi -dmenu -theme $HOME/.config/bspwm/src/rofi-themes/WallSelect.rasi -theme-str $rofi_override"
-
-monitor_res=$(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d 'x' -f1) * 17 / $(xdpyinfo | awk '/resolution/{print $2}' | cut -d 'x' -f1)))
-rofi_override="element-icon{size:${monitor_res}px;border-radius:0px;}"
-
 # Create cache dir if not exists
 mkdir -p "${cacheDir}"
+
+# Trying to adapt the images and menu to your screen resolution.
+monitor_res=$(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d 'x' -f1) * 14 / $(xdpyinfo | awk '/resolution/{print $2}' | cut -d 'x' -f1)))
+rofi_override="element-icon{size:${monitor_res}px;}"
+rofi_command="rofi -dmenu -theme $HOME/.config/bspwm/src/rofi-themes/WallSelect.rasi -theme-str $rofi_override"
 
 # Convert images in directory and save to cache dir
 for imagen in "$wall_dir"/*.{jpg,jpeg,png,webp}; do
     [ -f "$imagen" ] || continue
     nombre_archivo=$(basename "$imagen")
-    [ -f "${cacheDir}/${nombre_archivo}" ] || magick "$imagen" -resize 500x500^ -gravity center -extent 500x500 "${cacheDir}/${nombre_archivo}"
+    cache_file="${cacheDir}/${nombre_archivo}"
+    md5_file="${cacheDir}/.${nombre_archivo}.md5"
+
+    # Generar MD5 del archivo original
+    current_md5=$(md5sum "$imagen" | cut -d' ' -f1)
+
+    # Comprobar si el archivo de caché existe y si el contenido ha cambiado
+    if [ ! -f "$cache_file" ] || [ ! -f "$md5_file" ] || [ "$current_md5" != "$(cat "$md5_file")" ]; then
+        magick "$imagen" -resize 500x500^ -gravity center -extent 500x500 "$cache_file"
+        echo "$current_md5" > "$md5_file"
+    fi
 done
 
 # Launch rofi
