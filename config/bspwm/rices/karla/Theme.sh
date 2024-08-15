@@ -17,8 +17,8 @@
 read -r RICE < "$HOME"/.config/bspwm/.rice
 
 # Vars config for Karla Rice
-# Bspwm border		# Fade windows true|false	# Shadows true|false	# Corner radius
-BORDER_WIDTH="3"	P_FADE="false"				P_SHADOWS="false"		P_CORNER_R="0"
+# Bspwm border		# Fade true|false	# Shadows true|false	# Corner radius		# Shadow color
+BORDER_WIDTH="3"	P_FADE="false"		P_SHADOWS="false"		P_CORNER_R="0"		SHADOW_C="#000000"
 
 # (Zombie-Night) colorscheme
 bg="#0E1113"  fg="#afb1db"
@@ -148,7 +148,7 @@ set_picom_config() {
 	sed -i "$HOME"/.config/bspwm/picom.conf \
 		-e "s/normal = .*/normal =  { fade = ${P_FADE}; shadow = ${P_SHADOWS}; }/g" \
 		-e "s/dock = .*/dock =  { fade = ${P_FADE}; }/g" \
-		-e "s/shadow-color = .*/shadow-color = \"${bg}\"/g" \
+		-e "s/shadow-color = .*/shadow-color = \"${SHADOW_C}\"/g" \
 		-e "s/corner-radius = .*/corner-radius = ${P_CORNER_R}/g" \
 		-e "s/\".*:class_g = 'Alacritty'\"/\"95:class_g = 'Alacritty'\"/g" \
 		-e "s/\".*:class_g = 'kitty'\"/\"95:class_g = 'kitty'\"/g" \
@@ -230,18 +230,18 @@ EOF
 # Launch theme
 launch_theme() {
 
+	# Set random wallpaper for actual rice
+	feh -z --no-fehbg --bg-fill "${HOME}"/.config/bspwm/rices/"${RICE}"/walls
+
+	# Launch dunst notification daemon
+	dunst -config "${HOME}"/.config/bspwm/dunstrc &
+
 	# Launch polybar
 	for mon in $(polybar --list-monitors | cut -d":" -f1); do
 		(MONITOR=$mon polybar -q karla-bar -c "${HOME}"/.config/bspwm/rices/"${RICE}"/config.ini) &
 		(MONITOR=$mon polybar -q karla-bar2 -c "${HOME}"/.config/bspwm/rices/"${RICE}"/config.ini) &
 		(MONITOR=$mon polybar -q karla-bar3 -c "${HOME}"/.config/bspwm/rices/"${RICE}"/config.ini) &
 	done
-
-	# Set random wallpaper for actual rice
-	feh -z --no-fehbg --bg-fill "${HOME}"/.config/bspwm/rices/"${RICE}"/walls
-
-	# Launch dunst notification daemon
-	dunst -config "${HOME}"/.config/bspwm/dunstrc &
 }
 
 ### Apply Configurations
@@ -250,6 +250,6 @@ set_bspwm_config
 set_term_config
 set_picom_config
 set_dunst_config
-launch_theme
 set_eww_colors
 set_launchers
+launch_theme

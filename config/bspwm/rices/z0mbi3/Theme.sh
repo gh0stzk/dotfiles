@@ -17,8 +17,8 @@
 read -r RICE < "$HOME"/.config/bspwm/.rice
 
 # Vars config for z0mbi3 Rice
-# Bspwm border		# Fade windows true|false	# Shadows true|false	# Corner radius
-BORDER_WIDTH="0"	P_FADE="true"				P_SHADOWS="true"		P_CORNER_R="6"
+# Bspwm border		# Fade true|false	# Shadows true|false	# Corner radius		# Shadow color
+BORDER_WIDTH="0"	P_FADE="true"		P_SHADOWS="true"		P_CORNER_R="6"		SHADOW_C="#000000"
 
 # (Decay, decayce variant) colorcheme
 bg="#0d0f18"  fg="#a5b6cf"
@@ -148,7 +148,7 @@ set_picom_config() {
 	sed -i "$HOME"/.config/bspwm/picom.conf \
 		-e "s/normal = .*/normal =  { fade = ${P_FADE}; shadow = ${P_SHADOWS}; }/g" \
 		-e "s/dock = .*/dock =  { fade = ${P_FADE}; }/g" \
-		-e "s/shadow-color = .*/shadow-color = \"${bg}\"/g" \
+		-e "s/shadow-color = .*/shadow-color = \"${SHADOW_C}\"/g" \
 		-e "s/corner-radius = .*/corner-radius = ${P_CORNER_R}/g" \
 		-e "s/\".*:class_g = 'Alacritty'\"/\"100:class_g = 'Alacritty'\"/g" \
 		-e "s/\".*:class_g = 'kitty'\"/\"100:class_g = 'kitty'\"/g" \
@@ -230,14 +230,14 @@ EOF
 # Launch theme
 launch_theme() {
 
-	# Launch eww bar
-	eww -c "${HOME}"/.config/bspwm/rices/"${RICE}"/bar open --toggle bar
-
 	# Set random wallpaper for actual rice
 	feh -z --no-fehbg --bg-fill "${HOME}"/.config/bspwm/rices/"${RICE}"/walls
 
 	# Launch dunst notification daemon
 	dunst -config "${HOME}"/.config/bspwm/dunstrc &
+
+	# Launch eww bar
+	eww -c "${HOME}"/.config/bspwm/rices/"${RICE}"/bar open --toggle bar
 
     # Fix eww,  when entering fullscreen state
 	bspc subscribe node_state | while read -r _ _ _ _ state flag; do
@@ -256,6 +256,6 @@ set_bspwm_config
 set_term_config
 set_picom_config
 set_dunst_config
-launch_theme
 set_eww_colors
 set_launchers
+launch_theme
