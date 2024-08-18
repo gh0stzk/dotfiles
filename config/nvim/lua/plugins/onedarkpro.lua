@@ -7,6 +7,8 @@ return {
 			options = {
 				transparency = true,
 				terminal_colors = true,
+				lualine_transparency = true,
+				cursorline = true,
 			},
 			styles = {
 				types = "NONE",

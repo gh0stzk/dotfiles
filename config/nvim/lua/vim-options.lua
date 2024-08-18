@@ -1,9 +1,10 @@
 local opt = vim.opt -- for conciseness
 
--- Numeracion de las lineas
+-- Line numbering
 opt.relativenumber = true
 opt.number = true
 opt.showtabline = 2
+
 -- tabs & indentation
 opt.tabstop = 4
 opt.shiftwidth = 4
@@ -12,6 +13,7 @@ opt.autoindent = true
 
 -- Line wrapping
 opt.wrap = true
+opt.colorcolumn = "80"
 
 -- Search setting
 opt.ignorecase = true
@@ -21,7 +23,7 @@ opt.smartcase = true
 opt.cursorline = true
 
 -- appearance
-opt.termguicolors = true
+opt.termguicolors = false
 opt.background = "dark"
 opt.signcolumn = "yes"
 

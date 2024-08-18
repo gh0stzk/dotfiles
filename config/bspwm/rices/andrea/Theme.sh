@@ -237,6 +237,7 @@ launch_theme() {
 	dunst -config "${HOME}"/.config/bspwm/dunstrc &
 
 	# Launch eww bar
+	sleep 0.1
 	eww -c "${HOME}"/.config/bspwm/rices/"${RICE}"/andy open --toggle bar
 
 	# Fix eww,  when entering fullscreen state

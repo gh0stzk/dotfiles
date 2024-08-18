@@ -6,16 +6,16 @@
 
 	# This will remove polybar or eww bars when you switch from the current theme to another.
 	if pgrep -x polybar > /dev/null; then
-        polybar-msg cmd quit
-    elif pgrep -f "eww.*bar" > /dev/null; then
-        pkill -f "eww.*bar"
-    fi
+		polybar-msg cmd quit
+	elif pgrep -f "eww.*bar" > /dev/null; then
+		pkill -f "eww.*bar"
+	fi
 
-    # It is necessary to kill Dunst, otherwise the colorscheme does not change.
-    pkill -x dunst
+	# It is necessary to kill Dunst, otherwise the colorscheme does not change.
+	pkill -x dunst
 
-    # This will kill the fix for eww in fullscreen, we don't need it in themes with polybar.
-    if pgrep -f "bspc subscribe node_state" > /dev/null; then
+	# This will kill the fix for eww in fullscreen, we don't need it in themes with polybar.
+	if pgrep -f "bspc subscribe node_state" > /dev/null; then
 		pkill -f "bspc subscribe node_state"
 	fi
-	sleep 0.25
+	sleep 0.30

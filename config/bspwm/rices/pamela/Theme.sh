@@ -237,6 +237,7 @@ launch_theme() {
 	dunst -config "${HOME}"/.config/bspwm/dunstrc &
 
 	# Launch polybar
+	sleep 0.1
 	for mon in $(polybar --list-monitors | cut -d":" -f1); do
 		(MONITOR=$mon polybar -q pam1 -c "${HOME}"/.config/bspwm/rices/"${RICE}"/config.ini) &
 		(MONITOR=$mon polybar -q pam2 -c "${HOME}"/.config/bspwm/rices/"${RICE}"/config.ini) &
