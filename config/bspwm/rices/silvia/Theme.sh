@@ -216,6 +216,7 @@ set_launchers() {
 * {
     font: "scientifica 12";
     background: ${bg};
+    bg-alt: #2E2E2E;
     background-alt: ${bg}E0;
     foreground: ${fg};
     selected: ${yellow};

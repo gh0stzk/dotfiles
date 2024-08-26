@@ -216,6 +216,7 @@ set_launchers() {
 * {
     font: "Terminess Nerd Font Mono Bold 10";
     background: ${bg};
+    bg-alt: #1F222B;
     background-alt: ${bg}E0;
     foreground: ${fg};
     selected: ${blueb};

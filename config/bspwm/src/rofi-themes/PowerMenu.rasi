@@ -13,57 +13,59 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       1000px;
-    border-radius:               50px;
-    cursor:                      "default";
-    background-color:            @background-alt;
+    width:                       50%;
+    x-offset:                    0px;
+    y-offset:                    0px;
+    
+    background-color:            @background;
+    //border-radius: 				 6px;
 }
 
 mainbox {
     enabled:                     true;
-    spacing:                     50px;
-    margin:                      50px;
-    background-color:            transparent;
-    children:                    [ "inputbar", "listview", "message" ];
+    spacing:                     15px;
+    padding:                     30px;
+    background-color:            @background;
+    children:                    [ "inputbar", "listview" ];
 }
 
 inputbar {
     enabled:                     true;
+    spacing:                     15px;
+    border-color:                @selected;
     background-color:            transparent;
-    children:                    [ "dummy", "prompt", "dummy"];
+    text-color:                  @foreground;
+    children:                    [ "textbox-prompt-colon", "prompt" ];
 }
 
-dummy {
-    background-color:            transparent;
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    font:                        "JetBrainsMono Nerd Font Bold 11";
+    str:                         "  ";
+    padding:                     12px 16px 12px 12px;
+    background-color:            @urgent;
+    text-color:                  @background;
 }
 
 prompt {
+	font:                        "JetBrainsMono Nerd Font Bold 11";
     enabled:                     true;
-    font:                        "JetBrainsMono Nerd Font Bold 48";
-    background-color:            transparent;
-    text-color:                  @foreground;
+    padding:                     12px;
+    background-color:            @active;
+    text-color:                  @background;
 }
 
 message {
     enabled:                     true;
-    margin:                      0px 300px;
     padding:                     12px;
-    border-radius:               12px;
-    background-color:            white/5%;
+    border-color:                @selected;
+    background-color:            @background-alt;
     text-color:                  @foreground;
-}
-
-textbox {
-    font:                        "JetBrainsMono Nerd Font 12";
-    background-color:            transparent;
-    text-color:                  inherit;
-    vertical-align:              0.5;
-    horizontal-align:            0.5;
 }
 
 listview {
     enabled:                     true;
-    expand:                      false;
     columns:                     5;
     lines:                       1;
     cycle:                       true;
@@ -74,22 +76,25 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     
-    spacing:                     25px;
+    spacing:                     15px;
+    border-color:                @selected;
     background-color:            transparent;
+    text-color:                  @foreground;
     cursor:                      "default";
 }
 
 element {
     enabled:                     true;
-    padding:                     30px 0px;
-    border-radius:               50px;
-    background-color:            white/5%;
+    padding:                     40px 10px;
+    border:                      0px solid;
+    border-radius:               0px;
+    background-color:            @bg-alt;
     text-color:                  @foreground;
     cursor:                      pointer;
 }
 
 element-text {
-    font:                        "Material Design Icons Desktop 58";
+    font:                        "Material Design Icons Desktop 36";
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
@@ -98,6 +103,6 @@ element-text {
 }
 
 element selected.normal {
-    background-color:            white/15%;
-    text-color:                  @selected;
+    background-color:            @selected;
+    text-color:                  @background;
 }

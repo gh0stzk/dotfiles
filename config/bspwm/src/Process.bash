@@ -6,7 +6,7 @@
 
 	# This will remove polybar or eww bars when you switch from the current theme to another.
 	if pgrep -x polybar > /dev/null; then
-		polybar-msg cmd quit
+		polybar-msg cmd quit >/dev/null
 	elif pgrep -f "eww.*bar" > /dev/null; then
 		pkill -f "eww.*bar"
 	fi

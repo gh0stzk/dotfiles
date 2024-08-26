@@ -216,6 +216,7 @@ set_launchers() {
 * {
     font: "JetBrainsMono NF Bold 9";
     background: ${bg};
+    bg-alt: #1B2333;
     background-alt: ${bg}E0;
     foreground: ${fg};
     selected: #1B2333;

@@ -216,6 +216,7 @@ set_launchers() {
 * {
     font: "Terminess Nerd Font Mono Bold 10";
     background: ${bg};
+    bg-alt: ${black};
     background-alt: ${bg}E0;
     foreground: ${fg};
     selected: ${magentab};
