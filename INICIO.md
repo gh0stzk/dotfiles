@@ -163,6 +163,7 @@ Ya comencé a escribir la [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki), 
 |<img src="config/bspwm/rices/emilia/walls/wall-02.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-03.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-04.webp" alt="Emilia Rice" align="center" width="150px">|
 |:-:|:-:|:-:|
 |<img src="config/bspwm/rices/emilia/walls/wall-05.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-06.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-07.webp" alt="Emilia Rice" align="center" width="150px">|
+<img src="config/bspwm/rices/emilia/walls/wall-08.webp" alt="Emilia Rice" align="center" width="150px">|
 
 </details>
 
@@ -191,6 +192,7 @@ Ya comencé a escribir la [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki), 
 |<img src="config/bspwm/rices/aline/walls/wall-02.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-03.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-04.webp" alt="Aline Rice" align="center" width="150px">|
 |:-:|:-:|:-:|
 |<img src="config/bspwm/rices/aline/walls/wall-05.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-06.webp" alt="Aline Rice" align="center" width="150px">|<img src="config/bspwm/rices/aline/walls/wall-07.webp" alt="Aline Rice" align="center" width="150px">|
+<img src="config/bspwm/rices/aline/walls/wall-08.webp" alt="Aline Rice" align="center" width="150px">|
 
 </details>
 
