@@ -79,7 +79,7 @@ logo "Installing needed packages.."
 
 dependencias=(alacritty base-devel bat brightnessctl bspwm dunst eza feh gvfs-mtp firefox geany git kitty imagemagick jq \
 			        jgmenu libwebp maim mpc mpd neovim ncmpcpp npm pamixer pacman-contrib \
-			        papirus-icon-theme physlock picom playerctl polybar polkit-gnome python-gobject ranger \
+			        papirus-icon-theme physlock playerctl polybar polkit-gnome python-gobject ranger \
 			        redshift rofi rustup sxhkd tmux ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd \
 			        ttf-joypixels ttf-terminus-nerd ueberzug webp-pixbuf-loader xclip xdg-user-dirs \
 			        xdo xdotool xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot \
@@ -320,6 +320,14 @@ if pacman -Q rofi-greenclip >/dev/null 2>&1; then
 else
     printf "\n%s%sInstalling rofi-greenclip, this should be fast!%s\n" "${BLD}" "${CBL}" "${CNC}"
     paru -S rofi-greenclip --skipreview --noconfirm
+fi
+
+# Installing picom-git
+if pacman -Q picom-git >/dev/null 2>&1; then
+    printf "\n%s%spicom-git is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
+else
+    printf "\n%s%sInstalling picom-git..%s\n" "${BLD}" "${CBL}" "${CNC}"
+    paru -S picom-git --skipreview --noconfirm
 fi
 
 # Installing ttf-maple
