@@ -21,6 +21,21 @@ class=$2
 instance=$3
 consequences=$4
 
+# Function to calculate dimensions based on percentages
+calculate_dimensions() {
+	local width_percent=$1
+	local height_percent=$2
+
+	# Get screen dimensions
+	read -r screen_width screen_height < <(xdpyinfo | awk '/dimensions:/ {print $2}' | tr 'x' ' ')
+
+	# Calculate dimensions in pixels
+	local width=$(((screen_width * width_percent + 50) / 100))
+	local height=$(((screen_height * height_percent + 50) / 100))
+
+	printf '%dx%d+0+0\n' "$width" "$height"
+}
+
 result() {
     eval "$consequences"
     [ "$state" ] || echo "$1"
@@ -28,18 +43,33 @@ result() {
 
 case "$class" in
     FloaTerm)
-        result "state=floating center=on"
+        dimensions=$(calculate_dimensions 51 52)
+		result "state=floating center=on rectangle=$dimensions"
         ;;
     Updating)
-        result "state=floating sticky=on center=on"
+        dimensions=$(calculate_dimensions 25 47)
+		result "state=floating sticky=on center=on rectangle=$dimensions"
         ;;
+    RangerTerm)
+		dimensions=$(calculate_dimensions 51 34)
+		result "state=floating center=on rectangle=$dimensions"
+		;;
+	MusicTerm)
+		dimensions=$(calculate_dimensions 41 48)
+		result "state=floating center=on rectangle=$dimensions"
+		;;
+	FetchTerm)
+		dimensions=$(calculate_dimensions 21 58)
+		result "state=floating center=on rectangle=$dimensions"
+		;;
     mpv)
-        result "state=floating focus=on rectangle=849x477+0+0 center=on"
+        dimensions=$(calculate_dimensions 53 53)
+		result "state=floating focus=on center=on rectangle=$dimensions"
         ;;
     Viewnior)
         result "state=floating focus=on center=on"
         ;;
-    whatsdesk|TelegramDesktop)
+    TelegramDesktop)
         result "desktop=^4 follow=on"
         ;;
     retroarch)

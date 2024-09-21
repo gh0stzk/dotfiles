@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-#  ████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗ █████╗ ██╗     
-#  ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔══██╗██║     
-#     ██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║███████║██║     
-#     ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══██║██║     
+#  ████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗ █████╗ ██╗
+#  ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔══██╗██║
+#     ██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║███████║██║
+#     ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══██║██║
 #     ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║██║  ██║███████╗
 #     ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝
 #   Script to open with selected terminal
@@ -28,7 +28,7 @@ choose_terminal() {
 
     local chosen
     chosen=$(printf '%s\n' "${options[@]}" | rofi -theme "$ROFI_THEME" -mesg "[ Your current terminal is $MY_TERM ]" -dmenu -selected-row "$selected_index")
-    
+
     [[ -n "$chosen" ]] && echo "${chosen,,}" > "$CFG_TERM"
 }
 
@@ -43,25 +43,25 @@ case $MY_TERM in
                 alacritty
                 ;;
             "--floating")
-                alacritty --class FloaTerm,FloaTerm -o window.dimensions.lines=22 window.dimensions.columns=90
+                alacritty --class FloaTerm,FloaTerm
                 ;;
             "--update")
-                alacritty --hold --class FloaTerm,FloaTerm -o window.dimensions.lines=22 window.dimensions.columns=90 -e Updates --update-system
+                alacritty --hold --class FloaTerm,FloaTerm -e Updates --update-system
                 ;;
             "--checkupdates")
-                alacritty --hold --class Updating,Updating -o window.dimensions.lines=22 window.dimensions.columns=47 -e Updates --print-updates
+                alacritty --hold --class Updating,Updating -e Updates --print-updates
                 ;;
             "--ranger")
-                alacritty --class FloaTerm,FloaTerm -o window.dimensions.lines=14 window.dimensions.columns=90 -e ranger
+                alacritty --class RangerTerm,RangerTerm -e ranger
                 ;;
             "--nvim")
                 alacritty -e nvim
                 ;;
             "--music")
-                alacritty --class FloaTerm,FloaTerm -o window.dimensions.lines=18 window.dimensions.columns=67 -e ncmpcpp
+                alacritty --class MusicTerm,MusicTerm -e ncmpcpp
                 ;;
             "--fetch")
-                alacritty --class FloaTerm,FloaTerm -o window.dimensions.lines=26 window.dimensions.columns=40 -e ~/.local/bin/sysfetch
+                alacritty --class FetchTerm,FetchTerm -e ~/.local/bin/sysfetch
                 ;;
         esac
         ;;
@@ -71,25 +71,25 @@ case $MY_TERM in
                 kitty
                 ;;
             "--floating")
-                kitty --class=FloaTerm -o initial_window_width=842 -o initial_window_height=495
+                kitty --class=FloaTerm
                 ;;
             "--update")
-                kitty --hold --class=FloaTerm -o initial_window_width=842 -o initial_window_height=495 -e Updates --update-system
+                kitty --hold --class=FloaTerm -e Updates --update-system
                 ;;
             "--checkupdates")
-                kitty --hold --class=Updating -o initial_window_width=457 -o initial_window_height=496 -e Updates --print-updates
+                kitty --hold --class=Updating -e Updates --print-updates
                 ;;
             "--ranger")
-                kitty --hold --class=FloaTerm -o initial_window_width=844 -o initial_window_height=328 -e ranger
+                kitty --hold --class=RangerTerm -e ranger
                 ;;
             "--nvim")
                 kitty -e nvim
                 ;;
             "--music")
-                kitty --class=FloaTerm -o initial_window_width=637 -o initial_window_height=412 -e ncmpcpp
+                kitty --class=MusicTerm -e ncmpcpp
                 ;;
             "--fetch")
-                kitty --class=FloaTerm -o initial_window_width=394 -o initial_window_height=580 -e ~/.local/bin/sysfetch
+                kitty --class=FetchTerm -e ~/.local/bin/sysfetch
                 ;;
         esac
         ;;

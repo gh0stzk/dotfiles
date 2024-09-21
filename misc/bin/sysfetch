@@ -17,9 +17,30 @@ CWH=$(tput setaf 7)
 CBD=$(tput bold)
 CNC=$(tput sgr0)
 
-# vars
-FULL=━
-EMPTY=━
+#█▓▒░ progress bar
+draw() {
+  FULL=━
+  EMPTY=━
+  out=
+  perc=$1
+  size=$2
+  inc=$(( perc * size / 100 ))
+  color=34
+  color2=31
+  for v in $(seq 0 $(( size - 1 ))); do
+    [ "$v" -le "$inc" ] && out="${out}${CMA}${FULL}" || out="${out}${CWH}${EMPTY}"
+  done
+  printf "%b" "$out"
+}
+
+#█▓▒░ populate vals
+i=1
+c=$(printf "\e[0m\e[31m░▒")
+while [ $i -le 6 ];do
+  c=${c}$(printf "\e[%dm\e[%dm█▓▒░" "$((i+41))" "$((i+30))")
+  i=$((i+1))
+done
+COLORBAR=${c}$(printf "\e[37m█\e[0m▒░")
 
 
 name=$USER
@@ -31,90 +52,46 @@ storage=$(df -h --output=used / | awk 'NR == 2 { print $1 }')
 term=$(ps -o sid= -p "$$" | xargs ps -o ppid= -p | xargs ps -o comm= -p)
 uptm=$(uptime -p | sed -e 's/hour/hr/' -e 's/hours/hrs/' -e 's/minutes/mins/' -e 's/minute/min/' -e 's/up //')
 
+c_lvl=$(printf "%.0f" "$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}')")
+CPU=$(printf "%-4s\em%-5s%-25s \n" "${CGR}cpu${CNC} " "$c_lvl%" "$(draw "$c_lvl" 14)")
+ram_lvl=$(free | awk '/Mem:/ {print int($3/$2 * 100.0)}')
+RAM=$(printf "%-4s\em%-5s%-25s \n" "${CYE}ram${CNC} " "$ram_lvl%" "$(draw "$ram_lvl" 14)")
+disk_lvl=$(df -h | grep '/$' | tr -s ' ' | cut -d ' ' -f5 | sed 's/%//')
+DISK=$(printf "%-4s\em%-5s%-25s \n" "${CCY}disk${CNC} " "$disk_lvl%" "$(draw "$disk_lvl" 14)")
+
 #Cleanup first
 clear
 
-# find the center of the screen
-COL=$(tput cols)
-ROW=$(tput lines)
-((PADY = ROW / 2 - 10 - 22 / 2))
-((PADX = COL / 2 - 34 / 2))
-
-for ((i = 0; i < PADX; ++i)); do
-    PADC="$PADC "
-done
-
-for ((i = 0; i < PADY; ++i)); do
-    PADR="$PADR\n"
-done
-
-# vertical padding
-printf "%b" "$PADR"
-printf "\n"
-
-PADXX=$((PADX - 3))
-for ((i = 0; i < PADXX; ++i)); do
-    PADCC="$PADCC "
-done
-
 # Ascii art arms
 cat <<EOF
-$PADCC$CBD                   $CBL.
-$PADCC                  $CBL/ $CMA\\
-$PADCC                 $CBL/   $CMA\\
-$PADCC                $CBL/^.   $CMA\\
-$PADCC               $CBL/  .$CWH-$CMA.  \\
-$PADCC              $CBL/  (   $CMA) _\\
-$PADCC             $CBL/ _.~   $CMA~._^\\
-$PADCC            $CBL/.^         $CMA^.\\
-
+$CBD                  $CBL.
+                 $CBL/ $CMA\\
+                $CBL/   $CMA\\
+               $CBL/^.   $CMA\\
+              $CBL/  .$CWH-$CMA.  \\
+             $CBL/  (   $CMA) _\\
+            $CBL/ _.~   $CMA~._^\\
+           $CBL/.^         $CMA^.\\
 EOF
 
-BAR=" ▓▒░"
-OUTT="$CBK$BAR$CRE$BAR$CGR$BAR$CYE$BAR$CBL$BAR$CMA$BAR$CCY$BAR$CWH$BAR$CNC"
-printf "%s%b\n\n" "$PADC" "$OUTT"
-
+printf "\e[0m\n    %s\e[0m\n\n" "$COLORBAR"
 
 # greetings
-printf "%s%b\n" "$PADC" "            Hi $CRE$CBD$name$CNC"
-printf "%s%b\n" "$PADC" "      Welcome to $CGR$CBD$host$CNC"
-printf "%s%b\n\n" "$PADC" "          up $CCY$CBD$uptm$CNC"
+printf "%s\n" "             Hi $CRE$CBD$name$CNC"
+printf "%s\n" "       Welcome to $CGR$CBD$host$CNC"
+printf "%s\n\n" "           up $CCY$CBD$uptm$CNC"
 
 # environment
-printf "%s%b" "$PADC" "$CRE        distro $CWH⏹ $CNC$distro\n"
-printf "%s%b" "$PADC" "$CBL        kernel $CWH⏹ $CNC$(uname -r)\n"
-printf "%s%b" "$PADC" "$CMA      packages $CWH⏹ $CNC${packages}\n"
-printf "%s%b" "$PADC" "$CGR         shell $CWH⏹ $CNC${SHELL##*/}\n"
-printf "%s%b" "$PADC" "$CYE          term $CWH⏹ $CNC${term}\n"
-printf "%s%b" "$PADC" "$CCY            wm $CWH⏹ $CNC${wm}\n"
-printf "%s%b" "$PADC" "$CBL          disk $CWH⏹ $CNC${storage} used\n"
+printf "%s\n" "$CRE         distro $CWH⏹ $CNC$distro"
+printf "%s\n" "$CBL         kernel $CWH⏹ $CNC$(uname -r)"
+printf "%s\n" "$CMA       packages $CWH⏹ $CNC${packages}"
+printf "%s\n" "$CGR          shell $CWH⏹ $CNC${SHELL##*/}"
+printf "%s\n" "$CYE           term $CWH⏹ $CNC${term}"
+printf "%s\n" "$CCY             wm $CWH⏹ $CNC${wm}"
+printf "%s\n" "$CBL           disk $CWH⏹ $CNC${storage} used"
 printf " %s\n" "$CNC"
 
-# progress bar
-draw() {
-    perc=$1
-    size=$2
-    inc=$((perc * size / 100))
-    out=
-    color="$3"
-    for v in $(seq 0 $((size - 1))); do
-        test "$v" -le "$inc" &&
-        out="${out}\e[1;${color}m${FULL}" ||
-        out="${out}\e[0;37m${CWH}${EMPTY}"
-    done
-    printf "$out"
-}
-
-# cpu
-cpu=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d'.' -f1)
-c_lvl=$(printf '%s' "$cpu")
-printf "%b" "$PADC"
-printf "   $CMA%-4s $CWH%-5s %-25s \n" " cpu" "$c_lvl%" "$(draw "$c_lvl" 15 35)"
-
-# ram
-ram=$(free | awk '/Mem:/ {print int($3/$2 * 100.0)}')
-printf "%b" "$CNC" "$PADC"
-printf "   $CMA%-4s $CWH%-5s %-25s \n" " ram" "$ram%" "$(draw "$ram" 15 35)"
+printf "        %s\n        %s\n       %s\e[0m\n" "$CPU" "$RAM" "$DISK"
 
 # hide the cursor and wait for user input
 tput civis

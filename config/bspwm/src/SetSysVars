@@ -34,6 +34,26 @@ function setup_system_vars() {
 
     [[ -n "$BATTERY" ]] && sed -i "s/sys_battery = .*/sys_battery = $BATTERY/" "$CONFIG_FILE"
     [[ -n "$ADAPTER" ]] && sed -i "s/sys_adapter = .*/sys_adapter = $ADAPTER/" "$CONFIG_FILE"
+
+    # trying to determine the best font size, based on your resolution.
+    read -r screen_width screen_height < <(xdpyinfo | awk '/dimensions:/ {print $2}' | tr 'x' ' ')
+
+    if [ "$screen_width" -le 1366 ] && [ "$screen_height" -le 768 ]; then
+		font_size=9
+	elif [ "$screen_width" -le 1600 ] && [ "$screen_height" -le 900 ]; then
+		font_size=10
+	elif [ "$screen_width" -le 1920 ] && [ "$screen_height" -le 1080 ]; then
+		font_size=10
+	elif [ "$screen_width" -le 2560 ] && [ "$screen_height" -le 1440 ]; then
+		font_size=11
+	elif [ "$screen_width" -le 3840 ] && [ "$screen_height" -le 2160 ]; then
+		font_size=12
+	else
+		font_size=10
+	fi
+
+    sed -i "s/size = [0-9]*/size = $font_size/" ~/.config/alacritty/fonts.toml
+    sed -i "s/font_size [0-9]*/font_size $font_size/" ~/.config/kitty/kitty.conf
 }
 
 # Ejecutar la configuración

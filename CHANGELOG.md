@@ -1,3 +1,68 @@
+## introducing the function to change gtk themes
+##### September 20 2024
+
+Finally add the function to switch gtk themes when you change rice.
+
+The problem was creating 18 gtk themes for each rice, which is a monumental job and certainly difficult to maintain. In addition to the problem of where to host them and not making the installation larger which could result in installation problems.
+
+Finally I created the themes with Themix and made a repository where I could host the themes and could be installed with a simple pacman -S
+
+**New:**
+
+- Gtk theme change on the fly, icons and cursors.
+- 18 new themes for geany editor
+- On your first run of my dotfiles, it will attempt to set the correct font size for your resolution, for the terminals, (alacritty and kitty).
+- Floating terminals such as <super + alt + enter> or the floating window that appears when you right click on available updates, ranger, ncmpcpp, and others now open with a size depending on the resolution of your screen. For those who use very large resolutions and the window was very small or, on the contrary, those who use resolutions smaller than 1600x900, they will open according to their resolution.
+
+**Changes**
+
+- Edited the .zshrc file, now "bat" shows the correct colors depending on the rice you are on in all use cases.
+- The sysinfo script was changed.
+- Edited bspwmrc for the new changes and functions added.
+- gtk2 and gtk3 configs added to my dots.
+- I give love to dunst config now the font and icons will change depending on the rice you are on.
+- Theme.sh in all themes edited for the new changes and functions added.
+- Tmux config updated.
+- Other minor fixes
+
+**How To update:**
+
+If you don't use my dotfiles yet, you don't have to do anything, the installer will do everything for you.
+
+If you already use my dotfiles there are several things to do:
+
+- install xsettingsd and ttf-ubuntu-mono-nerd.
+  `sudo pacman -S xsettingsd ttf-ubuntu-mono-nerd`
+
+- Add mi repo to your /etc/pacman.conf at the very end of file add:
+
+```
+[gh0stzk-dotfiles]
+SigLevel = Optional TrustAll
+Server = http://gh0stzk.github.io/pkgs/x86_64
+```
+- Now refresh your pacman `sudo pacman -Syy`
+- Now install the gtk themes, cursor and icons.
+
+`sudo pacman -S gh0stzk-gtk-themes gh0stzk-cursor-qogirr gh0stzk-icon-themes --noconfirm`
+
+- Clone the updated repo to another location from home or whatever you want and copy the new files, geany themes dir, xsettingsd, gtk2 and gtk3 config files.
+- Make the changes to bspwmrc, theme.sh, dunstrc, externarules, term files.
+
+| <img src="https://github.com/user-attachments/assets/8fe02229-7590-4f41-8758-899e45083d2a" alt="Bspwm theme" width="700"> |
+| :--------------------------------------------------------------------------------------------------------------------------------: |
+|                                                               Emilia gtk theme example                                                              |
+
+| <img src="https://github.com/user-attachments/assets/a46783e6-04f4-4ec8-a87d-368d85ad881a" alt="Bspwm theme" width="700"> |
+| :--------------------------------------------------------------------------------------------------------------------------------: |
+|                                                              Jan gtk theme example                                                               |
+
+| <img src="https://github.com/user-attachments/assets/1b18d068-7ffb-493d-984d-ce771199b824" alt="Bspwm theme" width="700"> |
+| :--------------------------------------------------------------------------------------------------------------------------------: |
+|                                                              Brenda gtk theme example                                                                  |
+
+---
+
 ## Faster and smoother
 ##### July 28 2024
 
@@ -14,6 +79,8 @@ The logic in some scripts has been improved and everything should work fine.
 The menu to select a terminal was improved and now looks better. And the logic of the code was improved.
 
 Finally, in the MediaControl script, the code to generate the song covers for the eww widgets no longer creates the cover every second, overloading performance, now it only generates it once and that's it.
+
+---
 
 ## Android Mount applet
 ##### July 10 2024
@@ -82,7 +149,7 @@ For those who **ALREADY** use my dotfiles, don't forget to install the bat and e
 - Change the directory structure now instead of being ~/.config/bspwm/scripts/ it is ~/.config/bspwm/src/ and inside this there are 2 new directories "jgmenu" and "rofi-themes" and src is still PATH for binaries. So that they can make the corresponding changes.
 - Remove the eww widget from PowerMenu in favor of the new one made in rofi.
 - A new welcome window the first time you enter the environment, with links and tips to get started in bspwm.
-  
+
 | <img src="https://github.com/gh0stzk/dotfiles/assets/67278339/376d2cfe-ba13-4952-bd0d-b8a22f55ffbf" alt="Power menu" width="700"> |
 | :--------------------------------------------------------------------------------------------------------------------------------: |
 |                                                              Welcome Message                                                            |
