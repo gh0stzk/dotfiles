@@ -1,6 +1,6 @@
 # A complete BSPWM Window Manager Environment
 <div align = center>
-   
+
 ![bspwm-dotfiles](https://github.com/gh0stzk/dotfiles/assets/67278339/0340846a-74d4-4a43-9430-142b0832738d)
 
 
@@ -56,7 +56,7 @@ And you can adjust the transparency of your open windows with a simple key combi
 
 <details>
 <summary><b>NetworkManager Applet</b></summary>
-   
+
 |<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/36072ec6-5a55-430d-9f89-6990676b4222" alt="NetworkManager Applet" align="center">|
 |:--:|
 </details>
@@ -116,7 +116,7 @@ And you can adjust the transparency of your open windows with a simple key combi
 **Additional Features:**
 
 - **Local Music Control:**
-  
+
   <sup>Manage your local music from the polybar module and the ncmpcpp player, both with a unique design that adapts to the theme's color scheme.</sup>
 - **Flexibility:**
 
@@ -160,7 +160,7 @@ I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wik
 |<img src="config/bspwm/rices/emilia/walls/wall-02.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-03.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-04.webp" alt="Emilia Rice" align="center" width="150px">|
 |:-:|:-:|:-:|
 |<img src="config/bspwm/rices/emilia/walls/wall-05.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-06.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-07.webp" alt="Emilia Rice" align="center" width="150px">|
-<img src="config/bspwm/rices/emilia/walls/wall-08.webp" alt="Emilia Rice" align="center" width="150px">|
+<img src="config/bspwm/rices/emilia/walls/wall-08.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-09.webp" alt="Emilia Rice" align="center" width="150px">|
 
 </details>
 
@@ -218,6 +218,7 @@ I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wik
 |<img src="config/bspwm/rices/cynthia/walls/wall-01.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/walls/wall-02.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/walls/wall-04.webp" alt="Cynthia Rice" align="center" width="150px">|
 |:-:|:-:|:-:|
 <img src="config/bspwm/rices/cynthia/walls/wall-05.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/walls/wall-06.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/walls/wall-07.webp" alt="Cynthia Rice" align="center" width="150px">|
+<img src="config/bspwm/rices/cynthia/walls/wall-08.webp" alt="Cynthia Rice" align="center" width="150px">|
 
 </details>
 

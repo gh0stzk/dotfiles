@@ -1,7 +1,7 @@
 # Entorno completo con BSPWM Window Manager
 
 <div align = center>
-   
+
 ![bspwm-dotfiles](https://github.com/gh0stzk/dotfiles/assets/67278339/0340846a-74d4-4a43-9430-142b0832738d)
 
 
@@ -13,7 +13,7 @@
 <br><br><br></div>
 
 https://user-images.githubusercontent.com/67278339/211363959-9182ecb7-e56e-4598-afed-f352c5d2979e.mp4
- 
+
 <br>
 
 ## 🚀 Caracteristicas
@@ -54,7 +54,7 @@ Ajusta la transparencia de tus ventanas abiertas con una simple combinación de 
 
 <details>
 <summary><b>NetworkManager Applet</b></summary>
-   
+
 |<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/36072ec6-5a55-430d-9f89-6990676b4222" alt="NetworkManager Applet" align="center">|
 |:--:|
 </details>
@@ -125,7 +125,7 @@ Ajusta la transparencia de tus ventanas abiertas con una simple combinación de 
   <sup>Esconde y muestra la barra polybar y los widgets eww según tus necesidades, brindándote un control completo sobre tu espacio de trabajo.</sup>
 
 - **Scratchpad Funcional:**
-  
+
   <sup>Accede a la funcionalidad scratchpad, una ventana de terminal que puedes mostrar o esconder según tus tareas, evitando que ocupe espacio innecesario en tu escritorio.</sup>
 
 ¡Transforma tu experiencia de usuario con los dotfiles de gh0stzk para bspwm! Descarga ahora y da vida a tu escritorio con estilo y personalidad.
@@ -163,7 +163,7 @@ Ya comencé a escribir la [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki), 
 |<img src="config/bspwm/rices/emilia/walls/wall-02.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-03.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-04.webp" alt="Emilia Rice" align="center" width="150px">|
 |:-:|:-:|:-:|
 |<img src="config/bspwm/rices/emilia/walls/wall-05.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-06.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-07.webp" alt="Emilia Rice" align="center" width="150px">|
-<img src="config/bspwm/rices/emilia/walls/wall-08.webp" alt="Emilia Rice" align="center" width="150px">|
+<img src="config/bspwm/rices/emilia/walls/wall-08.webp" alt="Emilia Rice" align="center" width="150px">|<img src="config/bspwm/rices/emilia/walls/wall-09.webp" alt="Emilia Rice" align="center" width="150px">|
 
 </details>
 
@@ -221,6 +221,7 @@ Ya comencé a escribir la [**Wiki**](https://github.com/gh0stzk/dotfiles/wiki), 
 |<img src="config/bspwm/rices/cynthia/walls/wall-01.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/walls/wall-02.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/walls/wall-04.webp" alt="Cynthia Rice" align="center" width="150px">|
 |:-:|:-:|:-:|
 <img src="config/bspwm/rices/cynthia/walls/wall-05.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/walls/wall-06.webp" alt="Cynthia Rice" align="center" width="150px">|<img src="config/bspwm/rices/cynthia/walls/wall-07.webp" alt="Cynthia Rice" align="center" width="150px">|
+<img src="config/bspwm/rices/cynthia/walls/wall-08.webp" alt="Cynthia Rice" align="center" width="150px">|
 
 </details>
 
