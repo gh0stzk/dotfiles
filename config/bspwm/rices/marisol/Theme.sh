@@ -282,7 +282,7 @@ launch_theme() {
 }
 
 ### Apply Configurations
-
+colors
 set_bspwm_config
 set_term_config
 set_picom_config

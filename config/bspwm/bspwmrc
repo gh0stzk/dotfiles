@@ -63,6 +63,8 @@ bspc rule -a scratch sticky=on state=floating focus=on
 # Load current theme
 "${HOME}"/.config/bspwm/rices/"${RICETHEME}"/Theme.sh
 
+# Load colors
+colors
 # Launch sxhkd daemon
 pidof -q sxhkd || { sxhkd -c "${HOME}"/.config/bspwm/sxhkdrc & }
 

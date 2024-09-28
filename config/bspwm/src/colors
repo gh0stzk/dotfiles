@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# Read the theme name from the specified file
+THEME_NAME=$(cat /home/prateek/.config/bspwm/.rice)
+
+# Check if the theme name is not empty
+if [ -z "$THEME_NAME" ]; then
+    echo "Theme name is empty. Please check /home/prateek/.config/bspwm/.rice"
+    exit 1
+fi
+
+# Construct the path to the theme folder
+THEME_FOLDER="/home/prateek/.config/bspwm/rices/$THEME_NAME"
+
+# Check if the theme folder exists
+if [ ! -d "$THEME_FOLDER" ]; then
+    echo "Theme folder $THEME_FOLDER does not exist."
+    exit 1
+fi
+
+# Construct the path to the colorScheme file
+COLORSCHEME_FILE="$THEME_FOLDER/colorScheme"
+
+# Check if the colorScheme file exists
+if [ ! -f "$COLORSCHEME_FILE" ]; then
+    echo "colorScheme file $COLORSCHEME_FILE does not exist."
+    exit 1
+fi
+
+# Copy the contents of the colorScheme file to the target file
+cp "$COLORSCHEME_FILE" /home/prateek/.Xresources.d/colors
+
+# Check if the copy operation was successful
+if [ $? -ne 0 ]; then
+    echo "Failed to copy colorScheme file to /home/prateek/.Xresources.d/colors"
+    exit 1
+fi
+
+# Extract the foreground color from the merged Xresources file
+FOREGROUND_COLOR=$(xrdb -query | grep -E '^\*foreground:' | awk '{print $2}')
+
+# Check if the foreground color was found
+if [ -z "$FOREGROUND_COLOR" ]; then
+    echo "Failed to extract foreground color from .Xresources."
+    exit 1
+fi
+
+# Update the ~/.Xresources.d/fonts file with the extracted foreground color as the cursor color
+echo "*cursorColor: $FOREGROUND_COLOR" > ~/.Xresources.d/fonts
+
+# Check if the update operation was successful
+if [ $? -ne 0 ]; then
+    echo "Failed to update ~/.Xresources.d/fonts with cursor color."
+    exit 1
+fi
+
+# Merge the new color scheme with the existing Xresources
+xrdb merge ~/.Xresources
+
+
+echo "Successfully copied colorScheme to /home/prateek/.Xresources.d/colors and updated cursor color in ~/.Xresources.d/fonts"
