@@ -1,7 +1,7 @@
 #  ███████╗██╗  ██╗██╗  ██╗██╗  ██╗██████╗ ██████╗  ██████╗
 #  ██╔════╝╚██╗██╔╝██║  ██║██║ ██╔╝██╔══██╗██╔══██╗██╔════╝
-#  ███████╗ ╚███╔╝ ███████║█████╔╝ ██║  ██║██████╔╝██║     
-#  ╚════██║ ██╔██╗ ██╔══██║██╔═██╗ ██║  ██║██╔══██╗██║     
+#  ███████╗ ╚███╔╝ ███████║█████╔╝ ██║  ██║██████╔╝██║
+#  ╚════██║ ██╔██╗ ██╔══██║██╔═██╗ ██║  ██║██╔══██╗██║
 #  ███████║██╔╝ ██╗██║  ██║██║  ██╗██████╔╝██║  ██║╚██████╗
 #  ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝
 #	z0mbi3			https://github.com/gh0stzk/dotfiles
@@ -52,7 +52,7 @@ super + alt + t
 
 # jgmenu
 ~button3
-  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu --csv-file=~/.config/bspwm/src/jgmenu/menu.txt --config-file=~/.config/bspwm/jgmenurc
+  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu --csv-file=~/.config/bspwm/src/config/jgmenu.txt --config-file=~/.config/bspwm/src/config/jgmenurc
 
 # Scratchpad
 super + alt + o
@@ -120,10 +120,10 @@ super + alt + r
 # close and kill
 super + {_,shift + }q
 	bspc node -{c,k}
-	
+
 # Reload Keybindings
 super + Escape
-	pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
+	pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/src/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
 
 #####
 
@@ -180,7 +180,7 @@ super + alt + space
 	bspc node -p cancel
 
 #####
-	
+
 # expand a window
 ctrl + alt {Left,Down,Up,Right}
 	bspc node -z {left -10 0,bottom 0 10,top 0 -10,right 10 0}

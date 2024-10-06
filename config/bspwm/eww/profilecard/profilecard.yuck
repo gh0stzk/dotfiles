@@ -5,7 +5,7 @@
 (defpoll wm :interval "24h" "../eww/profilecard/scripts/fetch wm")
 
 ;; Profile
-(defvar IMAGEP "../assets/profile.png")
+(defvar IMAGEP "../src/assets/profile.png")
 (defpoll username :interval "24h" "whoami")
 (defpoll hostname :interval "24h" "cat /etc/hostname")
 (defpoll uptime :interval "30s" "uptime -p | sed -E -e 's/hour(s)?/hrs/g' -e 's/minute(s)?/min/g'")
@@ -72,7 +72,7 @@
   (box :orientation "h" :space-evenly "false" :halign "end"
     (eventbox :cursor "pointer"
       (button :class "min" :onclick "eww -c ~/.config/bspwm/eww open --toggle launchermenu" "󰅙")
-    )  
+    )
   )
 )
 
@@ -114,8 +114,8 @@
 				   (button :class "btn-info" :tooltip "Logout BSPWM" :onclick "bspc quit" "󰍃")))
 		)
 	)
-)	  
-                 
+)
+
 (defwidget infoarch []
           (box :orientation "h"
 	           :space-evenly "false"
@@ -139,13 +139,13 @@
 					(label :class "arch-icon"
 						   :halign "start"
 						   :text "󰣇")
-					(box 
+					(box
 						 :space-evenly "false"
 						 (box :orientation "v"
 							  :spacing 3
 							  :halign "end"
 							  :style "margin-left: 10px;"
-							  (label :class "os-icon" 
+							  (label :class "os-icon"
 									 :halign "start"
 									 :text "󰣇")
 							  (label :class "pkgs-icon"
@@ -154,7 +154,7 @@
 							  (label :class "wm-icon"
 									 :halign "start"
 									 :text "󱪳")))
-					(box 
+					(box
 						 :space-evenly "false"
 						 (box :orientation "v"
 							  :spacing 3
@@ -168,8 +168,8 @@
 							  (label :class "wm-text"
 									 :halign "start"
 									 :text wm))))))
-									 
-(defwidget weather[] 
+
+(defwidget weather[]
   (box :orientation "h" :class "weatherboxfull" :space-evenly false
 	(box :orientation "v" :class "weatherbox" :hexpand true :space-evenly false
       (box :orientation "h" :class "weathertop" :space-evenly false
@@ -185,8 +185,8 @@
   )
 )
 
-(defwidget system_progress [data icon css tip] 
-  (box  :class "progress" 
+(defwidget system_progress [data icon css tip]
+  (box  :class "progress"
     (circular-progress
       :class css
       :value data
@@ -194,8 +194,8 @@
       :tooltip tip
       (overlay
         :valign "center"
-        (label 
-          :class "icon" 
+        (label
+          :class "icon"
           :text icon
         )
       )
@@ -203,16 +203,16 @@
   )
 )
 
-(defwidget cpu [] 
+(defwidget cpu []
   (system_progress
     :css "cpu"
     :tip "CPU ${round(EWW_CPU.avg,0)}%"
-    :data {round(EWW_CPU.avg, 0)} 
+    :data {round(EWW_CPU.avg, 0)}
     :icon ""
   )
 )
 
-(defwidget ram [] 
+(defwidget ram []
   (system_progress
     :css "ram"
     :tip "RAM ${round(EWW_RAM.used_mem / 1048576, 2)}MB"
@@ -221,7 +221,7 @@
   )
 )
 
-(defwidget disk [] 
+(defwidget disk []
   (system_progress
     :css "disk"
     :tip "SSD ${round(EWW_DISK["/"].used_perc, 2)}%"
@@ -232,7 +232,7 @@
 
 
 (defwidget system []
-  (box 
+  (box
     :class "system"
     :spacing 8
     (cpu)
@@ -243,7 +243,7 @@
 
 
 (defwidget tools []
-  (box :orientation "v" :space-evenly "true" 
+  (box :orientation "v" :space-evenly "true"
     (box  :orientation "h" :space-evenly "true" :spacing 1
 
       (box  :class "tools-main" :orientation "v" :space-evenly "false" :spacing 2
@@ -254,7 +254,7 @@
 
       (box  :class "tools-main" :orientation "v" :space-evenly "false" :spacing 2
         (eventbox :class "tools-box" :width 43 :height 43 :halign "center" :cursor "pointer" :tooltip "Bluetooth"
-          (button :class {blue_name == "On" ? "bluetooth-btn" : 
+          (button :class {blue_name == "On" ? "bluetooth-btn" :
                           blue_name == "Null" ? "bluetooth-no-btn" :
                           blue_name == "Off" ? "bluetooth-no-btn" : "bluetooth-btn"}
                   :onclick "../eww/profilecard/scripts/Bluetooth --toggle &" blue_icon))

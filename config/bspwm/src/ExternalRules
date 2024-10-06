@@ -62,6 +62,9 @@ case "$class" in
 		dimensions=$(calculate_dimensions 21 58)
 		result "state=floating center=on rectangle=$dimensions"
 		;;
+	RiceEditor)
+		result "state=floating focus=on center=on"
+		;;
     mpv)
         dimensions=$(calculate_dimensions 53 53)
 		result "state=floating focus=on center=on rectangle=$dimensions"

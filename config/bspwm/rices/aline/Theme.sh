@@ -17,8 +17,8 @@
 read -r RICE < "$HOME"/.config/bspwm/.rice
 
 # Vars config for Aline Rice
-# Bspwm border		# Fade true|false	# Shadows true|false	# Corner radius		# Shadow color
-BORDER_WIDTH="0"	P_FADE="true"		P_SHADOWS="true"		P_CORNER_R="6"		SHADOW_C="#000000"
+# Bspwm border		# Fade true|false	# Shadows true|false	# Corner radius		# Shadow color			# Animations true|false
+BORDER_WIDTH="0"	P_FADE="true"		P_SHADOWS="true"		P_CORNER_R="6"		SHADOW_C="#000000"		ANIMATIONS="true"
 
 # (Rose Pine Dawn) colorscheme
 bg="#faf4ed"  fg="#575279"
@@ -149,19 +149,38 @@ pidof -q kitty && killall -USR1 kitty
 
 # Set compositor configuration
 set_picom_config() {
-	sed -i "$HOME"/.config/bspwm/picom.conf \
-		-e "s/normal = .*/normal =  { fade = ${P_FADE}; shadow = ${P_SHADOWS}; }/g" \
-		-e "s/dock = .*/dock =  { fade = ${P_FADE}; }/g" \
-		-e "s/shadow-color = .*/shadow-color = \"${SHADOW_C}\"/g" \
-		-e "s/corner-radius = .*/corner-radius = ${P_CORNER_R}/g" \
-		-e "s/\".*:class_g = 'Alacritty'\"/\"100:class_g = 'Alacritty'\"/g" \
-		-e "s/\".*:class_g = 'kitty'\"/\"100:class_g = 'kitty'\"/g" \
-		-e "s/\".*:class_g = 'FloaTerm'\"/\"100:class_g = 'FloaTerm'\"/g"
+	picom_conf_file="$HOME/.config/bspwm/src/config/picom.conf"
+	picom_rules_file="$HOME/.config/bspwm/src/config/picom-rules.conf"
+
+	sed -i "$picom_conf_file" \
+		-e "s/shadow = .*/shadow = ${P_SHADOWS};/" \
+		-e "s/shadow-color = .*/shadow-color = \"${SHADOW_C}\"/" \
+		-e "s/fading = .*/fading = ${P_FADE};/" \
+		-e "s/corner-radius = .*/corner-radius = ${P_CORNER_R}/"
+
+	sed -i "$picom_rules_file" \
+		-e "101s/	opacity = .*/	opacity = 1;/"
+
+	if [[ "$ANIMATIONS" = "true" ]]; then
+		sed -i "$picom_rules_file" \
+			-e '/picom-animations/c\@include "picom-animations.conf"'
+
+		sed -i "$picom_conf_file" \
+			-e "s/no-fading-openclose = .*/no-fading-openclose = true/"
+	else
+		sed -i "$picom_rules_file" \
+			-e '/picom-animations/c\#@include "picom-animations.conf"'
+
+		sed -i "$picom_conf_file" \
+			-e "s/no-fading-openclose = .*/no-fading-openclose = false/"
+	fi
 }
 
 # Set dunst config
 set_dunst_config() {
-	sed -i "$HOME"/.config/bspwm/dunstrc \
+	dunst_config_file="$HOME/.config/bspwm/src/config/dunstrc"
+
+	sed -i "$dunst_config_file" \
 		-e "s/transparency = .*/transparency = 3/g" \
 		-e "s/icon_theme = .*/icon_theme = \"Gruvbox-Plus-Dark, Adwaita\"/g" \
 		-e "s/frame_color = .*/frame_color = \"${bg}\"/g" \
@@ -169,8 +188,8 @@ set_dunst_config() {
 		-e "s/font = .*/font = Inconsolata Semi Condensed Bold 9/g" \
 		-e "s/foreground='.*'/foreground='${white}'/g"
 
-	sed -i '/urgency_low/Q' "$HOME"/.config/bspwm/dunstrc
-	cat >>"$HOME"/.config/bspwm/dunstrc <<-_EOF_
+	sed -i '/urgency_low/Q' "$dunst_config_file"
+	cat >>"$dunst_config_file" <<-_EOF_
 		[urgency_low]
 		timeout = 3
 		background = "${bg}"
@@ -207,7 +226,7 @@ EOF
 
 set_launchers() {
 	# Jgmenu
-	sed -i "$HOME"/.config/bspwm/jgmenurc \
+	sed -i "$HOME"/.config/bspwm/src/config/jgmenurc \
 		-e "s/color_menu_bg = .*/color_menu_bg = ${bg}/" \
 		-e "s/color_norm_fg = .*/color_norm_fg = ${fg}/" \
 		-e "s/color_sel_bg = .*/color_sel_bg = ${black}/" \
@@ -236,7 +255,7 @@ EOF
 set_appearance() {
 	# Set the gtk theme corresponding to rice
 	if pidof -q xsettingsd; then
-		sed -i "$HOME"/.config/bspwm/xsettingsd \
+		sed -i "$HOME"/.config/bspwm/src/config/xsettingsd \
 			-e "s|Net/ThemeName .*|Net/ThemeName \"$gtk_theme\"|" \
 			-e "s|Net/IconThemeName .*|Net/IconThemeName \"$gtk_icons\"|" \
 			-e "s|Gtk/CursorThemeName .*|Gtk/CursorThemeName \"$gtk_cursor\"|"
@@ -272,7 +291,7 @@ launch_theme() {
 	feh -z --no-fehbg --bg-fill "${HOME}"/.config/bspwm/rices/"${RICE}"/walls
 
 	# Launch dunst notification daemon
-	dunst -config "${HOME}"/.config/bspwm/dunstrc &
+	dunst -config "${HOME}"/.config/bspwm/src/config/dunstrc &
 
 	# Launch polybar
 	sleep 0.1

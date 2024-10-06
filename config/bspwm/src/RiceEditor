@@ -1,0 +1,529 @@
+#!/usr/bin/env python3
+
+#  ██████╗ ██╗ ██████╗███████╗    ███████╗██████╗ ██╗████████╗ ██████╗ ██████╗
+#  ██╔══██╗██║██╔════╝██╔════╝    ██╔════╝██╔══██╗██║╚══██╔══╝██╔═══██╗██╔══██╗
+#  ██████╔╝██║██║     █████╗      █████╗  ██║  ██║██║   ██║   ██║   ██║██████╔╝
+#  ██╔══██╗██║██║     ██╔══╝      ██╔══╝  ██║  ██║██║   ██║   ██║   ██║██╔══██╗
+#  ██║  ██║██║╚██████╗███████╗    ███████╗██████╔╝██║   ██║   ╚██████╔╝██║  ██║
+#  ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝    ╚══════╝╚═════╝ ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝
+#	Author	:	gh0stzk
+#	Repo	:	https://github.com/gh0stzk/dotfiles
+#	Info	:	This app will control some aspects of the theme you are in.
+#				If you change the theme you will need to reopen the app.
+#	App		:	First release v.1 06.10.2024 07:45:28
+
+import gi
+import os
+import re
+import subprocess
+
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gtk, Gdk
+
+class ConfigurarTemaWindow(Gtk.Window):
+    def __init__(self):
+        Gtk.Window.__init__(self, title="Configure BSPWM Theme")
+        self.set_border_width(10)
+        self.set_default_size(544, 257)
+
+		# Apply JetBrainsMono Nerd Font
+        self.set_fuente_personalizada()
+
+        # Get Rice var
+        self.tema = self.obtener_tema()
+
+        # Header
+        header = Gtk.HeaderBar()
+        header.set_show_close_button(True)
+        header.props.title = f"You are editing theme: {self.tema}"
+        self.set_titlebar(header)
+
+        # Layout vertical
+        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=7)
+        self.add(vbox)
+
+        # Opción 2: BSPWM Border (Editable)
+        hbox2 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        label2 = Gtk.Label()
+        label2.set_xalign(0)  # Alinear a la izquierda
+        label2.set_markup('BSPWM Border <i><small>(0-9)</small></i>')
+        hbox2.pack_start(label2, True, True, 0)
+        self.entry_border_width = Gtk.Entry()
+        self.entry_border_width.set_text(self.obtener_border_width())
+        self.entry_border_width.set_max_length(2)  # Limitar a 2 caracteres
+        self.entry_border_width.set_input_purpose(Gtk.InputPurpose.NUMBER)
+        hbox2.pack_end(self.entry_border_width, False, False, 0)
+        btn_aplicar = Gtk.Button(label="Apply")
+        btn_aplicar.connect("clicked", self.on_aplicar_clicked)
+        hbox2.pack_end(btn_aplicar, False, False, 10)
+        vbox.pack_start(hbox2, False, False, 0)
+
+        # Opción 1: Activar animaciones (Switch)
+        hbox1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        label1 = Gtk.Label(label="Picom Animations")
+        label1.set_xalign(0)  # Alinear a la izquierda
+        hbox1.pack_start(label1, True, True, 0)
+        self.switch_animaciones = Gtk.Switch()
+        self.switch_animaciones.set_active(self.obtener_estado_animaciones())
+        hbox1.pack_end(self.switch_animaciones, False, False, 0)
+        self.switch_animaciones.connect("notify::active", self.on_switch_activated)
+        vbox.pack_start(hbox1, False, False, 0)
+
+        # Opción 3: Picom Shadows (Switch)
+        hbox3 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        label3 = Gtk.Label(label="Picom Shadows")
+        label3.set_xalign(0)  # Alinear a la izquierda
+        hbox3.pack_start(label3, True, True, 0)
+        self.switch_picom_shadows = Gtk.Switch()
+        self.switch_picom_shadows.set_active(self.obtener_estado_picom_shadows())
+        hbox3.pack_end(self.switch_picom_shadows, False, False, 0)
+        self.switch_picom_shadows.connect("notify::active", self.on_switch_picom_shadows_activated)
+        vbox.pack_start(hbox3, False, False, 0)
+
+        # Opción 4: Shadow Color (Editable)
+        hbox4 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        label4 = Gtk.Label(label="Picom Shadow Color")
+        label4.set_xalign(0)  # Alinear a la izquierda
+        hbox4.pack_start(label4, True, True, 0)
+        self.entry_shadow_color = Gtk.Entry()
+        self.entry_shadow_color.set_text(self.obtener_shadow_color())
+        self.entry_shadow_color.set_max_length(7)  # Limitar a 7 caracteres
+        hbox4.pack_end(self.entry_shadow_color, False, False, 0)
+        btn_aplicar_color = Gtk.Button(label="Apply")
+        btn_aplicar_color.connect("clicked", self.on_aplicar_shadow_color_clicked)
+        hbox4.pack_end(btn_aplicar_color, False, False, 10)
+        vbox.pack_start(hbox4, False, False, 0)
+
+        # Opción 5: Picom Shadows (Switch)
+        hbox5 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        label5 = Gtk.Label(label="Picom Fading")
+        label5.set_xalign(0)  # Alinear a la izquierda
+        hbox5.pack_start(label5, True, True, 0)
+        self.switch_picom_fading = Gtk.Switch()
+        self.switch_picom_fading.set_active(self.obtener_estado_picom_fading())
+        hbox5.pack_end(self.switch_picom_fading, False, False, 0)
+        self.switch_picom_fading.connect("notify::active", self.on_switch_picom_fading_activated)
+
+        # Opción 6: Corner Radius (Editable)
+        hbox6 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        label6 = Gtk.Label(label="Picom Corner Radius")
+        label6.set_xalign(0)  # Alinear a la izquierda
+        hbox6.pack_start(label6, True, True, 0)
+        self.entry_corner_radius = Gtk.Entry()
+        self.entry_corner_radius.set_text(self.obtener_corner_radius())
+        self.entry_corner_radius.set_max_length(2)  # Limitar a 2 dígitos numéricos
+        self.entry_corner_radius.set_input_purpose(Gtk.InputPurpose.NUMBER)
+        hbox6.pack_end(self.entry_corner_radius, False, False, 0)
+        btn_aplicar_radius = Gtk.Button(label="Apply")
+        btn_aplicar_radius.connect("clicked", self.on_aplicar_corner_radius_clicked)
+        hbox6.pack_end(btn_aplicar_radius, False, False, 10)
+        vbox.pack_start(hbox5, False, False, 0)
+
+        # Botón Reset to defaults
+        btn_reset_defaults = Gtk.Button(label="Reset to defaults")
+        btn_reset_defaults.connect("clicked", lambda w: self.reset_to_defaults())
+        vbox.pack_end(btn_reset_defaults, False, False, 0)
+
+    def set_fuente_personalizada(self):
+        css = """
+        * {
+            font-family: 'JetBrainsMono Nerd Font';
+            font-size: 13px;
+        }
+        """
+        css_provider = Gtk.CssProvider()
+        css_provider.load_from_data(css.encode('utf-8'))
+        Gtk.StyleContext.add_provider_for_screen(
+            Gdk.Screen.get_default(),
+            css_provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_USER
+        )
+
+    def reset_to_defaults(self):
+        tema = self.tema
+        defaults = {
+            "aline": {
+                "BORDER_WIDTH": "0",
+                "P_SHADOWS": "true",
+                "P_CORNER_R": "6",
+                "SHADOW_C": "#000000",
+                "ANIMATIONS": "true",
+                "P_FADE": "true"
+            },
+            "andrea": {
+                "BORDER_WIDTH": "0",
+                "P_SHADOWS": "true",
+                "P_CORNER_R": "6",
+                "SHADOW_C": "#000000",
+                "ANIMATIONS": "true",
+                "P_FADE": "true"
+            },
+            "brenda": {
+                "BORDER_WIDTH": "0",
+                "P_SHADOWS": "true",
+                "P_CORNER_R": "6",
+                "SHADOW_C": "#000000",
+                "ANIMATIONS": "true",
+                "P_FADE": "true"
+            },
+            "cristina": {
+                "BORDER_WIDTH": "0",
+                "P_SHADOWS": "true",
+                "P_CORNER_R": "6",
+                "SHADOW_C": "#000000",
+                "ANIMATIONS": "true",
+                "P_FADE": "true"
+            },
+            "cynthia": {
+                "BORDER_WIDTH": "0",
+                "P_SHADOWS": "true",
+                "P_CORNER_R": "6",
+                "SHADOW_C": "#000000",
+                "ANIMATIONS": "true",
+                "P_FADE": "true"
+            },
+            "daniela": {
+                "BORDER_WIDTH": "0",
+                "P_SHADOWS": "true",
+                "P_CORNER_R": "6",
+                "SHADOW_C": "#000000",
+                "ANIMATIONS": "true",
+                "P_FADE": "true"
+            },
+            "emilia": {
+                "BORDER_WIDTH": "0",
+                "P_SHADOWS": "true",
+                "P_CORNER_R": "6",
+                "SHADOW_C": "#000000",
+                "ANIMATIONS": "true",
+                "P_FADE": "true"
+            },
+            "h4ck3r": {
+                "BORDER_WIDTH": "0",
+                "P_SHADOWS": "false",
+                "P_CORNER_R": "0",
+                "SHADOW_C": "#000000",
+                "ANIMATIONS": "false",
+                "P_FADE": "false"
+            },
+            "isabel": {
+                "BORDER_WIDTH": "0",
+                "P_SHADOWS": "true",
+                "P_CORNER_R": "6",
+                "SHADOW_C": "#000000",
+                "ANIMATIONS": "true",
+                "P_FADE": "true"
+            },
+            "jan": {
+                "BORDER_WIDTH": "0",
+                "P_SHADOWS": "false",
+                "P_CORNER_R": "0",
+                "SHADOW_C": "#000000",
+                "ANIMATIONS": "true",
+                "P_FADE": "true"
+            },
+            "karla": {
+                "BORDER_WIDTH": "3",
+                "P_SHADOWS": "false",
+                "P_CORNER_R": "0",
+                "SHADOW_C": "#000000",
+                "ANIMATIONS": "true",
+                "P_FADE": "false"
+            },
+            "marisol": {
+                "BORDER_WIDTH": "2",
+                "P_SHADOWS": "false",
+                "P_CORNER_R": "0",
+                "SHADOW_C": "#000000",
+                "ANIMATIONS": "true",
+                "P_FADE": "true"
+            },
+            "melissa": {
+                "BORDER_WIDTH": "0",
+                "P_SHADOWS": "true",
+                "P_CORNER_R": "6",
+                "SHADOW_C": "#000000",
+                "ANIMATIONS": "true",
+                "P_FADE": "true"
+            },
+            "pamela": {
+                "BORDER_WIDTH": "0",
+                "P_SHADOWS": "true",
+                "P_CORNER_R": "6",
+                "SHADOW_C": "#000000",
+                "ANIMATIONS": "true",
+                "P_FADE": "true"
+            },
+            "silvia": {
+                "BORDER_WIDTH": "0",
+                "P_SHADOWS": "true",
+                "P_CORNER_R": "6",
+                "SHADOW_C": "#000000",
+                "ANIMATIONS": "true",
+                "P_FADE": "true"
+            },
+            "varinka": {
+                "BORDER_WIDTH": "0",
+                "P_SHADOWS": "true",
+                "P_CORNER_R": "6",
+                "SHADOW_C": "#000000",
+                "ANIMATIONS": "true",
+                "P_FADE": "true"
+            },
+            "yael": {
+                "BORDER_WIDTH": "0",
+                "P_SHADOWS": "true",
+                "P_CORNER_R": "6",
+                "SHADOW_C": "#000000",
+                "ANIMATIONS": "true",
+                "P_FADE": "true"
+            },
+            "z0mbi3": {
+                "BORDER_WIDTH": "0",
+                "P_SHADOWS": "true",
+                "P_CORNER_R": "6",
+                "SHADOW_C": "#000000",
+                "ANIMATIONS": "true",
+                "P_FADE": "true"
+            }
+        }
+
+        if tema in defaults:
+            valores_default = defaults[tema]
+
+            # Apply default values ​​to variables in Theme.sh
+            self.modificar_archivo_tema("BORDER_WIDTH", valores_default["BORDER_WIDTH"])
+            self.modificar_archivo_tema("P_SHADOWS", valores_default["P_SHADOWS"])
+            self.modificar_archivo_tema("P_CORNER_R", valores_default["P_CORNER_R"])
+            self.modificar_archivo_tema("SHADOW_C", valores_default["SHADOW_C"])
+            self.modificar_archivo_tema("ANIMATIONS", valores_default["ANIMATIONS"])
+            self.modificar_archivo_tema("P_FADE", valores_default["P_FADE"])
+
+            # Apply changes in real time
+            subprocess.run(["bspc", "config", "border_width", valores_default["BORDER_WIDTH"]], check=True)
+            self.modificar_config_picom_shadows(valores_default["P_SHADOWS"] == "true")
+            self.modificar_config_picom_color_sombra(valores_default["SHADOW_C"])
+            self.modificar_config_picom_corner_radius(valores_default["P_CORNER_R"])
+            self.modificar_config_picom_fading(valores_default["P_FADE"] == "true")
+
+            # Update fields in the interface
+            self.entry_border_width.set_text(valores_default["BORDER_WIDTH"])
+            self.switch_picom_shadows.set_active(valores_default["P_SHADOWS"] == "true")
+            self.entry_corner_radius.set_text(valores_default["P_CORNER_R"])
+            self.entry_shadow_color.set_text(valores_default["SHADOW_C"])
+            self.switch_animaciones.set_active(valores_default["ANIMATIONS"] == "true")
+            self.switch_picom_fading.set_active(valores_default["P_FADE"] == "true")
+
+            print(f"Restored default values ​​for the theme: {tema}")
+        else:
+            print(f"There are no default values ​​configured for the theme: {tema}")
+
+    def obtener_tema(self):
+        try:
+            ruta_tema = os.path.expanduser("~/.config/bspwm/.rice")
+            with open(ruta_tema, "r") as archivo:
+                tema = archivo.readline().strip()
+            return tema
+        except FileNotFoundError:
+            return "Desconocido"
+        except Exception as e:
+            return f"Error: {str(e)}"
+
+    def obtener_estado_animaciones(self):
+        return self.obtener_estado_variable("ANIMATIONS")
+
+    def obtener_border_width(self):
+        return self.obtener_valor_variable("BORDER_WIDTH")
+
+    def obtener_estado_picom_shadows(self):
+        return self.obtener_estado_variable("P_SHADOWS")
+
+    def obtener_shadow_color(self):
+        return self.obtener_valor_variable("SHADOW_C")
+
+    def obtener_estado_picom_fading(self):
+        return self.obtener_estado_variable("P_FADE")
+
+    def obtener_corner_radius(self):
+        return self.obtener_valor_variable("P_CORNER_R")
+
+    def obtener_estado_variable(self, variable):
+        try:
+            ruta_script = os.path.expanduser(f"~/.config/bspwm/rices/{self.tema}/Theme.sh")
+            with open(ruta_script, "r") as archivo:
+                contenido = archivo.read()
+            estado = re.search(rf'{variable}="(true|false)"', contenido)
+            if estado:
+                return estado.group(1) == "true"
+        except Exception as e:
+            print(f"Error reading theme file: {str(e)}")
+        return False
+
+    def obtener_valor_variable(self, variable):
+        try:
+            ruta_script = os.path.expanduser(f"~/.config/bspwm/rices/{self.tema}/Theme.sh")
+            with open(ruta_script, "r") as archivo:
+                contenido = archivo.read()
+            valor = re.search(rf'{variable}="([^"]+)"', contenido)
+            if valor:
+                return valor.group(1)
+        except Exception as e:
+            print(f"Error reading theme file: {str(e)}")
+        return "0"
+
+    def on_switch_activated(self, switch, gparam):
+        nuevo_estado = "true" if switch.get_active() else "false"
+        self.modificar_archivo_tema("ANIMATIONS", nuevo_estado)
+        self.modificar_config_picom(switch.get_active())
+
+    def on_aplicar_clicked(self, button):
+        valor_borde = self.entry_border_width.get_text()
+        if not valor_borde.isdigit() or not (0 <= int(valor_borde) <= 10):
+            print("Invalid value for border. It must be a number between 0 and 10.")
+            return
+        self.modificar_archivo_tema("BORDER_WIDTH", valor_borde)
+        try:
+            subprocess.run(["bspc", "config", "border_width", valor_borde], check=True)
+            print(f"Border changed to: {valor_borde}")
+        except Exception as e:
+            print(f"Error applying border: {str(e)}")
+
+    def on_switch_picom_shadows_activated(self, switch, gparam):
+        nuevo_estado = "true" if switch.get_active() else "false"
+        self.modificar_archivo_tema("P_SHADOWS", nuevo_estado)
+        self.modificar_config_picom_shadows(switch.get_active())
+
+    def on_aplicar_shadow_color_clicked(self, button):
+        color_valido = self.entry_shadow_color.get_text()
+        if not re.match(r'^#[0-9A-Fa-f]{6}$', color_valido):
+            print("Invalid color. It must be a hexadecimal value in the format #000000.")
+            return
+        self.modificar_archivo_tema("SHADOW_C", color_valido)
+        self.modificar_config_picom_color_sombra(color_valido)
+
+    def on_switch_picom_fading_activated(self, switch, gparam):
+        nuevo_estado = "true" if switch.get_active() else "false"
+        self.modificar_archivo_tema("P_FADE", nuevo_estado)
+        self.modificar_config_picom_fading(switch.get_active())
+
+    def on_aplicar_corner_radius_clicked(self, button):
+        valor_radius = self.entry_corner_radius.get_text()
+        if not valor_radius.isdigit() or not (0 <= int(valor_radius) <= 99):
+            print("Invalid value for corner radius. It must be a number between 0 and 99.")
+            return
+        self.modificar_archivo_tema("P_CORNER_R", valor_radius)
+        self.modificar_config_picom_corner_radius(valor_radius)
+
+    def modificar_archivo_tema(self, variable, nuevo_valor):
+        try:
+            ruta_script = os.path.expanduser(f"~/.config/bspwm/rices/{self.tema}/Theme.sh")
+            with open(ruta_script, "r") as archivo:
+                contenido = archivo.read()
+            nuevo_contenido = re.sub(rf'{variable}="[^"]+"', f'{variable}="{nuevo_valor}"', contenido)
+            with open(ruta_script, "w") as archivo:
+                archivo.write(nuevo_contenido)
+            print(f"{variable} changed to: {nuevo_valor}")
+        except Exception as e:
+            print(f"Error modifying theme file: {str(e)}")
+
+    def modificar_config_picom(self, activar_animaciones):
+        try:
+            # Modificar picom-rules.conf para @include "picom-animations.conf"
+            ruta_picom_rules = os.path.expanduser("~/.config/bspwm/src/config/picom-rules.conf")
+            with open(ruta_picom_rules, "r") as archivo:
+                contenido_rules = archivo.readlines()
+
+            nueva_linea = '@include "picom-animations.conf"\n'
+            for i, linea in enumerate(contenido_rules):
+                if 'picom-animations.conf' in linea:
+                    if activar_animaciones:
+                        contenido_rules[i] = nueva_linea
+                    else:
+                        contenido_rules[i] = f"#{nueva_linea}"
+                    break
+
+            with open(ruta_picom_rules, "w") as archivo:
+                archivo.writelines(contenido_rules)
+
+            # Modify picom.conf to no-fading-openclose = true or false
+            ruta_picom_conf = os.path.expanduser("~/.config/bspwm/src/config/picom.conf")
+            with open(ruta_picom_conf, "r") as archivo:
+                contenido_conf = archivo.readlines()
+
+            for i, linea in enumerate(contenido_conf):
+                if re.search(r'no-fading-openclose\s*=\s*(true|false)', linea):
+                    if activar_animaciones:
+                        contenido_conf[i] = 'no-fading-openclose = true\n'
+                    else:
+                        contenido_conf[i] = 'no-fading-openclose = false\n'
+                    break
+
+            with open(ruta_picom_conf, "w") as archivo:
+                archivo.writelines(contenido_conf)
+
+            print("Modified Picom configuration.")
+        except Exception as e:
+            print(f"Error modifying Picom file: {str(e)}")
+
+    def modificar_config_picom_shadows(self, activar_sombras):
+        try:
+            ruta_picom = os.path.expanduser("~/.config/bspwm/src/config/picom.conf")
+            with open(ruta_picom, "r") as archivo:
+                contenido = archivo.readlines()
+            nueva_linea = 'shadow = true;\n' if activar_sombras else 'shadow = false;\n'
+            for i, linea in enumerate(contenido):
+                if 'shadow =' in linea:
+                    contenido[i] = nueva_linea
+                    break
+            with open(ruta_picom, "w") as archivo:
+                archivo.writelines(contenido)
+            print("Modified Picom Shadows.")
+        except Exception as e:
+            print(f"Error when modifying shadows in Picom: {str(e)}")
+
+    def modificar_config_picom_color_sombra(self, nuevo_valor):
+        try:
+            ruta_picom = os.path.expanduser("~/.config/bspwm/src/config/picom.conf")
+            with open(ruta_picom, "r") as archivo:
+                contenido = archivo.read()
+            contenido_modificado = re.sub(r'shadow-color = "#.*?"', f'shadow-color = "{nuevo_valor}"', contenido)
+            with open(ruta_picom, "w") as archivo:
+                archivo.write(contenido_modificado)
+            print(f"Shadow color modified to: {nuevo_valor}")
+        except Exception as e:
+            print(f"Error when modifying shadow color in Picom: {str(e)}")
+
+    def modificar_config_picom_corner_radius(self, nuevo_valor):
+        try:
+            ruta_picom = os.path.expanduser("~/.config/bspwm/src/config/picom.conf")
+            with open(ruta_picom, "r") as archivo:
+                contenido = archivo.read()
+            contenido_modificado = re.sub(r'corner-radius = \d+', f'corner-radius = {nuevo_valor}', contenido)
+            with open(ruta_picom, "w") as archivo:
+                archivo.write(contenido_modificado)
+            print(f"Corner radius modified to: {nuevo_valor}")
+        except Exception as e:
+            print(f"Error when modifying the corner radius in Picom: {str(e)}")
+
+    def modificar_config_picom_fading(self, activar_fading):
+        try:
+            ruta_picom = os.path.expanduser("~/.config/bspwm/src/config/picom.conf")
+            with open(ruta_picom, "r") as archivo:
+                contenido = archivo.readlines()
+            nueva_linea = 'fading = true;\n' if activar_fading else 'fading = false;\n'
+            for i, linea in enumerate(contenido):
+                if 'fading =' in linea:
+                    contenido[i] = nueva_linea
+                    break
+            with open(ruta_picom, "w") as archivo:
+                archivo.writelines(contenido)
+            print("Fading modified.")
+        except Exception as e:
+            print(f"Error when modifying the fading in Picom: {str(e)}")
+
+win = ConfigurarTemaWindow()
+win.connect("destroy", Gtk.main_quit)
+win.show_all()
+
+# Iniciar el loop principal de GTK
+Gtk.main()

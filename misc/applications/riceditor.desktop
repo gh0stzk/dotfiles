@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Rice Editor
+GenericName=Rice Editor
+Comment=Edit some aspects of gh0stzk's rices
+Exec=RiceEditor
+Icon=preferences-desktop-theme
+StartupNotify=true
+Type=Application
+Categories=GTK;Settings;Customization;
+Keywords=theme;themes;appearance;customization;window manager;desktop;rice;configuration;personalization;settings;

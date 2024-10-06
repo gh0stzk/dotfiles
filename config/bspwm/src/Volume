@@ -13,7 +13,7 @@
 #
 
 # Icons
-vol_dir="$HOME/.config/bspwm/assets"
+vol_dir="$HOME/.config/bspwm/src/assets"
 notify_cmd='dunstify -u low -h string:x-dunst-stack-tag:cvolum'
 
 # Get Volume

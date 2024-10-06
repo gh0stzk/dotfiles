@@ -35,7 +35,7 @@ ENV = os.environ.copy()
 ENC = locale.getpreferredencoding()
 
 CONF = configparser.ConfigParser()
-CONF.read(expanduser("~/.config/bspwm/src/NetManagerDM.ini"))
+CONF.read(expanduser("~/.config/bspwm/src/config/NetManagerDM.ini"))
 
 
 def cli_args():

@@ -1,3 +1,27 @@
+## Picom Animations!! And new app to control some aspects of the rices
+##### October 6 2024
+
+The new version of picom has finally been released and brings stable animations.
+
+
+https://github.com/user-attachments/assets/aa79c5d7-50ee-4378-b67a-12673a3bb341
+
+Animations are enabled in almost all themes, and only windows/applications are animated. Tooltips, popups, dropdown menus are not animated because.. visual bloat!!. But you can always modify the behavior to your liking with picom's new rules system.
+
+And there is also a new application called **RiceEditor** to control some aspects of the themes. As are the animations, shadows, fading effect, border radius and border size. And in case you make a mess, it has an option to reset to the original values.
+
+*Note: If you open the application in a theme and change to another theme, you will need to close the application (RiceEditor) and reopen it so that RiceEditor can edit the theme you are currently in.
+
+You can open RiceEditor either by opening a terminal and typing the command `RiceEditor`, from the rofi menu, there will be a new "Rice Editor" app listed or from jgmenu when you right click on the desktop.
+
+The changes are permanent, you do not need to apply them again. In the future I will probably add more options to edit the theme you are in.
+
+![Shot-2024-10-06-094238](https://github.com/user-attachments/assets/72e62be2-e337-4b3a-835b-78e29911772e)
+
+Finally I made a change to the structure of the configuration files, and they were moved to src/config/ with all the changes that entails. Like the assets folder, it was moved to src/
+
+---
+
 ## introducing the function to change gtk themes
 ##### September 20 2024
 

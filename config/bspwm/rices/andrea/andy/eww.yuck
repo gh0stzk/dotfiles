@@ -36,7 +36,7 @@
 (defpoll NETSTAT  :interval "15s" "scripts/Network --stat")
 
 ;; User
-(defvar IMAGE "../../../assets/profile.png")
+(defvar IMAGE "../../../src/assets/profile.png")
 (defpoll USER :interval "12h" "whoami")
 
 ;;---------- Widgets ----------;;
@@ -58,7 +58,7 @@
 (defwidget workspaces []
 	(literal :content workspaces)
 )
-	
+
 ;; Apps ;;
 (defwidget apps []
 	(box :class "mainbars"
@@ -68,32 +68,32 @@
 					:class "icons"
 					:valign "center"
 					:onclick "OpenApps --fetch &"))
-			
-			(eventbox :cursor "pointer"		  
+
+			(eventbox :cursor "pointer"
 			(button :style "background-image: url('images/terminal.png');"
 					:class "icons"
 					:valign "center"
 					:onclick "cd ; OpenApps --terminal &"))
-			
-			(eventbox :cursor "pointer"		  
+
+			(eventbox :cursor "pointer"
 			(button :style "background-image: url('images/firefox.png');"
 					:class "icons"
 					:valign "center"
 					:onclick "OpenApps --browser &"))
-			
-			(eventbox :cursor "pointer"		  
+
+			(eventbox :cursor "pointer"
 			(button :style "background-image: url('images/files.png');"
 					:class "icons"
 					:valign "center"
 					:onclick "cd ; OpenApps --filemanager &"))
-			
-			(eventbox :cursor "pointer"		  
+
+			(eventbox :cursor "pointer"
 			(button :style "background-image: url('images/notes.png');"
 					:class "icons"
 					:valign "center"
 					:onclick "OpenApps --editor &"))
-			
-			(eventbox :cursor "pointer"		  
+
+			(eventbox :cursor "pointer"
 			(button :style "background-image: url('images/telegram.png');"
 					:class "icons"
 					:valign "center"
@@ -102,30 +102,30 @@
 )
 
 ;; Music Control ;;
-(defwidget music [] 
+(defwidget music []
 	(box :class "mainbars"
 		 :spacing 10
 		 :space-evenly "false"
-		 
+
 		 (box :class "album_art"
 			  :valign "center"
 			  :halign "start"
 			  :style "background-image: url('${COVER}');")
-			  
+
 		 (eventbox :cursor "pointer"
 		 (button :onclick "OpenApps --player &"
 		 (box :orientation "v"
 			  :class "song-info"
 			  :spacing 0
 			  :valign "center"
-			  
+
 				(label :class "song"
 					   :xalign 0
 					   :justify "fill"
 					   :wrap "false"
 					   :limit-width 18
 					   :text SONG)
-					   
+
 				(label :class "artist"
 					   :xalign 0
 					   :justify "fill"
@@ -137,23 +137,23 @@
 			  :valign "center"
 			  :halign "end"
 			  :space-evenly "false"
-			  
+
 			  (eventbox :cursor "pointer"
-				(button :class "player-previous" 
+				(button :class "player-previous"
 						:onclick "MediaControl --previous" "󰒮"))
-						
+
 			  (eventbox :cursor "pointer"
-				(button :class "player-toggle" 
-						:onclick "MediaControl --toggle" 
+				(button :class "player-toggle"
+						:onclick "MediaControl --toggle"
 						{STATUS == "Playing" ? "󰏤" : STATUS == "Paused" ? "󰐊" : "󰓛"}))
-						
+
 			  (eventbox :cursor "pointer"
-				(button :class "player-next" 
+				(button :class "player-next"
 						:onclick "MediaControl --next" "󰒭"))
 		 )
 	)
 )
-				
+
 ;; system
 (defwidget system []
 	(box :class "mainbars"
@@ -177,7 +177,7 @@
 					  )
 				 )
 		 ))
-		 
+
 		 (eventbox :cursor "pointer"
 		 (button :onclick "${EWW_CMD} open --toggle audio_ctl &"
 				 :onrightclick "scripts/volume.sh --toggle-muted &"
@@ -246,11 +246,11 @@
 )
 
 ;; weather
-(defwidget clock [] 
+(defwidget clock []
 	(box :class "mainbars"
 		 :spacing 15
 		 :space-evenly "false"
-		 
+
 		 (eventbox :cursor "pointer"
 		 (button :onclick "OpenApps --calendar &"
 		 (box :orientation "v"
@@ -259,7 +259,7 @@
 			(label :class "time" :halign "start" :text TIME)
 			(label :class "date" :halign "start" :text DATE)
 		 )))
-			
+
 		 (box :orientation "h" :spacing 5
 			(label :class "weathericon" :style "color: ${HEX ?: '#adadff'};" :tooltip CITY :text ICON)
 			(label :class "weathertemp" :text "${TEMP}°C")
@@ -268,8 +268,8 @@
 )
 
 
-            
-            
+
+
 (defwidget audio []
 	(box :class "audio-box"
 		 :orientation "v"
@@ -281,7 +281,7 @@
 			  :halign "center"
 		 (scale :value {volume_value ?: "0"}
 			    :orientation "h"
-			    :onchange "pamixer --set-volume {}" 
+			    :onchange "pamixer --set-volume {}"
                 :tooltip "volume on ${volume_value}%"
 			    :max 100
 			    :min 0
@@ -324,7 +324,7 @@
 		 :spacing 15
 		 :halign "center"
 		 :valign "center"
-		 
+
 (left)
 (middle)
 (right)))
@@ -344,8 +344,8 @@
 (allbars))
 
 (defwindow audio_ctl
-	:geometry (geometry :x "-13%" 
-						:y "8%" 
+	:geometry (geometry :x "-13%"
+						:y "8%"
                         :anchor "top right")
 	:stacking "fg"
     :wm-ignore false

@@ -7,7 +7,7 @@
 #  ╚══════╝   ╚═╝   ╚══════╝   ╚═╝   ╚══════╝╚═╝     ╚═╝      ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
 
 
-CONFIG_FILE="$HOME/.config/bspwm/src/system.ini"
+CONFIG_FILE="$HOME/.config/bspwm/src/config/system.ini"
 SFILE="$HOME/.config/bspwm/src/.sys"
 
 # Check if the .sys file already exists

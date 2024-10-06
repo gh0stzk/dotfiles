@@ -44,6 +44,7 @@ Power Menu,OpenApps --powermenu,changes-allow
 Calendar,OpenApps --calendar,office-calendar
 
 ^tag(wm)
+Rice Editor,RiceEditor,preferences-desktop-theme
 Keybinds,OpenApps --KeyHelp,preferences-desktop-keyboard-shortcuts
 Restart WM,bspc wm -r,system-reboot
 Logout,bspc quit,system-log-out
