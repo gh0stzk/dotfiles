@@ -94,7 +94,7 @@ class ConfigurarTemaWindow(Gtk.Window):
         hbox4.pack_end(btn_aplicar_color, False, False, 10)
         vbox.pack_start(hbox4, False, False, 0)
 
-        # Opción 5: Picom Shadows (Switch)
+        # Opción 5: Picom Fading (Switch)
         hbox5 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         label5 = Gtk.Label(label="Picom Fading")
         label5.set_xalign(0)  # Alinear a la izquierda
@@ -103,6 +103,7 @@ class ConfigurarTemaWindow(Gtk.Window):
         self.switch_picom_fading.set_active(self.obtener_estado_picom_fading())
         hbox5.pack_end(self.switch_picom_fading, False, False, 0)
         self.switch_picom_fading.connect("notify::active", self.on_switch_picom_fading_activated)
+        vbox.pack_start(hbox5, False, False, 0)
 
         # Opción 6: Corner Radius (Editable)
         hbox6 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
@@ -117,7 +118,7 @@ class ConfigurarTemaWindow(Gtk.Window):
         btn_aplicar_radius = Gtk.Button(label="Apply")
         btn_aplicar_radius.connect("clicked", self.on_aplicar_corner_radius_clicked)
         hbox6.pack_end(btn_aplicar_radius, False, False, 10)
-        vbox.pack_start(hbox5, False, False, 0)
+        vbox.pack_start(hbox6, False, False, 0)
 
         # Botón Reset to defaults
         btn_reset_defaults = Gtk.Button(label="Reset to defaults")
