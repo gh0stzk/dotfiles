@@ -17,8 +17,11 @@
 read -r RICE < "$HOME"/.config/bspwm/.rice
 
 # Vars config for h4ck3r Rice
-# Bspwm border		# Fade true|false	# Shadows true|false	# Corner radius		# Shadow color			# Animations true|false
-BORDER_WIDTH="0"	P_FADE="false"		P_SHADOWS="false"		P_CORNER_R="0"		SHADOW_C="#000000"		ANIMATIONS="false"
+# Bspwm border		# Normal border color	# Focused border color
+BORDER_WIDTH="0"	NORMAL_BC="#4A9801"		FOCUSED_BC="#76EA00"
+
+# Fade true|false	# Shadows true|false	# Corner radius		# Shadow color			# Animations true|false
+P_FADE="false"		P_SHADOWS="false"		P_CORNER_R="0"		SHADOW_C="#000000"		ANIMATIONS="false"
 
 # (Hack The box) colorscheme
 bg="#0c1018"  fg="#1947e0"
@@ -40,9 +43,8 @@ set_bspwm_config() {
 	bspc config bottom_padding 1
 	bspc config left_padding 1
 	bspc config right_padding 1
-	bspc config normal_border_color "${black}"
-	bspc config active_border_color "${magenta}"
-	bspc config focused_border_color "${yellow}"
+	bspc config normal_border_color "${NORMAL_BC}"
+	bspc config focused_border_color "${FOCUSED_BC}"
 	bspc config presel_feedback_color "${cyan}"
 }
 

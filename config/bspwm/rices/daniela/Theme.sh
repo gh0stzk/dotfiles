@@ -17,8 +17,11 @@
 read -r RICE < "$HOME"/.config/bspwm/.rice
 
 # Vars config for Daniela Rice
-# Bspwm border		# Fade true|false	# Shadows true|false	# Corner radius		# Shadow color			# Animations true|false
-BORDER_WIDTH="0"	P_FADE="true"		P_SHADOWS="true"		P_CORNER_R="6"		SHADOW_C="#000000"		ANIMATIONS="true"
+# Bspwm border		# Normal border color	# Focused border color
+BORDER_WIDTH="0"	NORMAL_BC="#45475A"		FOCUSED_BC="#94E2D5"
+
+# Fade true|false	# Shadows true|false	# Corner radius		# Shadow color			# Animations true|false
+P_FADE="true"		P_SHADOWS="true"		P_CORNER_R="6"		SHADOW_C="#000000"		ANIMATIONS="true"
 
 # (Catppuccin Mocha) colorscheme
 bg="#181825"  fg="#CDD6F4"
@@ -40,9 +43,8 @@ set_bspwm_config() {
 	bspc config bottom_padding 1
 	bspc config left_padding 1
 	bspc config right_padding 1
-	bspc config normal_border_color "${black}"
-	bspc config active_border_color "${black}"
-	bspc config focused_border_color "${cyan}"
+	bspc config normal_border_color "${NORMAL_BC}"
+	bspc config focused_border_color "${FOCUSED_BC}"
 	bspc config presel_feedback_color "${magenta}"
 }
 

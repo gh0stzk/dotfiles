@@ -46,7 +46,7 @@ class ConfigurarTemaWindow(Gtk.Window):
         hbox2 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         label2 = Gtk.Label()
         label2.set_xalign(0)  # Alinear a la izquierda
-        label2.set_markup('BSPWM Border <i><small>(0-9)</small></i>')
+        label2.set_markup('Bspwm Border <i><small>(0-9)</small></i>')
         hbox2.pack_start(label2, True, True, 0)
         self.entry_border_width = Gtk.Entry()
         self.entry_border_width.set_text(self.obtener_border_width())
@@ -57,6 +57,53 @@ class ConfigurarTemaWindow(Gtk.Window):
         btn_aplicar.connect("clicked", self.on_aplicar_clicked)
         hbox2.pack_end(btn_aplicar, False, False, 10)
         vbox.pack_start(hbox2, False, False, 0)
+
+        # Nueva Opción: Bspwm Normal Border Color
+        hbox_normal_bc = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        label_normal_bc = Gtk.Label(label="Bspwm Normal Border Color")
+        label_normal_bc.set_xalign(0)
+        hbox_normal_bc.pack_start(label_normal_bc, True, True, 0)
+        self.entry_normal_bc = Gtk.Entry()
+        self.entry_normal_bc.set_text(self.obtener_normal_bc())
+        self.entry_normal_bc.set_max_length(7)  # Limitar a 7 caracteres
+        hbox_normal_bc.pack_end(self.entry_normal_bc, False, False, 0)
+        btn_aplicar_normal_bc = Gtk.Button(label="Apply")
+        btn_aplicar_normal_bc.connect("clicked", self.on_aplicar_normal_bc_clicked)
+        hbox_normal_bc.pack_end(btn_aplicar_normal_bc, False, False, 10)
+        vbox.pack_start(hbox_normal_bc, False, False, 0)
+
+        # Nueva Opción: Bspwm Focused Border Color
+        hbox_focused_bc = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        label_focused_bc = Gtk.Label(label="Bspwm Focused Border Color")
+        label_focused_bc.set_xalign(0)
+        hbox_focused_bc.pack_start(label_focused_bc, True, True, 0)
+        self.entry_focused_bc = Gtk.Entry()
+        self.entry_focused_bc.set_text(self.obtener_focused_bc())
+        self.entry_focused_bc.set_max_length(7)  # Limitar a 7 caracteres
+        hbox_focused_bc.pack_end(self.entry_focused_bc, False, False, 0)
+        btn_aplicar_focused_bc = Gtk.Button(label="Apply")
+        btn_aplicar_focused_bc.connect("clicked", self.on_aplicar_focused_bc_clicked)
+        hbox_focused_bc.pack_end(btn_aplicar_focused_bc, False, False, 10)
+        vbox.pack_start(hbox_focused_bc, False, False, 0)
+
+        # Nueva Opción: Bspwm Window Gap (Editable)
+        hbox_window_gap = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        label_window_gap = Gtk.Label()
+        label_window_gap.set_xalign(0)
+        label_window_gap.set_markup('*Bspwm Window Gap <i><small>(0-15)</small></i>')
+        hbox_window_gap.pack_start(label_window_gap, True, True, 0)
+        self.entry_window_gap = Gtk.Entry()
+        self.entry_window_gap.set_text(self.obtener_window_gap())
+        self.entry_window_gap.set_max_length(2)  # Limitar a 2 caracteres (0-15)
+        self.entry_window_gap.set_input_purpose(Gtk.InputPurpose.NUMBER)
+        hbox_window_gap.pack_end(self.entry_window_gap, False, False, 0)
+        btn_aplicar_window_gap = Gtk.Button(label="Apply")
+        btn_aplicar_window_gap.connect("clicked", self.on_aplicar_window_gap_clicked)
+        hbox_window_gap.pack_end(btn_aplicar_window_gap, False, False, 10)
+        vbox.pack_start(hbox_window_gap, False, False, 0)
+
+        # Espacio en blanco
+        vbox.pack_start(Gtk.Separator(), False, False, 10)
 
         # Opción 1: Activar animaciones (Switch)
         hbox1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
@@ -120,10 +167,63 @@ class ConfigurarTemaWindow(Gtk.Window):
         hbox6.pack_end(btn_aplicar_radius, False, False, 10)
         vbox.pack_start(hbox6, False, False, 0)
 
+        # Espacio en blanco
+        vbox.pack_start(Gtk.Separator(), False, False, 10)
+
+        # Nueva opción: Backend (ComboBox)
+        hbox_backend = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        label_backend = Gtk.Label(label="*Backend")
+        label_backend.set_xalign(0)
+        hbox_backend.pack_start(label_backend, True, True, 0)
+        self.combo_backend = Gtk.ComboBoxText()
+        self.combo_backend.append_text("xrender")
+        self.combo_backend.append_text("glx")
+        self.combo_backend.append_text("egl")
+        self.combo_backend.set_active(self.obtener_estado_backend())  # Establecer el backend actual
+        hbox_backend.pack_end(self.combo_backend, False, False, 0)
+        self.combo_backend.connect("changed", self.on_backend_changed)
+        vbox.pack_start(hbox_backend, False, False, 0)
+
+        # Nueva opción: VSync (Switch)
+        hbox_vsync = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        label_vsync = Gtk.Label(label="*vSync")
+        label_vsync.set_xalign(0)
+        hbox_vsync.pack_start(label_vsync, True, True, 0)
+        self.switch_vsync = Gtk.Switch()
+        self.switch_vsync.set_active(self.obtener_estado_vsync())
+        hbox_vsync.pack_end(self.switch_vsync, False, False, 0)
+        self.switch_vsync.connect("notify::active", self.on_switch_vsync_activated)
+        vbox.pack_start(hbox_vsync, False, False, 0)
+
+        # Espacio en blanco
+        vbox.pack_start(Gtk.Separator(), False, False, 10)
+
+        # Nueva opción: Pixel-art on terminal startup (Switch)
+        hbox_pixelart = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+        label_pixelart = Gtk.Label(label="*Pixel-art on terminal startup")
+        label_pixelart.set_xalign(0)
+        hbox_pixelart.pack_start(label_pixelart, True, True, 0)
+        self.switch_pixelart = Gtk.Switch()
+        self.switch_pixelart.set_active(self.obtener_estado_pixelart())
+        hbox_pixelart.pack_end(self.switch_pixelart, False, False, 0)
+        self.switch_pixelart.connect("notify::active", self.on_switch_pixelart_activated)
+        vbox.pack_start(hbox_pixelart, False, False, 0)
+
+        espacio_vacio = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        vbox.pack_start(espacio_vacio, False, False, 5)
+
         # Botón Reset to defaults
         btn_reset_defaults = Gtk.Button(label="Reset to defaults")
         btn_reset_defaults.connect("clicked", lambda w: self.reset_to_defaults())
-        vbox.pack_end(btn_reset_defaults, False, False, 0)
+        vbox.pack_start(btn_reset_defaults, False, False, 0)
+
+        espacio_vacio = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        vbox.pack_start(espacio_vacio, False, False, 5)
+
+        # (*) Global options info
+        label_global_options = Gtk.Label()
+        label_global_options.set_markup('<i><small>(*) Global options. They do not depend on the theme you are in.</small></i>')
+        vbox.pack_end(label_global_options, False, False, 0)
 
     def set_fuente_personalizada(self):
         css = """
@@ -141,6 +241,12 @@ class ConfigurarTemaWindow(Gtk.Window):
         )
 
     def reset_to_defaults(self):
+		# Restablecer window_gap a 5 (opción global)
+        self.modificar_bspwmrc("window_gap", "5")
+        subprocess.run(["bspc", "config", "window_gap", "5"], check=True)
+        print("Window gap reset to default value (5).")
+
+        # Restablecer las opciones del tema según el tema actual
         tema = self.tema
         defaults = {
             "aline": {
@@ -149,7 +255,9 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "P_CORNER_R": "6",
                 "SHADOW_C": "#000000",
                 "ANIMATIONS": "true",
-                "P_FADE": "true"
+                "P_FADE": "true",
+                "NORMAL_BC": "#286983",
+                "FOCUSED_BC": "#907aa9"
             },
             "andrea": {
                 "BORDER_WIDTH": "0",
@@ -157,7 +265,9 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "P_CORNER_R": "6",
                 "SHADOW_C": "#000000",
                 "ANIMATIONS": "true",
-                "P_FADE": "true"
+                "P_FADE": "true",
+                "NORMAL_BC": "#16161C",
+                "FOCUSED_BC": "#b0a5ed"
             },
             "brenda": {
                 "BORDER_WIDTH": "0",
@@ -165,7 +275,9 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "P_CORNER_R": "6",
                 "SHADOW_C": "#000000",
                 "ANIMATIONS": "true",
-                "P_FADE": "true"
+                "P_FADE": "true",
+                "NORMAL_BC": "#d3c6aa",
+                "FOCUSED_BC": "#a7c080"
             },
             "cristina": {
                 "BORDER_WIDTH": "0",
@@ -173,7 +285,9 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "P_CORNER_R": "6",
                 "SHADOW_C": "#000000",
                 "ANIMATIONS": "true",
-                "P_FADE": "true"
+                "P_FADE": "true",
+                "NORMAL_BC": "#9bced7",
+                "FOCUSED_BC": "#c3a5e6"
             },
             "cynthia": {
                 "BORDER_WIDTH": "0",
@@ -181,7 +295,9 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "P_CORNER_R": "6",
                 "SHADOW_C": "#000000",
                 "ANIMATIONS": "true",
-                "P_FADE": "true"
+                "P_FADE": "true",
+                "NORMAL_BC": "#0d0c0c",
+                "FOCUSED_BC": "#938AA9"
             },
             "daniela": {
                 "BORDER_WIDTH": "0",
@@ -189,7 +305,9 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "P_CORNER_R": "6",
                 "SHADOW_C": "#000000",
                 "ANIMATIONS": "true",
-                "P_FADE": "true"
+                "P_FADE": "true",
+                "NORMAL_BC": "#45475A",
+                "FOCUSED_BC": "#94E2D5"
             },
             "emilia": {
                 "BORDER_WIDTH": "0",
@@ -197,7 +315,9 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "P_CORNER_R": "6",
                 "SHADOW_C": "#000000",
                 "ANIMATIONS": "true",
-                "P_FADE": "true"
+                "P_FADE": "true",
+                "NORMAL_BC": "#414868",
+                "FOCUSED_BC": "#bb9af7"
             },
             "h4ck3r": {
                 "BORDER_WIDTH": "0",
@@ -205,7 +325,9 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "P_CORNER_R": "0",
                 "SHADOW_C": "#000000",
                 "ANIMATIONS": "false",
-                "P_FADE": "false"
+                "P_FADE": "false",
+                "NORMAL_BC": "#4A9801",
+                "FOCUSED_BC": "#76EA00"
             },
             "isabel": {
                 "BORDER_WIDTH": "0",
@@ -213,7 +335,9 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "P_CORNER_R": "6",
                 "SHADOW_C": "#000000",
                 "ANIMATIONS": "true",
-                "P_FADE": "true"
+                "P_FADE": "true",
+                "NORMAL_BC": "#b8bfe5",
+                "FOCUSED_BC": "#7560d3"
             },
             "jan": {
                 "BORDER_WIDTH": "0",
@@ -221,7 +345,9 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "P_CORNER_R": "0",
                 "SHADOW_C": "#000000",
                 "ANIMATIONS": "true",
-                "P_FADE": "true"
+                "P_FADE": "true",
+                "NORMAL_BC": "#926BCA",
+                "FOCUSED_BC": "#fb007a"
             },
             "karla": {
                 "BORDER_WIDTH": "3",
@@ -229,7 +355,9 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "P_CORNER_R": "0",
                 "SHADOW_C": "#000000",
                 "ANIMATIONS": "true",
-                "P_FADE": "false"
+                "P_FADE": "false",
+                "NORMAL_BC": "#353c52",
+                "FOCUSED_BC": "#5884d4"
             },
             "marisol": {
                 "BORDER_WIDTH": "2",
@@ -237,7 +365,9 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "P_CORNER_R": "0",
                 "SHADOW_C": "#000000",
                 "ANIMATIONS": "true",
-                "P_FADE": "true"
+                "P_FADE": "true",
+                "NORMAL_BC": "#ff79c6",
+                "FOCUSED_BC": "#bd93f9"
             },
             "melissa": {
                 "BORDER_WIDTH": "0",
@@ -245,7 +375,9 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "P_CORNER_R": "6",
                 "SHADOW_C": "#000000",
                 "ANIMATIONS": "true",
-                "P_FADE": "true"
+                "P_FADE": "true",
+                "NORMAL_BC": "#3b4252",
+                "FOCUSED_BC": "#4c566a"
             },
             "pamela": {
                 "BORDER_WIDTH": "0",
@@ -253,7 +385,9 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "P_CORNER_R": "6",
                 "SHADOW_C": "#000000",
                 "ANIMATIONS": "true",
-                "P_FADE": "true"
+                "P_FADE": "true",
+                "NORMAL_BC": "#C574DD",
+                "FOCUSED_BC": "#8897F4"
             },
             "silvia": {
                 "BORDER_WIDTH": "0",
@@ -261,7 +395,9 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "P_CORNER_R": "6",
                 "SHADOW_C": "#000000",
                 "ANIMATIONS": "true",
-                "P_FADE": "true"
+                "P_FADE": "true",
+                "NORMAL_BC": "#d3869b",
+                "FOCUSED_BC": "#fbf1c7"
             },
             "varinka": {
                 "BORDER_WIDTH": "0",
@@ -269,7 +405,9 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "P_CORNER_R": "6",
                 "SHADOW_C": "#000000",
                 "ANIMATIONS": "true",
-                "P_FADE": "true"
+                "P_FADE": "true",
+                "NORMAL_BC": "#ced4da",
+                "FOCUSED_BC": "#f8f9fa"
             },
             "yael": {
                 "BORDER_WIDTH": "0",
@@ -277,7 +415,9 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "P_CORNER_R": "6",
                 "SHADOW_C": "#000000",
                 "ANIMATIONS": "true",
-                "P_FADE": "true"
+                "P_FADE": "true",
+                "NORMAL_BC": "#33b1ff",
+                "FOCUSED_BC": "#42be65"
             },
             "z0mbi3": {
                 "BORDER_WIDTH": "0",
@@ -285,7 +425,9 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "P_CORNER_R": "6",
                 "SHADOW_C": "#000000",
                 "ANIMATIONS": "true",
-                "P_FADE": "true"
+                "P_FADE": "true",
+                "NORMAL_BC": "#3d414f",
+                "FOCUSED_BC": "#93cee9"
             }
         }
 
@@ -299,9 +441,13 @@ class ConfigurarTemaWindow(Gtk.Window):
             self.modificar_archivo_tema("SHADOW_C", valores_default["SHADOW_C"])
             self.modificar_archivo_tema("ANIMATIONS", valores_default["ANIMATIONS"])
             self.modificar_archivo_tema("P_FADE", valores_default["P_FADE"])
+            self.modificar_archivo_tema("NORMAL_BC", valores_default["NORMAL_BC"])
+            self.modificar_archivo_tema("FOCUSED_BC", valores_default["FOCUSED_BC"])
 
             # Apply changes in real time
             subprocess.run(["bspc", "config", "border_width", valores_default["BORDER_WIDTH"]], check=True)
+            subprocess.run(["bspc", "config", "normal_border_color", valores_default["NORMAL_BC"]], check=True)
+            subprocess.run(["bspc", "config", "focused_border_color", valores_default["FOCUSED_BC"]], check=True)
             self.modificar_config_picom_shadows(valores_default["P_SHADOWS"] == "true")
             self.modificar_config_picom_color_sombra(valores_default["SHADOW_C"])
             self.modificar_config_picom_corner_radius(valores_default["P_CORNER_R"])
@@ -314,6 +460,9 @@ class ConfigurarTemaWindow(Gtk.Window):
             self.entry_shadow_color.set_text(valores_default["SHADOW_C"])
             self.switch_animaciones.set_active(valores_default["ANIMATIONS"] == "true")
             self.switch_picom_fading.set_active(valores_default["P_FADE"] == "true")
+            self.entry_normal_bc.set_text(valores_default["NORMAL_BC"])
+            self.entry_focused_bc.set_text(valores_default["FOCUSED_BC"])
+            self.entry_window_gap.set_text("5")
 
             print(f"Restored default values ​​for the theme: {tema}")
         else:
@@ -347,6 +496,45 @@ class ConfigurarTemaWindow(Gtk.Window):
 
     def obtener_corner_radius(self):
         return self.obtener_valor_variable("P_CORNER_R")
+
+    def obtener_normal_bc(self):
+        return self.obtener_valor_variable("NORMAL_BC")
+
+    def obtener_focused_bc(self):
+        return self.obtener_valor_variable("FOCUSED_BC")
+
+    def obtener_estado_vsync(self):
+        # Leer el valor de vsync desde el archivo picom.conf
+        ruta_picom = os.path.expanduser("~/.config/bspwm/src/config/picom.conf")
+        with open(ruta_picom, "r") as archivo:
+            for linea in archivo:
+                if re.search(r'vsync\s*=\s*(true|false)', linea):
+                    return 'true' in linea
+        return False
+
+    def obtener_estado_backend(self):
+        ruta_picom = os.path.expanduser("~/.config/bspwm/src/config/picom.conf")
+        with open(ruta_picom, "r") as archivo:
+            for linea in archivo:
+                match = re.search(r'backend\s*=\s*"(xrender|glx|egl)"', linea)
+                if match:
+                    backend = match.group(1)
+                    if backend == "xrender":
+                        return 0
+                    elif backend == "glx":
+                        return 1
+                    elif backend == "egl":
+                        return 2
+        return 0  # Valor predeterminado si no se encuentra
+
+    def obtener_estado_pixelart(self):
+        # Leer el estado de pixel art en el archivo .zshrc
+        ruta_zshrc = os.path.expanduser("~/.zshrc")
+        with open(ruta_zshrc, "r") as archivo:
+            for linea in archivo:
+                if re.search(r'^\s*\$HOME/.local/bin/colorscript -r', linea):
+                    return True
+        return False
 
     def obtener_estado_variable(self, variable):
         try:
@@ -402,6 +590,57 @@ class ConfigurarTemaWindow(Gtk.Window):
         self.modificar_archivo_tema("SHADOW_C", color_valido)
         self.modificar_config_picom_color_sombra(color_valido)
 
+    def on_aplicar_normal_bc_clicked(self, button):
+        color_valido = self.entry_normal_bc.get_text()
+        if not re.match(r'^#[0-9A-Fa-f]{6}$', color_valido):
+            print("Invalid color. It must be a hexadecimal value in the format #000000.")
+            return
+        self.modificar_archivo_tema("NORMAL_BC", color_valido)
+        subprocess.run(["bspc", "config", "normal_border_color", color_valido], check=True)
+        print(f"Normal border color changed to: {color_valido}")
+
+    def on_aplicar_focused_bc_clicked(self, button):
+        color_valido = self.entry_focused_bc.get_text()
+        if not re.match(r'^#[0-9A-Fa-f]{6}$', color_valido):
+            print("Invalid color. It must be a hexadecimal value in the format #000000.")
+            return
+        self.modificar_archivo_tema("FOCUSED_BC", color_valido)
+        subprocess.run(["bspc", "config", "focused_border_color", color_valido], check=True)
+        print(f"Focused border color changed to: {color_valido}")
+
+    def on_aplicar_window_gap_clicked(self, button):
+        gap_valido = self.entry_window_gap.get_text()
+        if not re.match(r'^[0-9]{1,2}$', gap_valido) or not (0 <= int(gap_valido) <= 15):
+            print("Invalid gap value. It must be a number between 0 and 15.")
+            return
+        self.modificar_bspwmrc("window_gap", gap_valido)
+        subprocess.run(["bspc", "config", "window_gap", gap_valido], check=True)
+        print(f"Window gap changed to: {gap_valido}")
+
+    def obtener_window_gap(self):
+        # Leer el valor de window_gap desde el archivo bspwmrc
+        ruta_bspwmrc = os.path.expanduser("~/.config/bspwm/bspwmrc")
+        with open(ruta_bspwmrc, "r") as archivo:
+            for linea in archivo:
+                match = re.search(r'\bwindow_gap\s+(\d+)', linea)
+                if match:
+                    return match.group(1)
+        return "5"  # Valor predeterminado si no se encuentra
+
+    def modificar_bspwmrc(self, opcion, valor):
+        # Modificar el valor de window_gap en el archivo bspwmrc
+        ruta_bspwmrc = os.path.expanduser("~/.config/bspwm/bspwmrc")
+        with open(ruta_bspwmrc, "r") as archivo:
+            contenido = archivo.readlines()
+
+        for i, linea in enumerate(contenido):
+            if re.search(rf'\b{opcion}\s+\d+', linea):
+                contenido[i] = f'bspc config {opcion} {valor}\n'
+                break
+
+        with open(ruta_bspwmrc, "w") as archivo:
+            archivo.writelines(contenido)
+
     def on_switch_picom_fading_activated(self, switch, gparam):
         nuevo_estado = "true" if switch.get_active() else "false"
         self.modificar_archivo_tema("P_FADE", nuevo_estado)
@@ -414,6 +653,72 @@ class ConfigurarTemaWindow(Gtk.Window):
             return
         self.modificar_archivo_tema("P_CORNER_R", valor_radius)
         self.modificar_config_picom_corner_radius(valor_radius)
+
+    def on_switch_vsync_activated(self, switch, gparam):
+        estado_vsync = switch.get_active()
+        ruta_picom = os.path.expanduser("~/.config/bspwm/src/config/picom.conf")
+        with open(ruta_picom, "r") as archivo:
+            contenido = archivo.readlines()
+
+        # Modificar la línea vsync = true o false
+        for i, linea in enumerate(contenido):
+            if re.search(r'vsync\s*=\s*(true|false)', linea):
+                contenido[i] = f'vsync = {"true" if estado_vsync else "false"};\n'
+                break
+
+        with open(ruta_picom, "w") as archivo:
+            archivo.writelines(contenido)
+
+        print(f"VSync {'enabled' if estado_vsync else 'disabled'} in picom.conf")
+
+    def on_backend_changed(self, combo):
+        backend_seleccionado = combo.get_active_text()
+        ruta_picom = os.path.expanduser("~/.config/bspwm/src/config/picom.conf")
+        with open(ruta_picom, "r") as archivo:
+            contenido = archivo.readlines()
+
+        # Modificar la línea backend = "xrender"
+        for i, linea in enumerate(contenido):
+            if re.search(r'backend\s*=\s*"(xrender|glx|egl)"', linea):
+                contenido[i] = f'backend = "{backend_seleccionado}"\n'
+                break
+
+        with open(ruta_picom, "w") as archivo:
+            archivo.writelines(contenido)
+
+        print(f"Backend changed to {backend_seleccionado} in picom.conf")
+
+    def on_switch_pixelart_activated(self, switch, gparam):
+        estado_pixelart = switch.get_active()
+        ruta_zshrc = os.path.expanduser("~/.zshrc")
+
+        try:
+            # Leer el contenido del archivo .zshrc
+            with open(ruta_zshrc, "r") as archivo:
+                contenido = archivo.readlines()
+
+            # Modificar la línea $HOME/.local/bin/colorscript -r
+            linea_modificada = False
+            for i, linea in enumerate(contenido):
+                # Buscar la línea con o sin comentario
+                if re.search(r'^\s*\$HOME/.local/bin/colorscript -r', linea) or re.search(r'^\s*#\s*\$HOME/.local/bin/colorscript -r', linea):
+                    if estado_pixelart:
+                        contenido[i] = '$HOME/.local/bin/colorscript -r\n'  # Activar la línea
+                    else:
+                        contenido[i] = '#$HOME/.local/bin/colorscript -r\n'  # Desactivar la línea
+                    linea_modificada = True
+                    break
+
+            if linea_modificada:
+                # Guardar los cambios en .zshrc
+                with open(ruta_zshrc, "w") as archivo:
+                    archivo.writelines(contenido)
+                print(f"Pixel-art on terminal startup {'enabled' if estado_pixelart else 'disabled'} in .zshrc")
+            else:
+                print("No se encontró la línea correspondiente en el archivo .zshrc")
+
+        except Exception as e:
+            print(f"Error al modificar .zshrc: {str(e)}")
 
     def modificar_archivo_tema(self, variable, nuevo_valor):
         try:
