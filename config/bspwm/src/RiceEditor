@@ -357,7 +357,7 @@ class ConfigurarTemaWindow(Gtk.Window):
                 "ANIMATIONS": "true",
                 "P_FADE": "false",
                 "NORMAL_BC": "#353c52",
-                "FOCUSED_BC": "#5884d4"
+                "FOCUSED_BC": "#353c52"
             },
             "marisol": {
                 "BORDER_WIDTH": "2",

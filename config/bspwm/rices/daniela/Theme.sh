@@ -10,11 +10,11 @@
 #  About   :  This file will configure and launch the rice.
 #
 
-# Terminate existing processes if necessary.
-. "${HOME}"/.config/bspwm/src/Process.bash
-
 # Current Rice
 read -r RICE < "$HOME"/.config/bspwm/.rice
+
+# Terminate or reload existing processes if necessary.
+. "${HOME}"/.config/bspwm/src/Process.bash
 
 # Vars config for Daniela Rice
 # Bspwm border		# Normal border color	# Focused border color
@@ -288,9 +288,6 @@ set_geany(){
 
 # Launch theme
 launch_theme() {
-
-	# Set random wallpaper for actual rice
-	feh -z --no-fehbg --bg-fill "${HOME}"/.config/bspwm/rices/"${RICE}"/walls
 
 	# Launch dunst notification daemon
 	dunst -config "${HOME}"/.config/bspwm/src/config/dunstrc &

@@ -10,15 +10,15 @@
 #  About   :  This file will configure and launch the rice.
 #
 
-# Terminate existing processes if necessary.
-. "${HOME}"/.config/bspwm/src/Process.bash
-
 # Current Rice
 read -r RICE < "$HOME"/.config/bspwm/.rice
 
+# Terminate or reload existing processes if necessary.
+. "${HOME}"/.config/bspwm/src/Process.bash
+
 # Vars config for Karla Rice
 # Bspwm border		# Normal border color	# Focused border color
-BORDER_WIDTH="3"	NORMAL_BC="#353c52"		FOCUSED_BC="#5884d4"
+BORDER_WIDTH="3"	NORMAL_BC="#353c52"		FOCUSED_BC="#353c52"
 
 # Fade true|false	# Shadows true|false	# Corner radius		# Shadow color			# Animations true|fals
 P_FADE="false"		P_SHADOWS="false"		P_CORNER_R="0"		SHADOW_C="#000000"		ANIMATIONS="true"
@@ -288,9 +288,6 @@ set_geany(){
 
 # Launch theme
 launch_theme() {
-
-	# Set random wallpaper for actual rice
-	feh -z --no-fehbg --bg-fill "${HOME}"/.config/bspwm/rices/"${RICE}"/walls
 
 	# Launch dunst notification daemon
 	dunst -config "${HOME}"/.config/bspwm/src/config/dunstrc &
