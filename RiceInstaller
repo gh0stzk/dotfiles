@@ -397,7 +397,7 @@ else
 fi
 
 # Installing rofi-greenclip
-if pacman -Q rofi-greenclip >/dev/null 2>&1; then
+if pacman -Qq rofi-greenclip >/dev/null 2>&1; then
     printf "\n%s%srofi-greenclip is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 else
     printf "\n%s%sInstalling rofi-greenclip, this should be fast!%s\n" "${BLD}" "${CBL}" "${CNC}"
@@ -413,7 +413,7 @@ else
 fi
 
 # Installing simple-mtpfs
-if pacman -Q simple-mtpfs >/dev/null 2>&1; then
+if pacman -Qq simple-mtpfs >/dev/null 2>&1; then
     printf "\n%s%ssimple-mtpfs is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 else
     printf "\n%s%sInstalling simple-mtpfs, this should be fast!%s\n" "${BLD}" "${CBL}" "${CNC}"
@@ -421,23 +421,11 @@ else
 fi
 
 # Installing Eww
-if command -v eww >/dev/null 2>&1; then
+if pacman -Qq eww-git >/dev/null 2>&1; then
     printf "\n%s%sEww is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 else
-    printf "\n%s%sDownload and installing eww..%s\n" "${BLD}" "${CBL}" "${CNC}"
-    if curl -L https://github.com/gh0stzk/pkgs/raw/main/eww -o eww; then
-		echo "Download complete."
-		chmod +x eww
-		echo "Installing eww..."
-			if sudo install -Dm755 eww /usr/bin/eww; then
-				echo "Installation complete."
-				rm eww
-			else
-				echo "Error: Something happend."
-			fi
-	else
-		echo "Error: The file can't be downloaded.."
-	fi
+    printf "\n%s%sInstalling Eww, this will take some time.. !%s\n" "${BLD}" "${CBL}" "${CNC}"
+    paru -S eww-git --skipreview --noconfirm
 fi
 
 ########## ---------- Enabling MPD service ---------- ##########
