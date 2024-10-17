@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+#
+#  ███████╗ ██████╗██████╗ ███████╗███████╗███╗   ██╗    ██╗      ██████╗  ██████╗██╗  ██╗
+#  ██╔════╝██╔════╝██╔══██╗██╔════╝██╔════╝████╗  ██║    ██║     ██╔═══██╗██╔════╝██║ ██╔╝
+#  ███████╗██║     ██████╔╝█████╗  █████╗  ██╔██╗ ██║    ██║     ██║   ██║██║     █████╔╝
+#  ╚════██║██║     ██╔══██╗██╔══╝  ██╔══╝  ██║╚██╗██║    ██║     ██║   ██║██║     ██╔═██╗
+#  ███████║╚██████╗██║  ██║███████╗███████╗██║ ╚████║    ███████╗╚██████╔╝╚██████╗██║  ██╗
+#  ╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝    ╚══════╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝
+#	gh0stzk - https://github.com/gh0stzk/dotfiles
+#	15.10.2024 14:26:09
+#	Dependencies - i3lock-color
+#
+
+TEMP_IMAGE="/tmp/i3lock.jpg"
+
+# Colors
+bg=1a1b26
+fg=c0caf5
+ring=15161e
+wrong=f7768e
+date=c0caf5
+verify=9ece6a
+
+default_lockscreen () {
+
+    maim -d 0.3 -u ${TEMP_IMAGE}
+    magick $TEMP_IMAGE -blur 5x4 $TEMP_IMAGE
+    i3lock -n --force-clock -i $TEMP_IMAGE -e --indicator \
+        --radius=30 --ring-width=60 --inside-color=$bg \
+        --ring-color=$ring --insidever-color=$verify --ringver-color=$verify \
+		--insidewrong-color=$wrong --ringwrong-color=$wrong --line-uses-inside \
+		--keyhl-color=$verify --separator-color=$verify --bshl-color=$verify \
+		--time-str="%H:%M" --time-size=140 --date-str="%a, %d %b" \
+		--date-size=45 --verif-text="Verifying Password..." --wrong-text="Wrong Password!" \
+		--noinput-text="" --greeter-text="Type the password to Unlock" --ind-pos="300:610" \
+		--time-font="JetBrainsMono NF:style=Bold" --date-font="JetBrainsMono NF" --verif-font="JetBrainsMono NF" \
+		--greeter-font="JetBrainsMono NF" --wrong-font="JetBrainsMono NF" --verif-size=23 \
+		--greeter-size=23 --wrong-size=23 --time-pos="300:390" \
+		--date-pos="300:450" --greeter-pos="300:780" --wrong-pos="300:820" \
+		--verif-pos="300:655" --date-color=$date --time-color=$date \
+		--greeter-color=$fg --wrong-color=$wrong --verif-color=$verify \
+		--verif-pos="300:820" --pointer=default --refresh-rate=0 \
+		--pass-media-keys --pass-volume-keys
+
+}
+
+rice_lockscreen () {
+
+    # Current Rice
+    read -r RICE < "$HOME"/.config/bspwm/.rice
+    # Wallpapers dir
+    image_dir="$HOME/.config/bspwm/rices/${RICE}/walls"
+
+    # Select random image
+    lock_image=$(find "$image_dir" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) | shuf -n 1)
+
+    # If the image is *.webp convert to /tmp/lock_image.jpg
+    if [[ "$lock_image" == *.webp ]]; then
+        magick "$lock_image" "$TEMP_IMAGE" || exit 1
+    fi
+
+    i3lock -n --force-clock -i $TEMP_IMAGE --scale -e --indicator \
+        --radius=30 --ring-width=60 --inside-color=$bg \
+        --ring-color=$ring --insidever-color=$verify --ringver-color=$verify \
+		--insidewrong-color=$wrong --ringwrong-color=$wrong --line-uses-inside \
+		--keyhl-color=$verify --separator-color=$verify --bshl-color=$verify \
+		--time-str="%H:%M" --time-size=140 --date-str="%a, %d %b" \
+		--date-size=45 --verif-text="Verifying Password..." --wrong-text="Wrong Password!" \
+		--noinput-text="" --greeter-text="Type the password to Unlock" --ind-pos="300:610" \
+		--time-font="JetBrainsMono NF:style=Bold" --date-font="JetBrainsMono NF" --verif-font="JetBrainsMono NF" \
+		--greeter-font="JetBrainsMono NF" --wrong-font="JetBrainsMono NF" --verif-size=23 \
+		--greeter-size=23 --wrong-size=23 --time-pos="300:390" \
+		--date-pos="300:450" --greeter-pos="300:780" --wrong-pos="300:820" \
+		--verif-pos="300:655" --date-color=$date --time-color=$date \
+		--greeter-color=$fg --wrong-color=$wrong --verif-color=$verify \
+		--verif-pos="300:820" --pointer=default --refresh-rate=0 \
+		--pass-media-keys --pass-volume-keys
+
+}
+
+case $1 in
+    -r|--rice)
+        rice_lockscreen;;
+    -h|--help)
+		echo -e "ScreenLocker [options]
+Note: If an option is not specified, the screen locks with a screenshot with a blur effect.
+
+Options:
+	[-r] [--rice]	Set the screen locker with a random wallpaper of the current theme.\n";;
+    *)
+        default_lockscreen;;
+esac

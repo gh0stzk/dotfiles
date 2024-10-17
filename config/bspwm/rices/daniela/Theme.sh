@@ -252,6 +252,15 @@ set_launchers() {
     img-background: url("~/.config/bspwm/rices/${RICE}/rofi.webp", width);
 }
 EOF
+
+	# Screenlock colors
+	sed -i "$HOME"/.config/bspwm/src/ScreenLocker \
+		-e "s/bg=.*/bg=${bg:1}/" \
+		-e "s/fg=.*/fg=${fg:1}/" \
+		-e "s/ring=.*/ring=${magenta:1}/" \
+		-e "s/wrong=.*/wrong=${red:1}/" \
+		-e "s/date=.*/date=${fg:1}/" \
+		-e "s/verify=.*/verify=${green:1}/"
 }
 
 set_appearance() {

@@ -60,7 +60,7 @@ super + alt + o
 
 # Power off, Reboot, Log out, Lockscreen, kill an app
 ctrl + super + alt + {p,r,q,l,k}
-	{systemctl poweroff, systemctl reboot,bspc quit,physlock -d,xkill}
+	{systemctl poweroff, systemctl reboot,bspc quit,ScreenLocker,xkill}
 
 # Hide/Show Bar (Polybar and/or eww)
 super + alt + {h,u}

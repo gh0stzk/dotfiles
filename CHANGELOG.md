@@ -1,3 +1,49 @@
+## LockScreen
+##### October 17 2024
+
+Yes, I finally updated the lock screen, it was something I was putting off but it is now ready. Of course the color theme changes depending on the theme you are in.
+
+There are 2 options:
+
+```
+ScreenLocker
+
+# Take a screenshot and blur it.
+```
+
+```
+ScreenLocker --rice
+# Lock the screen with a random wallpaper depending on the theme you are in
+```
+
+By default I have left it in the first command that takes a screenshot of the moment and applies a blur effect.
+
+If you want to switch to the other command, you need to edit the file **·/config/bspwm/src/PowerMenu** and the file **·/config/bspwm/src/config/sxhkdrc**
+
+respectively adding the --rice after the ScreenLocker command
+
+Edit sxhkdrc for shortcuts `Super + ctrl + alt + l`
+
+And PowerMenu is edited for the rofi menu.
+
+Finally if you already have my dots, you need to install from AUR **i3lock-color** `paru -S i3lock-color`
+
+Some examples:
+
+| <img src="https://github.com/user-attachments/assets/d1157392-af8c-421d-960c-95e2a52f0fd0" alt="Bspwm theme" width="700"> |
+| :--------------------------------------------------------------------------------------------------------------------------------: |
+|                                                               z0mbi3 LockScreen                                                    |
+
+| <img src="https://github.com/user-attachments/assets/f51c30eb-428a-4e40-8b1f-70b02be4f5ee" alt="Bspwm theme" width="700"> |
+| :--------------------------------------------------------------------------------------------------------------------------------: |
+|                                                              Cynthia LockScreen                                                    |
+
+| <img src="https://github.com/user-attachments/assets/cac9e074-0a75-4259-a7c7-ea166aa70d40" alt="Bspwm theme" width="700"> |
+| :--------------------------------------------------------------------------------------------------------------------------------: |
+|                                                              Emilia LockScreen                                                     |
+
+---
+
 ## Picom Animations!! And new app to control some aspects of the rices
 ##### October 6 2024
 

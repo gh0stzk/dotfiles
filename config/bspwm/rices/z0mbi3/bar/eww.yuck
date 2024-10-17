@@ -148,8 +148,8 @@
 
 ;; Clock Widgets ;;
 (defwidget time []
-	(box	:orientation "v" 
-			:class "time" 
+	(box	:orientation "v"
+			:class "time"
 			:valign "end"
 	(eventbox :cursor "pointer"
 	(button	:onclick "OpenApps --calendar &"
@@ -180,7 +180,7 @@
 	(button	:style "background-image: url('images/enpass.png');"
 			:class "button-lock"
 			:tooltip "Lock Screen"
-			:onclick "physlock -d")
+			:onclick "ScreenLocker &")
 
 	(button :style "background-image: url('images/sys-sleep.png');"
 			:class "button-bspres"
@@ -228,7 +228,7 @@
 ;; Control Panel Widgets ;;
 (defwidget control []
 	(box :orientation "v"
-		 :space-evenly false 
+		 :space-evenly false
 		 :class "control"
 (notifycenter)
 (volum)
