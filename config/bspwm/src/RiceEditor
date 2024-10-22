@@ -751,22 +751,6 @@ class ConfigurarTemaWindow(Gtk.Window):
             with open(ruta_picom_rules, "w") as archivo:
                 archivo.writelines(contenido_rules)
 
-            # Modify picom.conf to no-fading-openclose = true or false
-            ruta_picom_conf = os.path.expanduser("~/.config/bspwm/src/config/picom.conf")
-            with open(ruta_picom_conf, "r") as archivo:
-                contenido_conf = archivo.readlines()
-
-            for i, linea in enumerate(contenido_conf):
-                if re.search(r'no-fading-openclose\s*=\s*(true|false)', linea):
-                    if activar_animaciones:
-                        contenido_conf[i] = 'no-fading-openclose = true\n'
-                    else:
-                        contenido_conf[i] = 'no-fading-openclose = false\n'
-                    break
-
-            with open(ruta_picom_conf, "w") as archivo:
-                archivo.writelines(contenido_conf)
-
             print("Modified Picom configuration.")
         except Exception as e:
             print(f"Error modifying Picom file: {str(e)}")

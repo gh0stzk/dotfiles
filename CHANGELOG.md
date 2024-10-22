@@ -1,3 +1,14 @@
+## New animations for specific windows
+##### October 22 2024
+
+- I added some animations for specific windows/apps, like **rofi menus, dunst notifications, jgmenu, eww widgets**. Additionally, **polybar and eww bars** (Andrea, z0mbi3) i forgot to show in video but when you change from theme to theme or hide, show, the bars, now have a fade effect.
+
+https://github.com/user-attachments/assets/de014275-57f1-45e9-b1f3-acb9939e5a76
+
+- Updated RiceInstaller. I will give some love to installer next days.
+
+---
+
 ## LockScreen
 ##### October 17 2024
 

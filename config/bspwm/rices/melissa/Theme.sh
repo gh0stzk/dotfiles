@@ -161,20 +161,14 @@ set_picom_config() {
 		-e "s/corner-radius = .*/corner-radius = ${P_CORNER_R}/"
 
 	sed -i "$picom_rules_file" \
-		-e "101s/	opacity = .*/	opacity = 0.98;/"
+		-e "95s/	opacity = .*/	opacity = 0.98;/"
 
 	if [[ "$ANIMATIONS" = "true" ]]; then
 		sed -i "$picom_rules_file" \
 			-e '/picom-animations/c\@include "picom-animations.conf"'
-
-		sed -i "$picom_conf_file" \
-			-e "s/no-fading-openclose = .*/no-fading-openclose = true/"
 	else
 		sed -i "$picom_rules_file" \
 			-e '/picom-animations/c\#@include "picom-animations.conf"'
-
-		sed -i "$picom_conf_file" \
-			-e "s/no-fading-openclose = .*/no-fading-openclose = false/"
 	fi
 }
 
