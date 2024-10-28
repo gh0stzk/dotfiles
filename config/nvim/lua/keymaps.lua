@@ -48,10 +48,11 @@ map("n", "<C-Down>", ":resize +3<CR>")
 map("n", "<C-Left>", ":vertical resize -3<CR>")
 map("n", "<C-Right>", ":vertical resize +3<CR>")
 
--- Bufferline
-map("n", "<Tab>", ":bnext<cr>", { desc = "Move to next tab", noremap = true })
-map("n", "<S-Tab>", ":bprevious<cr>", { desc = "Move to previous tab", noremap = true })
-map("n", "<leader>x", ":bd<cr>", { desc = "Buffer close", noremap = true })
+-- Barbar
+map("n", "<Tab>", ":BufferNext<CR>", { desc = "Move to next tab", noremap = true })
+map("n", "<S-Tab>", ":BufferPrevious<CR>", { desc = "Move to previous tab", noremap = true })
+map("n", "<leader>x", ":BufferClose<CR>", { desc = "Buffer close", noremap = true })
+map("n", "<A-p>", ":BufferPin<CR>", { desc = "Pin buffer", noremap = true })
 
 -- Comments
 map({"n", "v"}, "<leader>co", ":CommentToggle<cr>", { desc = "CommentToggle", noremap = true })
