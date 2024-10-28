@@ -109,7 +109,7 @@
 				   :halign "start"
 				   :hexpand false
 				   (eventbox :cursor "pointer"
-				   (button :class "btn-info" :tooltip "Lock Computer" :onclick "physlock -d" "󱅞"))
+				   (button :class "btn-info" :tooltip "Lock Computer" :onclick "ScreenLocker &" "󱅞"))
 				   (eventbox :cursor "pointer"
 				   (button :class "btn-info" :tooltip "Logout BSPWM" :onclick "bspc quit" "󰍃")))
 		)
