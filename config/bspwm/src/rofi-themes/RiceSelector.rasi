@@ -12,13 +12,7 @@ configuration {
 	//me-accept-entry:			 "MousePrimary";
 }
 
-* {
-main-bg: #14171c;
-main-fg: #b8bfe5;
-select-bg: #7560d3;
-select-fg: #14171c;
-}
-
+@import "shared.rasi"
 
 // Main //
 window {
@@ -38,7 +32,7 @@ window {
 mainbox {
     enabled:                     true;
     children:                    [ "listview" ];
-    background-color:            @main-bg;
+    background-color:            @background;
 }
 
 
@@ -58,7 +52,7 @@ listview {
     fixed-columns:               true;
     cursor:                      "default";
     background-color:            transparent;
-    text-color:                  @main-fg;
+    text-color:                  @foreground;
 }
 
 
@@ -71,7 +65,7 @@ element {
     border-radius:               20px;
     cursor:                      pointer;
     background-color:            transparent;
-    text-color:                  @main-fg;
+    text-color:                  @foreground;
 }
 @media(max-aspect-ratio: 1.8) {
     element {
@@ -79,8 +73,8 @@ element {
     }
 }
 element selected.normal {
-    background-color:            @select-bg;
-    text-color:                  @select-fg;
+    background-color:            @selected;
+    text-color:                  @background;
 }
 element-icon {
     cursor:                      inherit;
