@@ -60,14 +60,14 @@ bspc rule -a scratch sticky=on state=floating focus=on
 # Set system vars for polybar
 "$HOME"/.config/bspwm/src/SetSysVars
 
-# Load current theme
-"${HOME}"/.config/bspwm/rices/"${RICETHEME}"/Theme.sh
-
 # Launch sxhkd daemon
 pidof -q sxhkd || { sxhkd -c "${HOME}"/.config/bspwm/src/config/sxhkdrc & }
 
 # Launch picom
 pidof -q picom || { picom --config "${HOME}"/.config/bspwm/src/config/picom.conf & }
+
+# Load current theme
+"${HOME}"/.config/bspwm/rices/"${RICETHEME}"/Theme.sh
 
 # Launch xsettingsd
 pidof -q xsettings || { xsettingsd --config="${HOME}"/.config/bspwm/src/config/xsettingsd >/dev/null 2>&1 & }
