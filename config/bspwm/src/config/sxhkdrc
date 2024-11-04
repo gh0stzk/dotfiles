@@ -98,6 +98,10 @@ super + alt + b
 super + alt + p
 	OpenApps --powermenu
 
+# Keyboard Layout Applet
+super + alt + k
+	OpenApps --keyboard
+
 # Manage brightness
 XF86MonBrightness{Up,Down}
     sh Brightness {up,down}

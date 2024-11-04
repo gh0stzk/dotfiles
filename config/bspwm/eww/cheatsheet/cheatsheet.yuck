@@ -19,10 +19,10 @@
         :space-evenly "false"
     (label  :class "title"
             :xalign 0.5
-            :text " ██████ ██   ██ ███████  █████  ████████     ███████ ██   ██ ███████ ███████ ████████ 
-██      ██   ██ ██      ██   ██    ██        ██      ██   ██ ██      ██         ██    
-██      ███████ █████   ███████    ██        ███████ ███████ █████   █████      ██    
-██      ██   ██ ██      ██   ██    ██             ██ ██   ██ ██      ██         ██    
+            :text " ██████ ██   ██ ███████  █████  ████████     ███████ ██   ██ ███████ ███████ ████████
+██      ██   ██ ██      ██   ██    ██        ██      ██   ██ ██      ██         ██
+██      ███████ █████   ███████    ██        ███████ ███████ █████   █████      ██
+██      ██   ██ ██      ██   ██    ██             ██ ██   ██ ██      ██         ██
  ██████ ██   ██ ███████ ██   ██    ██        ███████ ██   ██ ███████ ███████    ██")
     (label  :class "title-info"
             :yalign 0
@@ -168,7 +168,7 @@
 
     (box :orientation "v" :space-evenly "false" :spacing 2
       (box :orientation "h" :space-evenly "true"
-        (label :class "category-workspaces" :xalign 0.5 :text "System Apps")
+        (label :class "category-workspaces" :xalign 0.5 :text "Dotfiles Apps")
         (label :text ""))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Scratchpad")
@@ -197,6 +197,9 @@
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Power Menu")
         (label :class "keys-alt" :xalign 1 :text "Super + Alt + p"))
+      (box :orientation "h" :space-evenly "true"
+        (label :class "keys" :xalign 0 :text "Change Keyboard Layout")
+        (label :class "keys-alt" :xalign 1 :text "Super + Alt + k"))
       (box :orientation "h" :space-evenly "true"
         (label :class "category-apps" :xalign 0.5 :text "Apps")
         (label :text ""))

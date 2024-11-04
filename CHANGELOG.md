@@ -1,3 +1,40 @@
+## Keyboard rofi applet
+##### Noviembre 04 2024
+
+So i added an applet in rofi to change your current keyboard layout..  of course changes with the theme you are, as all the other things. And I have also added the polybar module that shows your current layout and **is clickable**, which will launch the new applet. Likewise, if you want to launch it *directly with the keyboard*, `super + alt + k` is the shortcut.
+
+![ezgif com-animated-gif-maker](https://github.com/user-attachments/assets/1cce2194-ed52-4e32-8bf1-66a69f20dd9f)
+
+If you already have my dotfiles, you need to clone my dots again somewhere you want, and move the 2 new files:
+
+dotfiles/config/bspwm/src/KeyBoardL --> ~/.config/bspwm/src/KeyBoardL
+
+dotfiles/config/bspwm/src/rofi-themes/Keyboard.rasi --> ~/.config/bspwm/src/rofi-themes/Keyboard.rasi
+
+And you will need to edit:
+
+*~/.config/bspwm/src/OpenApps* Add this:
+```bash
+--keyboard)
+	KeyBoardL
+	;;
+```
+
+*~/.config/bspwm/src/config/sxhkdrc* add this:
+```bash
+#Keyboard Layout Applet
+super + alt + k
+	OpenApps --keyboard
+```
+
+And yes, in all rices, the modules.ini file, have at the bottom the new module you need to add it.
+
+Only on 2 or 3 rices is active per default, in the others if you want to activate, just add it in config.ini
+
+ah yes you need to edit too the cheatsheet, just check the commit, to know what to add.
+
+---
+
 ## New animations for specific windows
 ##### October 22 2024
 

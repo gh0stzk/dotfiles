@@ -94,6 +94,13 @@ Ajusta la transparencia de tus ventanas abiertas con una simple combinación de 
 |:--:|
 </details>
 
+<details>
+  <summary><b>Keyboard Layout</b></summary>
+
+|<img src="https://github.com/user-attachments/assets/1cce2194-ed52-4e32-8bf1-66a69f20dd9f" alt="Keyboard Layout" align="center">|
+|:--:|
+</details>
+
 
 **Menú de Selección de Terminal**
 

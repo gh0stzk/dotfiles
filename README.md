@@ -96,6 +96,13 @@ And you can adjust the transparency of your open windows with a simple key combi
 |:--:|
 </details>
 
+<details>
+  <summary><b>Keyboard Layout</b></summary>
+
+|<img src="https://github.com/user-attachments/assets/1cce2194-ed52-4e32-8bf1-66a69f20dd9f" alt="Keyboard Layout" align="center">|
+|:--:|
+</details>
+
 
 **Terminal Selection Menu**
 

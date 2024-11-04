@@ -13,7 +13,7 @@ WIDGET_DIR="$HOME/.config/bspwm/eww"
 
 case "$1" in
     --menu)
-        rofi -show drun -theme "$HOME"/.config/bspwm/src/rofi-themes/Launcher.rasi 
+        rofi -show drun -theme "$HOME"/.config/bspwm/src/rofi-themes/Launcher.rasi
         ;;
     --rice)
         RiceSelector
@@ -25,7 +25,7 @@ case "$1" in
         Term --floating
         ;;
     --update)
-        Term --update 
+        Term --update
         ;;
     --checkupdates)
         Term --checkupdates
@@ -47,6 +47,9 @@ case "$1" in
         ;;
     --android)
 		AndroidMount
+		;;
+	--keyboard)
+		KeyBoardL
 		;;
     --ranger)
         Term --ranger
