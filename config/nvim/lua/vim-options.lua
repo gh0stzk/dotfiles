@@ -13,7 +13,7 @@ opt.autoindent = true
 
 -- Line wrapping
 opt.wrap = true
--- opt.colorcolumn = "80"
+--opt.colorcolumn = "80"
 
 -- Search setting
 opt.ignorecase = true
@@ -23,8 +23,8 @@ opt.smartcase = true
 opt.cursorline = true
 
 -- appearance
-opt.termguicolors = false
-opt.background = "dark"
+opt.termguicolors = true
+--opt.background = "dark"
 opt.signcolumn = "yes"
 
 -- Backspace
