@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 options=(
-    ""
+    "󰍁"
     ""
-    ""
-    ""
-    ""
+    "󰗽"
+    "󰜉"
+    "󰐥"
 )
 
 rofi_cmd() {
@@ -19,13 +19,13 @@ rofi_cmd() {
 chosen=$(printf "%s\n" "${options[@]}" | rofi_cmd)
 
 case $chosen in
-    "")
+    "󰐥")
         systemctl poweroff
         ;;
-    "")
+    "󰜉")
         systemctl reboot
         ;;
-    "")
+    "󰍁")
         ScreenLocker
         ;;
     "")
@@ -33,7 +33,7 @@ case $chosen in
         amixer set Master mute
         systemctl suspend
         ;;
-    "")
+    "󰗽")
         bspc quit
         ;;
 esac
