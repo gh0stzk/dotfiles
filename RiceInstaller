@@ -18,6 +18,7 @@ CNC=$(tput sgr0)
 
 backup_folder=~/.RiceBackup
 date=$(date +%Y%m%d-%H%M%S)
+ERROR_LOG="$HOME/RiceError.log"
 
 logo () {
 
@@ -58,6 +59,14 @@ if [ "$current_dir" != "$home_dir" ]; then
     exit 1
 fi
 
+log_error() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$ERROR_LOG"
+}
+
+is_installed() {
+    pacman -Qq "$1" &> /dev/null
+}
+
 ########## ---------- Welcome ---------- ##########
 
 logo "Welcome!"
@@ -85,26 +94,24 @@ dependencias=(alacritty base-devel bat brightnessctl bspwm dunst eza feh gvfs-mt
 			        xdo xdotool xsettingsd xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot \
 			        xorg-xwininfo zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting)
 
-is_installed() {
-    pacman -Q "$1" &> /dev/null
-}
+printf "%s%sChecking for required packages...%s\n\n" "${BLD}" "${CBL}" "${CNC}"
 
-printf "%s%sChecking for required packages...%s\n" "${BLD}" "${CBL}" "${CNC}"
-for paquete in "${dependencias[@]}"; do
-    if ! is_installed "$paquete"; then
-        if sudo pacman -S "$paquete" --noconfirm >/dev/null 2>> RiceError.log; then
-            printf "%s%s%s %shas been installed succesfully.%s\n" "${BLD}" "${CYE}" "$paquete" "${CBL}" "${CNC}"
+	for paquete in "${dependencias[@]}"; do
+        if ! is_installed "$paquete"; then
+            if sudo pacman -S "$paquete" --noconfirm >/dev/null 2> >(tee -a "$ERROR_LOG"); then
+                printf "%s%s%s %shas been installed successfully.%s\n" "${BLD}" "${CYE}" "$paquete" "${CBL}" "${CNC}"
+            else
+                printf "%s%s%s %shas not been installed correctly. See %sRiceError.log %sfor more details.%s\n" \
+                       "${BLD}" "${CYE}" "$paquete" "${CRE}" "${CBL}" "${CRE}" "${CNC}"
+                log_error "Failed to install package: $paquete"
+            fi
             sleep 1
         else
-            printf "%s%s%s %shas not been installed correctly. See %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "$paquete" "${CRE}" "${CBL}" "${CRE}" "${CNC}"
+            printf '%s%s%s %sis already installed on your system!%s\n' "${BLD}" "${CYE}" "$paquete" "${CGR}" "${CNC}"
             sleep 1
         fi
-    else
-        printf '%s%s%s %sis already installed on your system!%s\n' "${BLD}" "${CYE}" "$paquete" "${CGR}" "${CNC}"
-        sleep 1
-    fi
-done
-sleep 5
+    done
+sleep 3
 clear
 
 ########## ---------- Add my repo to pacman.conf ---------- ##########
@@ -115,20 +122,18 @@ REPO_CONTENT="[gh0stzk-dotfiles]
 SigLevel = Optional TrustAll
 Server = http://gh0stzk.github.io/pkgs/x86_64"
 
-if ! grep -q "\[gh0stzk-dotfiles\]" /etc/pacman.conf; then
-    if echo -e "\n$REPO_CONTENT" | sudo tee -a /etc/pacman.conf >/dev/null 2>> RiceError.log; then
-		printf "%s%sgh0stzk-dotfiles%s repository added succesfully.%s\n" "${BLD}" "${CYE}" "${CGR}" "${CNC}"
-		sudo pacman -Syy
-		sleep 1
+	if ! grep -q "\[gh0stzk-dotfiles\]" /etc/pacman.conf; then
+		if echo -e "\n$REPO_CONTENT" | sudo tee -a /etc/pacman.conf >/dev/null 2>> RiceError.log; then
+			printf "%s%sgh0stzk-dotfiles%s repository added succesfully.%s\n" "${BLD}" "${CYE}" "${CGR}" "${CNC}"
+			sudo pacman -Syy
+		else
+			printf "%s%sFailded to add custom repo. See %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "${CBL}" "${CYE}" "${CNC}"
+		fi
 	else
-		printf "%s%sFailded to add custom repo. See %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "${CBL}" "${CYE}" "${CNC}"
+		printf "My custom repo already exists in your pacman.conf"
 		sleep 1
 	fi
-else
-	printf "My custom repo already exists in your pacman.conf"
-	sleep 1
-fi
-sleep 5
+sleep 3
 clear
 
 ########## ---------- Install needed packages from my repo ---------- ##########
@@ -181,7 +186,7 @@ fi
 # Clone the repository
 printf "Cloning dotfiles from %s\n" "$repo_url"
 git clone --depth=1 "$repo_url" "$repo_dir"
-sleep 2
+sleep 3
 clear
 
 ########## ---------- Backup files ---------- ##########
@@ -290,7 +295,8 @@ else
 fi
 
 printf "%s%sDone!!%s\n\n" "${BLD}" "${CGR}" "${CNC}"
-sleep 5
+sleep 3
+clear
 
 ########## ---------- Copy the Rice! ---------- ##########
 
@@ -359,13 +365,13 @@ cp -f "$HOME"/dotfiles/home/.gtkrc-2.0 "$HOME"
 fc-cache -rv >/dev/null 2>&1
 
 printf "\n\n%s%sFiles copied succesfully!!%s\n" "${BLD}" "${CGR}" "${CNC}"
-sleep 5
+sleep 3
+clear
 
-########## ---------- Installing Paru & others ---------- ##########
+########## ---------- Installing Paru ---------- ##########
 
-logo "installing Paru, Eww, tdrop & xqp"
+logo "Install Paru"
 
-# Installing Paru
 if command -v paru >/dev/null 2>&1; then
     printf "%s%sParu is already installed%s\n" "${BLD}" "${CGR}" "${CNC}"
 else
@@ -379,54 +385,108 @@ else
         printf "\n%s%sFailed to install Paru. You may need to install it manually%s\n" "${BLD}" "${CRE}" "${CNC}"
     }
 fi
+sleep 3
+clear
+
+########## ---------- Installing AUR dependencies ---------- ##########
+
+logo "Installing AUR dependencies."
 
 aur_apps=(tdrop-git xqp rofi-greenclip ttf-maple i3lock-color simple-mtpfs eww-git)
 
-printf "%s%sChecking for required packages...%s\n" "${BLD}" "${CBL}" "${CNC}"
+printf "%s%sChecking for required packages...%s\n\n" "${BLD}" "${CBL}" "${CNC}"
 for aur_package in "${aur_apps[@]}"; do
     if ! is_installed "$aur_package"; then
-        if paru -S --skipreview --noconfirm "$aur_package" 2>> RiceError.log; then
+        if paru -S --skipreview --noconfirm "$aur_package" 2> >(tee -a "$ERROR_LOG"); then
             printf "%s%s%s %shas been installed succesfully.%s\n" "${BLD}" "${CYE}" "$aur_package" "${CBL}" "${CNC}"
-            sleep 1
         else
             printf "%s%s%s %shas not been installed correctly. See %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "$aur_package" "${CRE}" "${CBL}" "${CRE}" "${CNC}"
-            sleep 1
+            log_error "Failed to install package: $aur_package"
         fi
+        sleep 1
     else
         printf '%s%s%s %sis already installed on your system!%s\n' "${BLD}" "${CYE}" "$aur_package" "${CGR}" "${CNC}"
         sleep 1
     fi
 done
-sleep 5
+sleep 3
 clear
 
 ########## ---------- Enabling MPD service ---------- ##########
 
 logo "Enabling mpd service"
 
-# Verifica si el servicio mpd está habilitado a nivel global (sistema)
-if systemctl is-enabled --quiet mpd.service; then
-    printf "\n%s%sDisabling and stopping the global mpd service%s\n" "${BLD}" "${CBL}" "${CNC}"
-    sudo systemctl stop mpd.service
-    sudo systemctl disable mpd.service
-fi
+	if systemctl is-enabled --quiet mpd.service; then
+        printf "%s%sDisabling and stopping the global mpd service%s\n" "${BLD}" "${CBL}" "${CNC}"
 
-printf "\n%s%sEnabling and starting the user-level mpd service%s\n" "${BLD}" "${CYE}" "${CNC}"
-systemctl --user enable --now mpd.service
+        if sudo systemctl disable --now mpd.service >/dev/null 2> >(tee -a "$ERROR_LOG"); then
+            sleep 1
+            printf "\n%s[%sOK%s%s]%s Global MPD service disabled successfully\n\n" \
+                   "${BLD}" "${CGR}" "${CNC}" "${BLD}" "${CNC}"
+        else
+            sleep 1
+            printf "%s[%sError%s%s] Please check %sRiceError.log%s for details\n\n" \
+               "${BLD}" "${CRE}" "${CNC}" "${BLD}" "${CYE}" "${CNC}"
+            log_error "Failed to disable global MPD service"
+		fi
+	fi
 
-printf "%s%sDone!!%s\n\n" "${BLD}" "${CGR}" "${CNC}"
-sleep 2
+    printf "%s%sEnabling and starting the user-level mpd service%s\n\n" "${BLD}" "${CBL}" "${CNC}"
+
+    if systemctl --user enable --now mpd.service >/dev/null 2> >(tee -a "$ERROR_LOG"); then
+        sleep 1
+        printf "%s[%sOK%s%s]%s User-level MPD service enabled successfully\n\n" \
+               "${BLD}" "${CGR}" "${CNC}" "${BLD}" "${CNC}"
+    else
+        sleep 1
+        printf "%s[%sError%s%s] Please check %sRiceError.log%s for details\n\n" \
+               "${BLD}" "${CRE}" "${CNC}" "${BLD}" "${CYE}" "${CNC}"
+        log_error "Failed to enable user-level MPD service"
+    fi
+sleep 3
+clear
 
 ########## --------- Changing shell to zsh ---------- ##########
 
 logo "Changing default shell to zsh"
 
-if [[ $SHELL != "/usr/bin/zsh" ]]; then
-    printf "\n%s%sChanging your shell to zsh. Your root password is needed.%s\n\n" "${BLD}" "${CYE}" "${CNC}"
-    # Cambia la shell a zsh
-    chsh -s /usr/bin/zsh
-    printf "%s%sShell changed to zsh. Please reboot.%s\n\n" "${BLD}" "${CGR}" "${CNC}"
-else
-    printf "%s%sYour shell is already zsh\nGood bye! installation finished, now reboot%s\n" "${BLD}" "${CGR}" "${CNC}"
-fi
-zsh
+	if [[ $SHELL != "/usr/bin/zsh" ]]; then
+        printf "%s%sChanging your shell to zsh...%s\n\n" "${BLD}" "${CYE}" "${CNC}"
+
+        if chsh -s /usr/bin/zsh 2> >(tee -a "$ERROR_LOG"); then
+            printf "\n%s[%sOK%s%s] Shell changed to zsh successfully!%s\n\n" "${BLD}" "${CGR}" "${CNC}" "${BLD}" "${CNC}"
+        else
+            printf "%s%sError changing your shell to zsh. Please check %sRiceError.log%s for details%s\n\n" \
+                   "${BLD}" "${CRE}" "${CYE}" "${CRE}" "${CNC}"
+            log_error "Failed to change shell to zsh"
+        fi
+    else
+        printf "%s%sYour shell is already zsh%s\n\n" "${BLD}" "${CGR}" "${CNC}"
+    fi
+sleep 3
+clear
+
+########## --------- exit ---------- ##########
+
+logo "Installation is compñete"
+
+printf "%sThe installation is complete, you %sneed%s to restart your machine.%s\n\n" "${BLD}" "${CBL}" "${CNC}" "${CNC}"
+
+	while true; do
+		read -rp " Reboot now? [y/N]: " yn
+		case $yn in
+			[Yy]* )
+				printf "\n%s%sRebooting now...%s\n" "${BLD}" "${CGR}" "${CNC}"
+				sleep 3
+				reboot
+				break
+				;;
+			[Nn]* )
+				printf "\n%s%sOK, remember to restart later!%s\n\n" "${BLD}" "${CYE}" "${CNC}"
+				break
+				;;
+			* )
+				printf "\n%s%sPlease answer yes or no.%s\n\n" "${BLD}" "${CRE}" "${CNC}"
+				;;
+		esac
+	done
