@@ -8,7 +8,7 @@
 #
 
 # Show help
-F1
+alt + F1
 	OpenApps --KeyHelp
 
 #|||----- Applications -----|||#
