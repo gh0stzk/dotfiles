@@ -6,7 +6,7 @@
 
 
 
-&ensp;[<kbd> <br> Install <br> </kbd>](#-setup)&ensp;
+&ensp;[<kbd> <br> Install <br> </kbd>](#-installation)&ensp;
 &ensp;[<kbd> <br> Features <br> </kbd>](#-features)&ensp;
 &ensp;[<kbd> <br> Themes <br> </kbd>](#-the-themes)&ensp;
 &ensp;[<kbd> <br> Keybindings <br> </kbd>](#very-useful-keybindigs-to-know)&ensp;
@@ -17,7 +17,7 @@ https://github.com/user-attachments/assets/3eaae1e2-04dc-4a9b-8c91-139f85f5fb9e
 
 <br>
 
-## Welcome
+## 👻 Welcome
 
 Welcome to my dotfiles. I’m gh0stzk from Mexico.
 
@@ -290,7 +290,7 @@ https://github.com/user-attachments/assets/79764678-c519-4a41-a333-2a862a6d10f8
 | <kbd>super</kbd> + <kbd>alt</kbd> + <kbd>r</kbd>                                                                                                                                                         | Restart bspwm.                                                        |
 | `alt` + `F1`                                                                                                                                                                                             | Show keybinds cheatsheet                                              |
 
-And more.. You need to look sxhkdrc file for more, or press F1 for a cheatsheet.
+And more.. You need to look sxhkdrc file for more, or press Alt + F1 for a cheatsheet.
 
 ---
 
@@ -299,20 +299,20 @@ And more.. You need to look sxhkdrc file for more, or press F1 for a cheatsheet.
 > Some elements may appear different on higher or lower resolutions. You may need to make adjustments to adapt them to your preferences and setup. ⚠️⚠️⚠️
 
 > [!important]
-> The installer assumes you already have a **functional** Arch Linux installation, whether it’s a fresh install or an existing setup.
+> ✏️✏️✏️ The installer assumes you already have a **functional** Arch Linux installation, whether it’s a fresh install or an existing setup.
 >
 > A login manager of your choice is required; **lightdm** is recommended.
 >
 > The rofi connection manager applet, works with **NetworkManager**
 >
-> If using a virtual machine, be sure to change the Picom backend from **glx** to **xrender** before rebooting, and verify that hardware acceleration is correctly configured in your VM.
+> If using a virtual machine, be sure to change the Picom backend from **glx** to **xrender** before rebooting, and verify that hardware acceleration is correctly configured in your VM. ✏️✏️✏️
 
 > [!warning]
-> I have tested the installation and functionality of these dotfiles on both high- and low-end machines.
+> :wrench::wrench::wrench: I have tested the installation and functionality of these dotfiles on both high- and low-end machines.
 >
 > Some adjustments may still be needed, such as changing the Picom backend or VSync settings to ensure compatibility with your graphics card.
 >
-> If you encounter any issues, feel free to open an [issue](https://github.com/gh0stzk/dotfiles/issues).
+> If you encounter any issues, feel free to open an [issue](https://github.com/gh0stzk/dotfiles/issues). :wrench::wrench::wrench:
 
 ---
 
