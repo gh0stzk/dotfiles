@@ -1,7 +1,7 @@
 ## Replaced Ranger with Yazi
 ##### November 13 2024
 
-I replaced Rofi with Yazi, because it is faster, modern and looks spectacular.
+I replaced Ranger with Yazi, because it is faster, modern and looks spectacular.
 
 https://github.com/user-attachments/assets/8e15cc1a-88b8-4a7e-a4de-e7da76021406
 
