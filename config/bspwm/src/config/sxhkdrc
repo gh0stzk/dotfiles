@@ -32,8 +32,8 @@ shift + alt + {b,g,n}
 	OpenApps {--browser,--editor,--filemanager}
 
 # Terminal apps (ranger, nvim, ncmpcpp)
-shift + alt + {r,v,k}
-	OpenApps {--ranger,--nvim,--music}
+shift + alt + {y,v,k}
+	OpenApps {--yazi,--nvim,--music}
 
 # Pavucontrol
 shift + alt + p

@@ -232,21 +232,29 @@ I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wik
 | ![Shot-2024-11-09-155549](https://github.com/user-attachments/assets/84d71e84-cb6a-4536-92ce-225080c53555) |
 | :--------------------------------------------------------------------------------------------------------: |
 |                                                Rice Editor                                                 |
+
 ### Lockscreen
 
 | ![Lockscreen](https://github.com/user-attachments/assets/2f09b915-f426-49c3-b9b6-07be4e781f5a) |
 | :--------------------------------------------------------------------------------------------: |
 |                                           Lockscreen                                           |
+
 ### Jgmenu
 
 | ![Jgmenu](https://github.com/user-attachments/assets/82daebec-66a6-4716-8e78-b02fcec7e77c) |
 | :----------------------------------------------------------------------------------------: |
 |                                           Jgmenu                                           |
+
+## Yazi config
+
+https://github.com/user-attachments/assets/8e15cc1a-88b8-4a7e-a4de-e7da76021406
+
 ## Tmux theme
 
 | ![ezgif com-animated-gif-maker](https://github.com/gh0stzk/dotfiles/assets/67278339/dd5f7261-0631-4a91-b584-51ca8859c197) |
 | :-----------------------------------------------------------------------------------------------------------------------: |
 |                                                        Tmux theme                                                         |
+
 ## Scratchpad
 
 https://github.com/user-attachments/assets/79764678-c519-4a41-a333-2a862a6d10f8
@@ -256,6 +264,7 @@ https://github.com/user-attachments/assets/79764678-c519-4a41-a333-2a862a6d10f8
 | ![Gtk-Ranger-Music](https://github.com/user-attachments/assets/a7f7c082-5ffd-4a6c-babf-7361764cec80) |
 | :--------------------------------------------------------------------------------------------------: |
 |            The environment changes with each theme. In the gif: (Ranger, Thunar, Ncmpcpp)            |
+
 ## App Launcher
 
 | ![App-Launcher](https://github.com/user-attachments/assets/e96d0ad2-a91a-48d4-8279-17f3d99a698d) |

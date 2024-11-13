@@ -51,8 +51,8 @@ case "$1" in
 	--keyboard)
 		KeyBoardL
 		;;
-    --ranger)
-        Term --ranger
+    --yazi)
+        Term --yazi
         ;;
     --nvim)
         Term --nvim

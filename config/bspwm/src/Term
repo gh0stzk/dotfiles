@@ -51,8 +51,8 @@ case $MY_TERM in
             "--checkupdates")
                 alacritty --hold --class Updating,Updating -e Updates --print-updates
                 ;;
-            "--ranger")
-                alacritty --class RangerTerm,RangerTerm -e ranger
+            "--yazi")
+                alacritty --class YaziTerm,YaziTerm -e yazi
                 ;;
             "--nvim")
                 alacritty -e nvim
@@ -79,8 +79,8 @@ case $MY_TERM in
             "--checkupdates")
                 kitty --hold --class=Updating -e Updates --print-updates
                 ;;
-            "--ranger")
-                kitty --hold --class=RangerTerm -e ranger
+            "--yazi")
+                kitty --hold --class=YaziTerm -e yazi
                 ;;
             "--nvim")
                 kitty -e nvim

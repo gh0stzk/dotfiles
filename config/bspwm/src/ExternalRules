@@ -50,7 +50,7 @@ case "$class" in
         dimensions=$(calculate_dimensions 25 47)
 		result "state=floating sticky=on center=on rectangle=$dimensions"
         ;;
-    RangerTerm)
+    YaziTerm)
 		dimensions=$(calculate_dimensions 51 34)
 		result "state=floating center=on rectangle=$dimensions"
 		;;
