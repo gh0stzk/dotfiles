@@ -52,16 +52,16 @@ case $MY_TERM in
                 alacritty --hold --class Updating,Updating -e Updates --print-updates
                 ;;
             "--yazi")
-                alacritty --class YaziTerm,YaziTerm -e yazi
+                alacritty --class FloaTerm,YaziTerm -e yazi
                 ;;
             "--nvim")
                 alacritty -e nvim
                 ;;
             "--music")
-                alacritty --class MusicTerm,MusicTerm -e ncmpcpp
+                alacritty --class FloaTerm,MusicTerm -e ncmpcpp
                 ;;
             "--fetch")
-                alacritty --class FetchTerm,FetchTerm -e ~/.local/bin/sysfetch
+                alacritty --class FloaTerm,FetchTerm -e ~/.local/bin/sysfetch
                 ;;
         esac
         ;;
@@ -80,16 +80,16 @@ case $MY_TERM in
                 kitty --hold --class=Updating -e Updates --print-updates
                 ;;
             "--yazi")
-                kitty --hold --class=YaziTerm -e yazi
+                kitty --hold --name=YaziTerm --class=FloaTerm -e yazi
                 ;;
             "--nvim")
                 kitty -e nvim
                 ;;
             "--music")
-                kitty --class=MusicTerm -e ncmpcpp
+                kitty --name=MusicTerm --class=FloaTerm -e ncmpcpp
                 ;;
             "--fetch")
-                kitty --class=FetchTerm -e ~/.local/bin/sysfetch
+                kitty --name=FetchTerm --class=FloaTerm -e ~/.local/bin/sysfetch
                 ;;
         esac
         ;;

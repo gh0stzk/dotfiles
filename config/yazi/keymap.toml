@@ -124,7 +124,7 @@ keymap = [
 	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Go to the downloads directory" },
 	{ on = [ "g", "i" ],       run = "cd ~/Pictures", desc = "Go to the images directory" },
 	{ on = [ "g", "v" ],       run = "cd ~/Videos", desc = "Go to the video directory" },
-	{ on = [ "g", "f" ],       run = "cd ~/Documenta", desc = "Go to the documents directory" },
+	{ on = [ "g", "f" ],       run = "cd ~/Documents", desc = "Go to the documents directory" },
 	{ on = [ "g", "<Space>" ], run = "cd --interactive", desc = "Go to a directory interactively" },
 
 	# Tabs

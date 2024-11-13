@@ -29,8 +29,8 @@ bg="#070219"  fg="#27fbfe"
 black="#626483"   red="#fb007a"   green="#a6e22e"   yellow="#f3e430"
 blackb="#626483"  redb="#fb007a"  greenb="#a6e22e"  yellowb="#f3e430"
 
-blue="#19bffe"   magenta="#6800d2"   cyan="#43fbff"   white="#d9d9d9"
-blueb="#58AFC2"  magentab="#472575"  cyanb="#926BCA"  whiteb="#f1f1f1"
+blue="#19bffe"   magenta="#6800d2"   cyan="#43fbff"   white="#d5ddee"
+blueb="#58AFC2"  magentab="#472575"  cyanb="#926BCA"  whiteb="#d5ddee"
 
 # Gtk theme vars
 gtk_theme="CyberPunk-zk"	gtk_icons="BeautyLine"	gtk_cursor="Qogirr-Dark"	geany_theme="z0mbi3-CyberPunk"

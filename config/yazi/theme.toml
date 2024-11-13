@@ -31,7 +31,7 @@ marker_marked   = { fg = "lightcyan",   bg = "lightcyan" }
 marker_selected = { fg = "lightyellow", bg = "lightyellow" }
 
 # Tab
-tab_active   = { reversed = true }
+tab_active   = { fg = "green", reversed = true }
 tab_inactive = {}
 tab_width    = 1
 

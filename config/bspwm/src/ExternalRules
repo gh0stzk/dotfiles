@@ -50,18 +50,6 @@ case "$class" in
         dimensions=$(calculate_dimensions 25 47)
 		result "state=floating sticky=on center=on rectangle=$dimensions"
         ;;
-    YaziTerm)
-		dimensions=$(calculate_dimensions 51 34)
-		result "state=floating center=on rectangle=$dimensions"
-		;;
-	MusicTerm)
-		dimensions=$(calculate_dimensions 41 48)
-		result "state=floating center=on rectangle=$dimensions"
-		;;
-	FetchTerm)
-		dimensions=$(calculate_dimensions 21 58)
-		result "state=floating center=on rectangle=$dimensions"
-		;;
 	RiceEditor)
 		result "state=floating focus=on center=on"
 		;;
@@ -102,4 +90,16 @@ case "$instance" in
     Toolkit)
         result "state=floating sticky=on rectangle=500x290+1054+593"
         ;;
+	YaziTerm)
+		dimensions=$(calculate_dimensions 51 34)
+		result "state=floating center=on rectangle=$dimensions"
+		;;
+	MusicTerm)
+		dimensions=$(calculate_dimensions 41 48)
+		result "state=floating center=on rectangle=$dimensions"
+		;;
+	FetchTerm)
+		dimensions=$(calculate_dimensions 21 58)
+		result "state=floating center=on rectangle=$dimensions"
+		;;
 esac

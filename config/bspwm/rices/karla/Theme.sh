@@ -29,8 +29,8 @@ bg="#0E1113"  fg="#afb1db"
 black="#353c52"   red="#e7034a"   green="#61b33e"   yellow="#ffb964"
 blackb="#353c52"  redb="#e71c5b"  greenb="#6fb352"  yellowb="#ffb964"
 
-blue="#5884d4"   magenta="#7a44e3"   cyan="#7df0f0"   white="#faf7ff"
-blueb="#5f90ea"  magentab="#8656e3"  cyanb="#97f0f0"  whiteb="#fdfcff"
+blue="#5884d4"   magenta="#7a44e3"   cyan="#7df0f0"   white="#afb1db"
+blueb="#5f90ea"  magentab="#8656e3"  cyanb="#97f0f0"  whiteb="#afb1db"
 
 # Gtk theme vars
 gtk_theme="z0mbi3Night-zk"	gtk_icons="Sweet-Rainbow"	gtk_cursor="Qogirr-Dark"	geany_theme="z0mbi3-z0mbi3Night"
