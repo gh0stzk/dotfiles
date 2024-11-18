@@ -11,11 +11,11 @@ const CONFIG = {
 	// └─┘┴ ┴└─┘┴└─┘└─┘
 
 	// General
-	name: 'gh0stzk',
-	imageBackground: false,
+	name: 'NoBody',
+	imageBackground: true,
 	openInNewTab: true,
 	twelveHourFormat: true,
-	timeZone: 'America/Mexico_City',
+	timeZone: 'America/Bogota',
 
 	// Greetings
 	greetingMorning: 'Good morning!',
@@ -24,11 +24,11 @@ const CONFIG = {
 	greetingNight: 'Go to Sleep!',
 
 	// Layout
-	bentoLayout: 'lists', // 'bento', 'lists', 'buttons'
+	bentoLayout: 'bento', // 'bento', 'lists', 'buttons'
 
 	// Weather
-	weatherKey: '8b05d62206f459e1d298cbe5844d7d87', // Write here your API Key
-	weatherIcons: 'OneDark', // 'Onedark', 'Nord', 'Dark', 'White'
+	weatherKey: '8b05d62206f459e1d298cbe5844d7d87', // Write here your API Key https://openweathermap.org/
+	weatherIcons: 'OneDark', // 'Onedark', 'Nord', 'Dark', 'White', 'Custom'
 	weatherUnit: 'C', // 'F', 'C'
 	language: 'en', // More languages in https://openweathermap.org/current#multi
 
@@ -37,7 +37,7 @@ const CONFIG = {
 	defaultLongitude: '-99.250',
 
 	// Autochange
-	autoChangeTheme: false,
+	autoChangeTheme: true,
 
 	// Autochange by OS
 	changeThemeByOS: true,
@@ -56,19 +56,19 @@ const CONFIG = {
 			id: '1',
 			name: 'Github',
 			icon: 'github',
-			link: 'https://github.com/',
+			link: 'https://github.com/NoBody-UU?tab=repositories',
 		},
 		{
 			id: '2',
 			name: 'Mail',
 			icon: 'mail',
-			link: 'https://mail.protonmail.com/',
+			link: 'https://mail.google.com/mail/u/0/#inbox',
 		},
 		{
 			id: '3',
-			name: 'Todoist',
-			icon: 'trello',
-			link: 'https://todoist.com',
+			name: 'Notes',
+			icon: 'notebook-pen',
+			link: 'https://www.notion.so/',
 		},
 		{
 			id: '4',
@@ -78,15 +78,15 @@ const CONFIG = {
 		},
 		{
 			id: '5',
-			name: 'Reddit',
-			icon: 'glasses',
-			link: 'https://reddit.com',
+			name: 'Outlook',
+			icon: 'mails',
+			link: 'https://outlook.live.com/',
 		},
 		{
 			id: '6',
-			name: 'Odysee',
-			icon: 'youtube',
-			link: 'https://odysee.com/',
+			name: 'Board',
+			icon: 'banana',
+			link: 'https://jalauniversity.instructure.com',
 		},
 	],
 
@@ -140,20 +140,20 @@ const CONFIG = {
 			id: '1',
 			links: [
 				{
-					name: 'z0mbi3 dots',
-					link: 'https://github.com/gh0stzk/dotfiles',
+					name: 'MonkeyType',
+					link: 'https://monkeytype.com/',
 				},
 				{
-					name: 'Arch Linux',
-					link: 'https://archlinux.org/',
+					name: 'NoBodyIDK',
+					link: 'https://www.nobodyidk.xyz/',
 				},
 				{
 					name: 'ChatGPT',
 					link: 'https://chat.openai.com/',
 				},
 				{
-					name: 'MonkeyType',
-					link: 'https://monkeytype.com/',
+					name: 'GitLab',
+					link: 'https://gitlab.com/',
 				},
 			],
 		},
@@ -162,21 +162,21 @@ const CONFIG = {
 			id: '2',
 			links: [
 				{
-					name: 'YouTube',
-					link: 'https://www.youtube.com',
+					name: 'YouTube Music',
+					link: 'https://music.youtube.com',
 				},
 				{
-					name: 'Netflix',
-					link: 'https://www.netflix.com',
+					name: 'YouTube',
+					link: 'https://www.youtube.com',
 				},
 				{
 					name: 'Twitch',
 					link: 'https://www.twitch.tv',
 				},
 				{
-					name: 'Amazon Prime',
-					link: 'https://www.primevideo.com',
-				},
+					name: 'Anime',
+					link: 'https://jkanime.net/',
+				}
 			],
 		},
 	],

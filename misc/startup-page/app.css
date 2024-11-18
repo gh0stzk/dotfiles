@@ -23,10 +23,10 @@
   /* Light Colors  */
   --accent: #57a0d9; /* Hover color */
   --background: #f5f5f5; /* Background color */
-  --cards: #e4e6e6; /* Cards color */
+  --cards: #e4e6e4; /* Cards color */
 
   /* Image background  */
-  --imgbg: url(assets/background.jpg); /* Image URL */
+  --imgbg: url(assets/background-rem.png); /* Image URL */
   --imgcol: linear-gradient(
     rgba(255, 255, 255, 0.7),
     rgba(255, 255, 255, 0.7)
@@ -35,13 +35,18 @@
 
 .darktheme {
   /* Dark Colors  */
-  --accent: #4d4168; /* Hover color */
-  --background: #14171c; /* Background color */
+  --accent: #60a8fa; /* Hover color */
+  --background: linear-gradient(
+    135deg,
+    #14171c,
+    #1a1d24,
+    #1b1f26
+  );
   --cards: #1B1F26; /* Cards color */
 
   /* Fonts Color */
   --fg: #b8bfe5; /* Foreground color */
-  --sfg: #b8bfe5; /* Secondary Foreground color */
+  --sfg: #013434; /* Secondary Foreground color */
 
   /* Image background  */
   --imgcol: linear-gradient(
@@ -111,11 +116,32 @@ body {
   background-color: var(--cards);
   box-shadow: 0 5px 7px rgba(0, 0, 0, 0.35);
   border-radius: 5px;
+  position: relative;
+  overflow: hidden;
 }
 
 .card:hover {
   transform: translateY(-0.2rem);
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.35);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 211, 0, 0.8),
+    rgba(26, 116, 121, 0.8),
+    rgba(255, 211, 0, 0.8)
+  );
+  opacity: 0;
+  z-index: -1; /* Para no interferir con el contenido */
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .timeBlock {
