@@ -66,6 +66,7 @@ map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Telescope find
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Telescope live_grep", noremap = true })
 map("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Telescope oldfiles", noremap = true })
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Telescope buffers", noremap = true })
+map("n", "<leader>fe", "<cmd>Telescope diagnostics<cr>", { desc = "Telescope diagnostics", noremap = true })
 
 -- Spectre
 map('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', { desc = "Toggle Spectre", noremap = true })
