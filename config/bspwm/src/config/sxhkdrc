@@ -11,52 +11,85 @@
 alt + F1
 	OpenApps --KeyHelp
 
-#|||----- Applications -----|||#
+############################
+# ----- Applications ----- #
+############################
 
-# Open Terminal (alacritty)
-super + Return
-	OpenApps --terminal
+# ----- Main Apps ----- #
 
-# Open floating Terminal
-super + alt + Return
-	OpenApps --floating
+# Open Terminal (Normal & Floating)
+super + {_,alt + }Return
+	OpenApps --{terminal,floating}
 
-# Application menu
+# App launcher
 super + @space
 	OpenApps --menu
-
-#####
-
-# Apps (browser, editor, filemanager)
-shift + alt + {b,g,n}
-	OpenApps {--browser,--editor,--filemanager}
-
-# Terminal apps (ranger, nvim, ncmpcpp)
-shift + alt + {y,v,k}
-	OpenApps {--yazi,--nvim,--music}
-
-# Pavucontrol
-shift + alt + p
-	OpenApps --soundcontrol
-
-
-#|||----- System Keybindings -----|||#
 
 # Theme Selector
 alt + @space
 	RiceSelector
 
+# ----- Your Apps ----- #
+
+# Apps (browser, editor, filemanager)
+super + {b,e,f}
+	OpenApps --{browser,editor,filemanager}
+
+# Terminal apps (yazi, nvim, ncmpcpp)
+super + {y,v,m}
+	OpenApps --{yazi,nvim,music}
+
+# Media apps (Pavucontrol, Telegram, Whatsapp)
+super + {p,t,w}
+	OpenApps --{soundcontrol,telegram,whats}
+
+# ----- Rofi Applets ----- #
+
 #Terminal Selector
 super + alt + t
 	Term --selecterm
 
-# jgmenu
-~button3
-  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu --csv-file=~/.config/bspwm/src/config/jgmenu.txt --config-file=~/.config/bspwm/src/config/jgmenurc
+# Wallpaper selector
+super + alt + w
+	WallSelect
+
+# Mount Android phones
+super + alt + a
+	OpenApps --android
+
+# Network Manager
+super + alt + n
+	OpenApps --netmanager
+
+# Bluetooth
+super + alt + b
+	OpenApps --bluetooth
+
+# Clipboard
+super + alt + c
+	OpenApps --clipboard
+
+# Screenshot
+super + alt + s
+	OpenApps --screenshot
+
+# PowerMenu
+super + alt + p
+	OpenApps --powermenu
+
+# Keyboard Layout Applet
+super + alt + k
+	OpenApps --keyboard
+
+# ----- Environment Apps ----- #
 
 # Scratchpad
 super + alt + o
 	tdrop -a -w 70% -h 35% -y 0 -x 15%  --class scratch alacritty --class=scratch
+
+# jgmenu
+~button3
+  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu --csv-file=~/.config/bspwm/src/config/jgmenu.txt --config-file=~/.config/bspwm/src/config/jgmenurc
 
 # Power off, Reboot, Log out, Lockscreen, kill an app
 ctrl + super + alt + {p,r,q,l,k}
@@ -70,41 +103,9 @@ super + alt + {h,u}
 ctrl + alt + {plus,minus,t}
 	picom-trans {-c -o +3,-c -o -1,-c -d}
 
-# Random wallpaper
-super + alt + w
-	WallSelect
-
-# Mount Android phones
-super + alt + a
-	OpenApps --android
-
-# Network Manager
-super + alt + n
-	OpenApps --netmanager
-
-# Clipboard
-super + alt + c
-	OpenApps --clipboard
-
-# Screenshot
-super + alt + s
-	OpenApps --screenshot
-
-# Bluetooth
-super + alt + b
-	OpenApps --bluetooth
-
-# PowerMenu
-super + alt + p
-	OpenApps --powermenu
-
-# Keyboard Layout Applet
-super + alt + k
-	OpenApps --keyboard
-
 # Manage brightness
 XF86MonBrightness{Up,Down}
-    sh Brightness {up,down}
+	sh Brightness {up,down}
 
 # Volume control
 XF86Audio{RaiseVolume,LowerVolume,Mute}
@@ -114,85 +115,80 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
 XF86Audio{Next,Prev,Play,Stop}
 	MediaControl {--next,--previous,--toggle,--stop}
 
-
-#|||----- Bspwm hotkeys -----|||#
+#####################
+# ----- Bspwm ----- #
+#####################
 
 # Reload BSPWM
 super + alt + r
 	bspc wm -r
 
-# close and kill
-super + {_,shift + }q
+# Close/Kill node
+super + {_,shift + }c
 	bspc node -{c,k}
 
-# Reload Keybindings
+# Reload sxhkd Keybinds
 super + Escape
 	pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/src/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
 
-#####
+# ----- Node states and flags ----- #
 
-# alternate between the tiled and monocle layout
-super + m
-	bspc desktop -l next
-
-# set the window state
-super + {t,shift + t,s,f}
+# Set the node state
+alt + {t,shift + t,a,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
-# set the node flags
-ctrl + alt {m,x,s,p}
+# Set the node flags
+alt + {m,x,s,p}
 	bspc node -g {marked,locked,sticky,private}
 
-# Hide/Unhide Window
-ctrl + alt + h
+# Hide/Unhide node
+alt + h
 	BspHideNode
 
-#####
+# ----- Focus/Swap Nodes ----- #
 
-# rotate desktop
-super + r
+# Rotate desktop
+super + Tab
 	bspc node @/ --rotate {90,-90}
-
-# Change focus of the Node or Swap Nodes
-shift + super {_,ctrl + }{Left,Down,Up,Right}
-	bspc node -{f,s} {west,south,north,east}
 
 # Switch workspace
 super + {Left,Right}
 	bspc desktop -f {prev,next}.local
 
-# focus or send to the given desktop
-super + {_,alt + }{1-9,0}
+# Focus or send to the given desktop
+super + {_,ctrl + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 # Send focused Node to workspace directionally
-super + alt + {Left,Right}
+super + ctrl + {Left,Right}
 	bspc node -d {prev,next} '--follow'
 
-# focus the last node/desktop
-super + {comma,Tab}
+# Cycle focus through nodes.
+ctrl + Tab
+	bspc node -f next.local.!hidden.window
+
+# Swap Nodes
+ctrl + shift + {Left,Down,Up,Right}
+	bspc node -s {west,south,north,east}
+
+# Focus the last node/desktop
+ctrl + shift {comma,period}
 	bspc {node,desktop} -f last
 
-#####
+# Preselect the direction (horizontal, vertical or cancel)
+super + ctrl {h,v,q}
+	bspc node -p {east,south,cancel}
 
-# preselect the direction
-super + {h,j,k,l}
-	bspc node -p {west,south,north,east}
+# ----- Expand/Shrink Nodes ----- #
 
-# cancel the preselection for the focused node
-super + alt + space
-	bspc node -p cancel
+# Expand node
+super + alt {Left,Down,Up,Right}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
-#####
+# Shrink node
+super + shift {Left,Down,Up,Right}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
-# expand a window
-ctrl + alt {Left,Down,Up,Right}
-	bspc node -z {left -10 0,bottom 0 10,top 0 -10,right 10 0}
-
-# contract a window
-ctrl + shift + alt + {Left,Down,Up,Right}
-	bspc node -z {right -10 0,top 0 10,bottom 0 -10,left 10 0}
-
-# move a floating window
+# Move floating window
 alt + shift {Left,Down,Up,Right}
-	bspc node -v {-10 0,0 10,0 -10,10 0}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
