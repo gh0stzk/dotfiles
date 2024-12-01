@@ -5,7 +5,7 @@ Maybe it's your first time using a window manager or maybe not, here are some ti
 
     - (Alt + F1) For a list of all keyboard shortcuts (If it doesn't open, please visit https://github.com/gh0stzk/dotfiles/wiki/Installing-EWW)
     - (Super + Enter) Opens the terminal
-    - (Super + q) To close windows/apps.
+    - (Super + c) To close windows/apps.
     - (Super + Space bar) Opens the apps menu
     - (Alt + Space bar) Open the menu to change the theme
     - (Super + arrows) Move between workspaces (there are 6)

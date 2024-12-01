@@ -8,26 +8,27 @@ monitor = 0
 follow = mouse
 
 #width = 300
-#height = 300
+#height = 80
 origin = top-right
-offset = 10x72
+offset = 20x60
 scale = 0
 
 notification_limit = 20
 indicate_hidden = yes
 
 transparency = 0
+corner_radius = 6
 
-gap_size = 3
+gap_size = 4
 separator_height = 1
-separator_color = "#bb9af7"
+separator_color = "#abb2bf"
 
 padding = 15
 horizontal_padding = 15
 text_icon_padding = 0
 
 frame_width = 0
-frame_color = "#1a1b26"
+frame_color = "#222330"
 
 sort = no
 idle_threshold = 0
@@ -62,8 +63,6 @@ history_length = 25
 browser = /usr/bin/xdg-open
 always_run_script = true
 ignore_dbusclose = false
-
-corner_radius = 5
 
 force_xinerama = false
 

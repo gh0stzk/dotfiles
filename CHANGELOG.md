@@ -1,3 +1,22 @@
+## Shortcuts and other changes
+##### December 01 2024
+
+I have modified the keyboard shortcuts trying to improve the UX, making them more intuitive, simple, organized and ergonomic.
+
+I have divided the theme.sh within each theme, into 2 files, Now theme-config.bash contains the configuration.
+All this to prepare the environment to use a single theme.sh in the future.
+
+For the moment I eliminated RiceEditor, since with the new changes it does not work now, and I am going to update and improve it in the next few days.
+AT THE MOMENT IT DOES NOT WORK.
+
+Also added a new way to set wallpapers, now you can decide the folder that contains your wallpapers or specify a specific wallpaper or continue with the default. And it can be configured by theme.
+
+Fixed flickering when you had a terminal open and changed themes.
+
+And eliminate unnecessary sleeps. Sometimes when changing themes, quickly, the bars would get stuck, now the loading process does not continue until the processes finish correctly.
+
+---
+
 ## Replaced Ranger with Yazi
 ##### November 13 2024
 
