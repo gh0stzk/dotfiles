@@ -1773,7 +1773,7 @@ class RiceEditorApp(Gtk.Window):
         """
         Lee el estado actual de Pixel-Art on Terminal desde .zshrc.
         """
-        zshrc_file = os.path.expanduser('~/.config/zsh/.zshrc')
+        zshrc_file = os.path.expanduser('~/.zshrc')
 
         try:
             with open(zshrc_file, 'r') as f:
@@ -1790,7 +1790,7 @@ class RiceEditorApp(Gtk.Window):
         """
         Maneja los cambios en el switch de Pixel-Art on Terminal.
         """
-        zshrc_file = os.path.expanduser('~/.config/zsh/.zshrc')
+        zshrc_file = os.path.expanduser('~/.zshrc')
         command_line = "$HOME/.local/bin/colorscript -r"
 
         try:
