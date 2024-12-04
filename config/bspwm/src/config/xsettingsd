@@ -3,6 +3,6 @@ Net/IconThemeName "TokyoNight-SE"
 Gtk/CursorThemeName "Qogirr-Dark"
 Gtk/DecorationLayout ":"
 Xft/Hinting 1
-Xft/HintStyle "hintslight"
+Xft/HintStyle "hintfull"
 Xft/Antialias 1
-Xft/RGBA "rgb"
+Xft/RGBA "none"
