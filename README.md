@@ -229,7 +229,7 @@ I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wik
 
 ### Rice Editor
 
-| ![Shot-2024-11-09-155549](https://github.com/user-attachments/assets/84d71e84-cb6a-4536-92ce-225080c53555) |
+| ![Shot-2024-11-09-155549](https://github.com/user-attachments/assets/2ac910c8-171f-47eb-8210-1469b6f75cc2) |
 | :--------------------------------------------------------------------------------------------------------: |
 |                                                Rice Editor                                                 |
 
