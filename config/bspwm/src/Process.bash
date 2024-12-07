@@ -4,7 +4,7 @@
 	wait_for_termination() {
 		local process_name="$1"
 		while pgrep -f "$process_name" >/dev/null; do
-			sleep 0.1
+			sleep 0.2
 		done
 	}
 
@@ -17,18 +17,11 @@
 		wait_for_termination "eww.*bar"
 	fi
 
-	# It is necessary to kill Dunst, otherwise the dunst notifications colorscheme does not change.
-	pkill -x dunst
-	wait_for_termination "dunst"
-
 	# This will kill the fix for eww in fullscreen, we don't need it in themes with polybar.
 	if pgrep -f "bspc subscribe node_state" >/dev/null; then
 		pkill -f "bspc subscribe node_state"
 		wait_for_termination "bspc subscribe node_state"
 	fi
-
-	# This sleep makes the transition between themes smoother.
-	#sleep 0.25
 
 
 # Explanation: Why are some applications started here and others in bspwmrc?

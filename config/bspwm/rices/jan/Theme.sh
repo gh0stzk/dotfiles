@@ -188,6 +188,8 @@ set_dunst_config() {
 		background = "${bg}"
 		foreground = "${red}"
 	_EOF_
+
+	dunstctl reload "$dunst_config_file"
 }
 
 # Set eww colors
@@ -266,10 +268,6 @@ set_geany(){
 
 # Launch theme
 launch_theme() {
-
-	# Launch dunst notification daemon
-	dunst -config "${HOME}"/.config/bspwm/src/config/dunstrc &
-
 	# Launch polybar
 	for mon in $(polybar --list-monitors | cut -d":" -f1); do
 		MONITOR=$mon polybar -q main -c "${HOME}"/.config/bspwm/rices/"${RICE}"/config.ini &

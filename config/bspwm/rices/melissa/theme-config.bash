@@ -42,7 +42,7 @@ P_ANIMATIONS="@"		# (@ = enable) (# = disable)
 P_TERM_OPACITY="0.98"	# Terminal transparency. Range: 0.1 - 1.0 (1.0 = disabled)
 
 # Dunst
-dunst_offset='20x30'
+dunst_offset='(20, 30)'
 dunst_origin='top-left'
 dunst_transparency='5'
 dunst_corner_radius='6'

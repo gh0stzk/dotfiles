@@ -7,10 +7,10 @@
 monitor = 0
 follow = mouse
 
-#width = 300
-#height = 80
+width = (0, 400)
+height = (0, 200)
 origin = top-right
-offset = 20x60
+offset = (20, 60)
 scale = 0
 
 notification_limit = 20
