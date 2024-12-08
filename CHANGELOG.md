@@ -16,6 +16,15 @@ On less powerful computers, your CPU usage may increase A LOT, but hey, it's jus
 
 You need to have my dotfiles updated.
 
+If you already have my dots, and you already updated the dots, you need to install mpv and xwinwrap.
+
+```bash
+sudo pacman -S mpv
+paru -S xwinwrap-0.9-bin
+```
+
+https://github.com/user-attachments/assets/08ae55d3-a6cc-4944-b1dd-5df1ff9b1c4d
+
 ---
 
 ## Shortcuts and other changes
