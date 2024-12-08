@@ -412,6 +412,7 @@ class RiceEditorApp(Gtk.Window):
                 self.wall_engine_combo.append("Theme", "Default")
                 self.wall_engine_combo.append("CustomDir", "Custom Dir")
                 self.wall_engine_combo.append("CustomImage", "Custom Image")
+                self.wall_engine_combo.append("CustomAnimated", "Custom Animated")
 
                 # Set initial value
                 initial_engine = self.get_wall_engine()
@@ -1496,6 +1497,33 @@ class RiceEditorApp(Gtk.Window):
             self.wall_engine_options_box.pack_start(custom_image_label, False, False, 10)
             self.wall_engine_options_box.pack_start(hbox, False, False, 10)
 
+        elif engine == "CustomAnimated":  # Custom Image
+            # Label for Custom Animated
+            custom_animated_label = Gtk.Label(
+                label="Select the file you want to use as wallpaper.\nValid files (mp4, mkv, gif)"
+            )
+            custom_animated_label.set_halign(Gtk.Align.START)
+            custom_animated_label.set_justify(Gtk.Justification.LEFT)
+
+            # Entry and Buttons
+            custom_animated_entry = Gtk.Entry()
+            custom_animated_entry.set_text(self.get_custom_animated())
+
+            browse_button = Gtk.Button(label="Browse")
+            browse_button.connect("clicked", self.on_browse_animated, custom_animated_entry)
+
+            apply_button = Gtk.Button(label="Apply")
+            apply_button.connect("clicked", self.on_apply_wall_engine, "CustomAnimated", custom_animated_entry)
+
+            # Layout
+            hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
+            hbox.pack_start(custom_animated_entry, True, True, 0)
+            hbox.pack_end(browse_button, False, False, 0)
+            hbox.pack_end(apply_button, False, False, 0)
+
+            self.wall_engine_options_box.pack_start(custom_animated_label, False, False, 10)
+            self.wall_engine_options_box.pack_start(hbox, False, False, 10)
+
         self.wall_engine_options_box.show_all()
 
     def on_wall_engine_changed(self, combo):
@@ -1507,6 +1535,9 @@ class RiceEditorApp(Gtk.Window):
 
     def get_custom_wall(self):
         return self.read_theme_variable("CUSTOM_WALL")
+
+    def get_custom_animated(self):
+        return self.read_theme_variable("CUSTOM_ANIMATED")
 
     def read_theme_variable(self, var_name):
         current_theme = self.get_current_theme()
@@ -1543,17 +1574,22 @@ class RiceEditorApp(Gtk.Window):
                 if engine == "CustomImage" and line.startswith('CUSTOM_WALL='):
                     content[i] = f'CUSTOM_WALL="{entry.get_text()}"\n'
 
+                if engine == "CustomAnimated" and line.startswith('CUSTOM_ANIMATED='):
+                    content[i] = f'CUSTOM_ANIMATED="{entry.get_text()}"\n'
+
             with open(config_file, 'w') as f:
                 f.writelines(content)
 
             # Aplicar cambios en tiempo real
             command = ""
             if engine == "Theme":
-                command = f'feh -z --no-fehbg --bg-fill ~/.config/bspwm/rices/{current_theme}/walls'
+                command = f'pkill xwinwrap ; feh -z --no-fehbg --bg-fill ~/.config/bspwm/rices/{current_theme}/walls'
             elif engine == "CustomDir":
-                command = f'feh -z --no-fehbg --bg-fill "{entry.get_text()}"'
+                command = f'pkill xwinwrap ; feh -z --no-fehbg --bg-fill "{entry.get_text()}"'
             elif engine == "CustomImage":
-                command = f'feh --no-fehbg --bg-fill "{entry.get_text()}"'
+                command = f'pkill xwinwrap ; feh --no-fehbg --bg-fill "{entry.get_text()}"'
+            elif engine == "CustomAnimated":
+                command = f'pkill xwinwrap ; AnimatedWall --start "{entry.get_text()}"'
 
             subprocess.run(command, shell=True)
 
@@ -1606,6 +1642,38 @@ class RiceEditorApp(Gtk.Window):
         filter_images.add_pattern("*.jpg")
         filter_images.add_pattern("*.jpeg")
         filter_images.add_pattern("*.webp")
+        dialog.add_filter(filter_images)
+
+        response = dialog.run()
+        if response == Gtk.ResponseType.OK:
+            file = dialog.get_filename()
+            entry.set_text(file)
+
+        dialog.destroy()
+
+    def on_browse_animated(self, button, entry):
+        """
+        Abre un diálogo para seleccionar un archivo y actualiza la entrada.
+        """
+        dialog = Gtk.FileChooserDialog(
+            title="Select Image File",
+            parent=self,
+            action=Gtk.FileChooserAction.OPEN,
+        )
+        dialog.add_buttons(
+            Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+            Gtk.STOCK_OPEN, Gtk.ResponseType.OK
+        )
+
+        # Filtro para imágenes
+        filter_images = Gtk.FileFilter()
+        filter_images.set_name("Animated Files")
+        filter_images.add_mime_type("image/gif")
+        filter_images.add_mime_type("video/mp4")
+        filter_images.add_mime_type("video/mkv")
+        filter_images.add_pattern("*.gif")
+        filter_images.add_pattern("*.mp4")
+        filter_images.add_pattern("*.mkv")
         dialog.add_filter(filter_images)
 
         response = dialog.run()

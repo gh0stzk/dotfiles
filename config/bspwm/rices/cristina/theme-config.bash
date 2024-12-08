@@ -56,10 +56,12 @@ gtk_cursor="Qogirr-Dark"
 geany_theme="z0mbi3-RosePineMoon"
 
 # Wallpaper engine
-# Available methods:
+# Available engines:
 # - Theme	(Set a random wallpaper from rice directory)
 # - CustomDir	(Set a random wallpaper from the directory you specified)
 # - CustomImage	(Sets a specific image as wallpaper)
-ENGINE="Theme"		# Theme | CustomDir | CustomImage
+# - CustomAnimated (Set an animated wallpaper. "mp4, mkv, gif")
+ENGINE="Theme"
 CUSTOM_DIR="/path/to/dir"
 CUSTOM_WALL="/path/to/image"
+CUSTOM_ANIMATED="$HOME/.config/bspwm/src/assets/animated_wall.mp4"

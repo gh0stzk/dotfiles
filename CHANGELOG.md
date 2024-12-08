@@ -1,3 +1,23 @@
+## Animated Wallpapers
+##### December 08 2024
+
+I have added the function of being able to set an animated wallpaper in the environment.
+
+Since a few commits ago, you can now configure BY THEME if you want a random wallpaper to be displayed depending on the theme you are on (Default). Or you can show a random wallpaper by choosing the folder where you want the random wallpaper to be taken (CustomDir). Or you can specify a specific image (CustomImage).
+
+Your changes are saved and that specific theme will display the wallpaper depending on the option you have chosen.
+
+I have now added the option to set an animated wallapper (AnimatedWall).
+Valid files are **(mp4, mkv, gif)**
+
+I added 7 animated wallpapers to the dotfiles but if you don't like them, you can download any from the internet and configure it.
+
+On less powerful computers, your CPU usage may increase A LOT, but hey, it's just one more feature you have at your disposal.
+
+You need to have my dotfiles updated.
+
+---
+
 ## Shortcuts and other changes
 ##### December 01 2024
 

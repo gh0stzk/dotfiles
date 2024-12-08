@@ -87,7 +87,7 @@ clear
 logo "Installing needed packages.."
 
 dependencias=(alacritty base-devel bat brightnessctl bspwm dunst eza feh gvfs-mtp firefox geany git kitty imagemagick jq \
-			        jgmenu libwebp maim mpc mpd neovim ncmpcpp npm pamixer pacman-contrib \
+			        jgmenu libwebp maim mpc mpd mpv neovim ncmpcpp npm pamixer pacman-contrib \
 			        papirus-icon-theme picom playerctl polybar polkit-gnome python-gobject \
 			        redshift rofi rustup sxhkd tmux ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd \
 			        ttf-joypixels ttf-terminus-nerd ttf-ubuntu-mono-nerd ueberzug webp-pixbuf-loader xclip xdg-user-dirs \
@@ -392,7 +392,7 @@ clear
 
 logo "Installing AUR dependencies."
 
-aur_apps=(tdrop-git xqp rofi-greenclip ttf-maple i3lock-color simple-mtpfs eww-git)
+aur_apps=(tdrop-git xqp rofi-greenclip xwinwrap-0.9-bin ttf-maple i3lock-color simple-mtpfs eww-git)
 
 printf "%s%sChecking for required packages...%s\n\n" "${BLD}" "${CBL}" "${CNC}"
 for aur_package in "${aur_apps[@]}"; do
