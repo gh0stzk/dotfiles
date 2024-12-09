@@ -1,3 +1,51 @@
+## Animated Wallpapers
+##### December 08 2024
+
+I have added the function of being able to set an animated wallpaper in the environment.
+
+Since a few commits ago, you can now configure BY THEME if you want a random wallpaper to be displayed depending on the theme you are on (Default). Or you can show a random wallpaper by choosing the folder where you want the random wallpaper to be taken (CustomDir). Or you can specify a specific image (CustomImage).
+
+Your changes are saved and that specific theme will display the wallpaper depending on the option you have chosen.
+
+I have now added the option to set an animated wallapper (AnimatedWall).
+Valid files are **(mp4, mkv, gif)**
+
+I added 7 animated wallpapers to the dotfiles but if you don't like them, you can download any from the internet and configure it.
+
+On less powerful computers, your CPU usage may increase A LOT, but hey, it's just one more feature you have at your disposal.
+
+You need to have my dotfiles updated.
+
+If you already have my dots, and you already updated the dots, you need to install mpv and xwinwrap.
+
+```bash
+sudo pacman -S mpv
+paru -S xwinwrap-0.9-bin
+```
+
+https://github.com/user-attachments/assets/08ae55d3-a6cc-4944-b1dd-5df1ff9b1c4d
+
+---
+
+## Shortcuts and other changes
+##### December 01 2024
+
+I have modified the keyboard shortcuts trying to improve the UX, making them more intuitive, simple, organized and ergonomic.
+
+I have divided the theme.sh within each theme, into 2 files, Now theme-config.bash contains the configuration.
+All this to prepare the environment to use a single theme.sh in the future.
+
+For the moment I eliminated RiceEditor, since with the new changes it does not work now, and I am going to update and improve it in the next few days.
+AT THE MOMENT IT DOES NOT WORK.
+
+Also added a new way to set wallpapers, now you can decide the folder that contains your wallpapers or specify a specific wallpaper or continue with the default. And it can be configured by theme.
+
+Fixed flickering when you had a terminal open and changed themes.
+
+And eliminate unnecessary sleeps. Sometimes when changing themes, quickly, the bars would get stuck, now the loading process does not continue until the processes finish correctly.
+
+---
+
 ## Replaced Ranger with Yazi
 ##### November 13 2024
 

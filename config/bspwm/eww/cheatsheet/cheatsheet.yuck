@@ -79,16 +79,25 @@
         (label :class "keys-alt" :xalign 1 :text "Super + 1-9"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Rotate workspace")
-        (label :class "keys-alt" :xalign 1 :text "Super + r"))
+        (label :class "keys-alt" :xalign 1 :text "Super + Tab"))
+      (box :orientation "h" :space-evenly "true"
+        (label :class "keys" :xalign 0 :text "")
+        (label :class "keys-alt" :xalign 1 :text ""))
+      (box :orientation "h" :space-evenly "true"
+        (label :class "keys" :xalign 0 :text "Send to other workspace")
+        (label :class "keys-alt" :xalign 1 :text "Super + Ctrl + 1-9"))
+      (box :orientation "h" :space-evenly "true"
+        (label :class "keys" :xalign 0 :text "Send to other workspace & follow")
+        (label :class "keys-alt" :xalign 1 :text "Super + Ctrl +  "))
       (box :orientation "h" :space-evenly "true"
         (label :class "category-preselection" :xalign 0.5 :text "Preselection")
         (label :text ""))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Preselect direction")
-        (label :class "keys-alt" :xalign 1 :text "Super + {h,j,k,l}"))
+        (label :class "keys-alt" :xalign 1 :text "Super + Ctrl + {h,v}"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Cancel preselection")
-        (label :class "keys-alt" :xalign 1 :text "Super + Alt + SpaceBar"))
+        (label :class "keys-alt" :xalign 1 :text "Super + Ctrl + q"))
     )
 
     (box :orientation "v" :space-evenly "false" :spacing 2
@@ -97,70 +106,61 @@
         (label :text ""))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Close Node")
-        (label :class "keys-alt" :xalign 1 :text "Super + q"))
+        (label :class "keys-alt" :xalign 1 :text "Super + c"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Kill Node")
-        (label :class "keys-alt" :xalign 1 :text "Super + Shift + q"))
+        (label :class "keys-alt" :xalign 1 :text "Super + Shift + c"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Set Node Floating")
-        (label :class "keys-alt" :xalign 1 :text "Super + s"))
+        (label :class "keys-alt" :xalign 1 :text "Alt + a"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Set Node Pseudo tiled")
-        (label :class "keys-alt" :xalign 1 :text "Super + Shift + t"))
+        (label :class "keys-alt" :xalign 1 :text "Alt + Shift + t"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Set Node Tiled")
-        (label :class "keys-alt" :xalign 1 :text "Super + t"))
+        (label :class "keys-alt" :xalign 1 :text "Alt + t"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Set Node Fullscreen")
-        (label :class "keys-alt" :xalign 1 :text "Super + f"))
+        (label :class "keys-alt" :xalign 1 :text "Alt + f"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "")
         (label :class "keys-alt" :xalign 1 :text ""))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Mark Node")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt + m"))
+        (label :class "keys-alt" :xalign 1 :text "Alt + m"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Lock Node")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt + x"))
+        (label :class "keys-alt" :xalign 1 :text "Alt + x"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Sticky Node")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt + s"))
+        (label :class "keys-alt" :xalign 1 :text "Alt + s"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Private Node")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt + p"))
+        (label :class "keys-alt" :xalign 1 :text "Alt + p"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Hide/Unhide Node")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt + h"))
+        (label :class "keys-alt" :xalign 1 :text "Alt + h"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "")
         (label :class "keys-alt" :xalign 1 :text ""))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Change Node focus")
-        (label :class "keys-alt" :xalign 1 :text "Shift + Super +    "))
+        (label :class "keys-alt" :xalign 1 :text "Ctrl + Tab"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Swap Nodes")
-        (label :class "keys-alt" :xalign 1 :text "Shift Super Ctrl +    "))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "")
-        (label :class "keys-alt" :xalign 1 :text ""))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Send to other workspace")
-        (label :class "keys-alt" :xalign 1 :text "Super + Alt + 1-9"))
-      (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Send to other workspace & follow")
-        (label :class "keys-alt" :xalign 1 :text "Super + Alt +  "))
+        (label :class "keys-alt" :xalign 1 :text "Ctrl + Shift +    "))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Focus last Node/Workspace")
-        (label :class "keys-alt" :xalign 1 :text "Super + {comma,tab}"))
+        (label :class "keys-alt" :xalign 1 :text "Ctrl + Shift + {comma,period}"))
       (box :orientation "h" :space-evenly "true"
         (label :class "category-move" :xalign 0.5 :text "Move/Resize")
         (label :text ""))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Expand node")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt +    "))
+        (label :class "keys-alt" :xalign 1 :text "Super + Alt +    "))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Contract node")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl Shift Alt    "))
+        (label :class "keys-alt" :xalign 1 :text "Super + Shift +    "))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Move floating node")
         (label :class "keys-alt" :xalign 1 :text "Alt + Shift +    "))
@@ -205,22 +205,22 @@
         (label :text ""))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Browser")
-        (label :class "keys-alt" :xalign 1 :text "Shift + Alt + b"))
+        (label :class "keys-alt" :xalign 1 :text "Super + b"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "File Manager")
-        (label :class "keys-alt" :xalign 1 :text "Shift + Alt + n"))
+        (label :class "keys-alt" :xalign 1 :text "Super + f"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Editor")
-        (label :class "keys-alt" :xalign 1 :text "Shift + Alt + g"))
+        (label :class "keys-alt" :xalign 1 :text "Super + e"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Yazi")
-        (label :class "keys-alt" :xalign 1 :text "Shift + Alt + y"))
+        (label :class "keys-alt" :xalign 1 :text "Super + y"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Ncmpcpp")
-        (label :class "keys-alt" :xalign 1 :text "Shift + Alt + k"))
+        (label :class "keys-alt" :xalign 1 :text "Super + m"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Pavucontrol")
-        (label :class "keys-alt" :xalign 1 :text "Shift + Alt + p"))
+        (label :class "keys-alt" :xalign 1 :text "Super + p"))
       (box :orientation "h" :space-evenly "true"
         (label :class "category-power" :xalign 0.5 :text "Power")
         (label :text ""))

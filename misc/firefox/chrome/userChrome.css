@@ -65,18 +65,51 @@
 }*/
 
 /* Move tabs down */
-#titlebar {
-  order: 2;
-  -moz-appearance: none !important;
-  --tabs-navbar-shadow-size: 0px;
+@media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"){
+  #nav-bar > .titlebar-buttonbox-container{
+    order: -1 !important;
+    > .titlebar-buttonbox{
+      flex-direction: row-reverse;
+    }
+  }
 }
-
-.titlebar-buttonbox-container {
-  display: none;
-}
-
-.titlebar-spacer[type="post-tabs"] {
-  display: none;
+@media not (-moz-bool-pref: "sidebar.verticalTabs"){
+  .global-notificationbox,
+  #tab-notification-deck,
+  #TabsToolbar{
+    order: 1;
+  }
+  #TabsToolbar > :is(.titlebar-spacer,.titlebar-buttonbox-container){
+    display: none;
+  }
+  :root[sizemode="fullscreen"] #nav-bar > .titlebar-buttonbox-container{
+    display: flex !important;
+  }
+  :root[tabsintitlebar] #toolbar-menubar:not([autohide="false"]) ~ #nav-bar{
+    > .titlebar-buttonbox-container{
+      display: flex !important;
+    }
+    :root[sizemode="normal"] & {
+      > .titlebar-spacer{
+        display: flex !important;
+      }
+    }
+    :root[sizemode="maximized"] & {
+      > .titlebar-spacer[type="post-tabs"]{
+        display: flex !important;
+      }
+      @media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"),
+        (-moz-gtk-csd-reversed-placement),
+        (-moz-platform: macos){
+        > .titlebar-spacer[type="post-tabs"]{
+          display: none !important;
+        }
+        > .titlebar-spacer[type="pre-tabs"]{
+          display: flex !important;
+        }
+      }
+    }
+  }
 }
 
 /* tabs */

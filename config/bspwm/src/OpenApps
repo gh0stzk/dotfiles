@@ -77,7 +77,7 @@ case "$1" in
         telegram-desktop
         ;;
     --whats)
-        whatsdesk --disable-gpu
+        firefox -new-tab https://web.whatsapp.com/
         ;;
     --soundcontrol)
         pavucontrol
