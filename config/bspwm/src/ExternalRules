@@ -63,26 +63,14 @@ case "$class" in
     TelegramDesktop)
         result "desktop=^4 follow=on"
         ;;
-    retroarch)
-        result "state=pseudo_tiled desktop=^6"
-        ;;
     pavucontrol)
         result "state=floating center=on"
-        ;;
-    Virt-manager)
-        result "state=floating desktop=^5 follow=on center=on"
         ;;
     Thunar)
         result "desktop=^2 follow=on"
         ;;
     firefox|Navigator)
         result "desktop=^3 follow=on"
-        ;;
-    Transmission-gtk)
-        result "desktop=^6 follow=on"
-        ;;
-    Spotify)
-        result "state=floating desktop=^6 follow=on center=on"
         ;;
 esac
 
