@@ -85,7 +85,11 @@ super + alt + k
 
 # Scratchpad
 super + alt + o
-	tdrop -a -w 70% -h 35% -y 0 -x 15%  --class scratch alacritty --class=scratch
+	Term --scratch
+
+# Yazi Scratchpad
+super + alt + y
+	Term --yaziscratch
 
 # jgmenu
 ~button3

@@ -50,6 +50,9 @@ case "$class" in
         dimensions=$(calculate_dimensions 25 47)
 		result "state=floating sticky=on center=on rectangle=$dimensions"
         ;;
+	Scratch)
+		result "state=floating focus=on sticky=on"
+		;;
 	RiceEditor)
 		result "state=floating focus=on center=on"
 		;;
