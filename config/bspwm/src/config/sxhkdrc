@@ -96,8 +96,8 @@ super + alt + y
   xqp 0 $(xdo id -N Bspwm -n root) && jgmenu --csv-file=~/.config/bspwm/src/config/jgmenu.txt --config-file=~/.config/bspwm/src/config/jgmenurc
 
 # Power off, Reboot, Log out, Lockscreen, kill an app
-ctrl + super + alt + {p,r,q,l,k}
-	{systemctl poweroff, systemctl reboot,bspc quit,ScreenLocker,xkill}
+ctrl + super + alt + {p,r,q,l,k,s}
+	{systemctl poweroff, systemctl reboot,bspc quit,ScreenLocker,xkill,SoftReload}
 
 # Hide/Show Bar (Polybar and/or eww)
 super + alt + {h,u}
