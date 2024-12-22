@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Get current rice
+read -r current_rice < "$HOME"/.config/bspwm/.rice
+
+# Reload bars
+if pidof -q polybar; then
+    polybar-msg cmd restart >/dev/null 2>&1
+else
+    if [[ $current_rice = "andrea" ]]; then
+        eww reload -c "$HOME"/.config/bspwm/rices/andrea/andy >/dev/null 2>&1
+    else
+        eww reload -c "$HOME"/.config/bspwm/rices/z0mbi3/bar >/dev/null 2>&1
+    fi
+fi
+
+pkill -USR1 -x picom
+pkill -1 xsettingsd
+pkill -USR1 -x sxhkd
+dunstctl reload "${HOME}"/.config/bspwm/src/config/dunstrc
+
+# Reload eww widgets
+if eww ping -c "$HOME"/.config/bspwm/eww >/dev/null 2>&1; then
+    eww reload -c "$HOME"/.config/bspwm/eww >/dev/null 2>&1
+fi
+
+exit 0
+

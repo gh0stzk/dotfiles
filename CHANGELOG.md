@@ -1,3 +1,13 @@
+## Scratchpads update
+##### December 16 2024
+
+- Fix scratchpad only open withg alacritty terminal
+- Added new scratchpad that will open a Yazi session `Super + alt + y`
+
+Note: If you open a scratchpad session with a terminal (alacritty or kitty), and then change terminal and reopen the scratchpad, the previous session you had will not open, it will open a new session, that is, you will already have 2 open scratchpad sessions . And if you return to the previous terminal and open the scratchpad, the first session you had started will open.
+
+It would be great if the session was maintained regardless of whether you change terminals or not, but I don't think it's possible, but if anyone knows how, a pull request is welcome.
+
 ## Animated Wallpapers
 ##### December 08 2024
 
