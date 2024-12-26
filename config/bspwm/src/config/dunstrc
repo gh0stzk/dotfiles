@@ -7,8 +7,8 @@
 monitor = 0
 follow = mouse
 
-width = (0, 400)
-height = (0, 200)
+width = (300, 400)
+#height = (0, 200)
 origin = top-right
 offset = (20, 60)
 scale = 0
@@ -42,7 +42,7 @@ alignment = center
 vertical_alignment = center
 
 show_age_threshold = 60
-ellipsize = middle
+#ellipsize = middle
 ignore_newline = no
 stack_duplicates = false
 hide_duplicate_count = true
