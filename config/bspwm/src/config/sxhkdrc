@@ -45,10 +45,6 @@ super + {p,t,w}
 
 # ----- Rofi Applets ----- #
 
-#Terminal Selector
-super + alt + t
-	Term --selecterm
-
 # Wallpaper selector
 super + alt + w
 	WallSelect
@@ -85,11 +81,11 @@ super + alt + k
 
 # Scratchpad
 super + alt + o
-	Term --scratch
+	OpenApps --scratch
 
 # Yazi Scratchpad
 super + alt + y
-	Term --yaziscratch
+	OpenApps --yaziscratch
 
 # jgmenu
 ~button3

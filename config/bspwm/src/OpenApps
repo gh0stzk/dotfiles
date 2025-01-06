@@ -19,16 +19,16 @@ case "$1" in
         RiceSelector
         ;;
     --terminal)
-        Term --terminal
+        alacritty
         ;;
     --floating)
-        Term --floating
+        alacritty --class FloaTerm,FloaTerm
         ;;
     --update)
-        Term --update
+        alacritty --hold --class FloaTerm,FloaTerm -e Updates --update-system
         ;;
     --checkupdates)
-        Term --checkupdates
+        alacritty --hold --class Updating,Updating -e Updates --print-updates
         ;;
     --netmanager)
 		NetManagerDM
@@ -52,17 +52,23 @@ case "$1" in
 		KeyBoardL
 		;;
     --yazi)
-        Term --yazi
+        alacritty --class FloaTerm,YaziTerm -e yazi
         ;;
     --nvim)
-        Term --nvim
+        alacritty -e nvim
         ;;
     --music)
-        Term --music
+        alacritty --class FloaTerm,MusicTerm -e ncmpcpp
         ;;
     --fetch)
-        Term --fetch
+        alacritty --class FloaTerm,FetchTerm -e ~/.local/bin/sysfetch
         ;;
+    --scratch)
+		tdrop -ma -w 70% -h 35% -y 0 -x 15% -n 0 --class scratch alacritty --class=Scratch
+		;;
+	--yaziscratch)
+		tdrop -ma -w 80% -h 35% -y 0 -x 10% -n 1 --class scratch alacritty --class=Scratch -e yazi
+		;;
         # Apps
     --filemanager)
         thunar
