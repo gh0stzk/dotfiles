@@ -19,6 +19,12 @@
 ;; Updates vars
 (defpoll UPDATES :interval "15m" `Updates --get-updates`)
 
+;; Battery vars
+(defpoll battery_icon :interval "1s" "scripts/battery icon")
+(defpoll battery_percentage :interval "1s" "scripts/battery percent")
+(defpoll battery_status :interval "1s" "[ -d /sys/class/power_supply/BAT0 ] && echo true || echo false")
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;							Widget Section's							 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -58,6 +64,14 @@
 	)
 )
 
+;; Battery Widget
+(defwidget battery []
+  (box :orientation "v"
+       :visible {battery_status}
+    (eventbox :cursor "pointer"
+      (button :class "trayicon"
+              :style "background-image: url('${battery_icon}');"
+              :tooltip "Battery: ${battery_percentage}%"))))
 
 ;; control center ;;
 (defwidget notifycenter []
@@ -233,6 +247,7 @@
 (notifycenter)
 (volum)
 (wifi)
+(battery)
 (pacman)))
 
 ;; End Widgets ;;

@@ -86,7 +86,7 @@ clear
 
 logo "Installing needed packages.."
 
-dependencias=(alacritty base-devel bat brightnessctl bspwm dunst eza feh gvfs-mtp firefox geany git kitty imagemagick jq \
+dependencias=(alacritty base-devel bat brightnessctl bspwm dunst eza feh gvfs-mtp firefox geany git imagemagick jq \
 			        jgmenu libwebp maim mpc mpd mpv neovim ncmpcpp npm pamixer pacman-contrib \
 			        papirus-icon-theme picom playerctl polybar polkit-gnome python-gobject \
 			        redshift rofi rustup sxhkd tmux ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd \
@@ -209,7 +209,7 @@ sleep 10
 
 [ ! -d "$backup_folder" ] && mkdir -p "$backup_folder"
 
-for folder in bspwm alacritty picom rofi eww sxhkd dunst kitty polybar geany gtk-3.0 ncmpcpp ranger tmux zsh mpd paru; do
+for folder in bspwm alacritty picom rofi eww sxhkd dunst polybar geany gtk-3.0 ncmpcpp ranger tmux zsh mpd paru; do
     if [ -d "$HOME/.config/$folder" ]; then
         if mv "$HOME/.config/$folder" "$backup_folder/${folder}_$date" 2>> RiceError.log; then
             printf "%s%s%s folder backed up successfully at %s%s/%s_%s%s\n" "${BLD}" "${CGR}" "$folder" "${CBL}" "$backup_folder" "$folder" "$date" "${CNC}"
