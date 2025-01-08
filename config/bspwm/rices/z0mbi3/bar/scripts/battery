@@ -14,13 +14,13 @@ icon() {
     elif [ "$per" -gt "70" ]; then
         icon="images/battery_70.png"
     elif [ "$per" -gt "60" ]; then
-        icon="images/battery-50.svg"
+        icon="images/battery_50.png"
     elif [ "$per" -gt "50" ]; then
-        icon="images/battery-50.svg"
+        icon="images/battery_50.png"
     elif [ "$per" -gt "40" ]; then
-        icon="images/battery-30.svg"
+        icon="images/battery_30.png"
     elif [ "$per" -gt "30" ]; then
-        icon="images/battery-30.svg"
+        icon="images/battery_30.png"
     elif [ "$per" -gt "20" ]; then
         icon="images/battery_20.png"
     elif [ "$per" -gt "10" ]; then
