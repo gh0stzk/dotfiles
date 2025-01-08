@@ -26,7 +26,7 @@ icon() {
     elif [ "$per" -gt "10" ]; then
         icon="images/battery_20.png"
     elif [ "$per" -gt "0" ]; then
-        icon="images/battery_20.png"
+        icon="images/battery_empty.png"
     else
         icon="images/battery_empty.png"
     fi
