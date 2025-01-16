@@ -12,25 +12,25 @@
 WIDGET_DIR="$HOME/.config/bspwm/eww"
 
 case "$1" in
-    --menu)
-        rofi -show drun -theme "$HOME"/.config/bspwm/src/rofi-themes/Launcher.rasi
-        ;;
-    --rice)
-        RiceSelector
-        ;;
-    --terminal)
-        alacritty
-        ;;
-    --floating)
-        alacritty --class FloaTerm,FloaTerm
-        ;;
-    --update)
-        alacritty --hold --class FloaTerm,FloaTerm -e Updates --update-system
-        ;;
-    --checkupdates)
-        alacritty --hold --class Updating,Updating -e Updates --print-updates
-        ;;
-    --netmanager)
+	--menu)
+		rofi -show drun -theme "$HOME"/.config/bspwm/src/rofi-themes/Launcher.rasi
+		;;
+	--rice)
+		RiceSelector
+		;;
+	--terminal)
+		Term --terminal
+		;;
+	--floating)
+		Term --floating
+		;;
+	--update)
+		Term --update
+		;;
+	--checkupdates)
+		Term --checkupdates
+		;;
+	--netmanager)
 		NetManagerDM
 		;;
 	--bluetooth)
@@ -43,65 +43,65 @@ case "$1" in
 		ScreenShoTer
 		;;
 	--powermenu)
-        PowerMenu
-        ;;
-    --android)
+		PowerMenu
+		;;
+	--android)
 		AndroidMount
 		;;
 	--keyboard)
 		KeyBoardL
 		;;
-    --yazi)
-        alacritty --class FloaTerm,YaziTerm -e yazi
-        ;;
-    --nvim)
-        alacritty -e nvim
-        ;;
-    --music)
-        alacritty --class FloaTerm,MusicTerm -e ncmpcpp
-        ;;
-    --fetch)
-        alacritty --class FloaTerm,FetchTerm -e ~/.local/bin/sysfetch
-        ;;
-    --scratch)
-		tdrop -ma -w 70% -h 35% -y 0 -x 15% -n 0 --class scratch alacritty --class=Scratch
+	--yazi)
+		Term --yazi
+		;;
+	--nvim)
+		Term --nvim
+		;;
+	--music)
+		Term --music
+		;;
+	--fetch)
+		Term --fetch
+		;;
+	--scratch)
+		Term --scratch
 		;;
 	--yaziscratch)
-		tdrop -ma -w 80% -h 35% -y 0 -x 10% -n 1 --class scratch alacritty --class=Scratch -e yazi
+		Term --yaziscratch
 		;;
-        # Apps
-    --filemanager)
-        thunar
-        ;;
-    --browser)
-        firefox
-        ;;
-    --editor)
-        geany
-        ;;
-    --telegram)
-        telegram-desktop
-        ;;
-    --whats)
-        firefox -new-tab https://web.whatsapp.com/
-        ;;
-    --soundcontrol)
-        pavucontrol
-        ;;
-        # Eww Widgets
-    --KeyHelp)
+		# Apps
+	--filemanager)
+		thunar
+		;;
+	--browser)
+		firefox
+		;;
+	--editor)
+		geany
+		;;
+	--telegram)
+		telegram-desktop
+		;;
+	--whats)
+		firefox -new-tab https://web.whatsapp.com/
+		;;
+	--soundcontrol)
+		pavucontrol
+		;;
+		# Eww Widgets
+	--KeyHelp)
 		eww -c "$WIDGET_DIR" open --toggle csheet
 		;;
-    --usercard)
-        eww -c "$WIDGET_DIR" open --toggle launchermenu
-        ;;
-    --player)
-        eww -c "$WIDGET_DIR" open --toggle music
-        ;;
-    --calendar)
-        eww -c "$WIDGET_DIR" open --toggle date
-        ;;
-    *)
-        echo "Invalid Option"
-        ;;
+	--usercard)
+		eww -c "$WIDGET_DIR" open --toggle launchermenu
+		;;
+	--player)
+		eww -c "$WIDGET_DIR" open --toggle music
+		;;
+	--calendar)
+		eww -c "$WIDGET_DIR" open --toggle date
+		;;
+	*)
+		echo "Invalid Option"
+		;;
 esac

@@ -1,6 +1,8 @@
 #############################
 #		Melissa Theme		#
 #############################
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# https://github.com/gh0stzk/dotfiles
 
 # (Nord) colorscheme
 bg="#2e3440"
@@ -23,8 +25,15 @@ magentab="#b48ead"
 cyanb="#8fbcbb"
 whiteb="#eceff4"
 
+accent_color="#353C4A"
+arch_icon="#0f94d2"
+
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
+TOP_PADDING="35"
+BOTTOM_PADDING="35"
+LEFT_PADDING="1"
+RIGHT_PADDING="1"
 NORMAL_BC="#3b4252"		# Normal border color
 FOCUSED_BC="#4c566a"	# Focused border color
 
@@ -48,8 +57,40 @@ dunst_transparency='5'
 dunst_corner_radius='6'
 dunst_font='JetBrainsMono NF Medium 9'
 dunst_border='0'
+dunst_frame_color="$blue"
+dunst_icon_theme="Vimix-White"
+# Dunst animations
+dunst_close_preset="fly-out"
+dunst_close_direction="left"
+dunst_open_preset="fly-in"
+dunst_open_direction="left"
 
-# Gtk theme vars
+# Jgmenu colors
+jg_bg="$bg"
+jg_fg="$fg"
+jg_sel_bg="$blue"
+jg_sel_fg="$fg"
+jg_sep="$blackb"
+
+# Rofi menu font and colors
+rofi_font="Terminess Nerd Font Mono Bold 10"
+rofi_background="$bg"
+rofi_bg_alt="$accent_color"
+rofi_background_alt="${bg}E0"
+rofi_fg="$fg"
+rofi_selected="$cyan"
+rofi_active="$green"
+rofi_urgent="$red"
+
+# Screenlocker
+sl_bg="${bg:1}"
+sl_fg="${fg:1}"
+sl_ring="${blue:1}"
+sl_wrong="${red:1}"
+sl_date="${fg:1}"
+sl_verify="${green:1}"
+
+# Gtk theme
 gtk_theme="Nord-zk"
 gtk_icons="Vimix-White"
 gtk_cursor="Qogirr"

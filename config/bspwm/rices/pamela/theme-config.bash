@@ -1,6 +1,8 @@
 #############################
 #		Pamela Theme		#
 #############################
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# https://github.com/gh0stzk/dotfiles
 
 # (Lovelace) colorscheme from Elenapan
 bg="#1D1F28"
@@ -23,8 +25,15 @@ magentab="#B043D1"
 cyanb="#3FDCEE"
 whiteb="#BEBEC1"
 
+accent_color="#1F222B"
+arch_icon="#0f94d2"
+
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
+TOP_PADDING="53"
+BOTTOM_PADDING="1"
+LEFT_PADDING="1"
+RIGHT_PADDING="1"
 NORMAL_BC="#C574DD"		# Normal border color
 FOCUSED_BC="#8897F4"	# Focused border color
 
@@ -48,8 +57,40 @@ dunst_transparency='9'
 dunst_corner_radius='6'
 dunst_font='JetBrainsMono NF Medium 9'
 dunst_border='0'
+dunst_frame_color="$blue"
+dunst_icon_theme="Gruvbox-Plus-Dark"
+# Dunst animations
+dunst_close_preset="fly-out"
+dunst_close_direction="up"
+dunst_open_preset="fly-in"
+dunst_open_direction="right"
 
-# Gtk theme vars
+# Jgmenu colors
+jg_bg="$bg"
+jg_fg="$fg"
+jg_sel_bg="$blueb"
+jg_sel_fg="$fg"
+jg_sep="$blueb"
+
+# Rofi menu font and colors
+rofi_font="Terminess Nerd Font Mono Bold 10"
+rofi_background="$bg"
+rofi_bg_alt="$accent_color"
+rofi_background_alt="${bg}E0"
+rofi_fg="$fg"
+rofi_selected="$blueb"
+rofi_active="$greenb"
+rofi_urgent="$redb"
+
+# Screenlocker
+sl_bg="${bg:1}"
+sl_fg="${blue:1}"
+sl_ring="${bg:1}"
+sl_wrong="${red:1}"
+sl_date="${blue:1}"
+sl_verify="${green:1}"
+
+# Gtk theme
 gtk_theme="LoveLace-zk"
 gtk_icons="Luv-Folders"
 gtk_cursor="Qogirr-Dark"

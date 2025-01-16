@@ -1,6 +1,8 @@
 #############################
 #		Karla Theme			#
 #############################
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# https://github.com/gh0stzk/dotfiles
 
 # (Zombie-Night) colorscheme
 bg="#0E1113"
@@ -23,8 +25,15 @@ magentab="#8656e3"
 cyanb="#97f0f0"
 whiteb="#afb1db"
 
+accent_color="#111517"
+arch_icon="#0f94d2"
+
 # Bspwm options
 BORDER_WIDTH="3"		# Bspwm border
+TOP_PADDING="48"
+BOTTOM_PADDING="1"
+LEFT_PADDING="1"
+RIGHT_PADDING="1"
 NORMAL_BC="#353c52"		# Normal border color
 FOCUSED_BC="#353c52"	# Focused border color
 
@@ -48,8 +57,40 @@ dunst_transparency='8'
 dunst_corner_radius='0'
 dunst_font='JetBrainsMono NF Medium 9'
 dunst_border='2'
+dunst_frame_color="$blackb"
+dunst_icon_theme="Sweet-Rainbow"
+# Dunst animations
+dunst_close_preset="fly-out"
+dunst_close_direction="up"
+dunst_open_preset="fly-in"
+dunst_open_direction="up"
 
-# Gtk theme vars
+# Jgmenu colors
+jg_bg="$bg"
+jg_fg="$fg"
+jg_sel_bg="$accent_color"
+jg_sel_fg="$fg"
+jg_sep="$black"
+
+# Rofi menu font and colors
+rofi_font="JetBrainsMono NF Bold 9"
+rofi_background="${bg}F7"
+rofi_bg_alt="$accent_color"
+rofi_background_alt="${bg}F5"
+rofi_fg="$fg"
+rofi_selected="$blue"
+rofi_active="$green"
+rofi_urgent="$redb"
+
+# Screenlocker
+sl_bg="${bg:1}"
+sl_fg="${fg:1}"
+sl_ring="${bg:1}"
+sl_wrong="${red:1}"
+sl_date="${fg:1}"
+sl_verify="${green:1}"
+
+# Gtk theme
 gtk_theme="z0mbi3Night-zk"
 gtk_icons="Sweet-Rainbow"
 gtk_cursor="Qogirr-Dark"
@@ -64,4 +105,4 @@ geany_theme="z0mbi3-z0mbi3Night"
 ENGINE="Theme"
 CUSTOM_DIR="/path/to/dir"
 CUSTOM_WALL="/path/to/image"
-CUSTOM_ANIMATED="$HOME/.config/bspwm/src/assets/animated_wall.mp4"
+CUSTOM_ANIMATED="/home/z0mbi3/.config/bspwm/src/assets/animated_wall-3.mp4"

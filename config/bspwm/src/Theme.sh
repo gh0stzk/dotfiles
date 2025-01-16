@@ -1,37 +1,35 @@
 #!/usr/bin/env bash
-#  ███████╗██╗██╗    ██╗   ██╗██╗ █████╗     ██████╗ ██╗ ██████╗███████╗
-#  ██╔════╝██║██║    ██║   ██║██║██╔══██╗    ██╔══██╗██║██╔════╝██╔════╝
-#  ███████╗██║██║    ██║   ██║██║███████║    ██████╔╝██║██║     █████╗
-#  ╚════██║██║██║    ╚██╗ ██╔╝██║██╔══██║    ██╔══██╗██║██║     ██╔══╝
-#  ███████║██║███████╗╚████╔╝ ██║██║  ██║    ██║  ██║██║╚██████╗███████╗
-#  ╚══════╝╚═╝╚══════╝ ╚═══╝  ╚═╝╚═╝  ╚═╝    ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝
-#  Author  :  z0mbi3
-#  Url     :  https://github.com/gh0stzk/dotfiles
-#  About   :  This file will configure and launch the rice.
-#
+#  ████████╗██╗  ██╗███████╗███╗   ███╗███████╗
+#  ╚══██╔══╝██║  ██║██╔════╝████╗ ████║██╔════╝		Author  :  gh0stzk
+#     ██║   ███████║█████╗  ██╔████╔██║█████╗		Url     :  https://github.com/gh0stzk/dotfiles
+#     ██║   ██╔══██║██╔══╝  ██║╚██╔╝██║██╔══╝		Info    :  This file will configure and launch the rice.
+#     ██║   ██║  ██║███████╗██║ ╚═╝ ██║███████╗		09.01.2025 08:56:34
+#     ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝╚══════╝
+#			Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 
 # Current Rice
 read -r RICE < "$HOME"/.config/bspwm/.rice
 
 # Load sources
-. "${HOME}"/.config/bspwm/src/Process.bash
-. "${HOME}"/.config/bspwm/rices/${RICE}/theme-config.bash
-. "${HOME}"/.config/bspwm/src/WallEngine.bash
+. "$HOME"/.config/bspwm/src/Process.bash
+. "$HOME"/.config/bspwm/rices/"$RICE"/theme-config.bash
+. "$HOME"/.config/bspwm/src/WallEngine.bash
 
 # Set bspwm configuration
 set_bspwm_config() {
 	bspc config border_width ${BORDER_WIDTH}
-	bspc config top_padding 46
-	bspc config bottom_padding 1
-	bspc config left_padding 1
-	bspc config right_padding 1
+	bspc config top_padding ${TOP_PADDING}
+	bspc config bottom_padding ${BOTTOM_PADDING}
+	bspc config left_padding ${LEFT_PADDING}
+	bspc config right_padding ${RIGHT_PADDING}
 	bspc config normal_border_color "${NORMAL_BC}"
 	bspc config focused_border_color "${FOCUSED_BC}"
-	bspc config presel_feedback_color "${greenb}"
+	bspc config presel_feedback_color "${blue}"
 }
 
 # Terminal colors
 set_term_config() {
+	# Alacritty
 	sed -i "$HOME"/.config/alacritty/fonts.toml \
 		-e "s/size = .*/size = $term_font_size/" \
 		-e "s/family = .*/family = \"$term_font_name\"/"
@@ -69,6 +67,9 @@ set_term_config() {
 		cyan = "${cyanb}"
 		white = "${whiteb}"
 	EOF
+
+	# Kitty
+	kitten themes --reload-in=all ${RICE}
 }
 
 # Set compositor configuration
@@ -86,10 +87,10 @@ set_picom_config() {
 		-e "/picom-animations/c\\${P_ANIMATIONS}include \"picom-animations.conf\""
 
 	sed -i "$picom_animations_file" \
-		-e "/#-dunst-close-preset/s/.*#-/\t\tpreset = \"fly-out\";\t#-/" \
-		-e "/#-dunst-close-direction/s/.*#-/\t\tdirection = \"down\";\t#-/" \
-		-e "/#-dunst-open-preset/s/.*#-/\t\tpreset = \"fly-in\";\t#-/" \
-		-e "/#-dunst-open-direction/s/.*#-/\t\tdirection = \"down\";\t#-/"
+		-e "/#-dunst-close-preset/s/.*#-/\t\t\tpreset = \"${dunst_close_preset}\";\t#-/" \
+		-e "/#-dunst-close-direction/s/.*#-/\t\t\tdirection = \"${dunst_close_direction}\";\t#-/" \
+		-e "/#-dunst-open-preset/s/.*#-/\t\t\tpreset = \"${dunst_open_preset}\";\t#-/" \
+		-e "/#-dunst-open-direction/s/.*#-/\t\t\tdirection = \"${dunst_open_direction}\";\t#-/"
 }
 
 # Set dunst config
@@ -102,17 +103,17 @@ set_dunst_config() {
 		-e "s/transparency = .*/transparency = ${dunst_transparency}/" \
 		-e "s/^corner_radius = .*/corner_radius = ${dunst_corner_radius}/" \
 		-e "s/frame_width = .*/frame_width = ${dunst_border}/" \
-		-e "s/frame_color = .*/frame_color = \"${green}\"/" \
+		-e "s/frame_color = .*/frame_color = \"${dunst_frame_color}\"/" \
 		-e "s/font = .*/font = ${dunst_font}/" \
-		-e "s/foreground='.*'/foreground='${magentab}'/" \
-		-e "s/icon_theme = .*/icon_theme = \"${gtk_icons}, Adwaita\"/"
+		-e "s/foreground='.*'/foreground='${blue}'/" \
+		-e "s/icon_theme = .*/icon_theme = \"${dunst_icon_theme}, Adwaita\"/"
 
 	sed -i '/urgency_low/Q' "$dunst_config_file"
 	cat >>"$dunst_config_file" <<-_EOF_
 		[urgency_low]
 		timeout = 3
 		background = "${bg}"
-		foreground = "${greenb}"
+		foreground = "${green}"
 
 		[urgency_normal]
 		timeout = 5
@@ -122,7 +123,7 @@ set_dunst_config() {
 		[urgency_critical]
 		timeout = 0
 		background = "${bg}"
-		foreground = "${redb}"
+		foreground = "${red}"
 	_EOF_
 
 	dunstctl reload "$dunst_config_file"
@@ -132,41 +133,39 @@ set_dunst_config() {
 set_eww_colors() {
 	cat >"$HOME"/.config/bspwm/eww/colors.scss <<-EOF
 		\$bg: ${bg};
-		\$bg-alt: #2E2E2E;
+		\$bg-alt: ${accent_color};
 		\$fg: ${fg};
-		\$black: ${black};
-		\$red: ${redb};
-		\$green: ${greenb};
-		\$yellow: ${yellowb};
-		\$blue: ${blueb};
-		\$magenta: ${magentab};
-		\$cyan: ${cyanb};
-		\$archicon: #0f94d2;
+		\$black: ${blackb};
+		\$red: ${red};
+		\$green: ${green};
+		\$yellow: ${yellow};
+		\$blue: ${blue};
+		\$magenta: ${magenta};
+		\$cyan: ${cyan};
+		\$archicon: ${arch_icon};
 	EOF
 }
 
 set_launchers() {
 	# Jgmenu
 	sed -i "$HOME"/.config/bspwm/src/config/jgmenurc \
-		-e "s/color_menu_bg = .*/color_menu_bg = ${bg}/" \
-		-e "s/color_norm_fg = .*/color_norm_fg = ${fg}/" \
-		-e "s/color_sel_bg = .*/color_sel_bg = ${yellow}/" \
-		-e "s/color_sel_fg = .*/color_sel_fg = ${bg}/" \
-		-e "s/color_sep_fg = .*/color_sep_fg = ${black}/"
+		-e "s/color_menu_bg = .*/color_menu_bg = ${jg_bg}/" \
+		-e "s/color_norm_fg = .*/color_norm_fg = ${jg_fg}/" \
+		-e "s/color_sel_bg = .*/color_sel_bg = ${jg_sel_bg}/" \
+		-e "s/color_sel_fg = .*/color_sel_fg = ${jg_sel_fg}/" \
+		-e "s/color_sep_fg = .*/color_sep_fg = ${jg_sep}/"
 
 	# Rofi launchers
 	cat >"$HOME"/.config/bspwm/src/rofi-themes/shared.rasi <<-EOF
-		// Rofi colors for Silvia
-
 		* {
-		    font: "scientifica 12";
-		    background: ${bg};
-		    bg-alt: #2E2E2E;
-		    background-alt: ${bg}E0;
-		    foreground: ${fg};
-		    selected: ${yellow};
-		    active: ${green};
-		    urgent: ${red};
+		    font: "${rofi_font}";
+		    background: ${rofi_background};
+		    bg-alt: ${rofi_bg_alt};
+		    background-alt: ${rofi_background_alt};
+		    foreground: ${rofi_fg};
+		    selected: ${rofi_selected};
+		    active: ${rofi_active};
+		    urgent: ${rofi_urgent};
 
 		    img-background: url("~/.config/bspwm/rices/${RICE}/rofi.webp", width);
 		}
@@ -174,12 +173,12 @@ set_launchers() {
 
 	# Screenlock colors
 	sed -i "$HOME"/.config/bspwm/src/ScreenLocker \
-		-e "s/bg=.*/bg=${bg:1}/" \
-		-e "s/fg=.*/fg=${fg:1}/" \
-		-e "s/ring=.*/ring=${yellow:1}/" \
-		-e "s/wrong=.*/wrong=${red:1}/" \
-		-e "s/date=.*/date=${fg:1}/" \
-		-e "s/verify=.*/verify=${green:1}/"
+		-e "s/bg=.*/bg=${sl_bg}/" \
+		-e "s/fg=.*/fg=${sl_fg}/" \
+		-e "s/ring=.*/ring=${sl_ring}/" \
+		-e "s/wrong=.*/wrong=${sl_wrong}/" \
+		-e "s/date=.*/date=${sl_date}/" \
+		-e "s/verify=.*/verify=${sl_verify}/"
 }
 
 set_appearance() {
@@ -198,16 +197,13 @@ set_appearance() {
 
 # Apply Geany Theme
 set_geany(){
-	sed -i ${HOME}/.config/geany/geany.conf \
+	sed -i "$HOME"/.config/geany/geany.conf \
 		-e "s/color_scheme=.*/color_scheme=$geany_theme.conf/g"
 }
 
 # Launch theme
 launch_theme() {
-	# Launch polybar
-	for mon in $(polybar --list-monitors | cut -d":" -f1); do
-		MONITOR=$mon polybar -q cata-bar -c "${HOME}"/.config/bspwm/rices/"${RICE}"/config.ini &
-	done
+	. "$HOME"/.config/bspwm/rices/"$RICE"/Bar.bash
 }
 
 ### Apply Configurations

@@ -1,6 +1,8 @@
 #############################
 #		Isabel Theme		#
 #############################
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# https://github.com/gh0stzk/dotfiles
 
 # (Onedark) colorscheme
 bg="#14171c"
@@ -23,8 +25,15 @@ magentab="#8677cf"
 cyanb="#56b6c2"
 whiteb="#b8bfe5"
 
+accent_color="$black"
+arch_icon="#0f94d2"
+
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
+TOP_PADDING="1"
+BOTTOM_PADDING="40"
+LEFT_PADDING="1"
+RIGHT_PADDING="1"
 NORMAL_BC="#b8bfe5"		# Normal border color
 FOCUSED_BC="#7560d3"	# Focused border color
 
@@ -48,8 +57,40 @@ dunst_transparency='0'
 dunst_corner_radius='6'
 dunst_font='Inconsolata Semi Condensed Bold 9'
 dunst_border='0'
+dunst_frame_color="$magentab"
+dunst_icon_theme="Zafiro-Purple"
+# Dunst animations
+dunst_close_preset="fly-out"
+dunst_close_direction="up"
+dunst_open_preset="fly-in"
+dunst_open_direction="up"
 
-# Gtk theme vars
+# Jgmenu colors
+jg_bg="$bg"
+jg_fg="$fg"
+jg_sel_bg="$black"
+jg_sel_fg="$whiteb"
+jg_sep="$blackb"
+
+# Rofi menu font and colors
+rofi_font="Terminess Nerd Font Mono Bold 10"
+rofi_background="$bg"
+rofi_bg_alt="$black"
+rofi_background_alt="${bg}E0"
+rofi_fg="$fg"
+rofi_selected="$magentab"
+rofi_active="$green"
+rofi_urgent="$redb"
+
+# Screenlocker
+sl_bg="${bg:1}"
+sl_fg="${fg:1}"
+sl_ring="${bg:1}"
+sl_wrong="${red:1}"
+sl_date="${fg:1}"
+sl_verify="${green:1}"
+
+# Gtk theme
 gtk_theme="OneDark-zk"
 gtk_icons="Zafiro-Purple"
 gtk_cursor="Qogirr-Dark"

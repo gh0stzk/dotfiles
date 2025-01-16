@@ -8,10 +8,7 @@
 #  ╚═════╝ ╚══════╝╚═╝      ╚══╝╚══╝ ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 #	Author	-	gh0stzk
 #	Repo	-	https://github.com/gh0stzk/dotfiles
-#	Copyright (C) 2021-2024 gh0stzk <z0mbi3.zk@protonmail.com>
-
-# Current rice
-read -r RICETHEME < "${HOME}"/.config/bspwm/.rice
+#	Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 
 # Set environment variables
 export PATH="$HOME/.config/bspwm/src:$PATH"
@@ -64,7 +61,7 @@ bspc config pointer_action3           resize_corner
 pidof -q sxhkd || { sxhkd -c "${HOME}"/.config/bspwm/src/config/sxhkdrc & }
 
 # Load current theme
-"${HOME}"/.config/bspwm/rices/"${RICETHEME}"/Theme.sh
+"${HOME}"/.config/bspwm/src/Theme.sh
 
 # Launch picom
 pidof -q picom || { picom --config "${HOME}"/.config/bspwm/src/config/picom.conf & }

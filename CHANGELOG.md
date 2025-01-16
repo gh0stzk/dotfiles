@@ -1,3 +1,14 @@
+## File structure changes
+##### January 16 2025
+
+- I have changed the structure of how themes are loaded, now instead of having a Theme.sh for each theme, now there is only one located in ~/.config/bspwm/src/ and everything you need to modify is in theme-config.bash, all the configuration is in variables. To load the theme bars, there is now a file called Bar.bash within each theme, that is, to modify or create new themes, what you will have to modify is theme-config.bash and Bar.bash within each theme .
+
+All this to make creating/editing themes less tedious and tiring and not having to edit theme.sh 18 times.
+
+- I put the terminal selector back, with alacritty and kitty. Be sure you add all theme files to the themes directory within kitty's configuration.
+
+- I plan to add ghostty instead kitty but on 2 of my machines, ghostty make my cpus works at 100% load.. i think i will wait few months more.
+
 ## Scratchpads update
 ##### December 16 2024
 

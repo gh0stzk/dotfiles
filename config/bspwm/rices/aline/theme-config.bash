@@ -1,6 +1,8 @@
 #############################
 #		Aline Theme			#
 #############################
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# https://github.com/gh0stzk/dotfiles
 
 # (Rose Pine Dawn) colorscheme
 bg="#faf4ed"
@@ -23,8 +25,15 @@ magentab="#907aa9"
 cyanb="#d7827e"
 whiteb="#575279"
 
+accent_color="$black"
+arch_icon="#0f94d2"
+
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
+TOP_PADDING="51"
+BOTTOM_PADDING="1"
+LEFT_PADDING="1"
+RIGHT_PADDING="1"
 NORMAL_BC="#286983"		# Normal border color
 FOCUSED_BC="#907aa9"	# Focused border color
 
@@ -48,8 +57,40 @@ dunst_transparency='8'
 dunst_corner_radius='6'
 dunst_font='Inconsolata Semi Condensed Bold 9'
 dunst_border='0'
+dunst_frame_color="$white"
+dunst_icon_theme="Gruvbox-Plus-Dark"
+# Dunst animations
+dunst_close_preset="fly-out"
+dunst_close_direction="up"
+dunst_open_preset="fly-in"
+dunst_open_direction="right"
 
-# Gtk theme vars
+# Jgmenu colors
+jg_bg="$bg"
+jg_fg="$fg"
+jg_sel_bg="$black"
+jg_sel_fg="$fg"
+jg_sep="$magenta"
+
+# Rofi menu font and colors
+rofi_font="JetBrainsMono NF Bold 9"
+rofi_background="$bg"
+rofi_bg_alt="$black"
+rofi_background_alt="${bg}E0"
+rofi_fg="$fg"
+rofi_selected="$cyan"
+rofi_active="$green"
+rofi_urgent="$yellow"
+
+# Screenlocker
+sl_bg="${bg:1}"
+sl_fg="${black:1}"
+sl_ring="${magenta:1}"
+sl_wrong="${red:1}"
+sl_date="${black:1}"
+sl_verify="${green:1}"
+
+# Gtk theme
 gtk_theme="RosePineDawn-zk"
 gtk_icons="Luv-Folders"
 gtk_cursor="Qogirr"
