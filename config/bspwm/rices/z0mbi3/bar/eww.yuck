@@ -6,7 +6,7 @@
 (defvar pac false)
 
 ;; Workspaces
-(deflisten workspaces "scripts/WorkSpaces")
+(include "./workspaces.yuck")
 
 ;; Volume vars
 (defpoll volume_icon :interval "1s" "scripts/Volume --icon")
@@ -43,14 +43,6 @@
     )
   )
 )
-
-
-;; Workspaces Widgets ;;
-(defwidget workspaces []
-	(literal :content workspaces
-  )
-)
-
 
 ;; Wifi Widgets ;;
 (defwidget wifi []
@@ -225,12 +217,12 @@
 
 
 ;; Top Widgets ;;
-(defwidget top []
+(defwidget top [monitor]
 	(box	:orientation "v"
 			:space-evenly "false"
 			:valign "start"
 (launcher)
-(workspaces)))
+(workspaces :monitor monitor)))
 
 ;; Bottom Widgets ;;
 (defwidget bottom []
@@ -261,19 +253,20 @@
 (bottom)))
 
 ;; Bar Widgets ;;
-(defwidget bar []
+(defwidget bar [monitor]
 	(box :class "eww_bar"
 		 :orientation "v"
 		 :vexpand "false"
 		 :hexpand "false"
-(top)
+(top :monitor monitor)
 (end)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;							Window Section's							 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defwindow bar
+(defwindow bar [monitor]
+	:monitor monitor
 	:geometry (geometry :x "10px"
 						:y "0%"
 						:anchor "left center"
@@ -282,4 +275,4 @@
 	:reserve (struts :distance "5px"
 					 :side "left")
 	:wm-ignore false
-	(bar))
+	(bar :monitor monitor))

@@ -7,9 +7,9 @@ contains() {
 
 print_workspaces() {
     local buf=""
-    local desktops=$(bspc query -D --names | sort -u)
-    local focused_desktop=$(bspc query -D -d focused --names)
-    local occupied_desktops=$(bspc query -D -d .occupied --names)
+    local desktops=$(bspc query -D --monitor $1)
+    local focused_desktop=$(bspc query -D -d .active --monitor $1)
+    local occupied_desktops=$(bspc query -D -d .occupied --monitor $1)
 
     for d in $desktops; do
         if [[ "$focused_desktop" == "$d" ]]; then
@@ -33,9 +33,9 @@ print_workspaces() {
 }
 
 # Initial print
-print_workspaces
+print_workspaces $1
 
 # Listen to bspwm changes
 bspc subscribe desktop node_transfer | while read -r _ ; do
-    print_workspaces
+    print_workspaces $1
 done

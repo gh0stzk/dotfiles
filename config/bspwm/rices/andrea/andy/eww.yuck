@@ -6,7 +6,7 @@
 ;;---------- Widgets ----------;;
 
 ;; Workspaces
-(deflisten workspaces "scripts/WorkSpaces")
+(include "./workspaces.yuck")
 
 ;; Time vars
 (defpoll TIME :interval "1s" "date '+%I:%M %p'")
@@ -52,11 +52,6 @@
 				    :onrightclick "OpenApps --rice &")
 		 )
 	)
-)
-
-;; Workspaces Widgets ;;
-(defwidget workspaces []
-	(literal :content workspaces)
 )
 
 ;; Apps ;;
@@ -298,16 +293,9 @@
 	     ;;:valign "center"
 		 :space-evenly "false"
 (launcher)
-(apps)))
+(apps)
+(clock)))
 
-
-(defwidget middle []
-	(box :halign "center"
-		 ;;:valign "center"
-		 :spacing 15
-		 :space-evenly "false"
-(clock)
-(workspaces)))
 
 (defwidget right []
 	(box :space-evenly "false"
@@ -318,7 +306,7 @@
 (system)))
 
 
-(defwidget allbars []
+(defwidget allbars [monitor]
 	(box :class "allbars"
 		 :space-evenly "false"
 		 :spacing 15
@@ -326,13 +314,14 @@
 		 :valign "center"
 
 (left)
-(middle)
+(workspaces :monitor monitor)
 (right)))
 
 
 ;;---------- Main windows ----------;;
 
-(defwindow bar
+(defwindow bar [monitor]
+	:monitor monitor
 	:geometry (geometry :y "0px"
 						:width "100%"
 						:anchor "top center")
@@ -341,7 +330,7 @@
 	:reserve (struts :distance "3px" :side "top")
 	:windowtype "dock"
 	:wm-ignore false
-(allbars))
+  (allbars :monitor monitor))
 
 (defwindow audio_ctl
 	:geometry (geometry :x "-13%"
