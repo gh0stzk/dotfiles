@@ -37,7 +37,7 @@ case "$1" in
 		rofi-bluetooth
 		;;
 	--clipboard)
-		rofi -modi "clipboard:greenclip print" -theme "$HOME"/.config/bspwm/src/rofi-themes/Clipboard.rasi -show clipboard -run-command '{cmd}'
+		clipcat-menu
 		;;
 	--screenshot)
 		ScreenShoTer

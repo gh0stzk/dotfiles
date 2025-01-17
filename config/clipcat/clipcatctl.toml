@@ -1,0 +1,8 @@
+server_endpoint = "/run/user/1000/clipcat/grpc.sock"
+preview_length = 100
+
+[log]
+emit_journald = false
+emit_stdout = false
+emit_stderr = false
+level = "INFO"
