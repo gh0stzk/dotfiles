@@ -73,7 +73,7 @@ pidof -q xsettings || { xsettingsd --config="${HOME}"/.config/bspwm/src/config/x
 pidof -q eww || { eww -c "${HOME}"/.config/bspwm/eww daemon & }
 
 # Launch clipboard daemon
-pidof -q clipcat || { clipcatd & }
+pidof -q clipcatd || { clipcatd & }
 
 # Launch polkit
 pidof -q polkit-gnome-authentication-agent-1 || { /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & }
