@@ -34,7 +34,8 @@ cacheDir="$HOME/.cache/$USER/$current_rice"
 mkdir -p "${cacheDir}"
 
 # Trying to adapt the images and menu to your screen resolution.
-monitor_res=$(($(xdpyinfo | awk '/dimensions/{print $2}' | cut -d 'x' -f1) * 14 / $(xdpyinfo | awk '/resolution/{print $2}' | cut -d 'x' -f1)))
+focused_monitor=$(bspc query -M -m focused --names)
+monitor_res=$(($(xrandr | grep -w "$focused_monitor" | grep -o '[0-9]\+x[0-9]\+' | cut -d 'x' -f 1) * 14 / $(xdpyinfo | awk '/resolution/{print $2}' | cut -d 'x' -f1)))
 rofi_override="element-icon{size:${monitor_res}px;}"
 rofi_command="rofi -dmenu -theme $HOME/.config/bspwm/src/rofi-themes/WallSelect.rasi -theme-str $rofi_override"
 

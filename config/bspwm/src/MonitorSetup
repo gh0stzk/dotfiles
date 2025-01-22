@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+#  ███╗   ███╗ ██████╗ ███╗   ██╗██╗████████╗ ██████╗ ██████╗ ███████╗
+#  ████╗ ████║██╔═══██╗████╗  ██║██║╚══██╔══╝██╔═══██╗██╔══██╗██╔════╝
+#  ██╔████╔██║██║   ██║██╔██╗ ██║██║   ██║   ██║   ██║██████╔╝███████╗
+#  ██║╚██╔╝██║██║   ██║██║╚██╗██║██║   ██║   ██║   ██║██╔══██╗╚════██║
+#  ██║ ╚═╝ ██║╚██████╔╝██║ ╚████║██║   ██║   ╚██████╔╝██║  ██║███████║
+#  ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝
+#	Author	-	gh0stzk
+#	Repo	-	https://github.com/gh0stzk/dotfiles
+#	Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+
+# Obtener información de monitores conectados
+MONITORS=($(xrandr | grep -w "connected" | cut -d" " -f1))
+NUM_MONITORS=${#MONITORS[@]}
+
+# Función para obtener la resolución y tasa de refresco de un monitor
+get_monitor_info() {
+    local monitor=$1
+    local info=$(xrandr | grep -w "$monitor" -A1 | tail -n 1)
+    local resolution=$(echo "$info" | awk '{print $1}')
+    local refresh_rate=$(echo "$info" | awk '{print $2}' | tr -d '+*')
+    echo "$resolution $refresh_rate"
+}
+
+# Configurar monitor principal
+main_info=($(get_monitor_info "${MONITORS[0]}"))
+xrandr --output "${MONITORS[0]}" --primary --mode "${main_info[0]}" --pos 0x0 --rate "${main_info[1]}" --auto
+
+# Configurar monitores adicionales
+if [ $NUM_MONITORS -gt 1 ]; then
+    last_x_pos=0
+    last_width=$(echo "${main_info[0]}" | cut -d'x' -f1)
+
+    for ((i=1; i<NUM_MONITORS; i++)); do
+        monitor_info=($(get_monitor_info "${MONITORS[$i]}"))
+        last_x_pos=$((last_x_pos + last_width))
+        xrandr --output "${MONITORS[$i]}" --mode "${monitor_info[0]}" --pos "${last_x_pos}x0" --rate "${monitor_info[1]}" --auto
+        last_width=$(echo "${monitor_info[0]}" | cut -d'x' -f1)
+    done
+fi
+
+# Configurar workspaces de bspwm según el número de monitores
+case $NUM_MONITORS in
+    1)
+        # Un monitor: 6 workspaces
+        bspc monitor "${MONITORS[0]}" -d 1 2 3 4 5 6
+        ;;
+    2)
+        # Dos monitores: 4 workspaces cada uno
+        bspc monitor "${MONITORS[0]}" -d 1 2 3 4
+        bspc monitor "${MONITORS[1]}" -d 5 6 7 8
+        bspc wm -O "${MONITORS[0]}" "${MONITORS[1]}"
+        ;;
+    *)
+        # Tres o más monitores: 3 workspaces cada uno
+        for ((i=0; i<NUM_MONITORS && i<3; i++)); do
+            start=$((i * 3 + 1))
+            bspc monitor "${MONITORS[$i]}" -d $start $((start + 1)) $((start + 2))
+        done
+        # Construir la lista de monitores para el comando bspc wm -O
+        monitor_list=""
+        for ((i=0; i<NUM_MONITORS && i<3; i++)); do
+            monitor_list+="\"${MONITORS[$i]}\" "
+        done
+        eval "bspc wm -O $monitor_list"
+        ;;
+esac

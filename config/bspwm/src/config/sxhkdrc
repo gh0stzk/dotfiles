@@ -157,7 +157,7 @@ super + Tab
 
 # Switch workspace
 super + {Left,Right}
-	bspc desktop -f {prev,next}.local
+	bspc desktop -f {prev,next}
 
 # Focus or send to the given desktop
 super + {_,ctrl + }{1-9,0}
@@ -173,7 +173,7 @@ ctrl + Tab
 
 # Swap Nodes
 ctrl + shift + {Left,Down,Up,Right}
-	bspc node -s {west,south,north,east}
+	bspc node -s {west,south,north,east}.local
 
 # Focus the last node/desktop
 ctrl + shift {comma,period}

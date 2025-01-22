@@ -61,9 +61,14 @@ toggle_bar() {
         eww_config_dir=$(get_eww_config_dir)
 
         if [ "$action" = "hide" ]; then
-            eww -c "$eww_config_dir" close bar
+            eww -c "$eww_config_dir" close-all
         else
-            eww -c "$eww_config_dir" open bar
+			local monitors=$(xrandr -q | grep -w 'connected' | sort -k3n | cut -d' ' -f1)
+			local count=0
+			for m in $monitors; do
+				eww -c "$eww_config_dir" open bar --id "$m" --arg monitor="$m" --toggle --screen $count
+				count=$((count + 1))
+			done
         fi
     else
         polybar-msg cmd "$action"

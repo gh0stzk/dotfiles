@@ -21,21 +21,6 @@ class=$2
 instance=$3
 consequences=$4
 
-# Function to calculate dimensions based on percentages
-calculate_dimensions() {
-	local width_percent=$1
-	local height_percent=$2
-
-	# Get screen dimensions
-	read -r screen_width screen_height < <(xdpyinfo | awk '/dimensions:/ {print $2}' | tr 'x' ' ')
-
-	# Calculate dimensions in pixels
-	local width=$(((screen_width * width_percent + 50) / 100))
-	local height=$(((screen_height * height_percent + 50) / 100))
-
-	printf '%dx%d+0+0\n' "$width" "$height"
-}
-
 result() {
     eval "$consequences"
     [ "$state" ] || echo "$1"
@@ -43,12 +28,10 @@ result() {
 
 case "$class" in
     FloaTerm)
-        dimensions=$(calculate_dimensions 51 52)
-		result "state=floating center=on rectangle=$dimensions"
+		result "state=floating center=on rectangle=696x399+0+0"
         ;;
     Updating)
-        dimensions=$(calculate_dimensions 25 47)
-		result "state=floating sticky=on center=on rectangle=$dimensions"
+		result "state=floating sticky=on center=on rectangle=390x405+0+0"
         ;;
 	Scratch)
 		result "state=floating focus=on sticky=on"
@@ -57,8 +40,7 @@ case "$class" in
 		result "state=floating focus=on center=on"
 		;;
     mpv)
-        dimensions=$(calculate_dimensions 53 53)
-		result "state=floating focus=on center=on rectangle=$dimensions"
+		result "state=floating focus=on center=on rectangle=723x407+0+0"
         ;;
     Viewnior)
         result "state=floating focus=on center=on"
@@ -82,15 +64,12 @@ case "$instance" in
         result "state=floating sticky=on rectangle=500x290+1054+593"
         ;;
 	YaziTerm)
-		dimensions=$(calculate_dimensions 51 34)
-		result "state=floating center=on rectangle=$dimensions"
+		result "state=floating center=on rectangle=900x342+0+0"
 		;;
 	MusicTerm)
-		dimensions=$(calculate_dimensions 41 48)
-		result "state=floating center=on rectangle=$dimensions"
+		result "state=floating center=on rectangle=656x343+0+0"
 		;;
 	FetchTerm)
-		dimensions=$(calculate_dimensions 21 58)
-		result "state=floating center=on rectangle=$dimensions"
+		result "state=floating center=on rectangle=369x601+0+0"
 		;;
 esac
