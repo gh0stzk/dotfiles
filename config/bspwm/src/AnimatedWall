@@ -10,9 +10,44 @@ start(){
     fi
 
 	SCREENS=$(xrandr | grep -Eo '[0-9.*]+[x?][0-9].*[+][0-9].')
+    
+    # INFO: calculates the aspect ratio to force mpv when the video is in inappropriate resolution for the screen
+    resolution=$(xrandr | grep '*' | awk '{print $1}')
+    width=$(echo $resolution | cut -d'x' -f1)
+    height=$(echo $resolution | cut -d'x' -f2)
+    
+    gcd() {
+        local a=$1
+        local b=$2
+        while [ $b -ne 0 ]; do
+            local temp=$b
+            b=$((a % b))
+            a=$temp
+        done
+        echo $a
+}
+
+    g=$(gcd $width $height)
+    aspect_width=$((width / g))
+    aspect_height=$((height / g))
+
+    case "${aspect_width}:${aspect_height}" in
+        "8:5") videoaspect="16:10" ;;
+        "4:3") videoaspect="4:3" ;;
+        "16:9") videoaspect="16:9" ;;
+        "21:9") videoaspect="21:9" ;;
+        *) videoaspect="${aspect_width}:${aspect_height}" ;;
+    esac
+
+    
+    
 	for item in $SCREENS
 	do
-		xwinwrap -g "$item" -un -fdt -ni -b -nf -- mpv --hwdec=auto -vo x11 --no-audio --no-border --no-config --no-window-dragging --no-input-default-bindings --no-osd-bar --no-sub --loop -wid WID ${video_path} > /dev/null 2>&1 &
+		    xwinwrap -g "$item" -un -fdt -ni -b -nf \
+        -- mpv --hwdec=auto -vo x11 --no-audio --no-border --no-config \
+        --no-window-dragging --no-input-default-bindings --no-osd-bar \
+        --no-sub --loop -wid WID \
+        --video-aspect-override="$videoaspect" --geometry="$item" --video-unscaled=no ${video_path} > /dev/null 2>&1 &
 	done
 }
 
