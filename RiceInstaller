@@ -86,7 +86,7 @@ clear
 
 logo "Installing needed packages.."
 
-dependencias=(alacritty base-devel bat brightnessctl bspwm clipcat dunst eza feh gvfs-mtp firefox geany git imagemagick jq \
+dependencies=(alacritty base-devel bat brightnessctl bspwm clipcat dunst eza feh gvfs-mtp firefox geany git imagemagick jq \
 			        jgmenu kitty libwebp maim mpc mpd mpv neovim ncmpcpp npm pamixer pacman-contrib \
 			        papirus-icon-theme picom playerctl polybar polkit-gnome python-gobject \
 			        redshift rofi rustup sxhkd tmux ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd \
@@ -96,18 +96,18 @@ dependencias=(alacritty base-devel bat brightnessctl bspwm clipcat dunst eza feh
 
 printf "%s%sChecking for required packages...%s\n\n" "${BLD}" "${CBL}" "${CNC}"
 
-	for paquete in "${dependencias[@]}"; do
-        if ! is_installed "$paquete"; then
-            if sudo pacman -S "$paquete" --noconfirm >/dev/null 2> >(tee -a "$ERROR_LOG"); then
-                printf "%s%s%s %shas been installed successfully.%s\n" "${BLD}" "${CYE}" "$paquete" "${CBL}" "${CNC}"
+	for package in "${dependencies[@]}"; do
+        if ! is_installed "$package"; then
+            if sudo pacman -S "$package" --noconfirm >/dev/null 2> >(tee -a "$ERROR_LOG"); then
+                printf "%s%s%s %shas been installed successfully.%s\n" "${BLD}" "${CYE}" "$package" "${CBL}" "${CNC}"
             else
                 printf "%s%s%s %shas not been installed correctly. See %sRiceError.log %sfor more details.%s\n" \
-                       "${BLD}" "${CYE}" "$paquete" "${CRE}" "${CBL}" "${CRE}" "${CNC}"
-                log_error "Failed to install package: $paquete"
+                       "${BLD}" "${CYE}" "$package" "${CRE}" "${CBL}" "${CRE}" "${CNC}"
+                log_error "Failed to install package: $package"
             fi
             sleep 1
         else
-            printf '%s%s%s %sis already installed on your system!%s\n' "${BLD}" "${CYE}" "$paquete" "${CGR}" "${CNC}"
+            printf '%s%s%s %sis already installed on your system!%s\n' "${BLD}" "${CYE}" "$package" "${CGR}" "${CNC}"
             sleep 1
         fi
     done
@@ -146,17 +146,17 @@ customdeps=(gh0stzk-gtk-themes gh0stzk-cursor-qogirr \
 			gh0stzk-icons-vimix-white gh0stzk-icons-zafiro gh0stzk-icons-zafiro-purple)
 
 printf "%s%sChecking for required custom packages...%s\n" "${BLD}" "${CBL}" "${CNC}"
-for cpaquete in "${customdeps[@]}"; do
-    if ! is_installed "$cpaquete"; then
-        if sudo pacman -S "$cpaquete" --noconfirm >/dev/null 2>> RiceError.log; then
-            printf "%s%s%s %shas been installed succesfully.%s\n" "${BLD}" "${CYE}" "$cpaquete" "${CBL}" "${CNC}"
+for cpackage in "${customdeps[@]}"; do
+    if ! is_installed "$cpackage"; then
+        if sudo pacman -S "$cpackage" --noconfirm >/dev/null 2>> RiceError.log; then
+            printf "%s%s%s %shas been installed succesfully.%s\n" "${BLD}" "${CYE}" "$cpackage" "${CBL}" "${CNC}"
             sleep 1
         else
-            printf "%s%s%s %shas not been installed correctly. See %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "$cpaquete" "${CRE}" "${CBL}" "${CRE}" "${CNC}"
+            printf "%s%s%s %shas not been installed correctly. See %sRiceError.log %sfor more details.%s\n" "${BLD}" "${CYE}" "$cpackage" "${CRE}" "${CBL}" "${CRE}" "${CNC}"
             sleep 1
         fi
     else
-        printf '%s%s%s %sis already installed on your system!%s\n' "${BLD}" "${CYE}" "$cpaquete" "${CGR}" "${CNC}"
+        printf '%s%s%s %sis already installed on your system!%s\n' "${BLD}" "${CYE}" "$cpackage" "${CGR}" "${CNC}"
         sleep 1
     fi
 done
@@ -468,7 +468,7 @@ clear
 
 ########## --------- exit ---------- ##########
 
-logo "Installation is compñete"
+logo "Installation is complete"
 
 printf "%sThe installation is complete, you %sneed%s to restart your machine.%s\n\n" "${BLD}" "${CBL}" "${CNC}" "${CNC}"
 
