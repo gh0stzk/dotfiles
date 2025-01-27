@@ -25,7 +25,7 @@ function adjust_brightness {
   case $1 in
     up)
       if [ "$current" -eq $MIN_BRIGHTNESS ]; then
-        # If at 2%, go to 5%
+        # If at MIN_BRIGHTNESS, go to 5%
         brightnessctl set 5% -q
       else
         # Normal 5% increase
@@ -34,7 +34,7 @@ function adjust_brightness {
       ;;
     down)
       if [ "$current" -le $((MIN_BRIGHTNESS + BRIGHTNESS_STEPS)) ]; then
-        # If at or below 7%, go to 2%
+        # If at or below 7%, go to MIN_BRIGHTNESS
         brightnessctl set $MIN_BRIGHTNESS% -q
       else
         # Normal 5% decrease
