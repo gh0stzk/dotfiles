@@ -3,6 +3,7 @@
 
 DIR="$HOME/.config/bspwm/src/assets"
 BRIGHTNESS_STEPS=5
+MIN_BRIGHTNESS=2
 
 function get_brightness {
   brightnessctl i | grep -oP '\(\K[^%\)]+'
@@ -18,15 +19,38 @@ function send_notification {
   dunstify "Brightness $brightness%" -i $icon -r 5555 -u normal -h int:value:$(($brightness))
 }
 
+function adjust_brightness {
+  current=$(get_brightness)
+  
+  case $1 in
+    up)
+      if [ "$current" -eq $MIN_BRIGHTNESS ]; then
+        # If at 2%, go to 5%
+        brightnessctl set 5% -q
+      else
+        # Normal 5% increase
+        brightnessctl set "${BRIGHTNESS_STEPS:-5}%+" -q
+      fi
+      ;;
+    down)
+      if [ "$current" -le $((MIN_BRIGHTNESS + BRIGHTNESS_STEPS)) ]; then
+        # If at or below 7%, go to 2%
+        brightnessctl set $MIN_BRIGHTNESS% -q
+      else
+        # Normal 5% decrease
+        brightnessctl set "${BRIGHTNESS_STEPS:-5}%-" -q
+      fi
+      ;;
+  esac
+  
+  send_notification
+}
+
 case $1 in
   up)
-    # increase the backlight by 5%
-    brightnessctl set "${BRIGHTNESS_STEPS:-5}%+" -q
-    send_notification
+    adjust_brightness up
     ;;
   down)
-    # decrease the backlight by 5%
-    brightnessctl set "${BRIGHTNESS_STEPS:-5}%-" -q
-    send_notification
+    adjust_brightness down
     ;;
 esac
