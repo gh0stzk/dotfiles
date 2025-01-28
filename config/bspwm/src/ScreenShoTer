@@ -64,7 +64,7 @@ case $1 in
     --now)
         sleep 0.5 && take_screenshot ;;
     --sel)
-        take_screenshot -s -o ;;
+        take_screenshot -s -o -b 2;;
     --active)
         sleep 3 && take_screenshot -i "$(xdotool getactivewindow)" ;;
     --in3)
