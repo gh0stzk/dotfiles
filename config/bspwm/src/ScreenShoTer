@@ -1,12 +1,31 @@
 #!/usr/bin/env bash
-#  ╔═╗╔═╗╦═╗╔═╗╔═╗╔╗╔╔═╗╦ ╦╔═╗╔╦╗╔═╗╦═╗
-#  ╚═╗║  ╠╦╝║╣ ║╣ ║║║╚═╗╠═╣║ ║ ║ ║╣ ╠╦╝
-#  ╚═╝╚═╝╩╚═╚═╝╚═╝╝╚╝╚═╝╩ ╩╚═╝ ╩ ╚═╝╩╚═
+#  ███████╗ ██████╗██████╗ ███████╗███████╗███╗   ██╗███████╗██╗  ██╗ ██████╗ ████████╗
+#  ██╔════╝██╔════╝██╔══██╗██╔════╝██╔════╝████╗  ██║██╔════╝██║  ██║██╔═══██╗╚══██╔══╝
+#  ███████╗██║     ██████╔╝█████╗  █████╗  ██╔██╗ ██║███████╗███████║██║   ██║   ██║
+#  ╚════██║██║     ██╔══██╗██╔══╝  ██╔══╝  ██║╚██╗██║╚════██║██╔══██║██║   ██║   ██║
+#  ███████║╚██████╗██║  ██║███████╗███████╗██║ ╚████║███████║██║  ██║╚██████╔╝   ██║
+#  ╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝    ╚═╝
+#	Author	-	gh0stzk
+#	Repo	-	https://github.com/gh0stzk/dotfiles
+#	Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+
+#   ScreenShoTer - A versatile screenshot script
+#   Features:
+#   	- Supports single and multi-monitor setups
+#   	- By default captures only the monitor where cursor is located
+#   	- Special option to capture all monitors at once
+#   	- Multiple capture modes:
+#     		* Full screenshot of current monitor
+#     		* Custom area selection or active window capture
+#     		* Timed captures (3 seconds)
+#   	- System notifications when taking screenshots
+#   	- Automatic clipboard copy
+#   	- Saves screenshots with timestamp
 #
-#   z0mbi3
-#   https://github.com/gh0stzk/dotfiles
-#   Script to take screenshots using maim.
-#   20.12.2023 16:10:25
+#   Dependencies: maim, xrandr, xdotool, rofi, xclip, dunst
+#
+#   Date: 29.01.2025
+
 
 # Screenshot general options
 timestamp=$(date +%Y-%m-%d-%H%M%S)
@@ -19,20 +38,43 @@ filename="$dir/Shot-${timestamp}.png"
 # Rofi options
 s_full=""
 s_select=""
-s_active=""
 s_in3="󰔝"
-s_in10="󰔜"
+s_all="󰍹"
+
+# Function to get current monitor geometry based on mouse position
+get_current_monitor() {
+    local MONITORS=$(xrandr | grep -o '[0-9]*x[0-9]*[+-][0-9]*[+-][0-9]*')
+    local XMOUSE=$(xdotool getmouselocation | awk -F "[: ]" '{print $2}')
+    local YMOUSE=$(xdotool getmouselocation | awk -F "[: ]" '{print $4}')
+
+    for mon in ${MONITORS}; do
+        local MONW=$(echo ${mon} | awk -F "[x+]" '{print $1}')
+        local MONH=$(echo ${mon} | awk -F "[x+]" '{print $2}')
+        local MONX=$(echo ${mon} | awk -F "[x+]" '{print $3}')
+        local MONY=$(echo ${mon} | awk -F "[x+]" '{print $4}')
+
+        if (( ${XMOUSE} >= ${MONX} )) && \
+           (( ${XMOUSE} <= ${MONX}+${MONW} )) && \
+           (( ${YMOUSE} >= ${MONY} )) && \
+           (( ${YMOUSE} <= ${MONY}+${MONH} )); then
+            echo "${MONW}x${MONH}+${MONX}+${MONY}"
+            return 0
+        fi
+    done
+
+    return 1
+}
 
 rofi_cmd() {
-	rofi -dmenu \
-		-p Screenshot \
-		-mesg "Directory :: $dir" \
-		-markup-rows \
-		-theme "$HOME"/.config/bspwm/src/rofi-themes/Screenshot.rasi
+    rofi -dmenu \
+        -p Screenshot \
+        -mesg "Directory :: $dir" \
+        -markup-rows \
+        -theme "$HOME"/.config/bspwm/src/rofi-themes/Screenshot.rasi
 }
 
 run_rofi() {
-	echo -e "$s_full\n$s_select\n$s_active\n$s_in3\n$s_in10" | rofi_cmd
+    echo -e "$s_full\n$s_select\n$s_in3\n$s_all" | rofi_cmd
 }
 
 show_notification() {
@@ -44,46 +86,64 @@ show_notification() {
 }
 
 copy_screenshot() {
-	xclip -selection clipboard -t image/png -i "$filename"
+    xclip -selection clipboard -t image/png -i "$filename"
 }
 
 take_screenshot() {
-    maim -u "$@" "$filename" && paplay /usr/share/sounds/freedesktop/stereo/screen-capture.oga &>/dev/null | copy_screenshot
-    show_notification
+    local mode="$1"
+    local all_monitors="$2"
+    local geometry=""
+    local cmd="maim -u"
+
+    case "$mode" in
+        "full")
+            if [[ "$all_monitors" != "true" ]]; then
+                geometry=$(get_current_monitor)
+                [[ -n "$geometry" ]] && cmd="$cmd -g $geometry"
+            fi
+            ;;
+        "select")
+            cmd="$cmd -s -o -b 2"
+            ;;
+    esac
+
+    $cmd "$filename"
+
+    if [[ $? -eq 0 ]]; then
+        paplay /usr/share/sounds/freedesktop/stereo/screen-capture.oga &>/dev/null
+        copy_screenshot
+        show_notification
+    fi
 }
 
 countdown() {
     for sec in $(seq "$1" -1 1); do
-        dunstify -t 1000 -i  ~/.config/bspwm/src/assets/screenshot.png "Taking shot in : $sec"
+        dunstify -t 1000 -i ~/.config/bspwm/src/assets/screenshot.png "Taking shot in : $sec"
         sleep 1
     done
 }
 
 run_cmd() {
-case $1 in
-    --now)
-        sleep 0.5 && take_screenshot ;;
-    --sel)
-        take_screenshot -s -o -b 2;;
-    --active)
-        sleep 3 && take_screenshot -i "$(xdotool getactivewindow)" ;;
-    --in3)
-		countdown 3 && take_screenshot ;;
-    --in10)
-        countdown 10 && take_screenshot ;;
-esac
+    case $1 in
+        --now)
+            sleep 0.5 && take_screenshot "full" false ;;
+        --sel)
+            take_screenshot "select" false ;;
+        --in3)
+            countdown 3 && sleep 1 && take_screenshot "full" false ;;
+        --all)
+            sleep 0.5 && take_screenshot "full" true ;;
+    esac
 }
 
 select_option="$(run_rofi)"
 case ${select_option} in
-	"$s_full")
-		run_cmd --now ;;
-	"$s_select")
-		run_cmd --sel ;;
-	"$s_active")
-		run_cmd --active ;;
-	"$s_in3")
-		run_cmd --in3 ;;
-	"$s_in10")
-		run_cmd --in10 ;;
+    "$s_full")
+        run_cmd --now ;;
+    "$s_select")
+        run_cmd --sel ;;
+    "$s_in3")
+        run_cmd --in3 ;;
+    "$s_all")
+        run_cmd --all ;;
 esac
