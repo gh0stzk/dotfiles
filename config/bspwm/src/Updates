@@ -93,7 +93,7 @@ update_system() {
     if [ $update_status -eq 0 ]; then
         echo -e "\033[32mUpdate completed successfully!\033[0m"
     else
-        echo -e "\033[31mUpdate incountered errors.\033[0m"
+        echo -e "\033[31mUpdate encountered errors.\033[0m"
     fi
 }
 
