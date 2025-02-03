@@ -6,9 +6,22 @@
 # Author: z0mbi3
 # url: https://github.com/gh0stzk
 
+# Check if flatpak is available on the system
+check_flatpak() {
+    command -v flatpak >/dev/null 2>&1
+}
+
 get_total_updates() {
     local total_updates
-    total_updates=$(($(checkupdates 2> /dev/null | wc -l || echo 0) + $(paru -Qua 2> /dev/null | wc -l || echo 0)))
+    local flatpak_count=0
+    
+    if check_flatpak; then
+        flatpak_count=$(flatpak remote-ls --updates 2> /dev/null | wc -l || echo 0)
+    fi
+    
+    total_updates=$(($(checkupdates 2> /dev/null | wc -l || echo 0) + 
+                     $(paru -Qua 2> /dev/null | wc -l || echo 0) +
+                     flatpak_count))
     echo "${total_updates:-0}"
 }
 
@@ -18,35 +31,81 @@ get_list_updates() {
 }
 
 get_list_aur_updates() {
-    echo -e "\n\033[1m\033[34mAur updates available:\033[0m"
+    echo -e "\n\033[1m\033[34mAUR updates:\033[0m"
     paru -Qua | sed 's/->/\x1b[32;1m\x1b[0m/g'
 }
 
-print_updates() {
-	local print_updates
-    print_updates=$(get_total_updates)
+get_list_flatpak_updates() {
+    if check_flatpak; then
+        echo -e "\n\033[1m\033[34mFlatpak updates:\033[0m"
+        flatpak remote-ls --updates | while read -r line; do
+            # Split the line into array elements, preserving empty fields
+            readarray -d $'\t' -t fields <<<"$line"
 
+            name="${fields[0]}"
+            id="${fields[1]}"
+            version="${fields[2]}"
+            branch="${fields[3]}"
+
+            if [[ -z "${version// }" ]]; then
+                echo -e "$name \033[32m(\033[0m$branch\033[32m)\033[0m"
+            else
+                current_version=$(flatpak info "$id" | awk -F': ' '/Version/{print $2}')
+                echo -e "$name $current_version \033[32m\033[0m $version"
+            fi
+        done
+    fi
+}
+
+print_updates() {
+    local print_updates
+    print_updates=$(get_total_updates)
     if [[ "$print_updates" -gt 0 ]]; then
         echo -e "\033[1m\033[33mThere are $print_updates updates available:\033[0m\n"
         get_list_updates
         get_list_aur_updates
+        get_list_flatpak_updates
     else
-        echo -e "\033[1m\033[32mYour system is already updated!\033[0m"
+        echo -e "\033[1m\033[32mYour system is up to date!\033[0m"
     fi
 }
 
 update_system() {
-    paru -Syu --nocombinedupgrade
+    local update_status=0
+
+    echo -e "\033[34mUpdating system packages...\033[0m"
+    if ! paru -Syu --nocombinedupgrade; then
+        update_status=1
+    fi
+    
+    if check_flatpak; then
+        local flatpak_updates
+        flatpak_updates=$(flatpak remote-ls --updates 2> /dev/null | wc -l || echo 0)
+        if [[ "$flatpak_updates" -gt 0 ]]; then
+            echo -e "\n\033[34mUpdating Flatpak packages...\033[0m"
+            if ! flatpak update --noninteractive; then
+                update_status=1
+            fi
+        fi
+    fi
+
+    echo -e "\n\033[1m"
+    if [ $update_status -eq 0 ]; then
+        echo -e "\033[32mUpdate completed successfully!\033[0m"
+    else
+        echo -e "\033[31mUpdate incountered errors.\033[0m"
+    fi
 }
 
 case "$1" in
     --get-updates) get_total_updates ;;
     --print-updates) print_updates ;;
     --update-system) update_system ;;
-    --help|*)echo -e "Updates [options]
-
+    --help|*)
+        echo -e "Updates [options]
 Options:
-	--get-updates		Get the number of updates available.
-	--print-updates		Print the number of available package to update.
-	--update-system		Update your system including the AUR packages.\n"
+    --get-updates       Get the number of updates available (including Flatpak).
+    --print-updates     Print the number of available packages to update.
+    --update-system     Update your system including AUR and Flatpak packages.\n"
+    ;;
 esac
