@@ -46,8 +46,8 @@ setup_system_vars() {
 
     # Identify power supply components
     local battery adapter
-    battery=$(basename /sys/class/power_supply/BAT* 2>/dev/null | head -n1)
-    adapter=$(basename /sys/class/power_supply/{AC,ADP}* 2>/dev/null | head -n1)
+    battery=$(find /sys/class/power_supply -maxdepth 1 -type l -name "BAT*" | head -n1 | xargs basename 2>/dev/null)
+    adapter=$(find /sys/class/power_supply -maxdepth 1 -type l \( -name "AC*" -o -name "ADP*" \) | head -n1 | xargs basename 2>/dev/null)
 
     # Update configuration file
     sed -i -e "s/^sys_network_interface =.*/sys_network_interface = ${primary_net}/" \
