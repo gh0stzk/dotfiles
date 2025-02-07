@@ -1,3 +1,40 @@
+## Updated scripts
+##### Febrero 7 2025
+
+I updated some scripts, in some the logic and reliability were improved and I tried to improve the performance of some.
+- bluetooth.sh: Improved code
+- Brightness: Improved logic and code.
+- HideBar: Improved code.
+- MonitorSetup: It's now faster and I try to create as few subshells as possible, and the biggest change is that it now only supports 1-3 monitors which makes it easier to edit for anyone who wants to add or modify more monitors.
+
+The 3 default layouts are:
+
+[Monitor 1]
+
+[Monitor 1] -> [Monitor 2]
+
+[Monitor 2] <- [Monitor 1] -> [Monitor 3]
+
+- RiceSelector: Code improved
+- ScreenShoter: Improved code in last commit but i documented here. (Multi monior support) default behavior is take screenshots from the focused monitor. If you wanna take screenshot from all monitors a new option for that is available.
+- SetSysVars: Improved code.
+- SoftReload: Improved code
+- Updates: Improved the logic and code, i tried to make it faster and now only shows availables updates from official or aur.
+- Volume: Improved code
+- WallSelect: Improved code and logic. Now uses a parallel image processing to optimize CPU usage.
+  - Now uses XXHash64 checksum wich is faster.
+  - Orphaned cache detection and cleanup
+  - Lockfile system for safe concurrent operations
+  - Yep now generation of cache images are faster.
+- Weather: The code and logic are optimized.
+   - Now uses a cache system, so less cpu usage.
+
+In andrea rice, the dubdirectory for eww bar, now is renamed to bar, to make life easier for HideBar script and others.
+
+Removed HideNode script, now sxhkd handles that.
+
+---
+
 ## functional multimonitor support
 ##### January 22 2025
 

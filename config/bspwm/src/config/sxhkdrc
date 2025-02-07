@@ -147,7 +147,9 @@ alt + {m,x,s,p}
 
 # Hide/Unhide node
 alt + h
-	BspHideNode
+	sh -c 'NHidden=$(bspc query -N -n .hidden -d focused); \
+	if [ -z "$NHidden" ]; then bspc node focused -g hidden=on; \
+	else bspc node "$NHidden" -g hidden=off; fi'
 
 # ----- Focus/Swap Nodes ----- #
 

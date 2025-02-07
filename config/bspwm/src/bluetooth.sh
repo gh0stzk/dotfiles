@@ -1,35 +1,67 @@
 #!/usr/bin/env bash
-
-#	The function of this script is only to detect if your Bluetooth interface is present
-#	and active and display the information in POLYBAR.
+# Author: gh0stzk
+# Revision Date: 02.02.2025 13:06:58
+# Repository: https://github.com/gh0stzk/dotfiles
+# ----------------------------------------------------------------------------
+# Bluetooth Status Checker for Polybar
 #
-#	gh0stzk - https://github.com/gh0stzk/dotfiles
-#	07.08.2024 11:55:34
+# Checks Bluetooth hardware presence, service status, and power state to display
+# appropriate colored icon in Polybar. Optimized for reliability and performance.
+#
+# Features:
+# - Single-pass config file parsing
+# - Hardware presence validation
+# - Service status checks with systemd
+# - Graceful error handling for missing configs
+# - Efficient command execution
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# ----------------------------------------------------------------------------
 
-if [ ! -d /sys/class/bluetooth ]; then
-	echo # No Bluetooth interface
-	exit 0
-fi
+# Exit immediately on errors, unset variables, and pipeline failures
+set -euo pipefail
 
-# Load current theme
-read -r current_rice <"$HOME"/.config/bspwm/.rice
+# Hardware Validation
+readonly BT_CLASS_PATH="/sys/class/bluetooth"
+[[ -d "$BT_CLASS_PATH" ]] || exit 0  # Silent exit if no Bluetooth hardware
 
-# Colors
-FILE="$HOME/.config/bspwm/rices/${current_rice}/config.ini"
-POWER_ON=$(awk '/^blue =/ {print $3; exit}' "$FILE")
-POWER_OFF=$(awk '/^grey =/ {print $3; exit}' "$FILE")
+# Config Handling
+readonly CONFIG_DIR="${HOME}/.config/bspwm"
+current_rice=$(cat "${CONFIG_DIR}/.rice" 2>/dev/null || echo "default")
+config_file="${CONFIG_DIR}/rices/${current_rice}/config.ini"
 
-# Check if Bluetooth interface exists and its status
-check_bluetooth() {
-	if systemctl is-active --quiet bluetooth.service; then
-		if bluetoothctl show | grep -q "Powered: yes"; then
-			echo "%{F$POWER_ON}󰂯%{F-}" # Bluetooth is on
-		else
-			echo "%{F$POWER_OFF}󰂲%{F-}" # Bluetooth is off
-		fi
-	else
-		echo
-	fi
+# Color Extraction with Fallbacks
+read_power_colors() {
+    # Read both colors in single pass
+    awk 'BEGIN {on=""; off=""}
+        /^blue =/ {on=$3; if (off != "") exit}
+        /^grey =/ {off=$3; if (on != "") exit}
+        END {print on " " off}' "$config_file"
 }
 
-check_bluetooth
+# Main Check Function
+get_bt_status() {
+    # Check systemd service state
+    systemctl is-active bluetooth.service &>/dev/null || return 1
+
+    # Get power state efficiently
+    bluetoothctl show | grep -q "Powered: yes" && return 0 || return 2
+}
+
+# Execution Flow
+if [[ -f "$config_file" ]]; then
+    IFS=' ' read -r POWER_ON POWER_OFF <<< $(read_power_colors)
+else  # Fallback colors if config missing
+    POWER_ON="#ffffff"
+    POWER_OFF="#666666"
+fi
+
+if get_bt_status; then
+    echo "%{F${POWER_ON}}󰂯%{F-}"
+elif [[ $? -eq 2 ]]; then
+    echo "%{F${POWER_OFF}}󰂲%{F-}"
+fi
+
+# Ensure clean exit for Polybar compatibility
+exit 0

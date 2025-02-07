@@ -1,37 +1,65 @@
 #!/usr/bin/env bash
-#  ██████╗ ██╗ ██████╗███████╗
-#  ██╔══██╗██║██╔════╝██╔════╝     gh0stzk
-#  ██████╔╝██║██║     █████╗       https://github.com/gh0stzk/dotfiles
-#  ██╔══██╗██║██║     ██╔══╝       08.12.2023 08:48:08
-#  ██║  ██║██║╚██████╗███████╗     Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
-#  ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝
+#  ██████╗ ██╗ ██████╗███████╗    ███╗   ███╗███████╗███╗   ██╗██╗   ██╗
+#  ██╔══██╗██║██╔════╝██╔════╝    ████╗ ████║██╔════╝████╗  ██║██║   ██║
+#  ██████╔╝██║██║     █████╗      ██╔████╔██║█████╗  ██╔██╗ ██║██║   ██║
+#  ██╔══██╗██║██║     ██╔══╝      ██║╚██╔╝██║██╔══╝  ██║╚██╗██║██║   ██║
+#  ██║  ██║██║╚██████╗███████╗    ██║ ╚═╝ ██║███████╗██║ ╚████║╚██████╔╝
+#  ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝    ╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝
+#	Author	-	gh0stzk
+#	Repo	-	https://github.com/gh0stzk/dotfiles
+#	Date	-	31.01.2025 16:44:37
 #
-#            ███████╗███████╗██╗     ███████╗ ██████╗████████╗ ██████╗ ██████╗
-#            ██╔════╝██╔════╝██║     ██╔════╝██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗
-#            ███████╗█████╗  ██║     █████╗  ██║        ██║   ██║   ██║██████╔╝
-#            ╚════██║██╔══╝  ██║     ██╔══╝  ██║        ██║   ██║   ██║██╔══██╗
-#            ███████║███████╗███████╗███████╗╚██████╗   ██║   ╚██████╔╝██║  ██║
-#            ╚══════╝╚══════╝╚══════╝╚══════╝ ╚═════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝
+# RiceSelector - Dynamic theme switcher for gh0stzk bspwm dotfiles
+# Features:
+#   ✔ Multi-monitor support with DPI-aware scaling
+#   ✔ Instant theme application
+#   ✔ Fail-safe configuration writing
+#   ✔ Zero-config auto-detection of themes
+#
+# Dependencies:
+#   → Core: bspwm, xrandr, xdpyinfo
+#   → UI: rofi
+#   → Utils: coreutils, findutils
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
 
 # Some vars
 bspwm_dir="$HOME/.config/bspwm"
 read -r current_rice < "$bspwm_dir"/.rice
 rofi_command="rofi -dmenu -p RiceSelector -theme $bspwm_dir/src/rofi-themes/RiceSelector.rasi"
 
-# Variables to try to define the correct size of the images for your resolution
+# Get focused monitor name
 focused_monitor=$(bspc query -M -m focused --names)
-monitor_res=$(($(xrandr | grep -w "$focused_monitor" | grep -o '[0-9]\+x[0-9]\+' | cut -d 'x' -f 1) * 17 / $(xdpyinfo | awk '/resolution/{print $2}' | cut -d 'x' -f1)))
-rofi_override="element-icon{size:${monitor_res}px;}"
+
+# Get monitor width and DPI (versión reforzada contra espacios/valores rotos)
+monitor_width=$(xrandr | grep -w -- "$focused_monitor" | grep -o '[0-9]\+x[0-9]\+' | cut -d 'x' -f 1)
+screen_dpi=$(xdpyinfo | awk '/resolution/{print $2; exit}' | cut -d 'x' -f1)
+
+# Calculate icon size with protection contra division por cero
+icon_size=$(( (monitor_width * 17) / (${screen_dpi:-96} ) ))
+rofi_override="element-icon{size:${icon_size}px;}"
 
 # List rices
-mapfile -t rices < <(find "$bspwm_dir/rices/" -mindepth 1 -maxdepth 1 -type d -printf '%P\n' | sort)
+mapfile -d '' -t rices < <(
+    find "$bspwm_dir/rices/" -mindepth 1 -maxdepth 1 -type d -printf '%P\0' |
+    sort -z
+)
 
-selected_index=$(printf '%s\n' "${rices[@]}" | awk -v cur="$current_rice" '$0==cur {print NR-1; exit}')
+# Find current rice
+selected_index=-1
+
+for i in "${!rices[@]}"; do
+    if [[ "${rices[i]}" == "$current_rice" ]]; then
+        selected_index=$i
+        break
+    fi
+done
 
 # Show the rofi selection menu.
 selected=$(
     for rice in "${rices[@]}"; do
-        echo -e "$rice\0icon\x1f$bspwm_dir/rices/$rice/preview.webp"
+        printf "%s\0icon\x1f%s/rices/%s/preview.webp\n" "$rice" "$bspwm_dir" "$rice"
     done | $rofi_command -theme-str "$rofi_override" -selected-row "$selected_index"
 )
 

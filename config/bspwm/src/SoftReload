@@ -1,37 +1,58 @@
 #!/usr/bin/env bash
+#  ███████╗ ██████╗ ███████╗████████╗
+#  ██╔════╝██╔═══██╗██╔════╝╚══██╔══╝
+#  ███████╗██║   ██║█████╗     ██║		Author	-	gh0stzk
+#  ╚════██║██║   ██║██╔══╝     ██║		Repo	-	https://github.com/gh0stzk/dotfiles
+#  ███████║╚██████╔╝██║        ██║		date	-	02.02.2025 16:50:44
+#  ╚══════╝ ╚═════╝ ╚═╝        ╚═╝
+#
+#  ██████╗ ███████╗██╗      ██████╗  █████╗ ██████╗
+#  ██╔══██╗██╔════╝██║     ██╔═══██╗██╔══██╗██╔══██╗
+#  ██████╔╝█████╗  ██║     ██║   ██║███████║██║  ██║
+#  ██╔══██╗██╔══╝  ██║     ██║   ██║██╔══██║██║  ██║
+#  ██║  ██║███████╗███████╗╚██████╔╝██║  ██║██████╔╝
+#  ╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝
+#
+# SoftReload - Dynamic reloading of graphical components
+# Features:
+#   ✔ Reload POLYBAR or EWW depending on the theme you are in.
+#   ✔ Reload PICOM, XSETTINGSD, SXHKD, DUNST daemons and its configurations.
+#   ✔ Restart the Eww daemon if it is active
+#   ✔ Sends a notification that the configuration has been successfully reloaded.
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
 
-# Get current rice
-read -r current_rice < "$HOME"/.config/bspwm/.rice
+
+CONFIG_DIR="$HOME/.config/bspwm"
+RICES_DIR="$CONFIG_DIR/rices"
+DUNST_CONFIG="$CONFIG_DIR/src/config/dunstrc"
+CURRENT_RICE=$(<"$CONFIG_DIR"/.rice)
 
 reload() {
-    # Reload bars
-    if pidof -q polybar; then
-        polybar-msg cmd restart >/dev/null 2>&1
+    # Reload bars polybar or eww
+    if pgrep -x polybar >/dev/null; then
+        polybar-msg cmd restart >/dev/null
     else
-        if [[ $current_rice = "andrea" ]]; then
-            eww reload -c "$HOME"/.config/bspwm/rices/andrea/andy >/dev/null 2>&1
-        else
-            eww reload -c "$HOME"/.config/bspwm/rices/z0mbi3/bar >/dev/null 2>&1
-        fi
+        local eww_bar_config="$RICES_DIR/$CURRENT_RICE/bar"
+        [[ -d "$eww_bar_config" ]] && eww reload -c "$eww_bar_config"
     fi
 
-    pkill -USR1 -x picom
-    pkill -1 xsettingsd
-    pkill -USR1 -x sxhkd
-    dunstctl reload "${HOME}"/.config/bspwm/src/config/dunstrc
+    # Reload common services
+    pkill -USR1 -x picom 2>/dev/null || true
+    pkill -1 xsettingsd 2>/dev/null || true
+    pkill -USR1 -x sxhkd 2>/dev/null || true
+    dunstctl reload "$DUNST_CONFIG" 2>/dev/null || true
 
-    # Reload eww widgets
-    if eww ping -c "$HOME"/.config/bspwm/eww >/dev/null 2>&1; then
-        eww reload -c "$HOME"/.config/bspwm/eww >/dev/null 2>&1
+    # Reload EWW widgets
+    local main_eww="$CONFIG_DIR/eww"
+    if eww ping -c "$main_eww" >/dev/null; then
+        eww reload -c "$main_eww"
     fi
-
-    # Si todo se ejecutó correctamente, retornamos 0
-    return 0
 }
 
-# Ejecutamos reload y verificamos su estado de salida
+# Send notification
 if reload; then
-    notify-send --urgency=normal -i dialog-information "Soft Reload" "Bars, picom, xsettingsd,\nsxhkd and dunsts configurations\nReloads sucessfully!."
+    notify-send --urgency=normal -i dialog-information "Environment Reloaded!" \
+    "Reloaded Settings:\n• ${CURRENT_RICE^} Bar\n• Picom\n• Xsettingsd\n• SXHKD\n• Dunst\n• EWW Widgets"
 fi
-
-exit 0

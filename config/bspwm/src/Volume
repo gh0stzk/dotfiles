@@ -11,60 +11,59 @@
 #	This script controls the volume of your system, using pamixer.
 #	23.09.2023 09:30:24
 #
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
 
-# Icons
+# Directorio de iconos y función de notificación
 vol_dir="$HOME/.config/bspwm/src/assets"
-notify_cmd='dunstify -u low -h string:x-dunst-stack-tag:cvolum'
-
-# Get Volume
-get_volume() {
-    pamixer --get-volume-human | sed 's/%//'
+notify() {
+    dunstify -u low -h string:x-dunst-stack-tag:cvolum "$@"
 }
 
-# Get icons
+# Get volume status
+get_volume() {
+    local status=$(pamixer --get-volume-human)
+    [[ $status == muted ]] && echo "muted" || echo "${status/\%/}"
+}
+
+# Determine icon based on status
 get_icon() {
-    current="$(get_volume)"
-    if [[ "$current" -eq "0" || "$current" == "muted" ]]; then
+    local current_vol=$(get_volume)
+    if [[ $current_vol == muted ]] || ((current_vol == 0)); then
         icon="$vol_dir/mute.png"
     else
         icon="$vol_dir/vol.png"
     fi
 }
 
-# Notify
-notify_user() {
-    ${notify_cmd} -i "$icon" "Volume : $(get_volume)%"
+# Show notification
+show_notification() {
+    get_icon
+    local message="Volumen: $(get_volume)"
+    [[ $message == *muted* ]] || message+="%"
+    notify -i "$icon" "$message"
 }
 
-# Adjust Volume
+# Adjust volume
 adjust_volume() {
-    [[ $(pamixer --get-mute) == true ]] && pamixer -u
-    pamixer --allow-boost --set-limit 150 "$1" "$2" && get_icon && notify_user
+    pamixer --unmute
+    pamixer --allow-boost --set-limit 150 "$@"
+    show_notification
 }
 
-# Toggle Mute
+# Toggle mute
 toggle_mute() {
-    if [[ $(pamixer --get-mute) == false ]]; then
-        pamixer --toggle-mute
-        get_icon
-        message="Mute"
-    else
-        pamixer --toggle-mute
-        get_icon
-        message="Unmute"
-    fi
-    ${notify_cmd} -i "$icon" "$message"
+    pamixer --toggle-mute
+    get_icon
+    local message=$([[ $(pamixer --get-mute) == true ]] && echo "Muted" || echo "Unmuted")
+    notify -i "$icon" "$message"
 }
 
-# Execute accordingly
-if command -v pamixer &>/dev/null; then
-    case "$1" in
-        --get) get_volume ;;
-        --inc) adjust_volume -i 5 ;;
-        --dec) adjust_volume -d 5 ;;
-        --toggle) toggle_mute ;;
-        *) echo "$(get_volume)%" ;;
-    esac
-else
-    ${notify_cmd} "'pamixer' is not installed."
-fi
+# Handle options
+case $1 in
+    --get)  get_volume ;;
+    --inc)  adjust_volume -i 5 ;;
+    --dec)  adjust_volume -d 5 ;;
+    --toggle) toggle_mute ;;
+    *)      echo "$(get_volume)%" ;;
+esac

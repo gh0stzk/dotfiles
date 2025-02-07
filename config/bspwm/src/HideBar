@@ -5,23 +5,38 @@
 #  ██╔══██║██║██║  ██║██╔══╝      ██╔══██╗██╔══██║██╔══██╗
 #  ██║  ██║██║██████╔╝███████╗    ██████╔╝██║  ██║██║  ██║
 #  ╚═╝  ╚═╝╚═╝╚═════╝ ╚══════╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
-#	Script to hide/show polybar or Eww bars.
-#	Author: z0mbi3
-#	url:    https://github.com/gh0stzk/dotfiles
-#	19.07.2024 21:47:36
+#	Author	-	gh0stzk
+#	Repo	-	https://github.com/gh0stzk/dotfiles
+#	Date	-	03.02.2025 20:31:58
+#
+# RiceSelector - Dynamic theme switcher for gh0stzk bspwm dotfiles
+# Features:
+#   ✔ Hide polybar or eww bars for gh0stzk dotfiles
+#   ✔ Multimonitor support for eww bars
+#
+# Dependencies:
+#   → bspwm, polybar, eww, xrandr, bash (v5.0+)
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+
 
 # Configuration
 read -r current_rice <"$HOME"/.config/bspwm/.rice
 THEME_CONFIG="$HOME/.config/bspwm/rices/$current_rice/theme-config.bash"
+eww_bar_path="$HOME/.config/bspwm/rices/$current_rice/bar"
 
-# Function to get padding value from theme-config.bash
-get_padding() {
-    local padding_type=$1
-    local var_name="${padding_type^^}_PADDING"  # Convert to uppercase
-    grep "^${var_name}=" "$THEME_CONFIG" | cut -d'"' -f2
+# Get padding value from theme-config.bash
+get_paddings() {
+    awk -F'"' '
+        /^TOP_PADDING/    { top = $2 }
+        /^BOTTOM_PADDING/ { bottom = $2 }
+        /^LEFT_PADDING/   { left = $2 }
+        /^RIGHT_PADDING/  { right = $2 }
+        END { print top, bottom, left, right }
+    ' "$THEME_CONFIG"
 }
 
-# Function to set BSPWM padding
 set_padding() {
     bspc config top_padding "$1"
     bspc config bottom_padding "$2"
@@ -30,71 +45,42 @@ set_padding() {
 }
 
 is_eww_theme() {
-    case "$current_rice" in
-        "z0mbi3" | "andrea")
-            return 0
-            ;;
-        *)
-            return 1
-            ;;
-    esac
+    [[ "$current_rice" == "z0mbi3" || "$current_rice" == "andrea" ]]
 }
 
-get_eww_config_dir() {
-    local base_dir="$HOME/.config/bspwm/rices/$current_rice"
-    case "$current_rice" in
-        "z0mbi3")
-            echo "$base_dir/bar"
-            ;;
-        "andrea")
-            echo "$base_dir/andy"
-            ;;
-    esac
-}
-
-# Function to handle bars
 toggle_bar() {
     local action=$1
 
     if is_eww_theme; then
-        local eww_config_dir
-        eww_config_dir=$(get_eww_config_dir)
 
         if [ "$action" = "hide" ]; then
-            eww -c "$eww_config_dir" close-all
+            eww -c "$eww_bar_path" close-all
         else
-			local monitors=$(xrandr -q | grep -w 'connected' | sort -k3n | cut -d' ' -f1)
-			local count=0
-			for m in $monitors; do
-				eww -c "$eww_config_dir" open bar --id "$m" --arg monitor="$m" --toggle --screen $count
-				count=$((count + 1))
-			done
+            local monitors=($(xrandr --listmonitors | awk 'NR>1 {print $4}'))
+            local count=0
+            for m in "${monitors[@]}"; do
+                eww -c "$eww_bar_path" open bar --id "$m" --arg monitor="$m" --screen $count
+                ((count++))
+            done
         fi
     else
         polybar-msg cmd "$action"
     fi
 }
 
-# Main function to hide or unhide bars
 toggle_bars() {
     if [ "$1" = "hide" ]; then
         set_padding 2 2 2 2
         toggle_bar hide
     else
-        set_padding "$(get_padding "top")" "$(get_padding "bottom")" "$(get_padding "left")" "$(get_padding "right")"
+        local paddings=($(get_paddings))
+        set_padding "${paddings[@]}"
         toggle_bar show
     fi
 }
 
-# Parse command line argument
-case $1 in
-    -h | --hide)
-        toggle_bars hide
-        ;;
-    -u | --unhide)
-        toggle_bars unhide
-        ;;
-    *)
-        echo "Usage: $0 {-h|--hide|-u|--unhide}"
-        ;;
+case "$1" in
+    -h|--hide)   toggle_bars hide ;;
+    -u|--unhide) toggle_bars unhide ;;
+    *)	echo "Uso: $0 [-h|--hide] [-u|--unhide]" ;;
 esac

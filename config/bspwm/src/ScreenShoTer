@@ -7,7 +7,7 @@
 #  ╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝    ╚═╝
 #	Author	-	gh0stzk
 #	Repo	-	https://github.com/gh0stzk/dotfiles
-#	Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+#	Date	-	29.01.2025
 
 #   ScreenShoTer - A versatile screenshot script
 #   Features:
@@ -24,7 +24,8 @@
 #
 #   Dependencies: maim, xrandr, xdotool, rofi, xclip, dunst
 #
-#   Date: 29.01.2025
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
 
 
 # Screenshot general options

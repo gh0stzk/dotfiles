@@ -1,52 +1,66 @@
 #!/usr/bin/env bash
-#  ╔═╗╦═╗╔═╗╦ ╦  ╦ ╦╔═╗╔╦╗╔═╗╔╦╗╔═╗╔═╗
-#  ╠═╣╠╦╝║  ╠═╣  ║ ║╠═╝ ║║╠═╣ ║ ║╣ ╚═╗
-#  ╩ ╩╩╚═╚═╝╩ ╩  ╚═╝╩  ═╩╝╩ ╩ ╩ ╚═╝╚═╝
-# Script to check for new updates in arch and AUR. Copyright 2023 gh0stzk
-# Author: z0mbi3
-# url: https://github.com/gh0stzk
+#   █████╗ ██████╗  ██████╗██╗  ██╗
+#  ██╔══██╗██╔══██╗██╔════╝██║  ██║		Author	-	gh0stzk
+#  ███████║██████╔╝██║     ███████║		Repo	-	https://github.com/gh0stzk/dotfiles
+#  ██╔══██║██╔══██╗██║     ██╔══██║		Date	-	02.02.2025 21:40:04
+#  ██║  ██║██║  ██║╚██████╗██║  ██║
+#  ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
+#
+#              ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗███████╗
+#              ██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██╔════╝
+#              ██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗  ███████╗
+#              ██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝  ╚════██║
+#              ╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗███████║
+#               ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝
+# Updates - Script to check for new updates in arch and AUR.
+# Features:
+#   ✔ Shows the number of updates available in polybar.
+#   ✔ (Right click) List packages with available updates
+#   ✔ (Left click) Open a terminal to start the update process.
+#
+# Dependencies:
+#   → pacman-contrib, paru
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
 
-get_total_updates() {
-    local total_updates
-    total_updates=$(($(checkupdates 2> /dev/null | wc -l || echo 0) + $(paru -Qua 2> /dev/null | wc -l || echo 0)))
-    echo "${total_updates:-0}"
+count_lines() {
+    [[ -n "$1" ]] && wc -l <<< "$1" || echo 0
 }
 
-get_list_updates() {
-    echo -e "\033[1m\033[34mRegular updates:\033[0m"
-    checkupdates | sed 's/->/\x1b[32;1m\x1b[0m/g'
-}
-
-get_list_aur_updates() {
-    echo -e "\n\033[1m\033[34mAur updates available:\033[0m"
-    paru -Qua | sed 's/->/\x1b[32;1m\x1b[0m/g'
-}
-
-print_updates() {
-	local print_updates
-    print_updates=$(get_total_updates)
-
-    if [[ "$print_updates" -gt 0 ]]; then
-        echo -e "\033[1m\033[33mThere are $print_updates updates available:\033[0m\n"
-        get_list_updates
-        get_list_aur_updates
-    else
-        echo -e "\033[1m\033[32mYour system is already updated!\033[0m"
-    fi
-}
-
-update_system() {
-    paru -Syu --nocombinedupgrade
+fetch_updates() {
+    regular_updates=$(checkupdates 2>/dev/null || true)
+    aur_updates=$(paru -Qua 2>/dev/null || true)
 }
 
 case "$1" in
-    --get-updates) get_total_updates ;;
-    --print-updates) print_updates ;;
-    --update-system) update_system ;;
-    --help|*)echo -e "Updates [options]
+    --get-updates)
+        fetch_updates
+        echo $(( $(count_lines "$regular_updates") + $(count_lines "$aur_updates") ))
+        ;;
 
-Options:
-	--get-updates		Get the number of updates available.
-	--print-updates		Print the number of available package to update.
-	--update-system		Update your system including the AUR packages.\n"
+    --print-updates)
+        fetch_updates
+        total=$(( $(count_lines "$regular_updates") + $(count_lines "$aur_updates") ))
+
+        if (( total > 0 )); then
+            echo -e "\033[1m\033[33mThere are $total updates available:\033[0m"
+            [[ -n "$regular_updates" ]] && { echo -e "\n\033[1m\033[34mOfficial updates:\033[0m"; sed 's/->/\x1b[32;1m\x1b[0m/g' <<< "$regular_updates"; }
+            [[ -n "$aur_updates" ]] && { echo -e "\n\033[1m\033[34mAUR updates:\033[0m"; sed 's/->/\x1b[32;1m\x1b[0m/g' <<< "$aur_updates"; }
+        else
+            echo -e "\033[1m\033[32m¡Your system is already updated!\033[0m"
+        fi
+        exit 0
+        ;;
+
+    --update-system)
+        paru -Syu --nocombinedupgrade
+        ;;
+
+    --help|*)
+        echo -e "Updates [options]\n\nOptions:
+  \033[1m--get-updates\033[0m\t\tGet the number of updates available.
+  \033[1m--print-updates\033[0m\tList packages with pending updates
+  \033[1m--update-system\033[0m\tInstall all updates (Regular + AUR)\n"
+        ;;
 esac

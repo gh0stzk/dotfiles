@@ -1,56 +1,74 @@
 #!/usr/bin/env bash
-# Author : rxyhn
+#  ██████╗ ██████╗ ██╗ ██████╗ ██╗  ██╗████████╗███╗   ██╗███████╗███████╗███████╗
+#  ██╔══██╗██╔══██╗██║██╔════╝ ██║  ██║╚══██╔══╝████╗  ██║██╔════╝██╔════╝██╔════╝
+#  ██████╔╝██████╔╝██║██║  ███╗███████║   ██║   ██╔██╗ ██║█████╗  ███████╗███████╗
+#  ██╔══██╗██╔══██╗██║██║   ██║██╔══██║   ██║   ██║╚██╗██║██╔══╝  ╚════██║╚════██║
+#  ██████╔╝██║  ██║██║╚██████╔╝██║  ██║   ██║   ██║ ╚████║███████╗███████║███████║
+#  ╚═════╝ ╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═══╝╚══════╝╚══════╝╚══════╝
+#	Author	-	gh0stzk
+#	Repo	-	https://github.com/gh0stzk/dotfiles
+#	Date	-	03.02.2025 14:22:32
+#
+# Brightness - Hardware brightness control
+# Features:
+#   ✔ Brightness adjustments in 5% increments
+#   ✔ Configurable minimum of 2% brightness
+#   ✔ OSD notifications with graphical progress bar
+#
+# Dependencies:
+#   → brightnessctl
+#   → dunst
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
 
-DIR="$HOME/.config/bspwm/src/assets"
-BRIGHTNESS_STEPS=5
-MIN_BRIGHTNESS=2
 
-function get_brightness {
-  brightnessctl i | grep -oP '\(\K[^%\)]+'
+readonly DIR="$HOME/.config/bspwm/src/assets"
+readonly BRIGHTNESS_STEPS=5
+readonly MIN_BRIGHTNESS=2
+
+get_brightness() {
+    brightnessctl i | awk -F '[()%]' '/Current brightness:/ {print $2}'
 }
 
-function send_notification {
-  icon="$DIR/brightness.svg"
-  brightness=$(get_brightness)
-  # Make the bar with the special character ─ (it's not dash -)
-  # https://en.wikipedia.org/wiki/Box-drawing_character
-  bar=$(seq -s "─" 0 $((brightness / 5)) | sed 's/[0-9]//g')
-  # Send the notification
-  dunstify "Brightness $brightness%" -i $icon -r 5555 -u normal -h int:value:$(($brightness))
+send_notification() {
+    local brightness="$1"
+    local icon="$DIR/brightness.svg"
+    local bar=""
+    local -i bar_length=$((brightness / BRIGHTNESS_STEPS))
+
+    for ((i = 0; i < bar_length; i++)); do
+        bar+="─"
+    done
+
+    dunstify "Brightness $brightness%" -i "$icon" -r 5555 -u normal \
+             -h "int:value:$brightness"
 }
 
-function adjust_brightness {
-  current=$(get_brightness)
-  
-  case $1 in
-    up)
-      if [ "$current" -eq $MIN_BRIGHTNESS ]; then
-        # If at MIN_BRIGHTNESS, go to 5%
-        brightnessctl set 5% -q
-      else
-        # Normal 5% increase
-        brightnessctl set "${BRIGHTNESS_STEPS:-5}%+" -q
-      fi
-      ;;
-    down)
-      if [ "$current" -le $((MIN_BRIGHTNESS + BRIGHTNESS_STEPS)) ]; then
-        # If at or below 7%, go to MIN_BRIGHTNESS
-        brightnessctl set $MIN_BRIGHTNESS% -q
-      else
-        # Normal 5% decrease
-        brightnessctl set "${BRIGHTNESS_STEPS:-5}%-" -q
-      fi
-      ;;
-  esac
-  
-  send_notification
+adjust_brightness() {
+    local -i current
+    current="$(get_brightness)"
+
+    case $1 in
+        up)
+            if ((current == MIN_BRIGHTNESS)); then
+                brightnessctl set "${BRIGHTNESS_STEPS}%" -q
+            else
+                brightnessctl set "${BRIGHTNESS_STEPS}%+" -q
+            fi
+            ;;
+        down)
+            if ((current <= MIN_BRIGHTNESS + BRIGHTNESS_STEPS)); then
+                brightnessctl set "${MIN_BRIGHTNESS}%" -q
+            else
+                brightnessctl set "${BRIGHTNESS_STEPS}%-" -q
+            fi
+            ;;
+    esac
+
+    send_notification "$(get_brightness)"
 }
 
 case $1 in
-  up)
-    adjust_brightness up
-    ;;
-  down)
-    adjust_brightness down
-    ;;
+    up|down) adjust_brightness "$1" ;;
 esac

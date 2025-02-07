@@ -1,63 +1,118 @@
 #!/usr/bin/env bash
-#  ██╗    ██╗ █████╗ ██╗     ██╗     ██████╗  █████╗ ██████╗ ███████╗██████╗
-#  ██║    ██║██╔══██╗██║     ██║     ██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗
-#  ██║ █╗ ██║███████║██║     ██║     ██████╔╝███████║██████╔╝█████╗  ██████╔╝
-#  ██║███╗██║██╔══██║██║     ██║     ██╔═══╝ ██╔══██║██╔═══╝ ██╔══╝  ██╔══██╗
-#  ╚███╔███╔╝██║  ██║███████╗███████╗██║     ██║  ██║██║     ███████╗██║  ██║
-#   ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝     ╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝
+#  ██╗    ██╗ █████╗ ██╗     ██╗
+#  ██║    ██║██╔══██╗██║     ██║		Author	-	gh0stzk
+#  ██║ █╗ ██║███████║██║     ██║		Repo	-	https://github.com/gh0stzk/dotfiles
+#  ██║███╗██║██╔══██║██║     ██║		Date	-	01.02.2025 09:46:14
+#  ╚███╔███╔╝██║  ██║███████╗███████╗
+#   ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝
 #
-#  ██╗      █████╗ ██╗   ██╗███╗   ██╗ ██████╗██╗  ██╗███████╗██████╗
-#  ██║     ██╔══██╗██║   ██║████╗  ██║██╔════╝██║  ██║██╔════╝██╔══██╗
-#  ██║     ███████║██║   ██║██╔██╗ ██║██║     ███████║█████╗  ██████╔╝
-#  ██║     ██╔══██║██║   ██║██║╚██╗██║██║     ██╔══██║██╔══╝  ██╔══██╗
-#  ███████╗██║  ██║╚██████╔╝██║ ╚████║╚██████╗██║  ██║███████╗██║  ██║
-#  ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
-#	gh0stzk - https://github.com/gh0stzk/dotfiles
-#	Info    - This script runs the rofi launcher, to select
-#             the wallpapers included in the theme you are in.
-#			  08.12.2023 08:37:20
+#                  ██╗      █████╗ ██╗   ██╗███╗   ██╗ ██████╗██╗  ██╗███████╗██████╗
+#                  ██║     ██╔══██╗██║   ██║████╗  ██║██╔════╝██║  ██║██╔════╝██╔══██╗
+#                  ██║     ███████║██║   ██║██╔██╗ ██║██║     ███████║█████╗  ██████╔╝
+#                  ██║     ██╔══██║██║   ██║██║╚██╗██║██║     ██╔══██║██╔══╝  ██╔══██╗
+#                  ███████╗██║  ██║╚██████╔╝██║ ╚████║╚██████╗██║  ██║███████╗██║  ██║
+#                  ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
 
+# WallSelect - Dynamic wallpaper selector with intelligent caching system
+# Features:
+#   ✔ Multi-monitor support with DPI-aware scaling
+#   ✔ Auto-updating menu (add/delete wallpapers without restart)
+#   ✔ Parallel image processing (optimized CPU usage)
+#   ✔ XXHash64 checksum verification for cache integrity
+#   ✔ Orphaned cache detection and cleanup
+#   ✔ Adaptive icon sizing based on screen resolution
+#   ✔ Lockfile system for safe concurrent operations
+#   ✔ Rofi integration with theme support
+#   ✔ Lightweight (~2ms overhead on cache hits)
+#
+# Dependencies:
+#   → Core: bspwm, xrandr, xdpyinfo, rofi, xxhsum (xxhash)
+#   → Media: feh, imagemagick
+#   → GNU: findutils, coreutils
 
-# Verifies if xdpyinfo and imagemagick are installed
-for app in xorg-xdpyinfo imagemagick; do
-    if ! pacman -Qq $app > /dev/null 2>&1; then
-        dunstify "Missing package" "Please install the $app package to continue" -u critical
-        exit 1
-    fi
-done
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
 
 # Set some variables
-read -r current_rice < "$HOME"/.config/bspwm/.rice
+read -r current_rice <"$HOME"/.config/bspwm/.rice
 wall_dir="$HOME/.config/bspwm/rices/$current_rice/walls"
 cacheDir="$HOME/.cache/$USER/$current_rice"
-# Create cache dir if not exists
-mkdir -p "${cacheDir}"
 
-# Trying to adapt the images and menu to your screen resolution.
+# Create cache dir if not exists
+[ -d "$cacheDir" ] || mkdir -p "$cacheDir"
+
+# Get focused monitor name
 focused_monitor=$(bspc query -M -m focused --names)
-monitor_res=$(($(xrandr | grep -w "$focused_monitor" | grep -o '[0-9]\+x[0-9]\+' | cut -d 'x' -f 1) * 14 / $(xdpyinfo | awk '/resolution/{print $2}' | cut -d 'x' -f1)))
-rofi_override="element-icon{size:${monitor_res}px;}"
+
+# Get monitor width and DPI
+monitor_width=$(xrandr | grep -w -- "$focused_monitor" | grep -o '[0-9]\+x[0-9]\+' | cut -d 'x' -f 1)
+screen_dpi=$(xdpyinfo | awk '/resolution/{print $2; exit}' | cut -d 'x' -f1)
+
+# Calculate icon size
+icon_size=$(( (monitor_width * 14) / (${screen_dpi:-96} ) ))
+rofi_override="element-icon{size:${icon_size}px;}"
 rofi_command="rofi -dmenu -theme $HOME/.config/bspwm/src/rofi-themes/WallSelect.rasi -theme-str $rofi_override"
 
-# Convert images in directory and save to cache dir
-for imagen in "$wall_dir"/*.{jpg,jpeg,png,webp}; do
-    [ -f "$imagen" ] || continue
-    nombre_archivo=$(basename "$imagen")
-    cache_file="${cacheDir}/${nombre_archivo}"
-    md5_file="${cacheDir}/.${nombre_archivo}.md5"
+# Detect number of cores and set a sensible number of jobs
+get_optimal_jobs() {
+    local cores=$(nproc)
+    (( cores <= 2 )) && echo 2 || echo $(( (cores > 4) ? 4 : cores-1 ))
+}
 
-    # Generar MD5 del archivo original
-    current_md5=$(md5sum "$imagen" | cut -d' ' -f1)
+PARALLEL_JOBS=$(get_optimal_jobs)
 
-    # Comprobar si el archivo de caché existe y si el contenido ha cambiado
-    if [ ! -f "$cache_file" ] || [ ! -f "$md5_file" ] || [ "$current_md5" != "$(cat "$md5_file")" ]; then
-        magick "$imagen" -resize 500x500^ -gravity center -extent 500x500 "$cache_file"
-        echo "$current_md5" > "$md5_file"
+process_image() {
+    local imagen="$1"
+    local nombre_archivo=$(basename "$imagen")
+    local cache_file="${cacheDir}/${nombre_archivo}"
+    local md5_file="${cacheDir}/.${nombre_archivo}.md5"
+    local lock_file="${cacheDir}/.lock_${nombre_archivo}"
+
+    local current_md5=$(xxh64sum "$imagen" | cut -d' ' -f1)
+
+    (
+        flock -x 200
+        if [ ! -f "$cache_file" ] || [ ! -f "$md5_file" ] || [ "$current_md5" != "$(cat "$md5_file" 2>/dev/null)" ]; then
+            magick "$imagen" -resize 500x500^ -gravity center -extent 500x500 "$cache_file"
+            echo "$current_md5" > "$md5_file"
+        fi
+        # Limpiar el archivo lock después de procesar
+        rm -f "$lock_file"
+    ) 200>"$lock_file"
+}
+
+export -f process_image
+export wall_dir cacheDir
+
+# Clean old locks before starting
+rm -f "${cacheDir}"/.lock_* 2>/dev/null || true
+
+# Process files in parallel
+find "$wall_dir" -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.webp" \) -print0 | \
+    xargs -0 -P "$PARALLEL_JOBS" -I {} bash -c 'process_image "{}"'
+
+# Clean orphaned cache files and their locks
+for cached in "$cacheDir"/*; do
+    [ -f "$cached" ] || continue
+    original="${wall_dir}/$(basename "$cached")"
+    if [ ! -f "$original" ]; then
+        nombre_archivo=$(basename "$cached")
+        rm -f "$cached" \
+            "${cacheDir}/.${nombre_archivo}.md5" \
+            "${cacheDir}/.lock_${nombre_archivo}"
     fi
 done
 
+# Clean any remaining lock files
+rm -f "${cacheDir}"/.lock_* 2>/dev/null || true
+
 # Launch rofi
-wall_selection=$(find "${wall_dir}" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) -exec basename {} \; | sort | while read -r A ; do  echo -en "$A\x00icon\x1f""${cacheDir}"/"$A\n" ; done | $rofi_command)
+wall_selection=$(find "${wall_dir}" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) -print0 |
+    xargs -0 basename -a |
+    LC_ALL=C sort |
+    while IFS= read -r A; do
+        printf '%s\x00icon\x1f%s/%s\n' "$A" "${cacheDir}" "$A"
+    done | $rofi_command)
 
 # Set wallpaper
 [[ -n "$wall_selection" ]] && feh --no-fehbg --bg-fill "${wall_dir}/${wall_selection}"

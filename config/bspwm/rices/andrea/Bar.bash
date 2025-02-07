@@ -2,7 +2,7 @@
 
 # Function for generating workspaces.yuck file with eww widgets
 generate_eww_workspaces() {
-	local eww_file="${HOME}/.config/bspwm/rices/${RICE}/andy/workspaces.yuck"
+	local eww_file="${HOME}/.config/bspwm/rices/${RICE}/bar/workspaces.yuck"
 	local monitors=$(bspc query -M --names)
 	local count=0
 	local listen_workspaces=""
@@ -30,7 +30,7 @@ generate_eww_workspaces
 local monitors=$(xrandr -q | grep -w 'connected' | sort -k3n | cut -d' ' -f1)
 local count=0
 for m in $monitors; do
-	eww -c "${HOME}"/.config/bspwm/rices/"${RICE}"/andy open bar --id "$m" --arg monitor="$m" --toggle --screen $count
+	eww -c "${HOME}"/.config/bspwm/rices/"${RICE}"/bar open bar --id "$m" --arg monitor="$m" --toggle --screen $count
 	count=$((count + 1))
 done
 
