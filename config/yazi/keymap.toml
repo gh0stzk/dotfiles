@@ -121,10 +121,11 @@ keymap = [
 	# Goto
 	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go to the home directory" },
 	{ on = [ "g", "c" ],       run = "cd ~/.config",     desc = "Go to the config directory" },
-	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Go to the downloads directory" },
-	{ on = [ "g", "i" ],       run = "cd ~/Pictures", desc = "Go to the images directory" },
-	{ on = [ "g", "v" ],       run = "cd ~/Videos", desc = "Go to the video directory" },
-	{ on = [ "g", "f" ],       run = "cd ~/Documents", desc = "Go to the documents directory" },
+	{ on = [ "g", "d" ],       run = "cd /run/media/z0mbi3/windows/Descargas",   desc = "Go to the downloads directory" },
+	{ on = [ "g", "i" ],       run = "cd /run/media/z0mbi3/windows/Imagenes", desc = "Go to the images directory" },
+	{ on = [ "g", "v" ],       run = "cd /run/media/z0mbi3/windows/Videos", desc = "Go to the video directory" },
+	{ on = [ "g", "f" ],       run = "cd /run/media/z0mbi3/windows/Documentos", desc = "Go to the documents directory" },
+	{ on = [ "g", "l" ],       run = "cd /run/media/z0mbi3/windows/Linux", desc = "Go to the Linux directory" },
 	{ on = [ "g", "<Space>" ], run = "cd --interactive", desc = "Go to a directory interactively" },
 
 	# Tabs

@@ -1,3 +1,5 @@
+--- @since 25.2.7
+
 local WIN = ya.target_family() == "windows"
 local PATS = {
 	{ "[MT]", 6 }, -- Modified
@@ -145,24 +147,21 @@ local function setup(st, opts)
 		end
 
 		if not change or signs[change] == "" then
-			return ui.Line("")
+			return ""
 		elseif self._file:is_hovered() then
-			return ui.Line { ui.Span(" "), ui.Span(signs[change]) }
+			return ui.Line { " ", signs[change] }
 		else
-			return ui.Line { ui.Span(" "), ui.Span(signs[change]):style(styles[change]) }
+			return ui.Line { " ", ui.Span(signs[change]):style(styles[change]) }
 		end
 	end, opts.order)
 end
 
-local function fetch(self, job)
-	-- TODO: remove this once Yazi 0.4 is released
-	job = job or self
-
+local function fetch(_, job)
 	local cwd = job.files[1].url:parent()
 	local repo = root(cwd)
 	if not repo then
 		remove(tostring(cwd))
-		return 1
+		return true
 	end
 
 	local paths = {}
@@ -178,8 +177,7 @@ local function fetch(self, job)
 		:stdout(Command.PIPED)
 		:output()
 	if not output then
-		ya.err("Cannot spawn git command, error code " .. tostring(err))
-		return 0
+		return true, Err("Cannot spawn `git` command, error: %s", err)
 	end
 
 	local changed, ignored = {}, {}
@@ -205,7 +203,7 @@ local function fetch(self, job)
 	end
 	add(tostring(cwd), repo, changed)
 
-	return 3
+	return false
 end
 
 return { setup = setup, fetch = fetch }
