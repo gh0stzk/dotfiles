@@ -1,54 +1,73 @@
 #!/usr/bin/env bash
 #   ██████╗  █████╗ ███╗   ███╗███████╗███╗   ███╗ ██████╗ ██████╗ ███████╗
 #  ██╔════╝ ██╔══██╗████╗ ████║██╔════╝████╗ ████║██╔═══██╗██╔══██╗██╔════╝
-#  ██║  ███╗███████║██╔████╔██║█████╗  ██╔████╔██║██║   ██║██║  ██║█████╗  
-#  ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝  ██║╚██╔╝██║██║   ██║██║  ██║██╔══╝  
+#  ██║  ███╗███████║██╔████╔██║█████╗  ██╔████╔██║██║   ██║██║  ██║█████╗
+#  ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝  ██║╚██╔╝██║██║   ██║██║  ██║██╔══╝
 #  ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗██║ ╚═╝ ██║╚██████╔╝██████╔╝███████╗
 #   ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═╝     ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝
 #	Disables picom, notifications and configure the processor in performance mode
 #	gh0stzk | https://github.com/gh0stzk/dotfiles
 #	11.07.2024 13:25:51
+#	Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 
-CACHE_FILE="$HOME/.cache/$(whoami)/gamemode_state"
+
+CACHE_DIR="$HOME/.cache/$USER"
+CACHE_FILE="$CACHE_DIR/gamemode_state"
 CPU_GOVERNOR_PATH="/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
 
-mkdir -p "$(dirname "$CACHE_FILE")"
-[[ -f "$CACHE_FILE" ]] || echo Off >"$CACHE_FILE"
+# Create cache directory if it does not exist
+mkdir -p "$CACHE_DIR"
+[[ -f "$CACHE_FILE" ]] || echo "Off" > "$CACHE_FILE"
 
+# Function to obtain the current state of Game Mode
 get_state() {
-	cat "$CACHE_FILE"
+    head -n 1 "$CACHE_FILE" 2>/dev/null || echo "Off"
 }
 
+# Function to change CPU governor
 set_cpu_governor() {
     local governor=$1
-    echo $governor | pkexec tee /sys/devices/system/cpu/*/cpufreq/scaling_governor
+    echo "$governor" | pkexec tee /sys/devices/system/cpu/*/cpufreq/scaling_governor >/dev/null
 }
 
+# Function to activate Game Mode
 gamemode_on() {
+    local prev_governor
+    prev_governor=$(cat "$CPU_GOVERNOR_PATH")
+    echo "$prev_governor" > "$CACHE_DIR/cpu_governor"
+
 	dunstctl set-paused true
-	pkill -f picom
-	set_cpu_governor performance
-	echo On >"$CACHE_FILE"
+    pkill -f picom
+    set_cpu_governor performance
+    echo "On" > "$CACHE_FILE"
+
 }
 
+# Function to deactivate Game Mode
 gamemode_off() {
-	dunstctl set-paused false
-	picom --config "$HOME"/.config/bspwm/picom.conf &
-	set_cpu_governor ondemand
-	echo Off >"$CACHE_FILE"
+    dunstctl set-paused false
+    picom --config "$HOME/.config/bspwm/src/config/picom.conf" &
+
+    local prev_governor
+    prev_governor=$(cat "$CACHE_DIR/cpu_governor")
+    set_cpu_governor "$prev_governor"
+
+    echo "Off" > "$CACHE_FILE"
+
+    notify-send -u normal -i games "Game Mode" "Game Mode desactivado. Picom reiniciado, notificaciones reanudadas y CPU $prev_governor restaurada."
 }
 
+# Function to toggle Game Mode
 toggle() {
-	if [[ $(get_state) == "Off" ]]; then
+    if [[ $(get_state) == "Off" ]]; then
         gamemode_on
     else
         gamemode_off
     fi
 }
 
-
 case "$1" in
     --toggle) toggle ;;
     --status) get_state ;;
-    *) echo "Usage: $0 [--toggle|--status]" ;;
+    *)        echo "Uso: $0 [--toggle|--status]" ;;
 esac

@@ -1,56 +1,88 @@
 #!/usr/bin/env bash
 #   █████╗ ██╗██████╗ ██████╗ ██╗      █████╗ ███╗   ██╗███████╗
 #  ██╔══██╗██║██╔══██╗██╔══██╗██║     ██╔══██╗████╗  ██║██╔════╝
-#  ███████║██║██████╔╝██████╔╝██║     ███████║██╔██╗ ██║█████╗  
-#  ██╔══██║██║██╔══██╗██╔═══╝ ██║     ██╔══██║██║╚██╗██║██╔══╝  
+#  ███████║██║██████╔╝██████╔╝██║     ███████║██╔██╗ ██║█████╗
+#  ██╔══██║██║██╔══██╗██╔═══╝ ██║     ██╔══██║██║╚██╗██║██╔══╝
 #  ██║  ██║██║██║  ██║██║     ███████╗██║  ██║██║ ╚████║███████╗
 #  ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝
 #	Script to control my eww widget arirplane options.
 #	gh0stzk | https://github.com/gh0stzk/dotfiles
 #	12.07.2024 10:12:26
+#	Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 
+cache_dir="$HOME/.cache/$USER"
+cache_file="$cache_dir/airplane_state"
 
-cache_file=$HOME/.cache/$(whoami)/airplane_state
+mkdir -p "$cache_dir"
+[[ -f "$cache_file" ]] || echo "Off" > "$cache_file"
 
-mkdir -p "$(dirname "$cache_file")"
-[[ ! -f "$cache_file" ]] && echo Off > "$cache_file"
+# Function to check if the system has Bluetooth and if the service is active
+has_bluetooth() {
+    if ! rfkill list bluetooth &>/dev/null; then
+        return 1
+    fi
+
+    if systemctl is-active bluetooth &>/dev/null; then
+        return 0
+    else
+        return 1
+    fi
+}
 
 get_state() {
-	cat "$cache_file"
+    head -n 1 "$cache_file" 2>/dev/null || echo "Off"
 }
 
 icon() {
-	if [[ $(get_state) == "On" ]]; then
-		echo "󰀝"
-	else
-		echo "󰀞"
-	fi
+    case "$(get_state)" in
+        "On")  echo "󰀝" ;;
+        *)     echo "󰀞" ;;
+    esac
 }
 
 airplane_on() {
-	nmcli networking off
-	systemctl is-active --quiet bluetooth.service && bluetoothctl power off
-	notify-send --urgency=normal -i airplane-mode "Airplane Mode" "Airplane mode has been turned on!"
-	echo On >"$cache_file"
+    nmcli networking off
+
+    if has_bluetooth; then
+        local bluetooth_state
+        bluetooth_state=$(bluetoothctl show | grep -q "Powered: yes" && echo "On" || echo "Off")
+
+        if [[ "$bluetooth_state" == "On" ]]; then
+            bluetoothctl power off
+        fi
+
+        printf "On\n%s" "$bluetooth_state" > "$cache_file"
+    else
+        echo "On" > "$cache_file"
+    fi
+
+    notify-send -u normal -i airplane-mode "Airplane Mode Activated" "Network disabled$(has_bluetooth && echo " and Bluetooth disabled")"
 }
 
 airplane_off() {
-	nmcli networking on
-	systemctl is-active --quiet bluetooth.service && bluetoothctl power on
-	notify-send --urgency=normal -i airplane-mode "Airplane Mode" "Airplane mode has been turned off!"
-	echo Off >"$cache_file"
+    nmcli networking on
+
+    if has_bluetooth; then
+        local prev_bluetooth_state
+        prev_bluetooth_state=$(sed -n '2p' "$cache_file" 2>/dev/null)
+
+        if [[ "$prev_bluetooth_state" == "On" ]]; then
+            bluetoothctl power on
+        fi
+    fi
+
+    echo "Off" > "$cache_file"
+
+    notify-send -u normal -i airplane-mode "Airplane Mode Off" "Network reactivated$(has_bluetooth && echo " and Bluetooth restored to its previous state")"
 }
 
 toggle() {
-	if [[ $(get_state) == "Off" ]]; then
-		airplane_on
-	else
-		airplane_off
-	fi
+    [[ "$(get_state)" == "Off" ]] && airplane_on || airplane_off
 }
 
 case "$1" in
     --toggle) toggle ;;
-    --icon) icon ;;
+    --icon)   icon ;;
     --status) get_state ;;
+    *)        echo "Uso: $0 [--toggle|--icon|--status]" ;;
 esac

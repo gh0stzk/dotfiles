@@ -8,49 +8,71 @@
 #	Script to detect and control the bluetooth information on my eww widget.
 #	gh0stzk | https://github.com/gh0stzk/dotfiles
 #	12.07.2024 09:51:19
+#	Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 
+
+# Function to check if the system has Bluetooth and if the service is active
+has_bluetooth() {
+    if ! rfkill list bluetooth &>/dev/null; then
+        return 1
+    fi
+
+    if systemctl is-active bluetooth &>/dev/null; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Function to get the Bluetooth icon
 get_icon() {
-	if systemctl is-active --quiet bluetooth.service; then
-		if [[ $(bluetoothctl show | grep "Powered" | awk '{print $2}') == "yes" ]]; then
-			echo "󰂯"
-		else
-			echo "󰂲"
-		fi
-	else
-		echo "󰂲"
-	fi
+    if has_bluetooth; then
+        if bluetoothctl show | grep -q "Powered: yes"; then
+            echo "󰂯"
+        else
+            echo "󰂲"
+        fi
+    else
+        echo "󰂲"
+    fi
 }
 
+# Function to get connected device name or status
 get_name() {
-	if systemctl is-active --quiet bluetooth.service; then
-		if [[ $(bluetoothctl show | grep "Powered" | awk '{print $2}') == "yes" ]]; then
-			connected_devices=$(bluetoothctl devices Connected | awk '{print $3}')
-			if [ -n "$connected_devices" ]; then
-				echo "$connected_devices"
-			else
-				echo "On"
-			fi
-		else
-			echo "Off"
-		fi
-	else
-		echo "Null"
-	fi
+    if has_bluetooth; then
+        if bluetoothctl show | grep -q "Powered: yes"; then
+            connected_devices=$(bluetoothctl devices Connected | awk '{print $3}')
+            if [[ -n "$connected_devices" ]]; then
+                echo "$connected_devices"
+            else
+                echo "On"
+            fi
+        else
+            echo "Off"
+        fi
+    else
+        echo "Null"
+    fi
 }
 
+# Function to toggle Bluetooth status
 toggle() {
-	if [[ $(bluetoothctl show | grep "Powered" | awk '{print $2}') == "no" ]]; then
-		bluetoothctl power on
-		dunstify --icon=bluetooth --appname=Bluetooth --urgency=normal "Bluetooth" "Bluetooth has been turned on."
-	else
-		bluetoothctl power off
-		dunstify --icon=bluetooth-disabled --appname=Bluetooth --urgency=normal "Bluetooth" "Bluetooth has been turned off."
-	fi
+    if has_bluetooth; then
+        if bluetoothctl show | grep -q "Powered: yes"; then
+            bluetoothctl power off
+            dunstify --icon=bluetooth-disabled --appname=Bluetooth --urgency=normal "Bluetooth" "Bluetooth has been turned off."
+        else
+            bluetoothctl power on
+            dunstify --icon=bluetooth --appname=Bluetooth --urgency=normal "Bluetooth" "Bluetooth has been turned on."
+        fi
+    else
+        dunstify --icon=bluetooth-disabled --appname=Bluetooth --urgency=normal "Bluetooth" "Bluetooth is not available or the service is inactive."
+    fi
 }
 
 case "$1" in
-  --status) get_status ;;
-  --icon) get_icon ;;
-  --name) get_name ;;
-  --toggle) toggle ;;
+    --icon)   get_icon ;;
+    --name)   get_name ;;
+    --toggle) toggle ;;
+    *)        echo "Uso: $0 [--icon|--name|--toggle]" ;;
 esac
