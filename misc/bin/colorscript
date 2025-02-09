@@ -1,102 +1,96 @@
 #!/usr/bin/env bash
-
+# Author: gh0stzk
+# Revision Date: 09.02.2025 10:00:58
+# Repository: https://github.com/gh0stzk/dotfiles
+# ----------------------------------------------------------------------------
 # Simple CLI for shell-color-scripts
+#
+# This is my modified version of the shell-color-scripts from
+# https://github.com/charitarthchugh/shell-color-scripts
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# ----------------------------------------------------------------------------
 
 DIR_COLORSCRIPTS="$HOME/.local/share/asciiart"
-fmt_help="  %-20s\t%-54s\n"
-list_colorscripts="$(/usr/bin/ls "${DIR_COLORSCRIPTS}" | cut -d ' ' -f 1 | nl)"
-length_colorscripts="$(/usr/bin/ls "${DIR_COLORSCRIPTS}" | wc -l)"
+shopt -s nullglob
+
+# Load scripts into an array
+color_scripts=("$DIR_COLORSCRIPTS"/*)
+color_scripts=("${color_scripts[@]##*/}")  # Eliminar rutas, conservar nombres
+length_colorscripts=${#color_scripts[@]}
+
 function _help() {
     echo "Description: A collection of terminal color scripts."
-    echo ""
+    echo
     echo "Usage: colorscript [OPTION] [SCRIPT NAME/INDEX]"
-    printf "${fmt_help}" \
-        "-h, --help, help" "Print this help." \
-        "-l, --list, list" "List all installed color scripts." \
-        "-r, --random, random" "Run a random color script." \
-        "-e, --exec, exec" "Run a specified color script by SCRIPT NAME or INDEX."
+    echo
+    printf "  %-3s\t%s\n" \
+        "-h" "Print this help." \
+        "-l" "List all installed color scripts." \
+        "-r" "Run a random color script." \
+        "-e" "Run a specified color script by NAME or INDEX."
 }
 
 function _list() {
-    echo "There are "$(ls "${DIR_COLORSCRIPTS}" | wc -l)" installed color scripts:"
-    echo "${list_colorscripts}"
+    echo "There are $length_colorscripts installed color scripts:"
+    for i in "${!color_scripts[@]}"; do
+        printf "%d\t%s\n" "$((i+1))" "${color_scripts[i]}"
+    done
 }
 
 function _random() {
-    declare -i random_index=$((RANDOM % length_colorscripts + 1))
-    [[ $random_index -eq 0 ]] && random_index=1
-
-    random_colorscript="$(echo  "${list_colorscripts}" | sed -n ${random_index}p \
-        | tr -d ' ' | tr '\t' ' ' | cut -d ' ' -f 2)"
-    exec "${DIR_COLORSCRIPTS}/${random_colorscript}"
-}
-
-function ifhascolorscipt() {
-    [[ -e "${DIR_COLORSCRIPTS}/$1" ]] && echo "Has this color script."
-}
-
-function _run_by_name() {
-    if [[ "$1" == "random" ]]; then
-        _random
-    elif [[ -n "$(ifhascolorscipt "$1")" ]]; then
-        exec "${DIR_COLORSCRIPTS}/$1"
-    else
-        echo "Input error, Don't have color script named $1."
-        exit 1
-    fi
-}
-
-function _run_by_index() {
-    if [[ "$1" -gt 0 && "$1" -lt "${length_colorscripts}" ]]; then
-
-        colorscript="$(echo  "${list_colorscripts}" | sed -n ${1}p \
-            | tr -d ' ' | tr '\t' ' ' | cut -d ' ' -f 2)"
-        exec "${DIR_COLORSCRIPTS}/${colorscript}"
-    else
-        echo "Input error, Don't have color script indexed $1."
-        exit 1
-    fi
+    local random_index=$(( RANDOM % length_colorscripts ))
+    exec "${DIR_COLORSCRIPTS}/${color_scripts[random_index]}"
 }
 
 function _run_colorscript() {
-    if [[ "$1" =~ ^[0-9]+$ ]]; then
-        _run_by_index "$1"
-    else
-        _run_by_name "$1"
+    local script_name
+    if [[ $1 =~ ^[0-9]+$ ]]; then  # If it is numerical
+        if (( $1 < 1 || $1 > length_colorscripts )); then
+            echo "Error: Invalid index '$1'. Use 1-$length_colorscripts." >&2
+            exit 1
+        fi
+        script_name="${color_scripts[$1-1]}"
+    else  # If it is name
+        if [[ ! -f "${DIR_COLORSCRIPTS}/$1" ]]; then
+            echo "Error: The '$1' script does not exist." >&2
+            exit 1
+        fi
+        script_name="$1"
     fi
+    exec "${DIR_COLORSCRIPTS}/${script_name}"
 }
 
+# Process arguments
 case "$#" in
     0)
         _help
         ;;
     1)
         case "$1" in
-            -h | --help | help)
-                _help
-                ;;
-            -l | --list | list)
-                _list
-                ;;
-            -r | --random | random)
-                _random
-                ;;
+            -h) _help ;;
+            -l) _list ;;
+            -r) _random ;;
             *)
-                echo "Input error."
+                echo "Error: Invalid option '$1'." >&2
                 exit 1
                 ;;
         esac
         ;;
     2)
-        if [[ "$1" == "-e" || "$1" == "--exec" || "$1" == "exec" ]]; then
-            _run_colorscript "$2"
-        else
-            echo "Input error."
-            exit 1
-        fi
+        case "$1" in
+            -e)
+                _run_colorscript "$2"
+                ;;
+            *)
+                echo "Error: Invalid option '$1'." >&2
+                exit 1
+                ;;
+        esac
         ;;
     *)
-        echo "Input error, too many arguments."
+        echo "Input error, too many arguments." >&2
         exit 1
         ;;
 esac
