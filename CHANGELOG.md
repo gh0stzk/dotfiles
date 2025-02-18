@@ -1,3 +1,14 @@
+## Installer update
+##### 17 Feb 2025
+
+I have completely updated the installer.
+
+- Chaotic-Aur is added and used trying to make the installation faster.
+
+- Now it checks if you are in a VM and changes the picom backend.
+
+- The logic was improved and now the installation should finish in approximately 5 minutes. Before 20+ minutes.
+
 ## Updated scripts
 ##### Febrero 7 2025
 
