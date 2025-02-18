@@ -673,7 +673,7 @@ change_default_shell() {
 		echo -en "${BLD}${CGR}Zsh is already your default shell!${CNC}\n\n"
 	fi
 
-	sleep 3
+    sleep 3
 }
 
 final_prompt() {

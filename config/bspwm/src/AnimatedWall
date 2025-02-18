@@ -8,12 +8,11 @@ start() {
         exit 1
     fi
 
-    SCREENS=$(xrandr | grep -Eo '^[^ ]+ connected.*' | cut -d' ' -f1)
-    
-    # INFO: calculates the aspect ratio to force mpv when the video is in inappropriate resolution for the screen
+    # Get full geometry of each screen (ex: "1920x1080+1366+0")
+    SCREENS=$(xrandr | grep -Eo '[0-9]+x[0-9]+\+[0-9]+\+[0-9]+')
+
     gcd() {
-        local a=$1
-        local b=$2
+        local a=$1 b=$2
         while [ $b -ne 0 ]; do
             local temp=$b
             b=$((a % b))
@@ -22,13 +21,14 @@ start() {
         echo $a
     }
 
-    # INFO: Loop through all connected screens
-    for screen in $SCREENS; do
-        resolution=$(xrandr | grep -A1 "^$screen" | grep '*' | awk '{print $1}')
-        width=$(echo $resolution | cut -d'x' -f1)
-        height=$(echo $resolution | cut -d'x' -f2)
+    for geometry in $SCREENS; do
+        # Extract resolution and coordinates
+        resolution=$(echo "$geometry" | cut -d'+' -f1)
+        width=$(echo "$resolution" | cut -d'x' -f1)
+        height=$(echo "$resolution" | cut -d'x' -f2)
 
-        g=$(gcd $width $height)
+        # Calculate aspect ratio
+        g=$(gcd "$width" "$height")
         aspect_width=$((width / g))
         aspect_height=$((height / g))
 
@@ -41,11 +41,12 @@ start() {
         esac
 
         # INFO: for each screen, launch the video with the appropriate aspect ratio
-        xwinwrap -g "$resolution" -un -fdt -ni -b -nf \
+        xwinwrap -g "$geometry" -un -fdt -ni -b -nf \
             -- mpv --hwdec=auto -vo x11 --no-audio --no-border --no-config \
             --no-window-dragging --no-input-default-bindings --no-osd-bar \
             --no-sub --loop -wid WID \
-            --video-aspect-override="$videoaspect" --geometry="$resolution" --video-unscaled=no ${video_path} > /dev/null 2>&1 &
+            --video-aspect-override="$videoaspect" --video-scale-x=1 --video-scale-y=1 \
+            "$video_path" > /dev/null 2>&1 &
     done
 }
 
@@ -55,8 +56,8 @@ stop() {
 
 print_help() {
     echo "Usage: AnimatedWall [--start] [--stop] \"video_path.mp4\""
-    echo "--start Start playback of video file."
-    echo "--stop Stop active playback."
+    echo "--start: Start playback of video file."
+    echo "--stop: Stop active playback."
 }
 
 if [ $# -eq 0 ]; then
@@ -68,7 +69,7 @@ while [[ "$#" -gt 0 ]]; do
     case $1 in
         --start) start; shift ;;
         --stop) stop; shift ;;
-        *) echo "Unknown parameter: $1" ;;
+        *) echo "Unknown parameter: $1"; exit 1 ;;
     esac
     shift
 done
