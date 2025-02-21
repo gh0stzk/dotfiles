@@ -235,7 +235,7 @@ install_dependencies() {
         xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot xorg-xwininfo yazi zsh
         zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting
         ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd
-        ttf-ubuntu-mono-nerd ueberzug webp-pixbuf-loader paru tdrop eww-git
+        ttf-ubuntu-mono-nerd ueberzugpp webp-pixbuf-loader paru tdrop eww-git
         i3lock-color simple-mtpfs gh0stzk-gtk-themes gh0stzk-cursor-qogirr
         gh0stzk-icons-beautyline gh0stzk-icons-candy gh0stzk-icons-catppuccin-mocha
         gh0stzk-icons-dracula gh0stzk-icons-glassy gh0stzk-icons-gruvbox-plus-dark
