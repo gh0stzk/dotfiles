@@ -26,6 +26,7 @@
 readonly DIR="$HOME/.config/bspwm/src/assets"
 readonly BRIGHTNESS_STEPS=5
 readonly MIN_BRIGHTNESS=2
+readonly NOTIFICATION_ID=12345
 
 get_brightness() {
     brightnessctl i | awk -F '[()%]' '/Current brightness:/ {print $2}'
@@ -41,8 +42,8 @@ send_notification() {
         bar+="─"
     done
 
-    dunstify "Brightness $brightness%" -i "$icon" -r 5555 -u normal \
-             -h "int:value:$brightness"
+    notify-send "Brightness $brightness%" -i "$icon" -t 2000 \
+                --hint=int:value:"$brightness" --replace-id="$NOTIFICATION_ID"
 }
 
 adjust_brightness() {
