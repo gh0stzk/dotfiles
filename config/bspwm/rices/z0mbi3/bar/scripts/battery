@@ -3,6 +3,14 @@
 bat=/sys/class/power_supply/BAT0/
 per="$(cat "$bat/capacity")"
 
+battery_status () {
+	if [[ -d "$bat" ]]; then
+		printf "true"
+	else
+		printf "false"
+	fi
+}
+
 icon() {
 
     [ "$(cat "$bat/status")" = Charging ] && icon="images/battery_charging.png" && echo "$icon" && exit
@@ -37,6 +45,6 @@ percent() {
     echo "$per"
 }
 
+[ "$1" = "battery_status" ] && battery_status && exit
 [ "$1" = "icon" ] && icon && exit
 [ "$1" = "percent" ] && percent && exit
-exit

@@ -17,7 +17,7 @@
 # Directorio de iconos y función de notificación
 vol_dir="$HOME/.config/bspwm/src/assets"
 notify() {
-    dunstify -u low -h string:x-dunst-stack-tag:cvolum "$@"
+    notify-send -u low -h string:x-dunst-stack-tag:cvolum "$@"
 }
 
 # Get volume status

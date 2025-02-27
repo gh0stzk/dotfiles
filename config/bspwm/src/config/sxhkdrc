@@ -133,7 +133,7 @@ super + {_,shift + }c
 
 # Reload sxhkd Keybinds
 super + Escape
-	pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/src/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
+	pkill -USR1 -x sxhkd; notify-send -u low -i ~/.config/bspwm/src/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
 
 # ----- Node states and flags ----- #
 

@@ -56,7 +56,7 @@ airplane_on() {
         echo "On" > "$cache_file"
     fi
 
-    notify-send -u normal -i airplane-mode "Airplane Mode Activated" "Network disabled$(has_bluetooth && echo " and Bluetooth disabled")"
+    notify-send -i airplane-mode "Airplane Mode Activated" "Network disabled$(has_bluetooth && echo " and Bluetooth disabled")"
 }
 
 airplane_off() {
@@ -73,7 +73,7 @@ airplane_off() {
 
     echo "Off" > "$cache_file"
 
-    notify-send -u normal -i airplane-mode "Airplane Mode Off" "Network reactivated$(has_bluetooth && echo " and Bluetooth restored to its previous state")"
+    notify-send -i airplane-mode "Airplane Mode Off" "Network reactivated$(has_bluetooth && echo " and Bluetooth restored to its previous state")"
 }
 
 toggle() {
