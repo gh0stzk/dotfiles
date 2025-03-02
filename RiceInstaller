@@ -227,8 +227,8 @@ install_dependencies() {
 
     # List of dependencies
     local dependencies=(
-        alacritty base-devel bat brightnessctl bspwm clipcat dunst eza feh
-        gvfs-mtp firefox geany git imagemagick jq jgmenu kitty libwebp maim
+        alacritty base-devel bat brightnessctl bspwm clipcat dunst eza feh thunar
+        tumbler gvfs-mtp firefox geany git imagemagick jq jgmenu kitty libwebp maim
         mpc mpd mpv neovim ncmpcpp npm pamixer pacman-contrib papirus-icon-theme
         picom playerctl polybar polkit-gnome python-gobject redshift rofi rustup
         sxhkd tmux xclip xdg-user-dirs xdo xdotool xsettingsd xorg-xdpyinfo
