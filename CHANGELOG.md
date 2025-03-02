@@ -1,3 +1,9 @@
+## Some changes to Theme.sh
+##### 01 March 2025
+
+- Removed Process.bash and wallengine.bash. Trying to make the dotfiles more understandable for newbie people, the functions that were executed in those files are now directly executed in Theme.sh
+- Updated Yazi config.
+
 ## Installer update
 ##### 17 Feb 2025
 
