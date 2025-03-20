@@ -1,0 +1,210 @@
+// # z0mbi3 - https://github.com/gh0stzk/dotfiles
+
+configuration {
+	modi:                       "drun,run,filebrowser,window";
+    show-icons:                 true;
+    disable-history:            true;
+    application-fallback-icon: 	"Adwaita";
+    display-drun:               "Apps";
+    display-run:                "Run";
+    display-filebrowser:        "Files";
+    display-window:             "Windows";
+	drun-display-format:        "{name}";
+	window-format:              "{w} · {c}";
+}
+
+@import "shared.rasi"
+
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       760px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    enabled:                     true;
+    border-radius:               10px;
+    cursor:                      "default";
+    background-color:            @background-alt;
+}
+
+
+mainbox {
+    enabled:                     true;
+    spacing:                     14px;
+    padding:                     14px 14px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "inputbar", "listbox" ];
+}
+
+listbox {
+    spacing:                     20px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "listview" ];
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     62px 36px;
+    border-radius:               10px;
+    background-color:            transparent;
+    background-image:            var(img-background);
+    text-color:                  @foreground;
+    orientation:                 horizontal;
+    children:                    [ "textbox-prompt-colon", "entry", "dummy", "dummy", "dummy", "dummy", "mode-switcher" ];
+}
+
+textbox-prompt-colon {
+    enabled:                     true;
+    font:                        "JetBrains Mono Nerd Font 9";
+    expand:                      false;
+    str:                         "";
+    padding:                     10px 16px 10px 12px;
+    border-radius:               10px;
+    background-color:            @background-alt;
+    text-color:                  inherit;
+}
+
+entry {
+    enabled:                     true;
+    expand:                      false;
+    width:                       230px;
+    padding:                     10px 12px;
+    border-radius:               6px;
+    background-color:            @background-alt;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 "Search";
+    placeholder-color:           inherit;
+}
+
+dummy {
+    expand:                      false;
+    background-color:            transparent;
+}
+
+mode-switcher{
+    enabled:                     true;
+    spacing:                     10px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+button {
+    width:                       75px;
+    padding:                     10px;
+    border-radius:               6px;
+    background-color:            @background-alt;
+    text-color:                  inherit;
+    cursor:                      pointer;
+}
+
+button selected {
+    background-color:            @selected;
+    text-color:                  @background;
+}
+
+scrollbar {
+    handle-width:                10px ;
+    handle-color:                @active;
+    background-color:            @background-alt;
+}
+
+listview {
+    enabled:                     true;
+    columns:                     6;
+    lines:                       4;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   true;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+
+    spacing:                     10px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      "default";
+}
+
+element {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     10px;
+    border-radius:               10px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+    orientation:                 vertical;
+}
+
+element normal.normal {
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+
+element normal.urgent {
+    background-color:            @urgent;
+    text-color:                  @foreground;
+}
+
+element normal.active {
+    background-color:            @active;
+    text-color:                  @foreground;
+}
+
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @background;
+}
+
+element selected.urgent {
+    background-color:            @urgent;
+    text-color:                  @foreground;
+}
+
+element selected.active {
+    background-color:            @urgent;
+    text-color:                  @foreground;
+}
+
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        42px;
+    cursor:                      inherit;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
+
+message {
+    background-color:            transparent;
+}
+
+textbox {
+    padding:                     15px;
+    border-radius:               15px;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+error-message {
+    padding:                     15px;
+    border-radius:               15px;
+    background-color:            @background;
+    text-color:                  @foreground;
+}

@@ -32,19 +32,19 @@ mount_device() {
 	fi
 
 	if simple-mtpfs --device "$DEVICE_NUM" "$MOUNT_POINT"; then
-		notify-send -i android-sdk -a Android "Android Mount" "Android device $DEVICE_NUM mounted at $MOUNT_POINT"
+		dunstify -i phone -a Android "Android Mount" "Android device $DEVICE_NUM mounted at $MOUNT_POINT"
 	else
-		notify-send -i android-sdk -a Android "Android Mount" "Failed to mount Android device $DEVICE_NUM"
+		dunstify -i phone -a Android "Android Mount" "Failed to mount Android device $DEVICE_NUM"
 	fi
 }
 
 unmount_device() {
 	MOUNT_POINT=$1
 	if fusermount -u "$MOUNT_POINT"; then
-		notify-send -i android-sdk -a Android "Android Unmount" "Android device unmounted from $MOUNT_POINT"
+		dunstify -i phone -a Android "Android Unmount" "Android device unmounted from $MOUNT_POINT"
 		rmdir "$MOUNT_POINT"
 	else
-		notify-send -i android-sdk -a Android "Android Unmount" "Failed to unmount Android device"
+		dunstify -i phone -a Android "Android Unmount" "Failed to unmount Android device"
 	fi
 }
 
@@ -54,7 +54,7 @@ DEVICE_NAME=$(echo "$DEVICE" | awk '{$1=""; print $0}' | xargs) # Remove the lea
 MOUNT_POINT="$BASE_MOUNT_POINT/$DEVICE_NAME"
 
 if [ -z "$DEVICE_NUM" ]; then
-	notify-send -i android-sdk -a Android "Android Mount" "No device selected"
+	dunstify -i phone -a Android "Android Mount" "No device selected"
 	exit 1
 fi
 

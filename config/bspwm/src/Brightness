@@ -42,7 +42,7 @@ send_notification() {
         bar+="─"
     done
 
-    notify-send -i "$icon" -t 1000 --hint=int:value:"$brightness" --replace-id=12345 "Brightness $brightness%"
+    dunstify "Brightness $brightness%" -i $icon -r 5555 -h int:value:$(($brightness))
 }
 
 adjust_brightness() {

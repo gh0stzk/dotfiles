@@ -9,7 +9,7 @@
 #   Author: z0mbi3
 #   url: https://github.com/gh0stzk/dotfiles
 
-CFG_TERM="$HOME/.config/bspwm/src/.term"
+CFG_TERM="$HOME/.config/bspwm/src/config/.term"
 ROFI_THEME="$HOME/.config/bspwm/src/rofi-themes/TermSelector.rasi"
 
 # Main var

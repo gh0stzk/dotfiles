@@ -413,6 +413,7 @@ class RiceEditorApp(Gtk.Window):
                 self.wall_engine_combo.append("CustomDir", "Custom Dir")
                 self.wall_engine_combo.append("CustomImage", "Custom Image")
                 self.wall_engine_combo.append("CustomAnimated", "Custom Animated")
+                self.wall_engine_combo.append("Slideshow", "SlideShow")
 
                 # Set initial value
                 initial_engine = self.get_wall_engine()
@@ -537,6 +538,25 @@ class RiceEditorApp(Gtk.Window):
         pixel_art_box.pack_end(self.pixel_art_switch, False, False, 10)
 
         general_options_content.pack_start(pixel_art_box, False, False, 7)
+
+        # Configuración de fzf-tab completion
+        fzf_tab_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=7)
+        fzf_tab_label = Gtk.Label(label="Disable fzf-tab completion")
+        fzf_tab_label.set_halign(Gtk.Align.START)
+
+        self.fzf_tab_switch = Gtk.Switch()
+
+        # Establecer valor inicial
+        initial_fzf_tab_state = self.get_fzf_tab_state()
+        self.fzf_tab_switch.set_active(initial_fzf_tab_state)
+
+        # Conectar el evento de cambio
+        self.fzf_tab_switch.connect("state-set", self.on_fzf_tab_switch_toggled)
+
+        fzf_tab_box.pack_start(fzf_tab_label, True, True, 10)
+        fzf_tab_box.pack_end(self.fzf_tab_switch, False, False, 10)
+
+        general_options_content.pack_start(fzf_tab_box, False, False, 7)
 
         # Contenido para Help
         help_frame = Gtk.Frame()  # Crear un Gtk.Frame
@@ -1524,6 +1544,24 @@ class RiceEditorApp(Gtk.Window):
             self.wall_engine_options_box.pack_start(custom_animated_label, False, False, 10)
             self.wall_engine_options_box.pack_start(hbox, False, False, 10)
 
+        elif engine == "Slideshow":  # Slideshow 15 minutes
+            current_theme = self.get_current_theme()
+            slideshow_label = Gtk.Label(
+                label=(
+                    "Change your wallpaper randomly every 15 minutes.\n"
+                    "From walls directory of the current theme, drop your images in\n"
+                    f"~/.config/bspwm/rices/{current_theme}/Walls"
+                )
+            )
+            slideshow_label.set_halign(Gtk.Align.START)
+            slideshow_label.set_justify(Gtk.Justification.LEFT)  # Alinear multilinea a la izquierda
+
+            apply_button = Gtk.Button(label="Apply")
+            apply_button.connect("clicked", self.on_apply_wall_engine, "Slideshow")
+
+            self.wall_engine_options_box.pack_start(slideshow_label, False, False, 10)
+            self.wall_engine_options_box.pack_start(apply_button, False, False, 10)
+
         self.wall_engine_options_box.show_all()
 
     def on_wall_engine_changed(self, combo):
@@ -1583,13 +1621,45 @@ class RiceEditorApp(Gtk.Window):
             # Aplicar cambios en tiempo real
             command = ""
             if engine == "Theme":
-                command = f'pkill xwinwrap ; feh -z --no-fehbg --bg-fill ~/.config/bspwm/rices/{current_theme}/walls'
+                command = f'''
+                pkill xwinwrap;
+                [ -f /tmp/wall_refresh.pid ] && kill $(cat /tmp/wall_refresh.pid) 2>/dev/null;
+                rm -f /tmp/wall_refresh.pid;
+                feh -z --no-fehbg --bg-fill ~/.config/bspwm/rices/{current_theme}/walls
+                '''
             elif engine == "CustomDir":
-                command = f'pkill xwinwrap ; feh -z --no-fehbg --bg-fill "{entry.get_text()}"'
+                command = f'''
+                pkill xwinwrap;
+                [ -f /tmp/wall_refresh.pid ] && kill $(cat /tmp/wall_refresh.pid) 2>/dev/null;
+                rm -f /tmp/wall_refresh.pid;
+                feh -z --no-fehbg --bg-fill "{entry.get_text()}"
+                '''
             elif engine == "CustomImage":
-                command = f'pkill xwinwrap ; feh --no-fehbg --bg-fill "{entry.get_text()}"'
+                command = f'''
+                pkill xwinwrap;
+                [ -f /tmp/wall_refresh.pid ] && kill $(cat /tmp/wall_refresh.pid) 2>/dev/null;
+                rm -f /tmp/wall_refresh.pid;
+                feh --no-fehbg --bg-fill "{entry.get_text()}"
+                '''
             elif engine == "CustomAnimated":
-                command = f'pkill xwinwrap ; AnimatedWall --start "{entry.get_text()}"'
+                command = f'''
+                pkill xwinwrap;
+                [ -f /tmp/wall_refresh.pid ] && kill $(cat /tmp/wall_refresh.pid) 2>/dev/null;
+                rm -f /tmp/wall_refresh.pid;
+                AnimatedWall --start "{entry.get_text()}"
+                '''
+            elif engine == "Slideshow":
+                command = f'''
+                pkill xwinwrap;
+                [ -f /tmp/wall_refresh.pid ] && kill $(cat /tmp/wall_refresh.pid) 2>/dev/null;
+                rm -f /tmp/wall_refresh.pid;
+                bash -c '
+                    while true; do
+                        feh -z --no-fehbg --bg-fill ~/.config/bspwm/rices/{current_theme}/walls;
+                        sleep 900
+                    done & echo $! > /tmp/wall_refresh.pid
+                '
+                '''
 
             subprocess.run(command, shell=True)
 
@@ -1880,6 +1950,52 @@ class RiceEditorApp(Gtk.Window):
                 f.writelines(lines)
         except Exception as e:
             print(f"Error al actualizar Pixel-Art on Terminal: {e}")
+
+        return False  # Debe retornar False para que el estado del switch se actualice
+
+    def get_fzf_tab_state(self):
+        """
+        Lee el estado actual de fzf-tab on Terminal desde .zshrc.
+        """
+        zshrc_file = os.path.expanduser('~/.zshrc')
+
+        try:
+            with open(zshrc_file, 'r') as f:
+                for line in f:
+                    if "disable-fzf-tab" in line:
+                        return not line.strip().startswith("#")
+        except FileNotFoundError:
+            print(f"Archivo de configuración no encontrado: {zshrc_file}")
+        except Exception as e:
+            print(f"Error al leer el estado de fzf-tab: {e}")
+        return False  # Por defecto, se asume que está desactivado
+
+    def on_fzf_tab_switch_toggled(self, switch, state):
+        """
+        Maneja los cambios en el switch de fzf_tab on Terminal.
+        """
+        zshrc_file = os.path.expanduser('~/.zshrc')
+        command_line = "disable-fzf-tab"
+
+        try:
+            with open(zshrc_file, 'r') as f:
+                lines = f.readlines()
+
+            for i, line in enumerate(lines):
+                if command_line in line:
+                    if state:
+                        # Activar: descomentar la línea
+                        lines[i] = line.lstrip("#")
+                    else:
+                        # Desactivar: comentar la línea
+                        if not line.strip().startswith("#"):
+                            lines[i] = f"#{line}"
+                    break
+
+            with open(zshrc_file, 'w') as f:
+                f.writelines(lines)
+        except Exception as e:
+            print(f"Error al actualizar fzf-tab on Terminal: {e}")
 
         return False  # Debe retornar False para que el estado del switch se actualice
 

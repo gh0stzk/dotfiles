@@ -198,6 +198,9 @@
         (label :class "keys" :xalign 0 :text "Power Menu")
         (label :class "keys-alt" :xalign 1 :text "Super + Alt + p"))
       (box :orientation "h" :space-evenly "true"
+        (label :class "keys" :xalign 0 :text "Change rofi style")
+        (label :class "keys-alt" :xalign 1 :text "Super + Alt + l"))
+      (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Change Keyboard Layout")
         (label :class "keys-alt" :xalign 1 :text "Super + Alt + k"))
       (box :orientation "h" :space-evenly "true"

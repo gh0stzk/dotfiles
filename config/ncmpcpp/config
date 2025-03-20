@@ -10,7 +10,7 @@ mpd_connection_timeout = "5"
 mpd_crossfade_time = "5"
 mpd_music_dir = ~/Music
 lyrics_directory  = ~/.config/ncmpcpp/lyrics
-execute_on_song_change  = "MediaControl nccover ; dunstify -I /tmp/cover.png "Playing..." "$(mpc --format '%title% \n%artist%' current)""
+execute_on_song_change  = "MediaControl nccover ; dunstify --replace=27072 -i /tmp/cover.png "Playing..." "$(mpc --format '%title% \n%artist%' current)""
 
 visualizer_data_source = /tmp/mpd.fifo
 visualizer_output_name = my_fifo
@@ -44,7 +44,7 @@ ask_for_locked_screen_width_part = "yes"
 display_bitrate = "no"
 external_editor = "nano"
 main_window_color = "default"
-startup_screen = "playlist"
+startup_screen = "browser"
 
 # PROGRESS BAR
 # ---

@@ -48,7 +48,7 @@ case $Control in
                 echo "${artist:-No Artist}"
                 ;;
             --status)
-                status=$(mpc status | head -2 | tail -1 | cut -c2-8 | sed 's/]//g' | sed 's/./\U&/')
+                status=$(mpc status | sed -En '2s/.*\[([^]]*)\].*/\u\1/p')
                 echo "${status:-Stopped}"
                 ;;
             --player)

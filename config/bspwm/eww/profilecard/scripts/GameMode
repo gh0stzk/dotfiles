@@ -54,7 +54,7 @@ gamemode_off() {
 
     echo "Off" > "$CACHE_FILE"
 
-    notify-send -u normal -i games "Game Mode" "Game Mode desactivado. Picom reiniciado, notificaciones reanudadas y CPU $prev_governor restaurada."
+    dunstify -i games "Game Mode" "Game Mode desactivado. Picom reiniciado, notificaciones reanudadas y CPU $prev_governor restaurada."
 }
 
 # Function to toggle Game Mode

@@ -9,7 +9,7 @@ configuration {
 	drun-display-format:        "{name}";
 	disable-history:            true;
 	sidebar-mode: 				false;
-	
+
 	hover-select:				true;
 	me-select-entry:			"";
 	me-accept-entry:			"MousePrimary";
@@ -98,7 +98,7 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
-    
+
     spacing:                     3px;
     background-color:            transparent;
     text-color:                  @foreground;

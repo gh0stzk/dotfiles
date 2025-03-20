@@ -13,7 +13,7 @@ WIDGET_DIR="$HOME/.config/bspwm/eww"
 
 case "$1" in
 	--menu)
-		rofi -show drun -theme "$HOME"/.config/bspwm/src/rofi-themes/Launcher.rasi
+		RofiLauncher --launcher
 		;;
 	--rice)
 		RiceSelector
@@ -64,10 +64,7 @@ case "$1" in
 		Term --fetch
 		;;
 	--scratch)
-		Term --scratch
-		;;
-	--yaziscratch)
-		Term --yaziscratch
+		Bspwm-ScratchPad
 		;;
 		# Apps
 	--filemanager)

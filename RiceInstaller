@@ -227,7 +227,7 @@ install_dependencies() {
 
     # List of dependencies
     local dependencies=(
-        alacritty base-devel bat brightnessctl bspwm clipcat dunst eza feh thunar
+        alacritty base-devel bat brightnessctl bspwm clipcat dunst eza feh fzf thunar
         tumbler gvfs-mtp firefox geany git imagemagick jq jgmenu kitty libwebp maim
         mpc mpd mpv neovim ncmpcpp npm pamixer pacman-contrib papirus-icon-theme
         picom playerctl polybar polkit-gnome python-gobject redshift rofi rustup
@@ -235,8 +235,8 @@ install_dependencies() {
         xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot xorg-xwininfo yazi zsh
         zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting
         ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd
-        ttf-ubuntu-mono-nerd ueberzugpp webp-pixbuf-loader paru tdrop eww-git
-        i3lock-color simple-mtpfs gh0stzk-gtk-themes gh0stzk-cursor-qogirr
+        ttf-ubuntu-mono-nerd ueberzugpp webp-pixbuf-loader paru eww-git
+        i3lock-color simple-mtpfs fzf-tab-git gh0stzk-gtk-themes gh0stzk-cursor-qogirr
         gh0stzk-icons-beautyline gh0stzk-icons-candy gh0stzk-icons-catppuccin-mocha
         gh0stzk-icons-dracula gh0stzk-icons-glassy gh0stzk-icons-gruvbox-plus-dark
         gh0stzk-icons-hack gh0stzk-icons-luv gh0stzk-icons-sweet-rainbow
@@ -309,7 +309,7 @@ install_aur_dependencies() {
     }
 
     # AUR Package List
-    local aur_apps=(xqp xwinwrap-0.9-bin ttf-maple)
+    local aur_apps=(xqp xwinwrap-0.9-bin)
 
     echo -e "${BLD}${CBL}Checking for required AUR packages...${CNC}\n"
     sleep 2

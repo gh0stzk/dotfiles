@@ -53,6 +53,6 @@ reload() {
 
 # Send notification
 if reload; then
-    notify-send -i dialog-information "Environment Reloaded!" \
+    dunstify -i dialog-information "Environment Reloaded!" \
     "Reloaded Settings:\n• ${CURRENT_RICE^} Bar\n• Picom\n• Xsettingsd\n• SXHKD\n• Dunst\n• EWW Widgets"
 fi

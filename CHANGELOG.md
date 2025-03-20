@@ -1,3 +1,65 @@
+## New scratchpad, fzf-tab completion, rofi launcher styles, new slideshow wallpaper engine option.
+##### 20 March 2025
+
+#### New
+- **Scratchpad**
+  - I removed tdrop to create scratchpads. In a multi-monitor setup, the scratchpad wouldn't resize depending on the monitor and would appear in the wrong position when switching between monitors.
+So I created my own script, and now the scratchpad automatically resizes depending on the monitor and appears in the correct position. You can still launch it with `Super + Alt + o`
+- **Rofi launcher styles and a style selector**
+  - New style for the rofi app launcher and a new menu for selecting styles. I just added one more to the existing one, making it two now. If you'd like, you can send me your theme and I'll add it. You can open the new style selector menu with `super + alt + l`
+  - I also modified/optimized the images used in rofi, the rofi.webp file within each theme.
+
+| <img src="https://github.com/user-attachments/assets/6748b7b4-ee32-4e86-8cd8-e766c602469f" alt="Bspwm theme" width="700"> |
+| :-----------------------------------------------------------------------------------------------------------------------: |
+|                                                               New Style 2                                                 |
+
+| <img src="https://github.com/user-attachments/assets/4caa55e5-ed28-42a2-9411-cf518d663d25" alt="Bspwm theme" width="700"> |
+| :-----------------------------------------------------------------------------------------------------------------------: |
+|                                                     Style selector menu                                                   |
+
+- **fzf-tab completion**
+  - Add fzf-tab for autocompletion in the terminal. Fzf was recently updated with improvements to the layout, and I wanted to take advantage of it.
+  - How to use it? Just do the usual to autocomplete commands, for example: `cd <TAB>` `ls <TAB>` `cat <TAB>` `sudo pacman <TAB>` etc..
+  - Added an option to disable or enable fzf-tab in RiceEditor app, under General options.
+    - ![Shot-2025-03-19-232609](https://github.com/user-attachments/assets/f81fcdd7-5d4a-4523-8877-f80653030a01)
+
+  - Tab completions with **previews!!**
+    - ![Shot-2025-03-13-094232](https://github.com/user-attachments/assets/ea04373c-2fbd-4ba3-98f9-7ebbca185d70)
+    - ![Shot-2025-03-13-094541](https://github.com/user-attachments/assets/bb82419c-ad61-4821-89f2-aded56d17c32)
+    - ![Shot-2025-03-13-094638](https://github.com/user-attachments/assets/fe1e8fad-4787-454b-98a6-85e5cb97889c)
+    - ![Shot-2025-03-13-094805](https://github.com/user-attachments/assets/8c3cde3d-bbcc-44d4-afa7-8fe28a735973)
+    - ![Shot-2025-03-13-094933](https://github.com/user-attachments/assets/3ce88142-7a84-4b77-931d-025e2d579831)
+    - ![Shot-2025-03-13-095138](https://github.com/user-attachments/assets/8074dc24-5bd7-4e65-afb6-fc6c9bcbba52)
+
+- **New Slideshow option for wallpaper engine**
+  - Now you can select a new option in RiceEditor called Slideshow, this will change your wallpaper randomly every 15 minutes.
+  - Only wallpapers in rice Walls directory.
+    - ![Shot-2025-03-19-201032](https://github.com/user-attachments/assets/387b40d5-3164-45e0-9083-806beb6adf08)
+
+_I set this example to change every 10 seconds but default is 15 minutes_
+
+https://github.com/user-attachments/assets/666047b2-6b81-4ef7-baf5-80ebe2f89a78
+
+#### Fixed/Optimized/Updated
+- Mediacontrol --status command optimized (less pipes)
+- Updated OpenApps, picom.conf and animations, sxhkdrc, for new scratchpad and launcher config.
+- Ncmpcpp config updated, now starts on song list, not in playlist.
+- Betterfox updated
+- Removed tdrop from dependencies and added fzf and fzf-tab-git in RiceInstaller
+- Updated and optimized MonitorSetup. Automatically configure up to 4 connected monitors.
+- .zshrc updated for fzf-tab function.
+- Added, removed several wallpappers to most of the themes.
+- TTF-Maple was updated in the AUR and broke the Varinka theme. I removed the font from dependencies and it won't install anymore. Instead, I added the font to the fonts directory. I've made the necessary changes in polybar to fix this. So please uninstall the font if you already have it installed and add the font to your directory.
+- Changed again notify-send to dunstify in scripts.
+- Fix artifacts when you select an area taking a screenshot with ScreenShoter.
+
+#### To-Do
+- In setups with more than 1 monitor, the update module in polybar does not sync in one of the polybars, this happens because both processes are running at the same time, and PACMAN locks the database, and one module displays incorrect information. I'm trying to figure out how to fix this. Any ideas are welcome.
+
+
+---
+
+
 ## Some changes to Theme.sh
 ##### 01 March 2025
 

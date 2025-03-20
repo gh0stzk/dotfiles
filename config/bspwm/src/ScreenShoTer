@@ -80,9 +80,9 @@ run_rofi() {
 
 show_notification() {
     if [[ -e "$filename" ]]; then
-        notify-send --replace-id=699 -i "$filename" "Screenshot" "Screenshot saved and copied to clipboard"
+        dunstify -r 699 -i "$filename" "Screenshot" "Screenshot saved and copied to clipboard"
     else
-        notify-send --replace-id=699 -i user-trash "Screenshot" "Screenshot Canceled"
+        dunstify -r 699 -i user-trash "Screenshot" "Screenshot Canceled"
     fi
 }
 
@@ -94,7 +94,7 @@ take_screenshot() {
     local mode="$1"
     local all_monitors="$2"
     local geometry=""
-    local cmd="maim -u"
+    local cmd="maim -u -d 1"
 
     case "$mode" in
         "full")
@@ -104,7 +104,7 @@ take_screenshot() {
             fi
             ;;
         "select")
-            cmd="$cmd -s -o -b 2"
+            cmd="$cmd -s -o -c 0.467,0.239,0.863,0.15 -l"
             ;;
     esac
 
@@ -119,7 +119,7 @@ take_screenshot() {
 
 countdown() {
     for sec in $(seq "$1" -1 1); do
-        notify-send -t 1000 -i ~/.config/bspwm/src/assets/screenshot.png "Taking shot in : $sec"
+        dunstify -t 1000 -i ~/.config/bspwm/src/assets/screenshot.png "Taking shot in : $sec"
         sleep 1
     done
 }
@@ -127,13 +127,13 @@ countdown() {
 run_cmd() {
     case $1 in
         --now)
-            sleep 0.5 && take_screenshot "full" false ;;
+            take_screenshot "full" false ;;
         --sel)
             take_screenshot "select" false ;;
         --in3)
             countdown 3 && take_screenshot "full" false ;;
         --all)
-            sleep 0.5 && take_screenshot "full" true ;;
+            take_screenshot "full" true ;;
     esac
 }
 

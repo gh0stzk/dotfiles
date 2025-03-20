@@ -60,13 +60,13 @@ toggle() {
     if has_bluetooth; then
         if bluetoothctl show | grep -q "Powered: yes"; then
             bluetoothctl power off
-            notify-send -i bluetooth-disabled -a Bluetooth "Bluetooth" "Bluetooth has been turned off."
+            dunstify -i bluetooth-disabled -a Bluetooth "Bluetooth" "Bluetooth has been turned off."
         else
             bluetoothctl power on
-            notify-send -i bluetooth -a Bluetooth "Bluetooth" "Bluetooth has been turned on."
+            dunstify -i bluetooth -a Bluetooth "Bluetooth" "Bluetooth has been turned on."
         fi
     else
-        notify-send -i bluetooth-disabled -a Bluetooth "Bluetooth" "Bluetooth is not available or the service is inactive."
+        dunstify -i bluetooth-disabled -a Bluetooth "Bluetooth" "Bluetooth is not available or the service is inactive."
     fi
 }
 
