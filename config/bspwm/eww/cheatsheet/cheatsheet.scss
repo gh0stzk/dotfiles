@@ -1,7 +1,6 @@
 .cheatsheet {
   background-color: $bg;
   border-radius: 0.5rem;
-  margin: 0.8rem 0.8rem;
 }
 
 .title {
@@ -101,6 +100,17 @@
   border-radius: 2px;
 }
 
+.category-others {
+  font-family: JetBrainsMono NF;
+  font-weight: Bold;
+  font-size: 0.8rem;
+  background-color: $red;
+  color: $bg;
+  margin: 8px 0;
+  padding: 2px 0;
+  border-radius: 2px;
+}
+
 .category-power {
   font-family: JetBrainsMono NF;
   font-weight: Bold;
@@ -120,7 +130,26 @@
 
 .keys-alt {
   font-family: JetBrainsMono NF;
-  font-style: Italic;
+  font-weight: Bold;
   font-size: 0.8rem;
   color: $fg;
+}
+
+scrollbar {
+  trough {
+    padding-left: 30px; /* hack to make the scrollbar expand when the mouse is almost close */
+    min-width: 3px;
+
+    slider {
+      min-width: 4px;
+      border-radius: 999999px;
+      transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+      background-color: $green;
+    }
+  }
+
+  &:hover trough slider {
+    min-width: 8px;
+    background-color: $green;
+  }
 }

@@ -43,6 +43,10 @@ super + {y,v,m}
 super + {p,t,w}
 	OpenApps --{soundcontrol,telegram,whats}
 
+# Rice Editor App
+Super + r
+    RiceEditor
+
 # ----- Rofi Applets ----- #
 
 #Terminal Selector
