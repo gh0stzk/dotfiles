@@ -8,7 +8,7 @@
 #
 #	Author	-	gh0stzk
 #	Repo	-	https://github.com/gh0stzk/dotfiles
-#	Date	-	17.02.2025 18:13:45
+#	Last updated	-	24.03.2025 08:58:16
 #
 #	RiceInstaller - Script to install my dotfiles
 #
@@ -82,6 +82,11 @@ initial_checks() {
         log_error "No internet connection detected."
         exit 1
     fi
+}
+
+# Internal verification function
+is_installed() {
+    pacman -Qq "$1" >/dev/null 2>&1
 }
 
 welcome() {
@@ -217,13 +222,8 @@ add_chaotic_repo() {
 
 install_dependencies() {
 	clear
-    logo "Installing needed packages.."
+    logo "Installing needed packages from official repositories..."
 	sleep 2
-
-    # Internal verification function
-    is_installed() {
-        pacman -Qq "$1" >/dev/null 2>&1
-    }
 
     # List of dependencies
     local dependencies=(
@@ -235,22 +235,8 @@ install_dependencies() {
         xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot xorg-xwininfo yazi zsh
         zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting
         ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd
-        ttf-ubuntu-mono-nerd ueberzugpp webp-pixbuf-loader paru eww-git
-        i3lock-color simple-mtpfs fzf-tab-git gh0stzk-gtk-themes gh0stzk-cursor-qogirr
-        gh0stzk-icons-beautyline gh0stzk-icons-candy gh0stzk-icons-catppuccin-mocha
-        gh0stzk-icons-dracula gh0stzk-icons-glassy gh0stzk-icons-gruvbox-plus-dark
-        gh0stzk-icons-hack gh0stzk-icons-luv gh0stzk-icons-sweet-rainbow
-        gh0stzk-icons-tokyo-night gh0stzk-icons-vimix-white gh0stzk-icons-zafiro gh0stzk-icons-zafiro-purple
+        ttf-ubuntu-mono-nerd webp-pixbuf-loader
     )
-
-    # Handle ueberzug/ueberzugpp conflict
-    if is_installed "ueberzug"; then
-        echo -e "\n${BLD}${CYE}Removing conflicting ueberzug package...${CNC}\n"
-        sudo pacman -Rns --noconfirm ueberzug >> "$ERROR_LOG" 2>&1 || {
-            log_error "Failed to remove ueberzug"
-            echo -e "${BLD}${CRE}Error removing ueberzug! Check logs${CNC}\n\n"
-        }
-    fi
 
     echo -e "\n${BLD}${CBL}Checking for required packages...${CNC}\n"
 	sleep 2
@@ -299,14 +285,128 @@ install_dependencies() {
     sleep 3
 }
 
-install_aur_dependencies() {
+install_gh0stzk_dependencies() {
 	clear
-    logo "Installing AUR dependencies."
+    logo "Installing needed packages from gh0stzk repository..."
 	sleep 2
 
-    is_installed() {
-        pacman -Qq "$1" >/dev/null 2>&1
-    }
+    # List of dependencies
+    local gh0stzk_dependencies=(
+        gh0stzk-gtk-themes gh0stzk-cursor-qogirr gh0stzk-icons-beautyline
+        gh0stzk-icons-candy gh0stzk-icons-catppuccin-mocha gh0stzk-icons-dracula
+        gh0stzk-icons-glassy gh0stzk-icons-gruvbox-plus-dark gh0stzk-icons-hack
+        gh0stzk-icons-luv gh0stzk-icons-sweet-rainbow gh0stzk-icons-tokyo-night
+        gh0stzk-icons-vimix-white gh0stzk-icons-zafiro gh0stzk-icons-zafiro-purple
+    )
+
+    echo -e "\n${BLD}${CBL}Checking for required packages...${CNC}\n"
+	sleep 2
+
+    # Detect missing packages
+    local missing_gh0stzk_pkgs=()
+    for pkg in "${gh0stzk_dependencies[@]}"; do
+        if ! is_installed "$pkg"; then
+            missing_gh0stzk_pkgs+=("$pkg")
+            echo -e " ${BLD}${CYE}${pkg} ${CRE}not installed${CNC}"
+        else
+            echo -e "${BLD}${CGR}${pkg} ${CBL}already installed${CNC}"
+        fi
+    done
+
+    # Batch installation
+    if ((${#missing_gh0stzk_pkgs[@]} > 0)); then
+        echo -e "\n${BLD}${CYE}Installing ${#missing_gh0stzk_pkgs[@]} packages...${CNC}\n"
+
+        if sudo pacman -S --noconfirm --needed "${missing_gh0stzk_pkgs[@]}" >> "$ERROR_LOG" 2>&1; then
+            # Verify complete installation
+            local failed_gh0stzk_pkgs=()
+            for pkg in "${missing_gh0stzk_pkgs[@]}"; do
+                if ! is_installed "$pkg"; then
+                    failed_gh0stzk_pkgs+=("$pkg")
+                    log_error "Failed to install: $pkg"
+                fi
+            done
+
+            # Show final results
+            if ((${#failed_gh0stzk_pkgs[@]} == 0)); then
+                echo -e "${BLD}${CGR}All packages installed successfully!${CNC}\n\n"
+            else
+                echo -e "${BLD}${CRE}Failed to install ${#failed_gh0stzk_pkgs[@]} packages:${CNC}\n"
+                echo -e "  ${BLD}${CYE}${failed_gh0stzk_pkgs[*]}${CNC}\n\n"
+            fi
+        else
+            log_error "Critical error during batch installation"
+            echo -e "${BLD}${CRE}Installation failed! Check log for details${CNC}\n"
+            return 1
+        fi
+    else
+        echo -e "\n${BLD}${CGR}All dependencies are already installed!${CNC}"
+    fi
+
+    sleep 3
+}
+
+install_chaotic_dependencies() {
+	clear
+    logo "Installing needed packages from chaotic repository..."
+	sleep 2
+
+    # List of dependencies
+    local chaotic_dependencies=(
+        paru eww-git i3lock-color simple-mtpfs fzf-tab-git
+    )
+
+    echo -e "\n${BLD}${CBL}Checking for required packages...${CNC}\n"
+	sleep 2
+
+    # Detect missing packages
+    local missing_chaotic_pkgs=()
+    for pkg in "${chaotic_dependencies[@]}"; do
+        if ! is_installed "$pkg"; then
+            missing_chaotic_pkgs+=("$pkg")
+            echo -e " ${BLD}${CYE}${pkg} ${CRE}not installed${CNC}"
+        else
+            echo -e "${BLD}${CGR}${pkg} ${CBL}already installed${CNC}"
+        fi
+    done
+
+    # Batch installation
+    if ((${#missing_chaotic_pkgs[@]} > 0)); then
+        echo -e "\n${BLD}${CYE}Installing ${#missing_chaotic_pkgs[@]} packages...${CNC}\n"
+
+        if sudo pacman -S --noconfirm --needed "${missing_chaotic_pkgs[@]}" >> "$ERROR_LOG" 2>&1; then
+            # Verify complete installation
+            local failed_chaotic_pkgs=()
+            for pkg in "${missing_chaotic_pkgs[@]}"; do
+                if ! is_installed "$pkg"; then
+                    failed_chaotic_pkgs+=("$pkg")
+                    log_error "Failed to install: $pkg"
+                fi
+            done
+
+            # Show final results
+            if ((${#failed_chaotic_pkgs[@]} == 0)); then
+                echo -e "${BLD}${CGR}All packages installed successfully!${CNC}\n\n"
+            else
+                echo -e "${BLD}${CRE}Failed to install ${#failed_chaotic_pkgs[@]} packages:${CNC}\n"
+                echo -e "  ${BLD}${CYE}${failed_chaotic_pkgs[*]}${CNC}\n\n"
+            fi
+        else
+            log_error "Critical error during batch installation"
+            echo -e "${BLD}${CRE}Installation failed! Check log for details${CNC}\n"
+            return 1
+        fi
+    else
+        echo -e "\n${BLD}${CGR}All dependencies are already installed!${CNC}"
+    fi
+
+    sleep 3
+}
+
+install_aur_dependencies() {
+	clear
+    logo "Installing AUR dependencies..."
+	sleep 2
 
     # AUR Package List
     local aur_apps=(xqp xwinwrap-0.9-bin)
@@ -725,6 +825,8 @@ add_gh0stzk_repo
 add_chaotic_repo
 
 install_dependencies
+install_gh0stzk_dependencies
+install_chaotic_dependencies
 install_aur_dependencies
 clone_dotfiles
 
