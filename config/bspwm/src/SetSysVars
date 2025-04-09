@@ -29,14 +29,9 @@ SFILE="$HOME/.config/bspwm/src/.sys"
 
 [[ -f "$SFILE" ]] && exit 0 # The file exists, exit without doing anything
 
-# Wait for NetworkManager connection
-until nmcli -t -f STATE general | grep -q 'connected'; do
-    sleep 0.2
-done
-
 setup_system_vars() {
     # Primary Network Interface Detection
-    local primary_net=$(ip route show default 2>/dev/null | awk '/default/ {print $5; exit}')
+    local primary_net=$(ip link | awk '/state UP/ {print $2}' | tr -d :)
 
     # Graphics card detection
     local card=$(ls /sys/class/backlight/ 2>/dev/null | head -n1)
@@ -60,5 +55,6 @@ setup_system_vars() {
 }
 
 # Main execution
+sleep 3
 setup_system_vars
 touch "$SFILE"

@@ -220,7 +220,9 @@ apply_gtk_appearance() {
 	sed -i -e "s/Inherits=.*/Inherits=$gtk_cursor/" "$HOME"/.icons/default/index.theme
 
 	# Reload daemon and apply gtk theme
-	pkill -1 xsettingsd
+	if pidof -q xsettingsd; then
+        pkill -1 xsettingsd
+    fi
 	xsetroot -cursor_name left_ptr
 }
 
