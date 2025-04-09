@@ -40,7 +40,6 @@ Retroarch,retroarch,retroarch
 ^tag(wg)
 User Card,OpenApps --usercard,system-users
 Music Player,OpenApps --player,musique
-Power Menu,OpenApps --powermenu,changes-allow
 Calendar,OpenApps --calendar,office-calendar
 
 ^tag(wm)

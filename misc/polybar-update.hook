@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = Updating counter in polybar/eww...
+When = PostTransaction
+Exec = /bin/bash -c 'user=$(logname 2>/dev/null); [ -n "$user" ] && /usr/bin/machinectl -q shell ${user}@ /usr/bin/systemctl --user restart ArchUpdates.service || exit 0'

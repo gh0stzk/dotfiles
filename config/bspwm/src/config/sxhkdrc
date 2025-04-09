@@ -44,7 +44,7 @@ super + {p,t,w}
 	OpenApps --{soundcontrol,telegram,whats}
 
 # Rice Editor App
-Super + r
+super + r
     RiceEditor
 
 # ----- Rofi Applets ----- #
@@ -146,19 +146,17 @@ alt + {t,shift + t,a,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # Set the node flags
-alt + {m,x,s,p}
-	bspc node -g {marked,locked,sticky,private}
+alt + {m,x,s,p,h}
+	bspc node -g {marked,locked,sticky,private,hidden}
 
-# Hide/Unhide node
-alt + h
-	sh -c 'NHidden=$(bspc query -N -n .hidden -d focused); \
-	if [ -z "$NHidden" ]; then bspc node focused -g hidden=on; \
-	else bspc node "$NHidden" -g hidden=off; fi'
+# Show hidden nodes one by one
+ctrl + alt + h
+	bspc node $(bspc query -N -n .hidden.local.window | head -n1) --flag hidden=off
 
 # ----- Focus/Swap Nodes ----- #
 
 # Rotate desktop
-super + Tab
+ctrl + Tab
 	bspc node @/ --rotate {90,-90}
 
 # Switch workspace
@@ -173,9 +171,19 @@ super + {_,ctrl + }{1-9,0}
 super + ctrl + {Left,Right}
 	bspc node -d {prev,next} '--follow'
 
-# Cycle focus through nodes.
-ctrl + Tab
-	bspc node -f next.local.!hidden.window
+# Node switcher
+alt + Tab
+    rofi \
+        -theme $HOME/.config/bspwm/src/rofi-themes/Windows.rasi \
+        -show window -window-thumbnail \
+        -window-hide-active-window true \
+        -kb-accept-entry "!Alt-Tab,Return" \
+        -kb-element-next "Alt-Tab"
+
+# Focus the node in the given direction
+super + shift + {Left,Down,Up,Right}
+	{ DIR=west FALLBACK=prev; , DIR=south; , DIR=north; , DIR=east FALLBACK=next; } \
+	bspc node -f $DIR.!sticky.!hidden || bspc node -f $FALLBACK.leaf.!sticky.!hidden
 
 # Swap Nodes
 ctrl + shift + {Left,Down,Up,Right}
@@ -189,16 +197,26 @@ ctrl + shift {comma,period}
 super + ctrl {h,v,q}
 	bspc node -p {east,south,cancel}
 
-# ----- Expand/Shrink Nodes ----- #
+# ----- Move/Resize Nodes ----- #
 
-# Expand node
-super + alt {Left,Down,Up,Right}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+# balance desktop's nodes
+super + ctrl + b
+  bspc node @/ -B
 
-# Shrink node
-super + shift {Left,Down,Up,Right}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+# increase/decrease Node
+super + alt + {plus,minus}
+	{ \
+       bspc node -z top_right 20 -20 ; bspc node -z bottom_left -20 20; \
+    ,  bspc node -z top_right -20 20 ; bspc node -z bottom_left 20 -20; \
+    }
+
+# increase/decrease FLOATING node size (zoom in/out)
+super + ctrl + {plus,minus}
+	{ \
+	  xdotool getactivewindow windowmove --relative -- -50 -25 ; xdo resize -w +100 -h +50; \
+	, xdotool getactivewindow windowmove --relative -- +50 +25 ; xdo resize -w -100 -h -50; \
+	}
 
 # Move floating window
-alt + shift {Left,Down,Up,Right}
+super + alt + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}

@@ -11,7 +11,7 @@
 (defpoll uptime :interval "30s" "uptime -p | sed -E -e 's/hour(s)?/hrs/g' -e 's/minute(s)?/min/g'")
 
 ;; Pacman
-(defpoll updates :interval "5m" "Updates --get-updates")
+(defpoll UPDATES :interval "15m" `cat $HOME/.cache/Updates.txt 2>/dev/null`)
 (defpoll packages :interval "1h" "pacman -Q | wc -l")
 
 ;; Weather
@@ -128,7 +128,7 @@
 						 (button :class "pacman-updates"
 								 :halign "start"
 								 :tooltip "Click to update"
-								 :onclick "OpenApps --update &" "${updates} Updates"))))
+								 :onclick "OpenApps --update" "${UPDATES} Updates"))))
 			   (box :orientation "h"
 					:space-evenly "false"
 					:class "fetch"
@@ -246,7 +246,7 @@
       (box  :class "tools-main" :orientation "v" :space-evenly "false" :spacing 2
         (eventbox :class "tools-box" :width 43 :height 43 :halign "center" :cursor "pointer" :tooltip "Wired/WiFi network connection"
           (button :class {net_status != "Offline" ? "wifi-btn" : "wifi-no-btn"}
-                  :onclick "OpenApps --netmanager &" net_icon))
+                  :onclick "OpenApps --netmanager" net_icon))
         (label :class "info-btn" :limit-width 12 :xalign 0.5 :text net_status))
 
       (box  :class "tools-main" :orientation "v" :space-evenly "false" :spacing 2
@@ -254,24 +254,24 @@
           (button :class {blue_name == "On" ? "bluetooth-btn" :
                           blue_name == "Null" ? "bluetooth-no-btn" :
                           blue_name == "Off" ? "bluetooth-no-btn" : "bluetooth-btn"}
-                  :onclick "../eww/profilecard/scripts/Bluetooth --toggle &" blue_icon))
+                  :onclick "../eww/profilecard/scripts/Bluetooth --toggle" blue_icon))
         (label :class "info-btn" :limit-width 12 :xalign 0.5 :text blue_name))
 
       (box  :class "tools-main" :orientation "v" :space-evenly "false" :spacing 2
         (eventbox :class "tools-box" :width 43 :height 43 :halign "center" :cursor "pointer" :tooltip "Airplane Mode"
-          (button :class {airplane_status == "On" ? "airplane-btn" : "airplane-no-btn"} :onclick "../eww/profilecard/scripts/Airplane --toggle &" airplane_icon))
+          (button :class {airplane_status == "On" ? "airplane-btn" : "airplane-no-btn"} :onclick "../eww/profilecard/scripts/Airplane --toggle" airplane_icon))
         (label :class "info-btn" :limit-width 12 :xalign 0.5 :text airplane_status)))
 
 
     (box  :orientation "h" :space-evenly "true" :spacing 1
       (box  :class "tools-main" :orientation "v" :space-evenly "false" :spacing 2
         (eventbox :class "tools-box" :width 43 :height 43 :halign "center" :cursor "pointer" :tooltip "Night Light"
-          (button :class {redshift_status == "on" ? "redshift-btn" : "redshift-no-btn"} :onclick "../eww/profilecard/scripts/Redshift toggle &" {redshift_status == "on" ? "󰹐" : "󱠃"}))
+          (button :class {redshift_status == "on" ? "redshift-btn" : "redshift-no-btn"} :onclick "../eww/profilecard/scripts/Redshift toggle" {redshift_status == "on" ? "󰹐" : "󱠃"}))
         (label :class "info-btn" :limit-width 12 :xalign 0.5 :text "Night Light"))
 
       (box  :class "tools-main" :orientation "v" :space-evenly "false" :spacing 2
         (eventbox :class "tools-box" :width 43 :height 43 :halign "center" :cursor "pointer"
-          (button :class {game_state == "Off" ? "game-no-btn" : "game-btn"} :onclick "../eww/profilecard/scripts/GameMode --toggle &" "󰺵"))
+          (button :class {game_state == "Off" ? "game-no-btn" : "game-btn"} :onclick "../eww/profilecard/scripts/GameMode --toggle" "󰺵"))
         (label :class "info-btn" :limit-width 12 :xalign 0.5 :text "Game Mode")))
   )
 )

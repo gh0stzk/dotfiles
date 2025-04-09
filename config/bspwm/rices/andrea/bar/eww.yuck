@@ -19,7 +19,7 @@
 (defpoll CITY  :interval "15m" "Weather city")
 
 ;; Updates vars
-(defpoll UPDATES :interval "5m" "Updates --get-updates")
+(defpoll UPDATES :interval "15m" `cat $HOME/.cache/Updates.txt 2>/dev/null`)
 
 ;; Volume vars
 (defpoll volume_icon :interval "1s" "scripts/Volume --icon")
@@ -48,8 +48,8 @@
 			(button :style "background-image: url('images/dashboard.png');"
 				    :class "icons"
 				    :valign "center"
-				    :onclick "cd ; OpenApps --menu &"
-				    :onrightclick "OpenApps --rice &")
+				    :onclick "cd ; OpenApps --menu"
+				    :onrightclick "OpenApps --rice")
 		 )
 	)
 )
@@ -62,37 +62,37 @@
 			(button :style "background-image: url('images/zombie.png');"
 					:class "icons"
 					:valign "center"
-					:onclick "OpenApps --fetch &"))
+					:onclick "OpenApps --fetch"))
 
 			(eventbox :cursor "pointer"
 			(button :style "background-image: url('images/terminal.png');"
 					:class "icons"
 					:valign "center"
-					:onclick "cd ; OpenApps --terminal &"))
+					:onclick "cd ; OpenApps --terminal"))
 
 			(eventbox :cursor "pointer"
 			(button :style "background-image: url('images/firefox.png');"
 					:class "icons"
 					:valign "center"
-					:onclick "OpenApps --browser &"))
+					:onclick "OpenApps --browser"))
 
 			(eventbox :cursor "pointer"
 			(button :style "background-image: url('images/files.png');"
 					:class "icons"
 					:valign "center"
-					:onclick "cd ; OpenApps --filemanager &"))
+					:onclick "cd ; OpenApps --filemanager"))
 
 			(eventbox :cursor "pointer"
 			(button :style "background-image: url('images/notes.png');"
 					:class "icons"
 					:valign "center"
-					:onclick "OpenApps --editor &"))
+					:onclick "OpenApps --editor"))
 
 			(eventbox :cursor "pointer"
 			(button :style "background-image: url('images/telegram.png');"
 					:class "icons"
 					:valign "center"
-					:onclick "OpenApps --telegram &"))
+					:onclick "OpenApps --telegram"))
 	)
 )
 
@@ -108,7 +108,7 @@
 			  :style "background-image: url('${COVER}');")
 
 		 (eventbox :cursor "pointer"
-		 (button :onclick "OpenApps --player &"
+		 (button :onclick "OpenApps --player"
 		 (box :orientation "v"
 			  :class "song-info"
 			  :spacing 0
@@ -156,8 +156,8 @@
 		 :space-evenly "false"
 
 		 (eventbox :cursor "pointer"
-		 (button :onclick "OpenApps --update &"
-				 :onrightclick "OpenApps --checkupdates &"
+		 (button :onclick "OpenApps --checkupdates"
+				 :onrightclick "OpenApps --update"
 				 (box :orientation "h"
 					  :spacing 2
 					  :valign "center"
@@ -174,8 +174,8 @@
 		 ))
 
 		 (eventbox :cursor "pointer"
-		 (button :onclick "${EWW_CMD} open --toggle audio_ctl &"
-				 :onrightclick "scripts/volume.sh --toggle-muted &"
+		 (button :onclick "${EWW_CMD} open --toggle audio_ctl"
+				 :onrightclick "scripts/volume.sh --toggle-muted"
 				 (box :orientation "h"
 					  :spacing 3
 					  :valign "center"
@@ -192,7 +192,7 @@
 		 ))
 
 		 (eventbox :cursor "pointer"
-		 (button :onclick "OpenApps --netmanager &"
+		 (button :onclick "OpenApps --netmanager"
 				 (box :orientation "h"
 					  :spacing 3
 					  :valign "center"
@@ -209,7 +209,7 @@
 		 ))
 
 		 (eventbox :cursor "pointer"
-		 (button :onclick "OpenApps --usercard &"
+		 (button :onclick "OpenApps --usercard"
 				 (box :orientation "h"
 					  :spacing 3
 					  :valign "center"
@@ -226,7 +226,7 @@
 		 ))
 
 		 (eventbox :cursor "pointer"
-		 (button :onclick "OpenApps --powermenu &"
+		 (button :onclick "OpenApps --powermenu"
 				 (box :orientation "h"
 					  :spacing 3
 					  :valign "center"
@@ -247,7 +247,7 @@
 		 :space-evenly "false"
 
 		 (eventbox :cursor "pointer"
-		 (button :onclick "OpenApps --calendar &"
+		 (button :onclick "OpenApps --calendar"
 		 (box :orientation "v"
 			  :spacing 0
 			  :halign "start"

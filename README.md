@@ -71,7 +71,7 @@ I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wik
 
 **Rofi Applets**
 
-<sup>7 Rofi applets to simplify your workflow:</sup>
+<sup>Rofi applets to simplify your workflow:</sup>
 
 - Network Manager
 - Bluetooth Controller
@@ -80,22 +80,26 @@ I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wik
 - Android MTP Manager
 - Power Menu
 - Keyboard Layout
-
-**Terminal Selection Menu**
-
-<sup>Choose your preferred terminal emulator between alacritty and kitty through a simple menu. The selected terminal will be the default for your environment, with alacritty set as the default.</sup>
+- Terminal Selector (Alacritty or Kitty)
+- Rofi app launcher style selector
+- Tab app switcher
 
 **Tmux Configuration**
 
 <sup>Benefit from a newly added tmux configuration and design, enhancing your terminal multiplexing experience.</sup>
 
-**Complete Neovim Setup**
-
+**Neovim Setup**
 <sup>Immerse yourself in a fully configured Neovim setup with plugins, written in Lua, providing a simple but powerful and efficient code editing environment.</sup>
 
 **Optimized ZSH Configuration**
 
-<sup>Enjoy a complete and optimized configuration of ZSH with features such as autocompletion, syntax highlighting, history substring search, and a simple yet powerful and beautiful prompt. Elevate your command line experience to a new level of efficiency and aesthetics.</sup>
+<sup>Optimized, native ZSH configuration. Not __Oh-My-Zsh__ or other bloated plugin managers. Some features:</sup>
+
+- Fastest and optimized performance compinit function
+- Autocompletion
+- Syntax highlighting
+- History substring search
+- Fzf-tab completion with previews!!
 
 ---
 
@@ -204,22 +208,30 @@ I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wik
 | :--------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------: |
 |                                             Bluetooth Manager                                              |                                              Terminal Manager                                              |
 
+| ![Shot-2025-04-08-084756](https://github.com/user-attachments/assets/835366c8-88c5-4daf-8260-5c822e27abc8) | ![Shot-2025-04-08-084924](https://github.com/user-attachments/assets/c32f3cdb-7a5a-4372-b6f2-3f4a09f50868) |
+| :--------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------: |
+|                                              Tab app switcher                                              |                                              Rofi style selector                                           |
+
 ---
+
+### Rofi app launcher styles
+| ![Shot-2025-04-08-090012](https://github.com/user-attachments/assets/57ebcc98-73ea-4f76-bb2b-fe3f187be5e7) | ![Shot-2025-04-08-090041](https://github.com/user-attachments/assets/26361cd3-c3b4-48a2-a550-8df5cff120f5) | ![Shot-2025-04-08-090107](https://github.com/user-attachments/assets/16da6b0f-5a9e-4410-bb95-cb9fe696ce55) |
+| :---: | :---: | :---: |
+| Normal | Full | Minimal |
+
+### Fzf tab terminal completions with previews!
+
+| ![Shot-2025-03-13-094232](https://github.com/user-attachments/assets/ea04373c-2fbd-4ba3-98f9-7ebbca185d70) | ![Shot-2025-03-13-094541](https://github.com/user-attachments/assets/bb82419c-ad61-4821-89f2-aded56d17c32) | ![Shot-2025-03-13-094638](https://github.com/user-attachments/assets/fe1e8fad-4787-454b-98a6-85e5cb97889c) |
+| :---: | :---: | :---: |
+| cd | ls | pacman |
+| ![Shot-2025-03-13-094805](https://github.com/user-attachments/assets/8c3cde3d-bbcc-44d4-afa7-8fe28a735973) | ![Shot-2025-03-13-094933](https://github.com/user-attachments/assets/3ce88142-7a84-4b77-931d-025e2d579831) | ![Shot-2025-03-13-095138](https://github.com/user-attachments/assets/8074dc24-5bd7-4e65-afb6-fc6c9bcbba52) |
+| systemctl | kill | cat |
 
 ### Eww widgets
 
-| ![ProfilePane](https://github.com/user-attachments/assets/07827cff-63b9-40db-b0ef-8c214a5d8ec3) |
-| :---------------------------------------------------------------------------------------------: |
-|                                          Profile Panel                                          |
-
-
-| ![Calendar](https://github.com/user-attachments/assets/5ffcff9e-0852-4d9f-83b5-4bce71e69f7c) |
-| :------------------------------------------------------------------------------------------: |
-|                                           Calendar                                           |
-
-| ![MusicPlayer](https://github.com/user-attachments/assets/b96c49a1-57d1-43e5-bff0-cab2e6b4d101) |
-| :---------------------------------------------------------------------------------------------: |
-|                                          Music Player                                           |
+| ![ProfilePane](https://github.com/user-attachments/assets/07827cff-63b9-40db-b0ef-8c214a5d8ec3) | ![Calendar](https://github.com/user-attachments/assets/5ffcff9e-0852-4d9f-83b5-4bce71e69f7c) | ![MusicPlayer](https://github.com/user-attachments/assets/b96c49a1-57d1-43e5-bff0-cab2e6b4d101) |
+| :---: | :---: | :---: |
+| Profile Panel | Calendar | Music Player |
 
 | ![Shot-2024-11-10-000520](https://github.com/user-attachments/assets/a0871d4e-5b2b-4e64-ae79-617feec71cf1) |
 | :--------------------------------------------------------------------------------------------------------: |
@@ -328,21 +340,19 @@ And more.. You need to look sxhkdrc file for more, or press Alt + F1 for a cheat
 ### 💾 Installation:
 
 > [!NOTE]
-> The installer only works for **ARCH** Linux, and based distros.
+> The installer only works for **ARCH** Linux, and based distros. (Except NO-Systemd ditros like Artix)
 
-- **Open a terminal in HOME and download the installer**
+Before running this command, check [RiceInstaller](https://raw.githubusercontent.com/gh0stzk/dotfiles/master/RiceInstaller) to make sure it's working and confirm it's safe for your system.
+
+- Open a terminal and execute this commands one by one:
+
 ```sh
-curl -LO https://raw.githubusercontent.com/gh0stzk/dotfiles/master/RiceInstaller
-
-# Maybe you want a short url??
-
+# Download the installer in your $HOME
 curl -LO http://gh0stzk.github.io/dotfiles/RiceInstaller
-```
-- **Now give it execute permissions**
-```sh
+
+# Give it execution permission
 chmod +x RiceInstaller
-```
-- **Finally run the installer**
-```sh
+
+# Run the installer
 ./RiceInstaller
 ```

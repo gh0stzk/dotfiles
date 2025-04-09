@@ -84,7 +84,7 @@
         (label :class "keys-alt" :xalign 1 :text "Super + 1-9"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Rotate workspace")
-        (label :class "keys-alt" :xalign 1 :text "Super + Tab"))
+        (label :class "keys-alt" :xalign 1 :text "Ctrl + Tab"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "")
         (label :class "keys-alt" :xalign 1 :text ""))
@@ -143,14 +143,17 @@
         (label :class "keys" :xalign 0 :text "Private Node")
         (label :class "keys-alt" :xalign 1 :text "Alt + p"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Hide/Unhide Node")
+        (label :class "keys" :xalign 0 :text "Hide Node")
         (label :class "keys-alt" :xalign 1 :text "Alt + h"))
+      (box :orientation "h" :space-evenly "true"
+        (label :class "keys" :xalign 0 :text "Unhide Node/s")
+        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt + h"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "")
         (label :class "keys-alt" :xalign 1 :text ""))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Change Node focus")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Tab"))
+        (label :class "keys-alt" :xalign 1 :text "Super + Shift +    "))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Swap Nodes")
         (label :class "keys-alt" :xalign 1 :text "Ctrl + Shift +    "))
@@ -158,17 +161,23 @@
         (label :class "keys" :xalign 0 :text "Focus last N/W")
         (label :class "keys-alt" :xalign 1 :text "Ctrl + Shift + {, , .}"))
       (box :orientation "h" :space-evenly "true"
+        (label :class "keys" :xalign 0 :text "Node switcher")
+        (label :class "keys-alt" :xalign 1 :text "Alt + Tab"))
+      (box :orientation "h" :space-evenly "true"
         (label :class "category-move" :xalign 0.5 :text "Move/Resize")
         (label :text ""))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Expand node")
-        (label :class "keys-alt" :xalign 1 :text "Super + Alt +    "))
+        (label :class "keys" :xalign 0 :text "Balance Nodes")
+        (label :class "keys-alt" :xalign 1 :text "Super + Ctrl + b"))
       (box :orientation "h" :space-evenly "true"
-        (label :class "keys" :xalign 0 :text "Contract node")
-        (label :class "keys-alt" :xalign 1 :text "Super + Shift +    "))
+        (label :class "keys" :xalign 0 :text "Resize node")
+        (label :class "keys-alt" :xalign 1 :text "Super + Alt + {+,-}"))
+      (box :orientation "h" :space-evenly "true"
+        (label :class "keys" :xalign 0 :text "Zoom in/out floating node")
+        (label :class "keys-alt" :xalign 1 :text "Super + Ctrl + {+,-}"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Move floating node")
-        (label :class "keys-alt" :xalign 1 :text "Alt + Shift +    "))
+        (label :class "keys-alt" :xalign 1 :text "Super + Alt +    "))
       (box :orientation "h" :space-evenly "true"
         (label :class "category-others" :xalign 0.5 :text "Others")
         (label :text ""))

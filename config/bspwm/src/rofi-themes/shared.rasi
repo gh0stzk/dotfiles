@@ -1,5 +1,3 @@
-// Rofi colors for Emilia
-
 * {
     font: "JetBrainsMono NF Bold 9";
     background: #1A1B26;
@@ -8,6 +6,6 @@
     selected: #7aa2f7;
     active: #9ece6a;
     urgent: #f7768e;
-    
+
     img-background: url("~/.config/bspwm/rices/emilia/rofi.webp", width);
 }

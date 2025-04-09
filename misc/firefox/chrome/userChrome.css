@@ -73,7 +73,17 @@
     }
   }
 }
-@media not (-moz-bool-pref: "sidebar.verticalTabs"){
+@media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"),
+       -moz-pref("userchrome.force-window-controls-on-left.enabled"){
+  #nav-bar > .titlebar-buttonbox-container{
+    order: -1 !important;
+    > .titlebar-buttonbox{
+      flex-direction: row-reverse;
+    }
+  }
+}
+@media not (-moz-bool-pref: "sidebar.verticalTabs"),
+       not -moz-pref("sidebar.verticalTabs"){
   .global-notificationbox,
   #tab-notification-deck,
   #TabsToolbar{
@@ -85,7 +95,7 @@
   :root[sizemode="fullscreen"] #nav-bar > .titlebar-buttonbox-container{
     display: flex !important;
   }
-  :root[tabsintitlebar] #toolbar-menubar:not([autohide="false"]) ~ #nav-bar{
+  :root:is([tabsintitlebar],[customtitlebar]) #toolbar-menubar:not([autohide="false"]) ~ #nav-bar{
     > .titlebar-buttonbox-container{
       display: flex !important;
     }
@@ -99,6 +109,7 @@
         display: flex !important;
       }
       @media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"),
+        -moz-pref("userchrome.force-window-controls-on-left.enabled"),
         (-moz-gtk-csd-reversed-placement),
         (-moz-platform: macos){
         > .titlebar-spacer[type="post-tabs"]{

@@ -701,6 +701,17 @@ install_dotfiles() {
 		fi
 	fi
 
+    # Copying polybar-update.hook
+    if [[ ! -d /etc/pacman.d/hooks ]]; then
+        sudo mkdir -p /etc/pacman.d/hooks
+    fi
+
+    if sudo cp "$HOME/dotfiles/misc/polybar-update.hook" /etc/pacman.d/hooks; then
+        echo -en "${BLD}${CGR}Pacman hook copied successfully!${CNC}\n"
+    else
+        log_error "Failed to copy pacman hook :("
+    fi
+
     echo -en "\n${BLD}${CGR}Dotfiles installed successfully!${CNC}\n"
     sleep 3
 }
@@ -731,6 +742,15 @@ configure_services() {
         echo -en "${BLD}${CRE}Failed to activate user MPD service${CNC}\n\n"
     fi
 
+    # User-level ArchUpdates
+    echo -en "${BLD}${CYE}Enabling user ArchUpdates service...${CNC}\n"
+    if systemctl --user enable --now ArchUpdates.timer >> "$ERROR_LOG" 2>&1; then
+        echo -en "${BLD}${CGR}User ArchUpdates service activated successfully${CNC}\n\n"
+    else
+        log_error "Failed to enable user ArchUpdates service"
+        echo -en "${BLD}${CRE}Failed to activate user ArchUpdates service${CNC}\n\n"
+    fi
+
     # Virtual Machine Detection
     is_virtual_machine() {
         systemd-detect-virt --quiet && return 0 || return 1
@@ -744,6 +764,18 @@ configure_services() {
         if [ -f "$picom_config" ]; then
             if sed -i 's/backend = "glx"/backend = "xrender"/' "$picom_config" >> "$ERROR_LOG" 2>&1; then
                 echo -en "${BLD}{CGR}Picom backend changed to xrender${CNC}\n\n"
+            else
+                log_error "Failed to modify Picom configuration"
+                echo -en "${BLD}${CRE}Failed to adjust Picom settings${CNC}\n\n"
+            fi
+        else
+            log_error "Picom configuration file not found"
+            echo -en "${BLD}${CRE}Picom config file missing: ${CYE}${picom_config}${CNC}\n\n"
+        fi
+
+        if [ -f "$picom_config" ]; then
+            if sed -i 's/vsync = true/vsync = false/' "$picom_config" >> "$ERROR_LOG" 2>&1; then
+                echo -en "${BLD}{CGR}Picom vSync disabled${CNC}\n\n"
             else
                 log_error "Failed to modify Picom configuration"
                 echo -en "${BLD}${CRE}Failed to adjust Picom settings${CNC}\n\n"
@@ -806,7 +838,7 @@ final_prompt() {
                 exit 0
                 ;;
             n|no|"")
-                echo -en "\n${BLD}${CYE}Remember to reboot later!${CNC}\n\n"
+                echo -en "\n${BLD}${CYE}You really need to reboot bro!!${CNC}\n\n"
                 exit 0
                 ;;
             *)

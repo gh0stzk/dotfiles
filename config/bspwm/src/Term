@@ -11,6 +11,7 @@
 
 CFG_TERM="$HOME/.config/bspwm/src/config/.term"
 ROFI_THEME="$HOME/.config/bspwm/src/rofi-themes/TermSelector.rasi"
+[[ -f "$CFG_TERM" ]] || echo "alacritty" > "$CFG_TERM"
 
 # Main var
 MY_TERM=$(< "$CFG_TERM")
@@ -42,7 +43,7 @@ case $MY_TERM in
 				alacritty --class FloaTerm,FloaTerm
 				;;
 			"--update")
-				alacritty --hold --class FloaTerm,FloaTerm -e Updates --update-system
+				alacritty --hold --class FloaTerm,FloaTerm -e paru -Syu --nocombinedupgrade
 				;;
 			"--checkupdates")
 				alacritty --hold --class Updating,Updating -e Updates --print-updates
@@ -76,7 +77,7 @@ case $MY_TERM in
 				kitty --class=FloaTerm
 				;;
 			"--update")
-				kitty --hold --class=FloaTerm -e Updates --update-system
+				kitty --hold --class=FloaTerm -e paru -Syu --nocombinedupgrade
 				;;
 			"--checkupdates")
 				kitty --hold --class=Updating -e Updates --print-updates

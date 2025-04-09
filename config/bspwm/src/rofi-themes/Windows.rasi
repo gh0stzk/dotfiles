@@ -1,23 +1,28 @@
 // # z0mbi3 -  https://github.com/gh0stzk/dotfiles
 
 configuration {
-    modi:                        "drun";
+    modi:                        "window";
+	icon-theme: 				 "Papirus-Dark";
+	application-fallback-icon: 	 "Adwaita";
     show-icons:                  true;
-    drun-display-format:         "{name}";
+    window-format:               "{w} {n}";
 }
 
 @import "shared.rasi"
 
 window {
     enabled:                     true;
+    location:                    center;
+    x-offset:                    0;
+    y-offset:                    0;
     fullscreen:                  false;
     transparency:                "real";
     cursor:                      "default";
     spacing:                     0px;
     padding:                     0px;
-    border:                      0px;
-    border-radius:               20px;
-    border-color:                transparent;
+    border:                      2px;
+    border-radius:               8px;
+    border-color:                @active;
     background-color:            transparent;
 }
 
@@ -29,16 +34,16 @@ mainbox {
 
 listview {
     enabled:                     true;
-    columns:                     3;
+    columns:                     6;
     lines:                       1;
-    spacing:                     0px;
-    padding:                     20px 30px;
+    spacing:                     5px;
+    padding:                     10px 10px;
     cycle:                       true;
     dynamic:                     false;
     scrollbar:                   false;
     layout:                      vertical;
     reverse:                     false;
-    fixed-height:                true;
+    fixed-height:                false;
     fixed-columns:               true;
     cursor:                      "default";
     background-color:            transparent;
@@ -48,17 +53,12 @@ listview {
 element {
     enabled:                     true;
     spacing:                     0px;
-    padding:                     0px;
-    border-radius:               20px;
+    padding:                     8px;
+	orientation:				 vertical;
+    border-radius:               8px;
     cursor:                      pointer;
     background-color:            transparent;
     text-color:                  @foreground;
-}
-
-@media(max-aspect-ratio: 1.7) {
-    element {
-        orientation:             vertical;
-    }
 }
 
 element selected.normal {
@@ -67,15 +67,18 @@ element selected.normal {
 }
 
 element-icon {
+	size:						 84;
     cursor:                      inherit;
     background-color:            transparent;
     text-color:                  inherit;
 }
 
 element-text {
+	enabled:					 true;
     vertical-align:              0.5;
-    horizontal-align:            0;
-    font: "JetBrainsMono NF Bold 50";
+    horizontal-align:            0.5;
+    font:                        "JetBrainsMono NF Bold 10";
+    padding:                     0px;
     cursor:                      inherit;
     background-color:            transparent;
     text-color:                  inherit;

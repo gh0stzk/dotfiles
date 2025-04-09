@@ -1,3 +1,44 @@
+## New Updates script, new rofi tab app switcher, new neovim setup, new rofi app launcher style
+##### 08 April 2025
+
+### New
+- Updates script (Fix)
+  - Previously, in setups with multiple monitors, the polybar/eww module wasn't synchronized, and each bar displayed different data. This is because the same script was running simultaneously on different bars/monitors, and Pacman would crash if two instances of it were running at the same time and only one bar displayed the correct data.
+  - To fix this, I modified the script so that it writes a file with the available updates, and the polybar/eww module reads it instead of running the script each time. And to prevent more than one instance of the script from running at the same time, I added a systemd timer/service that runs every 15 minutes. When it receives the information, it sends a signal to polybar and/or eww to update the data.
+  - I also added a pacman hook so that when you update your system, it sends a signal to update the polybar or eww module.
+
+If you perform a clean install with the script, you won't need to do anything. But if you want to apply the changes manually, follow these steps:
+
+- Clone my repository wherever you want.
+- Copy/overwrite the new "Updates" script from ..dotfiles/config/bspwm/src/ to $HOME/.config/bspwm/src/
+- Copy the 2 "ArchUpdates.timer" and "ArchUpdates.service" units from ..dotfiles/config/systemd/user/ to $HOME/.config/systemd/user/
+If the directory doesn't exist, create it.
+- Copy the Pacman hook "polybar-update.hook" from ..dotfiles/misc/ to /etc/pacman.d/hooks/ If the directory doesn't exist, create it and you need root permissions.
+- Now for the tedious part: you need to modify the update module in each theme. For those using polybar in  modules.ini, for themes with eww copy the .yuck file.
+
+Finally, enable the service
+`systemctl --user enable --now ArchUpdates.timer`
+
+- New rofi tab switcher `Alt + Tab`
+
+![Shot-2025-04-08-084756](https://github.com/user-attachments/assets/835366c8-88c5-4daf-8260-5c822e27abc8)
+
+- Changed some keybinds for moving/resize windows, now feels smooth.
+- Added a new keybind for floating windows to zoom in/out. It's similar to the new keybind for resizing. But looks nice.
+- Before you could only hide one window with `Alt + h`, now you can hide as many as you want and show them again one by one with `Ctrl + Alt + h`
+- New keybind to balance nodes with `Ctrl + Super + b`
+
+- New Minimal rofi app launcher style
+
+![Shot-2025-04-08-090107](https://github.com/user-attachments/assets/16da6b0f-5a9e-4410-bb95-cb9fe696ce55)
+
+- And of course i update the style selector for rofi launcher.
+- Firefox update, breaks (again) tabs below url bar. I fix it..
+- Updated RicesInstaller for new Updates system
+- Updates eww widget profilecard for new updates system
+
+---
+
 ## New scratchpad, fzf-tab completion, rofi launcher styles, new slideshow wallpaper engine option.
 ##### 20 March 2025
 
