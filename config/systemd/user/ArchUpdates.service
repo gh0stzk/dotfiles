@@ -1,5 +1,7 @@
 [Unit]
 Description=Check for available updates & sync polybar or eww bar
+After=NetworkManager.service
+Wants=NetworkManager.service
 
 [Service]
 Type=oneshot

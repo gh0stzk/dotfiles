@@ -29,32 +29,34 @@ SFILE="$HOME/.config/bspwm/src/.sys"
 
 [[ -f "$SFILE" ]] && exit 0 # The file exists, exit without doing anything
 
+# Wait for NetworkManager connection
+until nmcli -t -f STATE general | grep -q 'connected'; do
+    sleep 0.2
+done
+
 setup_system_vars() {
-    # Get primary network interface (default route)
-    local primary_net
-    primary_net=$(awk '/default via/ {print $5; exit}' <(ip -4 route show 2>/dev/null))
+    # Primary Network Interface Detection
+    local primary_net=$(ip route show default 2>/dev/null | awk '/default/ {print $5; exit}')
 
-    # Get secondary active interface (non-primary physical interface)
-    #local secondary_net
-    #secondary_net=$(ip -o link show up | awk -F': ' '{print $2}' |
-                    #grep -vE '^(lo|docker|veth|br-|tun|vir|wg)' |
-                    #grep -v "$primary_net" | head -n1)
+    # Graphics card detection
+    local card=$(ls /sys/class/backlight/ 2>/dev/null | head -n1)
 
-    # Detect backlight control interface
-    local card
-    card=$(basename /sys/class/backlight/*/ 2>/dev/null | head -n1)
+    # Battery and adapter detection
+    local battery=$(ls /sys/class/power_supply/ 2>/dev/null | grep -m1 'BAT')
+    local adapter=$(ls /sys/class/power_supply/ 2>/dev/null | grep -m1 -E 'AC|ADP')
 
-    # Identify power supply components
-    local battery adapter
-    battery=$(find /sys/class/power_supply -maxdepth 1 -type l -name "BAT*" | head -n1 | xargs basename 2>/dev/null)
-    adapter=$(find /sys/class/power_supply -maxdepth 1 -type l \( -name "AC*" -o -name "ADP*" \) | head -n1 | xargs basename 2>/dev/null)
-
-    # Update configuration file
-    sed -i -e "s/^sys_network_interface =.*/sys_network_interface = ${primary_net}/" \
-           -e "s/^sys_graphics_card =.*/sys_graphics_card = ${card}/" \
-           -e "s/^sys_battery =.*/sys_battery = ${battery}/" \
-           -e "s/^sys_adapter =.*/sys_adapter = ${adapter}/" "$CONFIG_FILE"
-           #-e "s/^sys_network_interface2 =.*/sys_network_interface2 = ${secondary_net}/" \
+    # Atomic update of the configuration file
+    tmpfile=$(mktemp)
+    awk -v net="$primary_net" \
+        -v card="$card" \
+        -v bat="$battery" \
+        -v adap="$adapter" '
+        /^sys_network_interface =/ {$0="sys_network_interface = " net}
+        /^sys_graphics_card =/ {$0="sys_graphics_card = " card}
+        /^sys_battery =/ {$0="sys_battery = " bat}
+        /^sys_adapter =/ {$0="sys_adapter = " adap}
+        {print}
+    ' "$CONFIG_FILE" > "$tmpfile" && mv "$tmpfile" "$CONFIG_FILE"
 }
 
 # Main execution

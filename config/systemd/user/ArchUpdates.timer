@@ -1,5 +1,6 @@
 [Unit]
 Description=Run ArchUpdates.service every 15 minutes
+After=NetworkManager.service
 
 [Timer]
 OnStartupSec=10s
