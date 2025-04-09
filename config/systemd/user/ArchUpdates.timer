@@ -2,7 +2,7 @@
 Description=Run ArchUpdates.service every 15 minutes
 
 [Timer]
-OnStartupSec=3s
+OnStartupSec=10s
 OnUnitActiveSec=15min
 Persistent=true
 
