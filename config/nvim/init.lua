@@ -1,3 +1,7 @@
+require("vim-options")
+require("keymaps")
+require("cmds")
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -11,8 +15,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("vim-options")
-require("keymaps")
 require("lazy").setup({
   spec = {
     { import = "plugins" }, -- loads all plugins in plugins/
@@ -20,4 +22,11 @@ require("lazy").setup({
   defaults = {
     lazy = false, -- plugins are not lazy loaded by default
   },
+})
+
+vim.diagnostic.config({
+  virtual_text = true,
+  virtual_lines = { current_line = true },
+  underline = true,
+  update_in_insert = false
 })

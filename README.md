@@ -89,7 +89,22 @@ I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wik
 <sup>Benefit from a newly added tmux configuration and design, enhancing your terminal multiplexing experience.</sup>
 
 **Neovim Setup**
-<sup>Immerse yourself in a fully configured Neovim setup with plugins, written in Lua, providing a simple but powerful and efficient code editing environment.</sup>
+
+<sup>Simple yet powerful neovim configuration with the following features:</sup>
+
+- Treesitter
+- Lsp servers
+- Completions [blink.nvim](https://github.com/Saghen/blink.nvim)
+- Formatting [conform.nvim](https://github.com/stevearc/conform.nvim)
+- Picker [Snacks-picker](https://github.com/folke/snacks.nvim/blob/main/docs/picker.md)
+- Explorer [Snacks-explorer](https://github.com/folke/snacks.nvim/blob/main/docs/picker.md)
+- Tab Line [barbar.nvim](https://github.com/romgrk/barbar.nvim)
+- Statusline [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+- Autopairs [mini-autopairs](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-pairs.md)
+- Hipatterns [mini-hipatterns](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-hipatterns.md)
+- Indent guides [Snacks-indent](https://github.com/folke/snacks.nvim/blob/main/docs/indent.md)
+- Dashboard [Snacks-dashboard](https://github.com/folke/snacks.nvim/blob/main/docs/dashboard.md)
+- WhichKey [which-key.nvim](https://github.com/folke/which-key.nvim)
 
 **Optimized ZSH Configuration**
 
@@ -277,12 +292,6 @@ https://github.com/user-attachments/assets/79764678-c519-4a41-a333-2a862a6d10f8
 | :--------------------------------------------------------------------------------------------------: |
 |            The environment changes with each theme. In the gif: (Ranger, Thunar, Ncmpcpp)            |
 
-## App Launcher
-
-| ![App-Launcher](https://github.com/user-attachments/assets/e96d0ad2-a91a-48d4-8279-17f3d99a698d) |
-| :----------------------------------------------------------------------------------------------: |
-|                                           App Launcher                                           |
-
 ### Firefox theme
 
 | Firefox theme - z0mbi3 Fox |
@@ -293,7 +302,7 @@ https://github.com/user-attachments/assets/79764678-c519-4a41-a333-2a862a6d10f8
 
 | Neovim setup |
 |:-:|
-|<img src="https://github.com/gh0stzk/dotfiles/assets/67278339/17a1eb30-437e-4bf2-980c-6a410eff76bb" alt="Neovim configuration" align="center">|
+| ![Neovim setup](https://github.com/user-attachments/assets/a70a0ebb-9921-4d2d-88f3-5eabdc5d10f9) |
 | Plugins included [Neovim setup wiki](https://github.com/gh0stzk/dotfiles/wiki/Neovim-setup) |
 
 ## Very useful keybindigs to know...

@@ -1,12 +1,9 @@
 local map = vim.keymap.set
-vim.g.mapleader = " "
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- Save current file
 map("n", "<leader>w", ":w<cr>", { desc = "Save file", remap = true })
-
--- move line
-map("v", "J", ":m '>+1<CR>gv=gv")
-map("v", "K", ":m '<-2<CR>gv=gv")
 
 -- ESC pressing jk
 map("i", "jk", "<ESC>", { desc = "jk to esc", noremap = true })
@@ -38,10 +35,6 @@ map("n", "<C-j>", "<C-w>j", { desc = "Navigate down" })
 map("n", "<C-h>", "<C-w>h", { desc = "Navigate left" })
 map("n", "<C-l>", "<C-w>l", { desc = "Navigate right" })
 
--- Change 2 split windows from vertical to horizontal or vice versa
-map("n", "<leader>th", "<C-w>t<C-w>H", { desc = "Change window splits to horizontal", noremap = true})
-map("n", "<leader>tk", "<C-w>t<C-w>K", { desc = "Change window splits to vertical", noremap = true})
-
 -- Resize window
 map("n", "<C-Up>", ":resize -3<CR>")
 map("n", "<C-Down>", ":resize +3<CR>")
@@ -53,8 +46,3 @@ map("n", "<Tab>", ":BufferNext<CR>", { desc = "Move to next tab", noremap = true
 map("n", "<S-Tab>", ":BufferPrevious<CR>", { desc = "Move to previous tab", noremap = true })
 map("n", "<leader>x", ":BufferClose<CR>", { desc = "Buffer close", noremap = true })
 map("n", "<A-p>", ":BufferPin<CR>", { desc = "Pin buffer", noremap = true })
-
--- Neotree
-map("n", "<leader>b", ":Neotree toggle<CR>", { desc = "Toggle Neotree", noremap = true })
-map("n", "<leader>nb", ":Neotree buffer reveal float<CR>", { desc = "Neotree buffers reveal", noremap = true })
-
