@@ -236,11 +236,9 @@ I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wik
 
 ### Fzf tab terminal completions with previews!
 
-| ![Shot-2025-03-13-094232](https://github.com/user-attachments/assets/ea04373c-2fbd-4ba3-98f9-7ebbca185d70) | ![Shot-2025-03-13-094541](https://github.com/user-attachments/assets/bb82419c-ad61-4821-89f2-aded56d17c32) | ![Shot-2025-03-13-094638](https://github.com/user-attachments/assets/fe1e8fad-4787-454b-98a6-85e5cb97889c) |
-| :---: | :---: | :---: |
-| cd | ls | pacman |
-| ![Shot-2025-03-13-094805](https://github.com/user-attachments/assets/8c3cde3d-bbcc-44d4-afa7-8fe28a735973) | ![Shot-2025-03-13-094933](https://github.com/user-attachments/assets/3ce88142-7a84-4b77-931d-025e2d579831) | ![Shot-2025-03-13-095138](https://github.com/user-attachments/assets/8074dc24-5bd7-4e65-afb6-fc6c9bcbba52) |
-| systemctl | kill | cat |
+| ![fzf tab](https://github.com/user-attachments/assets/2771e549-f7cc-44da-baf2-6c9fa299f0fb) |
+| :---: |
+| cd, ls, pacman, systemctl, kill, cat, commands with preview! |
 
 ### Eww widgets
 
