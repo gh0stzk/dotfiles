@@ -15,7 +15,7 @@
 
 # Main vars
 SCRATCHPAD_NAME="bspwm-scratch"
-CFG_TERM="$HOME/.config/bspwm/src/.term"
+CFG_TERM="$HOME/.config/bspwm/src/config/.term"
 MY_TERM=$(< "$CFG_TERM")
 MAX_WIDTH_PERCENT=70
 HEIGHT_PERCENT=35
@@ -79,11 +79,10 @@ else
         --one-shot
 
 	# Launch the corresponding terminal
-	if [[ $MY_TERM == "alacritty" ]]; then
-		alacritty --class "$SCRATCHPAD_NAME" &
-	else
-		kitty --class="$SCRATCHPAD_NAME" &
-	fi
+	case $MY_TERM in
+        "alacritty") alacritty --class "$SCRATCHPAD_NAME" & ;;
+        "kitty")     kitty --class="$SCRATCHPAD_NAME" & ;;
+    esac
 
     # Wait and adjust final position
     sleep 0.3
