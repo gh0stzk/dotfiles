@@ -62,7 +62,7 @@ pidof -q sxhkd || { sxhkd -c "${HOME}"/.config/bspwm/src/config/sxhkdrc & }
 pidof -q picom || { picom --config "${HOME}"/.config/bspwm/src/config/picom.conf & }
 
 # Launch xsettingsd
-pidof -q xsettings || { xsettingsd --config="${HOME}"/.config/bspwm/src/config/xsettingsd >/dev/null 2>&1 & }
+pidof -q xsettingsd || { xsettingsd --config="${HOME}"/.config/bspwm/src/config/xsettingsd >/dev/null 2>&1 & }
 
 # Launch eww daemon
 pidof -q eww || { eww -c "${HOME}"/.config/bspwm/eww daemon & }

@@ -89,6 +89,14 @@ is_installed() {
     pacman -Qq "$1" >/dev/null 2>&1
 }
 
+is_reflector() {
+	if ! command -v reflector  >/dev/null; then
+		echo -e "\t${BLD}${CBL}Installing reflector to get the best mirrors...${CNC}"
+		sudo pacman -Syy >> "$ERROR_LOG" 2>&1
+		sudo pacman -S reflector --noconfirm >> "$ERROR_LOG" 2>&1
+	fi
+}
+
 welcome() {
     clear
 	logo "Welcome $USER"
@@ -209,13 +217,6 @@ add_chaotic_repo() {
         return 1
     fi
 
-    # Update package databases
-    echo -e "${BLD}${CYE}Updating package databases...${CNC}"
-    if ! sudo pacman -Syy >> "$ERROR_LOG" 2>&1; then
-        log_error "Failed to update package databases"
-        return 1
-    fi
-
     echo -e "\n${BLD}${CGR}${repo_name} repository configured successfully!${CNC}"
     sleep 3
 }
@@ -224,6 +225,11 @@ install_dependencies() {
 	clear
     logo "Installing needed packages from official repositories..."
 	sleep 2
+
+	is_reflector
+	echo -e "\n${BLD}${CGR}Getting the 10 best and fastest mirrors${CNC}\n"
+	sudo reflector --verbose --age 6 --fastest 10 --score 10 --protocol https --latest 10 --sort age --save /etc/pacman.d/mirrorlist
+	sudo pacman -Syy
 
     # List of dependencies
     local dependencies=(
@@ -254,7 +260,7 @@ install_dependencies() {
 
     # Batch installation
     if ((${#missing_pkgs[@]} > 0)); then
-        echo -e "\n${BLD}${CYE}Installing ${#missing_pkgs[@]} packages...${CNC}\n"
+		echo -e "\n${BLD}${CYE}Installing ${#missing_pkgs[@]} packages, please wait...${CNC}\n"
 
         if sudo pacman -S --noconfirm --needed "${missing_pkgs[@]}" >> "$ERROR_LOG" 2>&1; then
             # Verify complete installation
@@ -315,7 +321,7 @@ install_gh0stzk_dependencies() {
 
     # Batch installation
     if ((${#missing_gh0stzk_pkgs[@]} > 0)); then
-        echo -e "\n${BLD}${CYE}Installing ${#missing_gh0stzk_pkgs[@]} packages...${CNC}\n"
+        echo -e "\n${BLD}${CYE}Installing ${#missing_gh0stzk_pkgs[@]} packages, please wait...${CNC}\n"
 
         if sudo pacman -S --noconfirm --needed "${missing_gh0stzk_pkgs[@]}" >> "$ERROR_LOG" 2>&1; then
             # Verify complete installation
@@ -372,7 +378,7 @@ install_chaotic_dependencies() {
 
     # Batch installation
     if ((${#missing_chaotic_pkgs[@]} > 0)); then
-        echo -e "\n${BLD}${CYE}Installing ${#missing_chaotic_pkgs[@]} packages...${CNC}\n"
+        echo -e "\n${BLD}${CYE}Installing ${#missing_chaotic_pkgs[@]} packages, please wait...${CNC}\n"
 
         if sudo pacman -S --noconfirm --needed "${missing_chaotic_pkgs[@]}" >> "$ERROR_LOG" 2>&1; then
             # Verify complete installation
@@ -427,7 +433,7 @@ install_aur_dependencies() {
 
     # Batch AUR installation
     if ((${#missing_aur[@]} > 0)); then
-        echo -en "\n\n${BLD}${CYE}Installing ${#missing_aur[@]} AUR packages...${CNC}\n"
+        echo -en "\n\n${BLD}${CYE}Installing ${#missing_aur[@]} AUR packages, please wait...${CNC}\n"
 
         local aur_failed=()
         for pkg in "${missing_aur[@]}"; do
@@ -499,6 +505,7 @@ backup_existing_config() {
 
     # User questions
     declare -g try_nvim try_firefox
+	echo -en "My dotfiles come with a lightweight, simple, and functional Neovim configuration.\nBut if you already have a custom, super pro Neovim configuration and don't want to try mine, just type 'n'\n"
     while true; do
         read -rp "${BLD}${CYE}Do you want to use my Neovim setup?${CNC} [y/N]: " try_nvim
         case "${try_nvim,,}" in
@@ -506,7 +513,8 @@ backup_existing_config() {
             *) echo " ${BLD}${CRE}Error:${CNC} write 'y' or 'n'" ;;
         esac
     done
-
+	
+	echo -en "\nMy dotfiles come with a beautiful, minimalist Firefox theme, but if you don't want to try it, just type 'n'.\n"
     while true; do
         read -rp "${BLD}${CYE}Do you want to use my Firefox theme?${CNC} [y/N]: " try_firefox
         case "${try_firefox,,}" in
@@ -763,7 +771,7 @@ configure_services() {
 
         if [ -f "$picom_config" ]; then
             if sed -i 's/backend = "glx"/backend = "xrender"/' "$picom_config" >> "$ERROR_LOG" 2>&1; then
-                echo -en "${BLD}{CGR}Picom backend changed to xrender${CNC}\n\n"
+                echo -en "${BLD}${CGR}Picom backend changed to xrender${CNC}\n\n"
             else
                 log_error "Failed to modify Picom configuration"
                 echo -en "${BLD}${CRE}Failed to adjust Picom settings${CNC}\n\n"
@@ -775,7 +783,7 @@ configure_services() {
 
         if [ -f "$picom_config" ]; then
             if sed -i 's/vsync = true/vsync = false/' "$picom_config" >> "$ERROR_LOG" 2>&1; then
-                echo -en "${BLD}{CGR}Picom vSync disabled${CNC}\n\n"
+                echo -en "${BLD}${CGR}Picom vSync disabled${CNC}\n\n"
             else
                 log_error "Failed to modify Picom configuration"
                 echo -en "${BLD}${CRE}Failed to adjust Picom settings${CNC}\n\n"
