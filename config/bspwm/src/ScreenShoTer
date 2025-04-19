@@ -119,7 +119,7 @@ take_screenshot() {
 
 countdown() {
     for sec in $(seq "$1" -1 1); do
-        dunstify -t 1000 -i ~/.config/bspwm/src/assets/screenshot.png "Taking shot in : $sec"
+        dunstify -r 345 -t 1100 -i ~/.config/bspwm/src/assets/screenshot.png "Taking shot in : $sec"
         sleep 1
     done
 }

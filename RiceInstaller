@@ -228,7 +228,7 @@ install_dependencies() {
 
 	is_reflector
 	echo -e "\n${BLD}${CGR}Getting the 10 best and fastest mirrors${CNC}\n"
-	sudo reflector --verbose --age 6 --fastest 10 --score 10 --protocol https --latest 10 --sort age --save /etc/pacman.d/mirrorlist
+	sudo reflector --verbose --age 12 --fastest 10 --score 10 --protocol https --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 	sudo pacman -Syy
 
     # List of dependencies
@@ -513,7 +513,7 @@ backup_existing_config() {
             *) echo " ${BLD}${CRE}Error:${CNC} write 'y' or 'n'" ;;
         esac
     done
-	
+
 	echo -en "\nMy dotfiles come with a beautiful, minimalist Firefox theme, but if you don't want to try it, just type 'n'.\n"
     while true; do
         read -rp "${BLD}${CYE}Do you want to use my Firefox theme?${CNC} [y/N]: " try_firefox
