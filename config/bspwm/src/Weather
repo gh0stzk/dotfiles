@@ -43,7 +43,7 @@ get_weather_data() {
     fi
 
     # Get new data
-    if ! response=$(curl -sf --max-time 5 --show-error "$url"); then
+    if ! response=$(curl -sf --max-time 10 --show-error "$url"); then
         [[ -f "$CACHE_FILE" ]] && cat "$CACHE_FILE" || exit 1
     else
         echo "$response" | tee "$CACHE_FILE"
