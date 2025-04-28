@@ -86,12 +86,13 @@ element-icon {
     cursor:                      inherit;
     border-radius:               20px;
     background-color:            transparent;
+    margin:		 	 7px;
     text-color:                  inherit;
 }
 element-text {
     vertical-align:              0.5;
     horizontal-align:            0.5;
-    padding:                     10px 0px 5px 0px;
+    padding:                     5px 0px 5px 0px;
     cursor:                      inherit;
     background-color:            transparent;
     text-color:                  inherit;
