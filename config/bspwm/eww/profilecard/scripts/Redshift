@@ -1,18 +1,15 @@
-#!/usr/bin/env bash
-#  ██████╗ ███████╗██████╗ ███████╗██╗  ██╗██╗███████╗████████╗
-#  ██╔══██╗██╔════╝██╔══██╗██╔════╝██║  ██║██║██╔════╝╚══██╔══╝
-#  ██████╔╝█████╗  ██║  ██║███████╗███████║██║█████╗     ██║
-#  ██╔══██╗██╔══╝  ██║  ██║╚════██║██╔══██║██║██╔══╝     ██║
-#  ██║  ██║███████╗██████╔╝███████║██║  ██║██║██║        ██║
-#  ╚═╝  ╚═╝╚══════╝╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝╚═╝        ╚═╝
-#	Script to toogle redshift in my eww widget.
-#	gh0stzk | https://github.com/gh0stzk/dotfiles
-#	11.07.2024 13:24:18
+#!/bin/sh
+# =============================================================
+# Script to toogle redshift in my eww widget.
+# gh0stzk | https://github.com/gh0stzk/dotfiles
+# 11.07.2024 13:24:18
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# =============================================================
 
 cache_file=$HOME/.cache/$(whoami)/redshift_state
 
 mkdir -p "$(dirname "$cache_file")"
-[[ -f "$cache_file" ]] || echo off > "$cache_file"
+[ -f "$cache_file" ] || echo off > "$cache_file"
 
 get_state() {
 	cat "$cache_file"
@@ -30,7 +27,7 @@ enable_redshift() {
 }
 
 toggle() {
-	if [[ $(get_state) == "on" ]]; then
+	if [ "$(get_state)" = "on" ]; then
 		disable_redshift
 	else
 		enable_redshift

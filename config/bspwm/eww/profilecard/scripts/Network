@@ -1,36 +1,30 @@
-#!/usr/bin/env bash
-#  ███╗   ██╗███████╗████████╗██╗    ██╗ ██████╗ ██████╗ ██╗  ██╗
-#  ████╗  ██║██╔════╝╚══██╔══╝██║    ██║██╔═══██╗██╔══██╗██║ ██╔╝
-#  ██╔██╗ ██║█████╗     ██║   ██║ █╗ ██║██║   ██║██████╔╝█████╔╝
-#  ██║╚██╗██║██╔══╝     ██║   ██║███╗██║██║   ██║██╔══██╗██╔═██╗
-#  ██║ ╚████║███████╗   ██║   ╚███╔███╔╝╚██████╔╝██║  ██║██║  ██╗
-#  ╚═╝  ╚═══╝╚══════╝   ╚═╝    ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
-#	gh0stzk
-#	https://github.com/gh0stzk/dotfiles
-#	This script checks if you are connected to the internet and sets values.
-#	23.09.2023 13:39:59
-#	Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
-
+#!/bin/sh
+# =============================================================
+# gh0stzk
+# https://github.com/gh0stzk/dotfiles
+# This script checks if you are connected to the internet and sets values.
+# 23.09.2023 13:39:59
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# =============================================================
 
 # Function to check if there is an Internet connection
 is_online() {
-    ping -c 1 -W 1 archlinux.org &>/dev/null
+    ping -c 1 -W 1 archlinux.org > /dev/null 2>&1
 }
 
 # Get the connection type and network name
 get_network_info() {
-    local connection_type=""
-    local network_name=""
+    connection_type=""
+    network_name=""
 
     # Use nmcli to detect active connection
-    local connected_device
     connected_device=$(nmcli -t -f DEVICE,TYPE,STATE dev status | awk -F: '
         $3 == "connected" && $1 != "lo" && $2 ~ /^(ethernet|wifi)$/ {print $1,$2; exit}
         ')
 
-    if [[ -n "$connected_device" ]]; then
-        connection_type=$(cut -d' ' -f2 <<< "$connected_device")
-        network_name=$(nmcli -t -f DEVICE,CONNECTION dev status | awk -F: -v dev="$(cut -d' ' -f1 <<< "$connected_device")" '
+    if [ -n "$connected_device" ]; then
+        connection_type=$(echo "$connected_device" | cut -d' ' -f2)
+        network_name=$(nmcli -t -f DEVICE,CONNECTION dev status | awk -F: -v dev="$(echo "$connected_device" | cut -d' ' -f1)" '
             $1 == dev {print $2; exit}
         ')
     fi

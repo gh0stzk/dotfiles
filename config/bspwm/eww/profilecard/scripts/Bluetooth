@@ -1,23 +1,18 @@
-#!/usr/bin/env bash
-#  ██████╗ ██╗     ██╗   ██╗███████╗████████╗ ██████╗  ██████╗ ████████╗██╗  ██╗
-#  ██╔══██╗██║     ██║   ██║██╔════╝╚══██╔══╝██╔═══██╗██╔═══██╗╚══██╔══╝██║  ██║
-#  ██████╔╝██║     ██║   ██║█████╗     ██║   ██║   ██║██║   ██║   ██║   ███████║
-#  ██╔══██╗██║     ██║   ██║██╔══╝     ██║   ██║   ██║██║   ██║   ██║   ██╔══██║
-#  ██████╔╝███████╗╚██████╔╝███████╗   ██║   ╚██████╔╝╚██████╔╝   ██║   ██║  ██║
-#  ╚═════╝ ╚══════╝ ╚═════╝ ╚══════╝   ╚═╝    ╚═════╝  ╚═════╝    ╚═╝   ╚═╝  ╚═╝
-#	Script to detect and control the bluetooth information on my eww widget.
-#	gh0stzk | https://github.com/gh0stzk/dotfiles
-#	12.07.2024 09:51:19
-#	Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
-
+#!/bin/sh
+# =============================================================
+# Script to detect and control the bluetooth info on eww widget
+# gh0stzk | https://github.com/gh0stzk/dotfiles
+# 12.07.2024 09:51:19
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# =============================================================
 
 # Function to check if the system has Bluetooth and if the service is active
 has_bluetooth() {
-    if ! rfkill list bluetooth &>/dev/null; then
+    if ! rfkill list bluetooth > /dev/null 2>&1; then
         return 1
     fi
 
-    if systemctl is-active bluetooth &>/dev/null; then
+    if systemctl is-active bluetooth > /dev/null 2>&1; then
         return 0
     else
         return 1
@@ -42,7 +37,7 @@ get_name() {
     if has_bluetooth; then
         if bluetoothctl show | grep -q "Powered: yes"; then
             connected_devices=$(bluetoothctl devices Connected | awk '{print $3}')
-            if [[ -n "$connected_devices" ]]; then
+            if [ -n "$connected_devices" ]; then
                 echo "$connected_devices"
             else
                 echo "On"

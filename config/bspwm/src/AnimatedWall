@@ -1,24 +1,39 @@
-#!/usr/bin/env bash
-
-video_path="$2"
+#!/bin/sh
+# =============================================================
+# Author:  gh0stzk
+# Repo:    https://github.com/gh0stzk/dotfiles
+# Date:    24.04.2025
+#
+# AnimateWall - Animated Wallpaper for BSPWM
+# Info:  Script to set animated backgrounds using
+#        xwinwrap and mpv. Supports automatic aspect ratio adjustment.
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# =============================================================
 
 start() {
-    if [[ ! "$video_path" =~ \.(mp4|mkv|gif)$ ]]; then
-        echo "[-] The file does not have a valid video extension" >&2
-        exit 1
-    fi
+    video_path="$1"
+
+    case "$video_path" in
+        *.mp4|*.mkv|*.gif) ;;
+        *)
+            echo "[-] The file does not have a valid video extension"
+            exit 1
+        ;;
+    esac
 
     # Get full geometry of each screen (ex: "1920x1080+1366+0")
     SCREENS=$(xrandr | grep -Eo '[0-9]+x[0-9]+\+[0-9]+\+[0-9]+')
 
     gcd() {
-        local a=$1 b=$2
-        while [ $b -ne 0 ]; do
-            local temp=$b
+        a="$1" b="$2"
+        while [ "$b" -ne 0 ]; do
+            temp="$b"
             b=$((a % b))
             a=$temp
         done
-        echo $a
+        echo "$a"
     }
 
     for geometry in $SCREENS; do
@@ -55,21 +70,30 @@ stop() {
 }
 
 print_help() {
-    echo "Usage: AnimatedWall [--start] [--stop] \"video_path.mp4\""
-    echo "--start: Start playback of video file."
-    echo "--stop: Stop active playback."
+    echo "Usage: AnimatedWall [--start] [--stop] video_path"
+    echo "    --start   Start playback of video file."
+    echo "    --stop    Stop active playback."
 }
 
-if [ $# -eq 0 ]; then
+if [ "$#" -eq 0 ]; then
     print_help
     exit 1
 fi
 
-while [[ "$#" -gt 0 ]]; do
+while [ "$#" -gt 0 ]; do
     case $1 in
-        --start) start; shift ;;
-        --stop) stop; shift ;;
-        *) echo "Unknown parameter: $1"; exit 1 ;;
+        --start)
+            shift
+            start "$1"
+            shift
+            ;;
+        --stop)
+            shift
+            stop
+            ;;
+        *)
+            echo "Unknown parameter: $1"
+            exit 1
+            ;;
     esac
-    shift
 done

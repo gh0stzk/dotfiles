@@ -1,17 +1,8 @@
-#!/usr/bin/env bash
-#  ███████╗ ██████╗ ███████╗████████╗
-#  ██╔════╝██╔═══██╗██╔════╝╚══██╔══╝
-#  ███████╗██║   ██║█████╗     ██║		Author	-	gh0stzk
-#  ╚════██║██║   ██║██╔══╝     ██║		Repo	-	https://github.com/gh0stzk/dotfiles
-#  ███████║╚██████╔╝██║        ██║		date	-	02.02.2025 16:50:44
-#  ╚══════╝ ╚═════╝ ╚═╝        ╚═╝
-#
-#  ██████╗ ███████╗██╗      ██████╗  █████╗ ██████╗
-#  ██╔══██╗██╔════╝██║     ██╔═══██╗██╔══██╗██╔══██╗
-#  ██████╔╝█████╗  ██║     ██║   ██║███████║██║  ██║
-#  ██╔══██╗██╔══╝  ██║     ██║   ██║██╔══██║██║  ██║
-#  ██║  ██║███████╗███████╗╚██████╔╝██║  ██║██████╔╝
-#  ╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝
+#!/bin/sh
+# =============================================================
+# Author: gh0stzk
+# Repo:   https://github.com/gh0stzk/dotfiles
+# Date:   02.02.2025 16:50:44
 #
 # SoftReload - Dynamic reloading of graphical components
 # Features:
@@ -22,20 +13,20 @@
 #
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # Licensed under GPL-3.0 license
-
+# =============================================================
 
 CONFIG_DIR="$HOME/.config/bspwm"
 RICES_DIR="$CONFIG_DIR/rices"
 DUNST_CONFIG="$CONFIG_DIR/src/config/dunstrc"
-CURRENT_RICE=$(<"$CONFIG_DIR"/.rice)
+read -r CURRENT_RICE < "$CONFIG_DIR"/.rice
 
 reload() {
     # Reload bars polybar or eww
     if pgrep -x polybar >/dev/null; then
         polybar-msg cmd restart >/dev/null
     else
-        local eww_bar_config="$RICES_DIR/$CURRENT_RICE/bar"
-        [[ -d "$eww_bar_config" ]] && eww reload -c "$eww_bar_config"
+        eww_bar_config="$RICES_DIR/$CURRENT_RICE/bar"
+        [ -d "$eww_bar_config" ] && eww reload -c "$eww_bar_config"
     fi
 
     # Reload common services
@@ -45,7 +36,7 @@ reload() {
     dunstctl reload "$DUNST_CONFIG" 2>/dev/null || true
 
     # Reload EWW widgets
-    local main_eww="$CONFIG_DIR/eww"
+    main_eww="$CONFIG_DIR/eww"
     if eww ping -c "$main_eww" >/dev/null; then
         eww reload -c "$main_eww"
     fi
@@ -54,5 +45,5 @@ reload() {
 # Send notification
 if reload; then
     dunstify -i dialog-information "Environment Reloaded!" \
-    "Reloaded Settings:\n• ${CURRENT_RICE^} Bar\n• Picom\n• Xsettingsd\n• SXHKD\n• Dunst\n• EWW Widgets"
+    "Reloaded Settings:\n• ${CURRENT_RICE} Bar\n• Picom\n• Xsettingsd\n• SXHKD\n• Dunst\n• EWW Widgets"
 fi

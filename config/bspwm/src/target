@@ -8,8 +8,8 @@ if [ $# -eq 0 ]; then
 	else
 		printf "No Target"
 	fi
-elif [ $1 == "reset" ]; then
+elif [ "$1" = "reset" ]; then
 	rm /tmp/target
 else
-	echo $1 > $FILE
+	echo "$1" > $FILE
 fi

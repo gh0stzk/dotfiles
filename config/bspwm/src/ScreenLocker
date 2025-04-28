@@ -1,15 +1,20 @@
-#!/usr/bin/env bash
+#!/bin/sh
+# =============================================================
+# Author: gh0stzk
+# Repo:   https://github.com/gh0stzk/dotfiles
+# Date:   23.04.2025
 #
-#  ███████╗ ██████╗██████╗ ███████╗███████╗███╗   ██╗    ██╗      ██████╗  ██████╗██╗  ██╗
-#  ██╔════╝██╔════╝██╔══██╗██╔════╝██╔════╝████╗  ██║    ██║     ██╔═══██╗██╔════╝██║ ██╔╝
-#  ███████╗██║     ██████╔╝█████╗  █████╗  ██╔██╗ ██║    ██║     ██║   ██║██║     █████╔╝
-#  ╚════██║██║     ██╔══██╗██╔══╝  ██╔══╝  ██║╚██╗██║    ██║     ██║   ██║██║     ██╔═██╗
-#  ███████║╚██████╗██║  ██║███████╗███████╗██║ ╚████║    ███████╗╚██████╔╝╚██████╗██║  ██╗
-#  ╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝    ╚══════╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝
-#	gh0stzk - https://github.com/gh0stzk/dotfiles
-#	15.10.2024 14:26:09
-#	Dependencies - i3lock-color
+# Script Name: ScreenLocker
+# Description: Advanced screen locker with blur effect and theme-based wallpapers
+# Features:
+#   - Dynamic blur effect on screenshot
+#   - Themed lockscreen wallpapers
+#   - Customizable colors and fonts
+#   - Multiple image format support (JPG/PNG/WEBP)
 #
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# =============================================================
 
 TEMP_IMAGE="/tmp/i3lock.jpg"
 
@@ -55,9 +60,11 @@ rice_lockscreen () {
     lock_image=$(find "$image_dir" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) | shuf -n 1)
 
     # If the image is *.webp convert to /tmp/lock_image.jpg
-    if [[ "$lock_image" == *.webp ]]; then
-        magick "$lock_image" "$TEMP_IMAGE" || exit 1
-    fi
+    case "$lock_image" in
+        *.webp|*.jpg|*.jpeg|*.png)
+            magick "$lock_image" "$TEMP_IMAGE" || exit 1
+        ;;
+    esac
 
     i3lock -n --force-clock -i $TEMP_IMAGE --scale -e --indicator \
         --radius=30 --ring-width=60 --inside-color=$bg \
@@ -75,18 +82,17 @@ rice_lockscreen () {
 		--greeter-color=$fg --wrong-color=$wrong --verif-color=$verify \
 		--verif-pos="300:820" --pointer=default --refresh-rate=0 \
 		--pass-media-keys --pass-volume-keys
-
 }
 
 case $1 in
     -r|--rice)
-        rice_lockscreen;;
+        rice_lockscreen ;;
     -h|--help)
 		echo -e "ScreenLocker [options]
 Note: If an option is not specified, the screen locks with a screenshot with a blur effect.
 
 Options:
-	[-r] [--rice]	Set the screen locker with a random wallpaper of the current theme.\n";;
+	[-r] [--rice]	Set the screen locker with a random wallpaper of the current theme.\n" ;;
     *)
-        default_lockscreen;;
+        default_lockscreen ;;
 esac

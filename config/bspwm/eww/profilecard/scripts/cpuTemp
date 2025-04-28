@@ -1,0 +1,63 @@
+#!/bin/sh
+# =============================================================
+# Author: gh0stzk
+# Repo:   https://github.com/gh0stzk/dotfiles
+# Date:   24.04.2025
+#
+# Script Name: cpuTemp
+# Description: Advanced CPU temperature monitor with multi-sensor detection
+# Features:
+#   - Scans 10+ common thermal sensor paths
+#   - Auto-detects valid temperature readings
+#   - Returns highest core temperature in Celsius
+#   - Handles special hardware (ThinkPad, Samsung, PCI devices)
+#   - Integrate with status bars/notifications
+#   - Null output: Returns "null" if no valid sensors found
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# =============================================================
+
+# Common Temperature Sensor Paths
+PATHS="/sys/class/thermal/thermal_zone*/temp
+/sys/devices/platform/coretemp.*/hwmon/hwmon*/temp*_input
+/sys/devices/virtual/thermal/thermal_zone*/temp
+/sys/devices/virtual/thermal/cooling_device*/temp
+/sys/bus/acpi/devices/LNXTHERM:*/thermal_zone/temp
+/sys/devices/platform/samsung/thermal/temperature
+/sys/class/hwmon/hwmon*/temp*_input
+/sys/devices/pci*/*/hwmon/hwmon*/temp1_input
+/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon*/temp*_input
+/sys/devices/virtual/thermal/cooling_device*/cur_state"
+
+find_cpu_temp() {
+    max_temp=0
+
+    for path in $PATHS; do
+        for file in $(ls $path 2>/dev/null); do
+            if [ -f "$file" ]; then
+                current_temp=$(awk '{print int($1/1000)}' "$file" 2>/dev/null)
+
+                # Check if it's a number
+                case "$current_temp" in
+                    ''|*[!0-9]*)
+                        continue
+                        ;;
+                esac
+
+                if [ "$current_temp" -gt "$max_temp" ]; then
+                    max_temp=$current_temp
+                fi
+            fi
+        done
+    done
+
+    if [ "$max_temp" -gt 0 ]; then
+        echo "$max_temp"
+    else
+        echo "null"
+    fi
+}
+
+TEMP=$(find_cpu_temp)
+echo "${TEMP}°"

@@ -26,7 +26,7 @@
 (defpoll net_icon :interval "3s" "../eww/profilecard/scripts/Network --icon")
 
 ;; Temp
-(defpoll temp :interval "5s" "../src/temp.sh")
+(defpoll temp :interval "15s" "../eww/profilecard/scripts/cpuTemp")
 
 ;; Battery
 ;;(defpoll battery :interval "3s" "../eww/profilecard/scripts/Battery get_battery")
@@ -271,7 +271,7 @@
 
       (box  :class "tools-main" :orientation "v" :space-evenly "false" :spacing 2
         (eventbox :class "tools-box" :width 43 :height 43 :halign "center" :cursor "pointer"
-          (button :class {game_state == "Off" ? "game-no-btn" : "game-btn"} :onclick "../eww/profilecard/scripts/GameMode --toggle" "󰺵"))
+          (button :class {game_state == "Off" ? "game-no-btn" : "game-btn"} :timeout "60000ms" :onclick "../eww/profilecard/scripts/GameMode --toggle" "󰺵"))
         (label :class "info-btn" :limit-width 12 :xalign 0.5 :text "Game Mode")))
   )
 )

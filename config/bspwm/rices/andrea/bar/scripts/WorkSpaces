@@ -1,21 +1,33 @@
-#!/usr/bin/env bash
+#!/bin/sh
+# =================================================================
+# Author:      gh0stzk
+# Repository:  https://github.com/gh0stzk/dotfiles
+# Created:     25.04.2025 15:25:47
+#
+# Description:
+#   Generate interactive EWW widgets for workspace management
+#   in BSPWM (Andrea Rice)
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# =================================================================
 
 # Checks if a list ($1) contains an element ($2)
 contains() {
-    [[ $1 =~ (^|[[:space:]])$2($|[[:space:]]) ]] && echo 1 || echo 0
+    echo "$1" | grep -qw "$2" && echo 1 || echo 0
 }
 
 print_workspaces() {
-    local buf=""
-    local desktops=$(bspc query -D --monitor $1)
-    local focused_desktop=$(bspc query -D -d .active --monitor $1)
-    local occupied_desktops=$(bspc query -D -d .occupied --monitor $1)
+    buf=""
+    desktops=$(bspc query -D --monitor $1)
+    focused_desktop=$(bspc query -D -d .active --monitor $1)
+    occupied_desktops=$(bspc query -D -d .occupied --monitor $1)
 
     for d in $desktops; do
-        if [[ "$focused_desktop" == "$d" ]]; then
+        if [ "$focused_desktop" = "$d" ]; then
             ws=$d
             icon="./images/pacman.png"
-        elif [[ $(contains "$occupied_desktops" "$d") -eq 1 ]]; then
+        elif [ "$(contains "$occupied_desktops" "$d")" -eq 1 ]; then
             ws=$d
             icon="./images/ghost.png"
         else
@@ -23,9 +35,9 @@ print_workspaces() {
             icon="./images/empty.png"
         fi
 
-        buf+="(eventbox :cursor \"pointer\" (button :style \"background-image: url('$icon');\" :class \"icons\" :valign \"center\" :onclick \"bspc desktop -f $ws\"))"
+        buf="${buf}(eventbox :cursor \"pointer\" (button :style \"background-image: url('$icon');\" :class \"icons\" :valign \"center\" :onclick \"bspc desktop -f $ws\"))"
     done
-    
+
     echo "(box :class \"mainbars\" :spacing 10 :space-evenly \"false\" :vexpand \"true\" $buf)"
 }
 

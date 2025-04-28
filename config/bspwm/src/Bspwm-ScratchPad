@@ -1,28 +1,36 @@
-#!/usr/bin/env bash
-#  ██████╗ ███████╗██████╗ ██╗    ██╗███╗   ███╗
-#  ██╔══██╗██╔════╝██╔══██╗██║    ██║████╗ ████║	Author	-	gh0stzk
-#  ██████╔╝███████╗██████╔╝██║ █╗ ██║██╔████╔██║	Repo	-	https://github.com/gh0stzk/dotfiles
-#  ██╔══██╗╚════██║██╔═══╝ ██║███╗██║██║╚██╔╝██║	Date	-	10.03.2025 10:38:11
-#  ██████╔╝███████║██║     ╚███╔███╔╝██║ ╚═╝ ██║	Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
-#  ╚═════╝ ╚══════╝╚═╝      ╚══╝╚══╝ ╚═╝     ╚═╝
+#!/bin/sh
+# =============================================================
+# Author: gh0stzk
+# Repo:   https://github.com/gh0stzk/dotfiles
+# Date:   24.04.2025
 #
-#  ███████╗ ██████╗██████╗  █████╗ ████████╗ ██████╗██╗  ██╗██████╗  █████╗ ██████╗
-#  ██╔════╝██╔════╝██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██║  ██║██╔══██╗██╔══██╗██╔══██╗
-#  ███████╗██║     ██████╔╝███████║   ██║   ██║     ███████║██████╔╝███████║██║  ██║
-#  ╚════██║██║     ██╔══██╗██╔══██║   ██║   ██║     ██╔══██║██╔═══╝ ██╔══██║██║  ██║
-#  ███████║╚██████╗██║  ██║██║  ██║   ██║   ╚██████╗██║  ██║██║     ██║  ██║██████╔╝
-#  ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝╚═════╝
+# Script Name: Bspwm-Scratchpad
+# Description: Dynamic scratchpad manager for bspwm with adaptive positioning
+# Features:
+#   - Monitor-aware geometry calculations
+#   - Percentage-based sizing (70% width/35% height)
+#   - Multi-terminal support (Alacritty/Termite)
+#   - Auto-hide/show toggle functionality
+#   - Persistent window positioning across monitor changes
+# Dependencies:
+#   - bspwm (>= 0.9.10)
+#   - jq (JSON processing)
+#   - xdo (window operations)
+#   - xprop (window identification)
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# =============================================================
 
 # Main vars
 SCRATCHPAD_NAME="bspwm-scratch"
 CFG_TERM="$HOME/.config/bspwm/src/config/.term"
-MY_TERM=$(< "$CFG_TERM")
+read -r MY_TERM < "$CFG_TERM"
 MAX_WIDTH_PERCENT=70
 HEIGHT_PERCENT=35
 
 # Function to get geometry of current monitor
 get_monitor_geometry() {
-    local mon_geo
     mon_geo=$(bspc query -T -m focused | jq -r '.rectangle | "\(.width) \(.height) \(.x) \(.y)"')
     SCREEN_WIDTH=$(echo "$mon_geo" | awk '{print $1}')
     SCREEN_HEIGHT=$(echo "$mon_geo" | awk '{print $2}')

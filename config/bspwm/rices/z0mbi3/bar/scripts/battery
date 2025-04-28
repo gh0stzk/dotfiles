@@ -1,10 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 bat=/sys/class/power_supply/BAT0/
 per="$(cat "$bat/capacity")"
 
 battery_status () {
-	if [[ -d "$bat" ]]; then
+	if [ -d "$bat" ]; then
 		printf "true"
 	else
 		printf "false"

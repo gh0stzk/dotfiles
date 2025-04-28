@@ -1,35 +1,37 @@
-#!/usr/bin/env bash
-#  ██╗   ██╗ ██████╗ ██╗     ██╗   ██╗███╗   ███╗███████╗
-#  ██║   ██║██╔═══██╗██║     ██║   ██║████╗ ████║██╔════╝
-#  ██║   ██║██║   ██║██║     ██║   ██║██╔████╔██║█████╗
-#  ╚██╗ ██╔╝██║   ██║██║     ██║   ██║██║╚██╔╝██║██╔══╝
-#   ╚████╔╝ ╚██████╔╝███████╗╚██████╔╝██║ ╚═╝ ██║███████╗
-#    ╚═══╝   ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
-#
-#	gh0stzk
-#	https://github.com/gh0stzk/dotfiles
-#	This script controls the volume of your system, using pamixer.
-#	23.09.2023 09:30:24
+#!/bin/sh
+# =============================================================
+# gh0stzk
+# https://github.com/gh0stzk/dotfiles
+# This script controls the volume of your system, using pamixer.
+# 24.04.2025
 #
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # Licensed under GPL-3.0 license
+# =============================================================
 
-# Directorio de iconos y función de notificación
+# Icon directory
 vol_dir="$HOME/.config/bspwm/src/assets"
+
 notify() {
     dunstify -u low -h string:x-dunst-stack-tag:cvolum "$@"
 }
 
 # Get volume status
 get_volume() {
-    local status=$(pamixer --get-volume-human)
-    [[ $status == muted ]] && echo "muted" || echo "${status/\%/}"
+    status=$(pamixer --get-volume-human)
+
+    if [ "$status" = "muted" ]; then
+        echo "muted"
+    else
+        echo "$status" | sed 's/%//'
+    fi
 }
 
 # Determine icon based on status
 get_icon() {
-    local current_vol=$(get_volume)
-    if [[ $current_vol == muted ]] || ((current_vol == 0)); then
+    current_vol=$(get_volume)
+
+    if [ "$current_vol" = "muted" ] || [ "$current_vol" -eq 0 ]; then
         icon="$vol_dir/mute.png"
     else
         icon="$vol_dir/vol.png"
@@ -39,8 +41,8 @@ get_icon() {
 # Show notification
 show_notification() {
     get_icon
-    local message="Volumen: $(get_volume)"
-    [[ $message == *muted* ]] || message+="%"
+    message="Volumen: $(get_volume)"
+    echo "$message" | grep -q "muted" || message="${message}%"
     notify -i "$icon" "$message"
 }
 
@@ -55,7 +57,11 @@ adjust_volume() {
 toggle_mute() {
     pamixer --toggle-mute
     get_icon
-    local message=$([[ $(pamixer --get-mute) == true ]] && echo "Muted" || echo "Unmuted")
+    if [ "$(pamixer --get-mute)" = "true" ]; then
+        message="Muted"
+    else
+        message="Unmuted"
+    fi
     notify -i "$icon" "$message"
 }
 

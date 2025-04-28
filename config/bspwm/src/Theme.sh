@@ -1,11 +1,19 @@
-#!/usr/bin/env bash
+#!/bin/sh
+# =============================================================
 #  ████████╗██╗  ██╗███████╗███╗   ███╗███████╗
-#  ╚══██╔══╝██║  ██║██╔════╝████╗ ████║██╔════╝		Author  :  gh0stzk
-#     ██║   ███████║█████╗  ██╔████╔██║█████╗		Url     :  https://github.com/gh0stzk/dotfiles
-#     ██║   ██╔══██║██╔══╝  ██║╚██╔╝██║██╔══╝		Info    :  This file will configure and launch the rice.
-#     ██║   ██║  ██║███████╗██║ ╚═╝ ██║███████╗		09.01.2025 08:56:34
+#  ╚══██╔══╝██║  ██║██╔════╝████╗ ████║██╔════╝
+#     ██║   ███████║█████╗  ██╔████╔██║█████╗
+#     ██║   ██╔══██║██╔══╝  ██║╚██╔╝██║██╔══╝
+#     ██║   ██║  ██║███████╗██║ ╚═╝ ██║███████╗
 #     ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝╚══════╝
-#			Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Author: gh0stzk
+# Repo:   https://github.com/gh0stzk/dotfiles
+# Date:   09.01.2025 08:56:34
+# Info:   This file will configure and launch the rice.
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# =============================================================
 
 # Current Rice
 read -r RICE < "$HOME"/.config/bspwm/.rice
@@ -15,7 +23,7 @@ read -r RICE < "$HOME"/.config/bspwm/.rice
 
 # Function to wait for processes to finish correctly
 wait_for_termination() {
-    local process_name="$1"
+    process_name="$1"
     while pgrep -f "$process_name" >/dev/null; do
         sleep 0.2
     done
@@ -42,6 +50,11 @@ kill_processes() {
         pkill xwinwrap
         wait_for_termination "xwinwrap"
 	fi
+
+    if [ -f /tmp/wall_refresh.pid ]; then
+        kill $(cat /tmp/wall_refresh.pid) 2>/dev/null
+        rm -f /tmp/wall_refresh.pid
+    fi
 }
 
 # Set bspwm configuration
@@ -234,11 +247,6 @@ apply_geany_theme(){
 
 # Apply wallpaper engine
 apply_wallpaper () {
-    if [[ -f /tmp/wall_refresh.pid ]]; then
-        kill $(cat /tmp/wall_refresh.pid) 2>/dev/null
-        rm -f /tmp/wall_refresh.pid
-    fi
-
 	case $ENGINE in
 		"Theme")
 			feh -z --no-fehbg --bg-fill "${HOME}"/.config/bspwm/rices/"${RICE}"/walls ;;

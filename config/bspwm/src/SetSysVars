@@ -1,14 +1,9 @@
-#!/usr/bin/env bash
-#  ███████╗██╗   ██╗███████╗████████╗███████╗███╗   ███╗    ██╗   ██╗ █████╗ ██████╗ ███████╗
-#  ██╔════╝╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝████╗ ████║    ██║   ██║██╔══██╗██╔══██╗██╔════╝
-#  ███████╗ ╚████╔╝ ███████╗   ██║   █████╗  ██╔████╔██║    ██║   ██║███████║██████╔╝███████╗
-#  ╚════██║  ╚██╔╝  ╚════██║   ██║   ██╔══╝  ██║╚██╔╝██║    ╚██╗ ██╔╝██╔══██║██╔══██╗╚════██║
-#  ███████║   ██║   ███████║   ██║   ███████╗██║ ╚═╝ ██║     ╚████╔╝ ██║  ██║██║  ██║███████║
-#  ╚══════╝   ╚═╝   ╚══════╝   ╚═╝   ╚══════╝╚═╝     ╚═╝      ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
-#	Author	-	gh0stzk
-#	Repo	-	https://github.com/gh0stzk/dotfiles
-#	date	-	02.02.2025 08:44:12
-
+#!/bin/sh
+# =============================================================
+# Author:  gh0stzk
+# Repo:    https://github.com/gh0stzk/dotfiles
+# Date:    02.02.2025 08:44:12
+#
 # SetSysVars - Automated System Configuration for BSPWM
 # Features:
 #   ✔ Sets up variables for Polybar integration.
@@ -16,29 +11,47 @@
 #      * Sets up graphics card
 #      * Sets up power supply
 #   ✔ Creates a lock file after first execution
-#
 # Dependencies:
 #   → Core: awk, grep, sed, iproute2 (All in Arch base)
 #
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # Licensed under GPL-3.0 license
-
+# =============================================================
 
 CONFIG_FILE="$HOME/.config/bspwm/src/config/system.ini"
 SFILE="$HOME/.config/bspwm/src/.sys"
 
-[[ -f "$SFILE" ]] && exit 0 # The file exists, exit without doing anything
+[ -f "$SFILE" ] && exit 0 # The file exists, exit without doing anything
 
 setup_system_vars() {
     # Primary Network Interface Detection
-    local primary_net=$(ip link | awk '/state UP/ {print $2}' | tr -d :)
+    primary_net=$(ip link | awk '/state UP/ {print $2}' | tr -d :)
 
     # Graphics card detection
-    local card=$(ls /sys/class/backlight/ 2>/dev/null | head -n1)
+    card=""
+    for entry in /sys/class/backlight/*; do
+        if [ -d "$entry" ]; then
+            card=$(basename "$entry")
+            break
+        fi
+    done
 
     # Battery and adapter detection
-    local battery=$(ls /sys/class/power_supply/ 2>/dev/null | grep -m1 'BAT')
-    local adapter=$(ls /sys/class/power_supply/ 2>/dev/null | grep -m1 -E 'AC|ADP')
+    battery=""
+    for entry in /sys/class/power_supply/*; do
+        entry_name=$(basename "$entry")
+        case "$entry_name" in
+            *BAT*) battery="$entry_name"; break ;;
+        esac
+    done
+
+    adapter=""
+    for entry in /sys/class/power_supply/*; do
+        entry_name=$(basename "$entry")
+        case "$entry_name" in
+            *AC*|*ADP*) adapter="$entry_name"; break ;;
+        esac
+    done
 
     # Atomic update of the configuration file
     tmpfile=$(mktemp)

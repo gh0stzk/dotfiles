@@ -1,70 +1,61 @@
-#!/usr/bin/env bash
-#  ██████╗ ██╗ ██████╗███████╗    ███╗   ███╗███████╗███╗   ██╗██╗   ██╗
-#  ██╔══██╗██║██╔════╝██╔════╝    ████╗ ████║██╔════╝████╗  ██║██║   ██║
-#  ██████╔╝██║██║     █████╗      ██╔████╔██║█████╗  ██╔██╗ ██║██║   ██║
-#  ██╔══██╗██║██║     ██╔══╝      ██║╚██╔╝██║██╔══╝  ██║╚██╗██║██║   ██║
-#  ██║  ██║██║╚██████╗███████╗    ██║ ╚═╝ ██║███████╗██║ ╚████║╚██████╔╝
-#  ╚═╝  ╚═╝╚═╝ ╚═════╝╚══════╝    ╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝
-#	Author	-	gh0stzk
-#	Repo	-	https://github.com/gh0stzk/dotfiles
-#	Date	-	31.01.2025 16:44:37
+#!/bin/sh
+# =============================================================
+# Author:  gh0stzk
+# Repo:    https://github.com/gh0stzk/dotfiles
+# Date:    24.04.2025
 #
 # RiceSelector - Dynamic theme switcher for gh0stzk bspwm dotfiles
 # Features:
 #   ✔ Multi-monitor support with DPI-aware scaling
 #   ✔ Instant theme application
-#   ✔ Fail-safe configuration writing
-#   ✔ Zero-config auto-detection of themes
-#
-# Dependencies:
-#   → Core: bspwm, xrandr, xdpyinfo
-#   → UI: rofi
-#   → Utils: coreutils, findutils
 #
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # Licensed under GPL-3.0 license
+# =============================================================
 
 # Some vars
 bspwm_dir="$HOME/.config/bspwm"
 read -r current_rice < "$bspwm_dir"/.rice
-rofi_command="rofi -dmenu -p RiceSelector -theme $bspwm_dir/src/rofi-themes/RiceSelector.rasi"
 
 # Get focused monitor name
 focused_monitor=$(bspc query -M -m focused --names)
 
 # Get monitor width and DPI (versión reforzada contra espacios/valores rotos)
-monitor_width=$(xrandr | grep -w -- "$focused_monitor" | grep -o '[0-9]\+x[0-9]\+' | cut -d 'x' -f 1)
-screen_dpi=$(xdpyinfo | awk '/resolution/{print $2; exit}' | cut -d 'x' -f1)
+monitor_width=$(xrandr | grep -w "$focused_monitor" | sed -E 's/.* ([0-9]+)x[0-9]+.*/\1/')
+screen_dpi=$(xdpyinfo | awk '/resolution/{print $2}' | cut -d 'x' -f1)
 
-# Calculate icon size with protection contra division por cero
+# Calculate icon size
 icon_size=$(( (monitor_width * 17) / (${screen_dpi:-96} ) ))
 rofi_override="element-icon{size:${icon_size}px;}"
 
 # List rices
-mapfile -d '' -t rices < <(
-    find "$bspwm_dir/rices/" -mindepth 1 -maxdepth 1 -type d -printf '%P\0' |
-    sort -z
-)
+rices=$(find "$bspwm_dir/rices/" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort)
 
 # Find current rice
 selected_index=-1
-
-for i in "${!rices[@]}"; do
-    if [[ "${rices[i]}" == "$current_rice" ]]; then
-        selected_index=$i
-        break
-    fi
+index=0
+IFS='
+'
+for rice in $rices; do
+    [ "$rice" = "$current_rice" ] && { selected_index=$index; break; }
+    index=$((index + 1))
 done
+unset IFS
 
 # Show the rofi selection menu.
 selected=$(
-    for rice in "${rices[@]}"; do
-        printf "%s\0icon\x1f%s/rices/%s/preview.webp\n" "$rice" "$bspwm_dir" "$rice"
-    done | $rofi_command -theme-str "$rofi_override" -selected-row "$selected_index"
+    IFS='
+'
+    for rice in $rices; do
+        printf "%s\000icon\037%s/rices/%s/preview.webp\n" "$rice" "$bspwm_dir" "$rice"
+    done | rofi -dmenu -p "RiceSelector" \
+                -theme "$bspwm_dir/src/rofi-themes/RiceSelector.rasi" \
+                -theme-str "$rofi_override" \
+                -selected-row "$selected_index"
 )
 
 # If a valid option was selected, write the value to the configuration file and change theme.
-[[ -n "$selected" && "$selected" != "$current_rice" ]] && {
+if [ -n "$selected" ] && [ "$selected" != "$current_rice" ]; then
     echo "$selected" > "$bspwm_dir"/.rice
     "${bspwm_dir}"/src/Theme.sh
-}
+fi

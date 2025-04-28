@@ -1,17 +1,12 @@
-#!/usr/bin/env bash
-#  ███╗   ███╗███████╗██████╗ ██╗ █████╗      ██████╗ ██████╗ ███╗   ██╗████████╗██████╗  ██████╗ ██╗
-#  ████╗ ████║██╔════╝██╔══██╗██║██╔══██╗    ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔══██╗██╔═══██╗██║
-#  ██╔████╔██║█████╗  ██║  ██║██║███████║    ██║     ██║   ██║██╔██╗ ██║   ██║   ██████╔╝██║   ██║██║
-#  ██║╚██╔╝██║██╔══╝  ██║  ██║██║██╔══██║    ██║     ██║   ██║██║╚██╗██║   ██║   ██╔══██╗██║   ██║██║
-#  ██║ ╚═╝ ██║███████╗██████╔╝██║██║  ██║    ╚██████╗╚██████╔╝██║ ╚████║   ██║   ██║  ██║╚██████╔╝███████╗
-#  ╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝╚═╝  ╚═╝     ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚══════╝
-#
-#	Author  : gh0stzk
-#	Url     : https://github.com/gh0stzk/dotfiles
-#	Info    : This script uses playerctl and mpc to control the multimedia playback
-#           "stop, pause, play, next, previous" of different players like
-#           spotify, ncmpcpp, clementine, strawberry and others.
-
+#!/bin/sh
+# =============================================================
+# Author: gh0stzk
+# Repo:   https://github.com/gh0stzk/dotfiles
+# Date:   24.04.2025
+# Info:   This script uses playerctl and mpc to control the multimedia playback
+#         "stop, pause, play, next, previous" of different players like
+#         spotify, ncmpcpp, clementine, strawberry and others.
+# =============================================================
 
 # Set the player
 [ -n "$(pgrep spotify)" ] && Control="spotify" || Control="MPD"
@@ -60,14 +55,14 @@ case $Control in
 				[ -f "$LAST_SONG_FILE" ] && last_song=$(cat "$LAST_SONG_FILE")
 
 				if [ "$current_song" != "$last_song" ] || [ ! -f "$Cover" ]; then
-					ffmpeg -i "$mpddir/$(mpc current -f %file%)" "${Cover}" -y &> /dev/null || cp $bkpCover $Cover
+					ffmpeg -i "$mpddir/$(mpc current -f %file%)" "$Cover" -y > /dev/null 2>&1 || cp "$bkpCover" "$Cover"
 					echo "$current_song" > "$LAST_SONG_FILE"
 				fi
 
 				echo "$Cover"
                 ;;
             nccover)
-                ffmpeg -i "$mpddir"/"$(mpc current -f %file%)" "${Cover}" -y &> /dev/null || cp $bkpCover $Cover
+                ffmpeg -i "$mpddir/$(mpc current -f %file%)" "$Cover" -y > /dev/null 2>&1 || cp "$bkpCover" "$Cover"
                 ;;
             --position)
                 position=$(mpc status %currenttime%)
@@ -131,11 +126,13 @@ case $Control in
 
 				if [ "$current_song" != "$last_song" ] || [ ! -f "$Cover" ]; then
 					albumart="$(playerctl --player="$Control" metadata mpris:artUrl | sed -e 's/open.spotify.com/i.scdn.co/g')"
-					if [[ $(playerctl --player="$Control" metadata mpris:artUrl) ]]; then
-						curl -s "$albumart" --output $Cover
-					else
-						cp $bkpCover $Cover
-					fi
+					art_url=$(playerctl --player="$Control" metadata mpris:artUrl)
+                    if [ -n "$art_url" ]; then
+                        albumart=$(echo "$art_url" | sed -e 's/open.spotify.com/i.scdn.co/g')
+                        curl -s "$albumart" --output "$Cover"
+                    else
+                        cp "$bkpCover" "$Cover"
+                    fi
 				echo "$current_song" > "$LAST_SONG_FILE"
 				fi
 

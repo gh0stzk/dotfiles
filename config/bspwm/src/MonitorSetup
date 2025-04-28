@@ -1,126 +1,125 @@
-#!/usr/bin/env bash
-#  ███╗   ███╗ ██████╗ ███╗   ██╗██╗████████╗ ██████╗ ██████╗ ███████╗
-#  ████╗ ████║██╔═══██╗████╗  ██║██║╚══██╔══╝██╔═══██╗██╔══██╗██╔════╝
-#  ██╔████╔██║██║   ██║██╔██╗ ██║██║   ██║   ██║   ██║██████╔╝███████╗
-#  ██║╚██╔╝██║██║   ██║██║╚██╗██║██║   ██║   ██║   ██║██╔══██╗╚════██║
-#  ██║ ╚═╝ ██║╚██████╔╝██║ ╚████║██║   ██║   ╚██████╔╝██║  ██║███████║
-#  ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝
-#	Author	-	gh0stzk
-#	Repo	-	https://github.com/gh0stzk/dotfiles
-#	Date	-	18.03.2025 08:23:17
-#
-# MonitorSetup - Automatically configure multiple monitors and assign workspaces
-#                in bspwm based on the number of screens detected.
+#!/bin/sh
+# =============================================================
+# Script Name: MonitorSetup
+# Description: Dynamic multi-monitor configuration for bspwm using xrandr
 # Features:
-#   ✔ Automatic detection of connected monitors
-#   ✔ Intelligent screen positioning
-#   ✔ Dynamic workspace assignment
-#   ✔ Setting Higher Resolutions and Refresh Rates
-#   ✔ Support for 1-3 monitors
+#   - Auto-detect connected monitors (Up to 4 monitors)
+#   - Dynamic workspace assignment
+#   - Resolution/refresh rate detection
 #
-# Dependencies:
-#   → Core: bspwm, xrandr
-#   → Utils: awk, coreutils
+# Author: gh0stzk
+# Repo:   https://github.com/gh0stzk/dotfiles
+# Date:   24.04.2025
 #
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # Licensed under GPL-3.0 license
-
+# =============================================================
 
 # xrandr cmd
 XRANDR_OUTPUT=$(xrandr)
 
-# Function to obtain the resolution and refresh rate of a monitor
+# Function to obtain monitor info (POSIX-compliant)
 get_monitor_info() {
     echo "$XRANDR_OUTPUT" | awk -v monitor="$1" '
         $1 == monitor { getline; print $1, $2 }
     ' | tr -d '*+'
 }
 
-# Get connected monitors
-MONITORS=($(echo "$XRANDR_OUTPUT" | awk '$2 == "connected" {print $1}'))
-NUM_MONITORS=${#MONITORS[@]}
-
+# Get connected monitors using POSIX-compliant method
+set -- $(echo "$XRANDR_OUTPUT" | awk '$2 == "connected" {print $1}')
+NUM_MONITORS=$#
 
 # Main case for monitor configuration
 case $NUM_MONITORS in
     1)
-		monitor_1="${MONITORS[0]}"
-		info_monitor_1=($(get_monitor_info "$monitor_1"))
+        monitor_1="$1"
+        set -- $(get_monitor_info "$monitor_1")
+        mode_1="$1"
+        rate_1="$2"
 
-		# Set up 1 monitor
-		xrandr --output "$monitor_1" --primary --mode "${info_monitor_1[0]}" --pos 0x0 --auto --rate "${info_monitor_1[1]}"
-
-        # Bspwm Workspaces
+        xrandr --output "$monitor_1" --primary --mode "$mode_1" --pos 0x0 --auto --rate "$rate_1"
         bspc monitor "$monitor_1" -d 1 2 3 4 5 6
         ;;
 
     2)
-		monitor_1="${MONITORS[0]}"
-        monitor_2="${MONITORS[1]}"
-        info_monitor_1=($(get_monitor_info "$monitor_1"))
-        info_monitor_2=($(get_monitor_info "$monitor_2"))
+        monitor_1="$1"
+        monitor_2="$2"
 
-        # Set up 2 monitors
-        xrandr --output "$monitor_1" --primary --mode "${info_monitor_1[0]}" --pos 0x0 --auto --rate "${info_monitor_1[1]}" \
-			   --output "$monitor_2" --mode "${info_monitor_2[0]}" --right-of "$monitor_1" --auto --rate "${info_monitor_2[1]}"
+        set -- $(get_monitor_info "$monitor_1")
+        mode_1="$1"
+        rate_1="$2"
 
-        # Bspwm Workspaces
+        set -- $(get_monitor_info "$monitor_2")
+        mode_2="$1"
+        rate_2="$2"
+
+        xrandr --output "$monitor_1" --primary --mode "$mode_1" --pos 0x0 --auto --rate "$rate_1" \
+               --output "$monitor_2" --mode "$mode_2" --right-of "$monitor_1" --auto --rate "$rate_2"
+
         bspc monitor "$monitor_1" -d 1 2 3 4
         bspc monitor "$monitor_2" -d 5 6 7 8
         bspc wm -O "$monitor_1" "$monitor_2"
         ;;
 
     3)
-		monitor_1="${MONITORS[0]}"
-        monitor_2="${MONITORS[1]}"
-        monitor_3="${MONITORS[2]}"
-        info_monitor_1=($(get_monitor_info "$monitor_1"))
-        info_monitor_2=($(get_monitor_info "$monitor_2"))
-        info_monitor_3=($(get_monitor_info "$monitor_3"))
+        monitor_1="$1"
+        monitor_2="$2"
+        monitor_3="$3"
 
-        # Set up 3 monitors
-        xrandr --output "$monitor_1" --primary --mode "${info_monitor_1[0]}" --pos 0x0 --auto --rate "${info_monitor_1[1]}" \
-               --output "$monitor_2" --mode "${info_monitor_2[0]}" --left-of "$monitor_1" --auto --rate "${info_monitor_2[1]}" \
-               --output "$monitor_3" --mode "${info_monitor_3[0]}" --right-of "$monitor_1" --auto --rate "${info_monitor_3[1]}"
+        set -- $(get_monitor_info "$monitor_1")
+        mode_1="$1"
+        rate_1="$2"
 
-        # Bspwm Workspaces
+        set -- $(get_monitor_info "$monitor_2")
+        mode_2="$1"
+        rate_2="$2"
+
+        set -- $(get_monitor_info "$monitor_3")
+        mode_3="$1"
+        rate_3="$2"
+
+        xrandr --output "$monitor_1" --primary --mode "$mode_1" --pos 0x0 --auto --rate "$rate_1" \
+               --output "$monitor_2" --mode "$mode_2" --left-of "$monitor_1" --auto --rate "$rate_2" \
+               --output "$monitor_3" --mode "$mode_3" --right-of "$monitor_1" --auto --rate "$rate_3"
+
         bspc monitor "$monitor_1" -d 1 2 3
         bspc monitor "$monitor_2" -d 4 5 6
         bspc monitor "$monitor_3" -d 7 8 9
         bspc wm -O "$monitor_1" "$monitor_2" "$monitor_3"
-
-		# For use with 3 monitors, make sure your primary monitor is physically in the center between the other two.
-        # [Monitor 2] <- [Monitor 1] -> [Monitor 3]
         ;;
 
     4)
-		monitor_1="${MONITORS[0]}"
-        monitor_2="${MONITORS[1]}"
-        monitor_3="${MONITORS[2]}"
-        monitor_4="${MONITORS[3]}"
-        info_monitor_1=($(get_monitor_info "$monitor_1"))
-        info_monitor_2=($(get_monitor_info "$monitor_2"))
-        info_monitor_3=($(get_monitor_info "$monitor_3"))
-        info_monitor_4=($(get_monitor_info "$monitor_4"))
+        monitor_1="$1"
+        monitor_2="$2"
+        monitor_3="$3"
+        monitor_4="$4"
 
-        # Set up 4 monitors
-        xrandr --output "$monitor_1" --primary --mode "${info_monitor_1[0]}" --pos 0x0 --auto --rate "${info_monitor_1[1]}" \
-			   --output "$monitor_2" --mode "${info_monitor_2[0]}" --left-of "$monitor_1" --auto --rate "${info_monitor_2[1]}" \
-			   --output "$monitor_3" --mode "${info_monitor_3[0]}" --right-of "$monitor_1" --auto --rate "${info_monitor_3[1]}" \
-			   --output "$monitor_4" --mode "${info_monitor_4[0]}" --above "$monitor_1" --auto --rate "${info_monitor_4[1]}"
+        set -- $(get_monitor_info "$monitor_1")
+        mode_1="$1"
+        rate_1="$2"
 
-        # Bspwm Workspaces
+        set -- $(get_monitor_info "$monitor_2")
+        mode_2="$1"
+        rate_2="$2"
+
+        set -- $(get_monitor_info "$monitor_3")
+        mode_3="$1"
+        rate_3="$2"
+
+        set -- $(get_monitor_info "$monitor_4")
+        mode_4="$1"
+        rate_4="$2"
+
+        xrandr --output "$monitor_1" --primary --mode "$mode_1" --pos 0x0 --auto --rate "$rate_1" \
+               --output "$monitor_2" --mode "$mode_2" --left-of "$monitor_1" --auto --rate "$rate_2" \
+               --output "$monitor_3" --mode "$mode_3" --right-of "$monitor_1" --auto --rate "$rate_3" \
+               --output "$monitor_4" --mode "$mode_4" --above "$monitor_1" --auto --rate "$rate_4"
+
         bspc monitor "$monitor_1" -d 1 2 3
         bspc monitor "$monitor_2" -d 4 5
         bspc monitor "$monitor_3" -d 6 7
         bspc monitor "$monitor_4" -d 8 9
         bspc wm -O "$monitor_1" "$monitor_2" "$monitor_3" "$monitor_4"
-
-        # For use with 4 monitors, make sure your primary monitor is physically in the center between the other two.
-
-        #                [Monitor 4]
-        #                    |
-        # [Monitor 2] <- [Monitor 1] -> [Monitor 3]
         ;;
 
     *)

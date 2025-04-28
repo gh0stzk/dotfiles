@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # sysfetch
 # Thanks to u/x_ero for his sysinfo script
@@ -35,12 +35,12 @@ draw() {
 
 #█▓▒░ populate vals
 i=1
-c=$(printf "\e[0m\e[31m░▒")
-while [ $i -le 6 ];do
-  c=${c}$(printf "\e[%dm\e[%dm█▓▒░" "$((i+41))" "$((i+30))")
+c=$(printf "\033[0m\033[31m░▒")
+while [ "$i" -le 6 ]; do
+  c=${c}$(printf "\033[%dm\033[%dm█▓▒░" "$((i+41))" "$((i+30))")
   i=$((i+1))
 done
-COLORBAR=${c}$(printf "\e[37m█\e[0m▒░")
+COLORBAR=${c}$(printf "\033[37m█\033[0m▒░")
 
 
 name=$USER
@@ -53,11 +53,11 @@ term=$(ps -o sid= -p "$$" | xargs ps -o ppid= -p | xargs ps -o comm= -p)
 uptm=$(uptime -p | sed -e 's/hour/hr/' -e 's/hours/hrs/' -e 's/minutes/mins/' -e 's/minute/min/' -e 's/up //')
 
 c_lvl=$(printf "%.0f" "$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}')")
-CPU=$(printf "%-4s\em%-5s%-25s \n" "${CGR}cpu${CNC} " "$c_lvl%" "$(draw "$c_lvl" 14)")
+CPU=$(printf "%-4s\033m%-5s%-25s \n" "${CGR}cpu${CNC} " "$c_lvl%" "$(draw "$c_lvl" 14)")
 ram_lvl=$(free | awk '/Mem:/ {print int($3/$2 * 100.0)}')
-RAM=$(printf "%-4s\em%-5s%-25s \n" "${CYE}ram${CNC} " "$ram_lvl%" "$(draw "$ram_lvl" 14)")
+RAM=$(printf "%-4s\033m%-5s%-25s \n" "${CYE}ram${CNC} " "$ram_lvl%" "$(draw "$ram_lvl" 14)")
 disk_lvl=$(df -h | grep '/$' | tr -s ' ' | cut -d ' ' -f5 | sed 's/%//')
-DISK=$(printf "%-4s\em%-5s%-25s \n" "${CCY}disk${CNC} " "$disk_lvl%" "$(draw "$disk_lvl" 14)")
+DISK=$(printf "%-4s\033m%-5s%-25s \n" "${CCY}disk${CNC} " "$disk_lvl%" "$(draw "$disk_lvl" 14)")
 
 #Cleanup first
 clear
@@ -74,7 +74,7 @@ $CBD                  $CBL.
            $CBL/.^         $CMA^.\\
 EOF
 
-printf "\e[0m\n    %s\e[0m\n\n" "$COLORBAR"
+printf "\033[0m\n    %s\033[0m\n\n" "$COLORBAR"
 
 # greetings
 printf "%s\n" "             Hi $CRE$CBD$name$CNC"
@@ -91,11 +91,15 @@ printf "%s\n" "$CCY             wm $CWH⏹ $CNC${wm}"
 printf "%s\n" "$CBL           disk $CWH⏹ $CNC${storage} used"
 printf " %s\n" "$CNC"
 
-printf "        %s\n        %s\n       %s\e[0m\n" "$CPU" "$RAM" "$DISK"
+printf "        %s\n        %s\n       %s\033[0m\n" "$CPU" "$RAM" "$DISK"
 
-# hide the cursor and wait for user input
+# hide the cursor and wait for user return input
 tput civis
-read -n 1
+
+old_stty_cfg=$(stty -g)
+stty -icanon min 1 time 0
+IFS= read -r char
+stty "$old_stty_cfg"
 
 # give the cursor back
 tput cnorm

@@ -1,13 +1,8 @@
-#!/usr/bin/env bash
-#  ██╗    ██╗███████╗ █████╗ ████████╗██╗  ██╗███████╗██████╗
-#  ██║    ██║██╔════╝██╔══██╗╚══██╔══╝██║  ██║██╔════╝██╔══██╗
-#  ██║ █╗ ██║█████╗  ███████║   ██║   ███████║█████╗  ██████╔╝
-#  ██║███╗██║██╔══╝  ██╔══██║   ██║   ██╔══██║██╔══╝  ██╔══██╗
-#  ╚███╔███╔╝███████╗██║  ██║   ██║   ██║  ██║███████╗██║  ██║
-#   ╚══╝╚══╝ ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
-#	Author	-	gh0stzk
-#	Repo	-	https://github.com/gh0stzk/dotfiles
-#	Date	-	03.02.2025 01:24:06
+#!/bin/sh
+# =============================================================
+# Author:  gh0stzk
+# Repo:    https://github.com/gh0stzk/dotfiles
+# Date:    24.04.2025
 #
 # Weather - Weather Monitor for Polybar/Eww
 # Features:
@@ -22,6 +17,7 @@
 #
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # Licensed under GPL-3.0 license
+# =============================================================
 
 # ===== Configuration =====
 KEY="8b05d62206f459e1d298cbe5844d7d87"
@@ -32,36 +28,35 @@ CACHE_FILE="$CACHE_DIR/weather_data"
 CACHE_TIMEOUT=900  # 15 minutes in seconds
 
 get_weather_data() {
-    local encoded_city=$(sed 's/ /%20/g' <<< "$CITY")
-    local url="https://api.openweathermap.org/data/2.5/weather?q=$encoded_city&appid=$KEY&units=$UNITS"
+    encoded_city=$(echo "$CITY" | sed 's/ /%20/g')
+    url="https://api.openweathermap.org/data/2.5/weather?q=$encoded_city&appid=$KEY&units=$UNITS"
 
     # Use cache if valid
-    if [[ -f "$CACHE_FILE" ]]; then
-        local now=$(date +%s)
-        local file_age=$(stat -c %Y "$CACHE_FILE")
-        (( now - file_age < CACHE_TIMEOUT )) && cat "$CACHE_FILE" && return
+    if [ -f "$CACHE_FILE" ]; then
+        now=$(date +%s)
+        file_age=$(stat -c %Y "$CACHE_FILE")
+        age_diff=$(expr "$now" - "$file_age")
+        [ "$age_diff" -lt "$CACHE_TIMEOUT" ] && cat "$CACHE_FILE" && return
     fi
 
     # Get new data
     if ! response=$(curl -sf --max-time 10 --show-error "$url"); then
-        [[ -f "$CACHE_FILE" ]] && cat "$CACHE_FILE" || exit 1
+        [ -f "$CACHE_FILE" ] && cat "$CACHE_FILE" || exit 1
     else
         echo "$response" | tee "$CACHE_FILE"
     fi
 }
 
 parse_weather_values() {
-    local data=$1
-    declare -gA WEATHER=(
-        ["temp"]=$(jq -r '.main.temp | round' <<< "$data")
-        ["feels"]=$(jq -r '.main.feels_like | round' <<< "$data")
-        ["desc"]=$(jq -r '.weather[0].description' <<< "$data")
-        ["icon"]=$(jq -r '.weather[0].icon' <<< "$data")
-    )
+    data=$1
+    W_TEMP=$(echo "$data" | jq -r '.main.temp | round')
+    W_FEELS=$(echo "$data" | jq -r '.main.feels_like | round')
+    W_DESC=$(echo "$data" | jq -r '.weather[0].description')
+    W_ICON=$(echo "$data" | jq -r '.weather[0].icon')
 }
 
 get_weather_icon() {
-    case "${1}" in
+    case "$1" in
         "01d") echo "" ;;    # Sol claro
         "01n") echo "" ;;    # Luna clara
         "02d") echo "" ;;    # Pocas nubes (día)
@@ -79,7 +74,8 @@ get_weather_icon() {
 }
 
 get_weather_hex() {
-    case "${1%?}" in
+    icon_prefix=$(echo "$1" | cut -c1-2)
+    case "$icon_prefix" in
         "01") echo "#ffd86b" ;;
         "02"|"03"|"04") echo "#adadff" ;;
         "09"|"10") echo "#6b95ff" ;;
@@ -91,28 +87,28 @@ get_weather_hex() {
 }
 
 mkdir -p "$CACHE_DIR"
-
 weather_data=$(get_weather_data || exit 1)
 parse_weather_values "$weather_data"
 
 case "$1" in
     "current_temp")
-        echo "${WEATHER[temp]}"
+        echo "$W_TEMP"
         ;;
     "current_temp_fahrenheit")
-        echo "$(( (${WEATHER[temp]} * 9 / 5) + 32 ))°F"
+        temp_f=$(expr \( "$W_TEMP" \* 9 / 5 \) + 32)
+        echo "${temp_f}°F"
         ;;
     "feels_like")
-        echo "${WEATHER[feels]}°C"
+        echo "${W_FEELS}°C"
         ;;
     "weather_desc")
-        echo "${WEATHER[desc]^}"
+        echo "$W_DESC" | sed 's/.*/\u&/'
         ;;
     "icon")
-        get_weather_icon "${WEATHER[icon]}"
+        get_weather_icon "$W_ICON"
         ;;
     "hex")
-        get_weather_hex "${WEATHER[icon]}"
+        get_weather_hex "$W_ICON"
         ;;
     "full")
         echo "$weather_data"
@@ -121,9 +117,9 @@ case "$1" in
         echo "$CITY"
         ;;
     "wmodule")
-        icon=$(get_weather_icon "${WEATHER[icon]}")
-        hex=$(get_weather_hex "${WEATHER[icon]}")
-        printf "%%{F%s}%s%%{F-} %s°\n" "$hex" "$icon" "${WEATHER[temp]}"
+        icon=$(get_weather_icon "$W_ICON")
+        hex=$(get_weather_hex "$W_ICON")
+        printf "%%{F%s}%s%%{F-} %s°\n" "$hex" "$icon" "$W_TEMP"
         ;;
     *)
         echo "Opción no válida"

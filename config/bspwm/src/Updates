@@ -1,14 +1,9 @@
-#!/usr/bin/env bash
-#   █████╗ ██████╗  ██████╗██╗  ██╗    ██╗   ██╗██████╗ ██████╗  █████╗ ████████╗███████╗███████╗
-#  ██╔══██╗██╔══██╗██╔════╝██║  ██║    ██║   ██║██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔════╝██╔════╝
-#  ███████║██████╔╝██║     ███████║    ██║   ██║██████╔╝██║  ██║███████║   ██║   █████╗  ███████╗
-#  ██╔══██║██╔══██╗██║     ██╔══██║    ██║   ██║██╔═══╝ ██║  ██║██╔══██║   ██║   ██╔══╝  ╚════██║
-#  ██║  ██║██║  ██║╚██████╗██║  ██║    ╚██████╔╝██║     ██████╔╝██║  ██║   ██║   ███████╗███████║
-#  ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝     ╚═════╝ ╚═╝     ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚══════╝
-#  Author   -	gh0stzk
-#  Repo     -	https://github.com/gh0stzk/dotfiles
-#  Date     -	06.04.2025 09:41:28
-
+#!/bin/sh
+# =============================================================
+# Author: gh0stzk
+# Repo:   https://github.com/gh0stzk/dotfiles
+# Date:   06.04.2025 09:41:28
+#
 # ArchUpdates - Script to check for new updates in ARCH and AUR
 #               and sync updates module in polybar/Eww.
 # Features:
@@ -20,19 +15,20 @@
 #
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # Licensed under GPL-3.0 license
+# =============================================================
 
 UPDATE_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/Updates.txt"
 
 # Main verification function
 check_updates() {
     # Get official updates
-    local official=0
+    official=0
     if updates=$(checkupdates 2>/dev/null); then
         official=$(echo "$updates" | wc -l)
     fi
 
     # Get AUR updates
-    local aur=0
+    aur=0
     if aur_updates=$(paru -Qua 2>/dev/null); then
         aur=$(echo "$aur_updates" | wc -l)
     fi
@@ -46,18 +42,26 @@ check_updates() {
         polybar-msg action updates hook 0 >/dev/null 2>&1
     else
         read -r current_rice < "$HOME"/.config/bspwm/.rice
-        eww -c $HOME/.config/bspwm/rices/"${current_rice}"/bar poll UPDATES
+        eww -c "$HOME/.config/bspwm/rices/${current_rice}/bar" poll UPDATES
     fi
 }
 
 list_updates() {
     check_updates
-    if (( total > 0 )); then
-        echo -e "\033[1m\033[33mThere are $total updates available:\033[0m"
-        [[ -n "$updates" ]] && { echo -e "\n\033[1m\033[34mOfficial updates:\033[0m"; sed 's/->/\x1b[32;1m\x1b[0m/g' <<< "$updates"; }
-        [[ -n "$aur_updates" ]] && { echo -e "\n\033[1m\033[34mAUR updates:\033[0m"; sed 's/->/\x1b[32;1m\x1b[0m/g' <<< "$aur_updates"; }
+    if [ "$total" -gt 0 ]; then
+        printf "\033[1m\033[33mThere are %s updates available:\033[0m\n" "$total"
+
+        if [ -n "$updates" ]; then
+            printf "\n\033[1m\033[34mOfficial updates:\033[0m\n"
+            printf "%s\n" "$updates" | sed 's/->/\x1b[32;1m\x1b[0m/g'
+        fi
+
+        if [ -n "$aur_updates" ]; then
+            printf "\n\033[1m\033[34mAUR updates:\033[0m\n"
+            printf "%s\n" "$aur_updates" | sed 's/->/\x1b[32;1m\x1b[0m/g'
+        fi
     else
-        echo -e "\033[1m\033[32m¡Your system is already updated!\033[0m"
+        printf "\033[1m\033[32m¡Your system is already updated!\033[0m\n"
     fi
     exit 0
 }
@@ -65,15 +69,13 @@ list_updates() {
 # Execute it accordingly
 case "$1" in
     --sync-polybar)
-        check_updates
-        ;;
+        check_updates ;;
     --print-updates)
-        list_updates
-        ;;
+        list_updates ;;
     *)
         echo "$(basename "$0") [OPTIONS]"
         echo "  --sync-polybar      Sync data & polybar module"
         echo "  --print-updates     Sync data, polybar module & print available apps to update"
         exit 1
-        ;;
+    ;;
 esac

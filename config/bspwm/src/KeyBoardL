@@ -1,39 +1,36 @@
-#!/usr/bin/env bash
-#  ██╗  ██╗███████╗██╗   ██╗██████╗  ██████╗  █████╗ ██████╗ ██████╗
-#  ██║ ██╔╝██╔════╝╚██╗ ██╔╝██╔══██╗██╔═══██╗██╔══██╗██╔══██╗██╔══██╗
-#  █████╔╝ █████╗   ╚████╔╝ ██████╔╝██║   ██║███████║██████╔╝██║  ██║
-#  ██╔═██╗ ██╔══╝    ╚██╔╝  ██╔══██╗██║   ██║██╔══██║██╔══██╗██║  ██║
-#  ██║  ██╗███████╗   ██║   ██████╔╝╚██████╔╝██║  ██║██║  ██║██████╔╝
-#  ╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝
-#  gh0stzk                             ██╗      █████╗ ██╗   ██╗ ██████╗ ██╗   ██╗████████╗
-#  https://github.com/gh0stzk/dotfiles ██║     ██╔══██╗╚██╗ ██╔╝██╔═══██╗██║   ██║╚══██╔══╝
-#  31.10.2024 15:30:00                 ██║     ███████║ ╚████╔╝ ██║   ██║██║   ██║   ██║
-#                                      ██║     ██╔══██║  ╚██╔╝  ██║   ██║██║   ██║   ██║
-#                                      ███████╗██║  ██║   ██║   ╚██████╔╝╚██████╔╝   ██║
-#                                      ╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝  ╚═════╝    ╚═╝
+#!/bin/sh
+# =============================================================
+# Author: gh0stzk | https://github.com/gh0stzk/dotfiles
+# Date: 23.04.2025 08:33:18
+#
+# Script Name: Keyboard Layout Switcher
+# Description: Dynamic keyboard layout switcher using rofi and setxkbmap.
+#              Allows users to select from predefined layouts with a GUI menu.
+# Features:
+#   - Multiple keyboard layout support (customizable list)
+#   - Rofi-driven interactive menu
+#   - Real-time current layout display
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# =============================================================
 
 # Get the current layout
 CURRENT=$(setxkbmap -query | awk '/layout/ {print $2}')
 
 # Layouts. You can add yours.
-declare -A LAYOUTS=(
-    ["US English"]="us"
-    ["ES América Latina"]="latam"
-    ["ES España"]="es"
-    ["FR France"]="fr"
-    ["DE Deutschland"]="de"
-    ["RU Россия"]="ru"
-    ["IT Italia"]="it"
-    ["PT Brasil"]="br"
-)
+LAYOUTS="US English|us
+ES América Latina|latam
+ES España|es
+FR France|fr
+DE Deutschland|de
+RU Россия|ru
+IT Italia|it
+PT Brasil|br"
 
 # Show rofi menu
 show_rofi_menu() {
-    local options=""
-    for layout in "${!LAYOUTS[@]}"; do
-        options+="$layout\n"
-    done
-    echo -e "${options%\\n}" | rofi \
+    printf '%s\n' "$LAYOUTS" | cut -d'|' -f1 | rofi \
         -dmenu \
         -p "Keyboard Layout" \
         -mesg "Current layout --> $CURRENT" \
@@ -43,6 +40,9 @@ show_rofi_menu() {
 
 # Select and apply the layout
 selected=$(show_rofi_menu)
-if [[ -n "$selected" && -n "${LAYOUTS[$selected]}" ]]; then
-    setxkbmap "${LAYOUTS[$selected]}"
+if [ -n "$selected" ]; then
+    layout_code=$(printf '%s\n' "$LAYOUTS" | awk -F'|' -v sel="$selected" '$1 == sel {print $2}')
+    if [ -n "$layout_code" ]; then
+        setxkbmap "$layout_code"
+    fi
 fi

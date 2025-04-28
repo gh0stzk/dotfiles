@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
-#
+# =============================================================
 #  ██████╗ ███████╗██████╗ ██╗    ██╗███╗   ███╗██████╗  ██████╗
 #  ██╔══██╗██╔════╝██╔══██╗██║    ██║████╗ ████║██╔══██╗██╔════╝
 #  ██████╔╝███████╗██████╔╝██║ █╗ ██║██╔████╔██║██████╔╝██║
 #  ██╔══██╗╚════██║██╔═══╝ ██║███╗██║██║╚██╔╝██║██╔══██╗██║
 #  ██████╔╝███████║██║     ╚███╔███╔╝██║ ╚═╝ ██║██║  ██║╚██████╗
 #  ╚═════╝ ╚══════╝╚═╝      ╚══╝╚══╝ ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
-#	Author	-	gh0stzk
-#	Repo	-	https://github.com/gh0stzk/dotfiles
-#	Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Author:  gh0stzk
+# Repo:    https://github.com/gh0stzk/dotfiles
+# Date:    24.04.2025 20:37:31
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# =============================================================
 
 # Set environment variables
 export PATH="$HOME/.config/bspwm/src:$PATH"
@@ -49,26 +51,32 @@ bspc config pointer_action3           resize_corner
 #  ╠═╣║ ║ ║ ║ ║╚═╗ ║ ╠═╣╠╦╝ ║
 #  ╩ ╩╚═╝ ╩ ╚═╝╚═╝ ╩ ╩ ╩╩╚═ ╩
 
+run() {
+  if ! pidof -q "$1"; then
+    "$@" &
+  fi
+}
+
 # Set system vars for polybar
 "$HOME"/.config/bspwm/src/SetSysVars
 
 # Launch sxhkd daemon
-pidof -q sxhkd || { sxhkd -c "${HOME}"/.config/bspwm/src/config/sxhkdrc & }
+run sxhkd -c "${HOME}"/.config/bspwm/src/config/sxhkdrc
 
 # Load current theme
 "${HOME}"/.config/bspwm/src/Theme.sh
 
 # Launch picom
-pidof -q picom || { picom --config "${HOME}"/.config/bspwm/src/config/picom.conf & }
+run picom --config "${HOME}"/.config/bspwm/src/config/picom.conf
 
 # Launch xsettingsd
-pidof -q xsettingsd || { xsettingsd --config="${HOME}"/.config/bspwm/src/config/xsettingsd >/dev/null 2>&1 & }
+run xsettingsd --config="${HOME}"/.config/bspwm/src/config/xsettingsd >/dev/null 2>&1
 
 # Launch eww daemon
 pidof -q eww || { eww -c "${HOME}"/.config/bspwm/eww daemon & }
 
 # Launch clipboard daemon
-pidof -q clipcatd || { clipcatd & }
+run clipcatd
 
 # Launch polkit
 pidof -q polkit-gnome-authentication-agent-1 || { /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & }

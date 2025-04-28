@@ -1,25 +1,16 @@
-#!/usr/bin/env bash
-#  ██╗  ██╗██╗██████╗ ███████╗    ██████╗  █████╗ ██████╗
-#  ██║  ██║██║██╔══██╗██╔════╝    ██╔══██╗██╔══██╗██╔══██╗
-#  ███████║██║██║  ██║█████╗      ██████╔╝███████║██████╔╝
-#  ██╔══██║██║██║  ██║██╔══╝      ██╔══██╗██╔══██║██╔══██╗
-#  ██║  ██║██║██████╔╝███████╗    ██████╔╝██║  ██║██║  ██║
-#  ╚═╝  ╚═╝╚═╝╚═════╝ ╚══════╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
-#	Author	-	gh0stzk
-#	Repo	-	https://github.com/gh0stzk/dotfiles
-#	Date	-	03.02.2025 20:31:58
+#!/bin/sh
+# =============================================================
+# Author:  gh0stzk
+# Repo:    https://github.com/gh0stzk/dotfiles
+# Date:    03.02.2025 20:31:58
 #
-# RiceSelector - Dynamic theme switcher for gh0stzk bspwm dotfiles
-# Features:
-#   ✔ Hide polybar or eww bars for gh0stzk dotfiles
-#   ✔ Multimonitor support for eww bars
-#
+# HideBar - Hide polybar or eww bars for gh0stzk dotfiles
 # Dependencies:
-#   → bspwm, polybar, eww, xrandr, bash (v5.0+)
+#   → bspwm, polybar, eww, xrandr
 #
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # Licensed under GPL-3.0 license
-
+# =============================================================
 
 # Configuration
 read -r current_rice <"$HOME"/.config/bspwm/.rice
@@ -45,22 +36,21 @@ set_padding() {
 }
 
 is_eww_theme() {
-    [[ "$current_rice" == "z0mbi3" || "$current_rice" == "andrea" ]]
+    [ "$current_rice" = "z0mbi3" ] || [ "$current_rice" = "andrea" ]
 }
 
 toggle_bar() {
-    local action=$1
+    action="$1"
 
     if is_eww_theme; then
-
         if [ "$action" = "hide" ]; then
             eww -c "$eww_bar_path" close-all
         else
-            local monitors=($(xrandr --listmonitors | awk 'NR>1 {print $4}'))
-            local count=0
-            for m in "${monitors[@]}"; do
-                eww -c "$eww_bar_path" open bar --id "$m" --arg monitor="$m" --screen $count
-                ((count++))
+            monitors=$(xrandr --listmonitors | awk 'NR>1 {print $4}')
+            count=0
+            for m in $monitors; do
+                eww -c "$eww_bar_path" open bar --id "$m" --arg monitor="$m" --screen "$count"
+                count=$((count + 1))
             done
         fi
     else
@@ -73,8 +63,7 @@ toggle_bars() {
         set_padding 2 2 2 2
         toggle_bar hide
     else
-        local paddings=($(get_paddings))
-        set_padding "${paddings[@]}"
+        set_padding $(get_paddings)
         toggle_bar show
     fi
 }

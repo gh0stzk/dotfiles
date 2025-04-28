@@ -1,14 +1,11 @@
-#!/usr/bin/env bash
-#  ███████╗███████╗████████╗ ██████╗██╗  ██╗
-#  ██╔════╝██╔════╝╚══██╔══╝██╔════╝██║  ██║
-#  █████╗  █████╗     ██║   ██║     ███████║
-#  ██╔══╝  ██╔══╝     ██║   ██║     ██╔══██║
-#  ██║     ███████╗   ██║   ╚██████╗██║  ██║
-#  ╚═╝     ╚══════╝   ╚═╝    ╚═════╝╚═╝  ╚═╝
-#	Little fetch made to work with my eww widget
-# 	gh0stzk | https://github.com/gh0stzk/dotfiles
-#	11.07.2024 10:20:07
- 
+#!/bin/sh
+# =============================================================
+# Little fetch made to work with my eww widget
+# gh0stzk | https://github.com/gh0stzk/dotfiles
+# 11.07.2024 10:20:07
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# =============================================================
+
 os() {
   awk -F '"' '/PRETTY_NAME/ {print $2}' /etc/os-release | awk '{print $1}'
 }

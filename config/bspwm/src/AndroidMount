@@ -1,17 +1,13 @@
-#!/usr/bin/env bash
-#   █████╗ ███╗   ██╗██████╗ ██████╗  ██████╗ ██╗██████╗
-#  ██╔══██╗████╗  ██║██╔══██╗██╔══██╗██╔═══██╗██║██╔══██╗
-#  ███████║██╔██╗ ██║██║  ██║██████╔╝██║   ██║██║██║  ██║
-#  ██╔══██║██║╚██╗██║██║  ██║██╔══██╗██║   ██║██║██║  ██║
-#  ██║  ██║██║ ╚████║██████╔╝██║  ██║╚██████╔╝██║██████╔╝
-#  ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝╚═════╝  gh0stzk
-#                                                         https://github.com/gh0stzk/dotfiles
-#  ███╗   ███╗ ██████╗ ██╗   ██╗███╗   ██╗████████╗       10.07.2024 07:05:25
-#  ████╗ ████║██╔═══██╗██║   ██║████╗  ██║╚══██╔══╝       Mount and unmount Android device using simple-mtpfs and Rofi
-#  ██╔████╔██║██║   ██║██║   ██║██╔██╗ ██║   ██║
-#  ██║╚██╔╝██║██║   ██║██║   ██║██║╚██╗██║   ██║
-#  ██║ ╚═╝ ██║╚██████╔╝╚██████╔╝██║ ╚████║   ██║
-#  ╚═╝     ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝
+#!/bin/sh
+# =============================================================
+# gh0stzk
+# https://github.com/gh0stzk/dotfiles
+# 10.07.2024 07:05:25
+# Mount and unmount Android device using simple-mtpfs and Rofi
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# =============================================================
 
 BASE_MOUNT_POINT="$HOME/Android_Mount"
 ROFI_THEME="$HOME/.config/bspwm/src/rofi-themes/Android.rasi"
@@ -60,12 +56,12 @@ fi
 
 if is_mounted "$MOUNT_POINT"; then
 	ACTION=$(echo "Unmount" | rofi -dmenu -p "$DEVICE_NAME is mounted" -theme "$ROFI_THEME")
-	if [ "$ACTION" == "Unmount" ]; then
+	if [ "$ACTION" = "Unmount" ]; then
 		unmount_device "$MOUNT_POINT"
 	fi
 else
 	ACTION=$(echo "Mount" | rofi -dmenu -p "$DEVICE_NAME is not mounted" -theme "$ROFI_THEME")
-	if [ "$ACTION" == "Mount" ]; then
+	if [ "$ACTION" = "Mount" ]; then
 		mount_device "$DEVICE_NUM" "$MOUNT_POINT"
 	fi
 fi

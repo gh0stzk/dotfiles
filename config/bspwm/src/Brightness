@@ -1,13 +1,8 @@
-#!/usr/bin/env bash
-#  ██████╗ ██████╗ ██╗ ██████╗ ██╗  ██╗████████╗███╗   ██╗███████╗███████╗███████╗
-#  ██╔══██╗██╔══██╗██║██╔════╝ ██║  ██║╚══██╔══╝████╗  ██║██╔════╝██╔════╝██╔════╝
-#  ██████╔╝██████╔╝██║██║  ███╗███████║   ██║   ██╔██╗ ██║█████╗  ███████╗███████╗
-#  ██╔══██╗██╔══██╗██║██║   ██║██╔══██║   ██║   ██║╚██╗██║██╔══╝  ╚════██║╚════██║
-#  ██████╔╝██║  ██║██║╚██████╔╝██║  ██║   ██║   ██║ ╚████║███████╗███████║███████║
-#  ╚═════╝ ╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═══╝╚══════╝╚══════╝╚══════╝
-#	Author	-	gh0stzk
-#	Repo	-	https://github.com/gh0stzk/dotfiles
-#	Date	-	03.02.2025 14:22:32
+#!/bin/sh
+# =============================================================
+# Author:  gh0stzk
+# Repo:    https://github.com/gh0stzk/dotfiles
+# Date:    03.02.2025 14:22:32
 #
 # Brightness - Hardware brightness control
 # Features:
@@ -21,44 +16,45 @@
 #
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # Licensed under GPL-3.0 license
+# =============================================================
 
-
-readonly DIR="$HOME/.config/bspwm/src/assets"
-readonly BRIGHTNESS_STEPS=5
-readonly MIN_BRIGHTNESS=2
-readonly NOTIFICATION_ID=12345
+DIR="$HOME/.config/bspwm/src/assets"
+BRIGHTNESS_STEPS=5
+MIN_BRIGHTNESS=2
 
 get_brightness() {
     brightnessctl i | awk -F '[()%]' '/Current brightness:/ {print $2}'
 }
 
 send_notification() {
-    local brightness="$1"
-    local icon="$DIR/brightness.svg"
-    local bar=""
-    local -i bar_length=$((brightness / BRIGHTNESS_STEPS))
+    brightness="$1"
+    icon="$DIR/brightness.svg"
+    bar=""
+    bar_length=$((brightness / BRIGHTNESS_STEPS))
 
-    for ((i = 0; i < bar_length; i++)); do
-        bar+="─"
+    i=0
+    while [ "$i" -lt "$bar_length" ]; do
+        bar="${bar}─"
+        i=$((i + 1))
     done
 
-    dunstify "Brightness $brightness%" -i $icon -r 5555 -h int:value:$(($brightness))
+    dunstify "Brightness $brightness%" -i "$icon" -r 5555 -h int:value:$(($brightness))
 }
 
 adjust_brightness() {
-    local -i current
     current="$(get_brightness)"
 
     case $1 in
         up)
-            if ((current == MIN_BRIGHTNESS)); then
+            if [ "$current" -eq "$MIN_BRIGHTNESS" ]; then
                 brightnessctl set "${BRIGHTNESS_STEPS}%" -q
             else
                 brightnessctl set "${BRIGHTNESS_STEPS}%+" -q
             fi
             ;;
         down)
-            if ((current <= MIN_BRIGHTNESS + BRIGHTNESS_STEPS)); then
+            threshold=$((MIN_BRIGHTNESS + BRIGHTNESS_STEPS))
+            if [ "$current" -le "$threshold" ]; then
                 brightnessctl set "${MIN_BRIGHTNESS}%" -q
             else
                 brightnessctl set "${BRIGHTNESS_STEPS}%-" -q
