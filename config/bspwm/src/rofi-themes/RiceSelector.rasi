@@ -86,6 +86,7 @@ element-icon {
     cursor:                      inherit;
     border-radius:               20px;
     background-color:            transparent;
+    margin:			 7px;
     text-color:                  inherit;
 }
 element-text {
