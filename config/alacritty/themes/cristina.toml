@@ -1,0 +1,33 @@
+# Colors for Cristina Rice
+
+# Default colors
+[colors.primary]
+background = "#232136"
+foreground = "#e0def4"
+
+# Cursor colors
+[colors.cursor]
+cursor = "#e0def4"
+text = "#232136"
+
+# Normal colors
+[colors.normal]
+black = "#393552"
+red = "#ea6f91"
+green = "#9bced7"
+yellow = "#f1ca93"
+blue = "#34738e"
+magenta = "#c3a5e6"
+cyan = "#eabbb9"
+white = "#faebd7"
+
+# Bright colors
+[colors.bright]
+black = "#6e6a86"
+red = "#ea6f91"
+green = "#9bced7"
+yellow = "#f1ca93"
+blue = "#34738e"
+magenta = "#c3a5e6"
+cyan = "#ebbcba"
+white = "#e0def4"

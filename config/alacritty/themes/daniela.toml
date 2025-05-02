@@ -1,0 +1,31 @@
+# Colors for Daniela Rice
+[colors.primary]
+background = "#181825"
+foreground = "#CDD6F4"
+
+# Cursor colors
+[colors.cursor]
+cursor = "#CDD6F4"
+text = "#181825"
+
+# Normal colors
+[colors.normal]
+black = "#45475A"
+red = "#F38BA8"
+green = "#A6E3A1"
+yellow = "#F9E2AF"
+blue = "#89B4FA"
+magenta = "#F5C2E7"
+cyan = "#94E2D5"
+white = "#BAC2DE"
+
+# Bright colors
+[colors.bright]
+black = "#585B70"
+red = "#F38BA8"
+green = "#A6E3A1"
+yellow = "#F9E2AF"
+blue = "#89B4FA"
+magenta = "#F5C2E7"
+cyan = "#94E2D5"
+white = "#A6ADC8"

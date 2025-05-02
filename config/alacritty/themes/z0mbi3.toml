@@ -1,0 +1,33 @@
+# Colors for z0mbi3 Rice
+
+# Default colors
+[colors.primary]
+background = "#0d0f18"
+foreground = "#a5b6cf"
+
+# Cursor colors
+[colors.cursor]
+cursor = "#a5b6cf"
+text = "#0d0f18"
+
+# Normal colors
+[colors.normal]
+black = "#3d414f"
+red = "#dd6777"
+green = "#90ceaa"
+yellow = "#ecd3a0"
+blue = "#86aaec"
+magenta = "#c296eb"
+cyan = "#93cee9"
+white = "#cbced3"
+
+# Bright colors
+[colors.bright]
+black = "#3d414f"
+red = "#dd6777"
+green = "#90ceaa"
+yellow = "#ecd3a0"
+blue = "#86aaec"
+magenta = "#c296eb"
+cyan = "#93cee9"
+white = "#cbced3"

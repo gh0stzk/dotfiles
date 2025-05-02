@@ -83,12 +83,12 @@ rofi_active="$green"
 rofi_urgent="$red"
 
 # Screenlocker
-sl_bg="${bg:1}"
-sl_fg="${fg:1}"
-sl_ring="${magenta:1}"
-sl_wrong="${red:1}"
-sl_date="${fg:1}"
-sl_verify="${green:1}"
+sl_bg="${bg}"
+sl_fg="${fg}"
+sl_ring="${magenta}"
+sl_wrong="${red}"
+sl_date="${fg}"
+sl_verify="${green}"
 
 # Gtk theme
 gtk_theme="CatppuccinMocha-zk"

@@ -1,0 +1,33 @@
+# Colors for Karla Rice
+
+# Default colors
+[colors.primary]
+background = "#0E1113"
+foreground = "#afb1db"
+
+# Cursor colors
+[colors.cursor]
+cursor = "#afb1db"
+text = "#0E1113"
+
+# Normal colors
+[colors.normal]
+black = "#353c52"
+red = "#e7034a"
+green = "#61b33e"
+yellow = "#ffb964"
+blue = "#5884d4"
+magenta = "#7a44e3"
+cyan = "#7df0f0"
+white = "#afb1db"
+
+# Bright colors
+[colors.bright]
+black = "#353c52"
+red = "#e71c5b"
+green = "#6fb352"
+yellow = "#ffb964"
+blue = "#5f90ea"
+magenta = "#8656e3"
+cyan = "#97f0f0"
+white = "#afb1db"

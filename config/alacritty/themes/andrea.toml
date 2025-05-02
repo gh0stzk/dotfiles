@@ -1,0 +1,33 @@
+# Colors for Andrea Rice
+
+# Default colors
+[colors.primary]
+background = "#FDF0ED"
+foreground = "#151515"
+
+# Cursor colors
+[colors.cursor]
+cursor = "#151515"
+text = "#FDF0ED"
+
+# Normal colors
+[colors.normal]
+black = "#151515"
+red = "#DA103F"
+green = "#1EB980"
+yellow = "#FFCC57"
+blue = "#67d4f1"
+magenta = "#b0a5ed"
+cyan = "#2eccca"
+white = "#ededed"
+
+# Bright colors
+[colors.bright]
+black = "#F0E9E2"
+red = "#F43E5C"
+green = "#07DA8C"
+yellow = "#F77D26"
+blue = "#3FC6DE"
+magenta = "#F075B7"
+cyan = "#1EAEAE"
+white = "#16161C"
