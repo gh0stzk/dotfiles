@@ -254,7 +254,7 @@ install_dependencies() {
         count=$(printf "%s" "$missing_pkgs" | wc -w)
         printf "\n%b\n\n" "${BLD}${CYE}Installing $count packages, please wait...${CNC}"
 
-        if sudo pacman -S --noconfirm --needed $missing_pkgs 2>&1 | tee -a "$ERROR_LOG" >/dev/null; then
+        if sudo pacman -S --noconfirm $missing_pkgs 2>&1 | tee -a "$ERROR_LOG" >/dev/null; then
             # Verify complete installation
             failed_pkgs=""
             for pkg in $missing_pkgs; do
@@ -311,7 +311,7 @@ install_gh0stzk_dependencies() {
         count=$(printf "%s" "$missing_gh0stzk_pkgs" | wc -w)
         printf "\n%b\n\n" "${BLD}${CYE}Installing $count packages, please wait...${CNC}"
 
-        if sudo pacman -S --noconfirm --needed $missing_gh0stzk_pkgs 2>&1 | tee -a "$ERROR_LOG" >/dev/null; then
+        if sudo pacman -S --noconfirm $missing_gh0stzk_pkgs 2>&1 | tee -a "$ERROR_LOG" >/dev/null; then
             # Verify complete installation
             failed_gh0stzk_pkgs=""
             for pkg in $missing_gh0stzk_pkgs; do
@@ -368,7 +368,7 @@ install_chaotic_dependencies() {
         count=$(printf "%s" "$missing_chaotic_pkgs" | wc -w)
         printf "\n%b\n\n" "${BLD}${CYE}Installing $count packages, please wait...${CNC}"
 
-        if sudo pacman -S --noconfirm --needed $missing_chaotic_pkgs 2>&1 | tee -a "$ERROR_LOG" >/dev/null; then
+        if sudo pacman -S --noconfirm $missing_chaotic_pkgs 2>&1 | tee -a "$ERROR_LOG" >/dev/null; then
             # Verify complete installation
             failed_chaotic_pkgs=""
             for pkg in $missing_chaotic_pkgs; do
