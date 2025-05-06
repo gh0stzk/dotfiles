@@ -111,10 +111,10 @@
         (label :text ""))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Close Node")
-        (label :class "keys-alt" :xalign 1 :text "Super + c"))
+        (label :class "keys-alt" :xalign 1 :text "Super + x"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Kill Node")
-        (label :class "keys-alt" :xalign 1 :text "Super + Shift + c"))
+        (label :class "keys-alt" :xalign 1 :text "Super + Shift + x"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Set Node Floating")
         (label :class "keys-alt" :xalign 1 :text "Alt + a"))
@@ -153,10 +153,10 @@
         (label :class "keys-alt" :xalign 1 :text ""))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Change Node focus")
-        (label :class "keys-alt" :xalign 1 :text "Super + Shift +    "))
+        (label :class "keys-alt" :xalign 1 :text "Super + Alt +    "))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Swap Nodes")
-        (label :class "keys-alt" :xalign 1 :text "Ctrl + Shift +    "))
+        (label :class "keys-alt" :xalign 1 :text "Ctrl + Alt +    "))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Focus last N/W")
         (label :class "keys-alt" :xalign 1 :text "Ctrl + Shift + {, , .}"))
@@ -177,7 +177,7 @@
         (label :class "keys-alt" :xalign 1 :text "Super + Ctrl + {+,-}"))
       (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Move floating node")
-        (label :class "keys-alt" :xalign 1 :text "Super + Alt +    "))
+        (label :class "keys-alt" :xalign 1 :text "Super + Shift +    "))
       (box :orientation "h" :space-evenly "true"
         (label :class "category-others" :xalign 0.5 :text "Others")
         (label :text ""))
