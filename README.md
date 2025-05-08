@@ -39,6 +39,25 @@ I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wik
 
 <sup>Each theme not only changes the appearance of bspwm but also instantly transforms the color scheme in terminals (Alacritty & Kitty), eww widgets, polybar bars, notifications, gtk theme, launchers and more. Visual harmony is guaranteed in every corner of your system.</sup>
 
+**Multi-Monitor support**
+
+<sup>If you have multiple monitors, BSPWM will automatically detect and configure up to 4 displays when launching with my dotfiles.</sup>
+
+```text
+2 Monitors:
+[Monitor 1] --> [Monitor 2]
+
+3 Monitors:
+[Monitor 2] --> [Monitor 1] <-- [Monitor 3]
+
+4 Monitors:
+                [Monitor 4]
+                    |
+[Monitor 2] --> [Monitor 1] <-- [Monitor 3]
+```
+
+<sup>If you connect an additional monitor while the session is already running, simply reload BSPWM using the `Super + Alt + r` key combination, and your monitors will be configured instantly.</sup>
+
 **RiceEditor**
 
 <sup>Is an application designed to simplify the customization of your current theme. It allows you to easily adjust various visual and configuration aspects, tailoring your environment to your preferences without the need to manually edit configuration files.</sup>
@@ -55,9 +74,21 @@ I already started writing the [**Wiki**](https://github.com/gh0stzk/dotfiles/wik
 
 <sup>The lockscreen automatically adapts to the active theme and offers two locking options: it can capture the current screen with a blur effect, or use a specific wallpaper depending on the selected theme.</sup>
 
-**Variety of Wallpapers**
+**Wallpaper Engines**
 
-<sup>Each login surprises you with a randomly selected wallpaper specifically tailored to the theme in use. But if surprises aren't your thing, our wallpaper menu lets you choose from over 5 exclusive wallpapers for each theme.</sup>
+<sup>My dotfiles support **5 different methods** for setting your favorite wallpaper:</sup>
+
+<sup>**Theme**: Sets a random wallpaper from the theme’s Walls directory. (Default)<br>
+**CustomDir**: Sets a random wallpaper from a directory you specify.<br>
+**CustomImage**: Sets a specific image as wallpaper.<br>
+**CustomAnimated**: Supports animated wallpapers (.mp4, .mkv, .gif).<br>
+**Slideshow**: Changes the wallpaper every 15 minutes with a random image from the theme’s Walls directory.</sup>
+
+<sup>Each option is **theme-specific**, meaning you can have an animated wallpaper in one theme, a static image in another, or a custom directory in a third — And all your settings will be preserved per theme.
+By default, all themes load a random wallpaper from their Walls folder.</sup>
+
+Check the wiki for more details:
+[👉 Wallpapers Configuration](https://github.com/gh0stzk/dotfiles/wiki/Wallpapers-Configuration)
 
 **Scratchpad**
 

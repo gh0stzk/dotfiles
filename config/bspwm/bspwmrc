@@ -79,8 +79,7 @@ pidof -q eww || { eww -c "${HOME}"/.config/bspwm/eww daemon & }
 run clipcatd
 
 # Launch polkit
-pidof -q polkit-gnome-authentication-agent-1 || { /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & }
+run lxpolkit
 
-# Start one time code
-sh -c 'alacritty --hold -e cat $HOME/.config/bspwm/src/config/FirstMessage.txt && sed -i "/# Start one time code/,/# End one time code/d" ~/.config/bspwm/bspwmrc'
-# End one time code
+# Start one time message
+[ ! -f "$HOME/.config/bspwm/src/config/.first_run_done" ] && alacritty --hold -e sh -c 'cat "$HOME/.config/bspwm/src/config/FirstMessage.txt"; sleep 0.1' && touch "$HOME/.config/bspwm/src/config/.first_run_done"
