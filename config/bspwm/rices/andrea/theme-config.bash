@@ -5,27 +5,27 @@
 # https://github.com/gh0stzk/dotfiles
 
 # Colorscheme
-bg="#FDF0ED"
+bg="#f5eee6"
 fg="#151515"
 
-black="#151515"
+black="#5c595e"
 red="#DA103F"
 green="#1EB980"
-yellow="#FFCC57"
+yellow="#ffc338"
 blue="#67d4f1"
 magenta="#b0a5ed"
 cyan="#2eccca"
-white="#ededed"
-blackb="#F0E9E2"
+white="#e1e2e7"
+blackb="#5c595e"
 redb="#F43E5C"
 greenb="#07DA8C"
-yellowb="#F77D26"
+yellowb="#ffcc57"
 blueb="#3FC6DE"
 magentab="#F075B7"
 cyanb="#1EAEAE"
-whiteb="#16161C"
+whiteb="#e1e2e7"
 
-accent_color="$blackb"
+accent_color="#e5ded6"
 arch_icon="#0f94d2"
 
 # Bspwm options
@@ -68,8 +68,8 @@ dunst_open_direction="down"
 # Jgmenu colors
 jg_bg="$bg"
 jg_fg="$fg"
-jg_sel_bg="$blackb"
-jg_sel_fg="$fg"
+jg_sel_bg="$white"
+jg_sel_fg="$black"
 jg_sep="$whiteb"
 
 # Rofi menu font and colors
