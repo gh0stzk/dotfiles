@@ -116,6 +116,9 @@
         (label :class "keys" :xalign 0 :text "Kill Node")
         (label :class "keys-alt" :xalign 1 :text "Super + Shift + x"))
       (box :orientation "h" :space-evenly "true"
+        (label :class "keys" :xalign 0 :text "Close all nodes in desktop")
+        (label :class "keys-alt" :xalign 1 :text "Super + Ctrl + x"))
+      (box :orientation "h" :space-evenly "true"
         (label :class "keys" :xalign 0 :text "Set Node Floating")
         (label :class "keys-alt" :xalign 1 :text "Alt + a"))
       (box :orientation "h" :space-evenly "true"

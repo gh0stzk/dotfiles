@@ -135,6 +135,10 @@ super + alt + r
 super + {_,shift + }x
 	bspc node -{c,k}
 
+# Close all nodes in current desktop
+super + ctrl + x
+	bspc query -N -d | xargs -I id -n 1 bspc node id -c
+
 # Reload sxhkd Keybinds
 super + Escape
 	pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/src/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
