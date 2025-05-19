@@ -4,11 +4,6 @@ rev = "0725851"
 hash = "aef2b1a805b80cce573bb766f1459d88"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:git"
-rev = "0725851"
-hash = "771f18427fb75fb19990ce602bb322f4"
-
-[[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
 rev = "0725851"
 hash = "ae9e1d0c6bfd68cdebc98cc684c22b45"

@@ -151,16 +151,6 @@ previewers = [
 	# Fallback
 	{ name = "*", run = "file" },
 ]
-[[plugin.prepend_fetchers]]
-id   = "git"
-name = "*"
-run  = "git"
-
-[[plugin.prepend_fetchers]]
-id   = "git"
-name = "*/"
-run  = "git"
-
 
 [input]
 cursor_blink = false
