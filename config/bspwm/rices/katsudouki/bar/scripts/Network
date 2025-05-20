@@ -1,0 +1,24 @@
+#!/bin/sh
+
+is_online() {
+	# INFO: Verifica se há alguma interface de rede com estado "UP"
+	ip link show up | grep -q "state UP"
+}
+
+ICON="images/no-wifi.png"
+STATUS="Offline"
+
+if is_online; then
+	# INFO: Define ícone e tenta obter IP da interface ativa
+	ICON="images/wifi.png"
+
+	# INFO: Obtém o IP local da interface ativa
+	ID="$(ip addr show $(ip link | awk '/state UP/ {print $2}' | tr -d :) | awk '/inet / {print $2}' | cut -d/ -f1)"
+	STATUS="$ID"
+fi
+
+case "$1" in
+    --stat) echo "$STATUS" ;;
+    --icon) echo "$ICON" ;;
+esac
+

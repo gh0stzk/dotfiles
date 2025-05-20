@@ -1,0 +1,50 @@
+#!/bin/sh
+# =================================================================
+# Author:      gh0stzk
+# Repository:  https://github.com/gh0stzk/dotfiles
+# Created:     25.04.2025 15:25:47
+#
+# Description:
+#   Generate interactive EWW widgets for workspace management
+#   in BSPWM (Andrea Rice)
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# =================================================================
+
+# Checks if a list ($1) contains an element ($2)
+contains() {
+    echo "$1" | grep -qw "$2" && echo 1 || echo 0
+}
+
+print_workspaces() {
+    buf=""
+    desktops=$(bspc query -D --monitor $1)
+    focused_desktop=$(bspc query -D -d .active --monitor $1)
+    occupied_desktops=$(bspc query -D -d .occupied --monitor $1)
+
+    for d in $desktops; do
+        if [ "$focused_desktop" = "$d" ]; then
+            ws=$d
+            icon="./images/cat.png"
+        elif [ "$(contains "$occupied_desktops" "$d")" -eq 1 ]; then
+            ws=$d
+            icon="./images/ghost.png"
+        else
+            ws=$d
+            icon="./images/empty.png"
+        fi
+
+        buf="${buf}(eventbox :cursor \"pointer\" (button :style \"background-image: url('$icon');\" :class \"icons\" :valign \"center\" :onclick \"bspc desktop -f $ws\"))"
+    done
+
+    echo "(box :class \"mainbars\" :spacing 10 :space-evenly \"false\" :vexpand \"true\" $buf)"
+}
+
+# Initial print
+print_workspaces $1
+
+# Listen to bspwm changes
+bspc subscribe desktop node_transfer | while read -r _ ; do
+    print_workspaces $1
+done
