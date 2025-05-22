@@ -65,9 +65,9 @@ WINDOW_ID=$(get_scratchpad_id)
 
 if [ -n "$WINDOW_ID" ]; then
     # Get current status
-    CURRENT_STATE=$(bspc query -T -n "$WINDOW_ID" | jq -r '.client.state')
+    CURRENT_STATE=$(bspc query -T -n "$WINDOW_ID" | jq -r '.hidden')
 
-    if [ "$CURRENT_STATE" = "floating" ]; then
+    if [ "$CURRENT_STATE" = "false" ]; then
         # If already visible: hide
         bspc node "$WINDOW_ID" -g hidden
     else
