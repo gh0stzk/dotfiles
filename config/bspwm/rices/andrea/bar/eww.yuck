@@ -172,6 +172,8 @@
 					  )
 				 )
 		 ))
+		 ;; INFO: call systray function
+		 (systemtray)
 
 		 (eventbox :cursor "pointer"
 		 (button :onclick "${EWW_CMD} open --toggle audio_ctl"
@@ -239,6 +241,14 @@
 		 ))
 	)
 )
+
+;; INFO: Systray widget ;;
+(defwidget systemtray []
+  (box :orientation "h" :halign "center"
+    (systray :class "tray" :orientation "h" :icon-size 20 :spacing 5)
+  )
+)
+
 
 ;; weather
 (defwidget clock []
