@@ -34,7 +34,7 @@ accent_color="#272e33"
 arch_icon="#d3c6aa"
 
 # Bspwm options
-BORDER_WIDTH="4"		# Bspwm border
+BORDER_WIDTH="0"		# Bspwm border
 NORMAL_BC="#d3c6aa"		# Normal border color
 FOCUSED_BC="#a7c080"	# Focused border color
 
