@@ -7,8 +7,13 @@
 # (Decay, decayce variant) colorcheme
 bg="#0d0f18"
 fg="#a5b6cf"
+bc="#3d414f"
 
-black="#3d414f"
+focus="#8ea6c4"
+occup="#6e8db4"
+empty="#434c5e"
+
+black="#fd414f"
 red="#dd6777"
 green="#90ceaa"
 yellow="#ecd3a0"
@@ -25,15 +30,11 @@ magentab="#c296eb"
 cyanb="#93cee9"
 whiteb="#cbced3"
 
-accent_color="#151720"
+accent_color="#212430"
 arch_icon="#0f94d2"
 
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="1"
-BOTTOM_PADDING="1"
-LEFT_PADDING="60"
-RIGHT_PADDING="1"
 NORMAL_BC="#3d414f"		# Normal border color
 FOCUSED_BC="#93cee9"	# Focused border color
 

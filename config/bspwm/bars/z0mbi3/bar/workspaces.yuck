@@ -1,0 +1,11 @@
+;; Workspaces ;;
+(deflisten workspace0 "scripts/WorkSpaces HDMI-0")
+;; Workspaces Widgets ;;
+(defwidget workspace0 [] (literal :content workspace0))
+;; Workspaces Main Widget ;;
+(defwidget workspaces [monitor]
+   (box    :orientation "v"
+           :space-evenly "false"
+           :valign "start"
+           (box :visible { monitor=="HDMI-0" } (workspace0))
+))

@@ -7,6 +7,11 @@
 # (Rose-Pine Moon) colorschenme
 bg="#232136"
 fg="#e0def4"
+bc="#232136"
+
+focus="#8ec07c"
+occup="#c3a5e6"
+empty="#e0def4"
 
 black="#393552"
 red="#ea6f91"
@@ -26,14 +31,10 @@ cyanb="#ebbcba"
 whiteb="#e0def4"
 
 accent_color="#2a2740"
-arch_icon="#0f94d2"
+arch_icon="#34738e"
 
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="1"
-BOTTOM_PADDING="53"
-LEFT_PADDING="1"
-RIGHT_PADDING="1"
 NORMAL_BC="#9bced7"		# Normal border color
 FOCUSED_BC="#c3a5e6"	# Focused border color
 
