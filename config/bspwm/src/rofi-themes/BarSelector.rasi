@@ -40,36 +40,8 @@ wrap {
     
 	expand: false;
 	orientation: vertical;
-	// children: [ inputbar, message ];
-	// background-image: linear-gradient(white/5%, white/40%);
-	// border-color: lightblue;
-	// border: 3px;
 	border-radius: 0.4em;
 }
-
-// icon-ib {
-// 	expand: false;
-// 	filename: "system-search";
-// 	vertical-align: 0.5;
-// 	horizontal-align: 0.5;
-// 	size: 1em;
-// }
-// inputbar {
-// 	spacing: 0.4em;
-// 	padding: 0.4em;
-// 	children: [ icon-ib, entry ];
-// }
-// entry {
-// 	placeholder: "Search";
-// 	placeholder-color: grey;
-// }
-// message {
-// 	background-color: red/20%;
-// 	border-color: lightsalmon;
-// 	border: 3px 0px 0px 0px;
-// 	padding: 0.4em;
-// 	spacing: 0.4em;
-// }
 
 listview {
 	flow: vertical;
@@ -77,53 +49,37 @@ listview {
 	columns: 1;
 	lines: 1;
 	spacing: 1.0em;
-    expand: true;
-    // width: 20%;
+  expand: true;
+
 }
 
 element {
-	// orientation: vertical;
-	// padding: 0.1em;
-
-	// background-image: linear-gradient(white/5%, white/20%);
-	// border-color: lightblue /15%;
-	// border: 3px;
-	// border-radius: 0.4em;
-    // width: 20%;
-    expand: true;
-    enabled:                     true;
-    orientation:                 vertical;
-    spacing:                     0px;
-    padding:                     5px;
-    border-radius:               20px;
-    cursor:                      pointer;
-    background-color:            transparent;
-    text-color:                  @main-fg;
+  expand: true;
+  enabled:                     true;
+  orientation:                 vertical;
+  spacing:                     0px;
+  padding:                     5px;
+  border-radius:               20px;
+  cursor:                      pointer;
+  background-color:            transparent;
+  text-color:                  @main-fg;
 
   children: [ element-text ];
 }
-// element-icon {
-// 	size: calc(((100% - 8em) / 7 ));
-// 	horizontal-align: 0.5;
-// 	vertical-align: 0.5;
-// }
 element-text {
-    width: 100px;
-    expand: true;
+  width: 100px;
+  expand: true;
 	horizontal-align: 0.5;
 	vertical-align: 0.5;
-    padding: 0.2em;
-    cursor:                      inherit;
-    background-color:            transparent;
-    text-color:                  inherit;
+  padding: 0.2em;
+  cursor:                      inherit;
+  background-color:            transparent;
+  text-color:                  inherit;
 }
 
 element selected {
-	// background-image: linear-gradient(white/25%, white/10%);
-    width: 20%;
-    // border:                      3px;
-	// border-color:                @select-bg;
-	enabled:                     true;
+  width: 20%;
+  enabled:                     true;
     orientation:                 vertical;
     spacing:                     0px;
     padding:                     5px;
@@ -142,7 +98,6 @@ element selected {
   icon-current-entry {
     background-color: @select-bg;
     expand:          false;
-    // size:            65%;
     border: 3px;
     border-color: @select-fg;
     border-radius: 10px;
@@ -151,8 +106,7 @@ element selected {
     children: [listview, icon-current-entry];
   }
   listview {
-    // width: 20%;
-  columns: 1;
+    columns: 1;
   }
 
 }
