@@ -1,0 +1,63 @@
+#!/bin/sh
+# =============================================================
+# Author:  gh0stzk
+# Repo:    https://github.com/gh0stzk/dotfiles
+# Date:    24.04.2025
+#
+# BarSelector - Dynamic bar switcher for gh0stzk bspwm dotfiles
+# Features:
+#   ✔ Multi-monitor support with DPI-aware scaling
+#   ✔ Instant theme application
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# =============================================================
+
+# Some vars
+bspwm_dir="$HOME/.config/bspwm"
+read -r current_bar < "$bspwm_dir"/.bar
+
+# Get focused monitor name
+focused_monitor=$(bspc query -M -m focused --names)
+
+# Get monitor width and DPI (versión reforzada contra espacios/valores rotos)
+monitor_width=$(xrandr | grep -w "$focused_monitor" | sed -E 's/.* ([0-9]+)x[0-9]+.*/\1/')
+screen_dpi=$(xdpyinfo | awk '/resolution/{print $2}' | cut -d 'x' -f1)
+
+# Calculate icon size
+icon_size=$(( (monitor_width * 34 ) / (${screen_dpi:-96} ) ))
+rofi_override="icon-current-entry{size:${icon_size}px;}"
+
+# List rices
+bars=$(find "$bspwm_dir/bars/" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort)
+
+# Find current rice
+selected_index=-1
+index=0
+IFS='
+'
+for bar in $bars; do
+    [ "$bar" = "$current_bar" ] && { selected_index=$index; break; }
+    index=$((index + 1))
+done
+unset IFS
+
+# Show the rofi selection menu.
+selected=$(
+    IFS='
+'
+    
+for bar in $bars; do
+        printf "%s\000icon\037%s/bars/%s/preview.webp\n" "$bar" "$bspwm_dir" "$bar"
+    done | PREVIEW=true \
+           rofi -dmenu -p "BarSelector" \
+           -theme "$bspwm_dir/src/rofi-themes/BarSelector.rasi" \
+           -theme-str "$rofi_override" \
+	       -selected-row "$selected_index"
+)
+
+# If a valid option was selected, write the value to the configuration file and change theme.
+if [ -n "$selected" ] && [ "$selected" != "$current_rice" ]; then
+    echo "$selected" > "$bspwm_dir"/.bar
+    "${bspwm_dir}"/src/Bar.sh
+fi

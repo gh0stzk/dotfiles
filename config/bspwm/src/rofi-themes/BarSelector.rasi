@@ -1,0 +1,171 @@
+/**
+ * ROFI Color Theme
+ *
+ * Fullscreen theme with switchable PREVIEW option.
+ * 
+ * User: Dave Davenport
+ * Copyright: Dave Davenport
+ */
+
+* {
+	background-color: transparent;
+	text-color:       white;
+
+    main-bg: #14171c;
+    main-fg: #b8bfe5;
+    select-bg: #7560d3;
+    select-fg: #14171c;
+
+}
+
+window {
+  height:           40%;
+	fullscreen:       false;
+	background-color: @main-bg;
+	padding:          1em;
+	children:         [ wrap, listview-split];
+	// spacing:          1em;
+  border-radius:    1em;
+}
+
+
+/** We add an extra child to this if PREVIEW=true */
+listview-split {
+  orientation: horizontal;
+  spacing: 1em;
+  children: [listview];
+}
+
+wrap {
+    
+	expand: false;
+	orientation: vertical;
+	// children: [ inputbar, message ];
+	// background-image: linear-gradient(white/5%, white/40%);
+	// border-color: lightblue;
+	// border: 3px;
+	border-radius: 0.4em;
+}
+
+// icon-ib {
+// 	expand: false;
+// 	filename: "system-search";
+// 	vertical-align: 0.5;
+// 	horizontal-align: 0.5;
+// 	size: 1em;
+// }
+// inputbar {
+// 	spacing: 0.4em;
+// 	padding: 0.4em;
+// 	children: [ icon-ib, entry ];
+// }
+// entry {
+// 	placeholder: "Search";
+// 	placeholder-color: grey;
+// }
+// message {
+// 	background-color: red/20%;
+// 	border-color: lightsalmon;
+// 	border: 3px 0px 0px 0px;
+// 	padding: 0.4em;
+// 	spacing: 0.4em;
+// }
+
+listview {
+	flow: vertical;
+	fixed-columns: true;
+	columns: 1;
+	lines: 1;
+	spacing: 1.0em;
+    expand: true;
+    // width: 20%;
+}
+
+element {
+	// orientation: vertical;
+	// padding: 0.1em;
+
+	// background-image: linear-gradient(white/5%, white/20%);
+	// border-color: lightblue /15%;
+	// border: 3px;
+	// border-radius: 0.4em;
+    // width: 20%;
+    expand: true;
+    enabled:                     true;
+    orientation:                 vertical;
+    spacing:                     0px;
+    padding:                     5px;
+    border-radius:               20px;
+    cursor:                      pointer;
+    background-color:            transparent;
+    text-color:                  @main-fg;
+
+  children: [ element-text ];
+}
+// element-icon {
+// 	size: calc(((100% - 8em) / 7 ));
+// 	horizontal-align: 0.5;
+// 	vertical-align: 0.5;
+// }
+element-text {
+    width: 100px;
+    expand: true;
+	horizontal-align: 0.5;
+	vertical-align: 0.5;
+    padding: 0.2em;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+}
+
+element selected {
+	// background-image: linear-gradient(white/25%, white/10%);
+    width: 20%;
+    // border:                      3px;
+	// border-color:                @select-bg;
+	enabled:                     true;
+    orientation:                 vertical;
+    spacing:                     0px;
+    padding:                     5px;
+    border-radius:               20px;
+    cursor:                      pointer;
+    background-color:            @select-bg;
+    text-color:                  @select-fg;
+}
+
+/**
+ * Launching rofi with environment PREVIEW set to true
+ * will split the screen and show a preview widget.
+ */
+@media ( enabled: env(PREVIEW, false)) {
+  /** preview widget */
+  icon-current-entry {
+    background-color: @select-bg;
+    expand:          false;
+    // size:            65%;
+    border: 3px;
+    border-color: @select-fg;
+    border-radius: 10px;
+  }
+  listview-split {
+    children: [listview, icon-current-entry];
+  }
+  listview {
+    // width: 20%;
+  columns: 1;
+  }
+
+}
+
+@media ( enabled: env(NO_IMAGE, false)) {
+	listview {
+		columns: 1;
+		spacing: 0.4em;
+	}
+	element {
+		children: [ element-text ];
+	}
+	element-text {
+		horizontal-align: 0.0;
+	}
+}

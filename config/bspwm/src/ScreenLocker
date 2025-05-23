@@ -19,12 +19,12 @@
 TEMP_IMAGE="/tmp/i3lock.jpg"
 
 # Colors
-bg=1a1b26
-fg=c0caf5
-ring=15161e
-wrong=f7768e
-date=c0caf5
-verify=9ece6a
+bg=#1a1b26
+fg=#c0caf5
+ring=#15161e
+wrong=#f7768e
+date=#c0caf5
+verify=#9ece6a
 
 default_lockscreen () {
 

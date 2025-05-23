@@ -15,8 +15,9 @@
 # Licensed under GPL-3.0 license
 # =============================================================
 
-# Current Rice
+# Current Rice and Bar
 read -r RICE < "$HOME"/.config/bspwm/.rice
+read -r BAR < "$HOME"/.config/bspwm/.bar
 
 # Load theme configuration
 . "$HOME"/.config/bspwm/rices/"$RICE"/theme-config.bash
@@ -146,13 +147,19 @@ apply_eww_colors() {
 		\$bg: ${bg};
 		\$bg-alt: ${accent_color};
 		\$fg: ${fg};
+		\$borderbg: ${bc};
+		\$empty: ${empty};
+		\$focus: ${focus};
+		\$occup: ${occup};
 		\$black: ${blackb};
+		\$gray: ${accent_color};
 		\$red: ${red};
 		\$green: ${green};
 		\$yellow: ${yellow};
 		\$blue: ${blue};
 		\$magenta: ${magenta};
 		\$cyan: ${cyan};
+		\$white: ${white};
 		\$archicon: ${arch_icon};
 	EOF
 }
@@ -245,19 +252,19 @@ apply_wallpaper () {
 
 # Launch bars
 apply_bar() {
-	. "$HOME"/.config/bspwm/rices/"$RICE"/Bar.bash
+	. "$HOME"/.config/bspwm/bars/"$BAR"/Bar.bash
 }
 
 ### Apply Configurations
 
 kill_processes
 apply_picom_config
+apply_eww_colors
+apply_bar
 apply_bspwm_config
 apply_term_config
 apply_gtk_appearance
 apply_dunst_config
-apply_eww_colors
 apply_menu_colors
 apply_geany_theme
 apply_wallpaper
-apply_bar

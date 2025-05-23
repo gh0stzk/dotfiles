@@ -7,6 +7,11 @@
 # (Lovelace) colorscheme from Elenapan
 bg="#1D1F28"
 fg="#FDFDFD"
+bc="#C574DD"
+
+focus="#F2A272"
+occup="#8897F4"
+empty="#8C8C8C"
 
 black="#282A36"
 red="#F37F97"
@@ -26,14 +31,10 @@ cyanb="#3FDCEE"
 whiteb="#BEBEC1"
 
 accent_color="#1F222B"
-arch_icon="#0f94d2"
+arch_icon="#8897F4"
 
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="53"
-BOTTOM_PADDING="1"
-LEFT_PADDING="1"
-RIGHT_PADDING="1"
 NORMAL_BC="#C574DD"		# Normal border color
 FOCUSED_BC="#8897F4"	# Focused border color
 

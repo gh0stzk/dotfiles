@@ -7,6 +7,11 @@
 # (Rose Pine Dawn) colorscheme
 bg="#faf4ed"
 fg="#575279"
+bc="#286983"
+
+focus="#56949f"
+occup="#907aa9"
+empty="#575279"
 
 black="#f2e9e1"
 red="#b4637a"
@@ -26,14 +31,10 @@ cyanb="#d7827e"
 whiteb="#575279"
 
 accent_color="$black"
-arch_icon="#0f94d2"
+arch_icon="#575279"
 
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="51"
-BOTTOM_PADDING="1"
-LEFT_PADDING="1"
-RIGHT_PADDING="1"
 NORMAL_BC="#286983"		# Normal border color
 FOCUSED_BC="#907aa9"	# Focused border color
 

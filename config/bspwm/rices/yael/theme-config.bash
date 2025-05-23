@@ -7,6 +7,11 @@
 # (OxoCarbon) colorscheme
 bg="#161616"
 fg="#ffffff"
+bc="#33b1ff"
+
+focus="#33b1ff"
+occup="#82CFFF"
+empty="#43789C"
 
 black="#262626"
 red="#ee5396"
@@ -30,10 +35,6 @@ arch_icon="#0f94d2"
 
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="37"
-BOTTOM_PADDING="1"
-LEFT_PADDING="1"
-RIGHT_PADDING="1"
 NORMAL_BC="#33b1ff"		# Normal border color
 FOCUSED_BC="#42be65"	# Focused border color
 

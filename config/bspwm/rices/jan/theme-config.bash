@@ -7,6 +7,11 @@
 # (CyberPunk) colorscheme
 bg="#070219"
 fg="#27fbfe"
+bc="#27fbfe"
+
+focus="#f200f4"
+occup="#8df202"
+empty="#27fbfe"
 
 black="#626483"
 red="#fb007a"
@@ -26,14 +31,10 @@ cyanb="#926BCA"
 whiteb="#d5ddee"
 
 accent_color="#09021f"
-arch_icon="#0f94d2"
+arch_icon="#27fbfe"
 
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="43"
-BOTTOM_PADDING="1"
-LEFT_PADDING="1"
-RIGHT_PADDING="1"
 NORMAL_BC="#926BCA"		# Normal border color
 FOCUSED_BC="#fb007a"	# Focused border color
 
@@ -106,4 +107,4 @@ geany_theme="z0mbi3-CyberPunk"
 ENGINE="Theme"
 CUSTOM_DIR="/path/to/dir"
 CUSTOM_WALL="/path/to/image"
-CUSTOM_ANIMATED="/home/z0mbi3/.config/bspwm/src/assets/animated_wall-1.mp4"
+CUSTOM_ANIMATED="/home/ilshat/.config/bspwm/src/assets/animated_wall.mp4"

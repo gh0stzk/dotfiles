@@ -7,6 +7,11 @@
 # (Dracula) colorscheme
 bg="#282a36"
 fg="#f8f8f2"
+bc="#bd93f9"
+
+focus="#f1fa8c"
+occup="#bd93f9"
+empty="#ff79c6"
 
 black="#21222c"
 red="#ff5555"
@@ -26,14 +31,10 @@ cyanb="#a4ffff"
 whiteb="#ffffff"
 
 accent_color="#2f3240"
-arch_icon="#0f94d2"
+arch_icon="#f8f8f2"
 
 # Bspwm options
 BORDER_WIDTH="2"		# Bspwm border
-TOP_PADDING="44"
-BOTTOM_PADDING="1"
-LEFT_PADDING="1"
-RIGHT_PADDING="1"
 NORMAL_BC="#ff79c6"		# Normal border color
 FOCUSED_BC="#bd93f9"	# Focused border color
 
