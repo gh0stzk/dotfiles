@@ -14,7 +14,6 @@ Exit,^checkout(exit),system-shutdown
 
 ^tag(bars)
 Aline,echo aline > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
-Amy,echo amy > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
 Andrea,echo andrea > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
 Brenda,echo brenda > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
 Cristina,echo cristina > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
