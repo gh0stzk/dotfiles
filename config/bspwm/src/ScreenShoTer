@@ -35,6 +35,7 @@ filename="$dir/Shot-${timestamp}.png"
 s_full=""
 s_select=""
 s_in3="󰔝"
+s_in3select="󰆞 󰔝"
 s_all="󰍹"
 
 # Function to get current monitor geometry based on mouse position
@@ -70,7 +71,7 @@ rofi_cmd() {
 }
 
 run_rofi() {
-    printf "%s\n%s\n%s\n%s\n" "$s_full" "$s_select" "$s_in3" "$s_all" | rofi_cmd
+    printf "%s\n%s\n%s\n%s\n" "$s_full" "$s_select" "$s_in3" "$s_in3select" "$s_all" | rofi_cmd
 }
 
 show_notification() {
@@ -127,6 +128,10 @@ run_cmd() {
             take_screenshot "select" false ;;
         --in3)
             countdown 3 && take_screenshot "full" false ;;
+        # INFO: new option for screenshot in selected area in 3 seconds
+        --in3select)
+            countdown 3 && take_screenshot "select" false ;;
+
         --all)
             take_screenshot "full" true ;;
     esac
@@ -140,6 +145,8 @@ case ${select_option} in
         run_cmd --sel ;;
     "$s_in3")
         run_cmd --in3 ;;
+    "$s_in3select")
+        run_cmd --in3select ;;    
     "$s_all")
         run_cmd --all ;;
 esac
