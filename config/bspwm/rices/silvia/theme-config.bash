@@ -4,6 +4,9 @@
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # https://github.com/gh0stzk/dotfiles
 
+CURRENT_BAR="silvia"
+DEFAULT_BAR="silvia"
+
 # (Gruvbox) colorscheme
 bg="#282828"
 fg="#fbf1c7"

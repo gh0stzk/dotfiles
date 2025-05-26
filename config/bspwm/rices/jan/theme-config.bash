@@ -4,6 +4,9 @@
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # https://github.com/gh0stzk/dotfiles
 
+CURRENT_BAR="jan"
+DEFAULT_BAR="jan"
+
 # (CyberPunk) colorscheme
 bg="#070219"
 fg="#27fbfe"

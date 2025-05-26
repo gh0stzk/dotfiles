@@ -252,7 +252,7 @@ apply_wallpaper () {
 
 # Launch bars
 apply_bar() {
-	. "$HOME"/.config/bspwm/rices/"$RICE"/Bar.bash
+	. "$HOME"/.config/bspwm/rices/"$DEFAULT_BAR"/Bar.bash
 }
 
 ### Apply Configurations

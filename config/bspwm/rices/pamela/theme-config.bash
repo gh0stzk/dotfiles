@@ -4,6 +4,9 @@
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # https://github.com/gh0stzk/dotfiles
 
+CURRENT_BAR="pamela"
+DEFAULT_BAR="pamela"
+
 # (Lovelace) colorscheme from Elenapan
 bg="#1D1F28"
 fg="#FDFDFD"

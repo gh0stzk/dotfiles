@@ -4,6 +4,9 @@
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # https://github.com/gh0stzk/dotfiles
 
+CURRENT_BAR="emilia"
+DEFAULT_BAR="emilia"
+
 # (Tokyo Night) colorscheme
 bg="#1a1b26"
 fg="#c0caf5"

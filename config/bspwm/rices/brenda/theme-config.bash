@@ -4,6 +4,9 @@
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # https://github.com/gh0stzk/dotfiles
 
+CURRENT_BAR="brenda"
+DEFAULT_BAR="brenda"
+
 # (Everforest) colorscheme
 bg="#2d353b"
 fg="#d3c6aa"

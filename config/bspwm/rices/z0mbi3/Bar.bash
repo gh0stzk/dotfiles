@@ -7,7 +7,7 @@ RIGHT_PADDING="1"
 
 # Function for generating workspaces.yuck file with eww widgets
 generate_eww_workspaces() {
-    eww_file="${HOME}/.config/bspwm/rices/${RICE}/bar/workspaces.yuck"
+    eww_file="${HOME}/.config/bspwm/rices/${CURRENT_BAR}/bar/workspaces.yuck"
     monitors=$(bspc query -M --names)
     count=0
     listen_workspaces=""
