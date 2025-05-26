@@ -7,6 +7,12 @@
 # (Everforest) colorscheme
 bg="#2d353b"
 fg="#d3c6aa"
+fg_alt="#2d353b"
+bc="#2d353b"
+
+focus="#e69875"
+occup="#d699b6"
+empty="#d3c6aa"
 
 black="#475258"
 red="#e67e80"
@@ -25,15 +31,11 @@ magentab="#d699b6"
 cyanb="#83c092"
 whiteb="#d3c6aa"
 
-accent_color="#272e33"
-arch_icon="#0f94d2"
+accent_color="#f8f5e4"
+arch_icon="#d3c6aa"
 
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="48"
-BOTTOM_PADDING="1"
-LEFT_PADDING="1"
-RIGHT_PADDING="1"
 NORMAL_BC="#d3c6aa"		# Normal border color
 FOCUSED_BC="#a7c080"	# Focused border color
 

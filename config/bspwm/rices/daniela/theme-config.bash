@@ -7,6 +7,12 @@
 # (Catppuccin Mocha) colorscheme
 bg="#181825"
 fg="#CDD6F4"
+fg_alt="#CDD6F4"
+bc="#383857"
+
+focus="#cba6f7"
+occup="#73739c"
+empty="#383857"
 
 black="#45475A"
 red="#F38BA8"
@@ -26,14 +32,10 @@ cyanb="#94E2D5"
 whiteb="#A6ADC8"
 
 accent_color="#1e1e2e"
-arch_icon="#0f94d2"
+arch_icon="#a6e3a1"
 
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="46"
-BOTTOM_PADDING="1"
-LEFT_PADDING="1"
-RIGHT_PADDING="1"
 NORMAL_BC="#45475A"		# Normal border color
 FOCUSED_BC="#94E2D5"	# Focused border color
 

@@ -7,6 +7,12 @@
 # (Tokyo Night) colorscheme
 bg="#1a1b26"
 fg="#c0caf5"
+fg_alt="#c0caf5"
+bc="#1a1b26"
+
+focus="#e0af68"
+occup="#7aa2f7"
+empty="#583794"
 
 black="#15161e"
 red="#f7768e"
@@ -30,10 +36,6 @@ arch_icon="#0f94d2"
 
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="50"
-BOTTOM_PADDING="1"
-LEFT_PADDING="1"
-RIGHT_PADDING="1"
 NORMAL_BC="#414868"		# Normal border color
 FOCUSED_BC="#bb9af7"	# Focused border color
 

@@ -7,6 +7,13 @@
 # (Hack The box) colorscheme
 bg="#0c1018"
 fg="#1947e0"
+fg_alt="#1947e0"
+bc="#0c1018"
+
+
+focus="#6DDE00"
+occup="#1947e0"
+empty="#3d6a13"
 
 black="#4A9801"
 red="#6DDE00"
@@ -26,14 +33,10 @@ cyanb="#3a11f0"
 whiteb="#3b5eed"
 
 accent_color="#1B2333"
-arch_icon="#0f94d2"
+arch_icon="#6DDE00"
 
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="43"
-BOTTOM_PADDING="1"
-LEFT_PADDING="1"
-RIGHT_PADDING="1"
 NORMAL_BC="#4A9801"		# Normal border color
 FOCUSED_BC="#76EA00"	# Focused border color
 

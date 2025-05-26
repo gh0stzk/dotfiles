@@ -7,6 +7,12 @@
 # (Onedark) colorscheme
 bg="#14171c"
 fg="#abb2bf"
+fg_alt="#abb2bf"
+bc="#2a2c33"
+
+focus="#81ae5f"
+occup="#be5046"
+empty="#6C77BB"
 
 black="#181b21"
 red="#be5046"
@@ -26,14 +32,10 @@ cyanb="#56b6c2"
 whiteb="#b8bfe5"
 
 accent_color="$black"
-arch_icon="#0f94d2"
+arch_icon="#abb2bf"
 
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="1"
-BOTTOM_PADDING="40"
-LEFT_PADDING="1"
-RIGHT_PADDING="1"
 NORMAL_BC="#b8bfe5"		# Normal border color
 FOCUSED_BC="#7560d3"	# Focused border color
 

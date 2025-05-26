@@ -252,6 +252,7 @@ apply_bar() {
 
 kill_processes
 apply_picom_config
+apply_bar
 apply_bspwm_config
 apply_term_config
 apply_gtk_appearance
@@ -260,4 +261,3 @@ apply_eww_colors
 apply_menu_colors
 apply_geany_theme
 apply_wallpaper
-apply_bar

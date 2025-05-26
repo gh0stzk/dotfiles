@@ -7,6 +7,12 @@
 # (Gruvbox) colorscheme
 bg="#282828"
 fg="#fbf1c7"
+fg_alt="#fbf1c7"
+bc="#6b6034"
+
+focus="#8ec07c"
+occup="#ebdbb2"
+empty="#928374"
 
 black="#a89984"
 red="#cc241d"
@@ -26,14 +32,10 @@ cyanb="#8ec07c"
 whiteb="#ebdbb2"
 
 accent_color="#2E2E2E"
-arch_icon="#0f94d2"
+arch_icon="#ebdbb2"
 
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="46"
-BOTTOM_PADDING="1"
-LEFT_PADDING="1"
-RIGHT_PADDING="1"
 NORMAL_BC="#d3869b"		# Normal border color
 FOCUSED_BC="#fbf1c7"	# Focused border color
 

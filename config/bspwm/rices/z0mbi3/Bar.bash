@@ -1,3 +1,8 @@
+TOP_PADDING="1"
+BOTTOM_PADDING="1"
+LEFT_PADDING="60"
+RIGHT_PADDING="1"
+
 # This file launch the bar/s
 
 # Function for generating workspaces.yuck file with eww widgets

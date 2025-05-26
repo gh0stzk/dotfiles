@@ -7,6 +7,12 @@
 # (Zombie-Night) colorscheme
 bg="#0E1113"
 fg="#afb1db"
+fg_alt="#afb1db"
+bc="#353c52"
+
+focus="#afb1db"
+occup="#6D8895"
+empty="#4f506e"
 
 black="#353c52"
 red="#e7034a"
@@ -30,10 +36,6 @@ arch_icon="#0f94d2"
 
 # Bspwm options
 BORDER_WIDTH="3"		# Bspwm border
-TOP_PADDING="48"
-BOTTOM_PADDING="1"
-LEFT_PADDING="1"
-RIGHT_PADDING="1"
 NORMAL_BC="#353c52"		# Normal border color
 FOCUSED_BC="#353c52"	# Focused border color
 
@@ -106,4 +108,4 @@ geany_theme="z0mbi3-z0mbi3Night"
 ENGINE="Theme"
 CUSTOM_DIR="/path/to/dir"
 CUSTOM_WALL="/path/to/image"
-CUSTOM_ANIMATED="/home/z0mbi3/.config/bspwm/src/assets/animated_wall-3.mp4"
+CUSTOM_ANIMATED="/home/ilshat/.config/bspwm/src/assets/animated_wall.mp4"
