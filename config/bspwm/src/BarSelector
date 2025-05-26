@@ -32,7 +32,7 @@ icon_size=$(( (monitor_width * 34 ) / (${screen_dpi:-96} ) ))
 rofi_override="icon-current-entry{size:${icon_size}px;}"
 
 # List bars
-bars=$(find "$bspwm_dir/rices/" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort)
+bars=$(find "$bspwm_dir/bars/" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort)
 
 # Find current rice
 selected_index=-1
@@ -51,7 +51,7 @@ selected=$(
 '
     
 for bar in $bars; do
-        printf "%s\000icon\037%s/rices/%s/preview-bar.webp\n" "$bar" "$bspwm_dir" "$bar"
+        printf "%s\000icon\037%s/bars/%s/preview-bar.webp\n" "$bar" "$bspwm_dir" "$bar"
     done | PREVIEW=true \
            rofi -dmenu -p "BarSelector" \
            -theme "$bspwm_dir/src/rofi-themes/BarSelector.rasi" \

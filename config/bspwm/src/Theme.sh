@@ -253,7 +253,7 @@ apply_wallpaper () {
 # Launch default bars
 apply_bar() {
 	echo $DEFAULT_BAR > ~/.config/bspwm/.bar
-	. "$HOME"/.config/bspwm/rices/"$DEFAULT_BAR"/Bar.bash
+	. "$HOME"/.config/bspwm/bars/"$DEFAULT_BAR"/Bar.bash
 }
 
 ### Apply Configurations
