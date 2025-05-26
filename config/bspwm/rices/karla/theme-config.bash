@@ -4,9 +4,13 @@
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # https://github.com/gh0stzk/dotfiles
 
+CURRENT_BAR="karla"
+DEFAULT_BAR="karla"
+
 # (Zombie-Night) colorscheme
 bg="#0E1113"
 fg="#afb1db"
+fg_alt="#afb1db"
 bc="#353c52"
 
 focus="#afb1db"

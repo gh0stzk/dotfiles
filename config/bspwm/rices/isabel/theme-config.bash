@@ -4,9 +4,13 @@
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # https://github.com/gh0stzk/dotfiles
 
+CURRENT_BAR="isabel"
+DEFAULT_BAR="isabel"
+
 # (Onedark) colorscheme
 bg="#14171c"
 fg="#abb2bf"
+fg_alt="#abb2bf"
 bc="#2a2c33"
 
 focus="#81ae5f"

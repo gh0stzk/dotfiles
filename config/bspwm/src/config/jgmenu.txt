@@ -3,7 +3,6 @@ Web Browser,OpenApps --browser,internet-web-browser
 File Manager,OpenApps --filemanager,org.xfce.thunar
 ^sep()
 
-Bars,^checkout(bars),colors
 Themes,^checkout(rices),colors
 Favorites,^checkout(favorites),starred
 ^sep()
@@ -11,26 +10,6 @@ Favorites,^checkout(favorites),starred
 Widgets,^checkout(wg),kmenuedit
 BSPWM,^checkout(wm),gnome-windows
 Exit,^checkout(exit),system-shutdown
-
-^tag(bars)
-Aline,echo aline > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
-Andrea,echo andrea > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
-Brenda,echo brenda > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
-Cristina,echo cristina > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
-Cynthia,echo cynthia > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
-Daniela,echo daniela > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
-Emilia,echo emilia > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
-h4ck3r,echo h4ck3r > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
-Isabel,echo isabel > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
-Jan,echo jan > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
-Karla,echo karla > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
-Marisol,echo marisol > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
-Melissa,echo melissa > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
-Pamela,echo pamela > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
-Silvia,echo silvia > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
-Varinka,echo varinka > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
-Yael,echo yael > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
-z0mbi3,echo z0mbi3 > ~/.config/bspwm/.bar ; ~/.config/bspwm/src/Bar.sh,colors
 
 ^tag(rices)
 Aline,echo aline > ~/.config/bspwm/.rice ; ~/.config/bspwm/src/Theme.sh,colors

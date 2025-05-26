@@ -4,9 +4,13 @@
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # https://github.com/gh0stzk/dotfiles
 
+CURRENT_BAR="marisol"
+DEFAULT_BAR="marisol"
+
 # (Dracula) colorscheme
 bg="#282a36"
 fg="#f8f8f2"
+fg_alt="#f8f8f2"
 bc="#bd93f9"
 
 focus="#f1fa8c"

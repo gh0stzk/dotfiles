@@ -4,9 +4,13 @@
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # https://github.com/gh0stzk/dotfiles
 
+CURRENT_BAR="cristina"
+DEFAULT_BAR="cristina"
+
 # (Rose-Pine Moon) colorschenme
 bg="#232136"
 fg="#e0def4"
+fg_alt="#e0def4"
 bc="#232136"
 
 focus="#8ec07c"

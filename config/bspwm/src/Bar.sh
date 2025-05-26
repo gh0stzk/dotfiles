@@ -17,7 +17,9 @@
 
 # Current Rice and Bar
 read -r RICE < "$HOME"/.config/bspwm/.rice
-read -r BAR < "$HOME"/.config/bspwm/.bar
+
+# Load theme configuration
+. "$HOME"/.config/bspwm/rices/"$RICE"/theme-config.bash
 
 # Function to wait for processes to finish correctly
 wait_for_termination() {
@@ -46,7 +48,7 @@ kill_processes() {
 
 # Launch bars
 apply_bar() {
-	. "$HOME"/.config/bspwm/bars/"$BAR"/Bar.bash
+	. "$HOME"/.config/bspwm/bars/"$CURRENT_BAR"/Bar.bash "current"
 }
 
 # Set bspwm configuration

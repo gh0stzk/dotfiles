@@ -4,9 +4,13 @@
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # https://github.com/gh0stzk/dotfiles
 
+CURRENT_BAR="cynthia"
+DEFAULT_BAR="cynthia"
+
 # (Kanagawa Dragon) colorscheme
 bg="#181616"
 fg="#c5c9c5"
+fg_alt="#c5c9c5"
 bc="#0d0c0c"
 
 focus="#7FB4CA"

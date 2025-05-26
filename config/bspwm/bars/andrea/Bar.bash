@@ -6,7 +6,7 @@ RIGHT_PADDING="1"
 # This file launch the bar/s
 # Function for generating workspaces.yuck file with eww widgets
 generate_eww_workspaces() {
-    eww_file="${HOME}/.config/bspwm/bars/${BAR}/bar/workspaces.yuck"
+    eww_file="${HOME}/.config/bspwm/bars/${CURRENT_BAR}/bar/workspaces.yuck"
     monitors=$(bspc query -M --names)
     count=0
     listen_workspaces=""
@@ -31,7 +31,7 @@ generate_eww_workspaces
 monitors=$(xrandr -q | grep -w 'connected' | sort -k3n | cut -d' ' -f1)
 count=0
 for m in $monitors; do
-    eww -c "${HOME}/.config/bspwm/bars/${BAR}/bar" open bar --id "$m" --arg monitor="$m" --toggle --screen "$count"
+    eww -c "${HOME}/.config/bspwm/bars/${CURRENT_BAR}/bar" open bar --id "$m" --arg monitor="$m" --toggle --screen "$count"
     count=$((count + 1))
 done
 

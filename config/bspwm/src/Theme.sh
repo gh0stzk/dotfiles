@@ -15,9 +15,8 @@
 # Licensed under GPL-3.0 license
 # =============================================================
 
-# Current Rice and Bar
+# Current Rice
 read -r RICE < "$HOME"/.config/bspwm/.rice
-read -r BAR < "$HOME"/.config/bspwm/.bar
 
 # Load theme configuration
 . "$HOME"/.config/bspwm/rices/"$RICE"/theme-config.bash
@@ -147,6 +146,7 @@ apply_eww_colors() {
 		\$bg: ${bg};
 		\$bg-alt: ${accent_color};
 		\$fg: ${fg};
+		\$fg-alt: ${fg_alt};
 		\$borderbg: ${bc};
 		\$empty: ${empty};
 		\$focus: ${focus};
@@ -252,7 +252,7 @@ apply_wallpaper () {
 
 # Launch bars
 apply_bar() {
-	. "$HOME"/.config/bspwm/bars/"$BAR"/Bar.bash
+	. "$HOME"/.config/bspwm/bars/"$DEFAULT_BAR"/Bar.bash "default"
 }
 
 ### Apply Configurations

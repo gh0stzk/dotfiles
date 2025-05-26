@@ -15,7 +15,10 @@
 
 # Some vars
 bspwm_dir="$HOME/.config/bspwm"
-read -r current_bar < "$bspwm_dir"/.bar
+read -r current_rice < "$bspwm_dir"/.rice
+
+# Load theme configuration
+. "$HOME"/.config/bspwm/rices/"$current_rice"/theme-config.bash
 
 # Get focused monitor name
 focused_monitor=$(bspc query -M -m focused --names)
@@ -57,7 +60,7 @@ for bar in $bars; do
 )
 
 # If a valid option was selected, write the value to the configuration file and change theme.
-if [ -n "$selected" ] && [ "$selected" != "$current_rice" ]; then
-    echo "$selected" > "$bspwm_dir"/.bar
+if [ -n "$selected" ] ; then
+    sed -i 's~CURRENT_BAR=.*~CURRENT_BAR="'"$selected"'"~' "$HOME"/.config/bspwm/rices/"$current_rice"/theme-config.bash
     "${bspwm_dir}"/src/Bar.sh
 fi

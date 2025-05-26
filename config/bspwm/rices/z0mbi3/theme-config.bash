@@ -4,9 +4,13 @@
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # https://github.com/gh0stzk/dotfiles
 
+CURRENT_BAR="z0mbi3"
+DEFAULT_BAR="z0mbi3"
+
 # (Decay, decayce variant) colorcheme
 bg="#0d0f18"
 fg="#a5b6cf"
+fg_alt="#a5b6cf"
 bc="#3d414f"
 
 focus="#8ea6c4"

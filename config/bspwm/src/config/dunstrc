@@ -9,8 +9,8 @@ follow = mouse
 
 width = (300, 400)
 #height = (0, 200)
-origin = top-right
-offset = (20, 60)
+origin = top-center
+offset = (0, 10)
 scale = 0
 
 notification_limit = 20
@@ -28,16 +28,16 @@ horizontal_padding = 15
 text_icon_padding = 0
 
 frame_width = 0
-frame_color = "#222330"
+frame_color = "#8677cf"
 
 sort = no
 idle_threshold = 0
 
-font = JetBrainsMono NF Medium 9
+font = Inconsolata Semi Condensed Bold 9
 line_height = 0
 
 markup = full
-format = "<span size='xx-large' font_desc='Cantarell 9' weight='bold' foreground='#7aa2f7'>%s</span>\n%b"
+format = "<span size='xx-large' font_desc='Cantarell 9' weight='bold' foreground='#4889be'>%s</span>\n%b"
 alignment = center
 vertical_alignment = center
 
@@ -50,7 +50,7 @@ hide_duplicate_count = true
 show_indicators = yes
 
 enable_recursive_icon_lookup = true
-icon_theme = "TokyoNight-SE, Adwaita"
+icon_theme = "Zafiro-Purple, Adwaita"
 icon_position = left
 min_icon_size = 60
 max_icon_size = 90

@@ -4,9 +4,13 @@
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # https://github.com/gh0stzk/dotfiles
 
+CURRENT_BAR="h4ck3r"
+DEFAULT_BAR="melissa"
+
 # (Nord) colorscheme
 bg="#2e3440"
 fg="#d8dee9"
+fg_alt="#d8dee9"
 bc="#3b4252"
 
 focus="#a3be8c"

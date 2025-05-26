@@ -4,10 +4,15 @@
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # https://github.com/gh0stzk/dotfiles
 
+CURRENT_BAR="h4ck3r"
+DEFAULT_BAR="h4ck3r"
+
 # (Hack The box) colorscheme
 bg="#0c1018"
 fg="#1947e0"
+fg_alt="#1947e0"
 bc="#0c1018"
+
 
 focus="#6DDE00"
 occup="#1947e0"
