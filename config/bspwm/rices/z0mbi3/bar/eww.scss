@@ -1,32 +1,20 @@
+@import "../../../eww/colors.scss";
+
+
 * {
   all: unset;
 }
 
-// Variable Color's
-$background: #0d0f18;
-$foreground: #a5b6cf;
-
-$black: #151720;
-$gray: #1c1e27;
-$red: #dd6777;
-$green: #90ceaa;
-$yellow: #ecd3a0;
-$blue: #86aaec;
-$magenta: #c296eb;
-$cyan: #93cee9;
-$white: $foreground;
-$archlogo: #0f94d2;
-
 // The bar
 .eww_bar {
-  background-color: $background;
+  background-color: $bg;
   padding: 0.3rem;
   border-radius: 9px;
 }
 
 // Launcher
 .launcher_icon {
-  color: $archlogo;
+  color: $archicon;
   font-family: "Material Design Icons Desktop";
   font-size: 1.7em;
   padding: 1rem 0 1rem 0;
@@ -36,38 +24,38 @@ $archlogo: #0f94d2;
 .works {
   font-family: "Material Design Icons Desktop";
   padding: 0.5rem 0.7rem 0.5rem 0.7rem;
-  background-color: $black;
+  background-color: $bg-alt;
   border-radius: 5px;
 }
 
 .workspace-focused {
   font-size: 18px;
-  color: #8ea6c4;
+  color: $focus;
   margin: 0.35rem 0 0.35rem 0;
 }
 
 .workspace-occupied {
   font-size: 18px;
-  color: #6e8db4;
+  color: $occup;
   margin: 0.35rem 0 0.35rem 0;
 }
 
 .workspace-empty {
   font-size: 18px;
-  color: #434c5e;
+  color: $empty;
   margin: 0.35rem 0 0.35rem 0;
 }
 
 // System Tray
 .tray menu {
 	padding: 5px 5px;
-	background-color: $background;
+	background-color: $bg;
 
 	>menuitem {
     font-family: JetBrainsMono NF;
     font-size: 14px;
 		padding: 2px 5px;
-    color: $foreground;
+    color: $fg;
 
 		&:disabled label {
 			color: $black;
@@ -79,7 +67,7 @@ $archlogo: #0f94d2;
 	}
 
 	separator {
-		background-color: $foreground;
+		background-color: $fg;
 		padding-top: 1px;
 
 		&:last-child {
@@ -91,7 +79,7 @@ $archlogo: #0f94d2;
 // icons info
 .control {
   padding: 0.5rem;
-  background-color: $black;
+  background-color: $bg-alt;
   border-radius: 5px;
 }
 
@@ -113,7 +101,7 @@ $archlogo: #0f94d2;
 
 scale trough {
   all: unset;
-  background-color: $background;
+  background-color: $bg;
   border-radius: 5px;
   min-height: 80px;
   min-width: 10px;
@@ -130,8 +118,8 @@ scale trough {
   font-family: JetBrainsMono NF;
   font-weight: bold;
   font-size: 1.2em;
-  background-color: $black;
-  color: $white;
+  background-color: $bg-alt;
+  color: $fg-alt;
   border-radius: 5px;
   padding: 0.7rem 0 0.5rem 0;
   margin: 0.5rem 0 0.5rem 0;

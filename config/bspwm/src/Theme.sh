@@ -146,13 +146,20 @@ apply_eww_colors() {
 		\$bg: ${bg};
 		\$bg-alt: ${accent_color};
 		\$fg: ${fg};
+		\$fg-alt: ${fg_alt};
+		\$borderbg: ${bc};
+		\$empty: ${empty};
+		\$focus: ${focus};
+		\$occup: ${occup};
 		\$black: ${blackb};
+		\$gray: ${accent_color};
 		\$red: ${red};
 		\$green: ${green};
 		\$yellow: ${yellow};
 		\$blue: ${blue};
 		\$magenta: ${magenta};
 		\$cyan: ${cyan};
+		\$white: ${white};
 		\$archicon: ${arch_icon};
 	EOF
 }
@@ -252,12 +259,12 @@ apply_bar() {
 
 kill_processes
 apply_picom_config
+apply_eww_colors
 apply_bar
 apply_bspwm_config
 apply_term_config
 apply_gtk_appearance
 apply_dunst_config
-apply_eww_colors
 apply_menu_colors
 apply_geany_theme
 apply_wallpaper

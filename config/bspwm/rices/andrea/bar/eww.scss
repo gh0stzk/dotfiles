@@ -1,9 +1,4 @@
-// Colors //
-$bg: #f5eee6;
-$borderbg: #161616;
-$fg: #151515;
-$magenta: #c5abff;
-$gray: #e6dfd7;
+@import "../../../eww/colors.scss";
 
 // Global //
 * {
@@ -49,6 +44,7 @@ tooltip {
 
 .infotext {
   background-color: $gray;
+  color: $fg-alt;
   border-radius: 16px;
   padding: 0 5px;
   font-size: 0.813rem;
@@ -56,7 +52,8 @@ tooltip {
 }
 
 .infotext-pac {
-  background-color: $magenta;
+  background-color: $gray;
+  color: $fg-alt;
   border-radius: 16px;
   padding: 0 5px;
   font-size: 0.813rem;
