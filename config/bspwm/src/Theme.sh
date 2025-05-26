@@ -250,8 +250,9 @@ apply_wallpaper () {
 	esac
 }
 
-# Launch bars
+# Launch default bars
 apply_bar() {
+	echo $DEFAULT_BAR > ~/.config/bspwm/.bar
 	. "$HOME"/.config/bspwm/rices/"$DEFAULT_BAR"/Bar.bash
 }
 

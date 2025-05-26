@@ -4,7 +4,6 @@
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # https://github.com/gh0stzk/dotfiles
 
-CURRENT_BAR="varinka"
 DEFAULT_BAR="varinka"
 
 # (Monochrome) colorscheme

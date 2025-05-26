@@ -1,0 +1,104 @@
+* {
+	background-color: transparent;
+	text-color:       white;
+
+    main-bg: #14171c;
+    main-fg: #b8bfe5;
+    select-bg: #7560d3;
+    select-fg: #14171c;
+
+}
+
+window {
+  height:           40%;
+	fullscreen:       false;
+	background-color: @main-bg;
+	padding:          1em;
+	children:         [ wrap, listview-split];
+  border-radius:    1em;
+}
+
+listview-split {
+  orientation: horizontal;
+  spacing: 1em;
+  children: [listview];
+}
+
+wrap {
+	expand: false;
+	orientation: vertical;
+	border-radius: 0.4em;
+}
+
+listview {
+	flow: vertical;
+	fixed-columns: true;
+	columns: 1;
+	lines: 1;
+	spacing: 1.0em;
+  expand: true;
+}
+
+element {
+  expand: true;
+  enabled:                     true;
+  orientation:                 vertical;
+  spacing:                     0px;
+  padding:                     5px;
+  border-radius:               20px;
+  cursor:                      pointer;
+  background-color:            transparent;
+  text-color:                  @main-fg;
+  children: [ element-text ];
+}
+element-text {
+  width: 100px;
+  expand: true;
+	horizontal-align: 0.5;
+	vertical-align: 0.5;
+  padding: 0.2em;
+  cursor:                      inherit;
+  background-color:            transparent;
+  text-color:                  inherit;
+}
+
+element selected {
+  width: 20%;
+  enabled:                     true;
+    orientation:                 vertical;
+    spacing:                     0px;
+    padding:                     5px;
+    border-radius:               20px;
+    cursor:                      pointer;
+    background-color:            @select-bg;
+    text-color:                  @select-fg;
+}
+
+@media ( enabled: env(PREVIEW, false)) {
+  icon-current-entry {
+    background-color: @select-bg;
+    expand:          false;
+    border: 3px;
+    border-color: @select-fg;
+    border-radius: 10px;
+  }
+  listview-split {
+    children: [listview, icon-current-entry];
+  }
+  listview {
+    columns: 1;
+  }
+}
+
+@media ( enabled: env(NO_IMAGE, false)) {
+	listview {
+		columns: 1;
+		spacing: 0.4em;
+	}
+	element {
+		children: [ element-text ];
+	}
+	element-text {
+		horizontal-align: 0.0;
+	}
+}
