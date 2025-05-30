@@ -208,7 +208,7 @@ hbox.tab-content .tab-icon-image {
 
 #urlbar {
   max-width: 70% !important;
-  margin: 0 15% !important;
+  margin: 0 !important;
   /* 	position: unset!important; */
 }
 
