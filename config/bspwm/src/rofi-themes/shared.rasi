@@ -1,7 +1,8 @@
 * {
     font: "JetBrainsMono NF Bold 9";
-    background: #1A1B26;
-    background-alt: #1A1B26E0;
+    background: #1a1b26;
+    bg-alt: #222330;
+    background-alt: #1a1b26E0;
     foreground: #c0caf5;
     selected: #7aa2f7;
     active: #9ece6a;

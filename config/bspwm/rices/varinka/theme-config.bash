@@ -4,9 +4,17 @@
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # https://github.com/gh0stzk/dotfiles
 
+DEFAULT_BAR="varinka"
+
 # (Monochrome) colorscheme
 bg="#212529"
 fg="#f8f9fa"
+fg_alt="#f8f9fa"
+bc="#4c4c4c"
+
+focus="#f8f9fa"
+occup="#adb5bd"
+empty="#495057"
 
 black="#2C3136"
 red="#dee2e6"
@@ -26,14 +34,10 @@ cyanb="#6c757d"
 whiteb="#f8f9fa"
 
 accent_color="$blackb"
-arch_icon="#0f94d2"
+arch_icon="#ced4da"
 
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="42"
-BOTTOM_PADDING="1"
-LEFT_PADDING="1"
-RIGHT_PADDING="1"
 NORMAL_BC="#ced4da"		# Normal border color
 FOCUSED_BC="#f8f9fa"	# Focused border color
 
