@@ -25,7 +25,7 @@ SFILE="$HOME/.config/bspwm/src/.sys"
 
 setup_system_vars() {
     # Primary Network Interface Detection
-    primary_net=$(ip link | awk '/state UP/ {print $2}' | tr -d :)
+    primary_net=$(ip link | awk '/state UP/ {gsub(":", "", $2); print $2; exit}')
 
     # Graphics card detection
     card=""
