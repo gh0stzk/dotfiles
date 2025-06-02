@@ -4,9 +4,17 @@
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # https://github.com/gh0stzk/dotfiles
 
+DEFAULT_BAR="melissa"
+
 # (Nord) colorscheme
 bg="#2e3440"
 fg="#d8dee9"
+fg_alt="#d8dee9"
+bc="#3b4252"
+
+focus="#a3be8c"
+occup="#d8dee9"
+empty="#63778f"
 
 black="#3b4252"
 red="#bf616a"
@@ -26,14 +34,10 @@ cyanb="#8fbcbb"
 whiteb="#eceff4"
 
 accent_color="#353C4A"
-arch_icon="#0f94d2"
+arch_icon="#FFFFFF"
 
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="35"
-BOTTOM_PADDING="35"
-LEFT_PADDING="1"
-RIGHT_PADDING="1"
 NORMAL_BC="#3b4252"		# Normal border color
 FOCUSED_BC="#4c566a"	# Focused border color
 

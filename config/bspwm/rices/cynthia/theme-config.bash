@@ -4,9 +4,17 @@
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # https://github.com/gh0stzk/dotfiles
 
+DEFAULT_BAR="cynthia"
+
 # (Kanagawa Dragon) colorscheme
 bg="#181616"
 fg="#c5c9c5"
+fg_alt="#c5c9c5"
+bc="#0d0c0c"
+
+focus="#7FB4CA"
+occup="#87a987"
+empty="#c5c9c5"
 
 black="#0d0c0c"
 red="#c4746e"
@@ -26,14 +34,10 @@ cyanb="#7AA89F"
 whiteb="#c5c9c5"
 
 accent_color="#1c1a1a"
-arch_icon="#0f94d2"
+arch_icon="#c5c9c5"
 
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="47"
-BOTTOM_PADDING="47"
-LEFT_PADDING="1"
-RIGHT_PADDING="1"
 NORMAL_BC="#0d0c0c"		# Normal border color
 FOCUSED_BC="#938AA9"	# Focused border color
 

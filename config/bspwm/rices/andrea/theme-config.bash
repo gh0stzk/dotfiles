@@ -4,9 +4,18 @@
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # https://github.com/gh0stzk/dotfiles
 
+DEFAULT_BAR="andrea"
+
 # Colorscheme
 bg="#f5eee6"
 fg="#151515"
+bg_alt="#f5eee6"
+fg_alt="#151515"
+bc="#161616"
+
+focus="#1EB980"
+occup="#b0a5ed"
+empty="#151515"
 
 black="#5c595e"
 red="#DA103F"
@@ -30,11 +39,7 @@ arch_icon="#0f94d2"
 
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="69"
-BOTTOM_PADDING="1"
-LEFT_PADDING="1"
-RIGHT_PADDING="1"
-NORMAL_BC="#16161C"		# Normal border color
+NORMAL_BC="#161616"		# Normal border color
 FOCUSED_BC="#b0a5ed"	# Focused border color
 
 # Terminal font & size

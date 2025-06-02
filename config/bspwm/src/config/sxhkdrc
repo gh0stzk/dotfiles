@@ -29,6 +29,10 @@ super + @space
 alt + @space
 	RiceSelector
 
+# Bar Selector
+ctrl + alt + @space
+	BarSelector
+
 # ----- Your Apps ----- #
 
 # Apps (browser, editor, filemanager)
