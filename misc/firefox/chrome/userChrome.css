@@ -134,14 +134,22 @@
 
 /* Make all tabs small except selected one */
 .tabbrowser-tab[fadein]:not([selected]):not([pinned]) {
-  max-width: 150px !important;
-  min-width: 150px !important;
+  max-width: 0px !important;
+  min-width: 0px !important;
+  &:not(tab-group[collapsed] > &) {
+    max-width: 150px !important;
+    min-width: 150px !important;
+  }
 }
 
 /* Make selected tabs to bigger */
 .tabbrowser-tab[selected][fadein]:not([pinned]) {
-  max-width: 200px !important;
-  min-width: 200px !important;
+  max-width: 0px !important;
+  min-width: 0px !important;
+  &:not(tab-group[collapsed] > &) {
+    max-width: 200px !important;
+    min-width: 200px !important;
+  }
 }
 
 hbox.tab-content .tab-icon-image {
@@ -150,7 +158,6 @@ hbox.tab-content .tab-icon-image {
 
 .tabbrowser-tab {
   border-radius: var(--z0mbi3-tab-border-radius) !important;
-  height: var(--z0mbi3-tab-height) !important;
 }
 
 #tabs-newtab-button > .toolbarbutton-icon {
