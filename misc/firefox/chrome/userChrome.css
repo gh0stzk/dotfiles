@@ -151,10 +151,6 @@ hbox.tab-content .tab-icon-image {
 .tabbrowser-tab {
   border-radius: var(--z0mbi3-tab-border-radius) !important;
   height: var(--z0mbi3-tab-height) !important;
-  margin-bottom: 6px !important;
-  margin-top: 4px !important;
-  max-height: 80% !important;
-  min-height: 80% !important;
 }
 
 #tabs-newtab-button > .toolbarbutton-icon {
@@ -342,7 +338,7 @@ panelview#unified-extensions-view {
 }
 
 /* Hide star button (bookmark) */
-#star-button {
+#star-button-box {
   display: none;
 }
 
@@ -423,12 +419,17 @@ url("about:newtab"), url("about:blank") {
 
 toolbar#nav-bar {
   padding: var(--z0mbi3-nav-toolbar-padding) !important;
+  background: var(--z0mbi3-bg) !important;
 }
 
 toolbarbutton.bookmark-item:hover,
 #PlacesToolbar menu:hover,
 #PlacesToolbar menuitem:hover {
   background-color: var(--z0mbi3-tab-selected-bg) !important;
+}
+
+#sidebar-main {
+  background-color: var(--z0mbi3-bg) !important;
 }
 
 /************************************/
