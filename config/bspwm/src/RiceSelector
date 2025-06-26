@@ -15,17 +15,36 @@
 
 # Some vars
 bspwm_dir="$HOME/.config/bspwm"
-read -r current_rice < "$bspwm_dir"/.rice
+read -r current_rice <"$bspwm_dir"/.rice
 
 # Get focused monitor name
 focused_monitor=$(bspc query -M -m focused --names)
 
+# Extract active resolution from xrandr output
+resolution=$(xrandr | awk -v mon="$focused_monitor" '
+  $1 == mon && $2 == "connected" { show = 1; next }
+  show && $1 ~ /^[0-9]+x[0-9]+/ {
+    print $1;
+    exit;
+  }
+')
+
+# Validate resolution format
+case "$resolution" in
+*x*) : ;;
+*)
+  echo "Failed to detect resolution for monitor '$focused_monitor'"
+  exit 1
+  ;;
+esac
+
 # Get monitor width and DPI (versión reforzada contra espacios/valores rotos)
-monitor_width=$(xrandr | grep -w "$focused_monitor" | sed -E 's/.* ([0-9]+)x[0-9]+.*/\1/')
+monitor_width=${resolution%x*}
 screen_dpi=$(xdpyinfo | awk '/resolution/{print $2}' | cut -d 'x' -f1)
+screen_dpi=${screen_dpi:-96}
 
 # Calculate icon size
-icon_size=$(( (monitor_width * 17) / (${screen_dpi:-96} ) ))
+icon_size=$(((monitor_width * 17) / screen_dpi))
 rofi_override="element-icon{size:${icon_size}px;}"
 
 # List rices
@@ -37,25 +56,28 @@ index=0
 IFS='
 '
 for rice in $rices; do
-    [ "$rice" = "$current_rice" ] && { selected_index=$index; break; }
-    index=$((index + 1))
+  [ "$rice" = "$current_rice" ] && {
+    selected_index=$index
+    break
+  }
+  index=$((index + 1))
 done
 unset IFS
 
 # Show the rofi selection menu.
 selected=$(
-    IFS='
+  IFS='
 '
-    for rice in $rices; do
-        printf "%s\000icon\037%s/rices/%s/preview.webp\n" "$rice" "$bspwm_dir" "$rice"
-    done | rofi -dmenu -p "RiceSelector" \
-                -theme "$bspwm_dir/src/rofi-themes/RiceSelector.rasi" \
-                -theme-str "$rofi_override" \
-                -selected-row "$selected_index"
+  for rice in $rices; do
+    printf "%s\000icon\037%s/rices/%s/preview.webp\n" "$rice" "$bspwm_dir" "$rice"
+  done | rofi -dmenu -p "RiceSelector" \
+    -theme "$bspwm_dir/src/rofi-themes/RiceSelector.rasi" \
+    -theme-str "$rofi_override" \
+    -selected-row "$selected_index"
 )
 
 # If a valid option was selected, write the value to the configuration file and change theme.
 if [ -n "$selected" ] && [ "$selected" != "$current_rice" ]; then
-    echo "$selected" > "$bspwm_dir"/.rice
-    "${bspwm_dir}"/src/Theme.sh
+  echo "$selected" >"$bspwm_dir"/.rice
+  "${bspwm_dir}"/src/Theme.sh
 fi
