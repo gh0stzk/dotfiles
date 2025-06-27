@@ -1,3 +1,20 @@
+## Removed unnecessary code to calculate icon sizes
+##### 27 July 2025
+
+### Change
+
+- Removed unnecessary code to calculate icon sizes in RiceSelector, WallSelector, and RofiStyleSelector.
+- Add more advanced keybinds for multi operation functions.
+  - Close/Kill all unfocused local windows
+  - Bring all marked windows to the focused desktop
+  - Bring everything from desktop X to the current desktop
+
+### To-Do
+
+- Dinamic desktops
+
+---
+
 ## New Updates script, new rofi tab app switcher, new neovim setup, new rofi app launcher style
 ##### 08 April 2025
 

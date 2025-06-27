@@ -2,16 +2,14 @@
 # =============================================================
 # Author:  gh0stzk
 # Repo:    https://github.com/gh0stzk/dotfiles
-# Date:    01.02.2025 09:46:14
+# Date:    27.06.2025 11:43:32
 
 # WallSelect - Dynamic wallpaper selector with intelligent caching system
 # Features:
-#   ✔ Multi-monitor support with DPI-aware scaling
 #   ✔ Auto-updating menu (add/delete wallpapers without restart)
 #   ✔ Parallel image processing (optimized CPU usage)
 #   ✔ XXHash64 checksum verification for cache integrity
 #   ✔ Orphaned cache detection and cleanup
-#   ✔ Adaptive icon sizing based on screen resolution
 #   ✔ Lockfile system for safe concurrent operations
 #   ✔ Rofi integration with theme support
 #   ✔ Lightweight (~2ms overhead on cache hits)
@@ -33,17 +31,7 @@ cacheDir="$HOME/.cache/$USER/$current_rice"
 # Create cache dir if not exists
 [ -d "$cacheDir" ] || mkdir -p "$cacheDir"
 
-# Get focused monitor name
-focused_monitor=$(bspc query -M -m focused --names)
-
-# Get monitor width and DPI
-monitor_width=$(xrandr | grep -w -- "$focused_monitor" | grep -o '[0-9]\+x[0-9]\+' | cut -d 'x' -f 1)
-screen_dpi=$(xdpyinfo | awk '/resolution/{print $2; exit}' | cut -d 'x' -f1)
-
-# Calculate icon size
-icon_size=$(( (monitor_width * 14) / (${screen_dpi:-96} ) ))
-rofi_override="element-icon{size:${icon_size}px;}"
-rofi_command="rofi -dmenu -theme $HOME/.config/bspwm/src/rofi-themes/WallSelect.rasi -theme-str $rofi_override"
+rofi_command="rofi -dmenu -theme $HOME/.config/bspwm/src/rofi-themes/WallSelect.rasi"
 
 # Detect number of cores and set a sensible number of jobs
 get_optimal_jobs() {

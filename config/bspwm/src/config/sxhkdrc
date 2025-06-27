@@ -135,10 +135,6 @@ super + alt + r
 super + {_,shift + }x
 	bspc node -{c,k}
 
-# Close all nodes in current desktop
-super + ctrl + x
-	bspc query -N -d | xargs -I id -n 1 bspc node id -c
-
 # Reload sxhkd Keybinds
 super + Escape
 	pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/src/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
@@ -224,3 +220,22 @@ super + ctrl + {plus,minus}
 # Move floating window
 super + shift + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# ----- Multi operation functions ----- #
+
+# Close all nodes in current desktop
+super + ctrl + x
+	bspc query -N -d | xargs -I id -n 1 bspc node id -c
+
+# Close/Kill all unfocused local windows
+super + n ; {x,k}
+    bspc query -N -n '.!focused.!marked.local.window' | xargs -I id -n 1 bspc node id {-c,-k}
+
+# Bring all marked windows to the focused desktop
+super + n ; m
+    bspc query -N -n '.marked' | xargs -I id -n 1 bspc node id -d focused --follow
+
+# Bring everything from desktop X to the current desktop
+# Example usage: super + n followed by 5 (brings everything from desktop 5)
+super + n ; {1-9}
+    bspc query -N -d {1-9} -n '.window' | xargs -I id -n 1 bspc node id -d focused

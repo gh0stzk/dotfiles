@@ -2,14 +2,10 @@
 # =============================================================
 # Author: gh0stzk
 # Repo:   https://github.com/gh0stzk/dotfiles
-# Date:   25.04.2025 07:43:03
+# Date:   27.06.2025 12:30:38
 #
 # Script Name: RofiLauncher
 # Description: Dynamic theme selector and launcher for Rofi
-# Features:
-#   - DPI-aware icon sizing
-#   - Multi-style theme selection
-#   - Persistent style configuration
 #
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # Licensed under GPL-3.0 license
@@ -23,17 +19,6 @@ read -r current_style < "$cfgStyle"
 # Paths
 styleDir="$HOME/.config/bspwm/src/rofi-themes"
 rofiAssetDir="$HOME/.config/bspwm/src/assets"
-
-# Get focused monitor name
-focused_monitor=$(bspc query -M -m focused --names)
-
-# Get monitor width and DPI
-monitor_width=$(xrandr | grep -w -- "$focused_monitor" | grep -o '[0-9]\+x[0-9]\+' | cut -d 'x' -f 1)
-screen_dpi=$(xdpyinfo | awk '/resolution/{print $2; exit}' | cut -d 'x' -f1)
-
-# Calculate icon size
-icon_size=$(( (monitor_width * 11) / (${screen_dpi:-96} ) ))
-rofi_override="element-icon{size:${icon_size}px;}"
 
 # Function to select the styles
 choose_launcher_style() {
@@ -63,7 +48,6 @@ choose_launcher_style() {
         printf "%s\000icon\037%s/style_%s.webp\n" "$style" "$rofiAssetDir" "$style"
     done | rofi -dmenu \
                 -theme "$HOME/.config/bspwm/src/rofi-themes/StyleSelect.rasi" \
-                -theme-str "$rofi_override" \
                 -selected-row "$selected_index"
     )
 

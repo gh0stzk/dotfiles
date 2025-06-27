@@ -1,4 +1,4 @@
-// # z0mbi3 -  https://github.com/gh0stzk/dotfiles
+// https://github.com/gh0stzk/dotfiles
 
 configuration {
     modi:                        "drun";
@@ -67,6 +67,7 @@ element selected.normal {
 }
 
 element-icon {
+    size:                        20%;
     cursor:                      inherit;
     background-color:            transparent;
     text-color:                  inherit;
