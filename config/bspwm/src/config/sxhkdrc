@@ -89,6 +89,10 @@ super + alt + l
 super + alt + k
 	OpenApps --keyboard
 
+# Emoji Menu
+super + period
+	rofi -modi emoji -show emoji
+
 # ----- Environment Apps ----- #
 
 # Scratchpad
