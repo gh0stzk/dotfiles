@@ -49,6 +49,10 @@ super + r
 
 # ----- Rofi Applets ----- #
 
+#Emoji Menu
+super + period
+	rofi -modi emoji -show emoji
+
 #Terminal Selector
 super + alt + t
 	Term --selecterm
@@ -88,10 +92,6 @@ super + alt + l
 # Keyboard Layout Applet
 super + alt + k
 	OpenApps --keyboard
-
-# Emoji Menu
-super + period
-	rofi -modi emoji -show emoji
 
 # ----- Environment Apps ----- #
 
@@ -136,7 +136,7 @@ super + alt + r
 	bspc wm -r
 
 # Close/Kill node
-super + {_,shift + }x
+super + {_,shift + }c
 	bspc node -{c,k}
 
 # Reload sxhkd Keybinds

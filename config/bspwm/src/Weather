@@ -21,7 +21,7 @@
 
 # ===== Configuration =====
 KEY="8b05d62206f459e1d298cbe5844d7d87"
-CITY="Mexico City"  # Go to https://openweathermap.org/find to find your city/town
+CITY="Curitiba"  # Go to https://openweathermap.org/find to find your city/town
 UNITS="metric" # Available "metric" "imperial"
 CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/$USER"
 CACHE_FILE="$CACHE_DIR/weather_data"

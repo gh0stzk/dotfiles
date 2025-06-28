@@ -31,22 +31,18 @@ ERROR_LOG="$HOME/RiceError.log"
 logo() {
     text="$1"
     printf "%b" "
-               %%%
-        %%%%%//%%%%%
-      %%************%%%
-  (%%//############*****%%
- %%%%**###&&&&&&&&&###**//
- %%(**##&&&#########&&&##**
- %%(**##*****#####*****##**%%%
- %%(**##     *****     ##**
-   //##   @@**   @@   ##//
-     ##     **###     ##
-     #######     #####//
-       ###**&&&&&**###
-       &&&         &&&
-       &&&////   &&
-          &&//@@@**
-            ..***
+⣿⣆⠱⣝⡵⣝⢅⠙⣿⢕⢕⢕⢕⢝⣥⢒⠅⣿⣿⣿⡿⣳⣌⠪⡪⣡⢑
+⣿⣿⣦⠹⣳⣳⣕⢅⠈⢗⢕⢕⢕⢕⢕⢈⢆⠟⠋⠉⠁⠉⠉⠁⠈⠼⢐
+⢰⣶⣶⣦⣝⢝⢕⢕⠅⡆⢕⢕⢕⢕⢕⣴⠏⣠⡶⠛⡉⡉⡛⢶⣦⡀⠐
+⡄⢻⢟⣿⣿⣷⣕⣕⣅⣿⣔⣕⣵⣵⣿⣿⢠⣿⢠⣮⡈⣌⠨⠅⠹⣷⡀
+⡵⠟⠈⢀⣀⣀⡀⠉⢿⣿⣿⣿⣿⣿⣿⣿⣼⣿⢈⡋⠴⢿⡟⣡⡇⣿⡇
+⠁⣠⣾⠟⡉⡉⡉⠻⣦⣻⣿⣿⣿⣿⣿⣿⣿⣿⣧⠸⣿⣦⣥⣿⡇⡿⣰
+⢰⣿⡏⣴⣌⠈⣌⠡⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣬⣉⣉⣁⣄⢖⢕
+⢻⣿⡇⢙⠁⠴⢿⡟⣡⡆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣵
+⣄⣻⣿⣌⠘⢿⣷⣥⣿⠇⣿⣿⣿⣿⣿⣿⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⢄⠻⣿⣟⠿⠦⠍⠉⣡⣾⣿⣿⣿⣿⣿⣿⢸⣿⣦⠙⣿⣿⣿⣿⣿⣿⣿
+⡑⣑⣈⣻⢗⢟⢞⢝⣻⣿⣿⣿⣿⣿⣿⣿⠸⣿⠿⠃⣿⣿⣿⣿⣿⣿⡿
+⡵⡈⢟⢕⢕⢕⢕⣵⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿⠿⠋⣀ 
 
    ${BLD}${CRE}[ ${CYE}${text} ${CRE}]${CNC}\n\n"
 }
@@ -233,7 +229,7 @@ install_dependencies() {
     sudo pacman -Syy
 
     # List of dependencies
-    dependencies="alacritty base-devel bat brightnessctl bspwm clipcat dunst eza feh fzf thunar tumbler gvfs-mtp firefox geany git imagemagick jq jgmenu kitty libwebp maim mpc mpd mpv neovim ncmpcpp npm pamixer pacman-contrib papirus-icon-theme picom playerctl polybar lxsession-gtk3 python-gobject redshift rofi rustup sxhkd tmux xclip xdg-user-dirs xdo xdotool xsettingsd xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot xorg-xwininfo yazi zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-ubuntu-mono-nerd webp-pixbuf-loader noto-fonts-emoji"
+    dependencies="alacritty base-devel bat brightnessctl pipewire pipewire-pulse sddm bspwm clipcat dunst eza feh fzf thunar tumbler gvfs-mtp firefox geany git imagemagick jq jgmenu kitty libwebp maim mpc mpd mpv neovim ncmpcpp npm pamixer pacman-contrib papirus-icon-theme picom playerctl polybar lxsession-gtk3 python-gobject redshift rofi rustup sxhkd tmux xclip xdg-user-dirs xdo xdotool xsettingsd xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot xorg-xwininfo yazi zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-ubuntu-mono-nerd webp-pixbuf-loader noto-fonts-cjk ttf-baekmuk ttf-dejavu ttf-liberation ttf-ubuntu-font-family stremio lazygit bitwarden spotify discord visual-studio-code-bin rofi-emoji"
 
     printf "\n%b\n\n" "${BLD}${CBL}Checking for required packages...${CNC}"
     sleep 2
@@ -457,7 +453,7 @@ install_aur_dependencies() {
 clone_dotfiles() {
     clear
     logo "Downloading dotfiles"
-    repo_url="https://github.com/gh0stzk/dotfiles"
+    repo_url="https://github.com/yay99857/dotfiles"
     repo_dir="$HOME/dotfiles"
     timestamp=$(date +"%Y%m%d-%H%M%S")
     sleep 3
@@ -735,6 +731,15 @@ configure_services() {
     else
         log_error "Failed to enable user MPD service"
         printf "%b\n\n" "${BLD}${CRE}Failed to activate user MPD service${CNC}"
+    fi
+
+    # User-level SDDM Service
+    printf "%b\n" "${BLD}${CYE}Enabling user SDDM service...${CNC}"
+    if systemctl --user enable --now sddm.service >> "$ERROR_LOG" 2>&1; then
+        printf "%b\n\n" "${BLD}${CGR}User SDDM service activated successfully${CNC}"
+    else
+        log_error "Failed to enable user SDDM service"
+        printf "%b\n\n" "${BLD}${CRE}Failed to activate user SDDM service${CNC}"
     fi
 
     # User-level ArchUpdates
