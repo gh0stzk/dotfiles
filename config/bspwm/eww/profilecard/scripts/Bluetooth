@@ -38,7 +38,7 @@ get_name() {
         if bluetoothctl show | grep -q "Powered: yes"; then
             connected_devices=$(bluetoothctl info | grep "Name" | sed 's/^\s*Name: //')
             if [ -n "$connected_devices" ]; then
-                echo "$connected_devices" | paste -sd ", "
+                echo "$connected_devices" | awk '{s = s $0 ", "} END {sub(", $", "", s); print s}'
             else
                 echo "On"
             fi
@@ -49,7 +49,6 @@ get_name() {
         echo "Null"
     fi
 }
-
 
 # Function to toggle Bluetooth status
 toggle() {
