@@ -30,22 +30,22 @@ MonitorSetup
 
 bspc config external_rules_command "${HOME}"/.config/bspwm/src/ExternalRules
 
-bspc config window_gap                5
-bspc config split_ratio               0.53
-bspc config single_monocle            true
+bspc config window_gap 5
+bspc config split_ratio 0.53
+bspc config single_monocle true
 
-bspc config automatic_scheme          longest_side
-bspc config initial_polarity          second_child
-bspc config removal_adjustment        true
+bspc config automatic_scheme longest_side
+bspc config initial_polarity second_child
+bspc config removal_adjustment true
 
-bspc config focus_follows_pointer     true
-bspc config pointer_follows_focus     false
-bspc config pointer_follows_monitor   true
-bspc config pointer_motion_interval   7
-bspc config pointer_modifier          mod4
-bspc config pointer_action1           move
-bspc config pointer_action2           resize_side
-bspc config pointer_action3           resize_corner
+bspc config focus_follows_pointer true
+bspc config pointer_follows_focus false
+bspc config pointer_follows_monitor true
+bspc config pointer_motion_interval 7
+bspc config pointer_modifier mod4
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner
 
 #  ╔═╗╦ ╦╔╦╗╔═╗╔═╗╔╦╗╔═╗╦═╗╔╦╗
 #  ╠═╣║ ║ ║ ║ ║╚═╗ ║ ╠═╣╠╦╝ ║
@@ -59,6 +59,9 @@ run() {
 
 # Set system vars for polybar
 "$HOME"/.config/bspwm/src/SetSysVars
+
+# Xembed
+run snixembed
 
 # Launch sxhkd daemon
 run sxhkd -c "${HOME}"/.config/bspwm/src/config/sxhkdrc
