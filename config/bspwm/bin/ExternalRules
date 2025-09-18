@@ -1,0 +1,64 @@
+#!/bin/sh
+# =============================================================
+# gh0stzk
+# https://github.com/gh0stzk/dotfiles
+# 24.04.2025
+# =============================================================
+
+wid=$1
+class=$2
+instance=$3
+consequences=$4
+
+result() {
+    eval "$consequences"
+    [ "$state" ] || echo "$1"
+}
+
+case "$class" in
+    FloaTerm)
+	result "state=floating center=on rectangle=696x399+0+0"
+        ;;
+    Updating)
+	result "state=floating sticky=on center=on rectangle=390x405+0+0"
+        ;;
+    Scratch)
+	result "state=floating focus=on sticky=on"
+	;;
+    RiceEditor)
+	result "state=floating focus=on center=on"
+	;;
+    mpv)
+	result "state=floating focus=on center=on rectangle=723x407+0+0"
+        ;;
+    Viewnior)
+        result "state=floating focus=on center=on"
+        ;;
+    TelegramDesktop)
+        result "desktop=^4 follow=on"
+        ;;
+    pavucontrol)
+        result "state=floating center=on"
+        ;;
+    Thunar)
+        result "desktop=^2 follow=on"
+        ;;
+    firefox|Navigator)
+        result "desktop=^3 follow=on"
+        ;;
+esac
+
+case "$instance" in
+    Toolkit)
+        result "state=floating sticky=on rectangle=500x290+1054+593"
+        ;;
+    YaziTerm)
+	result "state=floating center=on rectangle=900x342+0+0"
+	;;
+    MusicTerm)
+	result "state=floating center=on rectangle=656x343+0+0"
+	;;
+	FetchTerm)
+	result "state=floating center=on rectangle=369x601+0+0"
+	;;
+esac

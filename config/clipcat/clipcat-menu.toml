@@ -6,7 +6,7 @@ preview_length = 80
 line_length = 100
 menu_length = 30
 menu_prompt = "Clipcat"
-extra_arguments = ["-theme", ".config/bspwm/src/rofi-themes/Clipboard.rasi"]
+extra_arguments = ["-theme", ".config/bspwm/config/rofi-themes/Clipboard.rasi"]
 
 [dmenu]
 line_length = 100

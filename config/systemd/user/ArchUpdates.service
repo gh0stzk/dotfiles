@@ -3,7 +3,7 @@ Description=Check for available updates & sync polybar or eww bar
 
 [Service]
 Type=oneshot
-ExecStart=%h/.config/bspwm/src/Updates --sync-polybar
+ExecStart=%h/.config/bspwm/bin/Updates --sync-polybar
 
 [Install]
 WantedBy=default.target

@@ -40,7 +40,7 @@ gamemode_on() {
 # Function to deactivate Game Mode
 gamemode_off() {
     dunstctl set-paused false
-    picom --config "$HOME/.config/bspwm/src/config/picom.conf" &
+    picom --config "$HOME/.config/bspwm/config/picom.conf" &
 
     prev_governor=$(cat "$CACHE_DIR/cpu_governor")
     set_cpu_governor "$prev_governor"

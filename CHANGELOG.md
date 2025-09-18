@@ -1,3 +1,13 @@
+## refactor: reorganize project structure
+##### 18 Sept 2025
+
+- refactor: reorganize project structure (move binaries to bin and configs to config)
+  - chore: cleanup src folder and separate configs into config/ and scripts into bin/
+- Fix disconnected monitors aren’t explicitly turned off in the MonitorSetup script.
+- Updated to last version rofi-bluetooth script
+- Updated to last version Networkmanager script
+- Removed firefox theme.
+
 ## Removed unnecessary code to calculate icon sizes
 ##### 27 July 2025
 

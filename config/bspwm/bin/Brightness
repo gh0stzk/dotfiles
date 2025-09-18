@@ -1,0 +1,70 @@
+#!/bin/sh
+# =============================================================
+# Author:  gh0stzk
+# Repo:    https://github.com/gh0stzk/dotfiles
+# Date:    03.02.2025 14:22:32
+#
+# Brightness - Hardware brightness control
+# Features:
+#   ✔ Brightness adjustments in 5% increments
+#   ✔ Configurable minimum of 2% brightness
+#   ✔ OSD notifications with graphical progress bar
+#
+# Dependencies:
+#   → brightnessctl
+#   → dunst
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# =============================================================
+
+DIR="$HOME/.config/bspwm/config/assets"
+BRIGHTNESS_STEPS=5
+MIN_BRIGHTNESS=2
+
+get_brightness() {
+    brightnessctl i | awk -F '[()%]' '/Current brightness:/ {print $2}'
+}
+
+send_notification() {
+    brightness="$1"
+    icon="$DIR/brightness.svg"
+    bar=""
+    bar_length=$((brightness / BRIGHTNESS_STEPS))
+
+    i=0
+    while [ "$i" -lt "$bar_length" ]; do
+        bar="${bar}─"
+        i=$((i + 1))
+    done
+
+    dunstify "Brightness $brightness%" -i "$icon" -r 5555 -h int:value:$(($brightness))
+}
+
+adjust_brightness() {
+    current="$(get_brightness)"
+
+    case $1 in
+        up)
+            if [ "$current" -eq "$MIN_BRIGHTNESS" ]; then
+                brightnessctl set "${BRIGHTNESS_STEPS}%" -q
+            else
+                brightnessctl set "${BRIGHTNESS_STEPS}%+" -q
+            fi
+            ;;
+        down)
+            threshold=$((MIN_BRIGHTNESS + BRIGHTNESS_STEPS))
+            if [ "$current" -le "$threshold" ]; then
+                brightnessctl set "${MIN_BRIGHTNESS}%" -q
+            else
+                brightnessctl set "${BRIGHTNESS_STEPS}%-" -q
+            fi
+            ;;
+    esac
+
+    send_notification "$(get_brightness)"
+}
+
+case $1 in
+    up|down) adjust_brightness "$1" ;;
+esac

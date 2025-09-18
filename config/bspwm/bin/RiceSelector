@@ -1,0 +1,46 @@
+#!/bin/sh
+# =============================================================
+# Author:  gh0stzk
+# Repo:    https://github.com/gh0stzk/dotfiles
+# Date:    27.06.2025 11:14:42
+#
+# RiceSelector - Dynamic theme switcher for gh0stzk bspwm dotfiles
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# =============================================================
+
+# Some vars
+bspwm_dir="$HOME/.config/bspwm"
+read -r current_rice < "$bspwm_dir"/.rice
+
+# List rices
+rices=$(find "$bspwm_dir/rices/" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort)
+
+# Find current rice
+selected_index=-1
+index=0
+IFS='
+'
+for rice in $rices; do
+    [ "$rice" = "$current_rice" ] && { selected_index=$index; break; }
+    index=$((index + 1))
+done
+unset IFS
+
+# Show the rofi selection menu.
+selected=$(
+    IFS='
+'
+    for rice in $rices; do
+        printf "%s\000icon\037%s/rices/%s/preview.webp\n" "$rice" "$bspwm_dir" "$rice"
+    done | rofi -dmenu -p "RiceSelector" \
+                -theme "$bspwm_dir/config/rofi-themes/RiceSelector.rasi" \
+                -selected-row "$selected_index"
+)
+
+# If a valid option was selected, write the value to the configuration file and change theme.
+if [ -n "$selected" ] && [ "$selected" != "$current_rice" ]; then
+    echo "$selected" > "$bspwm_dir"/.rice
+    "${bspwm_dir}"/bin/Theme.sh
+fi

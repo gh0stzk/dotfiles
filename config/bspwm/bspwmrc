@@ -13,7 +13,7 @@
 # =============================================================
 
 # Set environment variables
-export PATH="$HOME/.config/bspwm/src:$PATH"
+export PATH="$HOME/.config/bspwm/bin:$PATH"
 export XDG_CURRENT_DESKTOP='bspwm'
 ## Fix java applications
 export _JAVA_AWT_WM_NONREPARENTING=1
@@ -28,10 +28,10 @@ MonitorSetup
 #  ╠╩╗╚═╗╠═╝║║║║║║  ║  ║ ║║║║╠╣ ║║ ╦
 #  ╚═╝╚═╝╩  ╚╩╝╩ ╩  ╚═╝╚═╝╝╚╝╚  ╩╚═╝
 
-bspc config external_rules_command "${HOME}"/.config/bspwm/src/ExternalRules
+bspc config external_rules_command "${HOME}"/.config/bspwm/bin/ExternalRules
 
 bspc config window_gap                5
-bspc config split_ratio               0.53
+bspc config split_ratio               0.51
 bspc config single_monocle            true
 
 bspc config automatic_scheme          longest_side
@@ -58,19 +58,19 @@ run() {
 }
 
 # Set system vars for polybar
-"$HOME"/.config/bspwm/src/SetSysVars
+"$HOME"/.config/bspwm/bin/SetSysVars
 
 # Launch sxhkd daemon
-run sxhkd -c "${HOME}"/.config/bspwm/src/config/sxhkdrc
+run sxhkd -c "${HOME}"/.config/bspwm/config/sxhkdrc
 
 # Load current theme
-"${HOME}"/.config/bspwm/src/Theme.sh
+"${HOME}"/.config/bspwm/bin/Theme.sh
 
 # Launch picom
-run picom --config "${HOME}"/.config/bspwm/src/config/picom.conf
+run picom --config "${HOME}"/.config/bspwm/config/picom.conf
 
 # Launch xsettingsd
-run xsettingsd --config="${HOME}"/.config/bspwm/src/config/xsettingsd >/dev/null 2>&1
+run xsettingsd --config="${HOME}"/.config/bspwm/config/xsettingsd >/dev/null 2>&1
 
 # Launch eww daemon
 pidof -q eww || { eww -c "${HOME}"/.config/bspwm/eww daemon & }
@@ -82,4 +82,4 @@ run clipcatd
 run lxpolkit
 
 # Start one time message
-[ ! -f "$HOME/.config/bspwm/src/config/.first_run_done" ] && alacritty --hold -e sh -c 'cat "$HOME/.config/bspwm/src/config/FirstMessage.txt"; sleep 0.1' && touch "$HOME/.config/bspwm/src/config/.first_run_done"
+[ ! -f "$HOME/.config/bspwm/config/.first_run_done" ] && alacritty --hold -e sh -c 'cat "$HOME/.config/bspwm/config/FirstMessage.txt"; sleep 0.1' && touch "$HOME/.config/bspwm/config/.first_run_done"

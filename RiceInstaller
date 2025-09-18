@@ -501,18 +501,6 @@ backup_existing_config() {
         esac
     done
 
-    printf "\nMy dotfiles come with a beautiful, minimalist Firefox theme, but if you don't want to try it, just type 'n'.\n"
-
-    while :; do
-        printf "%b" "${BLD}${CYE}Do you want to use my Firefox theme? ${CNC}[y/N]: "
-        read -r try_firefox
-        case "$try_firefox" in
-            [Yy]) try_firefox="y"; break ;;
-            [Nn]) try_firefox="n"; break ;;
-            *) printf " %b%bError:%b write 'y' or 'n'\n" "${BLD}" "${CRE}" "${CNC}" ;;
-        esac
-    done
-
     mkdir -p "$backup_folder" 2>> "$ERROR_LOG"
     printf "\n%b\n\n" "${BLD}${CYE}Backup directory: ${CBL}$backup_folder${CNC}"
     sleep 2
@@ -552,20 +540,6 @@ backup_existing_config() {
 
     if [ "$try_nvim" = "y" ]; then
         backup_item d "$HOME/.config/nvim" "nvim"
-    fi
-
-    if [ "$try_firefox" = "y" ]; then
-        if [ ! -d "$HOME/.mozilla" ]; then
-            printf "%b\n" "${BLD}${CYE}Creating Firefox profile...${CNC}"
-            timeout 1s firefox --headless --display=0 >/dev/null 2>&1
-            sleep 1
-        fi
-
-        firefox_profile=$(find "$HOME/.mozilla/firefox" -maxdepth 1 -type d -name '*.default-release' 2>/dev/null | head -1)
-        if [ -n "$firefox_profile" ]; then
-            backup_item d "${firefox_profile}/chrome" "chrome"
-            backup_item f "${firefox_profile}/user.js" "user.js"
-        fi
     fi
 
     single_files="$HOME/.zshrc $HOME/.gtkrc-2.0 $HOME/.icons"
@@ -623,7 +597,7 @@ install_dotfiles() {
     done
 
     # Copy miscellaneous components
-    for item in applications asciiart fonts startup-page bin; do
+    for item in applications asciiart fonts bin; do
         source_path="$HOME/dotfiles/misc/$item"
         target_path="$HOME/.local/share/"
         [ "$item" = "bin" ] && target_path="$HOME/.local/"
@@ -631,49 +605,6 @@ install_dotfiles() {
         copy_files "$source_path" "$target_path"
         sleep 0.3
     done
-
-    # Handle Firefox theme
-    if [ "$try_firefox" = "y" ]; then
-        firefox_profile=$(find "$HOME/.mozilla/firefox" -maxdepth 1 -type d -name '*.default-release' 2>/dev/null | head -n1)
-
-        if [ -n "$firefox_profile" ]; then
-            mkdir -p "$firefox_profile/chrome" 2>> "$ERROR_LOG"
-
-            for item in "$HOME/dotfiles/misc/firefox/"*; do
-                if [ -e "$item" ]; then
-                    item_name=$(basename "$item")
-                    target="$firefox_profile"
-
-                    if [ "$item_name" = "chrome" ]; then
-                        for chrome_item in "$item"/*; do
-                            copy_files "$chrome_item" "$firefox_profile/chrome/"
-                        done
-                    else
-                        copy_files "$item" "$target/"
-                    fi
-                fi
-            done
-
-            # Update settings
-            user_js="$firefox_profile/user.js"
-            startup_cfg="$HOME/.local/share/startup-page/config.js"
-
-            if [ -f "$user_js" ]; then
-                sed "s|/home/z0mbi3|/home/$USER|g" "$user_js" > "$user_js.tmp" && \
-                mv "$user_js.tmp" "$user_js" && \
-                printf "%s%sFirefox config updated!%s\n" "$BLD" "$CGR" "$CNC"
-            fi
-
-            if [ -f "$startup_cfg" ]; then
-                sed "s/name: 'gh0stzk'/name: '$USER'/" "$startup_cfg" > "$startup_cfg.tmp" && \
-                mv "$startup_cfg.tmp" "$startup_cfg" && \
-                printf "%s%sStartup page updated!%s\n" "$BLD" "$CGR" "$CNC"
-            fi
-        else
-            log_error "Firefox profile not found"
-            printf "%s%sFirefox profile not found!%s\n" "$BLD" "$CRE" "$CNC"
-        fi
-    fi
 
     # Copy remaining files
     for file in "$HOME/dotfiles/home/.zshrc" "$HOME/dotfiles/home/.gtkrc-2.0" "$HOME/dotfiles/home/.icons"; do
