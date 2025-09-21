@@ -323,12 +323,6 @@ https://github.com/user-attachments/assets/79764678-c519-4a41-a333-2a862a6d10f8
 | :--------------------------------------------------------------------------------------------------: |
 |            The environment changes with each theme. In the gif: (Ranger, Thunar, Ncmpcpp)            |
 
-### Firefox theme
-
-| Firefox theme - z0mbi3 Fox |
-|:-:|
-| <img src="https://github.com/gh0stzk/dotfiles/assets/67278339/9b956d3d-fc7b-49ca-b27f-dc6aa83d9e2f" alt="Firefox theme - z0mbi3-Fox" align="center"> |
-
 ### Neovim setup
 
 | Neovim setup |
