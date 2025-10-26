@@ -36,7 +36,7 @@
 (defpoll NETSTAT  :interval "15s" "scripts/Network --stat")
 
 ;; User
-(defvar IMAGE "../../../src/assets/profile.png")
+(defvar IMAGE "../../../config/assets/profile.png")
 (defpoll USER :interval "12h" "whoami")
 
 ;;---------- Widgets ----------;;
@@ -246,14 +246,12 @@
 		 :spacing 15
 		 :space-evenly "false"
 
-		 (eventbox :cursor "pointer"
-		 (button :onclick "OpenApps --calendar"
 		 (box :orientation "v"
 			  :spacing 0
 			  :halign "start"
 			(label :class "time" :halign "start" :text TIME)
 			(label :class "date" :halign "start" :text DATE)
-		 )))
+		 )
 
 		 (box :orientation "h" :spacing 5
 			(label :class "weathericon" :style "color: ${HEX ?: '#adadff'};" :tooltip CITY :text ICON)
@@ -261,8 +259,6 @@
 		)
 	)
 )
-
-
 
 
 (defwidget audio []

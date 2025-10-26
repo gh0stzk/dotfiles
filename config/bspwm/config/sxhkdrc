@@ -97,7 +97,11 @@ super + alt + o
 
 # jgmenu
 ~button3
-  xqp 0 $(xdo id -N Bspwm -n root) && jgmenu --csv-file=~/.config/bspwm/config/jgmenu.txt --config-file=~/.config/bspwm/config/jgmenurc
+    win=$(xdotool getmouselocation --shell | sed -n 's/^WINDOW=\(.*\)/\1/p'); \
+    type=$(xprop -id "$win" _NET_WM_WINDOW_TYPE 2>/dev/null); \
+    case "$type" in *DESKTOP*) \
+        jgmenu --csv-file="$HOME/.config/bspwm/config/jgmenu.txt" \
+               --config-file="$HOME/.config/bspwm/config/jgmenurc";; esac
 
 # Power off, Reboot, Log out, Lockscreen, kill an app
 ctrl + super + alt + {p,r,q,l,k,s}
