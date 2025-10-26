@@ -159,6 +159,7 @@ install_dependencies() {
     logo "Installing needed packages from official repositories..."
     sleep 2
 
+    sudo pacman -Syy
     dependencies="alacritty base-devel bat brightnessctl bspwm clipcat dunst eza feh fzf thunar tumbler gvfs-mtp firefox geany git imagemagick jq jgmenu kitty libwebp maim mpc mpd mpv neovim xcolor ncmpcpp npm pamixer pacman-contrib papirus-icon-theme picom playerctl polybar lxsession python-gobject redshift rofi rustup sxhkd xclip xdg-user-dirs xdo xdotool xsettingsd xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot xorg-xwininfo yazi zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting ttf-inconsolata ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-terminus-nerd ttf-ubuntu-mono-nerd webp-pixbuf-loader"
 
     # Arrays temporales
@@ -304,7 +305,7 @@ install_aur_dependencies() {
     if ! command -v paru >/dev/null 2>&1; then
         printf "%b\n" "${BLD}${CYE}Installing PARU${CNC}"
         git clone https://aur.archlinux.org/paru-bin.git
-        cd paru
+        cd paru-bin
         makepkg -si
         cd
     fi
