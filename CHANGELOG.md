@@ -1,3 +1,22 @@
+## changes
+##### 12 Oct 2025
+
+- RiceInstaller
+  - Fix picom var if is a virtual machine
+  - Refactored the way apps are installed. A missing_apps.txt file is created in your home.
+  - The same goes for the backup and copy process.
+- Removed tmux config
+- Removed xqp dependency, now another method is used to show jgmenu when right clicking on the desktop.
+- Change KeyboardLayout rofi script https://github.com/gh0stzk/dotfiles/issues/542
+- Removed eww calendar widget
+- Date module in polybar changed, returns to its default behavior
+- Minor visual fixes/improvements to some polybar modules in some themes
+- The behavior of the WallSelect script has been modified. Now, when you select a wallpaper, the wallpaper engine also switches to static, and every time you restart, change themes, and return to the theme where you made the change, the selected wallpaper will remain. Previously, even if you selected a wallpaper, when you restarted or changed themes and returned to the one you changed, the wallpaper engine would remain on random.
+- Remove the alacritty themes. Changes to the color scheme are made as before using theme.sh and theme-config.bash.
+I'm trying to simplify and unify where you make changes so it's easier to create your own theme or make modifications.
+
+---
+
 ## refactor: reorganize project structure
 ##### 18 Sept 2025
 

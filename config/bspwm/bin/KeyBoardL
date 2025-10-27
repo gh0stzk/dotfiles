@@ -43,6 +43,9 @@ selected=$(show_rofi_menu)
 if [ -n "$selected" ]; then
     layout_code=$(printf '%s\n' "$LAYOUTS" | awk -F'|' -v sel="$selected" '$1 == sel {print $2}')
     if [ -n "$layout_code" ]; then
-        setxkbmap "$layout_code"
+        set -f
+        set -- $layout_code
+        set +f
+        setxkbmap "$@"
     fi
 fi
