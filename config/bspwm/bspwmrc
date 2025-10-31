@@ -10,7 +10,10 @@
 # Repo:    https://github.com/gh0stzk/dotfiles
 # Date:    24.04.2025 20:37:31
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
 # =============================================================
+
+set -euo pipefail
 
 # Set environment variables
 export PATH="$HOME/.config/bspwm/bin:$PATH"
@@ -57,17 +60,24 @@ run() {
   fi
 }
 
+start_daemon() {
+  "$@" &
+}
+
 # Set system vars for polybar
 "$HOME"/.config/bspwm/bin/SetSysVars
 
 # Launch sxhkd daemon
-run sxhkd -c "${HOME}"/.config/bspwm/config/sxhkdrc
+start_daemon sxhkd -c "${HOME}"/.config/bspwm/config/sxhkdrc
 
 # Load current theme
 "${HOME}"/.config/bspwm/bin/Theme.sh
 
 # Launch picom
-run picom --config "${HOME}"/.config/bspwm/config/picom.conf
+start_daemon picom --config "${HOME}"/.config/bspwm/config/picom.conf
+
+# Launch dynamic wallpaper
+start_daemon DynamicWall
 
 # Launch xsettingsd
 run xsettingsd --config="${HOME}"/.config/bspwm/config/xsettingsd >/dev/null 2>&1

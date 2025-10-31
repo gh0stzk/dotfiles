@@ -8,7 +8,7 @@ monitor = 0
 follow = mouse
 
 width = (300, 400)
-#height = (0, 200)
+height = (0, 200)
 origin = top-right
 offset = (20, 60)
 scale = 0
@@ -44,7 +44,7 @@ vertical_alignment = center
 show_age_threshold = 60
 #ellipsize = middle
 ignore_newline = no
-stack_duplicates = false
+stack_duplicates = true
 hide_duplicate_count = true
 
 show_indicators = yes
@@ -71,6 +71,7 @@ mouse_middle_click = do_action, close_current
 mouse_right_click = close_all
 
 progress_bar = true
+progress_bar_color = "#a9b1d6"
 progress_bar_height = 10
 progress_bar_frame_width = 0
 progress_bar_min_width = 125

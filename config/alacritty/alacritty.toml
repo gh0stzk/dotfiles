@@ -6,7 +6,6 @@
 #  ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝      ╚═╝
 #	gh0stzk - https://github.com/gh0stzk/dotfiles
 
-[general]
 import = ["rice-colors.toml", "fonts.toml"]
 
 live_config_reload = true
@@ -22,7 +21,7 @@ thickness = 0.15
 
 [cursor.style]
 blinking = "On"
-shape = "Block"
+shape = "Beam"
 
 [selection]
 save_to_clipboard = true
@@ -30,10 +29,11 @@ save_to_clipboard = true
 [window]
 decorations = "none"
 dynamic_title = true
-opacity = 1.0
-padding = { x = 15, y = 15 }
+opacity = 0.9
+padding = { x = 20, y = 20 }
 dynamic_padding = true
 resize_increments = true
+startup_mode = "Maximized"
 
 [scrolling]
 history = 10000

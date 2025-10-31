@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -euo pipefail
+
+# Interval in seconds for changing wallpaper
+INTERVAL=300 # 5 minutes
+
+while true; do
+  # Get the path of the new wallpaper from WallSelect
+  NEW_WALLPAPER=$("${HOME}"/.config/bspwm/bin/WallSelect -r)
+
+  if [ -n "$NEW_WALLPAPER" ]; then
+    # Send a notification with the new wallpaper
+    dunstify -i "$NEW_WALLPAPER" -a "Dynamic Wallpaper" "Wallpaper changed" "$(basename "$NEW_WALLPAPER")"
+  fi
+
+  sleep "$INTERVAL"
+done

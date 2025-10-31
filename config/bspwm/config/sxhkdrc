@@ -117,7 +117,7 @@ ctrl + alt + {plus,minus,t}
 
 # Manage brightness
 XF86MonBrightness{Up,Down}
-	sh Brightness {up,down}
+	Brightness {up,down}
 
 # Volume control
 XF86Audio{RaiseVolume,LowerVolume,Mute}
@@ -142,6 +142,14 @@ super + {_,shift + }x
 # Reload sxhkd Keybinds
 super + Escape
 	pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/config/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
+
+# Reload bspwmrc
+super + alt + b
+	source "$HOME"/.config/bspwm/bspwmrc
+
+# Reload bspc rules
+super + alt + u
+	bspc rule -r; bspc rule -a FloaTerm sticky=on floating=on rectangle=200x200+0+0; bspc rule -a Updating sticky=on floating=on rectangle=200x200+0+0; bspc rule -a YaziTerm sticky=on floating=on rectangle=200x200+0+0; bspc rule -a MusicTerm sticky=on floating=on rectangle=200x200+0+0; bspc rule -a FetchTerm sticky=on floating=on rectangle=200x200+0+0
 
 # ----- Node states and flags ----- #
 
@@ -209,17 +217,11 @@ super + ctrl + b
 
 # increase/decrease Node
 super + alt + {plus,minus}
-	{ \
-       bspc node -z top_right 20 -20 ; bspc node -z bottom_left -20 20; \
-    ,  bspc node -z top_right -20 20 ; bspc node -z bottom_left 20 -20; \
-    }
+	bspc node -z {left -20,right +20,top -20,bottom +20} {20,-20}
 
 # increase/decrease FLOATING node size (zoom in/out)
 super + ctrl + {plus,minus}
-	{ \
-	  xdotool getactivewindow windowmove --relative -- -50 -25 ; xdo resize -w +100 -h +50; \
-	, xdotool getactivewindow windowmove --relative -- +50 +25 ; xdo resize -w -100 -h -50; \
-	}
+	bspc node -z {left -20,right +20,top -20,bottom +20} {20,-20} --resize-by 20
 
 # Move floating window
 super + shift + {Left,Down,Up,Right}

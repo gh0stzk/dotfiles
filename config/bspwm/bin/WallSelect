@@ -102,3 +102,14 @@ wall_selection=$(find "${wall_dir}" -type f \( -iname "*.jpg" -o -iname "*.jpeg"
         -e 's/^ENGINE=.*/ENGINE="CustomImage"/' \
         -e "s|^CUSTOM_WALL=.*|CUSTOM_WALL=\"$wall_dir/$wall_selection\"|" && \
     feh --no-fehbg --bg-fill "${wall_dir}/${wall_selection}"
+fi
+
+# Random wallpaper selection
+if [ "$1" = "-r" ] || [ "$1" = "--random" ]; then
+    random_wall=$(find "${wall_dir}" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) -print0 | shuf -n 1 -z | xargs -0 basename)
+    [ -n "$random_wall" ] && \
+        sed -i "$HOME/.config/bspwm/rices/$current_rice/theme-config.bash" \
+            -e 's/^ENGINE=.*/ENGINE="CustomImage"/' \
+            -e "s|^CUSTOM_WALL=.*|CUSTOM_WALL=\"$wall_dir/$random_wall\"|" && \
+        feh --no-fehbg --bg-fill "${wall_dir}/${random_wall}"
+fi

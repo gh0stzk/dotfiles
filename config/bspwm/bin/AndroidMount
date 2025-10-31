@@ -9,59 +9,92 @@
 # Licensed under GPL-3.0 license
 # =============================================================
 
+set -euo pipefail
+
 BASE_MOUNT_POINT="$HOME/Android_Mount"
 ROFI_THEME="$HOME/.config/bspwm/config/rofi-themes/Android.rasi"
 
+# Function to list available MTP devices using Rofi
 list_devices() {
-	simple-mtpfs -l | awk -F': ' '{print $1 " " $2}' | rofi -dmenu -p "Select device" -theme "$ROFI_THEME"
+    simple-mtpfs -l | awk -F': ' '{print $1 " " $2}' | rofi -dmenu -p "Select device" -theme "$ROFI_THEME"
 }
 
+# Function to check if a directory is a mount point
 is_mounted() {
-	mount | grep "$1" >/dev/null
+    findmnt -rno TARGET "$1" >/dev/null
 }
 
+# Function to mount a device
 mount_device() {
-	DEVICE_NUM=$1
-	MOUNT_POINT=$2
-	if [ ! -d "$MOUNT_POINT" ]; then
-		mkdir -p "$MOUNT_POINT"
-	fi
-
-	if simple-mtpfs --device "$DEVICE_NUM" "$MOUNT_POINT"; then
-		dunstify -i phone -a Android "Android Mount" "Android device $DEVICE_NUM mounted at $MOUNT_POINT"
-	else
-		dunstify -i phone -a Android "Android Mount" "Failed to mount Android device $DEVICE_NUM"
-	fi
+    local device_num="$1"
+    local mount_point="$2"
+    mkdir -p "$mount_point"
+    if simple-mtpfs --device "$device_num" "$mount_point"; then
+        dunstify -i phone -a Android "Android Mount" "Device mounted at $mount_point"
+    else
+        dunstify -i phone -a Android "Android Mount" "Failed to mount device"
+        rmdir "$mount_point" # Clean up created directory if mount fails
+    fi
 }
 
+# Function to unmount a device
 unmount_device() {
-	MOUNT_POINT=$1
-	if fusermount -u "$MOUNT_POINT"; then
-		dunstify -i phone -a Android "Android Unmount" "Android device unmounted from $MOUNT_POINT"
-		rmdir "$MOUNT_POINT"
-	else
-		dunstify -i phone -a Android "Android Unmount" "Failed to unmount Android device"
-	fi
+    local mount_point="$1"
+    if fusermount -u "$mount_point"; then
+        dunstify -i phone -a Android "Android Unmount" "Device unmounted from $mount_point"
+        rmdir "$mount_point"
+    else
+        dunstify -i phone -a Android "Android Unmount" "Failed to unmount device"
+    fi
 }
 
-DEVICE=$(list_devices)
-DEVICE_NUM=$(echo "$DEVICE" | awk '{print $1}')
-DEVICE_NAME=$(echo "$DEVICE" | awk '{$1=""; print $0}' | xargs) # Remove the leading number and trim whitespace
-MOUNT_POINT="$BASE_MOUNT_POINT/$DEVICE_NAME"
+# Function to open the file manager at the mount point
+open_file_manager() {
+    local mount_point="$1"
+    xdg-open "$mount_point"
+}
 
-if [ -z "$DEVICE_NUM" ]; then
-	dunstify -i phone -a Android "Android Mount" "No device selected"
-	exit 1
-fi
+# Main script logic
+main() {
+    local device
+    device=$(list_devices) || exit 1
 
-if is_mounted "$MOUNT_POINT"; then
-	ACTION=$(echo "Unmount" | rofi -dmenu -p "$DEVICE_NAME is mounted" -theme "$ROFI_THEME")
-	if [ "$ACTION" = "Unmount" ]; then
-		unmount_device "$MOUNT_POINT"
-	fi
-else
-	ACTION=$(echo "Mount" | rofi -dmenu -p "$DEVICE_NAME is not mounted" -theme "$ROFI_THEME")
-	if [ "$ACTION" = "Mount" ]; then
-		mount_device "$DEVICE_NUM" "$MOUNT_POINT"
-	fi
-fi
+    local device_num
+    device_num=$(echo "$device" | awk '{print $1}')
+    local device_name
+    device_name=$(echo "$device" | awk '{$1=""; print $0}' | xargs)
+    local sanitized_device_name
+    sanitized_device_name=$(echo "$device_name" | tr ' ' '_')
+    local mount_point="$BASE_MOUNT_POINT/$sanitized_device_name"
+
+    if [ -z "$device_num" ]; then
+        dunstify -i phone -a Android "Android Mount" "No device selected"
+        exit 1
+    fi
+
+    if is_mounted "$mount_point"; then
+        local options="Unmount
+Open in File Manager"
+        local action
+        action=$(echo -e "$options" | rofi -dmenu -p "$device_name is mounted" -theme "$ROFI_THEME")
+
+        case "$action" in
+            "Unmount")
+                unmount_device "$mount_point"
+                ;;
+            "Open in File Manager")
+                open_file_manager "$mount_point"
+                ;;
+        esac
+    else
+        local options="Mount"
+        local action
+        action=$(echo -e "$options" | rofi -dmenu -p "$device_name is not mounted" -theme "$ROFI_THEME")
+
+        if [ "$action" = "Mount" ]; then
+            mount_device "$device_num" "$mount_point"
+        fi
+    fi
+}
+
+main "$@"

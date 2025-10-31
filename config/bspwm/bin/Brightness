@@ -18,53 +18,73 @@
 # Licensed under GPL-3.0 license
 # =============================================================
 
+set -euo pipefail
+
 DIR="$HOME/.config/bspwm/config/assets"
 BRIGHTNESS_STEPS=5
 MIN_BRIGHTNESS=2
 
-get_brightness() {
-    brightnessctl i | awk -F '[()%]' '/Current brightness:/ {print $2}'
+# Get current brightness value (raw)
+get_brightness_raw() {
+    brightnessctl g
 }
 
+# Get maximum brightness value (raw)
+get_max_brightness_raw() {
+    brightnessctl m
+}
+
+# Get current brightness as a percentage
+get_brightness_percentage() {
+    local current_raw
+    current_raw=$(get_brightness_raw)
+    local max_raw
+    max_raw=$(get_max_brightness_raw)
+    echo $((current_raw * 100 / max_raw))
+}
+
+# Send dunst notification
 send_notification() {
-    brightness="$1"
-    icon="$DIR/brightness.svg"
-    bar=""
-    bar_length=$((brightness / BRIGHTNESS_STEPS))
-
-    i=0
-    while [ "$i" -lt "$bar_length" ]; do
-        bar="${bar}─"
-        i=$((i + 1))
-    done
-
-    dunstify "Brightness $brightness%" -i "$icon" -r 5555 -h int:value:$(($brightness))
+    local brightness_percent="$1"
+    local icon="$DIR/brightness.svg"
+    dunstify "Brightness $brightness_percent%" -i "$icon" -r 5555 -h int:value:"$brightness_percent"
 }
 
+# Adjust brightness
 adjust_brightness() {
-    current="$(get_brightness)"
+    local direction="$1"
+    local current_percent
+    current_percent=$(get_brightness_percentage)
+    local max_raw
+    max_raw=$(get_max_brightness_raw)
+    local new_percent
 
-    case $1 in
+    case "$direction" in
         up)
-            if [ "$current" -eq "$MIN_BRIGHTNESS" ]; then
-                brightnessctl set "${BRIGHTNESS_STEPS}%" -q
-            else
-                brightnessctl set "${BRIGHTNESS_STEPS}%+" -q
+            new_percent=$((current_percent + BRIGHTNESS_STEPS))
+            if [ "$new_percent" -gt 100 ]; then
+                new_percent=100
             fi
             ;;
         down)
-            threshold=$((MIN_BRIGHTNESS + BRIGHTNESS_STEPS))
-            if [ "$current" -le "$threshold" ]; then
-                brightnessctl set "${MIN_BRIGHTNESS}%" -q
-            else
-                brightnessctl set "${BRIGHTNESS_STEPS}%-" -q
+            new_percent=$((current_percent - BRIGHTNESS_STEPS))
+            if [ "$new_percent" -lt "$MIN_BRIGHTNESS" ]; then
+                new_percent="$MIN_BRIGHTNESS"
             fi
+            ;;
+        *)
+            echo "Usage: $0 [up|down]"
+            exit 1
             ;;
     esac
 
-    send_notification "$(get_brightness)"
+    # Convert percentage back to raw value for brightnessctl
+    local new_raw
+    new_raw=$((new_percent * max_raw / 100))
+    brightnessctl set "$new_raw" -q
+
+    send_notification "$new_percent"
 }
 
-case $1 in
-    up|down) adjust_brightness "$1" ;;
-esac
+# Main execution
+adjust_brightness "$1"

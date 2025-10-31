@@ -1,15 +1,15 @@
 ;; Vars ;;
-(defpoll music-player     :interval "1s" "MediaControl --player")
-(defpoll music-art        :interval "3s" "MediaControl --cover")
+(defpoll music-player     :interval "5s" "MediaControl --player")
+(defpoll music-art        :interval "5s" "MediaControl --cover")
 (defpoll music-title      :interval "1s" "MediaControl --title")
 (defpoll music-artist     :interval "1s" "MediaControl --artist")
 (defpoll music-status     :interval "1s" "MediaControl --status")
 (defpoll music-position   :interval "1s" "MediaControl --position")
 (defpoll music-positions  :interval "1s" "MediaControl --positions")
 (defpoll music-length     :interval "1s" "MediaControl --length")
-(defpoll music-lengths    :interval "1s" "MediaControl --lengths")
 (defpoll shuffle          :interval "1s" "MediaControl --shuffle")
 (defpoll loop             :interval "1s" "MediaControl --loop")
+(defpoll music-volume     :interval "1s" "MediaControl --volume")
 
 ;; Widgets ;;
 (defwidget shuffle [color action status]
@@ -59,13 +59,17 @@
 							:status shuffle
 						)
 						(loop
-							:action {loop == "None" ? "playerctl -p ${music-player} loop playlist" :
-							loop == "Off" ? "mpc repeat on" :
-							loop == "On" ? "mpc repeat off" :
-							loop == "Playlist" ? "playerctl -p ${music-player} loop track" : "playerctl -p ${music-player} loop none"}
-							:icon  {loop == "Track" ? "󰑘" :
-							loop == "Playlist" || loop == "On" ? "󰑖" : "󰑗"}
-							:color {loop == "Playlist" || loop == "Track" || loop == "On" ? "#81ae5f" : "#b8bfe5"}
+							:action {music-player == "MPD" ?
+								(loop == "On" ? "mpc repeat off" : "mpc repeat on") :
+								(loop == "None" ? "playerctl -p ${music-player} loop playlist" :
+								loop == "Playlist" ? "playerctl -p ${music-player} loop track" : "playerctl -p ${music-player} loop none")}
+							:icon  {music-player == "MPD" ?
+								(loop == "On" ? "󰑖" : "󰑗") :
+								(loop == "Track" ? "󰑘" :
+								loop == "Playlist" ? "󰑖" : "󰑗")}
+							:color {music-player == "MPD" ?
+								(loop == "On" ? "#81ae5f" : "#b8bfe5") :
+								(loop == "Playlist" || loop == "Track" ? "#81ae5f" : "#b8bfe5")}
 							:status loop
 						)
 					)
@@ -140,6 +144,7 @@
 				(button
 					:class "player-previous"
 					:onclick "MediaControl --previous"
+					:tooltip "Previous"
 					"󰒮"
 				)
 			)
@@ -148,6 +153,7 @@
 				(button
 					:class "player-toggle"
 					:onclick "MediaControl --toggle"
+					:tooltip {music-status == "Playing" ? "Pause" : music-status == "Paused" ? "Play" : "Stop"}
 					{music-status == "Playing" ? "󰏤" : music-status == "Paused" ? "󰐊" : "󰓛"}
 				)
 			)
@@ -156,6 +162,7 @@
 				(button
 					:class "player-next"
 					:onclick "MediaControl --next"
+					:tooltip "Next"
 					"󰒭"
 				)
 			)
@@ -163,8 +170,20 @@
 				:cursor "pointer"
 				(button
 					:class "min"
-					:onclick "eww -c ~/.config/bspwm/eww open --toggle music"
+					:onclick "eww open --toggle music"
 					"󰅙"
+				)
+			)
+			(box
+				:class "player-volume"
+				:orientation "v"
+				:valign "center"
+				:hexpand true
+				(scale
+					:onchange "MediaControl --volume-set {}"
+					:min 0
+					:max 101
+					:value music-volume
 				)
 			)
 		)

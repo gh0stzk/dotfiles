@@ -3,11 +3,14 @@
 }
 
 tooltip {
-  background-color: #14171c;
-  color: #b8bfe5;
+  background-color: $bg-dark;
+  color: $fg;
   font-family: Inconsolata SemiCondensed Medium;
   font-weight: Bold;
   font-size: 1rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.3rem;
+  box-shadow: 0 0.2rem 0.5rem rgba(black, 0.3);
 }
 
 @import "colors.scss";

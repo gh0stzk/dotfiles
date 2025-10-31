@@ -7,74 +7,111 @@
 # Script Name: Term Launcher
 # Description: Dynamic terminal selector/launcher with multi-mode support
 # Features:
-#   - Rofi-based terminal selection (Alacritty/Termite)
+#   - Rofi-based terminal selection (Alacritty/Kitty)
 #
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # Licensed under GPL-3.0 license
 # =============================================================
 
+set -euo pipefail
+
 CFG_TERM="$HOME/.config/bspwm/config/.term"
 ROFI_THEME="$HOME/.config/bspwm/config/rofi-themes/TermSelector.rasi"
 
+# Ensure the config file exists and has a default value
 [ -f "$CFG_TERM" ] || echo "alacritty" > "$CFG_TERM"
 
-# Main var
+# Main var - read the currently selected terminal
 read -r MY_TERM < "$CFG_TERM"
 
 # Function to choose the terminal using rofi
 choose_terminal() {
-	options="Alacritty Kitty"
-	current_term=$(tr '[:upper:]' '[:lower:]' < "$CFG_TERM")
+    local options="Alacritty\nKitty"
+    local current_term
+    current_term=$(tr '[:upper:]' '[:lower:]' < "$CFG_TERM")
 
-	index=0
-    selected_index=0
-    for opt in $options; do
+    local index=0
+    local selected_index=0
+    # Determine the selected index for Rofi
+    while IFS= read -r opt; do
+        local lc_opt
         lc_opt=$(printf "%s" "$opt" | tr '[:upper:]' '[:lower:]')
         if [ "$lc_opt" = "$current_term" ]; then
-            selected_index=$index
+            selected_index="$index"
             break
         fi
         index=$((index + 1))
-    done
+    done <<< "$options"
 
-	chosen=$(printf '%s\n' $options | rofi -theme "$ROFI_THEME" \
+    local chosen
+    chosen=$(echo -e "$options" | rofi -theme "$ROFI_THEME" \
         -mesg "[ Your current terminal is $MY_TERM ]" -dmenu -selected-row "$selected_index")
 
     if [ -n "$chosen" ]; then
         echo "$chosen" | tr '[:upper:]' '[:lower:]' > "$CFG_TERM"
+        # Update MY_TERM after selection
+        read -r MY_TERM < "$CFG_TERM"
     fi
 }
 
-# Terminal selector
-[ "$1" = "--selecterm" ] && choose_terminal
+# Function to launch the terminal with given arguments
+launch_terminal() {
+    local term_type="$1"
+    shift
+    local args=("$@")
 
-# Refresh main var (in case it changed)
-read -r MY_TERM < "$CFG_TERM"
+    case "$term_type" in
+        "alacritty")
+            alacritty "${args[@]}" &
+            ;;
+        "kitty")
+            kitty "${args[@]}" &
+            ;;
+        *)
+            echo "Error: Unknown terminal type: $term_type" >&2
+            exit 1
+            ;;
+    esac
+}
 
-# Launch the terminal with appropriate options
-case $MY_TERM in
-	"alacritty")
-		case $1 in
-			"--terminal") alacritty ;;
-			"--floating") alacritty --class FloaTerm,FloaTerm ;;
-			"--update") alacritty --hold --class FloaTerm,FloaTerm -e paru -Syu --nocombinedupgrade ;;
-			"--checkupdates") alacritty --hold --class Updating,Updating -e Updates --print-updates ;;
-			"--yazi") alacritty --class FloaTerm,YaziTerm -e yazi ;;
-			"--nvim") alacritty -e nvim ;;
-			"--music") alacritty --class FloaTerm,MusicTerm -e ncmpcpp ;;
-			"--fetch") alacritty --class FloaTerm,FetchTerm -e ~/.local/bin/sysfetch ;;
-		esac
-		;;
-	"kitty")
-		case $1 in
-			"--terminal") kitty ;;
-			"--floating") kitty --class=FloaTerm ;;
-			"--update") kitty --hold --class=FloaTerm -e paru -Syu --nocombinedupgrade ;;
-			"--checkupdates") kitty --hold --class=Updating -e Updates --print-updates ;;
-			"--yazi") kitty --hold --name=YaziTerm --class=FloaTerm -e yazi ;;
-			"--nvim") kitty -e nvim ;;
-			"--music") kitty --name=MusicTerm --class=FloaTerm -e ncmpcpp ;;
-			"--fetch") kitty --name=FetchTerm --class=FloaTerm -e ~/.local/bin/sysfetch ;;
-		esac
-	;;
+# Main script logic
+case "$1" in
+    "--selecterm")
+        choose_terminal
+        ;;
+    *)
+        # If no specific action is requested, launch the terminal based on MY_TERM
+        case "$MY_TERM" in
+            "alacritty")
+                case "$1" in
+                    "--terminal") launch_terminal alacritty ;;
+                    "--floating") launch_terminal alacritty --class FloaTerm,FloaTerm ;;
+                    "--update") launch_terminal alacritty --hold --class FloaTerm,FloaTerm -e paru -Syu --nocombinedupgrade ;;
+                    "--checkupdates") launch_terminal alacritty --hold --class Updating,Updating -e Updates --print-updates ;;
+                    "--yazi") launch_terminal alacritty --class FloaTerm,YaziTerm -e yazi ;;
+                    "--nvim") launch_terminal alacritty -e nvim ;;
+                    "--music") launch_terminal alacritty --class FloaTerm,MusicTerm -e ncmpcpp ;;
+                    "--fetch") launch_terminal alacritty --class FloaTerm,FetchTerm -e ~/.local/bin/sysfetch ;;
+                    *) launch_terminal alacritty ;;
+                esac
+                ;;
+            "kitty")
+                case "$1" in
+                    "--terminal") launch_terminal kitty ;;
+                    "--floating") launch_terminal kitty --class=FloaTerm ;;
+                    "--update") launch_terminal kitty --class=FloaTerm -e paru -Syu --nocombinedupgrade ;;
+                    "--checkupdates") launch_terminal kitty --class=Updating -e Updates --print-updates ;;
+                    "--yazi") launch_terminal kitty --name=YaziTerm --class=FloaTerm -e yazi ;;
+                    "--nvim") launch_terminal kitty -e nvim ;;
+                    "--music") launch_terminal kitty --name=MusicTerm --class=FloaTerm -e ncmpcpp ;;
+                    "--fetch") launch_terminal kitty --name=FetchTerm --class=FloaTerm -e ~/.local/bin/sysfetch ;;
+                    *) launch_terminal kitty ;;
+                esac
+                ;;
+            *)
+                echo "Error: Unknown terminal type in $CFG_TERM: $MY_TERM" >&2
+                exit 1
+                ;;
+        esac
+        ;;
 esac

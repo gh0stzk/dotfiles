@@ -9,12 +9,12 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    box-shadow: 0 0 0.3rem black;
-    border-radius: 1.2rem;
+    box-shadow: 0 0.5rem 1rem rgba(black, 0.4);
+    border-radius: 0.8rem;
     min-width: 22rem;
 
     .player-info {
-      border-radius: 1rem;
+      border-radius: 0.6rem;
       background: linear-gradient(to right,
           rgb(#191919, 1),
           rgba(#262626, 0.5));
@@ -68,14 +68,14 @@
         background-image: linear-gradient(to right,
             darken($color: $green, $amount: 15%),
             $green );
-        border-radius: 2rem;
+        border-radius: 0.5rem;
       }
 
       .player-bar scale trough {
         all: unset;
         background-color: rgba($fg, 0.3);
-        box-shadow: 0px 0px 2px 1px rgba(black, 0.5);
-        border-radius: 1rem;
+        box-shadow: inset 0px 0px 3px rgba(black, 0.6);
+        border-radius: 0.5rem;
         min-height: 0.35rem;
         margin: 0rem 0.2rem 0.2rem 0rem;
       }
@@ -93,6 +93,7 @@
   font-size: 1.1rem;
   padding: 0 0.9rem;
   color: $red;
+  transition: color 0.3s ease-in-out;
 }
 
 .min:hover {
@@ -115,8 +116,10 @@
     }
 
     button {
+      transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
       &:hover {
         color: $magenta;
+        transform: scale(1.05);
       }
     }
   }
