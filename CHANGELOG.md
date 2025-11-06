@@ -1,3 +1,56 @@
+## New St terminal supported as a choice
+##### 04 Nov 2025
+
+**New:**
+
+I added my own build of the Suckless ST terminal as an option. Why?
+
+Because Alacritty doesn't support ligatures or native image protocol.
+
+And while Kitty does support these features, I don't use it and it seems like bloat to me.
+
+With that in mind, Alacritty and Kitty are GPU-accelerated, a trend in new terminals. Very nice and all, but do you really need your terminal to be GPU-accelerated?
+I don't, and with that in mind, I made my build of the ST terminal, which is initially old and archaic, but with the necessary and indicated patches, you can make it a modern, functional, and very, very fast terminal.
+
+I already have a repository dedicated to my ST build, if you want to take a look. https://github.com/gh0stzk/st-terminal
+But if you are installing first time my dots, the terminal will be installed automatically, if you dont, you can install whith sudo pacman st-gh0stzk
+
+### Patches included in this setup
+
+- [Kitty graphics protocol](https://github.com/sergei-grechanik/st-graphics) - Images in your terminal, just like kitty, just like a modern terminal emulator.
+- [Boxdraw](https://st.suckless.org/patches/boxdraw)
+- [xresources with signal reloading](https://st.suckless.org/patches/xresources-with-reload-signal/) - Configure st via Xresources and signal reloading.
+- [Scrollback](https://st.suckless.org/patches/scrollback)
+- [Wide glyph support](https://st.suckless.org/patches/glyph_wide_support/) - Fixes wide glyphs truncation
+- [Ligatures](https://st.suckless.org/patches/ligatures) - Proper drawing of ligatures.
+- [Appsync](https://st.suckless.org/patches/sync/) - Better draw timing to reduce flicker/tearing and improve animation smoothness.
+- [Blinking cursor](https://st.suckless.org/patches/blinking_cursor/) - Allows the use of a blinking cursor.
+- [Desktop entry](https://st.suckless.org/patches/desktopentry/) - This enables to find st in a graphical menu and to display it with a nice icon.
+- [Drag n drop](https://st.suckless.org/patches/drag-n-drop/) - This patch adds [XDND Drag-and-Drop](https://www.freedesktop.org/wiki/Specifications/XDND/) support for st.
+- [Dynamic cursor color](https://st.suckless.org/patches/dynamic-cursor-color/) - Swaps the colors of your cursor and the character you're currently on (much like alacritty).
+- [Bold is not bright](https://st.suckless.org/patches/bold-is-not-bright/) - This patch makes bold text rendered simply as bold, leaving the color unaffected.
+- [swap mouse](https://st.suckless.org/patches/swapmouse/) - This patch changes the mouse shape to the global default when the running program subscribes for mouse events, for instance, in programs like ranger, yazi and fzf.
+- [Unfocused-cursor](https://st.suckless.org/patches/unfocused_cursor/) - Removes the outlined rectangle, making the cursor invisible when the window is unfocused.
+
+![Shot-2025-05-01-102324](https://github.com/user-attachments/assets/d4f322e2-405d-4111-a395-f469cd2ddc9f)
+
+||Alacritty|St|Kitty|
+|:-|:-:|:-:|:-:|
+|GPU Accelerated|:white_check_mark:||:white_check_mark:|
+|Ligatures||:white_check_mark:|:white_check_mark:|
+|Image Protocol||:white_check_mark:|:white_check_mark:|
+|Fast & Lightweight|:white_check_mark:|:white_check_mark:||
+
+- The terminal select launcher has been updated, you can now select alacritty, kitty and the new st terminal. And now with images
+
+![Shot-2024-11-09-153444](https://github.com/user-attachments/assets/fbd09603-8e8f-4cbb-a685-83a69a6d4c35)
+
+- New applet rofi to manage your passwords using "pass" app. Yo can create, edit, delete, show, and a auto-type function. (Super + Alt + x)
+
+![Shot-2025-04-08-084756](https://github.com/user-attachments/assets/59a84a0d-b471-444a-b4f9-091d4a0e51e2)
+
+---
+
 ## changes
 ##### 12 Oct 2025
 

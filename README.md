@@ -71,7 +71,7 @@ Is an application designed to simplify the customization of your current theme. 
 
 #### Jgmenu
 
-Explore an elegant right-click menu (Desktop) made with Jgmenu, which also syncs with themes for flawless visual consistency. 
+Explore an elegant right-click menu (Desktop) made with Jgmenu, which also syncs with themes for flawless visual consistency.
 
 #### LockScreen
 
@@ -116,10 +116,7 @@ Rofi applets to simplify your workflow:
 - Terminal Selector (Alacritty or Kitty)
 - Rofi app launcher style selector
 - Tab app switcher
-
-#### Tmux Configuration
-
-Benefit from a newly added tmux configuration and design, enhancing your terminal multiplexing experience.
+- Pass Manager (Using pass app)
 
 #### Neovim Setup
 
@@ -252,13 +249,17 @@ Optimized, native ZSH configuration. Not __Oh-My-Zsh__ or other bloated plugin m
 | :--------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------: |
 |                                              Network Manager                                               |                                             Clipboard Manager                                              |
 
-| ![Shot-2024-11-09-153419](https://github.com/user-attachments/assets/4af56dfa-f61f-4b45-8350-d064fe67663a) | ![Shot-2024-11-09-153444](https://github.com/user-attachments/assets/9a5d86e3-d58c-4b26-bb3e-86ec4974261a) |
+| ![Shot-2024-11-09-153419](https://github.com/user-attachments/assets/4af56dfa-f61f-4b45-8350-d064fe67663a) | ![Shot-2024-11-09-153444](https://github.com/user-attachments/assets/fbd09603-8e8f-4cbb-a685-83a69a6d4c35) |
 | :--------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------: |
 |                                             Bluetooth Manager                                              |                                              Terminal Manager                                              |
 
 | ![Shot-2025-04-08-084756](https://github.com/user-attachments/assets/835366c8-88c5-4daf-8260-5c822e27abc8) | ![Shot-2025-04-08-084924](https://github.com/user-attachments/assets/c32f3cdb-7a5a-4372-b6f2-3f4a09f50868) |
 | :--------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------: |
 |                                              Tab app switcher                                              |                                              Rofi style selector                                           |
+
+| ![Shot-2025-04-08-084756](https://github.com/user-attachments/assets/59a84a0d-b471-444a-b4f9-091d4a0e51e2) |
+| :--------------------------------------------------------------------------------------------------------: |
+|                                              Rofi password manager                                         |
 
 ---
 
@@ -275,9 +276,9 @@ Optimized, native ZSH configuration. Not __Oh-My-Zsh__ or other bloated plugin m
 
 ### Eww widgets
 
-| ![ProfilePane](https://github.com/user-attachments/assets/07827cff-63b9-40db-b0ef-8c214a5d8ec3) | ![Calendar](https://github.com/user-attachments/assets/5ffcff9e-0852-4d9f-83b5-4bce71e69f7c) | ![MusicPlayer](https://github.com/user-attachments/assets/b96c49a1-57d1-43e5-bff0-cab2e6b4d101) |
-| :---: | :---: | :---: |
-| Profile Panel | Calendar | Music Player |
+| ![ProfilePane](https://github.com/user-attachments/assets/07827cff-63b9-40db-b0ef-8c214a5d8ec3) | ![MusicPlayer](https://github.com/user-attachments/assets/b96c49a1-57d1-43e5-bff0-cab2e6b4d101) |
+| :---: | :---: |
+| Profile Panel | Music Player |
 
 | ![Shot-2024-11-10-000520](https://github.com/user-attachments/assets/a0871d4e-5b2b-4e64-ae79-617feec71cf1) |
 | :--------------------------------------------------------------------------------------------------------: |
@@ -306,12 +307,6 @@ Optimized, native ZSH configuration. Not __Oh-My-Zsh__ or other bloated plugin m
 ## Yazi config
 
 https://github.com/user-attachments/assets/8e15cc1a-88b8-4a7e-a4de-e7da76021406
-
-## Tmux theme
-
-| ![ezgif com-animated-gif-maker](https://github.com/gh0stzk/dotfiles/assets/67278339/dd5f7261-0631-4a91-b584-51ca8859c197) |
-| :-----------------------------------------------------------------------------------------------------------------------: |
-|                                                        Tmux theme                                                         |
 
 ## Scratchpad
 

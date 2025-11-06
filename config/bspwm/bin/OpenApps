@@ -32,6 +32,9 @@ case "$1" in
 	--netmanager)
 		NetManagerDM
 		;;
+	--pass)
+		RofiPass
+		;;
 	--bluetooth)
 		rofi-bluetooth
 		;;
@@ -93,9 +96,6 @@ case "$1" in
 		;;
 	--player)
 		eww -c "$WIDGET_DIR" open --toggle music
-		;;
-	--calendar)
-		eww -c "$WIDGET_DIR" open --toggle date
 		;;
 	*)
 		echo "Invalid Option"

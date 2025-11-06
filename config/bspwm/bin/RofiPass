@@ -1,0 +1,127 @@
+#!/bin/sh
+# =============================================================
+# Author: gh0stzk
+# Repo: https://github.com/gh0stzk/dotfiles
+# Date: 05.11.2025
+#
+# Script Name: Rofi Password
+# Description: Rofi applet to manage your passwords with the "Pass" application
+# Features:
+#   - Add new password, show, copy, edit, delete and auto-type passwords
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# =============================================================
+
+# Switch for autotype
+typeit=0
+if [ "$1" = "--type" ]; then
+    typeit=1
+    shift
+fi
+
+rofi_theme="$HOME/.config/bspwm/config/rofi-themes/Pass.rasi"
+
+# Main Menu
+main_action=$(printf "Show passwords\nAdd new" | rofi -dmenu -theme "$rofi_theme" -p "What do you want to do?")
+[ -n "$main_action" ] || exit 0
+
+# Autotype function
+auto_type() {
+    passw=$(pass show "$1" | head -n1)
+    uname=$(pass show "$1" | tail -n1)
+    xdotool type "$uname"
+    xdotool key Tab
+    xdotool type "$passw"
+    xdotool key Tab
+}
+
+# Action: Add new
+if [ "$main_action" = "Add new" ]; then
+    new_name=$(rofi -dmenu -theme "$rofi_theme" -mesg "Write the name, how you will identify the service/platform/account.
+This will automatically generate a 20-character password with symbols.
+Example: Netflix" -p "Service/Platform Name")
+    [ -n "$new_name" ] || exit 0
+
+    pass generate --clip "$new_name" 20
+    dunstify "Pass" "A random password of 20 characters and symbols has been created for $new_name"
+
+    # Ask if you want to add a user
+    add_user=$(printf "Yes\nNo" | rofi -dmenu -theme "$rofi_theme" -mesg "Select if you want to add an username or email for $new_name" -p "Add user to $new_name?")
+    [ "$add_user" = "Yes" ] || exit 0
+
+    # Request username
+    user_input=$(rofi -dmenu -theme "$rofi_theme" -mesg "Here type the username or email" -p "Enter your username")
+    [ -n "$user_input" ] || exit 0
+
+    # Add user
+    tmpfile="$(mktemp)"
+    # Decrypt, append user, re-encrypt
+    pass show "$new_name" > "$tmpfile"
+    printf "Username: %s\n" "$user_input" >> "$tmpfile"
+    pass insert -m -f "$new_name" < "$tmpfile"
+    rm -f "$tmpfile"
+
+    dunstify "Pass" "User added $user_input to $new_name"
+    exit 0
+fi
+
+# Action: Show passwords
+# Get password list
+prefix="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
+password_files=""
+while IFS= read -r file; do
+    path="${file#"$prefix"/}"
+    path="${path%.gpg}"
+    password_files="${password_files}${path}\n"
+done <<EOF
+$(find "$prefix" -type f -name '*.gpg' | sort)
+EOF
+
+password=$(printf "%b" "$password_files" | rofi -dmenu -theme "$rofi_theme" -p "Select a password" "$@")
+[ -n "$password" ] || exit 0
+
+if [ "$typeit" -eq 1 ]; then
+    auto_type "$password"
+    exit 0
+fi
+
+action=$(printf "Copy\nEdit\nDelete\nAuto type" | rofi -dmenu -theme "$rofi_theme" -p "Select an action to $password")
+[ -n "$action" ] || exit 0
+
+case "$action" in
+    "Copy")
+        copy_what=$(printf "Password\nUser" | rofi -dmenu -theme "$rofi_theme" -p "What to copy from $password?")
+        case "$copy_what" in
+            "Password")
+                pass show -c "$password" >/dev/null 2>&1
+                dunstify "Pass" "Password copìed to clipboard"
+                ;;
+            "User")
+                user_line=$(pass show "$password" | grep -i '^username:')
+                user_value=$(printf "%s" "$user_line" | cut -d':' -f2- | sed 's/^ *//')
+                [ -n "$user_value" ] && printf "%s" "$user_value" | xclip -selection clipboard
+                dunstify "Pass" "Username copied to clipboard"
+                ;;
+            *)
+                exit 0
+                ;;
+        esac
+        ;;
+    "Edit")
+        pass edit "$password"
+        ;;
+    "Delete")
+        confirm=$(printf "Yes\nNo" | rofi -dmenu -theme "$rofi_theme" -p "Delete $password?")
+        if [ "$confirm" = "Yes" ]; then
+            pass rm -f "$password"
+            dunstify "Pass" "Password deleted"
+        fi
+        ;;
+    "Auto type")
+        auto_type "$password"
+        ;;
+    *)
+        exit 0
+        ;;
+esac

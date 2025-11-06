@@ -1,0 +1,12 @@
+Xft.antialias:	1
+Xft.hinting:	1
+Xft.autohint:	0
+Xft.hintstyle:	hintslight
+Xft.rgba:       rgb
+Xft.lcdfilter:	lcddefault
+
+st.font:        JetBrainsMono Nerd Font:style:regular:pixelsize=13
+st.borderpx:    15
+st.alpha: 0.93
+
+#include "colorscheme"

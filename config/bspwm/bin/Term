@@ -7,7 +7,7 @@
 # Script Name: Term Launcher
 # Description: Dynamic terminal selector/launcher with multi-mode support
 # Features:
-#   - Rofi-based terminal selection (Alacritty/Termite)
+#   - Rofi-based terminal selection (Alacritty/Kitty/St)
 #
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
 # Licensed under GPL-3.0 license
@@ -23,25 +23,44 @@ read -r MY_TERM < "$CFG_TERM"
 
 # Function to choose the terminal using rofi
 choose_terminal() {
-	options="Alacritty Kitty"
-	current_term=$(tr '[:upper:]' '[:lower:]' < "$CFG_TERM")
+    # Terminal List
+    terminals="Alacritty
+St
+Kitty"
 
-	index=0
-    selected_index=0
-    for opt in $options; do
-        lc_opt=$(printf "%s" "$opt" | tr '[:upper:]' '[:lower:]')
-        if [ "$lc_opt" = "$current_term" ]; then
+    current_term=$(tr '[:upper:]' '[:lower:]' < "$CFG_TERM")
+
+    # Directory where icons are stored
+    iconDir="$HOME/.config/bspwm/config/assets"
+
+    index=0
+    selected_index=-1
+    IFS='
+'
+    for term in $terminals; do
+        lc_term=$(printf "%s" "$term" | tr '[:upper:]' '[:lower:]')
+        if [ "$lc_term" = "$current_term" ]; then
             selected_index=$index
             break
         fi
         index=$((index + 1))
     done
+    unset IFS
 
-	chosen=$(printf '%s\n' $options | rofi -theme "$ROFI_THEME" \
-        -mesg "[ Your current terminal is $MY_TERM ]" -dmenu -selected-row "$selected_index")
+    # Show menu with icons
+    selected=$(
+        IFS='
+'
+        for term in $terminals; do
+            printf "%s\000icon\037%s/%s.png\n" "$term" "$iconDir" "$term"
+        done | rofi -dmenu \
+                    -theme "$ROFI_THEME" \
+                    -selected-row "$selected_index"
+    )
 
-    if [ -n "$chosen" ]; then
-        echo "$chosen" | tr '[:upper:]' '[:lower:]' > "$CFG_TERM"
+    # Save selection if the user chooses one
+    if [ -n "$selected" ]; then
+        echo "$selected" | tr '[:upper:]' '[:lower:]' > "$CFG_TERM"
     fi
 }
 
@@ -53,28 +72,40 @@ read -r MY_TERM < "$CFG_TERM"
 
 # Launch the terminal with appropriate options
 case $MY_TERM in
-	"alacritty")
-		case $1 in
-			"--terminal") alacritty ;;
-			"--floating") alacritty --class FloaTerm,FloaTerm ;;
-			"--update") alacritty --hold --class FloaTerm,FloaTerm -e paru -Syu --nocombinedupgrade ;;
-			"--checkupdates") alacritty --hold --class Updating,Updating -e Updates --print-updates ;;
-			"--yazi") alacritty --class FloaTerm,YaziTerm -e yazi ;;
-			"--nvim") alacritty -e nvim ;;
-			"--music") alacritty --class FloaTerm,MusicTerm -e ncmpcpp ;;
-			"--fetch") alacritty --class FloaTerm,FetchTerm -e ~/.local/bin/sysfetch ;;
-		esac
-		;;
-	"kitty")
-		case $1 in
-			"--terminal") kitty ;;
-			"--floating") kitty --class=FloaTerm ;;
-			"--update") kitty --hold --class=FloaTerm -e paru -Syu --nocombinedupgrade ;;
-			"--checkupdates") kitty --hold --class=Updating -e Updates --print-updates ;;
-			"--yazi") kitty --hold --name=YaziTerm --class=FloaTerm -e yazi ;;
-			"--nvim") kitty -e nvim ;;
-			"--music") kitty --name=MusicTerm --class=FloaTerm -e ncmpcpp ;;
-			"--fetch") kitty --name=FetchTerm --class=FloaTerm -e ~/.local/bin/sysfetch ;;
-		esac
+    "alacritty")
+	case $1 in
+	    "--terminal") alacritty ;;
+	    "--floating") alacritty --class FloaTerm,FloaTerm ;;
+	    "--update") alacritty --hold --class FloaTerm,FloaTerm -e paru -Syu --nocombinedupgrade ;;
+	    "--checkupdates") alacritty --hold --class Updating,Updating -e Updates --print-updates ;;
+	    "--yazi") alacritty --class FloaTerm,YaziTerm -e yazi ;;
+	    "--nvim") alacritty -e nvim ;;
+	    "--music") alacritty --class FloaTerm,MusicTerm -e ncmpcpp ;;
+	    "--fetch") alacritty --class FloaTerm,FetchTerm -e ~/.local/bin/sysfetch ;;
+	esac
+	;;
+    "st")
+	case $1 in
+	    "--terminal") st ;;
+	    "--floating") st -c FloaTerm ;;
+	    "--update") st -c FloaTerm -e sh -c 'paru -Syu --nocombinedupgrade; read _ </dev/tty 2>/dev/null' ;;
+	    "--checkupdates") st -c Updating -e sh -c 'Updates --print-updates; read _ </dev/tty 2>/dev/null' ;;
+	    "--yazi") st -n YaziTerm -c FloaTerm -e yazi ;;
+	    "--nvim") st -e nvim ;;
+	    "--music") st -n MusicTerm -c FloaTerm -e ncmpcpp ;;
+	    "--fetch") st -n FetchTerm -c FloaTerm -e ~/.local/bin/sysfetch ;;
+	esac
+	;;
+    "kitty")
+	case $1 in
+	    "--terminal") kitty ;;
+	    "--floating") kitty --class=FloaTerm ;;
+	    "--update") kitty --hold --class=FloaTerm -e paru -Syu --nocombinedupgrade ;;
+	    "--checkupdates") kitty --hold --class=Updating -e Updates --print-updates ;;
+	    "--yazi") kitty --hold --name=YaziTerm --class=FloaTerm -e yazi ;;
+	    "--nvim") kitty -e nvim ;;
+	    "--music") kitty --name=MusicTerm --class=FloaTerm -e ncmpcpp ;;
+	    "--fetch") kitty --name=FetchTerm --class=FloaTerm -e ~/.local/bin/sysfetch ;;
+	esac
 	;;
 esac

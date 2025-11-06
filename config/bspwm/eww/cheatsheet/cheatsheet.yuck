@@ -224,6 +224,9 @@
         (label :class "keys" :xalign 0 :text "Keyboard Layout")
         (label :class "keys-alt" :xalign 1 :text "Super + Alt + k"))
       (box :orientation "h" :space-evenly "true"
+        (label :class "keys" :xalign 0 :text "Password Manager")
+        (label :class "keys-alt" :xalign 1 :text "Super + Alt + x"))
+      (box :orientation "h" :space-evenly "true"
         (label :class "category-apps" :xalign 0.5 :text "Apps")
         (label :text ""))
       (box :orientation "h" :space-evenly "true"

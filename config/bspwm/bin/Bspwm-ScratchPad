@@ -89,6 +89,7 @@ else
 	# Launch the corresponding terminal
 	case $MY_TERM in
         "alacritty") alacritty --class "$SCRATCHPAD_NAME" & ;;
+        "st") st -c "$SCRATCHPAD_NAME" & ;;
         "kitty")     kitty --class="$SCRATCHPAD_NAME" & ;;
     esac
 
