@@ -1,3 +1,17 @@
+## Feat - Dynamic rofi image header. - Modularized Theme.sh
+##### 10 Nov 2025
+
+**New**
+- The header image of the Rofi app launcher is now dynamic and changes according to the wallpaper you've set. It works with all wallpaper engines, even if you set an animated wallpaper.
+
+https://github.com/user-attachments/assets/57b45df5-9124-4a62-9416-fd1ed011fdc1
+
+- I've modularized Theme.sh, making it much easier to change the appearance of applications.
+
+For example, if you don't use the Kitty terminal and don't need its appearance to change every time you change the theme, simply delete the xx-kitty.sh file from the ~/.config/bspwm/config/modules/ directory.
+
+Similarly, if you want mpv to change its appearance every time you change the theme, just add a file called xx-mpv.sh to the same directory with the necessary code. Remember that you change colors, among other things, in the theme-config.bash file located within each theme.
+
 ## New St terminal supported as a choice
 ##### 04 Nov 2025
 

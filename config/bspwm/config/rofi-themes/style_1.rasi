@@ -15,7 +15,6 @@ configuration {
 	me-accept-entry:			"MousePrimary";
 }
 
-
 @import "shared.rasi"
 
 
@@ -52,13 +51,12 @@ listbox {
     children:                    [ "listview" ];
 }
 
-
 inputbar {
     enabled:                     true;
     spacing:                     10px;
     padding:                     50px 100px;
     background-color:            transparent;
-    background-image:            var(img-background);
+    background-image:            url("~/.cache/rofi_header.webp", width);
     text-color:                  @foreground;
     orientation:                 horizontal;
     children:                    [ "textbox-prompt-colon", "entry" ];

@@ -1,0 +1,63 @@
+#!/bin/sh
+# =============================================================
+# Author:  gh0stzk
+# Repo:    https://github.com/gh0stzk/dotfiles
+# Date:    07.11.2025
+# WallSync: Update and regenerate the wallpaper image currently in use
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# =============================================================
+
+RICE=$(cat "$HOME/.config/bspwm/.rice")
+CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}"
+HASH_FILE="$CACHE_DIR/current_wall.hash"
+
+# Common magick parameters
+MAGICK_PARAMS="-strip -resize 30% -gravity center -crop 760x196+0+0 +repage -quality 65 -define webp:method=3 -define webp:thread-level=1"
+
+mkdir -p "$CACHE_DIR"
+
+generate_header() {
+    INPUT="$1"
+    magick "$INPUT" $MAGICK_PARAMS "$CACHE_DIR/rofi_header.webp"
+}
+
+check_and_update() {
+    INPUT="$1"
+    NEW_HASH=$(md5sum "$INPUT" | cut -d' ' -f1)
+    OLD_HASH=$(cat "$HASH_FILE" 2>/dev/null)
+
+    if [ "$NEW_HASH" != "$OLD_HASH" ]; then
+        echo "$NEW_HASH" > "$HASH_FILE"
+        generate_header "$INPUT"
+        return 0
+    fi
+    return 1
+}
+
+handle_animated() {
+    THEME_CFG="$HOME/.config/bspwm/rices/$RICE/theme-config.bash"
+    ANIMATED_WALL=$(awk -F= '/^ANIMATED_WALL=/ {gsub(/"/,"",$2); print $2}' "$THEME_CFG")
+    ANIMATED_WALL=$(printf '%s\n' "$ANIMATED_WALL" | sed "s|\$HOME|$HOME|")
+
+    TEMP_FRAME="$CACHE_DIR/tmp_frame.webp"
+    ffmpeg -loglevel error -y -i "$ANIMATED_WALL" -vframes 1 "$TEMP_FRAME"
+    ln -sf "$TEMP_FRAME" "$CACHE_DIR/current_wall"
+
+    check_and_update "$TEMP_FRAME"
+    rm -f "$TEMP_FRAME"
+}
+
+if [ "$1" = "--animated" ]; then
+    handle_animated
+    exit 0
+fi
+
+# Get current wallpaper from ~/.fehbg
+WALL=$(awk -F"'" '/feh --no-fehbg --bg/ {print $2}' "$HOME/.fehbg" 2>/dev/null)
+[ -z "$WALL" ] && exit 1
+
+ln -sf "$WALL" "$CACHE_DIR/current_wall"
+check_and_update "$WALL"
+
+exit 0

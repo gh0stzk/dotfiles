@@ -98,12 +98,13 @@ geany_theme="z0mbi3-HackTheBox"
 
 # Wallpaper engine
 # Available engines:
-# - Theme	(Set a random wallpaper from rice directory)
-# - CustomDir	(Set a random wallpaper from the directory you specified)
-# - CustomImage	(Sets a specific image as wallpaper)
-# - CustomAnimated (Set an animated wallpaper. "mp4, mkv, gif")
+# - Random  (Set a random wallpaper from Walls rice directory)
+# - CustomDir   (Set a random wallpaper from the directory you specified)
+# - Default (Sets a specific image as wallpaper) *Default
+# - Animated (Set an animated wallpaper. "mp4, mkv, gif")
 # - Slideshow (Change randomly every 15 minutes your wallpaper from Walls rice directory)
-ENGINE="Theme"
-CUSTOM_DIR="/path/to/dir"
-CUSTOM_WALL="/path/to/image"
-CUSTOM_ANIMATED="$HOME/.config/bspwm/config/assets/animated_wall.mp4"
+ENGINE="Default"
+
+CUSTOM_DIR="/path/to/your/wallpapers/directory"
+DEFAULT_WALL="$HOME/.config/bspwm/rices/h4ck3r/walls/wall-01.webp"
+ANIMATED_WALL="$HOME/.config/bspwm/config/assets/animated_wall.mp4"

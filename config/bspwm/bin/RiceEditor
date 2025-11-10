@@ -409,10 +409,10 @@ class RiceEditorApp(Gtk.Window):
 
                 # Dropdown for Wall Engine options
                 self.wall_engine_combo = Gtk.ComboBoxText()
-                self.wall_engine_combo.append("Theme", "Default")
+                self.wall_engine_combo.append("Random", "Random")
                 self.wall_engine_combo.append("CustomDir", "Custom Dir")
-                self.wall_engine_combo.append("CustomImage", "Custom Image")
-                self.wall_engine_combo.append("CustomAnimated", "Custom Animated")
+                self.wall_engine_combo.append("Default", "Default")
+                self.wall_engine_combo.append("Animated", "Custom Animated")
                 self.wall_engine_combo.append("Slideshow", "SlideShow")
 
                 # Set initial value
@@ -1436,7 +1436,7 @@ class RiceEditorApp(Gtk.Window):
             print(f"Archivo de configuración no encontrado: {config_file}")
         except Exception as e:
             print(f"Error al leer ENGINE: {e}")
-        return "Theme"  # Valor por defecto
+        return "Default"  # Valor por defecto
 
     def update_wall_engine_options(self, engine):
         """
@@ -1445,11 +1445,11 @@ class RiceEditorApp(Gtk.Window):
         for child in self.wall_engine_options_box.get_children():
             self.wall_engine_options_box.remove(child)
 
-        if engine == "Theme":  # Default
+        if engine == "Random":  # Default
             current_theme = self.get_current_theme()
             default_label = Gtk.Label(
                 label=(
-                    "Default option, it will put a random wallpaper from the\n"
+                    "It will put a random wallpaper from the\n"
                     "Walls directory of the current theme, drop your images in\n"
                     f"~/.config/bspwm/rices/{current_theme}/Walls"
                 )
@@ -1458,7 +1458,7 @@ class RiceEditorApp(Gtk.Window):
             default_label.set_justify(Gtk.Justification.LEFT)  # Alinear multilinea a la izquierda
 
             apply_button = Gtk.Button(label="Apply")
-            apply_button.connect("clicked", self.on_apply_wall_engine, "Theme")
+            apply_button.connect("clicked", self.on_apply_wall_engine, "Random")
 
             self.wall_engine_options_box.pack_start(default_label, False, False, 10)
             self.wall_engine_options_box.pack_start(apply_button, False, False, 10)
@@ -1490,7 +1490,7 @@ class RiceEditorApp(Gtk.Window):
             self.wall_engine_options_box.pack_start(custom_dir_label, False, False, 10)
             self.wall_engine_options_box.pack_start(hbox, False, False, 10)
 
-        elif engine == "CustomImage":  # Custom Image
+        elif engine == "Default":  # Custom Image
             # Label for Custom Image
             custom_image_label = Gtk.Label(
                 label="Select the image you want to use as wallpaper."
@@ -1506,7 +1506,7 @@ class RiceEditorApp(Gtk.Window):
             browse_button.connect("clicked", self.on_browse_file, custom_image_entry)
 
             apply_button = Gtk.Button(label="Apply")
-            apply_button.connect("clicked", self.on_apply_wall_engine, "CustomImage", custom_image_entry)
+            apply_button.connect("clicked", self.on_apply_wall_engine, "Default", custom_image_entry)
 
             # Layout
             hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
@@ -1517,7 +1517,7 @@ class RiceEditorApp(Gtk.Window):
             self.wall_engine_options_box.pack_start(custom_image_label, False, False, 10)
             self.wall_engine_options_box.pack_start(hbox, False, False, 10)
 
-        elif engine == "CustomAnimated":  # Custom Image
+        elif engine == "Animated":  # Custom Image
             # Label for Custom Animated
             custom_animated_label = Gtk.Label(
                 label="Select the file you want to use as wallpaper.\nValid files (mp4, mkv, gif)"
@@ -1533,7 +1533,7 @@ class RiceEditorApp(Gtk.Window):
             browse_button.connect("clicked", self.on_browse_animated, custom_animated_entry)
 
             apply_button = Gtk.Button(label="Apply")
-            apply_button.connect("clicked", self.on_apply_wall_engine, "CustomAnimated", custom_animated_entry)
+            apply_button.connect("clicked", self.on_apply_wall_engine, "Animated", custom_animated_entry)
 
             # Layout
             hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
@@ -1572,10 +1572,10 @@ class RiceEditorApp(Gtk.Window):
         return self.read_theme_variable("CUSTOM_DIR")
 
     def get_custom_wall(self):
-        return self.read_theme_variable("CUSTOM_WALL")
+        return self.read_theme_variable("DEFAULT_WALL")
 
     def get_custom_animated(self):
-        return self.read_theme_variable("CUSTOM_ANIMATED")
+        return self.read_theme_variable("ANIMATED_WALL")
 
     def read_theme_variable(self, var_name):
         current_theme = self.get_current_theme()
@@ -1609,44 +1609,50 @@ class RiceEditorApp(Gtk.Window):
                 if engine == "CustomDir" and line.startswith('CUSTOM_DIR='):
                     content[i] = f'CUSTOM_DIR="{entry.get_text()}"\n'
 
-                if engine == "CustomImage" and line.startswith('CUSTOM_WALL='):
-                    content[i] = f'CUSTOM_WALL="{entry.get_text()}"\n'
+                if engine == "Default" and line.startswith('DEFAULT_WALL='):
+                    content[i] = f'DEFAULT_WALL="{entry.get_text()}"\n'
 
-                if engine == "CustomAnimated" and line.startswith('CUSTOM_ANIMATED='):
-                    content[i] = f'CUSTOM_ANIMATED="{entry.get_text()}"\n'
+                if engine == "Animated" and line.startswith('ANIMATED_WALL='):
+                    content[i] = f'ANIMATED_WALL="{entry.get_text()}"\n'
 
             with open(config_file, 'w') as f:
                 f.writelines(content)
 
             # Aplicar cambios en tiempo real
             command = ""
-            if engine == "Theme":
+            if engine == "Random":
                 command = f'''
                 pkill xwinwrap;
                 [ -f /tmp/wall_refresh.pid ] && kill $(cat /tmp/wall_refresh.pid) 2>/dev/null;
                 rm -f /tmp/wall_refresh.pid;
-                feh -z --no-fehbg --bg-fill ~/.config/bspwm/rices/{current_theme}/walls
+                random_img=$(find "$HOME/.config/bspwm/rices/{current_theme}/walls" -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \) | shuf -n 1);
+                feh --bg-fill $random_img;
+                WallSync &
                 '''
             elif engine == "CustomDir":
                 command = f'''
                 pkill xwinwrap;
                 [ -f /tmp/wall_refresh.pid ] && kill $(cat /tmp/wall_refresh.pid) 2>/dev/null;
                 rm -f /tmp/wall_refresh.pid;
-                feh -z --no-fehbg --bg-fill "{entry.get_text()}"
+                random_img=$(find "{entry.get_text()}" -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \) | shuf -n 1);
+                feh --bg-fill "$random_img";
+                WallSync &
                 '''
-            elif engine == "CustomImage":
+            elif engine == "Default":
                 command = f'''
                 pkill xwinwrap;
                 [ -f /tmp/wall_refresh.pid ] && kill $(cat /tmp/wall_refresh.pid) 2>/dev/null;
                 rm -f /tmp/wall_refresh.pid;
-                feh --no-fehbg --bg-fill "{entry.get_text()}"
+                feh --bg-fill "{entry.get_text()}";
+                WallSync &
                 '''
-            elif engine == "CustomAnimated":
+            elif engine == "Animated":
                 command = f'''
                 pkill xwinwrap;
                 [ -f /tmp/wall_refresh.pid ] && kill $(cat /tmp/wall_refresh.pid) 2>/dev/null;
                 rm -f /tmp/wall_refresh.pid;
-                AnimatedWall --start "{entry.get_text()}"
+                AnimatedWall --start "{entry.get_text()}":
+                WallSync --animated &
                 '''
             elif engine == "Slideshow":
                 command = f'''
@@ -1655,7 +1661,9 @@ class RiceEditorApp(Gtk.Window):
                 rm -f /tmp/wall_refresh.pid;
                 bash -c '
                     while true; do
-                        feh -z --no-fehbg --bg-fill ~/.config/bspwm/rices/{current_theme}/walls;
+                        random_img=$(find "$HOME/.config/bspwm/rices/{current_theme}/walls" -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \) | shuf -n 1);
+                        feh --bg-fill $random_img;
+                        WallSync &
                         sleep 900
                     done & echo $! > /tmp/wall_refresh.pid
                 '
