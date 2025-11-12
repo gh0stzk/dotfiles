@@ -153,12 +153,16 @@ alt + {t,shift + t,a,f}
     bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # Set the node flags
-alt + {m,x,s,p,h}
-    bspc node -g {marked,locked,sticky,private,hidden}
+alt + {m,x,s,p}
+    bspc node -g {marked,locked,sticky,private}
 
-# Show hidden nodes one by one
+# Hide window
+alt + h
+    HideNode --hide
+
+# Show menu to restore hidden windows
 ctrl + alt + h
-    bspc node $(bspc query -N -n .hidden.local.window | head -n1) --flag hidden=off
+    HideNode --menu
 
 # ----- Focus/Swap Nodes ----- #
 

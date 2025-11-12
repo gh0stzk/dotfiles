@@ -1,0 +1,85 @@
+#!/bin/sh
+# =============================================================
+# Author: gh0stzk
+# Repo:   https://github.com/gh0stzk/dotfiles
+# Date:   12.11.2025
+#
+# Original Idea:    https://github.com/ArnaudLelievre48/Minimizing-BSPWM
+#
+# Script Name: HideNode
+# Description: Hides windows and displays a menu to restore them.
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# =============================================================
+
+THUMB_DIR="/tmp/Minimize_thumbs"
+META_DIR="/tmp/Minimize_meta"
+THEME="$HOME/.config/bspwm/config/rofi-themes/Hide.rasi"
+mkdir -p "$THUMB_DIR"
+mkdir -p "$META_DIR"
+
+hide() {
+    wid=${1:-$(bspc query -N -n focused)}
+    [ -z "$wid" ] && exit 1
+
+    desktop=$(bspc query -D -n "$wid" --names)
+    echo "$desktop" > "$META_DIR/$wid.desktop"
+
+    maim -i "$wid" "$THUMB_DIR/$wid.webp"
+    sleep 0.05
+    bspc node "$wid" -g hidden=on
+}
+
+restore() {
+    wid=${1:-$(bspc query -N -n any.leaf.window -d hidden | head -n 1)}
+    [ -z "$wid" ] && exit 1
+
+    rm -f "$THUMB_DIR/$wid.webp"
+    bspc node "$wid" -g hidden=off
+    bspc node "$wid" -t 'tiled ~'
+
+    desktop_file="$META_DIR/$wid.desktop"
+    if [ -f "$desktop_file" ]; then
+        original_desktop=$(cat "$desktop_file")
+        bspc node "$wid" -d "$original_desktop"
+        bspc desktop "$original_desktop" -f
+        bspc node "$wid" -f
+        rm -f "$desktop_file"
+    else
+        bspc node "$wid" -d focused
+    fi
+}
+
+menu() {
+    entries=""
+    wids=""
+    k=0
+
+    for A in "$THUMB_DIR"/*; do
+        [ -f "$A" ] || continue
+        wid=$(basename "$A" .webp)
+        window_name=$(xprop -id "$wid" WM_NAME 2>/dev/null | cut -d '"' -f2)
+        [ -z "$window_name" ] && window_name="$wid"
+
+        entries="${entries}${k} ~ ${window_name}\000icon\037${A}\n"
+        wids="${wids}${wid}|"
+        k=$((k + 1))
+    done
+
+    window=$(printf "%b" "$entries" | rofi -dmenu -show-icons -theme "$THEME")
+    [ -z "$window" ] && exit 0
+
+    index=$(printf "%s" "$window" | cut -d ' ' -f1)
+    index=$((index + 1))
+
+    wid=$(printf "%s" "$wids" | cut -d '|' -f"$index")
+    [ -n "$wid" ] && restore "$wid"
+}
+
+
+case "$1" in
+    --hide) hide "$2" ;;
+    --menu) menu ;;
+    *)  echo "Uso: $0 --minimize [WID] | --menu"; exit 1 ;;
+esac

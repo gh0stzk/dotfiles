@@ -1,3 +1,17 @@
+## feat - Minimizing like... windows in bspwm
+##### 12 Nov 2025
+
+**New**
+I added a feature to make it appear as if the windows are "minimized," but they actually hide.
+
+Then a menu appears with images of your "minimized" windows, allowing you to select one and restore it.
+
+It's basically another method for hiding and showing windows, but with a nice menu.
+
+I got the idea from https://github.com/ArnaudLelievre48/Minimizing-BSPWM, all credit to him.
+
+https://github.com/user-attachments/assets/9e368822-f98d-4102-9c09-835751887c86
+
 ## Feat - Dynamic rofi image header. - Modularized Theme.sh
 ##### 10 Nov 2025
 
