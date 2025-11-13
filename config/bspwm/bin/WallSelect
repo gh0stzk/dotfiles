@@ -99,7 +99,7 @@ wall_selection=$(find "${wall_dir}" -type f \( -iname "*.jpg" -o -iname "*.jpeg"
 # Set wallpaper
 [ -n "$wall_selection" ] && \
     sed -i "$HOME/.config/bspwm/rices/$current_rice/theme-config.bash" \
-        -e 's/^ENGINE=.*/ENGINE="CustomImage"/' \
-        -e "s|^CUSTOM_WALL=.*|CUSTOM_WALL=\"$wall_dir/$wall_selection\"|" && \
-    feh --no-fehbg --bg-fill "${wall_dir}/${wall_selection}" && \
+        -e 's/^ENGINE=.*/ENGINE="Default"/' \
+        -e "s|^DEFAULT_WALL=.*|DEFAULT_WALL=\"$wall_dir/$wall_selection\"|" && \
+    feh --bg-fill "${wall_dir}/${wall_selection}" && \
     WallSync &
