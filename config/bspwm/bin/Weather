@@ -2,7 +2,7 @@
 # =============================================================
 # Author:  gh0stzk
 # Repo:    https://github.com/gh0stzk/dotfiles
-# Date:    24.04.2025
+# Date:    21.11.2025
 #
 # Weather - Weather Monitor for Polybar/Eww
 # Features:
@@ -22,31 +22,24 @@
 # ===== Configuration =====
 KEY="8b05d62206f459e1d298cbe5844d7d87"
 CITY="Mexico City"  # Go to https://openweathermap.org/find to find your city/town
-UNITS="metric" # Available "metric" "imperial"
-CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/$USER"
-CACHE_FILE="$CACHE_DIR/weather_data"
-CACHE_TIMEOUT=900  # 15 minutes in seconds
+UNITS="metric" # metric | imperial
 
-get_weather_data() {
-    encoded_city=$(echo "$CITY" | sed 's/ /%20/g')
-    url="https://api.openweathermap.org/data/2.5/weather?q=$encoded_city&appid=$KEY&units=$UNITS"
-
-    # Use cache if valid
-    if [ -f "$CACHE_FILE" ]; then
-        now=$(date +%s)
-        file_age=$(stat -c %Y "$CACHE_FILE")
-        age_diff=$(expr "$now" - "$file_age")
-        [ "$age_diff" -lt "$CACHE_TIMEOUT" ] && cat "$CACHE_FILE" && return
-    fi
-
-    # Get new data
-    if ! response=$(curl -sf --max-time 10 --show-error "$url"); then
-        [ -f "$CACHE_FILE" ] && cat "$CACHE_FILE" || exit 1
-    else
-        echo "$response" | tee "$CACHE_FILE"
-    fi
+# Wait for internet
+wait_for_internet() {
+    while ! curl -fsS --max-time 5 https://google.com >/dev/null 2>&1; do
+        sleep 0.5
+    done
 }
 
+# Get weather
+get_weather_data() {
+    encoded_city=$(printf "%s" "$CITY" | sed 's/ /%20/g')
+    url="https://api.openweathermap.org/data/2.5/weather?q=$encoded_city&appid=$KEY&units=$UNITS"
+
+    curl -fsS --max-time 10 "$url"
+}
+
+# Parse data
 parse_weather_values() {
     data=$1
     W_TEMP=$(echo "$data" | jq -r '.main.temp | round')
@@ -55,24 +48,26 @@ parse_weather_values() {
     W_ICON=$(echo "$data" | jq -r '.weather[0].icon')
 }
 
+# Icons
 get_weather_icon() {
     case "$1" in
-        "01d") echo "" ;;    # Sol claro
-        "01n") echo "" ;;    # Luna clara
-        "02d") echo "" ;;    # Pocas nubes (día)
-        "02n") echo "" ;;    # Pocas nubes (noche)
-        "03d"|"03n") echo "" ;;  # Nubes dispersas
-        "04d"|"04n") echo "" ;;  # Nubes rotas
-        "09d"|"09n") echo "" ;;  # Llovizna
-        "10d") echo "" ;;    # Lluvia (día)
-        "10n") echo "" ;;    # Lluvia (noche)
-        "11d"|"11n") echo "" ;;  # Tormenta
-        "13d"|"13n") echo "" ;;  # Nieve
-        "50d"|"50n") echo "" ;;  # Niebla
-        *) echo "" ;;        # Desconocido
+        "01d") echo "" ;;
+        "01n") echo "" ;;
+        "02d") echo "" ;;
+        "02n") echo "" ;;
+        "03d"|"03n") echo "" ;;
+        "04d"|"04n") echo "" ;;
+        "09d"|"09n") echo "" ;;
+        "10d") echo "" ;;
+        "10n") echo "" ;;
+        "11d"|"11n") echo "" ;;
+        "13d"|"13n") echo "" ;;
+        "50d"|"50n") echo "" ;;
+        *) echo "" ;;
     esac
 }
 
+# Colors
 get_weather_hex() {
     icon_prefix=$(echo "$1" | cut -c1-2)
     case "$icon_prefix" in
@@ -86,7 +81,8 @@ get_weather_hex() {
     esac
 }
 
-mkdir -p "$CACHE_DIR"
+# Execution
+wait_for_internet
 weather_data=$(get_weather_data || exit 1)
 parse_weather_values "$weather_data"
 
@@ -122,7 +118,7 @@ case "$1" in
         printf "%%{F%s}%s%%{F-} %s°\n" "$hex" "$icon" "$W_TEMP"
         ;;
     *)
-        echo "Opción no válida"
+        echo "No valid option" >&2
         exit 1
         ;;
 esac
