@@ -31,7 +31,7 @@ get_monitor_info() {
 }
 
 # Get connected monitors using POSIX-compliant method
-set -- $(echo "$XRANDR_OUTPUT" | awk '$2 == "connected" {print $1}')
+set -- $(xrandr --listactivemonitors | grep "[0-9]:" | awk '{print $4}')
 NUM_MONITORS=$#
 
 # Main case for monitor configuration
