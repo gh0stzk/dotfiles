@@ -1,15 +1,47 @@
 #!/bin/sh
 # =============================================================
 # Author: gh0stzk
+# Colaborator: Maxcrazy1
 # Repo:   https://github.com/gh0stzk/dotfiles
-# Date:   24.04.2025
+# Date:   26.11.2025
 # Info:   This script uses playerctl and mpc to control the multimedia playback
 #         "stop, pause, play, next, previous" of different players like
 #         spotify, ncmpcpp, clementine, strawberry and others.
 # =============================================================
 
 # Set the player
-[ -n "$(pgrep spotify)" ] && Control="spotify" || Control="MPD"
+# [ -n "$(pgrep spotify)" ] && Control="spotify" || Control="MPD"
+
+LAST_PLAYER_FILE="/tmp/last_player"
+
+get_active_player() {
+    playerctl -l 2>/dev/null | while read -r player; do
+        status=$(playerctl --player="$player" status 2>/dev/null)
+        [ "$status" = "Playing" ] && echo "$player" && exit
+    done
+}
+
+get_last_player() {
+    [ -f "$LAST_PLAYER_FILE" ] && cat "$LAST_PLAYER_FILE"
+}
+
+save_last_player() {
+    echo "$Control" > "$LAST_PLAYER_FILE"
+}
+
+Control=$(get_active_player)
+
+if [ -z "$Control" ]; then
+    Control=$(get_last_player)
+fi
+
+if [ -z "$Control" ]; then
+    if [ -n "$(pgrep spotify)" ]; then
+        Control="spotify"
+    else
+        Control="MPD"
+    fi
+fi
 
 # Here the cover image will be saved.
 Cover=/tmp/cover.png
@@ -18,6 +50,26 @@ bkpCover=~/.config/bspwm/config/assets/fallback.webp
 # mpd music directory for mpd clients.
 mpddir=~/Music
 LAST_SONG_FILE="/tmp/last_song.txt"
+
+notify_song() {
+    current_song="$(playerctl --player="$Control" metadata --format '{{title}}-{{artist}}')"
+
+        art_url=$(playerctl --player="$Control" metadata mpris:artUrl)
+        if [ -n "$art_url" ]; then
+            albumart=$(echo "$art_url" | sed -e 's/open.spotify.com/i.scdn.co/g')
+            curl -s "$albumart" --output "$Cover"
+        else
+            cp "$bkpCover" "$Cover"
+        fi
+
+        echo "$current_song" > "$LAST_SONG_FILE"
+
+        artist=$(playerctl --player="$Control" metadata --format '{{artist}}')
+        title=$(playerctl --player="$Control" metadata --format '{{title}}')
+        album=$(playerctl --player="$Control" metadata --format '{{album}}')
+        notify-send "$artist" "$title - $album" -i "$Cover"
+}
+
 
 case $Control in
     MPD)
@@ -97,9 +149,26 @@ case $Control in
                 ;;
             --previous)
                 playerctl --player="$Control" previous
+                sleep 0.2
+                notify_song
                 ;;
             --toggle)
-                playerctl --player="$Control" play-pause
+    if playerctl --player="$Control" status >/dev/null 2>&1; then
+        playerctl --player="$Control" play-pause
+
+        sleep 0.1
+        status=$(playerctl --player="$Control" status)
+
+        # Si se pausó, recordarlo
+        if [ "$status" = "Paused" ]; then
+            save_last_player
+        fi
+
+        # Si se reanudó, notificar
+        [ "$status" = "Playing" ] && notify_song
+    else
+        mpc -q toggle
+    fi
                 ;;
             --stop)
                 playerctl --player="$Control" stop
@@ -120,22 +189,7 @@ case $Control in
                 echo "$Control"
                 ;;
             --cover)
-                current_song="$(playerctl --player="$Control" metadata --format '{{title}}-{{artist}}')"
-				last_song=""
-				[ -f "$LAST_SONG_FILE" ] && last_song=$(cat "$LAST_SONG_FILE")
-
-				if [ "$current_song" != "$last_song" ] || [ ! -f "$Cover" ]; then
-					albumart="$(playerctl --player="$Control" metadata mpris:artUrl | sed -e 's/open.spotify.com/i.scdn.co/g')"
-					art_url=$(playerctl --player="$Control" metadata mpris:artUrl)
-                    if [ -n "$art_url" ]; then
-                        albumart=$(echo "$art_url" | sed -e 's/open.spotify.com/i.scdn.co/g')
-                        curl -s "$albumart" --output "$Cover"
-                    else
-                        cp "$bkpCover" "$Cover"
-                    fi
-				echo "$current_song" > "$LAST_SONG_FILE"
-				fi
-
+                notify_song
 				echo "$Cover"
                 ;;
             --position)
@@ -164,3 +218,4 @@ case $Control in
                 ;;
         esac
 esac 2>/dev/null
+
