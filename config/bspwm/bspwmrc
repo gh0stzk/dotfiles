@@ -81,5 +81,8 @@ run clipcatd
 # Launch polkit
 run lxpolkit
 
+pgrep -f player-notify-listener.sh || "${HOME}"/bin/player-notify-listener.sh &
+pgrep -f notify_song || "${HOME}"/bin/notify_song &
+
 # Start one time message
 [ ! -f "$HOME/.config/bspwm/config/.first_run_done" ] && alacritty --hold -e sh -c 'cat "$HOME/.config/bspwm/config/FirstMessage.txt"; sleep 0.1' && touch "$HOME/.config/bspwm/config/.first_run_done"
