@@ -1,79 +1,266 @@
 #!/bin/sh
+# =============================================================
+# Author: gh0stzk
+# Colaborator: Maxcrazy1
+# Repo:   https://github.com/gh0stzk/dotfiles
+# Date:   24.04.2025
+# Info:   This script uses playerctl and mpc to control the multimedia playback
+#         "stop, pause, play, next, previous" of different players like
+#         spotify, ncmpcpp, clementine, strawberry and others.
+# =============================================================
 
-Cover=/tmp/cover.png
-bkpCover=~/.config/bspwm/config/assets/fallback.webp
-LAST_SONG_FILE="/tmp/last_song.txt"
-NOTIFY_TIMES_LOG="/tmp/notify_times.log"
-NOTIFY_WINDOW=8
-NOTIFY_MAX=2
-NOTIFY_REPLACE_ID=424242
-NOTIFY_EXPIRE_MS=8000
+# Set the player
+# [ -n "$(pgrep spotify)" ] && Control="spotify" || Control="MPD"
 
-allow_notification() {
-    local now win max log tmp count
-    now=$(date +%s)
-    win=$NOTIFY_WINDOW
-    max=$NOTIFY_MAX
-    log="$NOTIFY_TIMES_LOG"
-    tmp="${log}.$$"
-
-    if [ -f "$log" ]; then
-        awk -v now="$now" -v win="$win" '($1+0) > (now-win){print $1}' "$log" > "$tmp" 2>/dev/null || true
-    else
-        : > "$tmp"
-    fi
-
-    count=$(wc -l < "$tmp" 2>/dev/null || echo 0)
-    if [ "$count" -ge "$max" ]; then
-        rm -f "$tmp" 2>/dev/null || true
-        return 1
-    fi
-
-    printf "%s\n" "$now" >> "$tmp"
-    mv -f "$tmp" "$log" 2>/dev/null || true
-    return 0
-}
+LAST_PLAYER_FILE="/tmp/last_player"
 
 get_active_player() {
+    # Prefer MPD if mpc reports it's playing (mpc/MPD is not an MPRIS player)
+    if command -v mpc >/dev/null 2>&1; then
+        mpd_status=$(mpc status 2>/dev/null || echo "")
+        if printf "%s" "$mpd_status" | grep -qi "playing"; then
+            echo "MPD"
+            return
+        fi
+    fi
+
     playerctl -l 2>/dev/null | while read -r player; do
         status=$(playerctl --player="$player" status 2>/dev/null)
         [ "$status" = "Playing" ] && echo "$player" && exit
     done
 }
 
-# We won't cache Control at startup; determine the active player per notification
-# Notifications delegated to the centralized helper at ~/.local/bin/notify_song
-
-
-# Escucha continua para cualquier reproductor: determinamos el reproductor activo en cada evento
-playerctl metadata --follow 2>/dev/null | while read -r line; do
-    # allow the player a short moment to update metadata (some players update asynchronously)
-    sleep 0.08
-    player_here=$(get_active_player)
-    [ -n "$player_here" ] || continue
-
-    new_song=$(playerctl --player="$player_here" metadata --format "{{title}}-{{artist}}")
-    last_song=""
-    [ -f "$LAST_SONG_FILE" ] && last_song=$(cat "$LAST_SONG_FILE")
-
-    # Notificar solo si es nueva canción
-    if [ "$new_song" != "$last_song" ]; then
-                    if [ -x "$HOME/.local/bin/notify_song" ]; then
-                # small delay to let metadata stabilize and avoid duplicate events
-                sleep 0.3
-                # re-read metadata and compare again
-                new_song_check=$(playerctl --player="$player_here" metadata --format "{{title}}-{{artist}}")
-                if [ "$new_song_check" != "$last_song" ]; then
-                            # Delegate notification emission to centralized helper only
-                            # Force notify to bypass throttling when metadata lags (YouTube Music)
-                            "$HOME/.local/bin/notify_song" --force || true
-                    # mark as seen
-                    echo "$new_song_check" > "$LAST_SONG_FILE" 2>/dev/null || true
+get_last_player() {
+    # Return the last player only if it is currently available via playerctl
+    if [ -f "$LAST_PLAYER_FILE" ]; then
+        lp=$(cat "$LAST_PLAYER_FILE" 2>/dev/null || echo "")
+        if [ -n "$lp" ]; then
+            # If last player was MPD, accept it when mpc reports a current song
+            if [ "$lp" = "MPD" ]; then
+                if command -v mpc >/dev/null 2>&1; then
+                    mpd_current=$(mpc current 2>/dev/null || echo "")
+                    if [ -n "$mpd_current" ]; then
+                        printf "%s" "$lp"
+                        return 0
+                    fi
                 fi
-            else
-                # notify_song missing: mark as seen to avoid repeated events
-                echo "$new_song" > "$LAST_SONG_FILE" 2>/dev/null || true
             fi
+            # playerctl -l lists available players; accept exact match
+            if playerctl -l 2>/dev/null | grep -xq "$lp"; then
+                printf "%s" "$lp"
+                return 0
+            fi
+        fi
     fi
-done
+    return 1
+}
+
+save_last_player() {
+    echo "$Control" > "$LAST_PLAYER_FILE"
+}
+
+Control=$(get_active_player)
+
+if [ -z "$Control" ]; then
+    Control=$(get_last_player)
+fi
+
+if [ -z "$Control" ]; then
+    # Prefer any active MPRIS players reported by playerctl; if none, fall back to MPD.
+    # Historically scripts defaulted to Spotify even when closed; avoid that by
+    # checking playerctl and only selecting spotify if it's actually present.
+    first_player=$(playerctl -l 2>/dev/null | head -n1)
+    if [ -n "$first_player" ]; then
+        Control="$first_player"
+    else
+        Control="MPD"
+    fi
+fi
+
+# Here the cover image will be saved.
+Cover=/tmp/cover.png
+# if cover not found in metadata use this instead
+bkpCover=~/.config/bspwm/config/assets/fallback.webp
+# mpd music directory for mpd clients.
+mpddir=~/Music
+LAST_SONG_FILE="/tmp/last_song.txt"
+NOTIFY_REPLACE_ID=424242
+NOTIFY_EXPIRE_MS=8000
+
+
+
+
+case $Control in
+    MPD)
+        case $1 in
+            --next)
+                mpc -q next
+                mpc -q next
+                # After advancing, ensure MPD is saved as the last player
+                save_last_player
+                # Delegate MPD notification to centralized helper
+                "$HOME/.local/bin/notify_song" --force >/dev/null 2>&1 &
+                sh -c "sleep 0.2; \"$HOME/.local/bin/notify_song\" --force >/dev/null 2>&1" &
+                ;;
+            --previous)
+                mpc -q prev
+                # After stepping previous, ensure MPD is saved as the last player
+                save_last_player
+                "$HOME/.local/bin/notify_song" --force >/dev/null 2>&1 &
+                sh -c "sleep 0.2; \"$HOME/.local/bin/notify_song\" --force >/dev/null 2>&1" &
+                ;;
+            --toggle)
+                mpc -q toggle
+                # small delay to let mpc state update, then notify if playing
+                sleep 0.08
+                mpd_status=$(mpc status | sed -En '2s/.*\[([^]]*)\].*/\1/p')
+                if [ "$mpd_status" = "playing" ] || [ "$mpd_status" = "Playing" ]; then
+                    # Save MPD as last player so subsequent play commands target it
+                    save_last_player
+                    "$HOME/.local/bin/notify_song" --force >/dev/null 2>&1 &
+                fi
+                ;;
+            --stop)
+                mpc -q stop
+                ;;
+            --title)
+                title=$(mpc -f %title% current)
+                echo "${title:-Play Something}"
+                ;;
+            --artist)
+                artist=$(mpc -f %artist% current)
+                echo "${artist:-No Artist}"
+                ;;
+            --status)
+                status=$(mpc status | sed -En '2s/.*\[([^]]*)\].*/\u\1/p')
+                echo "${status:-Stopped}"
+                ;;
+            --player)
+                echo "$Control"
+                ;;
+            --cover)
+                current_song=$(mpc current -f "%title%-%artist%")
+				last_song=""
+				[ -f "$LAST_SONG_FILE" ] && last_song=$(cat "$LAST_SONG_FILE")
+
+				if [ "$current_song" != "$last_song" ] || [ ! -f "$Cover" ]; then
+					ffmpeg -i "$mpddir/$(mpc current -f %file%)" "$Cover" -y > /dev/null 2>&1 || cp "$bkpCover" "$Cover"
+					echo "$current_song" > "$LAST_SONG_FILE"
+				fi
+
+				echo "$Cover"
+                ;;
+            nccover)
+                ffmpeg -i "$mpddir/$(mpc current -f %file%)" "$Cover" -y > /dev/null 2>&1 || cp "$bkpCover" "$Cover"
+                ;;
+            --position)
+                position=$(mpc status %currenttime%)
+                echo "${position:-0:00}"
+                ;;
+            --positions)
+                positions=$(mpc status %currenttime% | awk -F: '{print ($1 * 60) + $2}')
+                echo "${positions:-0}"
+                ;;
+            --length)
+                length=$(mpc status %totaltime%)
+                echo "${length:-0:00}"
+                ;;
+            --lengths)
+                lengths=$(mpc status %totaltime% | awk -F: '{print ($1 * 60) + $2}')
+                echo "${lengths:-0}"
+                ;;
+            --shuffle)
+                shuffle=$(mpc status | sed -n '3s/.*random: \([^ ]*\).*/\1/p' | sed 's/.*/\u&/')
+                echo "${shuffle:-Off}"
+                ;;
+            --loop)
+                loop=$(mpc status | sed -n '3s/.*repeat: \([^ ]*\).*/\1/p' | sed 's/.*/\u&/')
+                echo "${loop:-Off}"
+                ;;
+        esac
+        ;;
+    *)
+        case $1 in
+            --next)
+                playerctl --player="$Control" next
+                # Ensure notification comes from centralized helper (overwrite player's own notif)
+                    /home/max-arch/.local/bin/notify_song --force >/dev/null 2>&1 &
+                    # second delayed call to overwrite any late native player notification
+                    sh -c "sleep 0.2; /home/max-arch/.local/bin/notify_song --force >/dev/null 2>&1" &
+                ;;
+            --previous)
+                playerctl --player="$Control" previous
+                    /home/max-arch/.local/bin/notify_song --force >/dev/null 2>&1 &
+                    sh -c "sleep 0.2; /home/max-arch/.local/bin/notify_song --force >/dev/null 2>&1" &
+                ;;
+            --toggle)
+                if playerctl --player="$Control" status >/dev/null 2>&1; then
+        playerctl --player="$Control" play-pause
+
+        sleep 0.1
+        status=$(playerctl --player="$Control" status)
+
+        # Si se pausó, recordarlo
+        if [ "$status" = "Paused" ]; then
+            save_last_player
+        fi
+
+        # Si se reanudó, notificar
+        if [ "$status" = "Playing" ]; then
+            # Force notify to bypass throttling when metadata lags (YouTube Music)
+            /home/max-arch/.local/bin/notify_song --force || true
+        fi
+    else
+        mpc -q toggle
+    fi
+                ;;
+            --stop)
+                playerctl --player="$Control" stop
+                ;;
+            --title)
+                title=$(playerctl --player="$Control" metadata --format "{{title}}")
+                echo "${title:-Play Something}"
+                ;;
+            --artist)
+                artist=$(playerctl --player="$Control" metadata --format "{{artist}}")
+                echo "${artist:-No Artist}"
+                ;;
+            --status)
+                status=$(playerctl --player="$Control" status)
+                echo "${status:-Stopped}"
+                ;;
+            --player)
+                echo "$Control"
+                ;;
+            --cover)
+                # Force notify to update/download cover even if throttling would suppress notification
+                /home/max-arch/.local/bin/notify_song --force || true
+                echo "$Cover"
+                ;;
+            --position)
+                position=$(playerctl --player="$Control" position --format "{{ duration(position) }}")
+                echo "${position:-0:00}"
+                ;;
+            --positions)
+                positions=$(playerctl --player="$Control" position | sed 's/..\{6\}$//')
+                echo "${positions:-0}"
+                ;;
+            --length)
+                length=$(playerctl --player="$Control" metadata --format "{{ duration(mpris:length) }}")
+                echo "${length:-0:00}"
+                ;;
+            --lengths)
+                lengths=$(playerctl --player="$Control" metadata mpris:length | sed 's/.\{6\}$//')
+                echo "${lengths:-0}"
+                ;;
+            --shuffle)
+                shuffle=$(playerctl --player="$Control" shuffle)
+                echo "${shuffle:-Off}"
+                ;;
+            --loop)
+                loop=$(playerctl --player="$Control" loop)
+                echo "${loop:-None}"
+                ;;
+        esac
+esac 2>/dev/null
 
