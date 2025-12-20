@@ -18,14 +18,33 @@
 # =============================================================
 
 TEMP_IMAGE="/tmp/i3lock.jpg"
+TEMP_LAYOUT="/tmp/lockerpreviouskeymap"
 
 # Colors
-bg=#1a1b26
-fg=#c0caf5
-ring=#15161e
-wrong=#f7768e
-date=#c0caf5
-verify=#9ece6a
+bg=#212529
+fg=#f8f9fa
+ring=#343a40
+wrong=#dee2e6
+date=#f8f9fa
+verify=#adb5bd
+
+save_current_keymap() {
+    setxkbmap -query | grep "layout: " | awk '{print $2}' > "$TEMP_LAYOUT"
+    setxkbmap -query | grep "options:" | awk '{print $2}' > "${TEMP_LAYOUT}_options"
+}
+
+restore_previous_keymap() {
+    if [ -f "$TEMP_LAYOUT" ]; then
+        previous_layout=$(cat "$TEMP_LAYOUT")
+        if [ -f "${TEMP_LAYOUT}_options" ]; then
+            previous_options=$(cat "${TEMP_LAYOUT}_options")
+            setxkbmap -layout "$previous_layout" -option "$previous_options"
+        else
+            setxkbmap -layout "$previous_layout"
+        fi
+        rm -f "$TEMP_LAYOUT" "${TEMP_LAYOUT}_options"
+    fi
+}
 
 # Get screen resolution dynamically
 get_screen_resolution() {
@@ -101,6 +120,10 @@ calculate_positions() {
 }
 
 default_lockscreen () {
+
+    save_current_keymap
+    setxkbmap -layout us
+
     get_screen_resolution
     calculate_positions
     
@@ -122,9 +145,14 @@ default_lockscreen () {
         --greeter-color=$fg --wrong-color=$wrong --verif-color=$verify \
         --pointer=default --refresh-rate=0 \
         --pass-media-keys --pass-volume-keys
+        restore_previous_keymap
 }
 
 rice_lockscreen () {
+
+    save_current_keymap
+    setxkbmap -layout us
+
     get_screen_resolution
     calculate_positions
     
@@ -159,6 +187,8 @@ rice_lockscreen () {
         --greeter-color=$fg --wrong-color=$wrong --verif-color=$verify \
         --pointer=default --refresh-rate=0 \
         --pass-media-keys --pass-volume-keys
+
+	 restore_previous_keymap
 }
 
 case $1 in
