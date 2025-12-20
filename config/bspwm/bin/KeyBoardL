@@ -15,8 +15,7 @@
 # Licensed under GPL-3.0 license
 # =============================================================
 
-# Get the current layout
-CURRENT=$(setxkbmap -query | awk '/layout/ {print $2}')
+CURRENT=$(setxkbmap -query | awk '/layout/ {print $2}' | cut -d',' -f1)
 
 # Layouts. You can add yours.
 LAYOUTS="US English|us
@@ -46,6 +45,6 @@ if [ -n "$selected" ]; then
         set -f
         set -- $layout_code
         set +f
-        setxkbmap "$@"
+        setxkbmap -option ctrl:nocaps "$@,us"
     fi
 fi
