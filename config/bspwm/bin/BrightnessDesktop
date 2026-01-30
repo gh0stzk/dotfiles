@@ -1,0 +1,18 @@
+#!/bin/sh
+
+OUTPUT="HDMI-0"
+STEP=0.05
+MIN=0.5
+MAX=1.0
+
+CURRENT=$(xrandr --verbose | grep -m1 -i brightness | awk '{print $2}')
+
+if [ "$1" = "up" ]; then
+  NEW=$(awk "BEGIN { v=$CURRENT+$STEP; if (v>$MAX) v=$MAX; print v }")
+elif [ "$1" = "down" ]; then
+  NEW=$(awk "BEGIN { v=$CURRENT-$STEP; if (v<$MIN) v=$MIN; print v }")
+else
+  exit 1
+fi
+
+xrandr --output "$OUTPUT" --brightness "$NEW"
