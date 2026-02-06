@@ -15,6 +15,28 @@
 LAST_PLAYER_FILE="/tmp/last_player"
 
 get_active_player() {
+    # Prefer the last known player if it's currently playing
+    if [ -f "$LAST_PLAYER_FILE" ]; then
+        lp=$(cat "$LAST_PLAYER_FILE" 2>/dev/null || echo "")
+        if [ -n "$lp" ]; then
+            if [ "$lp" = "MPD" ]; then
+                if command -v mpc >/dev/null 2>&1; then
+                    mpd_status=$(mpc status 2>/dev/null | sed -En '2s/.*\[([^]]*)\].*/\1/p')
+                    if [ "$mpd_status" = "playing" ] || [ "$mpd_status" = "Playing" ]; then
+                        echo "MPD"
+                        return
+                    fi
+                fi
+            else
+                status=$(playerctl --player="$lp" status 2>/dev/null)
+                if [ "$status" = "Playing" ]; then
+                    echo "$lp"
+                    return
+                fi
+            fi
+        fi
+    fi
+
     # Prefer MPD if mpc reports it's playing (mpc/MPD is not an MPRIS player)
     if command -v mpc >/dev/null 2>&1; then
         mpd_status=$(mpc status 2>/dev/null || echo "")
@@ -99,15 +121,15 @@ case $Control in
                 # After advancing, ensure MPD is saved as the last player
                 save_last_player
                 # Delegate MPD notification to centralized helper
-                "$HOME/.local/bin/notify_song" --force >/dev/null 2>&1 &
-                sh -c "sleep 0.2; \"$HOME/.local/bin/notify_song\" --force >/dev/null 2>&1" &
+                "$HOME/.local/bin/notify_song" --force --player MPD >/dev/null 2>&1 &
+                sh -c "sleep 0.2; \"$HOME/.local/bin/notify_song\" --force --player MPD >/dev/null 2>&1" &
                 ;;
             --previous)
                 mpc -q prev
                 # After stepping previous, ensure MPD is saved as the last player
                 save_last_player
-                "$HOME/.local/bin/notify_song" --force >/dev/null 2>&1 &
-                sh -c "sleep 0.2; \"$HOME/.local/bin/notify_song\" --force >/dev/null 2>&1" &
+                "$HOME/.local/bin/notify_song" --force --player MPD >/dev/null 2>&1 &
+                sh -c "sleep 0.2; \"$HOME/.local/bin/notify_song\" --force --player MPD >/dev/null 2>&1" &
                 ;;
             --toggle)
                 mpc -q toggle
@@ -117,7 +139,10 @@ case $Control in
                 if [ "$mpd_status" = "playing" ] || [ "$mpd_status" = "Playing" ]; then
                     # Save MPD as last player so subsequent play commands target it
                     save_last_player
-                    "$HOME/.local/bin/notify_song" --force >/dev/null 2>&1 &
+                    "$HOME/.local/bin/notify_song" --force --player MPD >/dev/null 2>&1 &
+                elif [ "$mpd_status" = "paused" ] || [ "$mpd_status" = "Paused" ]; then
+                    # Remember MPD even when paused to resume it later
+                    save_last_player
                 fi
                 ;;
             --stop)
@@ -184,14 +209,14 @@ case $Control in
             --next)
                 playerctl --player="$Control" next
                 # Ensure notification comes from centralized helper (overwrite player's own notif)
-                    /home/max-arch/.local/bin/notify_song --force >/dev/null 2>&1 &
+                    /config/bspwm/bin/notify_song --force >/dev/null 2>&1 &
                     # second delayed call to overwrite any late native player notification
-                    sh -c "sleep 0.2; /home/max-arch/.local/bin/notify_song --force >/dev/null 2>&1" &
+                    sh -c "sleep 0.2; /config/bspwm/bin/notify_song --force >/dev/null 2>&1" &
                 ;;
             --previous)
                 playerctl --player="$Control" previous
-                    /home/max-arch/.local/bin/notify_song --force >/dev/null 2>&1 &
-                    sh -c "sleep 0.2; /home/max-arch/.local/bin/notify_song --force >/dev/null 2>&1" &
+                    /config/bspwm/bin/notify_song --force >/dev/null 2>&1 &
+                    sh -c "sleep 0.2; /config/bspwm/bin/notify_song --force >/dev/null 2>&1" &
                 ;;
             --toggle)
                 if playerctl --player="$Control" status >/dev/null 2>&1; then
@@ -207,8 +232,9 @@ case $Control in
 
         # Si se reanudó, notificar
         if [ "$status" = "Playing" ]; then
+            save_last_player
             # Force notify to bypass throttling when metadata lags (YouTube Music)
-            /home/max-arch/.local/bin/notify_song --force || true
+            /config/bspwm/bin/notify_song --force || true
         fi
     else
         mpc -q toggle
@@ -234,7 +260,7 @@ case $Control in
                 ;;
             --cover)
                 # Force notify to update/download cover even if throttling would suppress notification
-                /home/max-arch/.local/bin/notify_song --force || true
+                /config/bspwm/bin/notify_song --force || true
                 echo "$Cover"
                 ;;
             --position)
