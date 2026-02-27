@@ -387,11 +387,3 @@ chmod +x RiceInstaller
 ./RiceInstaller
 ```
 
-## :book: Additional learning resources
-
-The following community and official resources may help users learn bspwm concepts beyond configuration files:
-
-- [Official bspwm documentation](https://github.com/baskerville/bspwm) : Official documentation from baskerville/bspwm
-- [Arch Wiki: bspwm](https://wiki.archlinux.org/title/Bspwm) : The archlinux documentation bspwm bspwm window manager
-- [Bspwm-Wiki (community-maintained bspwm documentation)](https://rdbhvr-001.github.io/bspwm-wiki) : A detailed community maintained documentation
-
