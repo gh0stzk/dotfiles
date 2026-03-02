@@ -251,8 +251,9 @@ super + n ; m
 super + n ; {1-9}
     bspc query -N -d {1-9} -n '.window' | xargs -I id -n 1 bspc node id -d focused
 
-# BrightnessDesktop
-super + Up
-   BrightnessDesktop up
-super + Down
-    BrightnessDesktop down
+# Brightness
+{XF86MonBrightnessUp,super + Up}
+    Brightness up
+
+{XF86MonBrightnessDown,super + Down}
+    Brightness down
