@@ -304,8 +304,8 @@ install_aur_dependencies() {
 
     if ! command -v paru >/dev/null 2>&1; then
         printf "%b\n" "${BLD}${CYE}Installing PARU${CNC}"
-        git clone https://aur.archlinux.org/paru-bin.git
-        cd paru-bin
+        git clone https://aur.archlinux.org/paru.git
+        cd paru
         makepkg -si
         cd
     fi
