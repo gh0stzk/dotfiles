@@ -250,3 +250,10 @@ super + n ; m
 # Example usage: super + n followed by 5 (brings everything from desktop 5)
 super + n ; {1-9}
     bspc query -N -d {1-9} -n '.window' | xargs -I id -n 1 bspc node id -d focused
+
+# Brightness
+{XF86MonBrightnessUp,super + Up}
+    Brightness up
+
+{XF86MonBrightnessDown,super + Down}
+    Brightness down

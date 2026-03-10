@@ -1,17 +1,19 @@
 #!/bin/sh
 # =============================================================
 # Author:  gh0stzk
+# Modified by: aglairdev
 # Repo:    https://github.com/gh0stzk/dotfiles
 # Date:    03.02.2025 14:22:32
 #
-# Brightness - Hardware brightness control
+# Brightness - Universal brightness control
 # Features:
 #   ✔ Brightness adjustments in 5% increments
-#   ✔ Configurable minimum of 2% brightness
+#   ✔ Dynamic monitor detection (focused monitor)
 #   ✔ OSD notifications with graphical progress bar
+#   ✔ Desktop & Laptop compatible (via xrandr)
 #
 # Dependencies:
-#   → brightnessctl
+#   → xrandr
 #   → dunst
 #
 # Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
@@ -19,26 +21,21 @@
 # =============================================================
 
 DIR="$HOME/.config/bspwm/config/assets"
-BRIGHTNESS_STEPS=5
-MIN_BRIGHTNESS=2
+BRIGHTNESS_STEPS=0.05
+MIN_BRIGHTNESS=0.05
+MAX_BRIGHTNESS=1.0
+
+OUTPUT=$(bspc query -M -m focused --names)
 
 get_brightness() {
-    brightnessctl i | awk -F '[()%]' '/Current brightness:/ {print $2}'
+    xrandr --current --verbose | grep -m1 -A5 "$OUTPUT" | grep "Brightness" | awk '{print $2}'
 }
 
 send_notification() {
-    brightness="$1"
+    brightness=$(awk "BEGIN { print int($1 * 100) }")
     icon="$DIR/brightness.svg"
-    bar=""
-    bar_length=$((brightness / BRIGHTNESS_STEPS))
 
-    i=0
-    while [ "$i" -lt "$bar_length" ]; do
-        bar="${bar}─"
-        i=$((i + 1))
-    done
-
-    dunstify "Brightness $brightness%" -i "$icon" -r 5555 -h int:value:$(($brightness))
+    dunstify "Brightness $brightness%" -i "$icon" -r 5555 -h int:value:"$brightness" &
 }
 
 adjust_brightness() {
@@ -46,23 +43,15 @@ adjust_brightness() {
 
     case $1 in
         up)
-            if [ "$current" -eq "$MIN_BRIGHTNESS" ]; then
-                brightnessctl set "${BRIGHTNESS_STEPS}%" -q
-            else
-                brightnessctl set "${BRIGHTNESS_STEPS}%+" -q
-            fi
+            new=$(awk "BEGIN { v=$current+$BRIGHTNESS_STEPS; print (v>$MAX_BRIGHTNESS?$MAX_BRIGHTNESS:v) }")
             ;;
         down)
-            threshold=$((MIN_BRIGHTNESS + BRIGHTNESS_STEPS))
-            if [ "$current" -le "$threshold" ]; then
-                brightnessctl set "${MIN_BRIGHTNESS}%" -q
-            else
-                brightnessctl set "${BRIGHTNESS_STEPS}%-" -q
-            fi
+            new=$(awk "BEGIN { v=$current-$BRIGHTNESS_STEPS; print (v<$MIN_BRIGHTNESS?$MIN_BRIGHTNESS:v) }")
             ;;
     esac
 
-    send_notification "$(get_brightness)"
+    xrandr --output "$OUTPUT" --brightness "$new"
+    send_notification "$new"
 }
 
 case $1 in
