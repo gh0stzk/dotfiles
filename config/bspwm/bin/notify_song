@@ -1,0 +1,360 @@
+#!/bin/sh
+# Central notification helper for music scripts
+# Usage: notify_song [--force]
+# When called it detects the active player, fetches metadata, downloads cover,
+# throttles notifications, writes /tmp/last_song.txt and sends a replaceable notification.
+
+LAST_SONG_FILE="/tmp/last_song.txt"
+LAST_NOTIFY_ID_FILE="/tmp/last_notify_id"
+NOTIFY_TIMES_LOG="/tmp/notify_times.log"
+NOTIFY_WINDOW=8
+NOTIFY_MAX=1
+NOTIFY_EXPIRE_MS=8000
+COVER=/tmp/cover.png
+BKP_COVER="${HOME}/.config/bspwm/config/assets/fallback.webp"
+DEBUG_LOG="/tmp/notify_debug.log"
+NOTIFY_SENDPY_BIN="$(command -v notify-send.py 2>/dev/null || true)"
+MPD_MUSIC_DIR="${HOME}/Music"
+
+to_lower() {
+  printf "%s" "$1" | tr '[:upper:]' '[:lower:]'
+}
+
+is_browser_player() {
+  player_name_lc=$(to_lower "$1")
+  echo "$player_name_lc" | grep -Eq 'firefox|chrom|brave|edge|vivaldi|opera'
+}
+
+# Returns 0 when notification should be suppressed.
+should_suppress_notification() {
+  player_name="$1"
+  media_url="$2"
+  media_url_lc=$(to_lower "$media_url")
+
+  case "$media_url_lc" in
+    *youtube.com/shorts/*|*youtu.be/shorts/*)
+      return 0
+      ;;
+  esac
+
+  if is_browser_player "$player_name" && [ -n "$media_url_lc" ]; then
+    case "$media_url_lc" in
+      *youtube.com/*|*youtu.be/*)
+        return 1
+        ;;
+      *)
+        return 0
+        ;;
+    esac
+  fi
+
+  return 1
+}
+
+get_active_player() {
+  playerctl -l 2>/dev/null | while read -r player; do
+    status=$(playerctl --player="$player" status 2>/dev/null)
+    [ "$status" = "Playing" ] && echo "$player" && exit
+  done
+}
+
+spotify_available_running() {
+  if ! playerctl -l 2>/dev/null | grep -qx "spotify"; then
+    return 1
+  fi
+
+  if ! playerctl --player="spotify" status >/dev/null 2>&1; then
+    return 1
+  fi
+
+  if ! pgrep -x "spotify" >/dev/null 2>&1; then
+    return 1
+  fi
+
+  return 0
+}
+
+allow_notification() {
+  now=$(date +%s)
+  win=$NOTIFY_WINDOW
+  max=$NOTIFY_MAX
+  log="$NOTIFY_TIMES_LOG"
+  tmp="${log}.$$"
+
+  if [ -f "$log" ]; then
+    awk -v now="$now" -v win="$win" '($1+0) > (now-win){print $1}' "$log" > "$tmp" 2>/dev/null || true
+  else
+    : > "$tmp"
+  fi
+
+  count=$(wc -l < "$tmp" 2>/dev/null || echo 0)
+  if [ "$count" -ge "$max" ]; then
+    rm -f "$tmp" 2>/dev/null || true
+    return 1
+  fi
+
+  printf "%s\n" "$now" >> "$tmp"
+  mv -f "$tmp" "$log" 2>/dev/null || true
+  return 0
+}
+
+download_cover() {
+  art_url="$1"
+  if [ -n "$art_url" ]; then
+    if echo "$art_url" | grep -q "open.spotify.com"; then
+      albumart=$(echo "$art_url" | sed -e 's/open.spotify.com/i.scdn.co/g')
+    else
+      albumart="$art_url"
+    fi
+    if ! curl -fsS "$albumart" -o "$COVER"; then
+      cp "$BKP_COVER" "$COVER" 2>/dev/null || true
+    else
+      [ -s "$COVER" ] || cp "$BKP_COVER" "$COVER" 2>/dev/null || true
+    fi
+  else
+    cp "$BKP_COVER" "$COVER" 2>/dev/null || true
+  fi
+}
+
+send_via_notify_sendpy() {
+  notify_title="$1"
+  notify_body="$2"
+  icon="$3"
+  expire_ms="${4:-$NOTIFY_EXPIRE_MS}"
+  # Prefer notify-send.py which provides replaces-process / replaces-id semantics
+  if [ -n "$NOTIFY_SENDPY_BIN" ]; then
+    oldid=""
+    [ -f "$LAST_NOTIFY_ID_FILE" ] && oldid=$(cat "$LAST_NOTIFY_ID_FILE" 2>/dev/null || echo "")
+
+    if [ -z "$oldid" ]; then
+      # initial notification: capture printed id; include icon and timeout
+      newid=$("$NOTIFY_SENDPY_BIN" "$notify_title" "$notify_body" -i "$icon" -t "$expire_ms" --replaces-process prezzta_music 2>/dev/null || true)
+    else
+      # update existing notification using id returned earlier
+      newid=$("$NOTIFY_SENDPY_BIN" "$notify_title" "$notify_body" -i "$icon" -t "$expire_ms" --replaces-id "$oldid" 2>/dev/null || true)
+    fi
+
+    # notify-send.py prints the new id on stdout; store it if present
+    if [ -n "$newid" ]; then
+      printf "%s" "$newid" > "$LAST_NOTIFY_ID_FILE" 2>/dev/null || true
+    fi
+    return 0
+  fi
+
+  # If notify-send.py not found, fallback to notify-send (best-effort)
+  notify-send -r 424242 -t "$expire_ms" "$notify_title" "$notify_body" -i "$icon" 2>/dev/null || true
+}
+
+
+# Locked send to avoid races between concurrent callers (flock or mkdir fallback)
+locked_send_notification() {
+  notify_title="$1"
+  notify_body="$2"
+  icon="$3"
+  current_song_param="$4"
+  now_param="$5"
+  force_param="$6"
+  LOCKFILE="/tmp/notify_song.lock"
+
+  do_locked() {
+    # Re-check small dedupe under lock to avoid races between concurrent callers
+    last_song=""
+    [ -f "$LAST_SONG_FILE" ] && last_song=$(cat "$LAST_SONG_FILE" 2>/dev/null || echo "")
+    last_time=0
+    [ -f "$LAST_SONG_TIME_FILE" ] && last_time=$(cat "$LAST_SONG_TIME_FILE" 2>/dev/null || echo 0)
+
+    if [ "$current_song_param" = "$last_song" ] && [ $((now_param - last_time)) -lt 5 ] && [ "$force_param" -eq 0 ]; then
+      # update last song to mark seen and skip sending
+      printf "%s" "$current_song_param" > "$LAST_SONG_FILE" 2>/dev/null || true
+      printf "%s" "$now_param" > "$LAST_SONG_TIME_FILE" 2>/dev/null || true
+      printf "%s SKIP pid=%s song=%s last=%s diff=%s\n" "$(date +%s)" "$$" "$current_song_param" "$last_time" "$((now_param - last_time))" >> "$DEBUG_LOG" 2>/dev/null || true
+      return 0
+    fi
+
+    # Update last song/time now (atomic with send)
+    printf "%s" "$current_song_param" > "$LAST_SONG_FILE" 2>/dev/null || true
+    printf "%s" "$now_param" > "$LAST_SONG_TIME_FILE" 2>/dev/null || true
+
+    printf "%s SEND pid=%s song=%s\n" "$(date +%s)" "$$" "$current_song_param" >> "$DEBUG_LOG" 2>/dev/null || true
+
+    # Try to close existing notifications from the daemon (dunst) to avoid duplicates
+    if command -v dunstctl >/dev/null 2>&1; then
+      # close-all is aggressive but effective at preventing the player's native
+      # notification from remaining visible alongside our notify-send.py message.
+      dunstctl close-all >/dev/null 2>&1 || true
+      printf "%s CLOSED_DAEMON pid=%s\n" "$(date +%s)" "$$" >> "$DEBUG_LOG" 2>/dev/null || true
+    fi
+
+    # perform send via notify-send.py (preferred) or fallback
+    send_via_notify_sendpy "$notify_title" "$notify_body" "$icon" "$NOTIFY_EXPIRE_MS"
+    # As extra fallback, also call notify-send -r to help some daemons
+    notify-send -r 424242 -t "$NOTIFY_EXPIRE_MS" "$notify_title" "$notify_body" -i "$icon" 2>/dev/null || true
+    newid=$(cat "$LAST_NOTIFY_ID_FILE" 2>/dev/null || echo "(none)")
+    printf "%s SENT pid=%s newid=%s\n" "$(date +%s)" "$$" "$newid" >> "$DEBUG_LOG" 2>/dev/null || true
+    return 0
+  }
+
+  if command -v flock >/dev/null 2>&1; then
+    (
+      flock -n 9 || return 0
+      do_locked
+    ) 9>"$LOCKFILE"
+    return
+  fi
+
+  # fallback: directory-based lock
+  lockdir="${LOCKFILE}.dir"
+  if mkdir "$lockdir" 2>/dev/null; then
+    do_locked
+    rmdir "$lockdir" 2>/dev/null || true
+    return
+  fi
+
+  # couldn't acquire lock: best-effort send but still update last-song to avoid backlog
+  printf "%s" "$current_song_param" > "$LAST_SONG_FILE" 2>/dev/null || true
+  printf "%s" "$now_param" > "$LAST_SONG_TIME_FILE" 2>/dev/null || true
+  send_via_notify_sendpy "$artist" "$body" "$icon" "$NOTIFY_EXPIRE_MS"
+}
+
+# Main
+FORCE=0
+FORCE_PLAYER=""
+while [ "$1" ]; do
+  case "$1" in
+    --force) FORCE=1; shift ;;
+    --player) FORCE_PLAYER="$2"; shift 2 ;;
+    *) shift ;;
+  esac
+done
+
+if [ -n "$FORCE_PLAYER" ]; then
+  player_to_use="$FORCE_PLAYER"
+else
+  player_here=$(get_active_player)
+  if [ -n "$player_here" ]; then
+    player_to_use="$player_here"
+  else
+    if spotify_available_running; then
+      player_to_use="spotify"
+    else
+      player_to_use=""
+    fi
+  fi
+fi
+
+# If no MPRIS player is available, try MPD via mpc as a fallback
+if [ -z "$player_to_use" ]; then
+  if command -v mpc >/dev/null 2>&1; then
+    mpd_current=$(mpc current 2>/dev/null || echo "")
+    if [ -n "$mpd_current" ]; then
+      player_to_use="MPD"
+    fi
+  fi
+fi
+
+if [ -z "$player_to_use" ]; then
+  exit 0
+fi
+
+if [ "$player_to_use" = "MPD" ]; then
+  # Build current_song from mpc metadata
+  current_song=$(mpc --format "%title%-%artist%" current 2>/dev/null || echo "")
+  title=$(mpc --format "%title%" current 2>/dev/null || echo "")
+  artist=$(mpc --format "%artist%" current 2>/dev/null || echo "")
+  album=$(mpc --format "%album%" current 2>/dev/null || echo "")
+else
+  current_song=$(playerctl --player="$player_to_use" metadata --format '{{title}}-{{artist}}' 2>/dev/null || echo "")
+fi
+
+if [ -z "$current_song" ]; then
+  exit 0
+fi
+
+LAST_SONG_TIME_FILE="/tmp/last_song_time"
+now=$(date +%s)
+
+# Throttle
+if allow_notification || [ "$FORCE" -eq 1 ]; then
+  if [ "$player_to_use" = "MPD" ]; then
+    # For MPD, use mpc metadata and extract cover from the file
+    title=$(mpc --format "%title%" current 2>/dev/null || echo "")
+    artist=$(mpc --format "%artist%" current 2>/dev/null || echo "")
+    album=$(mpc --format "%album%" current 2>/dev/null || echo "")
+    body="$artist"
+
+    # Normalize MPD metadata: avoid status-like strings and ensure a title
+    lc_title=$(printf "%s" "$title" | tr '[:upper:]' '[:lower:]')
+    lc_artist=$(printf "%s" "$artist" | tr '[:upper:]' '[:lower:]')
+    if [ -z "$title" ] || [ "$lc_title" = "playing" ] || [ "$lc_title" = "paused" ] || [ "$lc_title" = "stopped" ]; then
+      title=$(mpc current 2>/dev/null || echo "")
+      lc_title=$(printf "%s" "$title" | tr '[:upper:]' '[:lower:]')
+    fi
+    if [ -z "$title" ] || [ "$lc_title" = "playing" ] || [ "$lc_title" = "paused" ] || [ "$lc_title" = "stopped" ]; then
+      title="Unknown Title"
+    fi
+    if [ -z "$artist" ] || [ "$lc_artist" = "playing" ] || [ "$lc_artist" = "paused" ] || [ "$lc_artist" = "stopped" ]; then
+      artist="Unknown Artist"
+      body="$artist"
+    fi
+
+    # Try to extract embedded cover from the current file, fallback to bkp
+    file_path=$(mpc --format "%file%" current 2>/dev/null || echo "")
+    if [ -n "$file_path" ]; then
+      ffmpeg -i "$MPD_MUSIC_DIR/$file_path" "$COVER" -y > /dev/null 2>&1 || cp "$BKP_COVER" "$COVER" 2>/dev/null || true
+      [ -s "$COVER" ] || cp "$BKP_COVER" "$COVER" 2>/dev/null || true
+    else
+      cp "$BKP_COVER" "$COVER" 2>/dev/null || true
+    fi
+
+    locked_send_notification "$title" "$body" "$COVER" "$current_song" "$now" "$FORCE"
+  else
+    # proceed: re-query metadata a few times to avoid race with players
+    # that update artUrl slightly after title/artist (eg. YouTube Music).
+    attempt=0
+    max_attempts=8
+    art_url=$(playerctl --player="$player_to_use" metadata mpris:artUrl 2>/dev/null || echo "")
+    media_url=$(playerctl --player="$player_to_use" metadata xesam:url 2>/dev/null || echo "")
+    title=$(playerctl --player="$player_to_use" metadata --format '{{title}}' 2>/dev/null || echo "")
+    artist=$(playerctl --player="$player_to_use" metadata --format '{{artist}}' 2>/dev/null || echo "")
+    album=$(playerctl --player="$player_to_use" metadata --format '{{album}}' 2>/dev/null || echo "")
+    # If art_url is empty or title/artist differ from previously read current_song,
+    # retry a few times with small sleeps to let the player settle (YouTube Music
+    # sometimes updates the artUrl slightly after title/artist).
+    while { [ -z "$art_url" ] || [ "${title}-${artist}" != "$current_song" ]; } && [ $attempt -lt $max_attempts ]; do
+      attempt=$((attempt+1))
+      sleep 0.12
+      art_url=$(playerctl --player="$player_to_use" metadata mpris:artUrl 2>/dev/null || echo "")
+      media_url=$(playerctl --player="$player_to_use" metadata xesam:url 2>/dev/null || echo "")
+      title=$(playerctl --player="$player_to_use" metadata --format '{{title}}' 2>/dev/null || echo "")
+      artist=$(playerctl --player="$player_to_use" metadata --format '{{artist}}' 2>/dev/null || echo "")
+      album=$(playerctl --player="$player_to_use" metadata --format '{{album}}' 2>/dev/null || echo "")
+    done
+
+    # Normalize artist: some players (or missing tags) return status-like strings
+    # such as "Playing" in the artist field; prefer a real artist tag and
+    # fallback to the track title when artist is missing or equals "playing".
+    lc_artist=$(printf "%s" "$artist" | tr '[:upper:]' '[:lower:]')
+    if [ -z "$artist" ] || [ "$lc_artist" = "playing" ]; then
+      artist="$title"
+    fi
+
+    # Use the freshest title/artist for dedupe and for the notification body
+    current_song="${title}-${artist}"
+    body="$artist"
+
+    if should_suppress_notification "$player_to_use" "$media_url"; then
+      printf "%s" "$current_song" > "$LAST_SONG_FILE" 2>/dev/null || true
+      printf "%s" "$now" > "$LAST_SONG_TIME_FILE" 2>/dev/null || true
+      exit 0
+    fi
+
+    download_cover "$art_url"
+    locked_send_notification "$title" "$body" "$COVER" "$current_song" "$now" "$FORCE"
+  fi
+else
+  # suppressed by throttle: still mark song as seen to avoid queueing later
+  printf "%s" "$current_song" > "$LAST_SONG_FILE" 2>/dev/null || true
+fi
+
+exit 0
+
