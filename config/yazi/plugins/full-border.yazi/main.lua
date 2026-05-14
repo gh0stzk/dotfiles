@@ -26,16 +26,25 @@ local function setup(_, opts)
 		}
 
 		local style = th.mgr.border_style
-		self._base = ya.list_merge(self._base or {}, {
-			ui.Border(ui.Edge.ALL):area(self._area):type(type):style(style),
-			ui.Bar(ui.Edge.RIGHT):area(self._chunks[1]):style(style),
-			ui.Bar(ui.Edge.LEFT):area(self._chunks[3]):style(style),
+		if rt.opener then -- TODO: remove this compatibility hack
+			self._base = ya.list_merge(self._base or {}, {
+				ui.Border(ui.Edge.ALL):area(self._area):type(type):style(style),
 
-			bar("┬", c[1].right - 1, c[1].y),
-			bar("┴", c[1].right - 1, c[1].bottom - 1),
-			bar("┬", c[2].right, c[2].y),
-			bar("┴", c[2].right, c[2].bottom - 1),
-		})
+				bar("┬", c[2].x, c[1].y),
+				bar("┴", c[2].x, c[1].bottom - 1),
+				bar("┬", c[2].right - 1, c[2].y),
+				bar("┴", c[2].right - 1, c[2].bottom - 1),
+			})
+		else
+			self._base = ya.list_merge(self._base or {}, {
+				ui.Border(ui.Edge.ALL):area(self._area):type(type):style(style),
+
+				bar("┬", c[1].right - 1, c[1].y),
+				bar("┴", c[1].right - 1, c[1].bottom - 1),
+				bar("┬", c[2].right, c[2].y),
+				bar("┴", c[2].right, c[2].bottom - 1),
+			})
+		end
 
 		old_build(self, ...)
 	end

@@ -1,7 +1,7 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "e84f4fe"
-hash = "6fa6a05a81c98dd000fbca3cca6e9682"
+rev = "1db18bb"
+hash = "eff8ff12fa4e5f035a10d8aeeb4c258d"
 
 [flavor]
 deps = []
