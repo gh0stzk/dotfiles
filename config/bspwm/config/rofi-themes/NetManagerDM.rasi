@@ -12,9 +12,9 @@ window {
     location:                    north;
     anchor:                      north;
     fullscreen:                  false;
-    width:                       17%;
-    height:                      44%;
-    x-offset:                    41%;
+    width:                       28%;
+    height:                      32%;
+    x-offset:                    30%;
     y-offset:                    7%;
 
     /* properties for all widgets */
@@ -121,7 +121,7 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
-    
+
     spacing:                     5px;
     margin:                      0px;
     padding:                     0px;
