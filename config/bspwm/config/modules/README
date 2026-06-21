@@ -1,0 +1,20 @@
+The modules are loaded in lexicographical order, and I've arranged them to ensure smooth and lightweight switching between themes.
+
+Only files ending in .sh will be loaded; those ending in .disabled are not.
+
+For example, if you use the Xfce terminal and want its color scheme to change with the theme, you'll need to rename the file 19-xfce-terminal.disabled to 19-xfce-terminal.sh.
+
+This attempts to work similarly to Matugen/Pywal, except there they're called template files, and here I've called them modules... I don't know why.
+
+And they work by using the colors set in theme-config.bash located within each theme.
+
+These are shell scripts, and by leveraging that, within each script (module), configurations for the apps are generated/overwritten. The signal to reset the configuration can also be sent from within the same script (depending on the app, of course).
+
+This is what would be called hooks in Matugen.
+
+-----
+
+For example, the module for changing the Ghostty terminal's color scheme generates the theme template file in the script, using the color variables set in theme-config.bash.
+
+It then generates and overwrites the Ghostty theme, and the command `pkill -USR2 -x ghostty` is sent, which resets the Ghostty configuration and changes the colors on the fly.
+

@@ -49,10 +49,15 @@ calculate_position() {
 # Function to find the window
 get_scratchpad_id() {
     bspc query -N -n ".floating.window" | while read -r node; do
-        if xprop -id "$node" WM_CLASS | grep -q "$SCRATCHPAD_NAME"; then
-            echo "$node"
-            return
-        fi
+        class=$(xprop -id "$node" WM_CLASS 2>/dev/null)
+        title=$(xprop -id "$node" WM_NAME 2>/dev/null)
+
+        case "$class$title" in
+            *"$SCRATCHPAD_NAME"*)
+                echo "$node"
+                return
+                ;;
+        esac
     done
 }
 
@@ -86,11 +91,19 @@ else
         rectangle="${WIDTH}x${HEIGHT}+${X_POS}+${Y_POS}" \
         --one-shot
 
+    bspc rule -a '*' title="$SCRATCHPAD_NAME" \
+        state=floating \
+        sticky=on \
+        layer=above \
+        rectangle="${WIDTH}x${HEIGHT}+${X_POS}+${Y_POS}" \
+        --one-shot
+
 	# Launch the corresponding terminal
 	case $MY_TERM in
         "alacritty") alacritty --class "$SCRATCHPAD_NAME" & ;;
         "st") st -c "$SCRATCHPAD_NAME" & ;;
         "kitty")     kitty --class="$SCRATCHPAD_NAME" & ;;
+        "ghostty") ghostty --title="$SCRATCHPAD_NAME" & ;;
     esac
 
     # Wait and adjust final position

@@ -1,0 +1,454 @@
+  /***
+  ╔═╗╔═╗╔╦╗╔╗ ╦╔═╗  ╔╦╗╦ ╦╔═╗╔╦╗╔═╗     author: gh0stzk
+  ╔═╝║ ║║║║╠╩╗║║╣    ║ ╠═╣║╣ ║║║║╣      url: https://github.com/gh0stzk/dotfiles
+  ╚═╝╚═╝╩ ╩╚═╝╩╚═╝   ╩ ╩ ╩╚═╝╩ ╩╚═╝     z0mbi3 Fox - Firefox Theme
+ ***/
+
+@import url("Colors.css");
+
+:root {
+    --z0mbi3-tab-font-family: "JetBrainsMono NF", serif;
+    --z0mbi3-tab-font-size: 9.5pt;
+    --z0mbi3-tab-font-weight: 800;
+    --z0mbi3-tab-height: 42px;
+    --z0mbi3-urlbar-font-family: "JetBrainsMono NF", serif;
+    --z0mbi3-urlbar-font-size: 10pt;
+    --z0mbi3-urlbar-font-weight: 800;
+    --z0mbi3-urlbar-results-font-family: "JetBrainsMono NF", serif;
+    --z0mbi3-urlbar-results-font-size: 9pt;
+    --z0mbi3-urlbar-results-font-weight: 700;
+
+    /* Overriden Firefox variables*/
+    --toolbar-background-color: var(--z0mbi3-bg) !important;
+    --lwt-sidebar-background-color: var(--z0mbi3-bg) !important;
+    --tab-border-radius: 0 !important;
+    --lwt-toolbarbutton-icon-fill-attention: var(--z0mbi3-magenta) !important;
+    --toolbarbutton-icon-fill-attention: var(--lwt-toolbarbutton-icon-fill-attention) !important;
+    --toolbar-field-focus-background-color: var(--z0mbi3-bg) !important;
+    --panel-border-color: transparent !important;
+}
+
+
+/* Move tabs down */
+@media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"),
+       -moz-pref("userchrome.force-window-controls-on-left.enabled") {
+    #nav-bar > .titlebar-buttonbox-container {
+        order: -1 !important;
+        > .titlebar-buttonbox{
+        flex-direction: row-reverse;
+    }
+  }
+}
+
+@media not (-moz-bool-pref: "sidebar.verticalTabs"),
+       not -moz-pref("sidebar.verticalTabs") {
+    .global-notificationbox,
+    #tab-notification-deck,
+    #TabsToolbar {
+        order: 1;
+  }
+    #TabsToolbar > :is(.titlebar-spacer,.titlebar-buttonbox-container) {
+        display: none;
+  }
+  :root[sizemode="fullscreen"] #nav-bar > .titlebar-buttonbox-container{
+    display: flex !important;
+  }
+  :root:is([tabsintitlebar],[customtitlebar]) #toolbar-menubar:not([autohide="false"]) ~ #nav-bar{
+    > .titlebar-buttonbox-container{
+      display: flex !important;
+    }
+    :root[sizemode="normal"] & {
+      > .titlebar-spacer{
+        display: flex !important;
+      }
+    }
+    :root[sizemode="maximized"] & {
+      > .titlebar-spacer[type="post-tabs"]{
+        display: flex !important;
+      }
+      @media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"),
+        -moz-pref("userchrome.force-window-controls-on-left.enabled"),
+        (-moz-gtk-csd-reversed-placement),
+        (-moz-platform: macos){
+        > .titlebar-spacer[type="post-tabs"]{
+          display: none !important;
+        }
+        > .titlebar-spacer[type="pre-tabs"]{
+          display: flex !important;
+        }
+      }
+    }
+  }
+}
+
+/*--------------*/
+/*     tabs     */
+/*--------------*/
+
+.tab-background[selected] { background: var(--z0mbi3-accent-color) !important; }
+
+.tabbrowser-tab:not([selected]) .tab-background {
+    background: var(--z0mbi3-accent-color-inactive) !important;
+}
+
+.tab-text[selected] {
+    font-family: var(--z0mbi3-tab-font-family);
+    font-weight: var(--z0mbi3-tab-font-weight);
+    font-size: var(--z0mbi3-tab-font-size) !important;
+    color: var(--z0mbi3-bg) !important;
+    padding: 10px !important;
+}
+
+.tabbrowser-tab:not([selected]) .tab-text {
+    font-family: var(--z0mbi3-tab-font-family);
+    font-weight: var(--z0mbi3-tab-font-weight);
+    font-size: var(--z0mbi3-tab-font-size) !important;
+    color: var(--z0mbi3-fg) !important;
+}
+
+/**#tabbrowser-tabs tab-split-view-wrapper:not([hasactivetab]) {
+  // CSS
+}**/
+
+#tabbrowser-tabs:not([orient="vertical"]) .tab-icon-image {
+    display: none !important;
+}
+
+.tabbrowser-tab {
+    height: var(--z0mbi3-tab-height) !important;
+}
+
+#tabs-newtab-button > .toolbarbutton-icon {
+    --toolbarbutton-inner-padding: 4px !important;
+}
+
+#tabs-newtab-button {
+  list-style-image: url("add.svg") !important;
+}
+
+/* Always show new tab button on hover and never otherwise */
+#tabbrowser-tabs #tabs-newtab-button {
+    display: none;
+}
+
+#tabbrowser-tabs:hover #tabs-newtab-button {
+    display: flex !important;
+}
+
+/* Centered tab label */
+
+.tab-label-container{
+    display: grid;
+    align-content: center;
+}
+
+.tab-secondary-label {
+    justify-content: center;
+}
+
+.tab-label,
+.tab-secondary-label {
+    overflow: hidden
+}
+
+
+
+.tab-close-button {
+    opacity: 0;
+}
+
+.tab-close-button:hover {
+    opacity: 1 !important;
+    color: var(--z0mbi3-bg) !important;
+    background-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.tab-close-button:not([selected]):hover {
+    opacity: 1 !important;
+    color: var(--z0mbi3-fg) !important;
+    background-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+tab-split-view-wrapper {
+    outline: none !important;
+    background-color: var(--z0mbi3-yellow) !important;
+}
+
+tab-split-view-wrapper .tab-stack {
+    outline: none !important;
+}
+
+tab-split-view-wrapper .tabbrowser-tab {
+    margin: 0 !important;
+}
+
+/*-----------------*/
+/*     URL Bar     */
+/*-----------------*/
+
+.urlbar-background {
+    background-color: var(--z0mbi3-bg) !important;
+    border: none !important;
+    outline: none !important;
+    opacity: 1 !important;
+}
+
+#urlbar[focused] .urlbar-background {
+    outline: 1px solid var(--z0mbi3-accent-color-inactive) !important;
+}
+
+#urlbar-input {
+    font-size: var(--z0mbi3-urlbar-font-size) !important;
+    color: var(--z0mbi3-fg) !important;
+    font-family: var(--z0mbi3-urlbar-font-family) !important;
+    font-weight: var(--z0mbi3-urlbar-font-weight) !important;
+    text-align: center !important;
+}
+
+#urlbar-results {
+    font-family: var(--z0mbi3-urlbar-results-font-family);
+    font-weight: var(--z0mbi3-urlbar-results-font-weight);
+    font-size: var(--z0mbi3-urlbar-results-font-size) !important;
+    color: var(--z0mbi3-fg) !important;
+}
+
+.urlbarView-url,
+.search-panel-one-offs-container {
+    font-family: var(--z0mbi3-urlbar-font-family);
+    font-weight: var(--z0mbi3-urlbar-results-font-weight);
+    font-size: var(--z0mbi3-urlbar-results-font-size) !important;
+    color: var(--z0mbi3-blue) !important;
+}
+
+.urlbarView-row:hover > .urlbarView-row-inner {
+    background-color: var(--z0mbi3-magenta) !important;
+}
+
+.urlbarView-row[selected] > .urlbarView-row-inner {
+    background-color: var(--z0mbi3-yellow) !important;
+}
+
+.urlbarView-row[selected] .urlbarView-title,
+.urlbarView-row[selected] .urlbarView-url {
+    color: var(--z0mbi3-bg) !important;
+}
+
+.urlbarView-row:hover .urlbarView-title,
+.urlbarView-row:hover .urlbarView-url {
+    color: var(--z0mbi3-bg) !important;
+}
+
+/* Remove Back button when there's nothing to go Back to */
+#nav-bar:not([customizing="true"])
+  > #nav-bar-customization-target
+  > #back-button[disabled="true"] {
+    opacity: 0 !important;
+}
+
+/* Remove Forward button when there's nothing to go Forward to */
+#nav-bar:not([customizing="true"])
+  > #nav-bar-customization-target
+  > #forward-button[disabled="true"] {
+    opacity: 0 !important;
+}
+
+/* Remove reload button when there's nothing to reload */
+#nav-bar:not([customizing="true"])
+  > #nav-bar-customization-target
+  > #reload-button[disabled="true"] {
+    opacity: 0 !important;
+}
+
+#navigator-toolbox {
+  border-bottom: unset !important;
+}
+
+.toolbar-items {
+  background-color: var(--z0mbi3-bg) !important;
+}
+
+#reload-button:not([disabled="true"]),
+#home-button:not([disabled="true"]) {
+  color: var(--z0mbi3-fg) !important;
+}
+
+.toolbarbutton-text {
+  color: var(--z0mbi3-fg) !important;
+}
+
+toolbar#nav-bar {
+  padding: 10px !important;
+}
+
+toolbarbutton.bookmark-item:hover,
+#PlacesToolbar menu:hover,
+#PlacesToolbar menuitem:hover {
+  background-color: var(--z0mbi3-magenta) !important;
+  color: var(--z0mbi3-bg) !important;
+}
+
+.toolbarbutton-icon {
+    fill: var(--z0mbi3-fg) !important;
+    fill-opacity: 100% !important;
+}
+
+toolbarbutton:hover > .toolbarbutton-badge-stack,
+toolbarbutton:hover > .toolbarbutton-icon,
+toolbarbutton:hover > .toolbarbutton-text,
+toolbarbutton:hover > .toolbarbutton-menubutton-button {
+    background-color: var(--z0mbi3-magenta) !important;
+    fill: var(--z0mbi3-bg) !important;
+    color: var(--z0mbi3-bg) !important;
+}
+
+#nav-bar {
+    border-top: none !important;
+    box-shadow: none !important;
+}
+
+/* color bg of context menu */
+menupopup, panel {
+  --panel-background: var(--z0mbi3-bg) !important;
+  --panel-border-color: none !important;
+  --panel-color: var(--z0mbi3-fg) !important;
+}
+
+/* color fg of context menu */
+menupopup > menuitem[_moz-menuactive="true"],
+menupopup > menu[_moz-menuactive="true"] {
+    background: var(--z0mbi3-magenta) !important;
+    color: var(--z0mbi3-bg) !important;
+}
+
+#context-navigation > menuitem[_moz-menuactive="true"] {
+    background-color: var(--z0mbi3-magenta) !important;
+    color: var(--z0mbi3-bg) !important;
+}
+
+#appMenu-popup .subviewbutton:hover,
+#appMenu-popup .subviewbutton:hover:active,
+#appMenu-popup .subviewbutton[open],
+#appMenu-popup .subviewbutton[_moz-menuactive="true"] {
+    background-color: var(--z0mbi3-magenta) !important;
+    color: var(--z0mbi3-bg) !important;
+}
+
+#appMenu-popup .subviewbutton:hover image,
+#appMenu-popup .subviewbutton:hover .toolbarbutton-icon,
+#appMenu-popup .subviewbutton:hover .toolbarbutton-text {
+    color: var(--z0mbi3-bg) !important;
+}
+
+/*-------------------------*/
+/*     Other CSS Hacks     */
+/*-------------------------*/
+
+/* This style hides some information from the extensions-button panel, but makes it appear more compact. Might be useful for someone having lot of extensions */
+#unified-extensions-view{
+  --uei-icon-size: 16px;
+}
+.unified-extensions-item-menu-button.subviewbutton{
+  padding: 0px !important;
+  margin-inline-end: 0 !important;
+}
+.unified-extensions-item-action-button.subviewbutton{
+  padding-block: 6px !important;
+}
+.unified-extensions-item-menu-button.subviewbutton > .toolbarbutton-icon{
+  padding: 4px !important;
+}
+.unified-extensions-item-message-deck{
+  display: none
+}
+#unified-extensions-view > vbox > vbox > .unified-extensions-item {
+  padding-block: 0px !important;
+}
+#unified-extensions-panel .unified-extensions-item{
+  margin-block: 0 !important;
+}
+
+#unified-extensions-panel .subviewbutton:hover {
+    background-color: var(--z0mbi3-magenta) !important;
+    color: var(--z0mbi3-bg) !important;
+}
+
+#unified-extensions-panel .subviewbutton:hover .toolbarbutton-icon,
+#unified-extensions-panel .subviewbutton:hover .toolbarbutton-text {
+    fill: var(--z0mbi3-bg) !important;
+    color: var(--z0mbi3-bg) !important;
+}
+
+#PanelUI-fxa .subviewbutton:hover,
+#PanelUI-fxa .subviewbutton:hover * {
+    background-color: var(--z0mbi3-magenta) !important;
+    color: var(--z0mbi3-bg) !important;
+    fill: var(--z0mbi3-bg) !important;
+}
+
+/* Selection text color */
+::selection {
+  background: var(--z0mbi3-magenta) !important;
+  color: var(--z0mbi3-bg) !important;
+}
+
+/* Hide some buttons */
+tracking-protection-icon-container,
+#identity-box, #trust-icon-container,
+#star-button-box, #alltabs-button,
+.urlbarView-favicon, .urlbarView-type-icon,
+.searchmode-switcher, #reader-mode-button,
+#picture-in-picture-button {
+  display: none !important;
+}
+
+
+#bookmarkproperties {
+
+	#bookmarkpropertiesdialog {
+
+		--button-background-color-primary: var(--z0mbi3-magenta) !important;
+		/**--button-border-radius: 0 !important;**/
+		--button-text-color: var(--z0mbi3-fg) !important;
+		--button-text-color-primary: var(--z0mbi3-bg) !important;
+		--button-border: 0 !important;
+		--button-background-color-hover: var(--z0mbi3-blue) !important;
+		--button-background-color-primary-hover: var(--z0mbi3-magenta) !important;
+		--button-text-color-hover: var(--z0mbi3-bg) !important;
+		--button-text-color-primary-hover: var(--z0mbi3-fg) !important;
+		--background-color-box: var(--z0mbi3-bg) !important;
+
+		--custombg: var(--z0mbi3-bg);
+
+		#titleContainer {
+			--background-color-canvas: var(--custombg)!important;
+		}
+		background-color: var(--custombg)!important;
+
+		input {
+			background-color: var(--z0mbi3-bg) !important;
+			border-radius: 0 !important;
+		}
+		label {
+			color: var(--z0mbi3-fg);
+		}
+
+	}
+
+}
+
+#downloadsPanel .downloadMainArea:hover,
+#downloadsPanel .downloadContainer:hover {
+    background-color: var(--z0mbi3-magenta) !important;
+    color: var(--z0mbi3-bg) !important;
+}
+
+#downloadsPanel button:hover,
+#downloadsPanel button:hover * {
+    background-color: var(--z0mbi3-magenta) !important;
+    color: var(--z0mbi3-bg) !important;
+    fill: var(--z0mbi3-bg) !important;
+}

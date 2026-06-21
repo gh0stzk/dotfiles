@@ -17,33 +17,47 @@
 
 CONFIG_DIR="$HOME/.config/bspwm"
 RICES_DIR="$CONFIG_DIR/rices"
-DUNST_CONFIG="$CONFIG_DIR/config/dunstrc"
+DUNST_CONFIG="$HOME/.config/dunst/dunstrc"
 read -r CURRENT_RICE < "$CONFIG_DIR"/.rice
+main_eww="$CONFIG_DIR/eww"
+reloaded=""
 
-reload() {
-    # Reload bars polybar or eww
-    if pgrep -x polybar >/dev/null; then
-        polybar-msg cmd restart >/dev/null
-    else
-        eww_bar_config="$RICES_DIR/$CURRENT_RICE/bar"
-        [ -d "$eww_bar_config" ] && eww reload -c "$eww_bar_config"
-    fi
+# Reload bars polybar or eww
+if pgrep -x polybar >/dev/null; then
+    polybar-msg cmd restart >/dev/null &&
+    reloaded="${reloaded}• Polybar\n"
+else
+    eww_bar_config="$RICES_DIR/$CURRENT_RICE/bar"
+    [ -d "$eww_bar_config" ] && eww reload -c "$eww_bar_config" &&
+    reloaded="${reloaded}Eww Bar\n"
+fi
 
-    # Reload common services
-    pkill -USR1 -x picom 2>/dev/null || true
-    pkill -1 xsettingsd 2>/dev/null || true
-    pkill -USR1 -x sxhkd 2>/dev/null || true
-    dunstctl reload "$DUNST_CONFIG" 2>/dev/null || true
+# Reload Dunst notification daemon
+dunstctl reload 2>/dev/null &&
+reloaded="${reloaded}• Dunst\n"
 
-    # Reload EWW widgets
-    main_eww="$CONFIG_DIR/eww"
-    if eww ping -c "$main_eww" >/dev/null; then
-        eww reload -c "$main_eww"
-    fi
-}
+# Reload Picom compositor daemon
+pkill -USR1 -x picom 2>/dev/null &&
+reloaded="${reloaded}• Picom\n"
+
+# Reload xsettingsd (gtk themes) daemon
+pkill -1 xsettingsd 2>/dev/null &&
+reloaded="${reloaded}• Gtk Colors\n"
+
+# Reload sxhkd hotkey daemon
+pkill -USR1 -x sxhkd 2>/dev/null &&
+reloaded="${reloaded}• SXHKD\n"
+
+# Reload EWW widgets
+if eww ping -c "$main_eww" >/dev/null; then
+    eww reload -c "$main_eww" &&
+    reloaded="${reloaded}• Eww Widgets\n"
+fi
 
 # Send notification
-if reload; then
-    dunstify -i dialog-information "Environment Reloaded!" \
-    "Reloaded Settings:\n• ${CURRENT_RICE} Bar\n• Picom\n• Xsettingsd\n• SXHKD\n• Dunst\n• EWW Widgets"
+if [ -n "$reloaded" ]; then
+    dunstify \
+        -i dialog-information \
+        "Environment Reloaded!" \
+        "$reloaded"
 fi

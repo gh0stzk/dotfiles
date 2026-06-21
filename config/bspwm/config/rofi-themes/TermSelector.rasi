@@ -29,7 +29,7 @@ mainbox {
 
 listview {
     enabled:                     true;
-    columns:                     3;
+    columns:                     4;
     lines:                       1;
     spacing:                     0px;
     padding:                     20px 30px;

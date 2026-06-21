@@ -1,3 +1,29 @@
+## Updates & other optimizations
+##### 24 May 2026
+
+**Fixed**
+- RiceEditor App fix bad syntax & crash when apply an animated wallpaper.
+
+**Modified**
+- The dunst configuration file was returned to its default directory in ~/.config and split into two files to make it easier to theme. The dunst module was also updated.
+- Picom configuration, rules, and animations refactored and optimized, smooth and lightweight. Some animations like dunst notifications are alway enabled.
+- Jgmenu has been redesigned and now looks better. Its module has also been changed.
+- All Geany colorschemes have been removed; they are now generated dynamically.
+- Kitty module refactored, all themes removed, now generated dynamically.
+- I modified the loading order of some modules to make the transition between Rices smoother.
+- SoftReload script optimized
+- Wallpaper module script optimized & fix when the engine is SlideShow, only first wall was catched for rofi image.
+
+**New**
+- I added 5 more modules for cava, ghostty, xfce terminal, zathura and mpv applications.
+- My dots now support ghostty terminal, now you can select from 4 terminals, (alacritty, st, kitty & ghostty)
+- New Polybar module "ColorPicker".
+- I've reintroduced my "z0mbieFox" theme for Firefox, and best of all, it syncs with the colors of the theme you're using. It comes with a startpage and BetterFox.
+
+In case you haven't noticed, the modules mentioned are located in ~/.config/bspwm/config/modules and function somewhat like Matugen or PyWal in my environment. I plan to gradually add more modules to support many applications.
+
+- MPV configuration includes a modern graphical interface and a thumbnail in the search bar. Of course, the menu colors change with Rice.
+
 ## feat - Minimizing like... windows in bspwm
 ##### 12 Nov 2025
 

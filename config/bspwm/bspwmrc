@@ -67,7 +67,7 @@ run sxhkd -c "${HOME}"/.config/bspwm/config/sxhkdrc
 "${HOME}"/.config/bspwm/bin/Theme.sh
 
 # Launch picom
-run picom --config "${HOME}"/.config/bspwm/config/picom.conf
+run picom --config "${HOME}"/.config/bspwm/config/picom/picom.conf
 
 # Launch xsettingsd
 run xsettingsd --config="${HOME}"/.config/bspwm/config/xsettingsd >/dev/null 2>&1

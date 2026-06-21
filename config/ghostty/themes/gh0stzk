@@ -1,0 +1,24 @@
+# Colors generated for isabel theme.
+
+background = #14171c
+foreground = #abb2bf
+cursor-color = #abb2bf
+selection-background = #abb2bf
+selection-foreground = #14171c
+
+palette = 0=#181b21
+palette = 1=#be5046
+palette = 2=#81ae5f
+palette = 3=#d19a66
+palette = 4=#4889be
+palette = 5=#7560d3
+palette = 6=#49919a
+palette = 7=#abb2bf
+palette = 8=#5c6370
+palette = 9=#e06c75
+palette = 10=#98c379
+palette = 11=#e5c07b
+palette = 12=#61afef
+palette = 13=#8677cf
+palette = 14=#56b6c2
+palette = 15=#b8bfe5

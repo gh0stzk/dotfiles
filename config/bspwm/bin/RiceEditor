@@ -798,7 +798,7 @@ class RiceEditorApp(Gtk.Window):
                 # Actualizar archivo de configuración del tema
                 current_theme = self.get_current_theme()
                 config_file = os.path.expanduser(f'~/.config/bspwm/rices/{current_theme}/theme-config.bash')
-                picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom.conf')
+                picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom/picom.conf')
 
                 try:
                     # Leer el archivo de tema
@@ -865,7 +865,7 @@ class RiceEditorApp(Gtk.Window):
 
         current_theme = self.get_current_theme()
         config_file = os.path.expanduser(f'~/.config/bspwm/rices/{current_theme}/theme-config.bash')
-        picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom.conf')
+        picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom/picom-rules.conf')
 
         try:
             # Update theme-config.bash
@@ -930,7 +930,7 @@ class RiceEditorApp(Gtk.Window):
         if re.match(r'^#[0-9A-Fa-f]{6}$', new_color):
             current_theme = self.get_current_theme()
             config_file = os.path.expanduser(f'~/.config/bspwm/rices/{current_theme}/theme-config.bash')
-            picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom.conf')
+            picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom/picom.conf')
 
             try:
                 # Read and update theme-config.bash
@@ -995,7 +995,7 @@ class RiceEditorApp(Gtk.Window):
 
         current_theme = self.get_current_theme()
         config_file = os.path.expanduser(f'~/.config/bspwm/rices/{current_theme}/theme-config.bash')
-        picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom.conf')
+        picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom/picom-rules.conf')
 
         try:
             # Update theme-config.bash
@@ -1060,7 +1060,7 @@ class RiceEditorApp(Gtk.Window):
 
         current_theme = self.get_current_theme()
         config_file = os.path.expanduser(f'~/.config/bspwm/rices/{current_theme}/theme-config.bash')
-        picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom.conf')
+        picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom/picom-rules.conf')
 
         try:
             # Actualizar theme-config.bash
@@ -1124,7 +1124,7 @@ class RiceEditorApp(Gtk.Window):
 
         current_theme = self.get_current_theme()
         config_file = os.path.expanduser(f'~/.config/bspwm/rices/{current_theme}/theme-config.bash')
-        picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom.conf')
+        picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom/picom-rules.conf')
 
         try:
             # Update theme-config.bash
@@ -1199,7 +1199,7 @@ class RiceEditorApp(Gtk.Window):
             if 0.1 <= opacity <= 1.0:
                 current_theme = self.get_current_theme()
                 config_file = os.path.expanduser(f'~/.config/bspwm/rices/{current_theme}/theme-config.bash')
-                picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom.conf')
+                picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom/picom-rules.conf')
 
                 try:
                     # Actualizar archivo de configuración del tema
@@ -1625,7 +1625,7 @@ class RiceEditorApp(Gtk.Window):
                 pkill xwinwrap;
                 [ -f /tmp/wall_refresh.pid ] && kill $(cat /tmp/wall_refresh.pid) 2>/dev/null;
                 rm -f /tmp/wall_refresh.pid;
-                random_img=$(find "$HOME/.config/bspwm/rices/{current_theme}/walls" -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \) | shuf -n 1);
+                random_img=$(find "$HOME/.config/bspwm/rices/{current_theme}/walls" -type f \\( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \\) | shuf -n 1);
                 feh --bg-fill $random_img;
                 WallSync &
                 '''
@@ -1634,7 +1634,7 @@ class RiceEditorApp(Gtk.Window):
                 pkill xwinwrap;
                 [ -f /tmp/wall_refresh.pid ] && kill $(cat /tmp/wall_refresh.pid) 2>/dev/null;
                 rm -f /tmp/wall_refresh.pid;
-                random_img=$(find "{entry.get_text()}" -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \) | shuf -n 1);
+                random_img=$(find "{entry.get_text()}" -type f \\( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \\) | shuf -n 1);
                 feh --bg-fill "$random_img";
                 WallSync &
                 '''
@@ -1651,7 +1651,7 @@ class RiceEditorApp(Gtk.Window):
                 pkill xwinwrap;
                 [ -f /tmp/wall_refresh.pid ] && kill $(cat /tmp/wall_refresh.pid) 2>/dev/null;
                 rm -f /tmp/wall_refresh.pid;
-                AnimatedWall --start "{entry.get_text()}":
+                AnimatedWall --start "{entry.get_text()}";
                 WallSync --animated &
                 '''
             elif engine == "Slideshow":
@@ -1661,10 +1661,11 @@ class RiceEditorApp(Gtk.Window):
                 rm -f /tmp/wall_refresh.pid;
                 bash -c '
                     while true; do
-                        random_img=$(find "$HOME/.config/bspwm/rices/{current_theme}/walls" -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \) | shuf -n 1);
+                        random_img=$(find "$HOME/.config/bspwm/rices/{current_theme}/walls" -type f \\( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \\) | shuf -n 1);
                         feh --bg-fill $random_img;
                         WallSync &
                         sleep 900
+                        WallSync &
                     done & echo $! > /tmp/wall_refresh.pid
                 '
                 '''
@@ -1765,7 +1766,7 @@ class RiceEditorApp(Gtk.Window):
         """
         Lee el backend actual desde picom.conf.
         """
-        picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom.conf')
+        picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom/picom.conf')
 
         try:
             with open(picom_config_file, 'r') as f:
@@ -1785,7 +1786,7 @@ class RiceEditorApp(Gtk.Window):
         Aplica el backend seleccionado en picom.conf.
         """
         selected_backend = combo.get_active_id()
-        picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom.conf')
+        picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom/picom.conf')
 
         try:
             with open(picom_config_file, 'r') as f:
@@ -1805,7 +1806,7 @@ class RiceEditorApp(Gtk.Window):
         """
         Lee el estado actual de vSync desde picom.conf.
         """
-        picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom.conf')
+        picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom/picom.conf')
 
         try:
             with open(picom_config_file, 'r') as f:
@@ -1825,7 +1826,7 @@ class RiceEditorApp(Gtk.Window):
         Maneja los cambios en el switch de vSync.
         """
         new_state = "true" if state else "false"
-        picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom.conf')
+        picom_config_file = os.path.expanduser('~/.config/bspwm/config/picom/picom.conf')
 
         try:
             with open(picom_config_file, 'r') as f:

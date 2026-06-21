@@ -1,0 +1,16 @@
+/** Style and colors generated for the emilia theme. **/
+
+:root {
+    --z0mbi3-bg: #1a1b26;
+    --z0mbi3-fg: #c0caf5;
+    --z0mbi3-accent-color: #bb9af7;
+    --z0mbi3-accent-color-inactive: #222330;
+    --z0mbi3-black: #15161e;
+    --z0mbi3-red: #f7768e;
+    --z0mbi3-green: #9ece6a;
+    --z0mbi3-yellow: #e0af68;
+    --z0mbi3-blue: #7aa2f7;
+    --z0mbi3-magenta: #bb9af7;
+    --z0mbi3-cyan: #7dcfff;
+    --z0mbi3-white: #a9b1d6;
+}

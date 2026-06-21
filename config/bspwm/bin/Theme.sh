@@ -22,8 +22,45 @@ read -r RICE < "$HOME"/.config/bspwm/.rice
 # Path to modules dir
 MODULE_DIR="$HOME/.config/bspwm/config/modules"
 
+# Function to wait for processes to finish correctly
+wait_for_termination() {
+    process_name="$1"
+    while pgrep -f "$process_name" >/dev/null; do
+        sleep 0.2
+    done
+}
 
-# Load all the files in dir
+# Kill polybar or eww bars when you switch from the current theme to another
+if pgrep -x polybar >/dev/null 2>&1; then
+    polybar-msg cmd quit >/dev/null 2>&1
+    wait_for_termination polybar
+fi
+
+# Kill eww bars
+if pkill -f "eww.*bar" >/dev/null 2>&1; then
+    wait_for_termination "eww.*bar"
+fi
+
+# Kill the fix for eww in fullscreen, we don't need it in themes with polybar
+if pkill -fx "bspc subscribe node_state" >/dev/null 2>&1; then
+    wait_for_termination "bspc subscribe node_state"
+fi
+
+# Kill animated wallpaper if is active
+if pkill xwinwrap >/dev/null 2>&1; then
+    wait_for_termination xwinwrap
+fi
+
+# Kill wallpaper refresh loop
+if [ -f /tmp/wall_refresh.pid ]; then
+    kill "$(cat /tmp/wall_refresh.pid)" 2>/dev/null
+    rm -f /tmp/wall_refresh.pid
+fi
+
+# Load all the modules
 for module in "$MODULE_DIR"/*.sh; do
     . "$module"
 done
+
+# Finally load the bar
+. "$HOME"/.config/bspwm/rices/"$RICE"/Bar.bash

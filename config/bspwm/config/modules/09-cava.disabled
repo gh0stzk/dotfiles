@@ -1,0 +1,29 @@
+#!/bin/sh
+
+cat > "$HOME/.config/cava/themes/gh0stzk" << EOF
+;; Colors generated for the ${RICE} theme.
+
+[color]
+
+gradient = 1
+gradient_color_1 = '${cyan}'
+gradient_color_2 = '${cyan}'
+gradient_color_3 = '${magenta}'
+gradient_color_4 = '${magenta}'
+gradient_color_5 = '${magenta}'
+gradient_color_6 = '${magenta}'
+gradient_color_7 = '${red}'
+gradient_color_8 = '${red}'
+
+horizontal_gradient = 1
+horizontal_gradient_color_1 = '${cyan}'
+horizontal_gradient_color_2 = '${blue}'
+horizontal_gradient_color_3 = '${blue}'
+horizontal_gradient_color_4 = '${magenta}'
+horizontal_gradient_color_5 = '${magenta}'
+horizontal_gradient_color_6 = '${blue}'
+horizontal_gradient_color_6 = '${blue}'
+horizontal_gradient_color_6 = '${cyan}'
+
+blend_direction = 'up'
+EOF

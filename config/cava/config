@@ -1,0 +1,62 @@
+[general]
+
+live-config = 0
+framerate = 60
+
+autosens = 1
+; sensitivity = 100
+bars = 0
+bar_width = 0
+bar_spacing = 1
+center_align = 1
+max_height = 100
+
+
+[input]
+
+[output]
+
+method = noncurses
+orientation = horizontal
+
+reverse = 1
+
+horizontal_stereo = 0
+left_bottom = 0
+
+synchronized_sync = 0
+
+show_idle_bar_heads = 0
+waveform = 0
+
+[color]
+
+gradient = 1
+gradient_color_1 = '#7dcfff'
+gradient_color_2 = '#7dcfff'
+gradient_color_3 = '#bb9af7'
+gradient_color_4 = '#bb9af7'
+gradient_color_5 = '#bb9af7'
+gradient_color_6 = '#bb9af7'
+gradient_color_7 = '#f7768e'
+gradient_color_8 = '#f7768e'
+
+horizontal_gradient = 1
+horizontal_gradient_color_1 = '#7dcfff'
+horizontal_gradient_color_2 = '#7aa2f7'
+horizontal_gradient_color_3 = '#7aa2f7'
+horizontal_gradient_color_4 = '#bb9af7'
+horizontal_gradient_color_5 = '#bb9af7'
+horizontal_gradient_color_6 = '#7aa2f7'
+horizontal_gradient_color_7 = '#7aa2f7'
+horizontal_gradient_color_8 = '#7dcfff'
+
+blend_direction = 'up'
+
+theme = 'gh0stzk'
+
+[smoothing]
+
+monstercat = 0
+waves = 0
+noise_reduction = 80

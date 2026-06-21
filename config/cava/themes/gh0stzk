@@ -1,0 +1,25 @@
+;; Colors generated for the emilia theme.
+
+[color]
+
+gradient = 1
+gradient_color_1 = '#7dcfff'
+gradient_color_2 = '#7dcfff'
+gradient_color_3 = '#bb9af7'
+gradient_color_4 = '#bb9af7'
+gradient_color_5 = '#bb9af7'
+gradient_color_6 = '#bb9af7'
+gradient_color_7 = '#f7768e'
+gradient_color_8 = '#f7768e'
+
+horizontal_gradient = 1
+horizontal_gradient_color_1 = '#7dcfff'
+horizontal_gradient_color_2 = '#7aa2f7'
+horizontal_gradient_color_3 = '#7aa2f7'
+horizontal_gradient_color_4 = '#bb9af7'
+horizontal_gradient_color_5 = '#bb9af7'
+horizontal_gradient_color_6 = '#7aa2f7'
+horizontal_gradient_color_6 = '#7aa2f7'
+horizontal_gradient_color_6 = '#7dcfff'
+
+blend_direction = 'up'
