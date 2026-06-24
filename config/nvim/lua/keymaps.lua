@@ -11,10 +11,6 @@ map("i", "jk", "<ESC>", { desc = "jk to esc", noremap = true })
 -- Quit Neovim
 map("n", "<leader>q", ":q<cr>", { desc = "Quit Neovim", remap = true })
 
--- Increment/decrement
-map("n", "+", "<C-a>", { desc = "Increment numbers", noremap = true })
-map("n", "-", "<C-x>", { desc = "Decrement numbers", noremap = true })
-
 -- Select all
 map("n", "<C-a>", "gg<S-v>G", { desc = "Select all", noremap = true })
 
@@ -46,3 +42,6 @@ map("n", "<Tab>", ":BufferNext<CR>", { desc = "Move to next tab", noremap = true
 map("n", "<S-Tab>", ":BufferPrevious<CR>", { desc = "Move to previous tab", noremap = true })
 map("n", "<leader>x", ":BufferClose<CR>", { desc = "Buffer close", noremap = true })
 map("n", "<A-p>", ":BufferPin<CR>", { desc = "Pin buffer", noremap = true })
+
+map("n", "<C-u>", "<C-u>zz", { desc = "Half page up" })
+map("n", "<C-d>", "<C-d>zz", { desc = "Half page down" })

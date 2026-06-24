@@ -51,6 +51,7 @@ A modular theming system propagates these colors across the entire desktop envir
   - Kitty
   - St
   - Xfce-terminal
+- Neovim
 - Eww
 - Firefox
 - Jgmenu
@@ -98,18 +99,6 @@ You can check the Wiki [👉 Monitors Setup](https://github.com/gh0stzk/dotfiles
 
 Is an application designed to simplify the customization of your current theme. It allows you to easily adjust various visual and configuration aspects, tailoring your environment to your preferences without the need to manually edit configuration files.
 
-#### Eww Widgets
-
-3 different widgets, including a music player, profile card and a cheatsheet. These widgets are not only functional but also instantly adapt to the color scheme of the selected theme.
-
-#### Jgmenu
-
-Explore an elegant right-click menu (Desktop) made with Jgmenu, which also syncs with themes for flawless visual consistency.
-
-#### LockScreen
-
-The lockscreen automatically adapts to the active theme and offers two locking options: it can capture the current screen with a blur effect, or use a specific wallpaper depending on the current theme.
-
 #### Wallpaper Engines
 
 My dotfiles support **5 different methods** for setting your favorite wallpaper:
@@ -129,10 +118,6 @@ Check the wiki for more details: [👉 Wallpapers Configuration](https://github.
 A _scratchpad_ is a tool designed to provide quick, temporary access to applications or notes without disrupting the desktop workflow. When activated, the scratchpad appears over the current workspace, allowing the user to access applications like a terminal, text editor, or any configured tool. Minimizing it hides the scratchpad from view but keeps it running in the background, ready to be reopened with a simple keyboard shortcut.
 
 It's ideal for quick note-taking, running commands, or accessing auxiliary tools without losing focus on the current task.
-
-#### Visual Composition and Animations
-
-Each theme features a unique color palette, along with transparencies, shadows, and animations—all designed to maintain visual balance without impacting performance or overwhelming the environment.
 
 #### Rofi Applets
 
@@ -361,7 +346,7 @@ https://github.com/user-attachments/assets/79764678-c519-4a41-a333-2a862a6d10f8
 
 | Neovim setup |
 |:-:|
-| ![Neovim setup](https://github.com/user-attachments/assets/a70a0ebb-9921-4d2d-88f3-5eabdc5d10f9) |
+| ![Neovim setup](https://github.com/user-attachments/assets/deff5074-3d9b-4f00-8edd-82c83b6dccf4) |
 | Plugins included [Neovim setup wiki](https://github.com/gh0stzk/dotfiles/wiki/Neovim-setup) |
 
 ## Very useful keybindigs to know...
