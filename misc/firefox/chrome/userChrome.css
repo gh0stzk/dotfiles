@@ -312,9 +312,10 @@ toolbarbutton:hover > .toolbarbutton-menubutton-button {
 
 /* color bg of context menu */
 menupopup, panel {
-  --panel-background: var(--z0mbi3-bg) !important;
+  --panel-background-color: var(--z0mbi3-bg) !important;
   --panel-border-color: none !important;
-  --panel-color: var(--z0mbi3-fg) !important;
+  --panel-text-color: var(--z0mbi3-fg) !important;
+  box-shadow: none !important;
 }
 
 /* color fg of context menu */
