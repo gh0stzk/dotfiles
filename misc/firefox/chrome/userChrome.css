@@ -401,7 +401,7 @@ tracking-protection-icon-container,
 #identity-box, #trust-icon-container,
 #star-button-box, #alltabs-button,
 .urlbarView-favicon, .urlbarView-type-icon,
-.searchmode-switcher, #reader-mode-button,
+.urlbar-icon, .searchmode-switcher, #reader-mode-button,
 #picture-in-picture-button {
   display: none !important;
 }
