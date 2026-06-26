@@ -453,3 +453,29 @@ tracking-protection-icon-container,
     color: var(--z0mbi3-bg) !important;
     fill: var(--z0mbi3-bg) !important;
 }
+
+#sidebar-main,
+#sidebar-box,
+#tabbrowser-arrowscrollbox {
+    background: var(--z0mbi3-bg) !important;
+    color: var(--z0mbi3-fg) !important;
+}
+
+.sidebar-splitter {
+    background-color: var(--z0mbi3-accent-color-inactive) !important;
+    width: 1px !important;
+}
+
+#sidebar-tools-and-extensions-splitter {
+    background-color: var(--z0mbi3-accent-color-inactive) !important;
+    min-height: 1px !important;
+}
+
+.browser-toolbar {
+    background: var(--z0mbi3-bg) !important;
+}
+
+#sidebar-button-1 {
+  background-color: var(--z0mbi3-magenta) !important;
+  color: var(--z0mbi3-bg) !important;
+}
