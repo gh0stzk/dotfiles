@@ -4,7 +4,7 @@ sed -i "$HOME"/.config/alacritty/fonts.toml \
     -e "s/size = .*/size = $term_font_size/" \
     -e "s/family = .*/family = \"$term_font_name\"/"
 
-cat >"$HOME"/.config/alacritty/rice-colors.toml <<-EOF
+_write "$HOME/.config/alacritty/rice-colors.toml" <<-EOF
 # Default colors
 [colors.primary]
 background = "${bg}"

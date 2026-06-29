@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat > "$HOME/.config/kitty/current-theme.conf" << EOF
+_write "$HOME/.config/kitty/current-theme.conf" << EOF
 # Colors generated for ${RICE} theme.
 
 # The basic colors

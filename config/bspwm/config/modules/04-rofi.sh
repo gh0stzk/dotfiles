@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat >"$HOME"/.config/bspwm/config/rofi-themes/shared.rasi <<-EOF
+_write "$HOME/.config/bspwm/config/rofi-themes/shared.rasi" <<-EOF
 * {
     font: "${rofi_font}";
     background: ${rofi_background};

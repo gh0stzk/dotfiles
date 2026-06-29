@@ -104,7 +104,7 @@ add_gh0stzk_repo() {
     printf "%b\n" "${BLD}${CYE}Installing ${CBL}${repo_name}${CYE} repository...${CNC}"
 
     # Check if repository already exists in pacman.conf
-    if ! grep -q "\[${repo_name}\]" /etc/pacman.conf; then
+    if ! pacman-conf --repo-list | grep -qx "$repo_name"; then
         printf "\n[%s]\nSigLevel = Optional TrustAll\nServer = http://gh0stzk.github.io/pkgs/x86_64\n" "$repo_name" \
            | sudo tee -a /etc/pacman.conf
         printf "\n%b\n" "${BLD}${CYE}${repo_name} ${CGR}repository added successfully!${CNC}"

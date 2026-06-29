@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat >"$HOME"/.config/bspwm/config/st/colorscheme <<-EOF
+_write "$HOME/.config/bspwm/config/st/colorscheme" << EOF
 *background: ${bg}
 *foreground: ${fg}
 

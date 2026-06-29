@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat > "$HOME/.config/geany/colorschemes/current.conf" << EOF
+_write "$HOME/.config/geany/colorschemes/current.conf" << EOF
 # Colorscheme generated for the ${RICE} theme.
 
 [theme_info]

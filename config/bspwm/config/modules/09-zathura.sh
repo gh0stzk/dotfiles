@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat > "$HOME/.config/zathura/zathurarc" << EOF
+_write "$HOME/.config/zathura/zathurarc" << EOF
 
 set recolor "true"
 

@@ -8,7 +8,7 @@ do
 
         mkdir -p "$profile/chrome"
 
-        cat > "$profile/chrome/Colors.css" << EOF
+        _write "$profile/chrome/Colors.css" << EOF
 /** Style and colors generated for the ${RICE} theme. **/
 
 :root {
@@ -31,7 +31,7 @@ done
 
 # Modify startpage colors
 
-cat > "$HOME/.local/share/startup-page/colors.css" << EOF
+_write "$HOME/.local/share/startup-page/colors.css" << EOF
 /** Style and colors generated for the ${RICE} theme. **/
 
 :root {

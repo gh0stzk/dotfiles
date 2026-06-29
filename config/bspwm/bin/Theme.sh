@@ -57,6 +57,23 @@ if [ -f /tmp/wall_refresh.pid ]; then
     rm -f /tmp/wall_refresh.pid
 fi
 
+# Write data atomically, avoiding partial writes and file corruption.
+_write() {
+    target=$1
+    dir=$(dirname "$target")
+    tmp=$(mktemp "$dir/.tmp.XXXXXX") || return 1
+
+    cat >"$tmp" || {
+        rm -f "$tmp"
+        return 1
+    }
+
+    mv -f "$tmp" "$target" || {
+        rm -f "$tmp"
+        return 1
+    }
+}
+
 # Load all the modules
 for module in "$MODULE_DIR"/*.sh; do
     . "$module"

@@ -1,6 +1,6 @@
 #!bin/sh
 
-cat > "$HOME/.config/ghostty/themes/gh0stzk" << EOF
+_write "$HOME/.config/ghostty/themes/gh0stzk" << EOF
 # Colors generated for ${RICE} theme.
 
 background = ${bg}

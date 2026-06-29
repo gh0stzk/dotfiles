@@ -2,5 +2,4 @@
 
 xfconf-query -c xfce4-terminal -p /color-background -s "${bg}"
 xfconf-query -c xfce4-terminal -p /color-foreground -s "${fg}"
-
 xfconf-query -c xfce4-terminal -p /color-palette -s "${black};${red};${green};${yellow};${blue};${magenta};${cyan};${white};${blackb};${redb};${greenb};${yellowb};${blueb};${magentab};${cyanb};${whiteb}"

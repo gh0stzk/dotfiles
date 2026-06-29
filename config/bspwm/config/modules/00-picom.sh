@@ -11,7 +11,7 @@ sed -i "$HOME/.config/bspwm/config/picom/picom-rules.conf" \
     -e "/#-blur-switch/s/.*#-/\t\tblur-background = ${P_BLUR};\t#-/" \
     -e "/picom-animations/c\\        ${P_ANIMATIONS}include \"picom-animations.conf\""
 
-cat > "$HOME/.config/bspwm/config/picom/picom-dunst-animations.conf" <<-EOF
+_write "$HOME/.config/bspwm/config/picom/picom-dunst-animations.conf" <<-EOF
     animations = (
 
         {

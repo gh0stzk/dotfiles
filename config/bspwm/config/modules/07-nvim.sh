@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat > "$HOME/.config/nvim/lua/generated/theme.lua" << EOF
+_write "$HOME/.config/nvim/lua/generated/theme.lua" << EOF
 -- Colors generated for the ${RICE} theme.
 return {
     base00 = "${bg}",

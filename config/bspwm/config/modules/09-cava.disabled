@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat > "$HOME/.config/cava/themes/gh0stzk" << EOF
+_write "$HOME/.config/cava/themes/gh0stzk" << EOF
 ;; Colors generated for the ${RICE} theme.
 
 [color]

@@ -1,8 +1,10 @@
 #!/bin/sh
 
-sed -i '/^# Colors and style$/,$d' "$HOME/.config/mpv/script-opts/modernz.conf"
+target="$HOME/.config/mpv/script-opts/modernz.conf"
 
-cat >> "$HOME/.config/mpv/script-opts/modernz.conf" << EOF
+{
+    sed '/^# Colors and style$/,$d' "$target"
+    cat <<EOF
 # Colors and style
 # accent color of the OSC and title bar
 osc_color=${bg}
@@ -57,3 +59,4 @@ nibble_current_color=#FFFFFF
 # color of the A/B loop range on the seekbar
 ab_loop_color=#2596be
 EOF
+} | _write "$target"

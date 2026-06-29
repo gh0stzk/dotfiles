@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat > "$HOME/.config/dunst/dunstrc.d/theme.conf" << EOF
+_write "$HOME/.config/dunst/dunstrc.d/theme.conf" << EOF
 # Style and colors generated for the ${RICE} theme.
 
 [global]
