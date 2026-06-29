@@ -32,6 +32,10 @@ print_workspaces() {
             ws=$d
             icon="󰊠"
             class="workspace-occupied"
+        elif [ "$(contains "$urgent_desktops" "$d")" -eq 1 ]; then
+            ws=$d
+            icon="󰊠"
+            class="workspace-occupied"
         else
             ws="$d"
             icon="󰑊"

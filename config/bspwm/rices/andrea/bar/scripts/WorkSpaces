@@ -30,6 +30,9 @@ print_workspaces() {
         elif [ "$(contains "$occupied_desktops" "$d")" -eq 1 ]; then
             ws=$d
             icon="./images/ghost.png"
+        elif [ "$(contains "$urgent_desktops" "$d")" -eq 1 ]; then
+            ws=$d
+            icon="./images/ghost.png"
         else
             ws=$d
             icon="./images/empty.png"
