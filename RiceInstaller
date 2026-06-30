@@ -140,7 +140,7 @@ add_chaotic_repo() {
     sudo pacman -U --noconfirm --needed 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 
     # Check if repository already exists in pacman.conf
-    if ! grep -q "\[${repo_chaotic}\]" /etc/pacman.conf; then
+    if ! pacman-conf --repo-list | grep -qx "$repo_chaotic"; then
         printf "\n%b\n" "${BLD}${CYE}Adding repository to pacman.conf...${CNC}"
         printf "\n[%s]\nInclude = /etc/pacman.d/chaotic-mirrorlist\n" "$repo_chaotic" \
             | sudo tee -a /etc/pacman.conf
@@ -637,8 +637,9 @@ add_chaotic_repo
 
 install_dependencies
 install_gh0stzk_dependencies
-install_aur_dependencies
 install_chaotic_dependencies
+install_aur_dependencies
+
 clone_dotfiles
 
 backup_existing_config
