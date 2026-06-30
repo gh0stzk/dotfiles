@@ -5,7 +5,6 @@ sed -i "$HOME/.config/bspwm/config/picom/picom.conf" \
     -e "s/^corner-radius = .*/corner-radius = ${P_CORNER_R}/"
 
 sed -i "$HOME/.config/bspwm/config/picom/picom-rules.conf" \
-    -e "/#-term-opacity-switch/s/.*#-/\t\topacity = $P_TERM_OPACITY;\t#-/" \
     -e "/#-shadow-switch/s/.*#-/\t\tshadow = ${P_SHADOWS};\t#-/" \
     -e "/#-fade-switch/s/.*#-/\t\tfade = ${P_FADE};\t#-/" \
     -e "/#-blur-switch/s/.*#-/\t\tblur-background = ${P_BLUR};\t#-/" \

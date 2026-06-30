@@ -1,5 +1,6 @@
 #!/bin/sh
 
+sed -i "s|^opacity = .*|opacity = ${P_TERM_OPACITY}|" "$HOME/.config/alacritty/alacritty.toml"
 sed -i "$HOME"/.config/alacritty/fonts.toml \
     -e "s/size = .*/size = $term_font_size/" \
     -e "s/family = .*/family = \"$term_font_name\"/"

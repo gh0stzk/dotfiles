@@ -49,15 +49,10 @@ calculate_position() {
 # Function to find the window
 get_scratchpad_id() {
     bspc query -N -n ".floating.window" | while read -r node; do
-        class=$(xprop -id "$node" WM_CLASS 2>/dev/null)
-        title=$(xprop -id "$node" WM_NAME 2>/dev/null)
-
-        case "$class$title" in
-            *"$SCRATCHPAD_NAME"*)
-                echo "$node"
-                return
-                ;;
-        esac
+        if xprop -id "$node" WM_CLASS | grep -q "$SCRATCHPAD_NAME"; then
+            echo "$node"
+            return
+        fi
     done
 }
 
@@ -83,15 +78,14 @@ if [ -n "$WINDOW_ID" ]; then
         bspc node "$WINDOW_ID" -g hidden=off -f
     fi
 else
+	# Selector depende del terminal: ghostty solo controla el campo instance
+    if [ "$MY_TERM" = "ghostty" ]; then
+        RULE_SELECTOR="*:$SCRATCHPAD_NAME"
+    else
+        RULE_SELECTOR="$SCRATCHPAD_NAME"
+    fi
     # Create rule for new node
-    bspc rule -a "$SCRATCHPAD_NAME" \
-        state=floating \
-        sticky=on \
-        layer=above \
-        rectangle="${WIDTH}x${HEIGHT}+${X_POS}+${Y_POS}" \
-        --one-shot
-
-    bspc rule -a '*' title="$SCRATCHPAD_NAME" \
+    bspc rule -a "$RULE_SELECTOR" \
         state=floating \
         sticky=on \
         layer=above \
@@ -100,10 +94,10 @@ else
 
 	# Launch the corresponding terminal
 	case $MY_TERM in
-        "alacritty") alacritty --class "$SCRATCHPAD_NAME" & ;;
-        "st") st -c "$SCRATCHPAD_NAME" & ;;
-        "kitty")     kitty --class="$SCRATCHPAD_NAME" & ;;
-        "ghostty") ghostty --title="$SCRATCHPAD_NAME" & ;;
+        "alacritty") alacritty -o window.opacity=0.93 --class "$SCRATCHPAD_NAME" & ;;
+        "st") st -A 0.93 -c "$SCRATCHPAD_NAME" & ;;
+        "kitty") kitty -o background_opacity=0.93 --class="$SCRATCHPAD_NAME" & ;;
+        "ghostty") ghostty --background-opacity=0.93 --x11-instance-name="$SCRATCHPAD_NAME" & ;;
     esac
 
     # Wait and adjust final position

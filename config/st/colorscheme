@@ -1,3 +1,6 @@
+! Colors generated for the emilia theme.
+st.alpha:   1.0
+
 *background: #1a1b26
 *foreground: #c0caf5
 

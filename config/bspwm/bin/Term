@@ -78,7 +78,7 @@ case $MY_TERM in
 	    "--terminal") alacritty ;;
 	    "--floating") alacritty --class FloaTerm,FloaTerm ;;
 	    "--update") alacritty --hold --class FloaTerm,FloaTerm -e paru -Syu --nocombinedupgrade ;;
-	    "--checkupdates") alacritty --hold --class Updating,Updating -e Updates --print-updates ;;
+	    "--checkupdates") alacritty -o window.opacity=0.93 --hold --class Updating,Updating -e Updates --print-updates ;;
 	    "--yazi") alacritty --class FloaTerm,YaziTerm -e yazi ;;
 	    "--nvim") alacritty -e nvim ;;
 	    "--music") alacritty --class FloaTerm,MusicTerm -e ncmpcpp ;;
@@ -90,7 +90,7 @@ case $MY_TERM in
 	    "--terminal") st ;;
 	    "--floating") st -c FloaTerm ;;
 	    "--update") st -c FloaTerm -e sh -c 'paru -Syu --nocombinedupgrade; read _ </dev/tty 2>/dev/null' ;;
-	    "--checkupdates") st -c Updating -e sh -c 'Updates --print-updates; read _ </dev/tty 2>/dev/null' ;;
+	    "--checkupdates") st -A 0.93 -c Updating -e sh -c 'Updates --print-updates; read _ </dev/tty 2>/dev/null' ;;
 	    "--yazi") st -n YaziTerm -c FloaTerm -e yazi ;;
 	    "--nvim") st -e nvim ;;
 	    "--music") st -n MusicTerm -c FloaTerm -e ncmpcpp ;;
@@ -102,7 +102,7 @@ case $MY_TERM in
 	    "--terminal") kitty ;;
 	    "--floating") kitty --class=FloaTerm ;;
 	    "--update") kitty --hold --class=FloaTerm -e paru -Syu --nocombinedupgrade ;;
-	    "--checkupdates") kitty --hold --class=Updating -e Updates --print-updates ;;
+	    "--checkupdates") kitty -o background_opacity=0.93 --hold --class=Updating -e Updates --print-updates ;;
 	    "--yazi") kitty --hold --name=YaziTerm --class=FloaTerm -e yazi ;;
 	    "--nvim") kitty -e nvim ;;
 	    "--music") kitty --name=MusicTerm --class=FloaTerm -e ncmpcpp ;;
@@ -114,7 +114,7 @@ case $MY_TERM in
 	    "--terminal") ghostty ;;
 	    "--floating") ghostty --title=FloaTerm ;;
 	    "--update") ghostty --wait-after-command=true --title=FloaTerm -e paru -Syu --nocombinedupgrade ;;
-	    "--checkupdates") ghostty --wait-after-command=true --title=Updating -e Updates --print-updates ;;
+	    "--checkupdates") ghostty --background-opacity=0.93 --wait-after-command=true --title=Updating -e Updates --print-updates ;;
 	    "--yazi") ghostty --title=YaziTerm -e yazi ;;
 	    "--nvim") ghostty -e nvim ;;
 	    "--music") ghostty --title=MusicTerm -e ncmpcpp ;;

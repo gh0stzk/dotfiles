@@ -255,7 +255,7 @@ install_chaotic_dependencies() {
     logo "Installing needed packages from chaotic repository..."
     sleep 2
 
-    chaotic_dependencies="eww-git"
+    chaotic_dependencies="i3lock-color simple-mtpfs fzf-tab-git paru-git eww-git"
 
     # Arrays temporales
     failed_chaotic_deps=""
@@ -310,7 +310,7 @@ install_aur_dependencies() {
         cd
     fi
 
-    aur_dependencies="xwinwrap-0.9-bin i3lock-color simple-mtpfs fzf-tab-git"
+    aur_dependencies="xwinwrap-0.9-bin"
 
     # Arrays temporales
     failed_aur_deps=""
@@ -409,7 +409,7 @@ backup_existing_config() {
     sleep 1
 
     # Dirs in ~/.config/
-    cfg_dir="bspwm alacritty cava clipcat ghostty picom rofi eww sxhkd dunst kitty polybar geany gtk-3.0 ncmpcpp yazi zsh mpd mpv paru"
+    cfg_dir="bspwm alacritty cava clipcat ghostty picom rofi eww sxhkd dunst jgmenu kitty polybar geany gtk-3.0 ncmpcpp yazi zsh mpd mpv paru st zathura"
     for cfg in $cfg_dir; do
         [ -d "$HOME/.config/$cfg" ] && mv "$HOME/.config/$cfg" "$backup_folder"
     done
@@ -462,7 +462,7 @@ install_dotfiles() {
     done
 
     # Copy files to ~/.config
-    dots_config_dir="alacritty bspwm cava clipcat dunst geany ghostty gtk-3.0 kitty mpd mpv ncmpcpp paru systemd yazi zsh"
+    dots_config_dir="alacritty bspwm cava clipcat dunst geany ghostty gtk-3.0 jgmenu kitty mpd mpv ncmpcpp paru systemd yazi zsh st zathura"
     for dots_cfg in $dots_config_dir; do
         cp -R "$HOME/.local/share/gh0stzk/config/$dots_cfg" "$HOME/.config/"
     done

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+sed -i "s|^background_opacity .*|background_opacity ${P_TERM_OPACITY}|" "$HOME/.config/kitty/kitty.conf"
+
 _write "$HOME/.config/kitty/current-theme.conf" << EOF
 # Colors generated for ${RICE} theme.
 

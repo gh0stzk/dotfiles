@@ -1,6 +1,9 @@
 #!/bin/sh
 
-_write "$HOME/.config/bspwm/config/st/colorscheme" << EOF
+_write "$HOME/.config/st/colorscheme" << EOF
+! Colors generated for the ${RICE} theme.
+st.alpha:   ${P_TERM_OPACITY}
+
 *background: ${bg}
 *foreground: ${fg}
 
@@ -37,5 +40,5 @@ _write "$HOME/.config/bspwm/config/st/colorscheme" << EOF
 *color15: ${whiteb}
 EOF
 
-xrdb -merge "$HOME/.config/bspwm/config/st/xresources"
+xrdb -merge "$HOME/.config/st/xresources"
 pidof -q st && killall -USR1 -e st

@@ -1,5 +1,7 @@
 #!bin/sh
 
+sed -i "s|^background-opacity = .*|background-opacity = ${P_TERM_OPACITY}|" "$HOME/.config/ghostty/config"
+
 _write "$HOME/.config/ghostty/themes/gh0stzk" << EOF
 # Colors generated for ${RICE} theme.
 
