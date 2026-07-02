@@ -14,30 +14,30 @@
 bspwm_dir="$HOME/.config/bspwm"
 read -r current_rice < "$bspwm_dir"/.rice
 
-# List rices
-rices=$(find "$bspwm_dir/rices/" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort)
+# List rices (rutas completas; sin forks de basename)
+rices=$(find "$bspwm_dir/rices/" -mindepth 1 -maxdepth 1 -type d | sort)
+
+IFS='
+'
 
 # Find current rice
 selected_index=-1
 index=0
-IFS='
-'
 for rice in $rices; do
-    [ "$rice" = "$current_rice" ] && { selected_index=$index; break; }
+    [ "${rice##*/}" = "$current_rice" ] && { selected_index=$index; break; }
     index=$((index + 1))
 done
-unset IFS
 
 # Show the rofi selection menu.
 selected=$(
-    IFS='
-'
     for rice in $rices; do
-        printf "%s\000icon\037%s/rices/%s/preview.webp\n" "$rice" "$bspwm_dir" "$rice"
+        name=${rice##*/}
+        printf "%s\000icon\037%s/preview.webp\n" "$name" "$rice"
     done | rofi -dmenu -p "RiceSelector" \
                 -theme "$bspwm_dir/config/rofi-themes/RiceSelector.rasi" \
                 -selected-row "$selected_index"
 )
+unset IFS
 
 # If a valid option was selected, write the value to the configuration file and change theme.
 if [ -n "$selected" ] && [ "$selected" != "$current_rice" ]; then
