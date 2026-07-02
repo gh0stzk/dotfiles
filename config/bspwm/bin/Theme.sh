@@ -24,9 +24,10 @@ MODULE_DIR="$HOME/.config/bspwm/config/modules"
 
 # Function to wait for processes to finish correctly
 wait_for_termination() {
+    local process_name
     process_name="$1"
     while pgrep -f "$process_name" >/dev/null; do
-        sleep 0.2
+        sleep 0.3
     done
 }
 
@@ -59,6 +60,7 @@ fi
 
 # Write data atomically, avoiding partial writes and file corruption.
 _write() {
+    local target dir tmp
     target=$1
     dir=$(dirname "$target")
     tmp=$(mktemp "$dir/.tmp.XXXXXX") || return 1
@@ -76,8 +78,10 @@ _write() {
 
 # Load all the modules
 for module in "$MODULE_DIR"/*.sh; do
-    . "$module"
+    [ -e "$module" ] || continue
+        . "$module"
 done
+unset module
 
 # Finally load the bar
 . "$HOME"/.config/bspwm/rices/"$RICE"/Bar.bash
