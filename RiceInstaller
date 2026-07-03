@@ -533,7 +533,7 @@ install_dotfiles() {
 configure_services() {
     clear
     logo "Configuring Services"
-    picom_config="$HOME/.config/bspwm/config/picom.conf"
+    picom_config="$HOME/.config/bspwm/config/picom/picom.conf"
     sleep 2
 
     # MPD Service Management
