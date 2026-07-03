@@ -7,10 +7,13 @@
 # SetSysVars - Automated System Configuration for BSPWM
 # Features:
 #   ✔ Sets up variables for Polybar integration.
-#      * Sets up network interfaces
-#      * Sets up graphics card
-#      * Sets up power supply
-#   ✔ Creates a lock file after first execution
+#      * Sets up network interface (re-detected on every run,
+#        since it can change between machines/sessions: wifi
+#        vs ethernet, docking station, etc.)
+#      * Sets up graphics card (detected once, cached)
+#      * Sets up power supply (detected once, cached)
+#   ✔ Creates a lock file after first execution of the static
+#     (hardware) detection only. Network detection always runs.
 # Dependencies:
 #   → Core: awk, grep, sed, iproute2 (All in Arch base)
 #
@@ -21,53 +24,78 @@
 CONFIG_FILE="$HOME/.config/bspwm/config/system.ini"
 SFILE="$HOME/.config/bspwm/config/.sys"
 
-[ -f "$SFILE" ] && exit 0 # The file exists, exit without doing anything
-
-setup_system_vars() {
-    # Primary Network Interface Detection
-    primary_net=$(ip link | awk '/state UP/ {gsub(":", "", $2); print $2; exit}')
-
-    # Graphics card detection
-    card=""
-    for entry in /sys/class/backlight/*; do
-        if [ -d "$entry" ]; then
-            card=$(basename "$entry")
-            break
-        fi
+# Wait until the default route is up.
+# Polls every 250ms for up to 5s, and still tolerates a slow NetworkManager start.
+wait_for_network() {
+    i=0
+    while [ "$i" -lt 20 ]; do
+        ip route show default 2>/dev/null | grep -q default && return 0
+        i=$((i + 1))
+        sleep 0.25
     done
+    return 1
+}
 
-    # Battery and adapter detection
-    battery=""
-    for entry in /sys/class/power_supply/*; do
-        entry_name=$(basename "$entry")
-        case "$entry_name" in
-            *BAT*) battery="$entry_name"; break ;;
-        esac
-    done
-
-    adapter=""
-    for entry in /sys/class/power_supply/*; do
-        entry_name=$(basename "$entry")
-        case "$entry_name" in
-            *AC*|*ADP*) adapter="$entry_name"; break ;;
-        esac
-    done
-
-    # Atomic update of the configuration file
-    tmpfile=$(mktemp)
-    awk -v net="$primary_net" \
-        -v card="$card" \
-        -v bat="$battery" \
-        -v adap="$adapter" '
-        /^sys_network_interface =/ {$0="sys_network_interface = " net}
-        /^sys_graphics_card =/ {$0="sys_graphics_card = " card}
-        /^sys_battery =/ {$0="sys_battery = " bat}
-        /^sys_adapter =/ {$0="sys_adapter = " adap}
-        {print}
+# Atomically rewrite CONFIG_FILE
+update_config() {
+    tmpfile=$(mktemp "${CONFIG_FILE}.XXXXXX") || return 1
+    awk -v net="$1" -v card="$2" -v bat="$3" -v adap="$4" \
+        -v do_net="$5" -v do_static="$6" '
+        do_net == "1" && /^sys_network_interface =/ { $0 = "sys_network_interface = " net }
+        do_static == "1" && /^sys_graphics_card =/   { $0 = "sys_graphics_card = " card }
+        do_static == "1" && /^sys_battery =/          { $0 = "sys_battery = " bat }
+        do_static == "1" && /^sys_adapter =/          { $0 = "sys_adapter = " adap }
+        { print }
     ' "$CONFIG_FILE" > "$tmpfile" && mv "$tmpfile" "$CONFIG_FILE"
 }
 
+detect_network() {
+    # Uses the default route's interface instead of "first UP link",
+    # On boxes with both ethernet and wifi up, this follows whichever
+    # one the kernel would actually route through (best metric).
+    ip route show default 2>/dev/null | awk '{print $5; exit}'
+}
+
+detect_graphics_card() {
+    for entry in /sys/class/backlight/*; do
+        [ -d "$entry" ] && { basename "$entry"; return; }
+    done
+    printf '%s' ""
+}
+
+detect_battery() {
+    for entry in /sys/class/power_supply/*; do
+        entry_name=$(basename "$entry")
+        case "$entry_name" in
+            *BAT*) printf '%s' "$entry_name"; return ;;
+        esac
+    done
+    printf '%s' ""
+}
+
+detect_adapter() {
+    for entry in /sys/class/power_supply/*; do
+        entry_name=$(basename "$entry")
+        case "$entry_name" in
+            *AC*|*ADP*) printf '%s' "$entry_name"; return ;;
+        esac
+    done
+    printf '%s' ""
+}
+
 # Main execution
-sleep 3
-setup_system_vars
-touch "$SFILE"
+wait_for_network
+primary_net=$(detect_network)
+
+if [ -f "$SFILE" ]; then
+    # Hardware already cached: only refresh the network interface.
+    update_config "$primary_net" "" "" "" 1 0
+else
+    # First run ever: detect everything and lock the static part.
+    card=$(detect_graphics_card)
+    battery=$(detect_battery)
+    adapter=$(detect_adapter)
+    if update_config "$primary_net" "$card" "$battery" "$adapter" 1 1; then
+        touch "$SFILE"
+    fi
+fi

@@ -4,6 +4,9 @@
 # Description: Dynamic multi-monitor configuration for bspwm using xrandr
 # Features:
 #   - Auto-detect connected monitors (Up to 4 monitors)
+#   - Respects an already-configured primary monitor (nvidia-settings,
+#     xorg.conf, or a manual `xrandr --primary`), falling back to the
+#     first detected output if none is set
 #   - Dynamic workspace assignment
 #   - Resolution/refresh rate detection
 #
@@ -18,8 +21,8 @@
 # xrandr cmd
 XRANDR_OUTPUT=$(xrandr)
 
-# Remove disconnected monmitors
-xrandr | while read -r mon state _; do
+# Remove disconnected monitors (reuse the cached xrandr output)
+echo "$XRANDR_OUTPUT" | while read -r mon state _; do
     [ "$state" = "disconnected" ] && xrandr --output "$mon" --off
 done
 
@@ -30,12 +33,31 @@ get_monitor_info() {
     ' | tr -d '*+'
 }
 
-# Get connected monitors using POSIX-compliant method
+# If the user already has a primary output configured (nvidia-settings,
+# xorg.conf, or a manual `xrandr --output X --primary`), respect it and
+# put it first in the list, instead of always using the first output
+# xrandr happens to enumerate.
+PRIMARY_MON=$(echo "$XRANDR_OUTPUT" | awk '$2 == "connected" && $3 == "primary" { print $1; exit }')
+
+# Get connected monitors
 set -- $(echo "$XRANDR_OUTPUT" | awk '$2 == "connected" {print $1}')
+
+if [ -n "$PRIMARY_MON" ]; then
+    rest=""
+    for mon in "$@"; do
+        [ "$mon" != "$PRIMARY_MON" ] && rest="$rest $mon"
+    done
+    set -- "$PRIMARY_MON" $rest
+fi
+
 NUM_MONITORS=$#
 
 # Main case for monitor configuration
 case $NUM_MONITORS in
+    0)
+        echo "Warning: No connected monitors detected"
+        ;;
+
     1)
         monitor_1="$1"
         set -- $(get_monitor_info "$monitor_1")
