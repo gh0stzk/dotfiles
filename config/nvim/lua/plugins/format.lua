@@ -8,7 +8,6 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				bash = { "beautysh" },
-				sh = { "beautysh" },
 				css = { "prettier" },
 				markdown = { "prettier" },
 			},
