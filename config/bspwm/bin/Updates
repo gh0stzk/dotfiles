@@ -35,7 +35,7 @@ sync_bars() {
 # Single source of truth for counting
 get_updates() {
     official_updates=$(checkupdates 2>/dev/null)
-    aur_updates=$(yay -Qua 2>/dev/null)
+    aur_updates=$(paru -Qua 2>/dev/null)
 
     official=0
     [ -n "$official_updates" ] &&
