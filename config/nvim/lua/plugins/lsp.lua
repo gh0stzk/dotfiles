@@ -19,7 +19,7 @@ return {
 				"bashls",
 				"shellcheck",
 				"stylua",
-				"beautysh",
+				"shfmt",
 				"prettier",
 			},
 		})
@@ -51,6 +51,30 @@ return {
 			capabilities = require("blink.cmp").get_lsp_capabilities(),
 		})
 
+		vim.api.nvim_create_autocmd("LspAttach", {
+			callback = function(args)
+				local opts = { buffer = args.buf }
+				vim.keymap.set(
+					{ "n", "v" },
+					"<leader>ca",
+					vim.lsp.buf.code_action,
+					vim.tbl_extend("force", opts, { desc = "Code action" })
+				)
+				vim.keymap.set(
+					"n",
+					"<leader>rn",
+					vim.lsp.buf.rename,
+					vim.tbl_extend("force", opts, { desc = "Rename symbol" })
+				)
+				vim.keymap.set(
+					"n",
+					"gd",
+					vim.lsp.buf.definition,
+					vim.tbl_extend("force", opts, { desc = "Go to definition" })
+				)
+				vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover docs" }))
+			end,
+		})
 		vim.lsp.enable({ "lua_ls", "bashls" })
 	end,
 }

@@ -7,9 +7,15 @@ return {
 		require("conform").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
-				bash = { "beautysh" },
+				bash = { "shfmt" },
+				sh = { "shfmt" },
 				css = { "prettier" },
 				markdown = { "prettier" },
+			},
+			formatters = {
+				shfmt = {
+					prepend_args = { "-i", "4", "-ci", "-sr" },
+				},
 			},
 			default_format_opts = {
 				lsp_format = "fallback",
