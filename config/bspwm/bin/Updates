@@ -4,14 +4,14 @@
 # Repo:   https://github.com/gh0stzk/dotfiles
 # Date:   06.04.2025 09:41:28
 #
-# ArchUpdates - Script to check for new updates in ARCH and AUR
-#               and sync updates module in polybar/Eww.
+# Updates - Script to check for new updates in ARCH and AUR
+#           and sync updates module in polybar/Eww.
 # Features:
 #   ✔ Shows the number of updates available in polybar/eww
 #   ✔ Used in a pacman hook to update the polybar-module/eww-poll. --sync-polybar
 #
 # Dependencies:
-#   → pacman-contrib, yay, polybar
+#   → pacman-contrib, paru, polybar
 #
 # Copyright (C) 2021-2026 gh0stzk <z0mbi3.zk@protonmail.com>
 # Licensed under GPL-3.0 license
@@ -34,46 +34,74 @@ sync_bars() {
 
 # Single source of truth for counting
 get_updates() {
-    official_updates=$(checkupdates 2>/dev/null)
-    aur_updates=$(paru -Qua 2>/dev/null)
+    tmp_official=$(mktemp) && tmp_aur=$(mktemp) || return 1
+
+    checkupdates >"$tmp_official" 2>/dev/null &
+    pid_official=$!
+    paru -Qua >"$tmp_aur" 2>/dev/null &
+    pid_aur=$!
+
+    wait "$pid_official"; official_status=$?
+    wait "$pid_aur"
+
+    official_updates=$(cat "$tmp_official")
+    aur_updates=$(cat "$tmp_aur")
+    rm -f "$tmp_official" "$tmp_aur"
+
+    [ "$official_status" -eq 1 ] && return 1
 
     official=0
-    [ -n "$official_updates" ] &&
-        official=$(printf '%s\n' "$official_updates" | wc -l)
-
+    [ -n "$official_updates" ] && official=$(printf '%s\n' "$official_updates" | wc -l)
     aur=0
-    [ -n "$aur_updates" ] &&
-        aur=$(printf '%s\n' "$aur_updates" | wc -l)
-
+    [ -n "$aur_updates" ] && aur=$(printf '%s\n' "$aur_updates" | wc -l)
     total=$((official + aur))
+}
+
+# Persist the last successful result (count) and sync bars
+persist_results() {
+    printf '%s\n' "$total" > "$UPDATE_FILE"
+    sync_bars
 }
 
 # Main verification function
 check_updates() {
-    get_updates
-    printf '%s\n' "$total" > "$UPDATE_FILE"
-    sync_bars
+    # If get_updates fails (e.g. no network yet), keep the last cached
+    get_updates && persist_results
 }
 
 list_updates() {
-    get_updates
-    printf '%s\n' "$total" > "$UPDATE_FILE"
-    sync_bars
+    if get_updates; then
+        persist_results
+        offline=0
+    else
+        total=$(cat "$UPDATE_FILE" 2>/dev/null)
+        offline=1
+    fi
+
+    total=${total:-0}
 
     if [ "$total" -gt 0 ]; then
         printf "\033[1m\033[33mThere are %s updates available:\033[0m\n" "$total"
 
-        if [ -n "$official_updates" ]; then
-            printf "\n\033[1m\033[34mOfficial updates:\033[0m\n"
-            printf '%s\n' "$official_updates" | sed 's/->/\x1b[32;1m\x1b[0m/g'
-        fi
+        if [ "$offline" -eq 1 ]; then
+            printf "\n\033[1m\033[31mNo internet connection.\033[0m\n"
+        else
+            if [ -n "$official_updates" ]; then
+                printf "\n\033[1m\033[34mOfficial updates:\033[0m\n"
+                printf '%s\n' "$official_updates" | sed 's/->/\x1b[32;1m\x1b[0m/g'
+            fi
 
-        if [ -n "$aur_updates" ]; then
-            printf "\n\033[1m\033[34mAUR updates:\033[0m\n"
-            printf '%s\n' "$aur_updates" | sed 's/->/\x1b[32;1m\x1b[0m/g'
+            if [ -n "$aur_updates" ]; then
+                printf "\n\033[1m\033[34mAUR updates:\033[0m\n"
+                printf '%s\n' "$aur_updates" | sed 's/->/\x1b[32;1m\x1b[0m/g'
+            fi
         fi
     else
-        printf "\033[1m\033[32mYour system is already updated!\033[0m\n"
+        if [ "$offline" -eq 1 ]; then
+            printf "\033[1m\033[31mNo internet connection.\033[0m\n"
+        else
+            printf "\033[1m\033[32mYour system is already updated!\033[0m\n"
+        fi
     fi
 }
 
