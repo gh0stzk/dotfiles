@@ -8,7 +8,7 @@
 #   Generate interactive EWW widgets for workspace management
 #   in BSPWM (z0mbi3 Rice)
 #
-# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Copyright (C) 2021-2026 gh0stzk <z0mbi3.zk@protonmail.com>
 # Licensed under GPL-3.0 license
 # =================================================================
 
@@ -22,6 +22,7 @@ print_workspaces() {
     desktops=$(bspc query -D --monitor $1)
     focused_desktop=$(bspc query -D -d .active --monitor $1)
     occupied_desktops=$(bspc query -D -d .occupied --monitor $1)
+    urgent_desktops=$(bspc query -D -d .urgent --monitor $1)
 
     for d in $desktops; do
         if [ "$focused_desktop" = "$d" ]; then
