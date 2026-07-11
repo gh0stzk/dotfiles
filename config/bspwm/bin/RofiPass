@@ -21,6 +21,7 @@ if [ "$1" = "--type" ]; then
 fi
 
 rofi_theme="$HOME/.config/bspwm/config/rofi-themes/Pass.rasi"
+prefix="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
 
 # Main Menu
 main_action=$(printf "Show passwords\nAdd new" | rofi -dmenu -theme "$rofi_theme" -p "What do you want to do?")
@@ -28,10 +29,14 @@ main_action=$(printf "Show passwords\nAdd new" | rofi -dmenu -theme "$rofi_theme
 
 # Autotype function
 auto_type() {
-    passw=$(pass show "$1" | head -n1)
-    uname=$(pass show "$1" | tail -n1)
-    xdotool type "$uname"
-    xdotool key Tab
+    data=$(pass show "$1")
+    passw=$(printf '%s\n' "$data" | head -n1)
+    uname=$(printf '%s\n' "$data" | awk 'tolower($0) ~ /^username:/ {sub(/^[^:]*: */, ""); print; exit}')
+
+    if [ -n "$uname" ]; then
+        xdotool type "$uname"
+        xdotool key Tab
+    fi
     xdotool type "$passw"
     xdotool key Tab
 }
@@ -43,7 +48,13 @@ This will automatically generate a 20-character password with symbols.
 Example: Netflix" -p "Service/Platform Name")
     [ -n "$new_name" ] || exit 0
 
-    pass generate --clip "$new_name" 20
+    # Warn instead of silently overwriting or hanging on pass's own prompt
+    if [ -f "$prefix/$new_name.gpg" ]; then
+        confirm_overwrite=$(printf "Yes\nNo" | rofi -dmenu -theme "$rofi_theme" -mesg "An entry named \"$new_name\" already exists. Overwrite it?" -p "Overwrite $new_name?")
+        [ "$confirm_overwrite" = "Yes" ] || exit 0
+    fi
+
+    pass generate --clip --force "$new_name" 20
     dunstify "Pass" "A random password of 20 characters and symbols has been created for $new_name"
 
     # Ask if you want to add a user
@@ -68,7 +79,6 @@ fi
 
 # Action: Show passwords
 # Get password list
-prefix="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
 password_files=""
 while IFS= read -r file; do
     path="${file#"$prefix"/}"
@@ -95,7 +105,7 @@ case "$action" in
         case "$copy_what" in
             "Password")
                 pass show -c "$password" >/dev/null 2>&1
-                dunstify "Pass" "Password copìed to clipboard"
+                dunstify "Pass" "Password copied to clipboard"
                 ;;
             "User")
                 user_line=$(pass show "$password" | grep -i '^username:')
