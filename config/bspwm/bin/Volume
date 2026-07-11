@@ -16,34 +16,36 @@ notify() {
     dunstify -u low -h string:x-dunst-stack-tag:cvolum "$@"
 }
 
-# Get volume status
+# Get volume status (prints "muted" or a bare number, no %)
 get_volume() {
     status=$(pamixer --get-volume-human)
 
-    if [ "$status" = "muted" ]; then
-        echo "muted"
-    else
-        echo "$status" | sed 's/%//'
-    fi
+    case "$status" in
+        muted) echo muted ;;
+        *) echo "${status%\%}" ;;
+    esac
 }
 
-# Determine icon based on status
+# Determine icon based on a volume value (muted|0|N)
 get_icon() {
-    current_vol=$(get_volume)
-
-    if [ "$current_vol" = "muted" ] || [ "$current_vol" -eq 0 ]; then
-        icon="$vol_dir/mute.png"
-    else
-        icon="$vol_dir/vol.png"
-    fi
+    case "$1" in
+        muted|0) icon="$vol_dir/mute.png" ;;
+        *) icon="$vol_dir/vol.png" ;;
+    esac
 }
 
 # Show notification
 show_notification() {
-    get_icon
-    message="Volumen: $(get_volume)"
-    echo "$message" | grep -q "muted" || message="${message}%"
-    notify -i "$icon" "$message"
+    local vol
+
+    vol=$(get_volume)
+    get_icon "$vol"
+
+    if [ "$vol" = "muted" ]; then
+        notify -i "$icon" "Volumen: muted"
+    else
+        notify -i "$icon" "Volumen: ${vol}%"
+    fi
 }
 
 # Adjust volume
@@ -55,21 +57,31 @@ adjust_volume() {
 
 # Toggle mute
 toggle_mute() {
+    local vol
+
     pamixer --toggle-mute
-    get_icon
+
     if [ "$(pamixer --get-mute)" = "true" ]; then
-        message="Muted"
+        get_icon muted
+        notify -i "$icon" "Muted"
     else
-        message="Unmuted"
+        vol=$(get_volume)
+        get_icon "$vol"
+        notify -i "$icon" "Unmuted"
     fi
-    notify -i "$icon" "$message"
 }
 
 # Handle options
-case $1 in
-    --get)  get_volume ;;
-    --inc)  adjust_volume -i 5 ;;
-    --dec)  adjust_volume -d 5 ;;
+case "$1" in
+    --get)    get_volume ;;
+    --inc)    adjust_volume -i 5 ;;
+    --dec)    adjust_volume -d 5 ;;
     --toggle) toggle_mute ;;
-    *)      echo "$(get_volume)%" ;;
+    *)
+        vol=$(get_volume)
+        case "$vol" in
+            muted) echo muted ;;
+            *) echo "${vol}%" ;;
+        esac
+        ;;
 esac

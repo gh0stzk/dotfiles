@@ -15,7 +15,6 @@
 #     	* Timed captures (3 seconds)
 #   - System notifications when taking screenshots
 #   - Automatic clipboard copy
-#   - Saves screenshots with timestamp
 #   - Only works on BSPWM enviroments
 #
 # Dependencies: maim, rofi, xclip, dunst
@@ -68,60 +67,44 @@ copy_screenshot() {
 }
 
 take_screenshot() {
-    mode="$1"
-    all_monitors="$2"
-    geometry=""
-    cmd="maim -u -d 1"
+    local mode="$1" all_monitors="$2" geometry=""
+
+    set -- -u -d 1
 
     case "$mode" in
-        "full")
+        full)
             if [ "$all_monitors" != "true" ]; then
                 geometry=$(get_current_monitor)
-                [ -n "$geometry" ] && cmd="$cmd -g $geometry"
+                [ -n "$geometry" ] && set -- "$@" -g "$geometry"
             fi
             ;;
-        "select")
-            cmd="$cmd -s -o -c 0.467,0.239,0.863,0.15 -l"
+        select)
+            set -- "$@" -s -o -c 0.467,0.239,0.863,0.15 -l
             ;;
     esac
 
-    $cmd "$filename"
-
-    if [ "$?" -eq 0 ]; then
-        paplay /usr/share/sounds/freedesktop/stereo/screen-capture.oga > /dev/null 2>&1
+    if maim "$@" "$filename"; then
+        paplay /usr/share/sounds/freedesktop/stereo/screen-capture.oga >/dev/null 2>&1
         copy_screenshot
-        show_notification
     fi
+
+    show_notification
 }
 
 countdown() {
-    for sec in $(seq "$1" -1 1); do
-        dunstify -r 345 -t 1100 -i ~/.config/bspwm/config/assets/screenshot.png "Taking shot in : $sec"
+    local sec="$1"
+
+    while [ "$sec" -ge 1 ]; do
+        dunstify -r 345 -t 1100 -i "$HOME/.config/bspwm/config/assets/screenshot.png" "Taking shot in : $sec"
         sleep 1
+        sec=$((sec - 1))
     done
 }
 
-run_cmd() {
-    case $1 in
-        --now)
-            take_screenshot "full" false ;;
-        --sel)
-            take_screenshot "select" false ;;
-        --in3)
-            countdown 3 && take_screenshot "full" false ;;
-        --all)
-            take_screenshot "full" true ;;
-    esac
-}
-
 select_option="$(run_rofi)"
-case ${select_option} in
-    "$s_full")
-        run_cmd --now ;;
-    "$s_select")
-        run_cmd --sel ;;
-    "$s_in3")
-        run_cmd --in3 ;;
-    "$s_all")
-        run_cmd --all ;;
+case "$select_option" in
+    "$s_full")   take_screenshot full false ;;
+    "$s_select") take_screenshot select false ;;
+    "$s_in3")    countdown 3 && take_screenshot full false ;;
+    "$s_all")    take_screenshot full true ;;
 esac

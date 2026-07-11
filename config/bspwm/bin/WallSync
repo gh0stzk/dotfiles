@@ -12,14 +12,12 @@ RICE=$(cat "$HOME/.config/bspwm/.rice")
 CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}"
 HASH_FILE="$CACHE_DIR/current_wall.hash"
 
-# Common magick parameters
-MAGICK_PARAMS="-strip -resize 30% -gravity center -crop 760x196+0+0 +repage -quality 65 -define webp:method=3 -define webp:thread-level=1"
-
 mkdir -p "$CACHE_DIR"
 
 generate_header() {
     INPUT="$1"
-    magick "$INPUT" $MAGICK_PARAMS "$CACHE_DIR/rofi_header.webp"
+    set -- -strip -resize 30% -gravity center -crop 760x196+0+0 +repage -quality 65 -define webp:method=3 -define webp:thread-level=1
+    magick "$INPUT" "$@" "$CACHE_DIR/rofi_header.webp"
 }
 
 check_and_update() {
