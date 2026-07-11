@@ -18,9 +18,6 @@ ROFI_THEME="$HOME/.config/bspwm/config/rofi-themes/TermSelector.rasi"
 
 [ -f "$CFG_TERM" ] || echo "alacritty" > "$CFG_TERM"
 
-# Main var
-read -r MY_TERM < "$CFG_TERM"
-
 # Function to choose the terminal using rofi
 choose_terminal() {
     # Terminal List
@@ -77,8 +74,7 @@ case $MY_TERM in
 	case $1 in
 	    "--terminal") alacritty ;;
 	    "--floating") alacritty --class FloaTerm,FloaTerm ;;
-	    "--update") alacritty --hold --class FloaTerm,FloaTerm -e paru -Syu --nocombinedupgrade ;;
-	    "--checkupdates") alacritty -o window.opacity=0.93 --hold --class Updating,Updating -e Updates --print-updates ;;
+	    "--checkupdates") alacritty -o window.opacity=0.93 --class Updating,Updating -e Updates --print-updates ;;
 	    "--yazi") alacritty --class FloaTerm,YaziTerm -e yazi ;;
 	    "--nvim") alacritty -e nvim ;;
 	    "--music") alacritty --class FloaTerm,MusicTerm -e ncmpcpp ;;
@@ -89,8 +85,7 @@ case $MY_TERM in
 	case $1 in
 	    "--terminal") st ;;
 	    "--floating") st -c FloaTerm ;;
-	    "--update") st -c FloaTerm -e sh -c 'paru -Syu --nocombinedupgrade; read _ </dev/tty 2>/dev/null' ;;
-	    "--checkupdates") st -A 0.93 -c Updating -e sh -c 'Updates --print-updates; read _ </dev/tty 2>/dev/null' ;;
+	    "--checkupdates") st -A 0.93 -c Updating -e Updates --print-updates ;;
 	    "--yazi") st -n YaziTerm -c FloaTerm -e yazi ;;
 	    "--nvim") st -e nvim ;;
 	    "--music") st -n MusicTerm -c FloaTerm -e ncmpcpp ;;
@@ -101,9 +96,8 @@ case $MY_TERM in
 	case $1 in
 	    "--terminal") kitty ;;
 	    "--floating") kitty --class=FloaTerm ;;
-	    "--update") kitty --hold --class=FloaTerm -e paru -Syu --nocombinedupgrade ;;
-	    "--checkupdates") kitty -o background_opacity=0.93 --hold --class=Updating -e Updates --print-updates ;;
-	    "--yazi") kitty --hold --name=YaziTerm --class=FloaTerm -e yazi ;;
+	    "--checkupdates") kitty -o background_opacity=0.93 --class=Updating -e Updates --print-updates ;;
+	    "--yazi") kitty --name=YaziTerm --class=FloaTerm -e yazi ;;
 	    "--nvim") kitty -e nvim ;;
 	    "--music") kitty --name=MusicTerm --class=FloaTerm -e ncmpcpp ;;
 	    "--fetch") kitty --name=FetchTerm --class=FloaTerm -e ~/.local/bin/sysfetch ;;
@@ -112,13 +106,12 @@ case $MY_TERM in
     "ghostty")
 	case $1 in
 	    "--terminal") ghostty ;;
-	    "--floating") ghostty --title=FloaTerm ;;
-	    "--update") ghostty --wait-after-command=true --title=FloaTerm -e paru -Syu --nocombinedupgrade ;;
-	    "--checkupdates") ghostty --background-opacity=0.93 --wait-after-command=true --title=Updating -e Updates --print-updates ;;
-	    "--yazi") ghostty --title=YaziTerm -e yazi ;;
+	    "--floating") ghostty --x11-instance-name=FloaTerm --title=FloaTerm ;;
+	    "--checkupdates") ghostty --x11-instance-name=Updating --background-opacity=0.93 --title=Updating -e Updates --print-updates ;;
+	    "--yazi") ghostty --x11-instance-name=YaziTerm --title=YaziTerm -e yazi ;;
 	    "--nvim") ghostty -e nvim ;;
-	    "--music") ghostty --title=MusicTerm -e ncmpcpp ;;
-	    "--fetch") ghostty --title=FetchTerm -e ~/.local/bin/sysfetch ;;
+	    "--music") ghostty --x11-instance-name=MusicTerm --title=MusicTerm -e ncmpcpp ;;
+	    "--fetch") ghostty --x11-instance-name=FetchTerm --title=FetchTerm -e ~/.local/bin/sysfetch ;;
 	esac
 	;;
 esac

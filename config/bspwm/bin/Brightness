@@ -22,49 +22,46 @@ DIR="$HOME/.config/bspwm/config/assets"
 BRIGHTNESS_STEPS=5
 MIN_BRIGHTNESS=2
 
+extract_pct() {
+    awk -F '[()%]' '/Current brightness:/ {print $2}'
+}
+
 get_brightness() {
-    brightnessctl i | awk -F '[()%]' '/Current brightness:/ {print $2}'
+    brightnessctl i | extract_pct
 }
 
 send_notification() {
     brightness="$1"
     icon="$DIR/brightness.svg"
-    bar=""
-    bar_length=$((brightness / BRIGHTNESS_STEPS))
 
-    i=0
-    while [ "$i" -lt "$bar_length" ]; do
-        bar="${bar}─"
-        i=$((i + 1))
-    done
-
-    dunstify "Brightness $brightness%" -i "$icon" -r 5555 -h int:value:$(($brightness))
+    # The graphical bar comes from the int:value hint, dunst draws it itself.
+    dunstify "Brightness $brightness%" -i "$icon" -r 5555 -h int:value:"$brightness"
 }
 
 adjust_brightness() {
     current="$(get_brightness)"
 
-    case $1 in
+    case "$1" in
         up)
             if [ "$current" -eq "$MIN_BRIGHTNESS" ]; then
-                brightnessctl set "${BRIGHTNESS_STEPS}%" -q
+                new="$(brightnessctl set "${BRIGHTNESS_STEPS}%" | extract_pct)"
             else
-                brightnessctl set "${BRIGHTNESS_STEPS}%+" -q
+                new="$(brightnessctl set "${BRIGHTNESS_STEPS}%+" | extract_pct)"
             fi
             ;;
         down)
             threshold=$((MIN_BRIGHTNESS + BRIGHTNESS_STEPS))
             if [ "$current" -le "$threshold" ]; then
-                brightnessctl set "${MIN_BRIGHTNESS}%" -q
+                new="$(brightnessctl set "${MIN_BRIGHTNESS}%" | extract_pct)"
             else
-                brightnessctl set "${BRIGHTNESS_STEPS}%-" -q
+                new="$(brightnessctl set "${BRIGHTNESS_STEPS}%-" | extract_pct)"
             fi
             ;;
     esac
 
-    send_notification "$(get_brightness)"
+    send_notification "$new"
 }
 
-case $1 in
+case "$1" in
     up|down) adjust_brightness "$1" ;;
 esac

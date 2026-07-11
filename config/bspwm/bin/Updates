@@ -110,7 +110,9 @@ case "$1" in
     --sync-polybar)
         check_updates ;;
     --print-updates)
-        list_updates ;;
+        list_updates
+        printf '\n\033[2mPress Enter to close...\033[0m\n'
+        read -r _ </dev/tty 2>/dev/null ;;
     *)
         printf '%s [OPTIONS]\n' "${0##*/}"
         printf '%s\n' "  --sync-polybar      Sync data & polybar module"

@@ -157,7 +157,6 @@
 
 		 (eventbox :cursor "pointer"
 		 (button :onclick "OpenApps --checkupdates"
-				 :onrightclick "OpenApps --update"
 				 (box :orientation "h"
 					  :spacing 2
 					  :valign "center"

@@ -23,9 +23,6 @@ case "$1" in
 	--floating)
 		Term --floating
 		;;
-	--update)
-		Term --update
-		;;
 	--checkupdates)
 		Term --checkupdates
 		;;
@@ -69,14 +66,14 @@ case "$1" in
 		Bspwm-ScratchPad
 		;;
 		# Apps
-	--filemanager)
-		thunar
-		;;
-	--browser)
-		firefox
-		;;
-	--editor)
-		geany
+    --filemanager)
+        ${FILEMANAGER:-thunar}
+        ;;
+    --browser)
+        ${BROWSER:-firefox}
+        ;;
+    --editor)
+        ${EDITOR:-geany}
 		;;
 	--telegram)
 		telegram-desktop
