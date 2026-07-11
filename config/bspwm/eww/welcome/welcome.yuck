@@ -1,0 +1,87 @@
+;; Author : gh0st
+;; Dotfiles : https://github.com/gh0stzk/dotfiles
+;; Show a welcome window for the bspwm environment.
+;;
+
+;;(defpoll username :interval "24h" "whoami")
+
+(defwidget welcome []
+    (scroll :hscroll false :vscroll true
+        (box :class "welcome" :orientation "v" :space-evenly "false"
+            (welcome-closebtn)
+            (welcome-header)
+            (welcome-body)
+        )
+    )
+)
+
+
+(defwidget welcome-closebtn []
+  (box :orientation "h" :space-evenly "false" :halign "end"
+    (eventbox :cursor "pointer"
+      (button :class "welcome-close"
+              :tooltip "Close"
+              :onclick "eww -c ~/.config/bspwm/eww open --toggle welcome"
+              "󰅙")
+    )
+  )
+)
+
+
+(defwidget welcome-header []
+  (box :class "welcome-header-box"
+       :orientation "v"
+       :space-evenly "false"
+       :halign "start"
+    (label :class "welcome-title" :wrap true :justify "left" :xalign 0 :text "Welcome to BSPWM")
+  )
+)
+
+
+(defwidget shortcut-item [key desc]
+  (box :class "welcome-item" :orientation "h" :space-evenly "false" :spacing 10
+    (label :class "welcome-pill" :xalign 0 :text key)
+    (label :class "welcome-desc" :xalign 0 :wrap true :text desc)
+  )
+)
+
+
+(defwidget welcome-body []
+  (box :class "welcome-body-box"
+       :orientation "v"
+       :space-evenly "false"
+       :spacing 14
+    (label :class "welcome-text"
+           :xalign 0
+           :wrap true
+           :justify "left"
+           :markup "Hello <b>${username}</b>, maybe it's your first time using a window manager or maybe not, here are some shortcuts so you don't feel so lost. You can always visit my <a href=\"https://github.com/gh0stzk/dotfiles/wiki\">Wiki</a>")
+    (box :class "welcome-list" :orientation "v" :space-evenly "false" :spacing 8
+      (shortcut-item :key "Alt + F1" :desc "Shortcuts")
+      (shortcut-item :key "Super + Enter" :desc "Open a terminal")
+      (shortcut-item :key "Super + x" :desc "To close windows/apps")
+      (shortcut-item :key "Super + Space bar" :desc "Open apps menu")
+      (shortcut-item :key "Alt + Space bar" :desc "Open the menu to change the theme")
+      (shortcut-item :key "Super + arrows" :desc "Move between workspaces (there are *6)")
+      (shortcut-item :key "Super + b" :desc "Browser")
+      (shortcut-item :key "Super + e" :desc "Editor")
+      (shortcut-item :key "Super + f" :desc "FileManager")
+    )
+    (label :class "welcome-text"
+           :xalign 0
+           :wrap true
+           :justify "left"
+           :text "Remember that I tried to make the environment in a MINIMALIST way but giving you what you need to make it comfortable and efficient for your daily work.")
+  )
+)
+
+
+;; Window welcome ;;
+(defwindow welcome
+    :geometry (geometry :x "0%"
+                        :y "0%"
+                        :width "45%"
+                        :height "55%"
+                        :anchor "center")
+    :wm-ignore false
+    (welcome))

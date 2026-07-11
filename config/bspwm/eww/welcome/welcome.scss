@@ -1,0 +1,66 @@
+.welcome {
+  background-color: $bg;
+  border-radius: 0.5rem;
+}
+
+.welcome-close {
+  font-family: "JetBrainsMono NF Medium";
+  font-size: 1.1rem;
+  padding: 0.8rem 1.8rem 0 0;
+  color: $red;
+}
+
+.welcome-close:hover {
+  color: $magenta;
+}
+
+.welcome-header-box {
+  margin: 0 2rem 1rem 2rem;
+}
+
+.welcome-title {
+  font-family: JetBrainsMono NF Medium;
+  font-weight: Bolder;
+  font-size: 2.3rem;
+  color: $magenta;
+}
+
+.welcome-body-box {
+  margin: 0 2.2rem 1.6rem 2.2rem;
+}
+
+.welcome-text {
+  font-family: JetBrainsMono NF Medium;
+  font-size: 0.9rem;
+  color: $fg;
+}
+
+.welcome-text link {
+  color: $yellow;
+  font-weight: Bolder;
+}
+
+.welcome-list {
+  margin: 4px 0;
+}
+
+.welcome-item {
+  margin-left: 0.4rem;
+}
+
+.welcome-pill {
+  font-family: JetBrainsMono NF Medium;
+  font-weight: Bolder;
+  font-size: 0.8rem;
+  background-color: $blue;
+  color: $bg;
+  padding: 2px 10px;
+  border-radius: 999px;
+  min-width: 30px;
+}
+
+.welcome-desc {
+  font-family: JetBrainsMono NF Medium;
+  font-size: 0.8rem;
+  color: $fg;
+}

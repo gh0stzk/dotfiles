@@ -85,4 +85,4 @@ run clipcatd
 run lxpolkit
 
 # Start one time message
-[ ! -f "$HOME/.config/bspwm/config/.first_run_done" ] && alacritty --hold -e sh -c 'cat "$HOME/.config/bspwm/config/FirstMessage.txt"; sleep 0.1' && touch "$HOME/.config/bspwm/config/.first_run_done"
+[ ! -f "$HOME/.config/bspwm/config/.first_run_done" ] && eww -c ${HOME}/.config/bspwm/eww open --toggle welcome && touch "$HOME/.config/bspwm/config/.first_run_done"
