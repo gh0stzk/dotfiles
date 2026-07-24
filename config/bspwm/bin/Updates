@@ -88,12 +88,12 @@ list_updates() {
         else
             if [ -n "$official_updates" ]; then
                 printf "\n\033[1m\033[34mOfficial updates:\033[0m\n"
-                printf '%s\n' "$official_updates" | sed 's/->/\x1b[32;1m\x1b[0m/g'
+                printf '%s\n' "$official_updates" | sed 's/->/\x1b[32;1m\x1b[0m/g'
             fi
 
             if [ -n "$aur_updates" ]; then
                 printf "\n\033[1m\033[34mAUR updates:\033[0m\n"
-                printf '%s\n' "$aur_updates" | sed 's/->/\x1b[32;1m\x1b[0m/g'
+                printf '%s\n' "$aur_updates" | sed 's/->/\x1b[32;1m\x1b[0m/g'
             fi
         fi
     else
