@@ -21,14 +21,26 @@ UPDATE_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/Updates.txt"
 
 # Sync bars when needed.
 sync_bars() {
-    local current_rice
+    local current_rice current_bar
 
     # Sends the signal to polybar-module/eww-poll to update the data.
     if pgrep -x polybar >/dev/null; then
         polybar-msg action updates hook 0 >/dev/null 2>&1
     else
         read -r current_rice < "$HOME/.config/bspwm/.rice"
-        eww -c "$HOME/.config/bspwm/rices/${current_rice}/bar" poll UPDATES
+        rice_config="$HOME/.config/bspwm/rices/$current_rice/theme-config.bash"
+
+        current_bar=""
+        while IFS='=' read -r key value; do
+            case "$key" in
+                main_bar)
+                    value=${value#\"}
+                    current_bar=${value%\"}
+                    break
+                    ;;
+            esac
+        done < "$rice_config"
+        eww -c "$HOME/.config/bspwm/bars/${current_bar}" poll UPDATES
     fi
 }
 

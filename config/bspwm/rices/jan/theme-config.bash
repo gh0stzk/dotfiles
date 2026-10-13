@@ -7,6 +7,13 @@
 # (CyberPunk) colorscheme
 bg="#070219"
 fg="#27fbfe"
+bg_alt="#00070219"
+trans="#00070219"
+
+# Needed if bar has opacity. Hex opacity table for a % list --> https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4
+_alpha="D6"
+bg_alpha="#${_alpha}${bg#\#}"
+bg_alpha_css="rgba(7, 2, 25, 0.84)"
 
 black="#626483"
 red="#fb007a"
@@ -25,17 +32,30 @@ magentab="#472575"
 cyanb="#926BCA"
 whiteb="#d5ddee"
 
+# Extend
+purple="#b026ff"
+amber="#ffb700"
+pink="#ff2e9f"
+orange="#ff5f1f"
+indigo="#4d3dff"
+lime="#ccff00"
+grey="#7d81a3"
+bluegray="#4d6fa8"
+
 accent_color="#09021f"
 arch_icon="#0f94d2"
 
+# Bar
+main_bar="bar10"
+
 # Bspwm options
-BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="43"
+BORDER_WIDTH="0"        # Bspwm border
+TOP_PADDING="1"
 BOTTOM_PADDING="1"
 LEFT_PADDING="1"
 RIGHT_PADDING="1"
-NORMAL_BC="#926BCA"		# Normal border color
-FOCUSED_BC="#fb007a"	# Focused border color
+NORMAL_BC="$cyanb"      # Normal border color
+FOCUSED_BC="$red"       # Focused border color
 
 # Terminal font & size
 term_font_size="10"

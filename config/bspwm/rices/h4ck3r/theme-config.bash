@@ -6,7 +6,9 @@
 
 # (Hack The box) colorscheme
 bg="#0c1018"
+bg_alt="#000c1018"
 fg="#1947e0"
+trans="#000c1018"
 
 black="#4A9801"
 red="#6DDE00"
@@ -25,17 +27,30 @@ magentab="#220991"
 cyanb="#3a11f0"
 whiteb="#3b5eed"
 
+# Extend
+purple="#9cf542"
+amber="#FBC02D"
+pink="#FF0677"
+orange="#E57C46"
+indigo="#6C77BB"
+lime="#B9C244"
+grey="#8C8C8C"
+bluegray="#6D8895"
+
 accent_color="#1B2333"
 arch_icon="#0f94d2"
 
+# Bar
+main_bar="bar08"
+
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="43"
+TOP_PADDING="1"
 BOTTOM_PADDING="1"
 LEFT_PADDING="1"
 RIGHT_PADDING="1"
-NORMAL_BC="#4A9801"		# Normal border color
-FOCUSED_BC="#76EA00"	# Focused border color
+NORMAL_BC="$black"      # Normal border color
+FOCUSED_BC="$yellow"    # Focused border color
 
 # Terminal font & size
 term_font_size="10"

@@ -10,15 +10,15 @@
 alt + F1
     OpenApps --KeyHelp
 
-############################
-# ----- Applications ----- #
-############################
+# -- Basic -- #
 
-# ----- Main Apps ----- #
+# Open Terminal (Normal)
+super + Return
+    OpenApps --terminal
 
-# Open Terminal (Normal & Floating)
-super + {_,alt + }Return
-    OpenApps --{terminal,floating}
+# Open Terminal (Floating)
+super + alt + Return
+    OpenApps --floating
 
 # App launcher
 super + @space
@@ -28,27 +28,212 @@ super + @space
 alt + @space
     RiceSelector
 
-# ----- Your Apps ----- #
+# Bar Selector
+super + alt + @space
+    BarSelector
 
-# Apps (browser, editor, filemanager)
-super + {b,e,f}
-    OpenApps --{browser,editor,filemanager}
+# -- BSPWM CONTROL -- #
 
-# Terminal apps (yazi, nvim, ncmpcpp)
-super + {y,v,m}
-    OpenApps --{yazi,nvim,music}
+# Close Window
+super + x
+    bspc node -c
 
-# Media apps (Pavucontrol, Telegram, Whatsapp)
-super + {p,t,w}
-    OpenApps --{soundcontrol,telegram,whats}
+# Reload BSPWM
+super + alt + r
+    bspc wm -r
 
-# Rice Editor App
+# Reload sxhkd Keybinds
+super + Escape
+    pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/config/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
+
+# Log out BSPWM session
+ctrl + super + alt + q
+    bspc quit
+
+# Soft reload, mostly reload only daemons.
+ctrl + super + alt + s
+    SoftReload
+
+# -- Window states and flags -- #
+
+# Kill Window
+super + shift + x
+    bspc node -k
+
+# Set Window State: Tiled Mode
+super + shift + t
+    bspc node -t '~tiled'
+
+# Set Window State: Floating Mode
+super + shift + a
+    bspc node -t '~floating'
+
+# Set Window State: Fullscreen Mode
+super + shift + f
+    bspc node -t '~fullscreen'
+
+# Hide window
+alt + h
+    HideNode --hide
+
+# Show menu to restore hidden windows
+ctrl + alt + h
+    HideNode --menu
+
+# -- Move/Resize Windows -- #
+
+# Rotate desktop 90º
+super + slash
+    bspc node @parent -R 90
+
+# Resize All Windows Equally
+super + equal
+    bspc node @/ -B
+
+# Resize: shrink width (falls back to the opposite edge at screen borders)
+super + ctrl + {Left,h}
+	bspc node -z right -40 0 || bspc node -z left 40 0
+
+# Resize: expand width
+super + ctrl + {Right,l}
+	bspc node -z right 40 0 || bspc node -z left -40 0
+
+# Resize: expand height
+super + ctrl + {Down,j}
+	bspc node -z bottom 0 40 || bspc node -z top 0 40
+
+# Resize: shrink height
+super + ctrl + {Up,k}
+	bspc node -z bottom 0 -40 || bspc node -z top 0 -40
+
+# Increase FLOATING winsdows size
+super + ctrl + plus
+    bspc node -z top_left -50 -25; bspc node -z bottom_right 50 25
+
+# Shrink FLOATING winsdows size
+super + ctrl + minus
+    bspc node -z top_left 50 25; bspc node -z bottom_right -50 -25
+
+# -- Window/Workspace Navigation -- #
+
+# Switch workspace
+super + {Left,Right}
+    bspc desktop -f {prev,next}
+
+# Move to a specific workspace
+super + {1-9,0}
+    bspc desktop -f '^{1-9,10}'
+
+# Send a window to a specific workspace
+super + ctrl + {1-9,0}
+    bspc node -d '^{1-9,10}'
+
+# Send focused window to workspace directionally
+ctrl + shift + {Left,Right}
+    bspc node -d {prev,next} '--follow'
+
+# Change focus to Left window
+super + alt + Left
+    DIR=west FALLBACK=prev; \
+    bspc node -f $DIR.!sticky.!hidden.local || bspc node -f $FALLBACK.leaf.!sticky.!hidden.local
+
+# Change focus to window Below
+super + alt + Down
+    DIR=south; \
+    bspc node -f $DIR.!sticky.!hidden.local
+
+# Change focus to window Above
+super + alt + Up
+    DIR=north; \
+    bspc node -f $DIR.!sticky.!hidden.local
+
+# Change focus to Right window
+super + alt + Right
+    DIR=east FALLBACK=next; \
+    bspc node -f $DIR.!sticky.!hidden.local || bspc node -f $FALLBACK.leaf.!sticky.!hidden.local
+
+# Focus the last Window
+ctrl + shift + comma
+    bspc node -f last
+
+# Focus the last Desktop
+ctrl + shift + period
+    bspc desktop -f last
+
+# Swap Focused Window with Left Window
+super + shift + Left
+    bspc node -s west.local
+
+# Swap Focused Window with Window Below
+super + shift + Down
+    bspc node -s south.local
+
+# Swap Focused Window with Window Above
+super + shift + Up
+    bspc node -s north.local
+
+# Swap Focused Window with Right Window
+super + shift + Right
+    bspc node -s east.local
+
+# Window switcher
+alt + Tab
+    rofi \
+        -theme $HOME/.config/bspwm/config/rofi-themes/Windows.rasi \
+        -show window -window-thumbnail \
+        -window-hide-active-window true \
+        -kb-accept-entry "!Alt-Tab,Return" \
+        -kb-element-next "Alt-Tab"
+
+# -- Basic Apps -- #
+
+# Browser
+super + b
+    OpenApps --browser
+
+# Editor
+super + e
+    OpenApps --editor
+
+# File Manager
+super + f
+    OpenApps --filemanager
+
+# RiceEditor
 super + r
     RiceEditor
 
-# ----- Rofi Applets ----- #
+# -- Terminal apps -- #
 
-#Terminal Selector
+# Yazi
+super + y
+    OpenApps --yazi
+
+# Neovim
+super + v
+    OpenApps --nvim
+
+# Ncmpcpp music player
+super + m
+    OpenApps --music
+
+# -- Other apps -- #
+
+# Pavucontrol
+super + p
+    OpenApps --soundcontrol
+
+# Telegram
+super + t
+    OpenApps --telegram
+
+# Whatsapp
+super + w
+    OpenApps --whats
+
+# -- Rofi Applets -- #
+
+# Terminal Selector
 super + alt + t
     Term --selecterm
 
@@ -92,7 +277,7 @@ super + alt + k
 super + alt + x
     OpenApps --pass
 
-# ----- Environment Apps ----- #
+# -- Environment Apps -- #
 
 # Scratchpad
 super + alt + o
@@ -105,17 +290,37 @@ super + alt + o
     case "$type" in *DESKTOP*) \
         jgmenu_run ;; esac
 
-# Power off, Reboot, Log out, Lockscreen, kill an app
-ctrl + super + alt + {p,r,q,l,k,s}
-    {systemctl poweroff, systemctl reboot,bspc quit,ScreenLocker,xkill,SoftReload}
+# Power off system
+ctrl + super + alt + p
+    systemctl poweroff
 
-# Hide/Show Bar (Polybar and/or eww)
-super + alt + {h,u}
-    HideBar {-h,-u}
+# Reboot system
+ctrl + super + alt + r
+    systemctl reboot
 
-# Change transparency on focused window
-ctrl + alt + {plus,minus,t}
-    picom-trans {-c -3,-c +3,-c -d}
+# Lockscreen
+ctrl + super + alt + l
+    ScreenLocker
+
+# Hide Bar (Polybar and/or eww)
+super + alt + h
+    HideBar -h
+
+# Unhide Bar (Polybar and/or eww)
+super + alt + u
+    HideBar -u
+
+# Increase transparency on focused window
+ctrl + alt + plus
+    picom-trans -c -3
+
+# Decrease transparency on focused window
+ctrl + alt + minus
+    picom-trans -c +3
+
+# Reset transparency on focused window
+ctrl + alt + t
+    picom-trans -c -d
 
 # Manage brightness
 XF86MonBrightness{Up,Down}
@@ -128,124 +333,3 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
 # Music Control
 XF86Audio{Next,Prev,Play,Stop}
     MediaControl {--next,--previous,--toggle,--stop}
-
-#####################
-# ----- Bspwm ----- #
-#####################
-
-# Reload BSPWM
-super + alt + r
-    bspc wm -r
-
-# Close/Kill node
-super + {_,shift + }x
-    bspc node -{c,k}
-
-# Reload sxhkd Keybinds
-super + Escape
-    pkill -USR1 -x sxhkd; dunstify -u low -i ~/.config/bspwm/config/assets/reload.svg 'sxhkd' 'The configuration file has been reloaded successfully!'
-
-# ----- Node states and flags ----- #
-
-# Set the node state
-alt + {t,shift + t,a,f}
-    bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-
-# Set the node flags
-alt + {m,x,s,p}
-    bspc node -g {marked,locked,sticky,private}
-
-# Hide window
-alt + h
-    HideNode --hide
-
-# Show menu to restore hidden windows
-ctrl + alt + h
-    HideNode --menu
-
-# ----- Focus/Swap Nodes ----- #
-
-# Rotate desktop
-ctrl + Tab
-    bspc node @/ --rotate {90,-90}
-
-# Switch workspace
-super + {Left,Right}
-    bspc desktop -f {prev,next}
-
-# Focus or send to the given desktop
-super + {_,ctrl + }{1-9,0}
-    bspc {desktop -f,node -d} '^{1-9,10}'
-
-# Send focused Node to workspace directionally
-super + ctrl + {Left,Right}
-    bspc node -d {prev,next} '--follow'
-
-# Node switcher
-alt + Tab
-    rofi \
-        -theme $HOME/.config/bspwm/config/rofi-themes/Windows.rasi \
-        -show window -window-thumbnail \
-        -window-hide-active-window true \
-        -kb-accept-entry "!Alt-Tab,Return" \
-        -kb-element-next "Alt-Tab"
-
-# Focus the node in the given direction
-super + alt + {Left,Down,Up,Right}
-    { DIR=west FALLBACK=prev; , DIR=south; , DIR=north; , DIR=east FALLBACK=next; } \
-    bspc node -f $DIR.!sticky.!hidden.local || bspc node -f $FALLBACK.leaf.!sticky.!hidden.local
-
-# Swap Nodes
-ctrl + alt + {Left,Down,Up,Right}
-    bspc node -s {west,south,north,east}.local
-
-# Focus the last node/desktop
-ctrl + shift {comma,period}
-    bspc {node,desktop} -f last
-
-# Preselect the direction (horizontal, vertical or cancel)
-super + ctrl {h,v,q}
-    bspc node -p {east,south,cancel}
-
-# ----- Move/Resize Nodes ----- #
-
-# balance desktop's nodes
-super + ctrl + b
-  bspc node @/ -B
-
-# increase/decrease Node
-super + alt + {plus,minus}
-    { \
-       bspc node -z top_right 20 -20 ; bspc node -z bottom_left -20 20; \
-    ,  bspc node -z top_right -20 20 ; bspc node -z bottom_left 20 -20; \
-    }
-
-# increase/decrease FLOATING node size (zoom in/out)
-super + ctrl + {plus,minus}
-    { \
-	xdotool getactivewindow windowmove --relative -- -50 -25 ; xdo resize -w +100 -h +50; \
-	, xdotool getactivewindow windowmove --relative -- +50 +25 ; xdo resize -w -100 -h -50; \
-    }
-
-# Move floating window
-super + shift + {Left,Down,Up,Right}
-    bspc node -v {-20 0,0 20,0 -20,20 0}
-
-# ----- Multi operation functions ----- #
-
-# Close all nodes in current desktop
-super + ctrl + x
-    bspc query -N -d | xargs -I id -n 1 bspc node id -c
-
-# Close/Kill all unfocused local windows
-super + n ; {x,k}
-    bspc query -N -n '.!focused.!marked.local.window' | xargs -I id -n 1 bspc node id {-c,-k}
-
-# Bring all marked windows to the focused desktop
-super + n ; m
-    bspc query -N -n '.marked' | xargs -I id -n 1 bspc node id -d focused --follow
-
-# Bring everything from desktop X to the current desktop
-# Example usage: super + n followed by 5 (brings everything from desktop 5)
-super + n ; {1-9}
-    bspc query -N -d {1-9} -n '.window' | xargs -I id -n 1 bspc node id -d focused

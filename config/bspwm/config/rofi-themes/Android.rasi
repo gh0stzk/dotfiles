@@ -1,6 +1,7 @@
 // # z0mbi3 - https://github.com/gh0stzk/dotfiles
 
 configuration {
+    show-icons:                 false;
 	hover-select:				true;
 	me-select-entry:			"";
 	me-accept-entry:			"MousePrimary";
@@ -90,7 +91,7 @@ listview {
     cycle:                       true;
     scrollbar:                   false;
     layout:                      vertical;
-    
+
     spacing:                     10px;
     background-color:            transparent;
     cursor:                      "default";

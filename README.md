@@ -176,6 +176,10 @@ Optimized, native ZSH configuration. Not __Oh-My-Zsh__ or other bloated plugin m
 |:-:|
 |![Shot-2024-11-08-134530](https://github.com/user-attachments/assets/dbac8c47-f12c-4242-97d6-38ad1193f76b)|
 
+| :tshirt: Bar Selector |
+|:-:|
+|![Bspwm Bar Selector](https://github.com/user-attachments/assets/94c4d699-890c-47d4-85dc-8e9622f4c679)|
+
 ### 🎨 The themes
 
 | Emilia |
@@ -298,10 +302,6 @@ Optimized, native ZSH configuration. Not __Oh-My-Zsh__ or other bloated plugin m
 | :---: | :---: |
 | Profile Panel | Music Player |
 
-| ![Shot-2024-11-10-000520](https://github.com/user-attachments/assets/a0871d4e-5b2b-4e64-ae79-617feec71cf1) |
-| :--------------------------------------------------------------------------------------------------------: |
-|                                                Cheat Sheet                                                 |
-
 ---
 
 ### Rice Editor
@@ -357,6 +357,7 @@ https://github.com/user-attachments/assets/79764678-c519-4a41-a333-2a862a6d10f8
 | `super` + `Enter`<br>`super` + `alt` + `Enter` | Open a terminal<br>Open a floating terminal. |
 | `alt` + `@space` | Display menu to select a theme. |
 | `super` + `@space` | Apps Menu. |
+| `super` + `alt` + `@space` | Bar Selector. |
 | `super` + `alt` + `w`| Opens a menu to select a wallpaper. |
 | `super` + `alt` + `h`<br>`super` + `alt` + `u` | Hides bar/s<br>unhide bar/s |
 | `super` + `alt` + `s` | Takes screenshot. |

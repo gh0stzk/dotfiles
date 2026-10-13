@@ -1,0 +1,110 @@
+#!/bin/sh
+# =============================================================
+# Author:  gh0stzk
+# Repo:    https://github.com/gh0stzk/dotfiles
+# Date:    10.08.2026
+#
+# BarSelector - Dynamic bar switcher for gh0stzk bspwm dotfiles
+#
+# Copyright (C) 2021-2026 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# =============================================================
+
+# Some vars
+bspwm_dir="$HOME/.config/bspwm"
+read -r current_rice < "$bspwm_dir"/.rice
+rice_config="$bspwm_dir/rices/$current_rice/theme-config.bash"
+
+#current_bar=$(sed -n 's/^main_bar=\"\([^\"]*\)\".*/\1/p' "$rice_config")
+current_bar=""
+while IFS='=' read -r key value; do
+    case "$key" in
+        main_bar)
+            value=${value#\"}
+            current_bar=${value%\"}
+            break
+            ;;
+    esac
+done < "$rice_config"
+
+bars=$(find "$bspwm_dir/bars/" -mindepth 1 -maxdepth 1 -type d | sort)
+
+IFS='
+'
+
+# Find current bar
+selected_index=-1
+index=0
+for bar in $bars; do
+    [ "${bar##*/}" = "$current_bar" ] && { selected_index=$index; break; }
+    index=$((index + 1))
+done
+
+# Focused monitor geometry
+rect=$(bspc query -T -m focused | grep -o '"rectangle":{[^}]*}' | head -n1)
+mon_w=${rect#*\"width\":};  mon_w=${mon_w%%,*}
+mon_h=${rect#*\"height\":}; mon_h=${mon_h%%\}*}
+
+# Safe fallback if the query fails
+: "${mon_w:=1600}" "${mon_h:=900}"
+
+# preview-bar.webp dimensions
+img_w=960
+img_h=540
+
+# Paddings scale with DPI so they match the text size
+dpi=$(xrdb -query 2>/dev/null | awk '/Xft.dpi/{print $2}')
+pad=$(( 16 * ${dpi:-96} / 96 ))
+gap=$(( 8 * ${dpi:-96} / 96 ))
+
+# Layout: height is 40% of the monitor, width follows the image ratio
+win_h=$(( mon_h * 40 / 100 ))
+prev_h=$(( win_h - 2 * pad ))
+prev_w=$(( prev_h * img_w / img_h ))
+list_w=$(( prev_w * 30 / 100 ))
+win_w=$(( 2 * pad + list_w + gap + prev_w ))
+
+# Narrow screens: shrink everything proportionally to fit
+max_w=$(( mon_w * 90 / 100 ))
+if [ "$win_w" -gt "$max_w" ]; then
+    prev_w=$(( (max_w - 2 * pad - gap) * 100 / 130 ))
+    prev_h=$(( prev_w * img_h / img_w ))
+    win_h=$(( prev_h + 2 * pad ))
+    list_w=$(( prev_w * 30 / 100 ))
+    win_w=$(( 2 * pad + list_w + gap + prev_w ))
+fi
+
+rofi_override="
+    window { width: ${win_w}px; height: ${win_h}px; padding: ${pad}px; }
+    listview-split { spacing: ${gap}px; }
+    icon-current-entry { size: ${prev_w}px; }
+"
+
+# Show the rofi selection menu.
+selected=$(
+    for bar in $bars; do
+        name=${bar##*/}
+        printf "%s\000icon\037%s/preview-bar.webp\n" "$name" "$bar"
+    done | rofi -dmenu -p "BarSelector" \
+                -theme "$bspwm_dir/config/rofi-themes/BarSelector.rasi" \
+                -theme-str "$rofi_override" \
+                -selected-row "$selected_index"
+)
+unset IFS
+
+# If a valid, different bar was selected: persist it, kill the running bar, launch the new one.
+if [ -n "$selected" ] && [ "$selected" != "$current_bar" ]; then
+    sed -i "s/^main_bar=.*/main_bar=\"$selected\"/" "$rice_config"
+
+    polybar-msg cmd quit >/dev/null 2>&1
+    pkill -f "eww.*bar" >/dev/null 2>&1
+    pkill -fx "bspc subscribe node_state" >/dev/null 2>&1
+
+    main_bar="$selected"
+    . "$bspwm_dir/bars/$selected/Bar.bash"
+
+    bspc config top_padding 1
+    bspc config bottom_padding 1
+    bspc config left_padding 1
+    bspc config right_padding 1
+fi

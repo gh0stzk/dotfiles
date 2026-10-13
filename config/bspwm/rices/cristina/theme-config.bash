@@ -6,7 +6,9 @@
 
 # (Rose-Pine Moon) colorschenme
 bg="#232136"
+bg_alt="#00232136"
 fg="#e0def4"
+trans="#00232136"
 
 black="#393552"
 red="#ea6f91"
@@ -25,17 +27,30 @@ magentab="#c3a5e6"
 cyanb="#ebbcba"
 whiteb="#e0def4"
 
+# Extend
+purple="#a685e2"
+amber="#e6a558"
+pink="#f0a3b4"
+orange="#e08850"
+indigo="#5a5aa8"
+lime="#8bb37a"
+grey="#908caa"
+bluegray="#5f6c8a"
+
 accent_color="#2a2740"
 arch_icon="#0f94d2"
+
+# Bar
+main_bar="bar04"
 
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
 TOP_PADDING="1"
-BOTTOM_PADDING="53"
+BOTTOM_PADDING="1"
 LEFT_PADDING="1"
 RIGHT_PADDING="1"
-NORMAL_BC="#9bced7"		# Normal border color
-FOCUSED_BC="#c3a5e6"	# Focused border color
+NORMAL_BC="$green"      # Normal border color
+FOCUSED_BC="$magenta"   # Focused border color
 
 # Terminal font & size
 term_font_size="10"

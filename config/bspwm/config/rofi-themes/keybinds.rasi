@@ -1,0 +1,75 @@
+// gh0stzk - https://github.com/gh0stzk/dotfiles
+
+@import "shared.rasi"
+
+configuration {
+    show-icons:                     false;
+    location:                       0;
+}
+
+window {
+    width:                          45%;
+    transparency:                   "real";
+    orientation:                    vertical;
+    border-radius:                  6px;
+    background-color:               @background-alt;
+}
+
+mainbox {
+    children:                       [inputbar, listview];
+    background-color:               transparent;
+}
+
+element {
+    padding:                        4 8;
+    text-color:                     @foreground;
+    background-color:               transparent;
+    border-radius:                  5px;
+}
+
+element.selected {
+    text-color:                     @active;
+    background-color:               @urgent;
+}
+
+element-text {
+    background-color:               inherit;
+    text-color:                     inherit;
+}
+
+element.selected.normal {
+    background-color:               @selected;
+    text-color:                     @background;
+}
+
+listview {
+    columns:                        1;
+    lines:                          24;
+    padding:                        8 0;
+    fixed-height:                   true;
+    fixed-columns:                  true;
+    fixed-lines:                    true;
+    border:                         0 10 6 10;
+    background-color:               transparent;
+}
+
+inputbar {
+    children:                       [prompt, entry];
+    padding:                        10 0 0;
+    margin:                         0 0 0 0;
+    background-color:               transparent;
+}
+
+entry {
+    text-color:                     @urgent;
+    padding:                        10 10 0 0;
+    margin:                         0 -2 0 0;
+    background-color:               transparent;
+}
+
+prompt {
+    background-color:               transparent;
+    text-color:                     @foreground;
+    padding:                        10 6 0 10;
+    margin:                         0 -2 0 0;
+}

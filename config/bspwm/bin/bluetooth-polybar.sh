@@ -25,9 +25,8 @@ BT_CLASS_PATH="/sys/class/bluetooth"
 [ -d "$BT_CLASS_PATH" ] || exit 0  # Silent exit if no Bluetooth hardware
 
 # Config Handling
-CONFIG_DIR="${HOME}/.config/bspwm"
-read -r current_rice < "${CONFIG_DIR}"/.rice
-config_file="${CONFIG_DIR}/rices/${current_rice}/config.ini"
+CONFIG_DIR="$HOME/.config/bspwm"
+config_file="$CONFIG_DIR/bars/colors.ini"
 
 # Color Extraction with Fallbacks
 read_power_colors() {

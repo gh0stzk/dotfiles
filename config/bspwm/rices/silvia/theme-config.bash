@@ -6,7 +6,9 @@
 
 # (Gruvbox) colorscheme
 bg="#282828"
+bg_alt="#00282828"
 fg="#fbf1c7"
+trans="#00282828"
 
 black="#a89984"
 red="#cc241d"
@@ -25,17 +27,30 @@ magentab="#d3869b"
 cyanb="#8ec07c"
 whiteb="#ebdbb2"
 
+# Extend
+purple="#8f3f71"
+amber="#d79921"
+pink="#d3869b"
+orange="#d65d0e"
+indigo="#4c5a70"
+lime="#b8bb26"
+grey="#928374"
+bluegray="#5c6f70"
+
 accent_color="#2E2E2E"
 arch_icon="#0f94d2"
 
+# Bar
+main_bar="bar15"
+
 # Bspwm options
-BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="46"
+BORDER_WIDTH="0"        # Bspwm border
+TOP_PADDING="1"
 BOTTOM_PADDING="1"
 LEFT_PADDING="1"
 RIGHT_PADDING="1"
-NORMAL_BC="#d3869b"		# Normal border color
-FOCUSED_BC="#fbf1c7"	# Focused border color
+NORMAL_BC="$magentab"   # Normal border color
+FOCUSED_BC="$fg"        # Focused border color
 
 # Terminal font & size
 term_font_size="10"

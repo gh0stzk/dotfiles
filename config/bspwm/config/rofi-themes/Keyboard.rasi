@@ -1,6 +1,7 @@
 // # z0mbi3 - https://github.com/gh0stzk/dotfiles
 
 configuration {
+    show-icons:                 false;
 	hover-select:				true;
 	me-select-entry:			"";
 	me-accept-entry:			"MousePrimary";

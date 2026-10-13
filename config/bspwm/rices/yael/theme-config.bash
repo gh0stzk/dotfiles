@@ -6,7 +6,9 @@
 
 # (OxoCarbon) colorscheme
 bg="#161616"
+bg_alt="#00161616"
 fg="#ffffff"
+trans="#00161616"
 
 black="#262626"
 red="#ee5396"
@@ -25,17 +27,30 @@ magentab="#ff7eb6"
 cyanb="#3ddbd9"
 whiteb="#ffffff"
 
+# Extend
+purple="#be95ff"
+amber="#ffb000"
+pink="#ff8ad4"
+orange="#ff832b"
+indigo="#82CFFF"
+lime="#a6ff00"
+grey="#8C8C8C"
+bluegray="#43789C"
+
 accent_color="#212121"
 arch_icon="#0f94d2"
 
+# Bar
+main_bar="bar17"
+
 # Bspwm options
-BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="37"
+BORDER_WIDTH="0"        # Bspwm border
+TOP_PADDING="1"
 BOTTOM_PADDING="1"
 LEFT_PADDING="1"
 RIGHT_PADDING="1"
-NORMAL_BC="#33b1ff"		# Normal border color
-FOCUSED_BC="#42be65"	# Focused border color
+NORMAL_BC="$blue"       # Normal border color
+FOCUSED_BC="$green"     # Focused border color
 
 # Terminal font & size
 term_font_size="10"

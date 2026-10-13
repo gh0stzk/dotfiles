@@ -7,6 +7,13 @@
 # (Zombie-Night) colorscheme
 bg="#0E1113"
 fg="#afb1db"
+bg_alt="#000E1113"
+trans="#000E1113"
+
+# Needed if bar has opacity. Hex opacity table for a % list --> https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4
+_alpha="D6"
+bg_alpha="#${_alpha}${bg#\#}"
+bg_alpha_css="rgba(14, 17, 19, 0.84)"
 
 black="#353c52"
 red="#e7034a"
@@ -25,17 +32,30 @@ magentab="#8656e3"
 cyanb="#97f0f0"
 whiteb="#afb1db"
 
+# Extend
+purple="#9d4edd"
+amber="#ffa62b"
+pink="#ff4d8d"
+orange="#ff6b35"
+indigo="#5b4fd6"
+lime="#a3e635"
+grey="#6c7086"
+bluegray="#4f6d8c"
+
 accent_color="#111517"
 arch_icon="#0f94d2"
 
+# Bar
+main_bar="bar11"
+
 # Bspwm options
-BORDER_WIDTH="3"		# Bspwm border
-TOP_PADDING="48"
+BORDER_WIDTH="3"        # Bspwm border
+TOP_PADDING="1"
 BOTTOM_PADDING="1"
 LEFT_PADDING="1"
 RIGHT_PADDING="1"
-NORMAL_BC="#353c52"		# Normal border color
-FOCUSED_BC="#353c52"	# Focused border color
+NORMAL_BC="$black"      # Normal border color
+FOCUSED_BC="$green"     # Focused border color
 
 # Terminal font & size
 term_font_size="10"

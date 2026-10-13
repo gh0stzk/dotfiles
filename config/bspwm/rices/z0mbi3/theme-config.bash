@@ -6,7 +6,9 @@
 
 # (Decay, decayce variant) colorcheme
 bg="#0d0f18"
+bg_alt="#000d0f18"
 fg="#a5b6cf"
+trans="#000d0f18"
 
 black="#3d414f"
 red="#dd6777"
@@ -25,17 +27,30 @@ magentab="#c296eb"
 cyanb="#93cee9"
 whiteb="#cbced3"
 
-accent_color="#151720"
+# Extend
+purple="#a68cd9"
+amber="#e0b787"
+pink="#dd97ae"
+orange="#dd9670"
+indigo="#7b8fd6"
+lime="#b3d191"
+grey="#6b7489"
+bluegray="#5f7290"
+
+accent_color="#131621"
 arch_icon="#0f94d2"
 
+# Bar
+main_bar="bar18"
+
 # Bspwm options
-BORDER_WIDTH="0"		# Bspwm border
+BORDER_WIDTH="0"        # Bspwm border
 TOP_PADDING="1"
 BOTTOM_PADDING="1"
-LEFT_PADDING="60"
+LEFT_PADDING="1"
 RIGHT_PADDING="1"
-NORMAL_BC="#3d414f"		# Normal border color
-FOCUSED_BC="#93cee9"	# Focused border color
+NORMAL_BC="$black"      # Normal border color
+FOCUSED_BC="$cyan"      # Focused border color
 
 # Terminal font & size
 term_font_size="10"

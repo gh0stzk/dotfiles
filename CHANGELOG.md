@@ -1,3 +1,24 @@
+## Feat: New BarSelector (Select any of the 18 bars in any theme)
+##### 13 October 2026
+
+**New**
+- Now you can select any bar from the 18 themes for the theme of your choice. Thanks to https://github.com/ilshatvm for the rofi design
+- New cheatsheet with rofi (Alt + F1). Taken from https://codeberg.org/justaguylinux/bspwm-setup
+
+**Removed**
+- Eww cheatsheet
+
+**Changed**
+- Some shortcuts were modified
+
+**Fixed**
+- The glyphs in some Rofi applets and remaining configurations, display a white rectangle.
+
+<img width="784" height="351" alt="BarSelector" src="https://github.com/user-attachments/assets/d7469cdf-0d5d-4615-8821-21971196ddae" />
+<img width="720" height="731" alt="2026-10-13_06-52" src="https://github.com/user-attachments/assets/e856c3ba-736c-407b-a449-1b673d896865" />
+
+----
+
 ## Updates & other optimizations
 ##### 24 May 2026
 

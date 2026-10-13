@@ -6,7 +6,9 @@
 
 # (Rose Pine Dawn) colorscheme
 bg="#faf4ed"
+bg_alt="#00faf4ed"
 fg="#575279"
+trans="#00faf4ed"
 
 black="#f2e9e1"
 red="#b4637a"
@@ -25,17 +27,30 @@ magentab="#907aa9"
 cyanb="#d7827e"
 whiteb="#575279"
 
+# Extend
+purple="#a76eb9"
+amber="#e6b34d"
+pink="#d897a2"
+orange="#dd895f"
+indigo="#6659a6"
+lime="#98af6a"
+grey="#797593"
+bluegray="#7b879e"
+
 accent_color="$black"
 arch_icon="#0f94d2"
 
+# Bar
+main_bar="bar01"
+
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="51"
+TOP_PADDING="1"
 BOTTOM_PADDING="1"
 LEFT_PADDING="1"
 RIGHT_PADDING="1"
-NORMAL_BC="#286983"		# Normal border color
-FOCUSED_BC="#907aa9"	# Focused border color
+NORMAL_BC="$green"		# Normal border color
+FOCUSED_BC="$magenta"	# Focused border color
 
 # Terminal font & size
 term_font_size="10"

@@ -6,7 +6,9 @@
 
 # (Tokyo Night) colorscheme
 bg="#1a1b26"
+bg_alt="#001a1b26"
 fg="#c0caf5"
+trans="#00000000"
 
 black="#15161e"
 red="#f7768e"
@@ -25,17 +27,30 @@ magentab="#bb9af7"
 cyanb="#7dcfff"
 whiteb="#c0caf5"
 
+# Extend
+purple="#583794"
+amber="#ffbf5f"
+pink="#f29ac2"
+orange="#ff966c"
+indigo="#6C77BB"
+lime="#b8d96b"
+grey="#9098b5"
+bluegray="#6D8895"
+
 accent_color="#222330"
 arch_icon="#0f94d2"
 
+# Bar
+main_bar="bar07"
+
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="50"
+TOP_PADDING="1"
 BOTTOM_PADDING="1"
 LEFT_PADDING="1"
 RIGHT_PADDING="1"
-NORMAL_BC="#414868"		# Normal border color
-FOCUSED_BC="#bb9af7"	# Focused border color
+NORMAL_BC="$blue"       # Normal border color
+FOCUSED_BC="$magenta"   # Focused border color
 
 # Terminal font & size
 term_font_size="10"

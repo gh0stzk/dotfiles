@@ -20,6 +20,18 @@ RICES_DIR="$CONFIG_DIR/rices"
 DUNST_CONFIG="$HOME/.config/dunst/dunstrc"
 read -r CURRENT_RICE < "$CONFIG_DIR"/.rice
 main_eww="$CONFIG_DIR/eww"
+rice_config="$RICES_DIR/$CURRENT_RICE/theme-config.bash"
+
+current_bar=""
+while IFS='=' read -r key value; do
+    case "$key" in
+        main_bar)
+            value=${value#\"}
+            current_bar=${value%\"}
+            break
+            ;;
+    esac
+done < "$rice_config"
 reloaded=""
 
 # Reload bars polybar or eww
@@ -27,7 +39,7 @@ if pgrep -x polybar >/dev/null; then
     polybar-msg cmd restart >/dev/null &&
     reloaded="${reloaded}• Polybar\n"
 else
-    eww_bar_config="$RICES_DIR/$CURRENT_RICE/bar"
+    eww_bar_config="$CONFIG_DIR/bars/$current_bar"
     [ -d "$eww_bar_config" ] && eww reload -c "$eww_bar_config" &&
     reloaded="${reloaded}Eww Bar\n"
 fi

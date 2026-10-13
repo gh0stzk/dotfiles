@@ -6,7 +6,9 @@
 
 # (Nord) colorscheme
 bg="#2e3440"
+bg_alt="#002e3440"
 fg="#d8dee9"
+trans="#002e3440"
 
 black="#3b4252"
 red="#bf616a"
@@ -25,17 +27,30 @@ magentab="#b48ead"
 cyanb="#8fbcbb"
 whiteb="#eceff4"
 
+# Extend
+purple="#583794"
+amber="#ffbf5f"
+pink="#f29ac2"
+orange="#ff966c"
+indigo="#6C77BB"
+lime="#b8d96b"
+grey="#4c566a"
+bluegray="#63778f"
+
 accent_color="#353C4A"
 arch_icon="#0f94d2"
 
+# Bar
+main_bar="bar13"
+
 # Bspwm options
-BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="35"
-BOTTOM_PADDING="35"
+BORDER_WIDTH="0"        # Bspwm border
+TOP_PADDING="1"
+BOTTOM_PADDING="1"
 LEFT_PADDING="1"
 RIGHT_PADDING="1"
-NORMAL_BC="#3b4252"		# Normal border color
-FOCUSED_BC="#4c566a"	# Focused border color
+NORMAL_BC="$black"      # Normal border color
+FOCUSED_BC="$blackb"    # Focused border color
 
 # Terminal font & size
 term_font_size="10"

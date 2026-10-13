@@ -13,9 +13,19 @@
 # =============================================================
 
 # Configuration
-read -r current_rice <"$HOME"/.config/bspwm/.rice
+read -r current_rice < "$HOME/.config/bspwm/.rice"
 THEME_CONFIG="$HOME/.config/bspwm/rices/$current_rice/theme-config.bash"
-eww_bar_path="$HOME/.config/bspwm/rices/$current_rice/bar"
+current_bar=""
+while IFS='=' read -r key value; do
+    case "$key" in
+        main_bar)
+            value=${value#\"}
+            current_bar=${value%\"}
+            break
+            ;;
+    esac
+done < "$THEME_CONFIG"
+eww_bar_path="$HOME/.config/bspwm/bars/$current_bar"
 
 # Get padding value from theme-config.bash
 get_paddings() {

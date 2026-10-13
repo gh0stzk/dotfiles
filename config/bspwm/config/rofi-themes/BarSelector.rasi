@@ -1,0 +1,85 @@
+// gh0stzk - https://github.com/gh0stzk/dotfiles
+
+@import "shared.rasi"
+
+window {
+    height:                         40%;
+    fullscreen:                     false;
+    background-color:               @background;
+    padding:                        1em;
+    children:                       [ wrap, listview-split ];
+    border-radius:                  1em;
+}
+
+listview-split {
+    orientation:                    horizontal;
+    spacing:                        0.5em;
+    background-color:               transparent;
+    children:                       [ listview, icon-current-entry ];
+}
+
+wrap {
+	expand:                         false;
+	orientation:                    vertical;
+    background-color:               transparent;
+	border-radius:                  0.4em;
+}
+
+listview {
+	flow:                           vertical;
+    fixed-height:                   true;
+    dynamic:                        true;
+	columns:                        1;
+	lines:                          1;
+    scrollbar:                      true;
+	spacing:                        0.5em;
+    expand:                         true;
+    background-color:               transparent;
+}
+
+element {
+    expand:                         true;
+    orientation:                    vertical;
+    spacing:                        0px;
+    padding:                        10px;
+    cursor:                         pointer;
+    background-color:               transparent;
+    text-color:                     @foreground;
+    border-radius:                  6px;
+    border:                         1px;
+    border-color:                   @bg-alt;
+    children:                       [ element-text ];
+}
+
+element-text {
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    padding:                        0.3em;
+    cursor:                         inherit;
+    background-color:               transparent;
+    color:                          inherit;
+}
+
+element selected {
+    orientation:                    vertical;
+    border-radius:                  6px;
+    cursor:                         pointer;
+    background-color:               @selected;
+    color:                          @background;
+}
+
+icon-current-entry {
+    background-color:               @selected;
+    size:                           64.8%;
+    expand:                         false;
+    border-radius:                  6px;
+}
+
+scrollbar {
+    background-color:               transparent;
+    handle-color:                   @active;
+    handle-width:                   4px;
+    border-color:                   @selected;
+    border:                         0;
+}

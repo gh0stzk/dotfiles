@@ -86,7 +86,7 @@ case "$1" in
 		;;
 		# Eww Widgets
 	--KeyHelp)
-		eww -c "$WIDGET_DIR" open --toggle csheet
+		Help
 		;;
 	--usercard)
 		eww -c "$WIDGET_DIR" open --toggle launchermenu

@@ -7,6 +7,13 @@
 # (Lovelace) colorscheme from Elenapan
 bg="#1D1F28"
 fg="#FDFDFD"
+bg_alt="#002F354B"
+trans="#001D1F28"
+
+# Needed if bar has opacity. Hex opacity table for a % list --> https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4
+_alpha="BF"
+bg_alpha="#${_alpha}${bg#\#}"
+bg_alpha_css="rgba(29, 31, 40, 0.75)"
 
 black="#282A36"
 red="#F37F97"
@@ -25,17 +32,30 @@ magentab="#B043D1"
 cyanb="#3FDCEE"
 whiteb="#BEBEC1"
 
+# Extend
+purple="#9580FF"
+amber="#FFCB6B"
+pink="#FF8AC6"
+orange="#FF9E64"
+indigo="#5D5FEF"
+lime="#C3E88D"
+grey="#6E7191"
+bluegray="#5B6478"
+
 accent_color="#1F222B"
 arch_icon="#0f94d2"
 
+# Bar
+main_bar="bar14"
+
 # Bspwm options
-BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="53"
+BORDER_WIDTH="0"        # Bspwm border
+TOP_PADDING="1"
 BOTTOM_PADDING="1"
 LEFT_PADDING="1"
 RIGHT_PADDING="1"
-NORMAL_BC="#C574DD"		# Normal border color
-FOCUSED_BC="#8897F4"	# Focused border color
+NORMAL_BC="$magenta"    # Normal border color
+FOCUSED_BC="$blue"      # Focused border color
 
 # Terminal font & size
 term_font_size="10"

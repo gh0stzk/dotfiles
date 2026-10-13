@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# help — rofi-rendered keybind cheatsheet, parsed from sxhkdrc.
+# Section headers use the color of HEADER_KEY from shared.rasi.
+# Keybind names are bold, no fixed color — text follows the theme's foreground.
+
+SXHKDRC="$HOME/.config/bspwm/config/sxhkdrc"
+THEME="$HOME/.config/bspwm/config/rofi-themes/keybinds.rasi"
+SHARED="$HOME/.config/bspwm/config/rofi-themes/shared.rasi"
+HEADER_KEY="active"
+
+[ -r "$SXHKDRC" ] || { notify-send "help" "sxhkdrc not found: $SXHKDRC"; exit 1; }
+
+# From shared.rasi: header color (first hex on HEADER_KEY) and font family
+# (the font string minus its trailing size). Both fall back below if missing.
+ACCENT=$(sed -n "s/^[[:space:]]*${HEADER_KEY}[[:space:]]*:[[:space:]]*\(#[0-9a-fA-F]\{6\}\).*/\1/p" "$SHARED" 2>/dev/null | head -n 1)
+FONT=$(sed -n 's/^[[:space:]]*font[[:space:]]*:[[:space:]]*"\(.*\) [0-9][0-9.]*".*/\1/p' "$SHARED" 2>/dev/null | head -n 1)
+
+awk -v accent="${ACCENT:-#7aa2f7}" '
+    function xmlesc(s) {
+        gsub(/&/, "\\&amp;", s)
+        gsub(/</, "\\&lt;", s)
+        gsub(/>/, "\\&gt;", s)
+        return s
+    }
+
+    # Section marker: # -- NAME -- #
+    /^#[[:space:]]*--[[:space:]]+.+[[:space:]]+-- #[[:space:]]*$/ {
+        sub(/^#[[:space:]]*--[[:space:]]+/, "")
+        sub(/[[:space:]]+-- #[[:space:]]*$/, "")
+        printf "<span size=\"large\" weight=\"bold\" foreground=\"%s\">── %s ──</span>\n", accent, xmlesc($0)
+        last = ""
+        next
+    }
+
+    # Regular comment → buffer as description
+    /^#/ { sub(/^#[[:space:]]*/, ""); last = $0; next }
+
+    # Keybind line (starts with a letter, including XF86 / Print)
+    /^[[:alpha:]]/ && last != "" { printf "<b>%-30s</b>  %s\n", xmlesc($0), xmlesc(last) }
+
+    # Anything else (including a keybind just printed) clears the buffer
+    { last = "" }
+' "$SXHKDRC" | rofi -dmenu -markup-rows -i -p "Keybindings" -theme "$THEME" \
+    -theme-str "* { font: \"${FONT:-JetBrainsMono NF Bold} 10\"; }"

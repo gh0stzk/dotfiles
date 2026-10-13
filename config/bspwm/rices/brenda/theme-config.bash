@@ -6,7 +6,9 @@
 
 # (Everforest) colorscheme
 bg="#2d353b"
+bg_alt="#00232a2e"
 fg="#d3c6aa"
+trans="#00232a2e"
 
 black="#475258"
 red="#e67e80"
@@ -25,17 +27,30 @@ magentab="#d699b6"
 cyanb="#83c092"
 whiteb="#d3c6aa"
 
-accent_color="#272e33"
+# Extend
+purple="#9f85b3"
+amber="#d4a468"
+pink="#e6a0ac"
+orange="#e69875"
+indigo="#6a7ba2"
+lime="#c0ca8e"
+grey="#859289"
+bluegray="#738a8c"
+
+accent_color="#404c54"
 arch_icon="#0f94d2"
+
+# Bar
+main_bar="bar03"
 
 # Bspwm options
 BORDER_WIDTH="0"		# Bspwm border
-TOP_PADDING="48"
+TOP_PADDING="1"
 BOTTOM_PADDING="1"
 LEFT_PADDING="1"
 RIGHT_PADDING="1"
-NORMAL_BC="#d3c6aa"		# Normal border color
-FOCUSED_BC="#a7c080"	# Focused border color
+NORMAL_BC="$white"      # Normal border color
+FOCUSED_BC="$green"     # Focused border color
 
 # Terminal font & size
 term_font_size="10"

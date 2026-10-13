@@ -35,16 +35,13 @@ wait_for_termination() {
 if pgrep -x polybar >/dev/null 2>&1; then
     polybar-msg cmd quit >/dev/null 2>&1
     wait_for_termination polybar
-fi
-
-# Kill eww bars
-if pkill -f "eww.*bar" >/dev/null 2>&1; then
-    wait_for_termination "eww.*bar"
-fi
-
-# Kill the fix for eww in fullscreen, we don't need it in themes with polybar
-if pkill -fx "bspc subscribe node_state" >/dev/null 2>&1; then
-    wait_for_termination "bspc subscribe node_state"
+else
+    if pkill -f "eww.*bar" >/dev/null 2>&1; then
+        wait_for_termination "eww.*bar"
+    fi
+    if pkill -fx "bspc subscribe node_state" >/dev/null 2>&1; then
+        wait_for_termination "bspc subscribe node_state"
+    fi
 fi
 
 # Kill animated wallpaper if is active
@@ -84,4 +81,4 @@ done
 unset module
 
 # Finally load the bar
-. "$HOME"/.config/bspwm/rices/"$RICE"/Bar.bash
+. "$HOME"/.config/bspwm/bars/"$main_bar"/Bar.bash

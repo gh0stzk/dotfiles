@@ -22,7 +22,7 @@
       (button :class "welcome-close"
               :tooltip "Close"
               :onclick "eww -c ~/.config/bspwm/eww open --toggle welcome"
-              "󰅙")
+              " 󰅙 ")
     )
   )
 )
@@ -57,16 +57,22 @@
            :justify "left"
            :markup "Hello <b>${username}</b>, maybe it's your first time using a window manager or maybe not, here are some shortcuts so you don't feel so lost. You can always visit my <a href=\"https://github.com/gh0stzk/dotfiles/wiki\">Wiki</a>")
     (box :class "welcome-list" :orientation "v" :space-evenly "false" :spacing 8
-      (shortcut-item :key "Alt + F1" :desc "Shortcuts")
+      (shortcut-item :key "Alt + F1" :desc "Shortcuts Help")
       (shortcut-item :key "Super + Enter" :desc "Open a terminal")
       (shortcut-item :key "Super + x" :desc "To close windows/apps")
       (shortcut-item :key "Super + Space bar" :desc "Open apps menu")
       (shortcut-item :key "Alt + Space bar" :desc "Open the menu to change the theme")
+      (shortcut-item :key "Super + + Alt + Space bar" :desc "Bar Selector")
       (shortcut-item :key "Super + arrows" :desc "Move between workspaces (there are *6)")
       (shortcut-item :key "Super + b" :desc "Browser")
       (shortcut-item :key "Super + e" :desc "Editor")
       (shortcut-item :key "Super + f" :desc "FileManager")
     )
+    (label :class "welcome-text"
+           :xalign 0
+           :wrap true
+           :justify "left"
+           :text "As an alternative to using the keyboard, you can hold down the Super key and move windows by left-clicking, or resize them by right-clicking.")
     (label :class "welcome-text"
            :xalign 0
            :wrap true
@@ -81,7 +87,7 @@
     :geometry (geometry :x "0%"
                         :y "0%"
                         :width "45%"
-                        :height "55%"
+                        :height "61%"
                         :anchor "center")
     :wm-ignore false
     (welcome))
