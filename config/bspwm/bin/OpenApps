@@ -65,6 +65,9 @@ case "$1" in
 	--scratch)
 		Bspwm-ScratchPad
 		;;
+	--border)
+		BorderColor --cycle
+		;;
 		# Apps
     --filemanager)
         ${FILEMANAGER:-thunar}
