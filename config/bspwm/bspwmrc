@@ -84,5 +84,10 @@ run clipcatd
 # Launch polkit
 run lxpolkit
 
+# The event to make Layouts work with polybar
+bspc subscribe desktop_focus monitor_focus | while read -r _; do
+    polybar-msg action "#layout.hook.0" >/dev/null 2>&1
+done &
+
 # Start one time message
 [ ! -f "$HOME/.config/bspwm/config/.first_run_done" ] && eww -c ${HOME}/.config/bspwm/eww open --toggle welcome && touch "$HOME/.config/bspwm/config/.first_run_done"
