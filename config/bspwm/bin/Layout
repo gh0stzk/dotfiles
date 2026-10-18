@@ -1,0 +1,346 @@
+#!/bin/sh
+
+# The owner of this script is https://codeberg.org/justaguylinux/bspwm-setup
+# I only modified to work on my setup and make it POSIX. All credits to JustaGuyLinux
+
+# layout — self-contained bspwm layout engine (replaces bsp-layout).
+# CLI: get | icon | list | next | prev | set <name> — used by a bar
+# (polybar/eww/quickshell) and sxhkd. A single daemon (started from bspwmrc)
+# rebuilds a desktop's tree only when its visible window set changes, so
+# manual swaps survive and desktop focus never reshuffles windows.
+#
+# Layouts are built with desktop-scoped preselections and `bspc node -B`
+# balancing: ratios are string literals handed to bspc (which parses
+# floats natively) and geometry comes from the tree shape, so nothing here
+# depends on monitor size or does float math in the shell.
+
+LAYOUTS="tiled tall rtall wide rwide grid even monocle"
+MASTER=0.58    # master pane share for the four master-stack layouts
+RMASTER=0.42   # presel -o sets the FIRST child's share; west/north presels
+               # put the new (stack) node first, so they take the complement
+
+STATE="${XDG_RUNTIME_DIR:-/tmp}/bspwm-layout-$(id -u)"
+
+# absolute path of this script, for relaunching the daemon
+case $0 in
+    /*)  SELF=$0 ;;
+    */*) SELF=$PWD/$0 ;;
+    *)   SELF=$(command -v "$0") || SELF=$PWD/$0 ;;
+esac
+
+# Optional: executable called as "$LAYOUT_HOOK <layout>" after every change
+# (e.g. a script doing `eww update layout=...`). Unset = no hook.
+LAYOUT_HOOK="${LAYOUT_HOOK:-}"
+
+focused() { bspc query -D -d focused --names; }
+state_of() { cat "$STATE/$1.layout" 2>/dev/null || echo "-"; }
+wins_of() { bspc query -N -d "$1" -n '.window.!hidden.!floating.!fullscreen'; }
+
+# first numeric value of a JSON key, read from stdin (POSIX has no grep -o)
+jnum() {
+    awk -v k="\"$1\":" '{
+        i = index($0, k)
+        if (i) {
+            s = substr($0, i + length(k))
+            if (match(s, /^[0-9]+/)) { print substr(s, 1, RLENGTH); exit }
+        }
+    }'
+}
+
+# Tell the bar to refresh. Everything is best-effort and silent: a missing
+# bar or module must never break a layout change.
+#   polybar: needs `enable-ipc = true` and a custom/ipc module named
+#            "layout" with `hook-0 = layout icon` (or `layout get`).
+poke_bar() { # layout name
+    polybar-msg action "#layout.hook.0" >/dev/null 2>&1 || true
+    if [ -x "$LAYOUT_HOOK" ]; then "$LAYOUT_HOOK" "$1" >/dev/null 2>&1 || true; fi
+}
+
+lock_try() { # file
+    printf '%s\n' "$$" > "$1.$$" || return 1
+    ln "$1.$$" "$1" 2>/dev/null
+    _lt=$?
+    rm -f "$1.$$"
+    return "$_lt"
+}
+
+lock_acquire() { # file seconds-to-wait
+    _la=$2
+    while :; do
+        lock_try "$1" && return 0
+        _lp=$(cat "$1" 2>/dev/null)
+        if [ -n "$_lp" ]; then
+            # a PID that no longer exists: the owner crashed — steal it
+            if ! kill -0 "$_lp" 2>/dev/null; then
+                rm -f "$1" || return 1
+                continue
+            fi
+        elif [ -e "$1" ] && [ ! -s "$1" ]; then
+            # a live lock always holds a PID, so an empty file is a leftover
+            # (e.g. from an older flock-based version) — steal it
+            rm -f "$1" || return 1
+            continue
+        fi
+        [ "$_la" -gt 0 ] || return 1
+        _la=$((_la - 1))
+        sleep 1
+    done
+}
+
+# --- tree building -----------------------------------------------------
+
+# insert $4 into a preselection on $1
+place() { # target dir ratio node
+    bspc node "$1" -p "$2" -o "$3" 2>/dev/null
+    bspc node "$4" -n "$1" 2>/dev/null
+}
+
+# master-stack: first window is the master, the rest a balanced chain beside it
+# $1 desktop, $2 master presel dir, $3 master ratio, $4 chain dir,
+# $5 stack path, then the windows
+build_masterstack() (
+    d=$1 mdir=$2 mratio=$3 cdir=$4 stack=$5
+    shift 5
+    prev=$2
+    place "$1" "$mdir" "$mratio" "$2"
+    shift 2
+    for n; do
+        place "$prev" "$cdir" 0.5 "$n"
+        prev=$n
+    done
+    [ "$#" -gt 0 ] && bspc node "@$d:$stack" -B 2>/dev/null
+)
+
+# two columns filled alternately
+build_grid() (
+    d=$1
+    shift
+    a=$1 b=$2
+    place "$a" east 0.5 "$b"
+    shift 2
+    for n; do
+        place "$a" south 0.5 "$n"
+        a=$b
+        b=$n
+    done
+    bspc node "@$d:/" -B 2>/dev/null
+)
+
+# equal full-height columns
+build_even() (
+    d=$1
+    shift
+    prev=$1
+    shift
+    for n; do
+        place "$prev" east 0.5 "$n"
+        prev=$n
+    done
+    bspc node "@$d:/" -B 2>/dev/null
+)
+
+# Custom layouts physically restructure the split tree, so returning to
+# tiled rebuilds the canonical spiral (alternating 0.5 splits, starting
+# along the monitor's long side) deterministically — hide/unhide
+# re-insertion is unreliable on unfocused desktops, so the shape is built
+# explicitly like every other layout.
+build_tiled() (
+    d=$1
+    shift
+    dir=east alt=south
+    mon=$(bspc query -T -m "$(bspc query -M -d "$d")" 2>/dev/null)
+    w=$(printf '%s' "$mon" | jnum width)
+    h=$(printf '%s' "$mon" | jnum height)
+    if [ -n "$w" ] && [ -n "$h" ] && [ "$h" -gt "$w" ]; then
+        dir=south
+        alt=east
+    fi
+    prev=$1
+    shift
+    for n; do
+        place "$prev" "$dir" 0.5 "$n"
+        prev=$n
+        t=$dir
+        dir=$alt
+        alt=$t
+    done
+)
+
+# rebuild desktop $1 as layout $2 and record the resulting signature.
+# Serialized under a build lock so the CLI and the daemon never restructure
+# a tree concurrently; "ifchanged" makes it a no-op when the signature
+# still matches once the lock is held (daemon wakeups racing a CLI build).
+apply() (
+    mkdir -p "$STATE"
+    lock_acquire "$STATE/build.lock" 5 || {
+        echo "layout: build lock busy: $STATE/build.lock" >&2
+        exit 1
+    }
+    RA=
+    trap 'rm -f "$STATE/build.lock"; [ -z "$RA" ] || bspc config removal_adjustment "$RA"' EXIT
+    trap 'exit 1' HUP INT TERM
+    if [ "${3:-}" = ifchanged ] &&
+       [ "$(wins_of "$1")" = "$(cat "$STATE/$1.sig" 2>/dev/null)" ]; then
+        exit 0
+    fi
+    rebuild "$1" "$2"
+)
+
+rebuild() {
+    d=$1 layout=$2
+    # shellcheck disable=SC2046  # IDs are hex words: splitting is intended
+    set -- $(wins_of "$d")
+
+    if [ "$layout" = monocle ]; then
+        bspc desktop "$d" -l monocle
+    else
+        bspc desktop "$d" -l tiled
+        if [ "$#" -ge 2 ]; then
+            # Freeze removal_adjustment during the build: transplants
+            # collapse tree nodes, and bspwm would otherwise re-pick the
+            # surviving split's direction by monitor aspect — corrupting
+            # vertical-root builds on landscape monitors and
+            # horizontal-root builds on portrait ones. The build lock
+            # already serializes every rebuild, and apply()'s EXIT trap
+            # restores the setting even if the build dies mid-way.
+            RA=$(bspc config removal_adjustment)
+            bspc config removal_adjustment false
+            case "$layout" in
+                tiled) build_tiled "$d" "$@" ;;
+                tall)  build_masterstack "$d" east  "$MASTER"  south /2 "$@" ;;
+                rtall) build_masterstack "$d" west  "$RMASTER" south /1 "$@" ;;
+                wide)  build_masterstack "$d" south "$MASTER"  east  /2 "$@" ;;
+                rwide) build_masterstack "$d" north "$RMASTER" east  /1 "$@" ;;
+                grid)  build_grid "$d" "$@" ;;
+                even)  build_even "$d" "$@" ;;
+            esac
+            bspc config removal_adjustment "$RA"
+            RA=
+        fi
+    fi
+    mkdir -p "$STATE"
+    wins_of "$d" > "$STATE/$d.sig"
+}
+
+# --- daemon ------------------------------------------------------------
+
+# true while any desktop runs a custom layout; native tiled/monocle need
+# no enforcement, so the daemon only exists while this holds
+any_managed() {
+    for f in "$STATE"/*.layout; do
+        [ -e "$f" ] || continue
+        case "$(cat "$f")" in tall|rtall|wide|rwide|grid|even) return 0 ;; esac
+    done
+    return 1
+}
+
+# one instance; wakes on node events and rebuilds any managed desktop
+# whose visible window set changed since it was last built
+check_desktops() {
+    for f in "$STATE"/*.layout; do
+        [ -e "$f" ] || continue
+        d=$(basename "$f" .layout)
+        layout=$(cat "$f")
+        case "$layout" in tall|rtall|wide|rwide|grid|even) ;; *) continue ;; esac
+        [ "$(wins_of "$d")" = "$(cat "$STATE/$d.sig" 2>/dev/null)" ] && continue
+        apply "$d" "$layout" ifchanged
+    done
+}
+
+daemon() {
+    mkdir -p "$STATE"
+    # brief wait covers bspc wm -r: the old daemon exits on subscriber EOF
+    # a moment after bspwmrc relaunches us
+    lock_acquire "$STATE/daemon.lock" 3 || exit 0
+
+    fifo="$STATE/events.fifo"
+    sub_pid=
+    trap 'rm -f "$STATE/daemon.lock" "$fifo"; [ -z "$sub_pid" ] || kill "$sub_pid" 2>/dev/null' EXIT
+    trap 'exit 143' HUP INT TERM
+    any_managed || exit 0    # nothing to manage — don't linger
+
+    rm -f "$fifo"; mkfifo "$fifo"
+    bspc subscribe node_add node_remove node_transfer node_flag node_state > "$fifo" &
+    sub_pid=$!
+
+    while read -r _; do
+        check_desktops
+        any_managed || exit 0    # last custom layout gone — retire
+    done < "$fifo"
+}
+
+ensure_daemon() {
+    mkdir -p "$STATE"
+    _ep=$(cat "$STATE/daemon.lock" 2>/dev/null)
+    if [ -n "$_ep" ] && kill -0 "$_ep" 2>/dev/null; then
+        return 0    # already running
+    fi
+    # the daemon's own lock settles any start-up race between two callers
+    if command -v setsid >/dev/null 2>&1; then
+        setsid "$SELF" daemon >/dev/null 2>&1 &
+    else
+        nohup "$SELF" daemon >/dev/null 2>&1 &
+    fi
+}
+
+# --- CLI ---------------------------------------------------------------
+
+set_layout() {
+    name=$1
+    valid=
+    for l in $LAYOUTS; do [ "$l" = "$name" ] && valid=1; done
+    [ -n "$valid" ] || exit 1
+    d=$(focused)
+    mkdir -p "$STATE"
+    if [ "$name" = "tiled" ]; then
+        rm -f "$STATE/$d.layout" "$STATE/$d.sig"
+    else
+        echo "$name" > "$STATE/$d.layout"
+        # only custom layouts need the daemon; monocle is native
+        [ "$name" != "monocle" ] && ensure_daemon
+    fi
+    apply "$d" "$name"
+    poke_bar "$name"
+}
+
+cycle() ( # +1 | -1
+    step=$1
+    cur=$(state_of "$(focused)")
+    [ "$cur" = "-" ] && cur=tiled
+    # shellcheck disable=SC2086
+    set -- $LAYOUTS
+    n=$# idx=0 i=0
+    for l; do
+        [ "$l" = "$cur" ] && idx=$i
+        i=$((i + 1))
+    done
+    shift $(( (idx + step + n) % n ))
+    set_layout "$1"
+)
+
+icon_of() {
+    case "$1" in
+        -|tiled) printf '\363\260\225\256' ;;  # md-view_dashboard
+        tall)    printf '\363\260\233\276' ;;  # md-page_layout_sidebar_right
+        rtall)   printf '\363\260\233\275' ;;  # md-page_layout_sidebar_left
+        wide)    printf '\363\260\233\273' ;;  # md-page_layout_footer
+        rwide)   printf '\363\260\233\274' ;;  # md-page_layout_header
+        grid)    printf '\363\260\213\201' ;;  # md-view_grid
+        even)    printf '\363\260\225\255' ;;  # md-view_column
+        monocle) printf '\363\260\226\257' ;;  # md-window_maximize
+        *)       printf '%s' "$1" ;;
+    esac
+}
+
+# shellcheck disable=SC2086  # list: splitting $LAYOUTS is intended
+case "${1:-}" in
+    get)    state_of "$(focused)" ;;
+    icon)   icon_of "$(state_of "$(focused)")" ;;
+    list)   printf '%s\n' $LAYOUTS ;;
+    set)    [ -n "${2:-}" ] || exit 1; set_layout "$2" ;;
+    next)   cycle 1 ;;
+    prev)   cycle -1 ;;
+    apply)  [ -n "${3:-}" ] || exit 1; apply "$2" "$3" ;;  # internal/debug
+    daemon) daemon ;;
+    *)      echo "usage: layout get|icon|list|next|prev|set <name>" >&2; exit 1 ;;
+esac

@@ -1,3 +1,17 @@
+## Feat: New Layouts mode
+##### 18 Oct 2026
+
+**New**
+You can now switch between different layouts "Tiled" (the default), "tall" (also known as "master-stack"), "rtall," "wide," "rwide," "grid," "even," and "monocle" with each workspace maintaining its own independent layout.
+
+In other words, if you select the "grid" layout for workspace 1 and the "tall" layout for workspace 5, both settings will persist throughout your session; any new windows you open will automatically follow the layout assigned to that workspace.
+
+The original script was created by https://codeberg.org/justaguylinux/ all credit goes to him. I simply modified it to work within my own environment and to ensure it is 100% POSIX-compliant.
+
+https://github.com/user-attachments/assets/4b6c854e-f243-470b-ba74-9700b1027a1e
+
+---
+
 ## Feat: New BarSelector (Select any of the 18 bars in any theme)
 ##### 13 October 2026
 
