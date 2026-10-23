@@ -368,6 +368,26 @@ https://github.com/user-attachments/assets/79764678-c519-4a41-a333-2a862a6d10f8
 
 And more.. You need to look sxhkdrc file for more, or press Alt + F1 for a cheatsheet.
 
+### 🎨 Window Border Customization & Toggle
+
+A zero-RAM window border customizer that lets you cycle through curated aesthetic colors, toggle window borders completely on or off, adjust border width, and select colors via Rofi.
+
+| Keybinding | Action | Description |
+| :--- | :--- | :--- |
+| `Super + Shift + B` | **Cycle Colors** | Instant switch to next aesthetic color with Dunst OSD swatch |
+| `Super + Ctrl + Alt + B` | **Toggle Borders** | Toggle window borders completely On / Off (`0px` ↔ previous width) |
+| `Super + Ctrl + Shift + B` | **Color Menu** | Open visual Rofi menu to browse and select any color |
+| `Super + Alt + Shift + B` | **Cycle Width** | Cycle border thickness (`1px` → `2px` → `3px`) |
+
+#### Customizing Colors
+To add, edit, or customize your own colors, open `bin/BorderColor` and edit the `PALETTE` list:
+```bash
+PALETTE="My Color|#123456
+Neon Lime|#a6e22e
+Cyber Blue|#00f0ff"
+```
+Colors are updated live on the active window manager and automatically saved into your active theme's `theme-config.bash` so they persist across reboots.
+
 ---
 
 > [!CAUTION]
