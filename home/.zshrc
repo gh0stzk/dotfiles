@@ -44,14 +44,15 @@ autoload -Uz vcs_info
 precmd () { vcs_info }
 _comp_options+=(globdots)
 
-zstyle ':completion:*' menu select
+# fzf-tab recommends disabling zsh's builtin menu
+zstyle ':completion:*' menu no
 zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list \
 		'm:{a-zA-Z}={A-Za-z}' \
 		'+r:|[._-]=* r:|=*' \
 		'+l:|=*'
-zstyle ':vcs_info:*' formats ' %B%s-[%F{magenta}%f %F{yellow}%b%f]-'
+zstyle ':vcs_info:*' formats ' %B%s-[%F{magenta}%f %F{yellow}%b%f]-'
 zstyle ':fzf-tab:*' fzf-flags --style=full --height=90% --pointer '>' --gutter ' ' \
                     --color 'pointer:green:bold,bg+:-1:,fg+:green:bold,info:blue:bold,marker:yellow:bold,hl:gray:bold,hl+:gray:bold' \
                     --input-label ' Search ' --color 'input-border:blue,input-label:blue:bold' \
@@ -94,7 +95,6 @@ setopt hist_find_no_dups
 #  └─┘└─┘┴ ┴  └─┘└─┘└─┘┴─┘  └─┘┴   ┴ ┴└─┘┘└┘└─┘
 setopt AUTOCD              # change directory just by typing its name
 setopt PROMPT_SUBST        # enable command substitution in prompt
-setopt MENU_COMPLETE       # Automatically highlight first element of completion menu
 setopt LIST_PACKED		   # The completion menu takes less space.
 setopt AUTO_LIST           # Automatically list choices on ambiguous completion.
 setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
@@ -104,17 +104,27 @@ setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
 #   ┴ ┴ ┴└─┘  ┴  ┴└─└─┘┴ ┴┴   ┴
 function dir_icon {
   if [[ "$PWD" == "$HOME" ]]; then
-    echo "%B%F{cyan}%f%b"
+    echo "%B%F{cyan}%f%b"
   else
-    echo "%B%F{cyan}%f%b"
+    echo "%B%F{cyan}%f%b"
   fi
 }
 
-PS1='%B%F{blue}%f%b  %B%F{magenta}%n%f%b $(dir_icon)  %B%F{red}%~%f%b${vcs_info_msg_0_} %(?.%B%F{green}.%F{red})%f%b '
+PS1='%B%F{blue}%f%b  %B%F{magenta}%n%f%b $(dir_icon)  %B%F{red}%~%f%b${vcs_info_msg_0_} %(?.%B%F{green}.%F{red})%f%b '
 
 #  ┌─┐┬  ┬ ┬┌─┐┬┌┐┌┌─┐
 #  ├─┘│  │ ││ ┬││││└─┐
 #  ┴  ┴─┘└─┘└─┘┴┘└┘└─┘
+
+# Carapace: flag/subcommand completion source (optional, only if installed).
+# Must be loaded after compinit and BEFORE fzf-tab so fzf-tab renders its results.
+# bat/eza/cd are excluded so the fzf-tab file previews above keep working.
+if (( $+commands[carapace] )); then
+  export CARAPACE_BRIDGES='zsh,fish,bash'
+  export CARAPACE_EXCLUDES='bat,eza,cd'
+  source <(carapace _carapace)
+fi
+
 source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -161,4 +171,9 @@ alias ll='eza --icons=always --color=always -la'
 #  ├─┤│ │ │ │ │  └─┐ │ ├─┤├┬┘ │
 #  ┴ ┴└─┘ ┴ └─┘  └─┘ ┴ ┴ ┴┴└─ ┴
 $HOME/.local/bin/colorscript -r
-#disable-fzf-tab
+
+# Atuin: searchable shell history (optional, only if installed).
+# Up arrow is left to history-substring-search; atuin takes over Ctrl+R.
+if (( $+commands[atuin] )); then
+  eval "$(atuin init zsh --disable-up-arrow)"
+fi
