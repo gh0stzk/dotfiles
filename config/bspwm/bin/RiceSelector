@@ -35,6 +35,7 @@ selected=$(
         printf "%s\000icon\037%s/preview.webp\n" "$name" "$rice"
     done | rofi -dmenu -p "RiceSelector" \
                 -theme "$bspwm_dir/config/rofi-themes/RiceSelector.rasi" \
+                -scroll-method 1 \
                 -selected-row "$selected_index"
 )
 unset IFS
