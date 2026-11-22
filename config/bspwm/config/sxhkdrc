@@ -203,6 +203,23 @@ super + f
 super + r
     RiceEditor
 
+# Window Border Customization (0 MB RAM, instant X11 switch)
+# Cycle aesthetic border colors
+super + shift + b
+    BorderColor --cycle
+
+# Toggle window borders On/Off (0px <-> previous px)
+super + ctrl + alt + b
+    BorderColor --toggle
+
+# Border color menu (visual picker)
+super + ctrl + shift + b
+    BorderColor --menu
+
+# Cycle border width (1px / 2px / 3px)
+super + alt + shift + b
+    BorderColor --width-cycle
+
 # -- Terminal apps -- #
 
 # Yazi

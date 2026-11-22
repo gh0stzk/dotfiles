@@ -1,0 +1,200 @@
+#!/bin/sh
+# =============================================================
+# Author:  mkr-infinity
+# GitHub:  https://github.com/mkr-infinity
+# Script Name: BorderColor
+# Description: Ultra-lightweight border color & width switcher
+# Memory Cost: 0 MB (native bspc IPC, no daemon)
+# =============================================================
+
+idx_file="$HOME/.config/bspwm/.border_color_idx"
+prev_w_file="$HOME/.config/bspwm/.border_width_prev"
+rice_file="$HOME/.config/bspwm/.rice"
+rofi_theme="$HOME/.config/bspwm/config/rofi-themes/BorderColor.rasi"
+
+# Curated Aesthetic Colors
+# Format: "Display Name|Hex Code"
+PALETTE="Tokyo Purple|#9d7cd8
+Neon Cyan|#70d7c5
+Cyber Rose|#ff007c
+Warm Amber|#fabd2f
+Sapphire Blue|#7aa2f7
+Emerald Mint|#73daca
+Sunset Coral|#ff9e64
+Minimal Cream|#fbf1c7
+Sakura Pink|#d3869b
+Crimson Flame|#fb4934
+Matcha Lime|#b8bb26
+Dracula Lilac|#bd93f9
+Nord Frost|#88c0d0
+Pure Diamond|#ffffff"
+
+total_colors=$(printf "%s\n" "$PALETTE" | wc -l)
+
+get_current_index() {
+    if [ -f "$idx_file" ]; then
+        idx=$(cat "$idx_file" 2>/dev/null)
+        case "$idx" in
+            ''|*[!0-9]*) echo 0 ;;
+            *) echo "$idx" ;;
+        esac
+    else
+        echo 0
+    fi
+}
+
+apply_color() {
+    name="$1"
+    hex="$2"
+    idx="$3"
+
+    # 1. Realtime live update on X11 / BSPWM (instant, 0 RAM)
+    bspc config focused_border_color "$hex"
+
+    # 2. Persist index
+    [ -n "$idx" ] && echo "$idx" > "$idx_file"
+
+    # 3. Persist to active rice theme-config.bash
+    current_rice=$(cat "$rice_file" 2>/dev/null || echo "silvia")
+    rice_cfg="$HOME/.config/bspwm/rices/$current_rice/theme-config.bash"
+    if [ -f "$rice_cfg" ]; then
+        sed -i "s/^FOCUSED_BC=.*/FOCUSED_BC=\"$hex\"\t# Focused border color/" "$rice_cfg"
+    fi
+
+    # 4. Instant notification via dunst
+    dunstify -u low -t 1200 -r 9944 "Border Color" "<span foreground='$hex' font='14'>■</span>  <b>$name</b>\n$hex"
+}
+
+cycle_color() {
+    direction="${1:-next}"
+    curr_idx=$(get_current_index)
+
+    if [ "$direction" = "prev" ]; then
+        new_idx=$(( (curr_idx - 1 + total_colors) % total_colors ))
+    else
+        new_idx=$(( (curr_idx + 1) % total_colors ))
+    fi
+
+    line_num=$(( new_idx + 1 ))
+    entry=$(printf "%s\n" "$PALETTE" | sed -n "${line_num}p")
+    c_name=$(printf "%s" "$entry" | cut -d'|' -f1)
+    c_hex=$(printf "%s" "$entry" | cut -d'|' -f2)
+
+    apply_color "$c_name" "$c_hex" "$new_idx"
+}
+
+cycle_width() {
+    curr_w=$(bspc config border_width 2>/dev/null || echo 2)
+    case "$curr_w" in
+        1) new_w=2 ;;
+        2) new_w=3 ;;
+        3) new_w=1 ;;
+        *) new_w=2 ;;
+    esac
+
+    bspc config border_width "$new_w"
+
+    current_rice=$(cat "$rice_file" 2>/dev/null || echo "silvia")
+    rice_cfg="$HOME/.config/bspwm/rices/$current_rice/theme-config.bash"
+    if [ -f "$rice_cfg" ]; then
+        sed -i "s/^BORDER_WIDTH=.*/BORDER_WIDTH=\"$new_w\"\t\t# Bspwm border/" "$rice_cfg"
+    fi
+
+    dunstify -u low -t 1200 -r 9945 "Border Width" "Width: <b>${new_w}px</b>"
+}
+
+toggle_border() {
+    curr_w=$(bspc config border_width 2>/dev/null || echo 2)
+    current_rice=$(cat "$rice_file" 2>/dev/null || echo "silvia")
+    rice_cfg="$HOME/.config/bspwm/rices/$current_rice/theme-config.bash"
+
+    if [ "$curr_w" -gt 0 ]; then
+        echo "$curr_w" > "$prev_w_file"
+        bspc config border_width 0
+        if [ -f "$rice_cfg" ]; then
+            sed -i "s/^BORDER_WIDTH=.*/BORDER_WIDTH=\"0\"\t\t# Bspwm border/" "$rice_cfg"
+        fi
+        dunstify -u low -t 1200 -r 9945 "Window Border" "Borders: <b>Disabled (Off)</b>"
+    else
+        prev_w=2
+        if [ -f "$prev_w_file" ]; then
+            val=$(cat "$prev_w_file" 2>/dev/null)
+            case "$val" in
+                1|2|3|4|5) prev_w="$val" ;;
+                *) prev_w=2 ;;
+            esac
+        fi
+        bspc config border_width "$prev_w"
+        if [ -f "$rice_cfg" ]; then
+            sed -i "s/^BORDER_WIDTH=.*/BORDER_WIDTH=\"$prev_w\"\t\t# Bspwm border/" "$rice_cfg"
+        fi
+        dunstify -u low -t 1200 -r 9945 "Window Border" "Borders: <b>Enabled (${prev_w}px)</b>"
+    fi
+}
+
+rofi_menu() {
+    menu_options=$(printf "%s\n" "$PALETTE" | awk -F'|' '{ printf "  %-16s %s\n", $1, $2 }')
+
+    if [ -f "$rofi_theme" ]; then
+        chosen=$(printf "%s\n" "$menu_options" | rofi -dmenu -p "Border Color" -theme "$rofi_theme")
+    else
+        chosen=$(printf "%s\n" "$menu_options" | rofi -dmenu -p "Border Color")
+    fi
+
+    [ -z "$chosen" ] && exit 0
+
+    sel_hex=$(printf "%s\n" "$chosen" | grep -o '#[0-9A-Fa-f]\{6\}')
+    sel_name=$(printf "%s\n" "$chosen" | sed -e "s/$sel_hex//g" | xargs)
+
+    if [ -n "$sel_hex" ]; then
+        idx_found=0
+        count=0
+        while IFS='|' read -r name hex; do
+            if [ "$hex" = "$sel_hex" ]; then
+                idx_found=$count
+                [ -z "$sel_name" ] && sel_name="$name"
+                break
+            fi
+            count=$(( count + 1 ))
+        done <<EOF
+$PALETTE
+EOF
+        apply_color "$sel_name" "$sel_hex" "$idx_found"
+    fi
+}
+
+case "$1" in
+    --cycle|--next|"")
+        cycle_color next
+        ;;
+    --prev)
+        cycle_color prev
+        ;;
+    --toggle)
+        toggle_border
+        ;;
+    --menu)
+        rofi_menu
+        ;;
+    --width-cycle)
+        cycle_width
+        ;;
+    --set)
+        if [ -n "$2" ]; then
+            apply_color "Custom" "$2" ""
+        else
+            echo "Usage: BorderColor --set #HEX"
+        fi
+        ;;
+    --random)
+        rand_idx=$(( RANDOM % total_colors ))
+        line_num=$(( rand_idx + 1 ))
+        entry=$(printf "%s\n" "$PALETTE" | sed -n "${line_num}p")
+        c_name=$(printf "%s" "$entry" | cut -d'|' -f1)
+        c_hex=$(printf "%s" "$entry" | cut -d'|' -f2)
+        apply_color "$c_name" "$c_hex" "$rand_idx"
+        ;;
+    *)
+        echo "Usage: BorderColor [--cycle | --prev | --toggle | --menu | --width-cycle | --random | --set #HEX]"
+        ;;
+esac

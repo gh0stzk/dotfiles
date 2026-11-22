@@ -1,0 +1,94 @@
+// =============================================================
+// Author:  mkr-infinity (https://github.com/mkr-infinity)
+// Theme:   BorderColor.rasi
+// Description: Border Color Selector Theme for BSPWM
+// =============================================================
+
+configuration {
+    font:                        "JetBrainsMono NF Medium 10";
+    show-icons:                  false;
+}
+
+@import "shared.rasi"
+
+window {
+    enabled:                     true;
+    location:                    center;
+    anchor:                      center;
+    width:                       360px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+    fullscreen:                  false;
+    transparency:                "real";
+    cursor:                      "default";
+    spacing:                     0px;
+    padding:                     0px;
+    border:                      2px;
+    border-radius:               12px;
+    border-color:                @selected;
+    background-color:            transparent;
+}
+
+mainbox {
+    enabled:                     true;
+    orientation:                 vertical;
+    children:                    [ "inputbar", "listview" ];
+    background-color:            @background-alt;
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     15px 15px 10px 15px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    children:                    [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  @selected;
+    font:                        "JetBrainsMono NF Bold 10";
+}
+
+entry {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      text;
+    placeholder:                 "Filter colors...";
+    placeholder-color:           inherit;
+}
+
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       8;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    spacing:                     4px;
+    padding:                     5px 12px 12px 12px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+element {
+    enabled:                     true;
+    spacing:                     8px;
+    padding:                     8px 12px;
+    border-radius:               8px;
+    cursor:                      pointer;
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @background;
+}
