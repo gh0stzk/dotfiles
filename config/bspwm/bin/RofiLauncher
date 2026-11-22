@@ -58,13 +58,33 @@ choose_launcher_style() {
 
 launch_launcher () {
     ROFI_THEME="$styleDir/style_$current_style.rasi"
-    rofi -show drun -theme "$ROFI_THEME"
+    start_mode="${1:-Apps}"
+
+    # Styles without a mode-switcher get one ("Apps" / "Everything" tabs)
+    extra_theme=""
+    if ! grep -q 'mode-switcher' "$ROFI_THEME"; then
+        extra_theme='
+            listbox { children: [ "mode-switcher", "listview" ]; }
+            mode-switcher { spacing: 10px; background-color: transparent; }
+            button { padding: 6px; border-radius: 4px; cursor: pointer;
+                     background-color: @background-alt; text-color: @foreground; }
+            button selected { background-color: @selected; text-color: @background; }'
+    fi
+
+    # Ctrl+Tab (or clicking the tabs) switches between Apps and Everything
+    rofi -modes "Apps:$HOME/.config/bspwm/bin/RofiApps,drun" \
+         -display-drun "Everything" \
+         -show "$start_mode" \
+         -theme "$ROFI_THEME" \
+         -theme-str "$extra_theme"
 }
 
 # -- Main executor -- #
 case "$1" in
     --choose-style)
         choose_launcher_style ;;
-    --launcher | *)
-        launch_launcher ;;
+    --all)
+        launch_launcher drun ;;
+    --apps | --launcher | *)
+        launch_launcher Apps ;;
 esac

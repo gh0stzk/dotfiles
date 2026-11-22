@@ -24,6 +24,10 @@ super + alt + Return
 super + @space
     OpenApps --menu
 
+# App launcher (show everything)
+super + shift + @space
+    RofiLauncher --all
+
 # Theme Selector
 alt + @space
     RiceSelector

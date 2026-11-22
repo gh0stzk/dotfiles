@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+# =============================================================
+# Script Name: RofiApps
+# Description: Rofi "Apps" mode: lists only real applications,
+#              hiding settings panels, terminal tools,
+#              internal utilities, etc.
+#
+# Extra items to hide/show: ~/.config/bspwm/config/launcher-filter
+#   -name.desktop   -> always hide
+#   +name.desktop   -> always show (ignores the rules)
+# =============================================================
+
+FILTER_FILE="$HOME/.config/bspwm/config/launcher-filter"
+
+# Categories that hide a .desktop entry from Apps mode
+EXCLUDE_CATEGORIES="Settings HardwareSettings DesktopSettings ConsoleOnly Documentation Debugger"
+
+# ---- On selection: launch the app and exit ----
+if [ "${ROFI_RETV:-0}" = "1" ] && [ -n "$ROFI_INFO" ]; then
+    setsid -f gtk-launch "$ROFI_INFO" >/dev/null 2>&1
+    exit 0
+fi
+
+# ---- Listing ----
+printf '\0no-custom\x1ftrue\n'
+
+# .desktop directories (user first, so it takes priority)
+dirs=("${XDG_DATA_HOME:-$HOME/.local/share}/applications")
+IFS=: read -ra sysdirs <<< "${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+for d in "${sysdirs[@]}"; do dirs+=("$d/applications"); done
+dirs+=("/var/lib/flatpak/exports/share/applications" "$HOME/.local/share/flatpak/exports/share/applications")
+
+files=()
+for d in "${dirs[@]}"; do
+    [ -d "$d" ] || continue
+    for f in "$d"/*.desktop; do [ -f "$f" ] && files+=("$f"); done
+done
+[ ${#files[@]} -eq 0 ] && exit 0
+
+lang="${LANG%%.*}"
+
+awk -v filter_file="$FILTER_FILE" -v excl="$EXCLUDE_CATEGORIES" -v lang="$lang" '
+function flush(   id, show, n, cats, i, c, nm) {
+    if (cur == "") return
+    id = cur; sub(/.*\//, "", id)
+    if (id in seen) return
+    seen[id] = 1
+
+    if (type != "Application" || nodisplay || hidden) return
+    if (id in force_hide) return
+
+    show = 1
+    if (!(id in force_show)) {
+        if (terminal) show = 0
+        if (categories == "") show = 0
+        n = split(categories, cats, ";")
+        for (i = 1; i <= n; i++) if (cats[i] in excl_cat) show = 0
+        # Qt developer tools (designer, linguist...)
+        if (categories ~ /(^|;)Qt(;|$)/ && categories ~ /(^|;)Development(;|$)/) show = 0
+    }
+    if (!show) return
+
+    nm = (name_loc != "") ? name_loc : name
+    printf "%s\0icon\037%s\037info\037%s\037meta\037%s %s\n", nm, icon, id, generic, keywords
+}
+function reset() {
+    insec = 0; type = ""; name = ""; name_loc = ""; icon = ""; categories = ""
+    generic = ""; keywords = ""; terminal = 0; nodisplay = 0; hidden = 0
+}
+BEGIN {
+    split(excl, tmp, " "); for (k in tmp) excl_cat[tmp[k]] = 1
+    short = lang; sub(/_.*/, "", short)
+    while ((getline line < filter_file) > 0) {
+        gsub(/^[ \t]+|[ \t]+$/, "", line)
+        if (line ~ /^-/) force_hide[substr(line, 2)] = 1
+        else if (line ~ /^\+/) force_show[substr(line, 2)] = 1
+    }
+}
+FNR == 1 { flush(); reset(); cur = FILENAME }
+/^\[/ { insec = ($0 == "[Desktop Entry]"); next }
+!insec { next }
+{
+    k = $0; sub(/=.*/, "", k); v = $0; sub(/^[^=]*=/, "", v)
+    if (k == "Type") type = v
+    else if (k == "Name") name = v
+    else if (k == "Name[" lang "]" || (k == "Name[" short "]" && name_loc == "")) name_loc = v
+    else if (k == "Icon") icon = v
+    else if (k == "Categories") categories = v
+    else if (k == "GenericName") generic = v
+    else if (k == "Keywords") keywords = v
+    else if (k == "Terminal") terminal = (tolower(v) == "true")
+    else if (k == "NoDisplay") nodisplay = (tolower(v) == "true")
+    else if (k == "Hidden") hidden = (tolower(v) == "true")
+}
+END { flush() }
+' "${files[@]}" | sort -f
