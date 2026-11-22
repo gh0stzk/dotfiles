@@ -63,7 +63,7 @@ textbox-prompt-colon {
     enabled:                     true;
     font:                        "JetBrains Mono Nerd Font 9";
     expand:                      false;
-    str:                         "";
+    str:                         "";
     padding:                     10px 16px 10px 12px;
     border-radius:               10px;
     background-color:            @background-alt;

@@ -1,0 +1,4 @@
+# Filter for the launcher's "Apps" mode (RofiApps)
+#   -file.desktop  -> hide from Apps mode
+#   +file.desktop  -> always show in Apps mode
+# Find the names in /usr/share/applications and ~/.local/share/applications
